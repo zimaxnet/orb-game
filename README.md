@@ -1,6 +1,6 @@
-# AIMCS - AI Multimodal Customer System
+# Zimax AI - AI Multimodal Customer System
 
-A modern, beautiful chat interface for AI-powered customer service with text and voice capabilities.
+A modern, beautiful chat interface for AI-powered customer service with text, voice, and web search capabilities.
 
 ## ⚠️ CRITICAL: File Structure & Server Files
 
@@ -40,7 +40,7 @@ node backend-server.js
 
 **For Backend Deployment:**
 ```bash
-docker build -f backend-Dockerfile -t aimcs-backend:latest .
+docker buildx build --platform linux/amd64 -f backend-Dockerfile -t aimcs-backend:latest . --push
 ```
 
 ## 🌐 Live Demo
@@ -62,7 +62,7 @@ docker build -f backend-Dockerfile -t aimcs-backend:latest .
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd aimcs-frontend-repo
+cd aimcs-deploy
 ```
 
 2. Install dependencies:
@@ -81,11 +81,12 @@ npm run dev
 
 1. Navigate to the backend directory:
 ```bash
-cd aimcs-backend-repo
+cd aimcs-deploy
 ```
 
-2. Install dependencies:
+2. Install backend dependencies:
 ```bash
+cp backend-package.json package.json
 npm install
 ```
 
@@ -93,7 +94,7 @@ npm install
 
 4. Start the development server:
 ```bash
-npm run dev
+node backend-server.js
 ```
 
 ### Building for Production
@@ -105,7 +106,7 @@ npm run build
 
 **Backend:**
 ```bash
-docker buildx build --platform linux/amd64 -t your-registry/aimcs-backend:latest -f backend-Dockerfile . --push
+docker buildx build --platform linux/amd64 -t aimcsregistry.azurecr.io/aimcs-backend:latest -f backend-Dockerfile . --push
 ```
 
 ## 🛠️ Technology Stack
@@ -122,7 +123,7 @@ docker buildx build --platform linux/amd64 -t your-registry/aimcs-backend:latest
 - **Runtime**: Node.js 20
 - **Framework**: Express.js
 - **AI Services**: Azure OpenAI (o4-mini, gpt-4o-mini-tts)
-- **Web Search**: Perplexity API
+- **Web Search**: Perplexity API (sonar model)
 - **Container**: Docker with multi-platform support
 - **Deployment**: Azure Container Apps
 
@@ -144,8 +145,14 @@ docker buildx build --platform linux/amd64 -t your-registry/aimcs-backend:latest
 ### AI Capabilities
 - **Primary Model**: Azure OpenAI o4-mini for text generation
 - **TTS Model**: Azure OpenAI gpt-4o-mini-tts for speech synthesis
-- **Web Search**: Automatic web search integration via Perplexity API
+- **Web Search**: Automatic web search integration via Perplexity API (sonar model)
 - **Smart Context**: Automatic detection of topics requiring current information
+
+### Web Search Features
+- **Real-time web search** via Perplexity API
+- **Source citations** in responses
+- **Automatic search detection** for current events and news
+- **Manual search control** via `useWebSearch` parameter
 
 ### UI/UX Features
 - Glassmorphism design elements
@@ -189,11 +196,20 @@ The application connects to the backend API at `https://api.aimcs.net`. You can 
 Required environment variables for the backend:
 
 ```bash
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+# Azure OpenAI Configuration
+AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key
 AZURE_OPENAI_DEPLOYMENT=o4-mini
 AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
+
+# Perplexity API for Web Search
+PERPLEXITY_API_KEY=your-perplexity-api-key
 ```
+
+### Azure OpenAI Deployments
+- **Chat Model**: `o4-mini` (gpt-4o-mini)
+- **TTS Model**: `gpt-4o-mini-tts`
+- **Endpoint**: `https://aimcs-foundry.cognitiveservices.azure.com/`
 
 ### Customization
 - Colors: Modify CSS custom properties in `src/App.css`
@@ -234,29 +250,37 @@ The application is fully responsive with breakpoints at:
 #### Azure Container Apps
 1. Build and push Docker image:
 ```bash
-docker buildx build --platform linux/amd64 -t your-registry/aimcs-backend:latest -f backend-Dockerfile . --push
+docker buildx build --platform linux/amd64 -t aimcsregistry.azurecr.io/aimcs-backend:latest -f backend-Dockerfile . --push
 ```
 
 2. Deploy to Azure Container Apps:
 ```bash
-az containerapp create \
-  --name aimcs-backend \
-  --resource-group your-resource-group \
-  --environment your-container-apps-env \
-  --image your-registry/aimcs-backend:latest \
-  --target-port 3000 \
-  --ingress external \
-  --env-vars AZURE_OPENAI_ENDPOINT=your-endpoint AZURE_OPENAI_API_KEY=your-key
+az containerapp update \
+  --name aimcs-backend-eastus2 \
+  --resource-group aimcs-rg-eastus2 \
+  --image aimcsregistry.azurecr.io/aimcs-backend:latest
 ```
 
-3. Configure custom domain and SSL certificate
+3. Configure environment variables:
+```bash
+az containerapp update \
+  --name aimcs-backend-eastus2 \
+  --resource-group aimcs-rg-eastus2 \
+  --set-env-vars \
+    AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/ \
+    AZURE_OPENAI_API_KEY=your-key \
+    AZURE_OPENAI_DEPLOYMENT=o4-mini \
+    AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts \
+    PERPLEXITY_API_KEY=your-perplexity-key
+```
 
 ## 🔗 API Endpoints
 
-| Endpoint    | Method | Description                                                                 |
-|-------------|--------|-----------------------------------------------------------------------------|
-| `/api/chat` | POST   | Main chat endpoint with AI responses and text-to-speech                     |
-| `/api/chat` | OPTIONS| CORS preflight request                                                      |
+| Endpoint        | Method | Description                                                                 |
+|-----------------|--------|-----------------------------------------------------------------------------|
+| `/api/chat`     | POST   | Main chat endpoint with AI responses, text-to-speech, and web search       |
+| `/api/web-search` | POST | Direct web search endpoint via Perplexity API                              |
+| `/api/chat`     | OPTIONS| CORS preflight request                                                      |
 
 ### Request Format
 ```json
@@ -274,10 +298,19 @@ az containerapp create \
   "message": "AI response text",
   "timestamp": "2025-07-03T20:42:38.636Z",
   "aiUsed": true,
-  "searchUsed": false,
+  "searchUsed": true,
   "originalMessage": "Original user message",
   "audioData": "base64-encoded-audio-data",
   "audioFormat": "audio/mp3"
+}
+```
+
+### Web Search Response Format
+```json
+{
+  "searchUsed": true,
+  "message": "Web search response with citations",
+  "sources": ["source1", "source2"]
 }
 ```
 
@@ -299,7 +332,7 @@ az containerapp create \
 ### Data Flow
 1. User sends message via frontend
 2. Backend processes message with Azure OpenAI
-3. Optional web search via Perplexity API
+3. Optional web search via Perplexity API (sonar model)
 4. Text-to-speech generation via Azure OpenAI TTS
 5. Response returned with text and audio data
 6. Frontend displays text and plays audio
@@ -327,6 +360,8 @@ For support and questions:
 
 ## 🔮 Future Enhancements
 
+- [x] Web search integration via Perplexity API
+- [x] Real-time source citations
 - [ ] Voice input (speech-to-text)
 - [ ] File upload capabilities
 - [ ] Rich message formatting
@@ -343,13 +378,13 @@ For support and questions:
 
 ---
 
-Built with ❤️ by the AIMCS Team
+**Powered by Zimax AI Labs**
 
 ### 🔧 Technical Stack
-- **Frontend**: React 18 + Vite + Tailwind CSS
+- **Frontend**: React 18 + Vite + Custom CSS
 - **Backend**: Node.js + Express
-- **Hosting**: Azure Web App (Frontend) + Azure Container Apps (Backend)
-- **AI Services**: Azure OpenAI (o4-mini, gpt-4o-mini-tts)
+- **Hosting**: Azure Static Web Apps (Frontend) + Azure Container Apps (Backend)
+- **AI Services**: Azure OpenAI (o4-mini, gpt-4o-mini-tts) + Perplexity API (sonar)
 - **Domains**: Custom domains with SSL certificates
 
 ## 🎯 Features
@@ -359,6 +394,12 @@ Built with ❤️ by the AIMCS Team
 - Context-aware responses
 - Automatic text-to-speech for AI responses (via gpt-4o-mini-tts)
 
+### Web Search
+- Real-time web search via Perplexity API (sonar model)
+- Source citations in responses
+- Automatic detection of topics requiring current information
+- Manual search control options
+
 ### User Experience
 - Dark theme interface
 - Responsive design
@@ -367,11 +408,10 @@ Built with ❤️ by the AIMCS Team
 
 ## 🔗 API Endpoints
 
-| Endpoint    | Method | Description                                                                 |
-|-------------|--------|-----------------------------------------------------------------------------|
-| `/api/chat` | POST   | Text chat with AI (input sent to o4-mini, TTS generated by gpt-4o-mini-tts) |
-
-**Note:** The backend is strictly minimal. Only `/api/chat` is supported. All chat is processed by the `o4-mini` model, and all TTS is generated by the `gpt-4o-mini-tts` model. No other endpoints are available.
+| Endpoint        | Method | Description                                                                 |
+|-----------------|--------|-----------------------------------------------------------------------------|
+| `/api/chat`     | POST   | Text chat with AI and optional web search                                   |
+| `/api/web-search` | POST | Direct web search via Perplexity API                                       |
 
 ## 🌍 Deployment URLs
 
@@ -384,6 +424,7 @@ Built with ❤️ by the AIMCS Team
 
 - **o4-mini**: Uses `max_completion_tokens: 1000`, API version `2025-01-01-preview`
 - **gpt-4o-mini-tts**: Uses `voice: "alloy"`, `response_format: "mp3"`, API version `2025-03-01-preview`
+- **Perplexity sonar**: Uses `max_tokens: 1000` for web search responses
 
 ## 🏢 Enterprise Development Roadmap
 

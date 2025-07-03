@@ -20,7 +20,7 @@ const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT;
 const AZURE_OPENAI_API_KEY = process.env.AZURE_OPENAI_API_KEY;
 const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
 const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || 'gpt-4o-mini-tts';
-const PERPLEXITY_API_KEY = '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';
+const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 
 app.use(express.json({ limit: '10mb' }));
 
@@ -40,6 +40,11 @@ const needsWebSearch = (message) => {
 
 // Perplexity web search function
 const searchWeb = async (query) => {
+  if (!PERPLEXITY_API_KEY) {
+    console.error('Perplexity API key not configured');
+    return null;
+  }
+  
   try {
     const response = await fetch('https://api.perplexity.ai/chat/completions', {
       method: 'POST',

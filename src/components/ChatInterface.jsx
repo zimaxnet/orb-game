@@ -16,7 +16,7 @@ const ChatInterface = () => {
 
   const translations = {
     en: {
-      title: 'AIMCS',
+      title: 'Zimax AI',
       subtitle: 'AI Multimodal Customer System',
       welcome: 'Welcome! Start a conversation with me.',
       placeholder: 'Type your message...',
@@ -24,7 +24,7 @@ const ChatInterface = () => {
       processing: 'Processing...',
       playAudio: '🔊 Play Audio',
       switchLanguage: 'Switch Language',
-      poweredBy: 'Powered by Azure OpenAI',
+      poweredBy: 'Powered by Zimax AI Labs',
       searchMode: 'Search Mode',
       auto: 'Auto',
       web: 'Web Search',
@@ -36,7 +36,7 @@ const ChatInterface = () => {
       localAI: '🤖 Local AI only'
     },
     es: {
-      title: 'AIMCS',
+      title: 'Zimax AI',
       subtitle: 'Sistema de Cliente Multimodal con IA',
       welcome: '¡Bienvenido! Comienza una conversación conmigo.',
       placeholder: 'Escribe tu mensaje...',
@@ -44,7 +44,7 @@ const ChatInterface = () => {
       processing: 'Procesando...',
       playAudio: '🔊 Reproducir Audio',
       switchLanguage: 'Cambiar Idioma',
-      poweredBy: 'Desarrollado por Azure OpenAI',
+      poweredBy: 'Desarrollado por Zimax AI Labs',
       searchMode: 'Modo de Búsqueda',
       auto: 'Automático',
       web: 'Búsqueda Web',
@@ -104,7 +104,7 @@ const ChatInterface = () => {
 
       if (response.ok) {
         const data = await response.json();
-        addMessage('AIMCS AI', data.message, 'ai', data.audioData, data.sources, data.searchUsed);
+        addMessage('Zimax AI', data.message, 'ai', data.audioData, data.sources, data.searchUsed);
       } else {
         addMessage('System', 'Sorry, I encountered an error. Please try again.', 'error');
       }
@@ -284,7 +284,7 @@ const ChatInterface = () => {
               <div className="message ai fade-in">
                 <div className="message-content">
                   <div className="message-sender">
-                    AIMCS AI
+                    Zimax AI
                     {searchMode === 'web' && (
                       <span className="search-indicator" title={translations[language].webSearchUsed}>
                         🌐

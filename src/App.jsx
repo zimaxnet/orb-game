@@ -21,7 +21,7 @@ function App() {
             <div className="logo-icon">⚡</div>
             <h1 className="logo-text">Zimax AI</h1>
           </div>
-          <div className="header-subtitle">Intelligent Conversations</div>
+          <p className="app-subtitle">Experience the future of AI-powered conversations</p>
         </div>
       </header>
 

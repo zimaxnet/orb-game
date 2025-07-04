@@ -45,8 +45,30 @@ docker buildx build --platform linux/amd64 -f backend-Dockerfile -t aimcs-backen
 
 ## 🌐 Live Demo
 
-- **Frontend**: https://aimcs.net
+- **Frontend**: https://aimcs.net (Azure Web App)
 - **Backend API**: https://api.aimcs.net (Azure Container App)
+
+## 🏗️ Current Deployment Architecture
+
+### **Frontend (Azure Web App)**
+- **Service**: Azure Web App with Node.js 20 runtime
+- **Resource Group**: `aimcs-rg`
+- **Domain**: `aimcs.net`
+- **Deployment**: Zip deployment via GitHub Actions
+- **Build**: React/Vite with modern UI components
+
+### **Backend (Azure Container App)**
+- **Service**: Azure Container App with AMD64 platform
+- **Resource Group**: `aimcs-rg-eastus2`
+- **Domain**: `api.aimcs.net`
+- **Deployment**: Docker container via Azure Container Registry
+- **Runtime**: Node.js 20 with Express.js
+
+### **Infrastructure**
+- **DNS**: Managed in `aimcs-rg` resource group
+- **Container Registry**: `aimcsregistry.azurecr.io`
+- **CI/CD**: GitHub Actions with automated testing
+- **Monitoring**: Built-in health checks and verification
 
 ## 🚀 Reliable Deployment Solutions
 
@@ -98,7 +120,6 @@ Set these in your GitHub repository settings:
 | Secret | Description | Required |
 |--------|-------------|----------|
 | `AZURE_CREDENTIALS` | Azure service principal credentials | ✅ |
-| `AZURE_STATIC_WEB_APPS_API_TOKEN` | Static Web Apps deployment token | ✅ |
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint | ✅ |
 | `AZURE_OPENAI_API_KEY` | Azure OpenAI API key | ✅ |
 | `AZURE_OPENAI_DEPLOYMENT` | Azure OpenAI deployment name | ✅ |
@@ -114,11 +135,12 @@ Set these in your GitHub repository settings:
 4. **Rollback capability**: Keep previous revision active
 5. **Environment variables**: Always set all required vars
 
-#### **For Frontend (Static Web Apps)**
+#### **For Frontend (Azure Web App)**
 1. **Build verification**: Check `src/dist/index.html` exists
-2. **Skip build in deployment**: Use pre-built files
+2. **Zip deployment**: Package built files for Azure Web App deployment
 3. **Cache dependencies**: Use npm cache for faster builds
 4. **Path-based triggers**: Only deploy when frontend files change
+5. **Azure App Service cache handling**: Built-in verification and troubleshooting
 
 ### **🚨 Troubleshooting Deployment Issues**
 
@@ -202,9 +224,10 @@ curl -s https://aimcs.net | grep -q "AIMCS" && echo "✅ Deployment successful" 
 ```
 
 **3. Consider Alternative Hosting**
-- **Azure Static Web Apps**: More reliable for frontend deployments
+- **Azure Web App**: Current deployment method with built-in cache handling
 - **Azure Container Apps**: Better for backend deployments
 - **Azure CDN**: Can help with caching issues
+- **Azure Static Web Apps**: Alternative for simpler frontend deployments
 
 #### **Common Problems & Solutions**
 
@@ -374,8 +397,9 @@ docker push <youracr>.azurecr.io/aimcs-backend:latest
 ## 🌐 Deployment
 
 ### Frontend
-- Deploy the contents of `src/dist/` to your static web host (Azure Static Web Apps, Vercel, Netlify, etc).
+- Deploy the contents of `src/dist/` to Azure Web App using zip deployment.
 - Ensure the backend API URL in `src/components/ChatInterface.jsx` points to your deployed backend.
+- The GitHub Actions workflow automatically handles zip creation and deployment.
 
 ### Backend
 - Deploy the built Docker image to Azure Container Apps or Azure Web App for Containers.
@@ -419,8 +443,8 @@ az resource list --resource-group aimcs-rg-eastus2
 # List container apps (backend)
 az containerapp list --resource-group aimcs-rg-eastus2
 
-# List static web apps (frontend)
-az staticwebapp list --resource-group aimcs-rg
+# List web apps (frontend)
+az webapp list --resource-group aimcs-rg
 
 # List DNS zones (aimcs.net)
 az network dns zone list --resource-group aimcs-rg
@@ -450,10 +474,10 @@ You can also use the Azure Portal for a graphical overview.
 
 2. **Frontend Deployment** (to `aimcs-rg`):
    - Build frontend: `cd src && npm run build`
-   - Deploy `src/dist/` to Azure Static Web Apps in `aimcs-rg`
+   - Deploy `src/dist/` to Azure Web App in `aimcs-rg` using zip deployment
 
 3. **DNS Configuration** (in `aimcs-rg`):
-   - Ensure `aimcs.net` points to the Static Web App
+   - Ensure `aimcs.net` points to the Azure Web App
    - Ensure `api.aimcs.net` points to the Container App
 
 4. **Testing**:
@@ -484,7 +508,7 @@ You can also use the Azure Portal for a graphical overview.
 
 The `aimcs-rg` resource group contains the DNS zone for `aimcs.net` with the following configuration:
 
-- **Frontend**: `aimcs.net` → Azure Static Web App
+- **Frontend**: `aimcs.net` → Azure Web App
 - **Backend API**: `api.aimcs.net` → Azure Container App
 - **DNS Zone**: Managed in `aimcs-rg` resource group
 

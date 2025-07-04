@@ -3,15 +3,16 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 8080;
-const distPath = path.join(__dirname, 'dist');
 
-app.use(express.static(distPath));
+// Serve static files from the public directory
+app.use(express.static('public'));
 
-// For SPA: serve index.html for any unknown route
+// Serve the main HTML file for all routes (SPA)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`AIMCS Frontend server running on port ${port}`);
+  console.log(`Visit: http://localhost:${port}`);
 }); 

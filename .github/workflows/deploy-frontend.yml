@@ -21,13 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Vite app
-        run: npm run build
-
       - name: Prepare deployment package
         run: |
           mkdir deploy
-          cp -r dist deploy/
+          cp -r public deploy/
           cp server.js deploy/
           cp package.json deploy/
           cp package-lock.json deploy/ || true

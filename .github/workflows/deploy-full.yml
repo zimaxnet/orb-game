@@ -1,0 +1,221 @@
+name: Full System Deployment
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'src/**', 'backend-*', 'scripts/**', '.github/workflows/deploy-full.yml' ]
+  workflow_dispatch:
+
+env:
+  FRONTEND_RESOURCE_GROUP: aimcs-rg
+  BACKEND_RESOURCE_GROUP: aimcs-rg-eastus2
+  CONTAINER_APP_NAME: aimcs-backend-eastus2
+  CONTAINER_REGISTRY: aimcsregistry
+  IMAGE_NAME: aimcs-backend
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    name: Deploy Backend
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Login to Azure Container Registry
+      run: |
+        az acr login --name ${{ env.CONTAINER_REGISTRY }}
+        
+    - name: Build and push container image
+      run: |
+        docker buildx build \
+          --platform linux/amd64 \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
+          --file backend-Dockerfile \
+          --push \
+          .
+          
+    - name: Deploy to Azure Container Apps
+      run: |
+        az containerapp update \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.BACKEND_RESOURCE_GROUP }} \
+          --image ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --set-env-vars \
+            AZURE_OPENAI_ENDPOINT="${{ secrets.AZURE_OPENAI_ENDPOINT }}" \
+            AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
+            AZURE_OPENAI_DEPLOYMENT="${{ secrets.AZURE_OPENAI_DEPLOYMENT }}" \
+            AZURE_OPENAI_TTS_DEPLOYMENT="${{ secrets.AZURE_OPENAI_TTS_DEPLOYMENT }}" \
+            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}"
+            
+    - name: Wait for backend deployment
+      run: |
+        echo "Waiting for backend deployment to complete..."
+        sleep 90
+        
+    - name: Verify backend health
+      run: |
+        for i in {1..10}; do
+          echo "Attempt $i: Testing backend health..."
+          if curl -f https://api.aimcs.net/health; then
+            echo "✅ Backend is healthy!"
+            break
+          else
+            echo "❌ Backend not responding, waiting..."
+            sleep 30
+          fi
+        done
+        
+        curl -f https://api.aimcs.net/health || exit 1
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: deploy-backend
+    name: Deploy Frontend
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd src && npm ci
+        
+    - name: Build frontend
+      run: |
+        cd src
+        npm run build
+        
+    - name: Verify build output
+      run: |
+        ls -la src/dist/
+        test -f src/dist/index.html || exit 1
+        
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Deploy to Azure Static Web Apps
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        action: "upload"
+        app_location: "src/dist"
+        skip_app_build: true
+        deployment_environment: production
+        
+    - name: Wait for frontend deployment
+      run: |
+        echo "Waiting for frontend deployment to complete..."
+        sleep 60
+
+  system-test:
+    runs-on: ubuntu-latest
+    needs: [deploy-backend, deploy-frontend]
+    name: System Integration Test
+    
+    steps:
+    - name: Test frontend accessibility
+      run: |
+        echo "Testing frontend..."
+        curl -f https://aimcs.net || exit 1
+        
+    - name: Test backend API
+      run: |
+        echo "Testing backend API..."
+        curl -f https://api.aimcs.net/health || exit 1
+        
+    - name: Test full chat flow
+      run: |
+        echo "Testing complete chat flow..."
+        
+        # Test chat endpoint
+        RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Hello, this is a deployment test"}')
+          
+        if echo "$RESPONSE" | grep -q "response"; then
+          echo "✅ Chat API working correctly"
+        else
+          echo "❌ Chat API failed"
+          echo "Response: $RESPONSE"
+          exit 1
+        fi
+        
+    - name: Test web search functionality
+      run: |
+        echo "Testing web search..."
+        
+        RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"message": "What is the latest news today?", "useWebSearch": "auto"}')
+          
+        if echo "$RESPONSE" | grep -q "response"; then
+          echo "✅ Web search working correctly"
+        else
+          echo "❌ Web search failed"
+          echo "Response: $RESPONSE"
+          exit 1
+        fi
+        
+    - name: Performance test
+      run: |
+        echo "Running performance test..."
+        
+        # Test response time
+        START_TIME=$(date +%s)
+        curl -s -X POST https://api.aimcs.net/api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Quick test"}' > /dev/null
+        END_TIME=$(date +%s)
+        
+        RESPONSE_TIME=$((END_TIME - START_TIME))
+        echo "Response time: ${RESPONSE_TIME}s"
+        
+        if [ $RESPONSE_TIME -lt 30 ]; then
+          echo "✅ Performance acceptable"
+        else
+          echo "⚠️ Response time is slow: ${RESPONSE_TIME}s"
+        fi
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [deploy-backend, deploy-frontend, system-test]
+    if: always()
+    name: Deployment Summary
+    
+    steps:
+    - name: Deployment status
+      run: |
+        if [ ${{ needs.deploy-backend.result }} == 'success' ] && \
+           [ ${{ needs.deploy-frontend.result }} == 'success' ] && \
+           [ ${{ needs.system-test.result }} == 'success' ]; then
+          echo "🎉 Full deployment successful!"
+          echo "Frontend: https://aimcs.net"
+          echo "Backend: https://api.aimcs.net"
+          echo "Commit: ${{ github.sha }}"
+        else
+          echo "❌ Deployment failed!"
+          echo "Backend: ${{ needs.deploy-backend.result }}"
+          echo "Frontend: ${{ needs.deploy-frontend.result }}"
+          echo "System Test: ${{ needs.system-test.result }}"
+          exit 1
+        fi 

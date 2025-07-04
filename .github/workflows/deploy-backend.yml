@@ -9,7 +9,9 @@ on:
 env:
   RESOURCE_GROUP: aimcs-rg-eastus2
   CONTAINER_APP_NAME: aimcs-backend-eastus2
+  CONTAINER_REGISTRY: aimcsregistry
   LOCATION: eastus2
+  IMAGE_NAME: aimcs-backend
 
 jobs:
   deploy:
@@ -19,40 +21,46 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        
-    - name: Install dependencies
-      run: |
-        npm ci --prefix .
-        
-    - name: Build backend
-      run: |
-        # Create a temporary backend directory
-        mkdir -p temp-backend
-        cp backend-server.js temp-backend/
-        cp backend-package.json temp-backend/package.json
-        cp backend-Dockerfile temp-backend/Dockerfile
-        cp .dockerignore temp-backend/
-        
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
     - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
+    - name: Login to Azure Container Registry
+      run: |
+        az acr login --name ${{ env.CONTAINER_REGISTRY }}
+        
     - name: Build and push container image
       run: |
-        # Build the container image
-        docker build -t aimcs-backend:${{ github.sha }} temp-backend/
-        
-        # Login to Azure Container Registry (if using ACR)
-        # az acr login --name your-acr-name
-        
-        # Tag and push to ACR (if using ACR)
-        # docker tag aimcs-backend:${{ github.sha }} your-acr-name.azurecr.io/aimcs-backend:${{ github.sha }}
-        # docker push your-acr-name.azurecr.io/aimcs-backend:${{ github.sha }}
+        # Build for AMD64 platform (required for Azure)
+        docker buildx build \
+          --platform linux/amd64 \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
+          --file backend-Dockerfile \
+          --push \
+          .
+          
+    - name: Verify image was pushed
+      run: |
+        az acr repository show-tags \
+          --name ${{ env.CONTAINER_REGISTRY }} \
+          --repository ${{ env.IMAGE_NAME }} \
+          --orderby time_desc \
+          --top 5
+          
+    - name: Get current container app revision
+      id: get-current-revision
+      run: |
+        CURRENT_REVISION=$(az containerapp revision list \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --query "[?properties.active].name" \
+          --output tsv | head -1)
+        echo "current_revision=$CURRENT_REVISION" >> $GITHUB_OUTPUT
         
     - name: Deploy to Azure Container Apps
       run: |
@@ -60,7 +68,7 @@ jobs:
         az containerapp update \
           --name ${{ env.CONTAINER_APP_NAME }} \
           --resource-group ${{ env.RESOURCE_GROUP }} \
-          --image aimcs-backend:${{ github.sha }} \
+          --image ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
           --set-env-vars \
             AZURE_OPENAI_ENDPOINT="${{ secrets.AZURE_OPENAI_ENDPOINT }}" \
             AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
@@ -68,13 +76,63 @@ jobs:
             AZURE_OPENAI_TTS_DEPLOYMENT="${{ secrets.AZURE_OPENAI_TTS_DEPLOYMENT }}" \
             PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}"
             
-    - name: Verify deployment
+    - name: Wait for deployment to complete
       run: |
-        # Wait for deployment to complete
-        sleep 30
+        echo "Waiting for deployment to complete..."
+        sleep 60
         
-        # Test the backend endpoint
+        # Check if new revision is active
+        NEW_REVISION=$(az containerapp revision list \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --query "[?properties.active].name" \
+          --output tsv | head -1)
+          
+        if [ "$NEW_REVISION" = "${{ steps.get-current-revision.outputs.current_revision }}" ]; then
+          echo "❌ New revision is not active yet. Waiting more..."
+          sleep 60
+        fi
+        
+    - name: Verify deployment health
+      run: |
+        # Test the backend health endpoint
+        for i in {1..10}; do
+          echo "Attempt $i: Testing backend health..."
+          if curl -f https://api.aimcs.net/health; then
+            echo "✅ Backend is healthy!"
+            break
+          else
+            echo "❌ Backend not responding, waiting..."
+            sleep 30
+          fi
+        done
+        
+        # Final health check
+        curl -f https://api.aimcs.net/health || exit 1
+        
+    - name: Test API functionality
+      run: |
+        # Test the main chat endpoint
         curl -f https://api.aimcs.net/api/chat \
           -X POST \
           -H "Content-Type: application/json" \
-          -d '{"message": "Hello"}' || exit 1 
+          -d '{"message": "Hello"}' || exit 1
+          
+    - name: Rollback on failure
+      if: failure()
+      run: |
+        echo "❌ Deployment failed, rolling back to previous revision..."
+        az containerapp revision activate \
+          --name ${{ steps.get-current-revision.outputs.current_revision }} \
+          --app ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }}
+          
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "✅ Backend deployment successful!"
+          echo "New image: ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        else
+          echo "❌ Backend deployment failed!"
+          exit 1 

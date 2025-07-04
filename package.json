@@ -1,22 +1,19 @@
 {
-  "name": "aimcs-frontend",
+  "name": "aimcs-monorepo",
+  "private": true,
   "version": "1.0.0",
-  "description": "AIMCS Frontend Demo",
-  "main": "server.js",
+  "workspaces": [
+    "./src"
+  ],
   "scripts": {
-    "start": "node server.js",
-    "build": "npm run build:css && npm run build:js",
-    "build:css": "echo 'CSS build step'",
-    "build:js": "echo 'JS build step'",
-    "dev": "node server.js"
+    "dev:frontend": "cd src && vite",
+    "build:frontend": "cd src && vite build",
+    "preview:frontend": "cd src && vite preview",
+    "dev:backend": "nodemon backend-server.js",
+    "start:backend": "node backend-server.js",
+    "build:backend": "echo 'Backend is Node, no build step needed'"
   },
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "engines": {
-    "node": "20.x"
-  },
-  "keywords": ["aimcs", "frontend", "demo"],
-  "author": "AIMCS Team",
-  "license": "MIT"
-} 
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

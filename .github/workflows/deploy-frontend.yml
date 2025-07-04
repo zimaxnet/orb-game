@@ -24,8 +24,16 @@ jobs:
       - name: Build Vite app
         run: npm run build
 
+      - name: Prepare deployment package
+        run: |
+          mkdir deploy
+          cp -r dist deploy/
+          cp server.js deploy/
+          cp package.json deploy/
+          cp package-lock.json deploy/ || true
+
       - name: Zip artifact for deployment
-        run: zip -r release.zip . -x '*.git*'
+        run: cd deploy && zip -r ../release.zip .
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3

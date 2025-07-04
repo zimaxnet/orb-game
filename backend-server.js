@@ -53,7 +53,7 @@ const searchWeb = async (query) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.1-sonar-small-128k-online',
+        model: 'sonar',
         messages: [
           {
             role: 'system',
@@ -64,7 +64,6 @@ const searchWeb = async (query) => {
             content: query
           }
         ],
-        search_domain_filter: ['web'],
         max_tokens: 1000
       })
     });

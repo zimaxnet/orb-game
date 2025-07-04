@@ -1,0 +1,17 @@
+<step title="Incoming Request" date="2025-07-04T00:13:48.476" instance="0326a2" url="/api/zipdeploy?isAsync=true" method="POST" type="request" pid="822,1,15" Accept="*/*" Host="aimcs.scm.azurewebsites.net" User-Agent="AZURECLI/2.75.0 (HOMEBREW)" Accept-Encoding="gzip, deflate" Authorization="Bas..." Cache-Control="no-cache" Content-Type="application/octet-stream" Content-Length="101058" x-ms-client-request-id="a7fb928c-586b-11f0-b106-1e0cae9becbe" x-ms-artifact-checksum="ee5252089e4e3bc027d1c4b4350b94ffa266e2d2f8f16b0564bb92861c9751d9" X-ARR-LOG-ID="a7fb928c-586b-11f0-b106-1e0cae9becbe" CLIENT-IP="68.104.244.231:52656" X-SITE-DEPLOYMENT-ID="aimcs" WAS-DEFAULT-HOSTNAME="aimcs.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/zipdeploy?isAsync=true" X-Client-IP="68.104.244.231" X-Client-Port="52656" >
+  <step title="ZipPushDeploy" date="2025-07-04T00:13:49.118" >
+    <step title="ZipDeploy. Extract zip." date="2025-07-04T00:13:49.131" /><!-- duration: 3ms -->
+    <step title="None repository commit" date="2025-07-04T00:13:49.139" >
+      <step title="Commit id: a918e96d-e06f-4f25-888e-6a3336ec324d" date="2025-07-04T00:13:49.141" Message="N/A" AuthorName="N/A" AuthorEmail="N/A" /><!-- duration: 2ms -->
+    </step><!-- duration: 8ms -->
+    <step title="Starting PushDeployAsync" date="2025-07-04T00:13:49.151" /><!-- duration: 3ms -->
+    <step title="Writing artifact to /tmp/zipdeploy/676392ac-3de9-4773-b845-8fb5947fde66.zip" date="2025-07-04T00:13:49.163" >
+      <step title="Writing multipart request body to /tmp/zipdeploy/676392ac-3de9-4773-b845-8fb5947fde66.zip" date="2025-07-04T00:13:49.166" /><!-- duration: 2ms -->
+    </step><!-- duration: 61ms -->
+    <step title="Start deployment in the background" date="2025-07-04T00:13:49.260" >
+      <step title="Acquiring Deployment Lock" date="2025-07-04T00:13:49.290" /><!-- duration: 8ms -->
+      <step title="Acquired Deployment Lock" date="2025-07-04T00:13:49.359" /><!-- duration: 20ms -->
+    </step><!-- duration: 233ms -->
+  </step><!-- duration: 398ms -->
+  <step title="Outgoing response" date="2025-07-04T00:13:49.553" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 3ms -->
+</step><!-- duration: 1084ms -->

@@ -1,49 +1,36 @@
-name: Deploy Frontend to Azure
+name: Deploy Frontend to Azure Web App
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build frontend
-      run: npm run build
-      
-    - name: Install Express for frontend server
-      run: npm install express
-      
-    - name: Create deployment package
-      run: |
-        # Create a temporary directory with the correct structure
-        mkdir -p temp-deploy
-        cp -r dist temp-deploy/
-        cp frontend-server.js temp-deploy/
-        cp package.json temp-deploy/
-        cp package-lock.json temp-deploy/
-        cd temp-deploy
-        zip -r ../dist.zip .
-        cd ..
-      
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v3
-      with:
-        app-name: 'aimcs'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ./dist.zip 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Vite app
+        run: npm run build
+
+      - name: Zip artifact for deployment
+        run: zip -r release.zip . -x '*.git*'
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: release.zip
+          slot-name: 'production' 

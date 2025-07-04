@@ -1,14 +1,17 @@
 const express = require('express');
 const path = require('path');
+
 const app = express();
+const port = process.env.PORT || 8080;
+const distPath = path.join(__dirname, 'dist');
 
-app.use(express.static(__dirname));
+app.use(express.static(distPath));
 
+// For SPA: serve index.html for any unknown route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
-const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 }); 

@@ -25,7 +25,7 @@ const ChatInterface = () => {
       id: Date.now(),
       sender: 'user',
       message: inputMessage,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toLocaleTimeString()
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -33,46 +33,36 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api.aimcs.net/api/chat', {
+      const response = await fetch('https://aimcs-backend-eastus2.icybay-f279066f.eastus2.azurecontainerapps.io/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: inputMessage,
-          useWebSearch: useWebSearch,
+          useWebSearch: useWebSearch
         }),
       });
 
       const data = await response.json();
+      
+      const aiMessage = {
+        id: Date.now() + 1,
+        sender: 'ai',
+        message: data.response || 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date().toLocaleTimeString(),
+        searchUsed: data.searchUsed || false
+      };
 
-      if (data.message) {
-        const aiMessage = {
-          id: Date.now() + 1,
-          sender: 'Zimax AI',
-          message: data.message,
-          timestamp: new Date().toISOString(),
-          aiUsed: data.aiUsed,
-          searchUsed: data.searchUsed,
-          audioData: data.audioData,
-          audioFormat: data.audioFormat,
-        };
-
-        setMessages(prev => [...prev, aiMessage]);
-
-        // Play audio if available
-        if (data.audioData) {
-          playAudio(data.audioData, data.audioFormat);
-        }
-      }
+      setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error:', error);
       const errorMessage = {
         id: Date.now() + 1,
-        sender: 'System',
+        sender: 'ai',
         message: 'Sorry, I encountered an error. Please try again.',
-        timestamp: new Date().toISOString(),
-        isError: true,
+        timestamp: new Date().toLocaleTimeString(),
+        isError: true
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -80,37 +70,26 @@ const ChatInterface = () => {
     }
   };
 
-  const playAudio = (audioData, format) => {
-    try {
-      const audio = new Audio(`data:${format};base64,${audioData}`);
-      audio.play().catch(error => {
-        console.error('Error playing audio:', error);
-      });
-    } catch (error) {
-      console.error('Error creating audio element:', error);
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
     }
-  };
-
-  const formatTime = (timestamp) => {
-    return new Date(timestamp).toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
   };
 
   return (
     <div className="chat-container">
       <div className="chat-header">
         <div className="chat-title">
-          <div className="chat-icon">💬</div>
-          <h2>Chat with Zimax AI</h2>
+          <span className="chat-icon">💬</span>
+          <span>AI Assistant</span>
         </div>
-        <div className="search-toggle">
+        <div className="chat-controls">
           <label className="toggle-label">
             <input
               type="checkbox"
-              checked={useWebSearch === 'web'}
-              onChange={(e) => setUseWebSearch(e.target.checked ? 'web' : 'auto')}
+              checked={useWebSearch === 'auto'}
+              onChange={(e) => setUseWebSearch(e.target.checked ? 'auto' : 'none')}
             />
             <span className="toggle-slider"></span>
             <span className="toggle-text">Web Search</span>
@@ -119,78 +98,74 @@ const ChatInterface = () => {
       </div>
 
       <div className="messages-container">
-        {messages.length === 0 && (
+        {messages.length === 0 ? (
           <div className="welcome-message">
             <div className="welcome-icon">🚀</div>
-            <h3>Welcome to Zimax AI</h3>
-            <p>Ask me anything! I can help with information, answer questions, or just chat.</p>
+            <h4>Welcome to AIMCS</h4>
+            <p>Experience our multimodal customer system. Ask me anything!</p>
             <div className="welcome-features">
               <div className="feature">
-                <span className="feature-icon">🌐</span>
+                <span className="feature-icon">🔍</span>
                 <span>Web Search</span>
               </div>
               <div className="feature">
-                <span className="feature-icon">🎵</span>
-                <span>Voice Responses</span>
+                <span className="feature-icon">💡</span>
+                <span>Smart AI</span>
               </div>
               <div className="feature">
                 <span className="feature-icon">⚡</span>
-                <span>Real-time AI</span>
+                <span>Real-time</span>
               </div>
             </div>
+          </div>
+        ) : (
+          <div className="messages-list">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`message ${message.sender} ${message.isError ? 'error' : ''}`}
+              >
+                <div className="message-avatar">
+                  {message.sender === 'user' ? '👤' : '🤖'}
+                </div>
+                <div className="message-content">
+                  <div className="message-text">{message.message}</div>
+                  <div className="message-meta">
+                    <span className="message-time">{message.timestamp}</span>
+                    {message.searchUsed && (
+                      <span className="search-indicator">🔍 Web Search</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="message ai loading">
+                <div className="message-avatar">🤖</div>
+                <div className="message-content">
+                  <div className="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
-
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`message ${message.sender === 'user' ? 'user-message' : 'ai-message'} ${message.isError ? 'error-message' : ''}`}
-          >
-            <div className="message-content">
-              <div className="message-header">
-                <div className="message-sender">
-                  {message.sender === 'user' ? '👤 You' : '🤖 Zimax AI'}
-                </div>
-                <div className="message-time">{formatTime(message.timestamp)}</div>
-              </div>
-              <div className="message-text">{message.message}</div>
-              {message.searchUsed && (
-                <div className="search-indicator">
-                  <span className="search-icon">🔍</span>
-                  Web search used
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
-
-        {isLoading && (
-          <div className="message ai-message loading-message">
-            <div className="message-content">
-              <div className="message-header">
-                <div className="message-sender">🤖 Zimax AI</div>
-              </div>
-              <div className="typing-indicator">
-                <div className="typing-dot"></div>
-                <div className="typing-dot"></div>
-                <div className="typing-dot"></div>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div ref={messagesEndRef} />
       </div>
 
       <form className="input-container" onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <input
+          <textarea
             ref={inputRef}
-            type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            placeholder="Type your message here..."
+            onKeyPress={handleKeyPress}
+            placeholder="Ask me anything..."
             className="message-input"
+            rows="1"
             disabled={isLoading}
           />
           <button
@@ -200,11 +175,6 @@ const ChatInterface = () => {
           >
             <span className="send-icon">➤</span>
           </button>
-        </div>
-        <div className="input-footer">
-          <span className="input-hint">
-            Press Enter to send • Shift+Enter for new line
-          </span>
         </div>
       </form>
     </div>

@@ -1,9 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --secondary: #06b6d4;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: rgba(30, 41, 59, 0.8);
+  
+  --border: rgba(148, 163, 184, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-dark: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
 }
 
 html {
@@ -16,109 +45,63 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0f0f23;
-  color: #ffffff;
-  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Custom scrollbar for the entire app */
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-tertiary);
   border-radius: 4px;
-  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--primary);
 }
 
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+/* Selection styling */
+::selection {
+  background: var(--primary);
+  color: white;
 }
 
-/* Focus styles for accessibility */
+/* Focus styles */
 *:focus {
-  outline: 2px solid #667eea;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-/* Selection styles */
-::selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: #ffffff;
-}
-
-::-moz-selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: #ffffff;
-}
-
-/* Smooth transitions for all interactive elements */
-button, input, textarea, select {
-  transition: all 0.3s ease;
-}
-
-/* Disable text selection on interactive elements */
-button, input, textarea {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Allow text selection in content areas */
-.message-text, .welcome-message p {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-/* Remove default button styles */
+/* Button reset */
 button {
-  background: none;
   border: none;
+  background: none;
   cursor: pointer;
   font-family: inherit;
 }
 
-/* Remove default input styles */
+/* Input reset */
 input, textarea {
-  font-family: inherit;
   border: none;
   outline: none;
+  font-family: inherit;
 }
 
-/* Remove default list styles */
-ul, ol {
-  list-style: none;
-}
-
-/* Remove default link styles */
+/* Link reset */
 a {
   text-decoration: none;
   color: inherit;
-}
-
-/* Disable focus outline for mouse users */
-*:focus:not(:focus-visible) {
-  outline: none;
 } 

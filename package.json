@@ -1,25 +1,19 @@
 {
-  "name": "aimcs-frontend",
-  "version": "1.0.0",
+  "name": "zimax-ai-fresh",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "test": "echo \"No tests specified\" && exit 0",
-    "start:frontend": "node frontend-server.js"
+    "start": "node server.js",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "microsoft-cognitiveservices-speech-sdk": "^1.44.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wav": "^1.0.2",
-    "ws": "^8.18.2"
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -31,4 +25,4 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.0.8"
   }
-}
+} 

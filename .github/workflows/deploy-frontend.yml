@@ -31,7 +31,15 @@ jobs:
       
     - name: Create deployment package
       run: |
-        zip -r dist.zip dist/ frontend-server.js package.json package-lock.json
+        # Create a temporary directory with the correct structure
+        mkdir -p temp-deploy
+        cp -r dist temp-deploy/
+        cp frontend-server.js temp-deploy/
+        cp package.json temp-deploy/
+        cp package-lock.json temp-deploy/
+        cd temp-deploy
+        zip -r ../dist.zip .
+        cd ..
       
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v3

@@ -247,6 +247,38 @@
 }
 
 /* Audio Button */
+/* Audio Controls */
+.audio-controls {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.audio-status {
+  margin-bottom: 10px;
+}
+
+.reading-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: #667eea;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.audio-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .audio-button {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -255,14 +287,36 @@
   border-radius: 20px;
   font-size: 0.8rem;
   cursor: pointer;
-  margin-top: 10px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.audio-button.primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.audio-button.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .audio-button:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.audio-button.primary:hover {
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.audio-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* Sources Section */
@@ -535,5 +589,15 @@
   
   .sources-list {
     font-size: 0.7rem;
+  }
+  
+  .audio-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .audio-button {
+    width: 100%;
+    justify-content: center;
   }
 } 

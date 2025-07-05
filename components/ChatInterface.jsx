@@ -8,8 +8,10 @@ const ChatInterface = () => {
   const [language, setLanguage] = useState('en');
   const [searchMode, setSearchMode] = useState('auto'); // auto, web, local
   const [showSources, setShowSources] = useState(false);
+  const [audioStates, setAudioStates] = useState({}); // Track audio state for each message
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const audioRefs = useRef({}); // Store audio elements for each message
   
   // Use Azure default backend URL for now
   const BACKEND_URL = 'https://api.aimcs.net';
@@ -22,7 +24,9 @@ const ChatInterface = () => {
       placeholder: 'Type your message...',
       send: 'Send',
       processing: 'Processing...',
-      playAudio: '🔊 Play Audio',
+      playAudio: '🔊 Play',
+      pauseAudio: '⏸️ Pause',
+      stopAudio: '⏹️ Stop',
       switchLanguage: 'Switch Language',
       poweredBy: 'Powered by Azure OpenAI',
       searchMode: 'Search Mode',
@@ -33,7 +37,8 @@ const ChatInterface = () => {
       showSources: 'Show Sources',
       hideSources: 'Hide Sources',
       webSearchUsed: '🌐 Web search used',
-      localAI: '🤖 Local AI only'
+      localAI: '🤖 Local AI only',
+      readingAlong: '📖 Reading along with audio...'
     },
     es: {
       title: 'AIMCS',
@@ -42,7 +47,9 @@ const ChatInterface = () => {
       placeholder: 'Escribe tu mensaje...',
       send: 'Enviar',
       processing: 'Procesando...',
-      playAudio: '🔊 Reproducir Audio',
+      playAudio: '🔊 Reproducir',
+      pauseAudio: '⏸️ Pausar',
+      stopAudio: '⏹️ Detener',
       switchLanguage: 'Cambiar Idioma',
       poweredBy: 'Desarrollado por Azure OpenAI',
       searchMode: 'Modo de Búsqueda',
@@ -53,7 +60,8 @@ const ChatInterface = () => {
       showSources: 'Mostrar Fuentes',
       hideSources: 'Ocultar Fuentes',
       webSearchUsed: '🌐 Búsqueda web utilizada',
-      localAI: '🤖 Solo IA local'
+      localAI: '🤖 Solo IA local',
+      readingAlong: '📖 Leyendo junto con el audio...'
     }
   };
 
@@ -65,6 +73,18 @@ const ChatInterface = () => {
   // Focus input on mount
   useEffect(() => {
     inputRef.current?.focus();
+  }, []);
+
+  // Cleanup audio when component unmounts
+  useEffect(() => {
+    return () => {
+      Object.values(audioRefs.current).forEach(audio => {
+        if (audio) {
+          audio.pause();
+          audio.src = '';
+        }
+      });
+    };
   }, []);
 
   const addMessage = (sender, message, type = 'text', audioData = null, sources = null, searchUsed = false) => {
@@ -79,6 +99,14 @@ const ChatInterface = () => {
       searchUsed
     };
     setMessages(prev => [...prev, newMessage]);
+    
+    // Initialize audio state for this message
+    if (audioData) {
+      setAudioStates(prev => ({
+        ...prev,
+        [newMessage.id]: { isPlaying: false, isPaused: false }
+      }));
+    }
   };
 
   const sendMessage = async () => {
@@ -116,8 +144,8 @@ const ChatInterface = () => {
     }
   };
 
-  const playAudio = (audioData) => {
-    if (!audioData) return;
+  const createAudioElement = (audioData, messageId) => {
+    if (!audioData) return null;
     
     try {
       const audioBlob = new Blob([Uint8Array.from(atob(audioData), c => c.charCodeAt(0))], {
@@ -125,12 +153,101 @@ const ChatInterface = () => {
       });
       const audioUrl = URL.createObjectURL(audioBlob);
       const audio = new Audio(audioUrl);
-      audio.play();
+      
+      // Store reference to audio element
+      audioRefs.current[messageId] = audio;
+      
+      // Set up event listeners
       audio.onended = () => {
+        setAudioStates(prev => ({
+          ...prev,
+          [messageId]: { isPlaying: false, isPaused: false }
+        }));
         URL.revokeObjectURL(audioUrl);
       };
+      
+      audio.onpause = () => {
+        setAudioStates(prev => ({
+          ...prev,
+          [messageId]: { isPlaying: false, isPaused: true }
+        }));
+      };
+      
+      audio.onplay = () => {
+        setAudioStates(prev => ({
+          ...prev,
+          [messageId]: { isPlaying: true, isPaused: false }
+        }));
+      };
+      
+      return audio;
     } catch (error) {
-      console.error('Error playing audio:', error);
+      console.error('Error creating audio element:', error);
+      return null;
+    }
+  };
+
+  const playAudio = (messageId) => {
+    const message = messages.find(m => m.id === messageId);
+    if (!message || !message.audioData) return;
+    
+    let audio = audioRefs.current[messageId];
+    
+    if (!audio) {
+      audio = createAudioElement(message.audioData, messageId);
+      if (!audio) return;
+    }
+    
+    // Stop any other playing audio
+    Object.entries(audioRefs.current).forEach(([id, otherAudio]) => {
+      if (id !== messageId && otherAudio) {
+        otherAudio.pause();
+        setAudioStates(prev => ({
+          ...prev,
+          [id]: { isPlaying: false, isPaused: false }
+        }));
+      }
+    });
+    
+    audio.play();
+  };
+
+  const pauseAudio = (messageId) => {
+    const audio = audioRefs.current[messageId];
+    if (audio) {
+      audio.pause();
+    }
+  };
+
+  const stopAudio = (messageId) => {
+    const audio = audioRefs.current[messageId];
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      setAudioStates(prev => ({
+        ...prev,
+        [messageId]: { isPlaying: false, isPaused: false }
+      }));
+    }
+  };
+
+  const getAudioButtonText = (messageId) => {
+    const state = audioStates[messageId];
+    if (!state) return translations[language].playAudio;
+    
+    if (state.isPlaying) return translations[language].pauseAudio;
+    if (state.isPaused) return translations[language].playAudio;
+    return translations[language].playAudio;
+  };
+
+  const handleAudioClick = (messageId) => {
+    const state = audioStates[messageId];
+    if (!state) {
+      playAudio(messageId);
+    } else if (state.isPlaying) {
+      pauseAudio(messageId);
+    } else {
+      playAudio(messageId);
     }
   };
 
@@ -238,12 +355,32 @@ const ChatInterface = () => {
                     {message.message}
                   </div>
                   {message.audioData && (
-                    <button
-                      className="audio-button"
-                      onClick={() => playAudio(message.audioData)}
-                    >
-                      {translations[language].playAudio}
-                    </button>
+                    <div className="audio-controls">
+                      <div className="audio-status">
+                        {audioStates[message.id]?.isPlaying && (
+                          <span className="reading-indicator">
+                            {translations[language].readingAlong}
+                          </span>
+                        )}
+                      </div>
+                      <div className="audio-buttons">
+                        <button
+                          className="audio-button primary"
+                          onClick={() => handleAudioClick(message.id)}
+                        >
+                          {getAudioButtonText(message.id)}
+                        </button>
+                        {(audioStates[message.id]?.isPlaying || audioStates[message.id]?.isPaused) && (
+                          <button
+                            className="audio-button secondary"
+                            onClick={() => stopAudio(message.id)}
+                            title={translations[language].stopAudio}
+                          >
+                            {translations[language].stopAudio}
+                          </button>
+                        )}
+                      </div>
+                    </div>
                   )}
                   {message.sources && message.sources.length > 0 && (
                     <div className="sources-section">

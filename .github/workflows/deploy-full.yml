@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_RESOURCE_GROUP: aimcs-rg
+  FRONTEND_RESOURCE_GROUP: aimcs-rg-eastus2
   BACKEND_RESOURCE_GROUP: aimcs-rg-eastus2
   CONTAINER_APP_NAME: aimcs-backend-eastus2
   CONTAINER_REGISTRY: aimcsregistry

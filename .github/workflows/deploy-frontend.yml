@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP: aimcs-rg
+  RESOURCE_GROUP: aimcs-rg-eastus2
   STATIC_WEB_APP_NAME: aimcs-frontend
 
 jobs:

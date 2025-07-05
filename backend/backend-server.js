@@ -146,7 +146,7 @@ const analyzeWebSearchNeeds = async (message) => {
   }
 
   try {
-    const openaiUrl = `${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2025-01-01-preview`;
+    const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
     const response = await fetch(openaiUrl, {
       method: 'POST',
       headers: {
@@ -319,7 +319,7 @@ app.post('/api/chat', async (req, res) => {
         const enhancedMessage = `${message}\n\nCurrent information from web search:\n${webSearchData.content}`;
         
         // Get AI response with web search context
-        const openaiUrl = `${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2025-01-01-preview`;
+        const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
         const openaiResponse = await fetch(openaiUrl, {
           method: 'POST',
           headers: {
@@ -348,7 +348,7 @@ app.post('/api/chat', async (req, res) => {
 
     // If no web search was used or it failed, use regular AI response
     if (!searchUsed) {
-      const openaiUrl = `${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2025-01-01-preview`;
+      const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
       const openaiResponse = await fetch(openaiUrl, {
         method: 'POST',
         headers: {
@@ -378,7 +378,7 @@ app.post('/api/chat', async (req, res) => {
     let audioData = null;
     let audioFormat = null;
     try {
-      const ttsUrl = `${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`;
+      const ttsUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/gpt-4o-mini-tts/audio/speech?api-version=2025-03-01-preview';
       const ttsResponse = await fetch(ttsUrl, {
         method: 'POST',
         headers: {

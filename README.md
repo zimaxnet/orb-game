@@ -45,17 +45,18 @@ docker buildx build --platform linux/amd64 -f backend-Dockerfile -t aimcs-backen
 
 ## 🌐 Live Demo
 
-- **Frontend**: https://aimcs.net (Azure Web App)
+- **Frontend**: https://aimcs.net (Azure Static Web App)
 - **Backend API**: https://api.aimcs.net (Azure Container App)
 
 ## 🏗️ Current Deployment Architecture
 
-### **Frontend (Azure Web App)**
-- **Service**: Azure Web App with Node.js 20 runtime
-- **Resource Group**: `aimcs-rg`
+### **Frontend (Azure Static Web App)**
+- **Service**: Azure Static Web App with global CDN
+- **Resource Group**: `aimcs-rg-eastus2`
 - **Domain**: `aimcs.net`
-- **Deployment**: Zip deployment via GitHub Actions
+- **Deployment**: Direct file upload via Static Web Apps CLI
 - **Build**: React/Vite with modern UI components
+- **Benefits**: No cache issues, faster deployments, global CDN
 
 ### **Backend (Azure Container App)**
 - **Service**: Azure Container App with AMD64 platform
@@ -65,9 +66,10 @@ docker buildx build --platform linux/amd64 -f backend-Dockerfile -t aimcs-backen
 - **Runtime**: Node.js 20 with Express.js
 
 ### **Infrastructure**
-- **DNS**: Managed in `aimcs-rg` resource group
+- **DNS**: Managed in `aimcs-rg` resource group, pointing to Static Web App
 - **Container Registry**: `aimcsregistry.azurecr.io`
 - **CI/CD**: GitHub Actions with automated testing
+- **Frontend Hosting**: Azure Static Web Apps (reliable, no cache issues)
 - **Monitoring**: Built-in health checks and verification
 
 ## 🚀 Reliable Deployment Solutions
@@ -135,18 +137,18 @@ Set these in your GitHub repository settings:
 4. **Rollback capability**: Keep previous revision active
 5. **Environment variables**: Always set all required vars
 
-#### **For Frontend (Azure Web App)**
+#### **For Frontend (Azure Static Web App)**
 1. **Build verification**: Check `src/dist/index.html` exists
-2. **Zip deployment**: Package built files for Azure Web App deployment
+2. **Direct deployment**: Use Static Web Apps CLI for reliable deployments
 3. **Cache dependencies**: Use npm cache for faster builds
 4. **Path-based triggers**: Only deploy when frontend files change
-5. **Azure App Service cache handling**: Built-in verification and troubleshooting
+5. **No cache issues**: Static Web Apps don't have persistent cache problems
 
 ### **🚨 Troubleshooting Deployment Issues**
 
-### **⚠️ CRITICAL: Azure App Service Deployment Challenges**
+### **✅ RESOLVED: Azure App Service Issues**
 
-**IMPORTANT**: Azure App Service has a known issue where deployments appear successful but the site continues to serve the default "Welcome" page instead of your content. This is a common problem that requires manual intervention.
+**SOLUTION IMPLEMENTED**: We've migrated from Azure Web App to Azure Static Web Apps to eliminate the persistent cache issues. Static Web Apps provide reliable deployments without the cache problems that plagued Azure App Service.
 
 #### **Symptoms of Azure App Service Cache Issues**
 - ✅ Deployment shows "successful" with no errors
@@ -223,11 +225,11 @@ curl -s https://aimcs.net | head -10
 curl -s https://aimcs.net | grep -q "AIMCS" && echo "✅ Deployment successful" || echo "❌ Still showing Azure default page"
 ```
 
-**3. Consider Alternative Hosting**
-- **Azure Web App**: Current deployment method with built-in cache handling
-- **Azure Container Apps**: Better for backend deployments
-- **Azure CDN**: Can help with caching issues
-- **Azure Static Web Apps**: Alternative for simpler frontend deployments
+**3. Current Hosting Solution**
+- **Azure Static Web Apps**: Current deployment method (reliable, no cache issues)
+- **Azure Container Apps**: Used for backend deployments
+- **Azure CDN**: Built into Static Web Apps for global performance
+- **Azure Web App**: Legacy option (avoided due to cache issues)
 
 #### **Common Problems & Solutions**
 
@@ -243,18 +245,16 @@ az containerapp logs show --name aimcs-backend-eastus2 --resource-group aimcs-rg
 az acr repository show-tags --name aimcsregistry --repository aimcs-backend
 ```
 
-**Problem**: Frontend not updating (Azure App Service)
+**Problem**: Frontend not updating (Static Web Apps)
 ```bash
-# Solution 1: Manual Kudu cleanup (see above)
-# Solution 2: Force restart with cache clear
-az webapp stop --name aimcs --resource-group aimcs-rg && sleep 30 && az webapp start --name aimcs --resource-group aimcs-rg
+# Solution 1: Check deployment status
+az staticwebapp show --name aimcs --resource-group aimcs-rg-eastus2
 
-# Solution 3: Check deployment status
-az webapp deployment list --name aimcs --resource-group aimcs-rg
+# Solution 2: Redeploy using CLI
+swa deploy src/dist --deployment-token <token> --env production
 
-# Solution 4: Delete and recreate (last resort)
-az webapp delete --name aimcs --resource-group aimcs-rg --yes
-# Then recreate and redeploy
+# Solution 3: Check Static Web App logs
+az staticwebapp logs show --name aimcs --resource-group aimcs-rg-eastus2
 ```
 
 **Problem**: Environment variables not updated
@@ -443,8 +443,8 @@ az resource list --resource-group aimcs-rg-eastus2
 # List container apps (backend)
 az containerapp list --resource-group aimcs-rg-eastus2
 
-# List web apps (frontend)
-az webapp list --resource-group aimcs-rg
+# List static web apps (frontend)
+az staticwebapp list --resource-group aimcs-rg-eastus2
 
 # List DNS zones (aimcs.net)
 az network dns zone list --resource-group aimcs-rg

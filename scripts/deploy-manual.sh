@@ -115,25 +115,16 @@ deploy_frontend() {
     
     print_success "Frontend built successfully"
     
-    # Deploy to Azure Web App
-    print_status "Deploying to Azure Web App..."
+    # Deploy to Azure Static Web App
+    print_status "Deploying to Azure Static Web App..."
     
-    # Create zip file for deployment
-    cd src/dist
-    zip -r ../../frontend-deploy.zip .
-    cd ../..
+    # Get deployment token
+    DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name aimcs --resource-group ${RESOURCE_GROUP_FRONTEND} --query "properties.apiKey" --output tsv)
     
-    # Deploy to Azure Web App
-    az webapp deploy \
-        --resource-group ${RESOURCE_GROUP_FRONTEND} \
-        --name aimcs \
-        --src-path frontend-deploy.zip \
-        --type zip
+    # Deploy using Static Web Apps CLI
+    swa deploy src/dist --deployment-token $DEPLOYMENT_TOKEN --env production
     
-    # Clean up zip file
-    rm -f frontend-deploy.zip
-    
-    print_success "Frontend deployed to Azure Web App"
+    print_success "Frontend deployed to Azure Static Web App"
 }
 
 # Function to verify deployment

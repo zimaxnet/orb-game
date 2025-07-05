@@ -112,19 +112,16 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-    - name: Deploy to Azure Web App
+    - name: Deploy to Azure Static Web App
       run: |
-        # Create zip file for deployment
-        cd src/dist
-        zip -r ../../frontend-deploy.zip .
-        cd ../..
+        # Install Static Web Apps CLI
+        npm install -g @azure/static-web-apps-cli
         
-        # Deploy to Azure Web App
-        az webapp deploy \
-          --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} \
-          --name aimcs \
-          --src-path frontend-deploy.zip \
-          --type zip
+        # Get deployment token
+        DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "properties.apiKey" --output tsv)
+        
+        # Deploy using Static Web Apps CLI
+        swa deploy src/dist --deployment-token $DEPLOYMENT_TOKEN --env production
         
     - name: Wait for frontend deployment
       run: |
@@ -135,17 +132,17 @@ jobs:
       run: |
         echo "Verifying frontend deployment..."
         
-        # Check if the site is serving our content (not Azure default page)
-        for i in {1..10}; do
+        # Get Static Web App URL
+        STATIC_WEB_APP_URL=$(az staticwebapp show --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostname" --output tsv)
+        
+        # Check if the site is serving our content
+        for i in {1..5}; do
           echo "Attempt $i: Checking frontend content..."
-          RESPONSE=$(curl -s https://aimcs.net | head -10)
+          RESPONSE=$(curl -s https://$STATIC_WEB_APP_URL | head -10)
           
           if echo "$RESPONSE" | grep -q "AIMCS"; then
             echo "✅ Frontend is serving our content!"
             break
-          elif echo "$RESPONSE" | grep -q "Microsoft Azure App Service - Welcome"; then
-            echo "⚠️ Still showing Azure default page, waiting..."
-            sleep 30
           else
             echo "❓ Unknown response, waiting..."
             sleep 30
@@ -153,11 +150,10 @@ jobs:
         done
         
         # Final verification
-        if curl -s https://aimcs.net | grep -q "AIMCS"; then
+        if curl -s https://$STATIC_WEB_APP_URL | grep -q "AIMCS"; then
           echo "✅ Frontend deployment verified!"
         else
-          echo "❌ Frontend deployment verification failed - may need manual intervention"
-          echo "See README.md for Azure App Service cache troubleshooting steps"
+          echo "❌ Frontend deployment verification failed"
           exit 1
         fi
 

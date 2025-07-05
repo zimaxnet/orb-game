@@ -26,6 +26,9 @@
             padding: 1rem;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
@@ -46,6 +49,7 @@
             align-items: center;
             padding: 1rem 2rem;
             text-align: center;
+            margin-top: 1rem;
         }
 
         .hero {
@@ -153,6 +157,33 @@
 
         .message.ai {
             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .play-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .play-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         .message-time {
@@ -392,7 +423,7 @@
             .then(response => response.json())
             .then(data => {
                 hideLoading();
-                addMessage(data.response || 'Sorry, I encountered an error. Please try again.', 'ai', data.searchUsed);
+                addMessage(data.response || 'Sorry, I encountered an error. Please try again.', 'ai', data.searchUsed, data.audioData);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -401,21 +432,55 @@
             });
         }
 
-        function addMessage(text, sender, searchUsed = false) {
+        function addMessage(text, sender, searchUsed = false, audioData = null) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
             
             const time = new Date().toLocaleTimeString();
             const searchIndicator = searchUsed ? '<div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem;">🔍 Web Search</div>' : '';
             
+            let audioControls = '';
+            if (sender === 'ai' && audioData) {
+                audioControls = `
+                    <div class="audio-controls">
+                        <button class="play-button" onclick="playAudio('${audioData}')" title="Play audio">🔊</button>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">Click to play audio</span>
+                    </div>
+                `;
+            }
+            
             messageDiv.innerHTML = `
                 <div>${text}</div>
                 <div class="message-time">${time}</div>
                 ${searchIndicator}
+                ${audioControls}
             `;
             
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function playAudio(audioData) {
+            try {
+                // Convert base64 to blob
+                const byteCharacters = atob(audioData);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'audio/wav' });
+                
+                // Create audio element and play
+                const audio = new Audio(URL.createObjectURL(blob));
+                audio.play().catch(error => {
+                    console.error('Error playing audio:', error);
+                    alert('Error playing audio. Please try again.');
+                });
+            } catch (error) {
+                console.error('Error processing audio:', error);
+                alert('Error processing audio. Please try again.');
+            }
         }
 
         function showLoading() {

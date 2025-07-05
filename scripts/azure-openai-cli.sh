@@ -8,7 +8,7 @@ echo "======================================"
 echo ""
 
 # Configuration variables (you can override these)
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
 OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"aimcs-openai"}
 
 echo "📋 Configuration:"

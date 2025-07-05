@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-RESOURCE_GROUP_FRONTEND="aimcs-rg"
+RESOURCE_GROUP_FRONTEND="aimcs-rg-eastus2"
 RESOURCE_GROUP_BACKEND="aimcs-rg-eastus2"
 CONTAINER_APP_NAME="aimcs-backend-eastus2"
 CONTAINER_REGISTRY="aimcsregistry"

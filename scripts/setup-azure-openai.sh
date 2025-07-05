@@ -8,7 +8,7 @@ set -e
 echo "🚀 Setting up Azure OpenAI for AIMCS Voice Chat..."
 
 # Configuration variables
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
 OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"aimcs-openai"}
 LOCATION=${LOCATION:-"eastus2"}
 SKU=${SKU:-"S0"}

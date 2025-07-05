@@ -117,17 +117,17 @@ npm run build
 1. **Build and push Docker image:**
    ```bash
    cd backend
-   docker build -t aimcs-backend .
-   docker tag aimcs-backend your-registry.azurecr.io/aimcs-backend
-   docker push your-registry.azurecr.io/aimcs-backend
+       docker build -t aimcs-backend .
+    docker tag aimcs-backend aimcsregistry.azurecr.io/aimcs-backend
+    docker push aimcsregistry.azurecr.io/aimcs-backend
    ```
 
 2. **Deploy to Azure Container Apps:**
    ```bash
-   az containerapp update \
-     --name aimcs-backend \
-     --resource-group your-rg \
-     --image your-registry.azurecr.io/aimcs-backend
+       az containerapp update \
+      --name aimcs-backend-eastus2 \
+      --resource-group aimcs-rg-eastus2 \
+      --image aimcsregistry.azurecr.io/aimcs-backend
    ```
 
 ## 🔧 Configuration

@@ -189,7 +189,7 @@ echo "VITE_AZURE_OPENAI_DEPLOYMENT=$REALTIME_DEPLOYMENT"
 # Set environment variables in Azure Web App
 echo ""
 echo "🚀 Setting environment variables in Azure Web App..."
-WEB_APP_NAME="aimcs-frontend"
+WEB_APP_NAME="aimcs"
 
 if az webapp show --name $WEB_APP_NAME --resource-group $RESOURCE_GROUP &> /dev/null; then
     az webapp config appsettings set \

@@ -3,12 +3,12 @@ name: Deploy Frontend to Azure Static Web Apps
 on:
   push:
     branches: [ main ]
-    paths: [ 'src/**', 'public/**', 'vite.config.js', 'package.json', '.github/workflows/deploy-frontend.yml' ]
+    paths: [ 'components/**', 'public/**', 'vite.config.js', 'package.json', '.github/workflows/deploy-frontend.yml' ]
   workflow_dispatch:
 
 env:
   RESOURCE_GROUP: aimcs-rg-eastus2
-  STATIC_WEB_APP_NAME: aimcs-frontend
+  STATIC_WEB_APP_NAME: aimcs
 
 jobs:
   build-and-deploy:
@@ -24,23 +24,16 @@ jobs:
         node-version: '20'
         cache: 'npm'
         
-    - name: Install root dependencies
+    - name: Install dependencies
       run: npm ci
-      
-    - name: Install frontend dependencies
-      run: |
-        cd src
-        npm ci
         
     - name: Build frontend
-      run: |
-        cd src
-        npm run build
+      run: npm run build
         
     - name: Verify build output
       run: |
-        ls -la src/dist/
-        test -f src/dist/index.html || exit 1
+        ls -la dist/
+        test -f dist/index.html || exit 1
         
     - name: Login to Azure
       uses: azure/login@v1
@@ -53,7 +46,7 @@ jobs:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         action: "upload"
-        app_location: "src/dist"
+        app_location: "dist"
         skip_app_build: true
         deployment_environment: production
         

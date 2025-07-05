@@ -239,6 +239,16 @@
   word-wrap: break-word;
 }
 
+.audio-available-indicator {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .message-timestamp {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.5);
@@ -252,6 +262,10 @@
   margin-top: 15px;
   padding-top: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 12px;
 }
 
 .audio-status {
@@ -283,15 +297,18 @@
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  min-width: 100px;
+  justify-content: center;
 }
 
 .audio-button.primary {

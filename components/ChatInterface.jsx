@@ -132,7 +132,7 @@ const ChatInterface = () => {
 
       if (response.ok) {
         const data = await response.json();
-        addMessage('AIMCS AI', data.message, 'ai', data.audioData, data.sources, data.searchUsed);
+        addMessage('AIMCS AI', data.response, 'ai', data.audioData, data.searchResults, data.searchUsed);
       } else {
         addMessage('System', 'Sorry, I encountered an error. Please try again.', 'error');
       }
@@ -355,6 +355,11 @@ const ChatInterface = () => {
                     {message.message}
                   </div>
                   {message.audioData && (
+                    <div className="audio-available-indicator">
+                      🔊 {translations[language].playAudio}
+                    </div>
+                  )}
+                  {message.audioData && (
                     <div className="audio-controls">
                       <div className="audio-status">
                         {audioStates[message.id]?.isPlaying && (
@@ -367,6 +372,7 @@ const ChatInterface = () => {
                         <button
                           className="audio-button primary"
                           onClick={() => handleAudioClick(message.id)}
+                          title={translations[language].playAudio}
                         >
                           {getAudioButtonText(message.id)}
                         </button>

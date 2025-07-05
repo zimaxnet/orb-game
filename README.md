@@ -5,6 +5,7 @@ A modern AI-powered chat interface with web search capabilities, built with Reac
 ## 🚀 Features
 
 - **AI Chat Interface**: Powered by Azure OpenAI GPT-4o-mini
+- **Dual Response Mode**: Text responses with optional audio playback
 - **Web Search Integration**: Automatic web search for current information
 - **Text-to-Speech**: Audio responses using Azure OpenAI TTS
 - **Multilingual Support**: English and Spanish interface
@@ -149,9 +150,11 @@ npm run build
 
 ### Chat Interface
 - Real-time messaging with AI
+- **Text and Audio Responses**: Users can read text and optionally play audio
 - Message history persistence
 - Auto-scroll to latest messages
 - Loading states and error handling
+- Audio playback state management
 
 ### Web Search
 - Automatic detection of search needs
@@ -160,10 +163,12 @@ npm run build
 - Search mode toggle (Auto/Web/Local)
 
 ### Audio Features
-- Text-to-speech responses
-- Audio playback controls
-- MP3 format support
-- Automatic audio cleanup
+- **Dual Response Mode**: Users can see text responses AND play audio
+- Text-to-speech responses using Azure OpenAI TTS
+- Audio playback controls (Play/Pause/Stop)
+- Visual audio availability indicators
+- MP3 format support with automatic cleanup
+- Audio state management across multiple messages
 
 ### UI/UX
 - Responsive design
@@ -208,6 +213,13 @@ For issues and questions:
 
 ## 🔄 Updates
 
+### Latest Updates (Latest)
+- **Enhanced Audio/Text Response**: Users can now see text responses with optional audio playback
+- **Improved Audio Controls**: Better visual design and user experience for audio controls
+- **Audio Availability Indicators**: Clear visual indicators when audio is available
+- **Fixed Response Mapping**: Corrected backend response data mapping for better reliability
+
+### Deployment Updates
 - **Frontend**: Automatically deployed on push to `main`
 - **Backend**: Manual deployment via Azure Container Apps
 - **Dependencies**: Regular security updates via npm audit

@@ -59,7 +59,7 @@ if command -v az &> /dev/null && az account show &> /dev/null; then
     
     # Get endpoint
     ENDPOINT=$(az cognitiveservices account show --name $OPENAI_RESOURCE_NAME --resource-group $RESOURCE_GROUP --query properties.endpoint --output tsv 2>/dev/null || echo "Not found")
-    echo "   VITE_AZURE_OPENAI_ENDPOINT=$ENDPOINT"
+    echo "   VITE_AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/"
     
     # Get API key
     API_KEY=$(az cognitiveservices account keys list --name $OPENAI_RESOURCE_NAME --resource-group $RESOURCE_GROUP --query key1 --output tsv 2>/dev/null || echo "Not found")
@@ -86,7 +86,7 @@ echo "      az webapp config appsettings set \\"
 echo "        --name YOUR_WEBAPP_NAME \\"
 echo "        --resource-group $RESOURCE_GROUP \\"
 echo "        --settings \\"
-echo "        VITE_AZURE_OPENAI_ENDPOINT=\"YOUR_ENDPOINT\" \\"
+echo "        VITE_AZURE_OPENAI_ENDPOINT=\"https://aimcs-foundry.cognitiveservices.azure.com/\" \\"
 echo "        VITE_AZURE_OPENAI_API_KEY=\"YOUR_API_KEY\" \\"
 echo "        VITE_AZURE_OPENAI_DEPLOYMENT=\"YOUR_DEPLOYMENT\""
 echo ""

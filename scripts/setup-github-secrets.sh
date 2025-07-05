@@ -64,7 +64,7 @@ echo "   Copy the entire JSON output:"
 read -p "Azure Credentials JSON: " AZURE_CREDENTIALS
 
 # Azure OpenAI
-read -p "Azure OpenAI Endpoint (e.g., https://your-resource.openai.azure.com/): " AZURE_OPENAI_ENDPOINT
+read -p "Azure OpenAI Endpoint (e.g., https://aimcs-foundry.cognitiveservices.azure.com/): " AZURE_OPENAI_ENDPOINT
 read -p "Azure OpenAI API Key: " AZURE_OPENAI_API_KEY
 read -p "Azure OpenAI Deployment Name (default: o4-mini): " AZURE_OPENAI_DEPLOYMENT
 AZURE_OPENAI_DEPLOYMENT=${AZURE_OPENAI_DEPLOYMENT:-o4-mini}

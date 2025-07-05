@@ -117,7 +117,7 @@ ENV_SETTINGS="WEBSITE_NODE_DEFAULT_VERSION=${NODE_VERSION} NPM_CONFIG_PRODUCTION
 
 # Add Azure OpenAI environment variables if available
 if [ -n "$VITE_AZURE_OPENAI_ENDPOINT" ]; then
-    ENV_SETTINGS="$ENV_SETTINGS VITE_AZURE_OPENAI_ENDPOINT=\"$VITE_AZURE_OPENAI_ENDPOINT\""
+  ENV_SETTINGS="$ENV_SETTINGS VITE_AZURE_OPENAI_ENDPOINT=\"https://aimcs-foundry.cognitiveservices.azure.com/\""
 fi
 
 if [ -n "$VITE_AZURE_OPENAI_API_KEY" ]; then
@@ -156,7 +156,7 @@ echo "🌐 Your application is available at: https://$WEB_APP_URL"
 echo ""
 echo "📝 Environment variables set:"
 if [ -n "$VITE_AZURE_OPENAI_ENDPOINT" ]; then
-    echo "   ✅ VITE_AZURE_OPENAI_ENDPOINT"
+  echo "   ✅ VITE_AZURE_OPENAI_ENDPOINT (https://aimcs-foundry.cognitiveservices.azure.com/)"
 fi
 if [ -n "$VITE_AZURE_OPENAI_API_KEY" ]; then
     echo "   ✅ VITE_AZURE_OPENAI_API_KEY"

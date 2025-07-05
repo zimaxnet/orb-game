@@ -182,7 +182,7 @@ echo "✅ Created .env file with Azure OpenAI configuration"
 # Generate Azure Web App configuration
 echo ""
 echo "📝 Azure Web App environment variables to set:"
-echo "VITE_AZURE_OPENAI_ENDPOINT=$ENDPOINT"
+    echo "VITE_AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/"
 echo "VITE_AZURE_OPENAI_API_KEY=$KEY1"
 echo "VITE_AZURE_OPENAI_DEPLOYMENT=$REALTIME_DEPLOYMENT"
 
@@ -196,7 +196,7 @@ if az webapp show --name $WEB_APP_NAME --resource-group $RESOURCE_GROUP &> /dev/
         --name $WEB_APP_NAME \
         --resource-group $RESOURCE_GROUP \
         --settings \
-        VITE_AZURE_OPENAI_ENDPOINT="$ENDPOINT" \
+        VITE_AZURE_OPENAI_ENDPOINT="https://aimcs-foundry.cognitiveservices.azure.com/" \
         VITE_AZURE_OPENAI_API_KEY="$KEY1" \
         VITE_AZURE_OPENAI_DEPLOYMENT="$REALTIME_DEPLOYMENT" \
         --output none

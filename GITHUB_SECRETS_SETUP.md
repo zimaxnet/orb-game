@@ -9,7 +9,7 @@ The following secrets need to be configured in your GitHub repository:
 | Secret Name | Description | Required |
 |-------------|-------------|----------|
 | `AZURE_CREDENTIALS` | Azure service principal credentials (JSON) | ✅ |
-| `AZURE_OPENAI_ENDPOINT` | Your Azure OpenAI endpoint URL | ✅ |
+| `AZURE_OPENAI_ENDPOINT` | Your Azure OpenAI endpoint URL (https://aimcs-foundry.cognitiveservices.azure.com/) | ✅ |
 | `AZURE_OPENAI_API_KEY` | Your Azure OpenAI API key | ✅ |
 | `AZURE_OPENAI_DEPLOYMENT` | Your Azure OpenAI deployment name | ✅ |
 | `AZURE_OPENAI_TTS_DEPLOYMENT` | Your Azure OpenAI TTS deployment name | ✅ |
@@ -76,7 +76,7 @@ az containerapp update \
   --name aimcs-backend-eastus2 \
   --resource-group aimcs-rg-eastus2 \
   --set-env-vars \
-    AZURE_OPENAI_ENDPOINT="your-endpoint" \
+    AZURE_OPENAI_ENDPOINT="https://aimcs-foundry.cognitiveservices.azure.com/" \
     AZURE_OPENAI_API_KEY="your-key" \
     PERPLEXITY_API_KEY="your-perplexity-key"
 ```

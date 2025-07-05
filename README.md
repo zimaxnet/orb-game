@@ -91,7 +91,7 @@ aimcs-deploy/
 ### Backend (.env)
 
 ```env
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/
 AZURE_OPENAI_API_KEY=your-api-key
 AZURE_OPENAI_DEPLOYMENT=o4-mini
 AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts

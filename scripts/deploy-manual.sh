@@ -115,19 +115,25 @@ deploy_frontend() {
     
     print_success "Frontend built successfully"
     
-    # Deploy to Azure Static Web Apps (if you have the CLI tool)
-    if command -v swa &> /dev/null; then
-        print_status "Deploying to Azure Static Web Apps..."
-        cd src/dist
-        swa deploy --env production
-        cd ../..
-        print_success "Frontend deployed to Azure Static Web Apps"
-    else
-        print_warning "Azure Static Web Apps CLI not found. Please deploy manually:"
-        echo "1. Go to Azure Portal"
-        echo "2. Navigate to Static Web Apps in ${RESOURCE_GROUP_FRONTEND}"
-        echo "3. Upload the contents of src/dist/"
-    fi
+    # Deploy to Azure Web App
+    print_status "Deploying to Azure Web App..."
+    
+    # Create zip file for deployment
+    cd src/dist
+    zip -r ../../frontend-deploy.zip .
+    cd ../..
+    
+    # Deploy to Azure Web App
+    az webapp deploy \
+        --resource-group ${RESOURCE_GROUP_FRONTEND} \
+        --name aimcs \
+        --src-path frontend-deploy.zip \
+        --type zip
+    
+    # Clean up zip file
+    rm -f frontend-deploy.zip
+    
+    print_success "Frontend deployed to Azure Web App"
 }
 
 # Function to verify deployment

@@ -54,9 +54,12 @@ docker buildx build --platform linux/amd64 -f backend-Dockerfile -t aimcs-backen
 - **Service**: Azure Static Web App with global CDN
 - **Resource Group**: `aimcs-rg-eastus2`
 - **Domain**: `aimcs.net`
-- **Deployment**: Direct file upload via Static Web Apps CLI
+- **Deployment**: Direct file upload via Static Web Apps CLI or GitHub Actions
 - **Build**: React/Vite with modern UI components
+- **UI Improvements**: Sticky header, chat area never overlaps with the top bar, and users can scroll through all chat history.
+- **Audio**: AI responses with TTS now include a 🔊 button for instant audio playback.
 - **Benefits**: No cache issues, faster deployments, global CDN
+- **DNS Note**: Custom domain propagation can take 30-60 minutes after configuration
 
 ### **Backend (Azure Container App)**
 - **Service**: Azure Container App with AMD64 platform
@@ -230,6 +233,7 @@ curl -s https://aimcs.net | grep -q "AIMCS" && echo "✅ Deployment successful" 
 - **Azure Container Apps**: Used for backend deployments
 - **Azure CDN**: Built into Static Web Apps for global performance
 - **Azure Web App**: Legacy option (avoided due to cache issues)
+- **DNS Propagation**: Static Web Apps custom domains can take 30-60 minutes to propagate globally
 
 #### **Common Problems & Solutions**
 
@@ -554,6 +558,9 @@ For help, open an issue or contact the AIMCS team.
 - Typing indicators
 - Auto-scroll to latest messages
 - Message status indicators
+- **Sticky header and proper spacing**: The chat area is always visible and never goes under the top bar.
+- **Audio playback controls**: AI responses with TTS include a 🔊 button for instant audio playback.
+- **Full chat history scroll**: Users can scroll up to see all previous queries and responses.
 
 ### Voice Features
 - Text-to-speech integration via Azure OpenAI

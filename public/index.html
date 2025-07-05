@@ -44,14 +44,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            padding: 1rem 2rem;
             text-align: center;
         }
 
         .hero {
             max-width: 600px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .hero h1 {
@@ -73,9 +72,13 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             padding: 2rem;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .chat-header {
@@ -129,9 +132,11 @@
         }
 
         .messages {
-            max-height: 400px;
+            flex: 1;
             overflow-y: auto;
             margin-bottom: 1.5rem;
+            min-height: 300px;
+            max-height: 60vh;
         }
 
         .message {
@@ -261,6 +266,11 @@
             .chat-container {
                 margin: 1rem;
                 padding: 1.5rem;
+                max-width: 100%;
+            }
+            
+            .messages {
+                max-height: 50vh;
             }
             
             .features {

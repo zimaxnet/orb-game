@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatInterface.css';
+import MemoryPanel from './MemoryPanel.jsx';
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
@@ -9,6 +10,7 @@ const ChatInterface = () => {
   const [searchMode, setSearchMode] = useState('auto'); // auto, web, local
   const [showSources, setShowSources] = useState(false);
   const [audioStates, setAudioStates] = useState({}); // Track audio state for each message
+  const [showMemoryPanel, setShowMemoryPanel] = useState(false); // New state for memory panel
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const audioRefs = useRef({}); // Store audio elements for each message
@@ -87,17 +89,23 @@ const ChatInterface = () => {
     };
   }, []);
 
-  const addMessage = (sender, message, type = 'text', audioData = null, sources = null, searchUsed = false) => {
+  const addMessage = (sender, content, type, audioData = null, searchResults = null, searchUsed = false, fromMemory = false) => {
     const newMessage = {
-      id: Date.now() + Math.random(),
+      id: Date.now().toString(),
       sender,
-      message,
+      content,
       type,
       timestamp: new Date().toISOString(),
-      audioData,
-      sources,
-      searchUsed
+      searchUsed,
+      fromMemory, // New field for memory indicator
+      searchResults: searchResults || []
     };
+
+    if (audioData) {
+      newMessage.audioData = audioData;
+      newMessage.audioFormat = 'audio/mp3';
+    }
+
     setMessages(prev => [...prev, newMessage]);
     
     // Initialize audio state for this message
@@ -126,13 +134,14 @@ const ChatInterface = () => {
         },
         body: JSON.stringify({ 
           message: userMessage,
-          useWebSearch: searchMode
+          useWebSearch: searchMode,
+          userId: 'default' // You can make this dynamic based on user authentication
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        addMessage('AIMCS AI', data.response, 'ai', data.audioData, data.searchResults, data.searchUsed);
+        addMessage('AIMCS AI', data.response, 'ai', data.audioData, data.searchResults, data.searchUsed, data.fromMemory);
       } else {
         addMessage('System', 'Sorry, I encountered an error. Please try again.', 'error');
       }
@@ -301,6 +310,13 @@ const ChatInterface = () => {
           </div>
           <div className="header-controls">
             <button 
+              className="memory-toggle"
+              onClick={() => setShowMemoryPanel(true)}
+              title="View Memory & History"
+            >
+              🧠 Memory
+            </button>
+            <button 
               className="search-mode-toggle"
               onClick={toggleSearchMode}
               title={`${translations[language].searchMode}: ${getSearchModeLabel()}`}
@@ -352,7 +368,7 @@ const ChatInterface = () => {
                     )}
                   </div>
                   <div className="message-text">
-                    {message.message}
+                    {message.content}
                   </div>
                   {message.audioData && (
                     <div className="audio-available-indicator">
@@ -388,7 +404,7 @@ const ChatInterface = () => {
                       </div>
                     </div>
                   )}
-                  {message.sources && message.sources.length > 0 && (
+                  {message.searchResults && message.searchResults.length > 0 && (
                     <div className="sources-section">
                       <button
                         className="sources-toggle"
@@ -400,7 +416,7 @@ const ChatInterface = () => {
                         <div className="sources-list">
                           <h4>{translations[language].sources}:</h4>
                           <ul>
-                            {message.sources.map((source, index) => (
+                            {message.searchResults.map((source, index) => (
                               <li key={index}>
                                 <a 
                                   href={source.url} 
@@ -428,7 +444,12 @@ const ChatInterface = () => {
                 <div className="message-content">
                   <div className="message-sender">
                     AIMCS AI
-                    {searchMode === 'web' && (
+                    {message.fromMemory && (
+                      <span className="memory-indicator" title="Response from memory">
+                        🧠
+                      </span>
+                    )}
+                    {message.searchUsed && (
                       <span className="search-indicator" title={translations[language].webSearchUsed}>
                         🌐
                       </span>
@@ -478,6 +499,12 @@ const ChatInterface = () => {
           {translations[language].poweredBy}
         </div>
       </div>
+
+      {/* Memory Panel */}
+      <MemoryPanel 
+        isOpen={showMemoryPanel} 
+        onClose={() => setShowMemoryPanel(false)} 
+      />
     </div>
   );
 };

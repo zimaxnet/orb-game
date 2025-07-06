@@ -1,4 +1,8 @@
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import MemoryService from './memory-service.js';
 
 const app = express();
 
@@ -23,6 +27,9 @@ const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || '
 const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 
 app.use(express.json({ limit: '10mb' }));
+
+// Initialize memory service
+const memoryService = new MemoryService();
 
 // Basic API endpoints
 app.get('/health', (req, res) => {
@@ -281,10 +288,10 @@ const searchWeb = async (query) => {
   }
 };
 
-// Enhanced chat endpoint with web search
+// Enhanced chat endpoint with memory
 app.post('/api/chat', async (req, res) => {
   try {
-    const { message, useWebSearch = 'auto' } = req.body;
+    const { message, useWebSearch = 'auto', userId = 'default' } = req.body;
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
@@ -292,33 +299,69 @@ app.post('/api/chat', async (req, res) => {
       return res.status(500).json({ error: 'AI not configured' });
     }
 
+    // Check memory first
+    const memoryResult = await memoryService.retrieveCompletion(message, userId);
     let aiResponse = '';
     let webSearchData = null;
     let searchUsed = false;
+    let fromMemory = false;
 
-    // Determine if web search should be used with AI-powered analysis
-    let searchAnalysis = null;
-    let shouldUseWebSearch = false;
-    
-    if (useWebSearch === 'web') {
-      shouldUseWebSearch = true;
-    } else if (useWebSearch === 'never') {
-      shouldUseWebSearch = false;
-    } else if (useWebSearch === 'auto') {
-      // Use AI-powered semantic analysis
-      searchAnalysis = await analyzeWebSearchNeeds(message);
-      shouldUseWebSearch = searchAnalysis.needsWebSearch && searchAnalysis.confidence > 0.5;
-    }
+    if (memoryResult) {
+      // Use cached response from memory
+      aiResponse = memoryResult.aiResponse;
+      searchUsed = memoryResult.metadata.searchUsed || false;
+      fromMemory = true;
+      console.log(`Using memory response for: "${message.substring(0, 50)}..."`);
+    } else {
+      // No memory found, proceed with normal flow
+      let searchAnalysis = null;
+      let shouldUseWebSearch = false;
+      
+      if (useWebSearch === 'web') {
+        shouldUseWebSearch = true;
+      } else if (useWebSearch === 'never') {
+        shouldUseWebSearch = false;
+      } else if (useWebSearch === 'auto') {
+        searchAnalysis = await analyzeWebSearchNeeds(message);
+        shouldUseWebSearch = searchAnalysis.needsWebSearch && searchAnalysis.confidence > 0.5;
+      }
 
-    // If web search is needed, get current information first
-    if (shouldUseWebSearch) {
-      webSearchData = await searchWeb(message);
-      if (webSearchData) {
-        searchUsed = true;
-        // Enhance the user message with web search results
-        const enhancedMessage = `${message}\n\nCurrent information from web search:\n${webSearchData.content}`;
-        
-        // Get AI response with web search context
+      // If web search is needed, get current information first
+      if (shouldUseWebSearch) {
+        webSearchData = await searchWeb(message);
+        if (webSearchData) {
+          searchUsed = true;
+          const enhancedMessage = `${message}\n\nCurrent information from web search:\n${webSearchData.content}`;
+          
+          const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
+          const openaiResponse = await fetch(openaiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'api-key': AZURE_OPENAI_API_KEY,
+            },
+            body: JSON.stringify({
+              messages: [
+                { 
+                  role: 'system', 
+                  content: 'You are a helpful AI assistant. When provided with web search information, use it to provide accurate, up-to-date responses. Always mention when you are using current information from the web.' 
+                },
+                { role: 'user', content: enhancedMessage }
+              ],
+              max_completion_tokens: 1000,
+              response_format: { type: 'text' }
+            }),
+          });
+          
+          if (openaiResponse.ok) {
+            const openaiData = await openaiResponse.json();
+            aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
+          }
+        }
+      }
+
+      // If no web search was used or it failed, use regular AI response
+      if (!searchUsed) {
         const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
         const openaiResponse = await fetch(openaiUrl, {
           method: 'POST',
@@ -328,50 +371,31 @@ app.post('/api/chat', async (req, res) => {
           },
           body: JSON.stringify({
             messages: [
-              { 
-                role: 'system', 
-                content: 'You are a helpful AI assistant. When provided with web search information, use it to provide accurate, up-to-date responses. Always mention when you are using current information from the web.' 
-              },
-              { role: 'user', content: enhancedMessage }
+              { role: 'system', content: 'You are a helpful AI assistant.' },
+              { role: 'user', content: message }
             ],
             max_completion_tokens: 1000,
             response_format: { type: 'text' }
           }),
         });
         
-        if (openaiResponse.ok) {
-          const openaiData = await openaiResponse.json();
-          aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
+        if (!openaiResponse.ok) {
+          const errorText = await openaiResponse.text();
+          return res.status(500).json({ error: `OpenAI error: ${openaiResponse.status} - ${errorText}` });
         }
+        
+        const openaiData = await openaiResponse.json();
+        aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
       }
-    }
 
-    // If no web search was used or it failed, use regular AI response
-    if (!searchUsed) {
-      const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
-      const openaiResponse = await fetch(openaiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': AZURE_OPENAI_API_KEY,
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: 'system', content: 'You are a helpful AI assistant.' },
-            { role: 'user', content: message }
-          ],
-          max_completion_tokens: 1000,
-          response_format: { type: 'text' }
-        }),
+      // Store the new completion in memory (only for non-memory responses)
+      await memoryService.storeCompletion(message, aiResponse, {
+        userId: userId,
+        searchUsed: searchUsed,
+        audioGenerated: false, // Will be updated below
+        model: 'gpt-4o-mini',
+        tokens: aiResponse.length // Approximate token count
       });
-      
-      if (!openaiResponse.ok) {
-        const errorText = await openaiResponse.text();
-        return res.status(500).json({ error: `OpenAI error: ${openaiResponse.status} - ${errorText}` });
-      }
-      
-      const openaiData = await openaiResponse.json();
-      aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
     }
 
     // 2. Get audio from gpt-4o-mini-tts
@@ -407,6 +431,7 @@ app.post('/api/chat', async (req, res) => {
       timestamp: new Date().toISOString(),
       searchUsed: searchUsed,
       originalMessage: message,
+      fromMemory: fromMemory, // New field indicating if response came from memory
       searchAnalysis: searchAnalysis // Include AI analysis results
     };
     
@@ -416,7 +441,7 @@ app.post('/api/chat', async (req, res) => {
     }
     
     if (webSearchData && webSearchData.sources) {
-      response.searchResults = webSearchData.sources; // Changed from 'sources' to 'searchResults'
+      response.searchResults = webSearchData.sources;
     }
 
     res.json(response);
@@ -488,6 +513,53 @@ app.get('/api/analytics/search-decisions', (req, res) => {
       },
       trendingKeywords: Array.from(dynamicKeywords.trendingKeywords),
       lastUpdated: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// New endpoint to get memory statistics
+app.get('/api/memory/stats', (req, res) => {
+  try {
+    const stats = memoryService.getMemoryStats();
+    res.json({
+      success: true,
+      stats: stats,
+      message: 'Memory statistics retrieved successfully'
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// New endpoint to search memories
+app.post('/api/memory/search', (req, res) => {
+  try {
+    const { query, userId = 'default', limit = 10 } = req.body;
+    if (!query) {
+      return res.status(400).json({ error: 'Query is required' });
+    }
+
+    const memories = memoryService.searchMemories(query, userId, limit);
+    res.json({
+      success: true,
+      memories: memories,
+      count: memories.length
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// New endpoint to export memories
+app.get('/api/memory/export', (req, res) => {
+  try {
+    const memories = memoryService.exportMemories();
+    res.json({
+      success: true,
+      memories: memories,
+      count: memories.length
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

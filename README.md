@@ -5,6 +5,7 @@ A modern AI-powered chat interface with web search capabilities, built with Reac
 ## 🚀 Features
 
 - **AI Chat Interface**: Powered by Azure OpenAI GPT-4o-mini
+- **🧠 Memory System**: Intelligent caching and retrieval of chat completions
 - **Dual Response Mode**: Text responses with optional audio playback
 - **Web Search Integration**: Automatic web search for current information
 - **Text-to-Speech**: Audio responses using Azure OpenAI TTS
@@ -132,6 +133,21 @@ npm run build
       --image aimcsregistry.azurecr.io/aimcs-backend
    ```
 
+### Memory Integration Deployment
+
+For the complete memory system deployment:
+
+```bash
+# Deploy memory integration with testing
+./scripts/deploy-memory.sh
+```
+
+This script will:
+- Build and deploy the backend with memory service
+- Deploy the frontend with memory panel
+- Test all memory endpoints
+- Verify functionality
+
 ## 🔧 Configuration
 
 ### Frontend Configuration
@@ -146,6 +162,10 @@ npm run build
 - **CORS**: Configured for cross-origin requests
 - **Rate Limiting**: Built-in request limiting
 - **Health Check**: Available at `/health`
+- **Memory API**: Available at `/api/memory/*`
+  - `GET /api/memory/stats` - Memory statistics
+  - `POST /api/memory/search` - Search memories
+  - `GET /api/memory/export` - Export all memories
 
 ### Azure Front Door Configuration
 
@@ -165,17 +185,28 @@ npm run build
 
 ### Chat Interface
 - Real-time messaging with AI
+- **🧠 Memory Integration**: Intelligent caching and retrieval of responses
 - **Text and Audio Responses**: Users can read text and optionally play audio
 - Message history persistence
 - Auto-scroll to latest messages
 - Loading states and error handling
 - Audio playback state management
+- **Memory Indicators**: Visual indicators when responses come from memory
 
 ### Web Search
 - Automatic detection of search needs
 - Integration with Perplexity API
 - Source attribution
 - Search mode toggle (Auto/Web/Local)
+
+### 🧠 Memory System
+- **Automatic Caching**: Every chat response is stored in memory
+- **Instant Retrieval**: Identical queries return cached responses instantly
+- **Smart Matching**: Fuzzy matching finds similar previous conversations
+- **Memory Panel**: Search and browse conversation history
+- **Usage Analytics**: Track memory usage patterns and statistics
+- **Memory Management**: Automatic cleanup of old, unused memories
+- **User Isolation**: Separate memory stores per user
 
 ### Audio Features
 - **Dual Response Mode**: Users can see text responses AND play audio
@@ -191,6 +222,8 @@ npm run build
 - Multilingual support (EN/ES)
 - Accessibility features
 - Mobile-friendly interface
+- **Memory Panel**: Search and browse conversation history
+- **Memory Statistics**: Real-time usage analytics and insights
 
 ## 🔒 Security
 
@@ -232,6 +265,9 @@ For issues and questions:
 ## 🔄 Updates
 
 ### Latest Updates (Latest)
+- **🧠 Memory System Integration**: Intelligent caching and retrieval of chat completions
+- **Memory Panel**: Search and browse conversation history with statistics
+- **Memory Indicators**: Visual indicators when responses come from memory
 - **Azure Front Door Integration**: Global CDN with 118+ edge locations
 - **Custom Domain Validation**: `aimcs.net` fully operational with HTTPS
 - **Enhanced Audio/Text Response**: Users can now see text responses with optional audio playback

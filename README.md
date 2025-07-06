@@ -1,6 +1,6 @@
 # AIMCS - AI Multimodal Customer System
 
-A modern AI-powered chat interface with web search capabilities, built with React/Vite frontend and Node.js backend, deployed on Azure.
+A modern AI-powered chat interface with web search capabilities, built with React/Vite frontend and Node.js backend, deployed on Azure with global CDN via Azure Front Door.
 
 ## 🚀 Features
 
@@ -12,6 +12,7 @@ A modern AI-powered chat interface with web search capabilities, built with Reac
 - **Real-time Updates**: Live chat with streaming responses
 - **Modern UI**: Responsive design with beautiful gradients
 - **Azure Deployment**: Frontend on Static Web Apps, Backend on Container Apps
+- **Global CDN**: Azure Front Door Standard with 118+ edge locations worldwide
 
 ## 📁 Project Structure
 
@@ -136,7 +137,7 @@ npm run build
 ### Frontend Configuration
 
 - **Backend URL**: Configured in `components/ChatInterface.jsx`
-- **Custom Domain**: `aimcs.net` (configured in Azure)
+- **Custom Domain**: `aimcs.net` (configured in Azure Front Door)
 - **API Endpoint**: `api.aimcs.net`
 
 ### Backend Configuration
@@ -145,6 +146,20 @@ npm run build
 - **CORS**: Configured for cross-origin requests
 - **Rate Limiting**: Built-in request limiting
 - **Health Check**: Available at `/health`
+
+### Azure Front Door Configuration
+
+- **Profile**: `zimax-fd` (Standard_AzureFrontDoor)
+- **Endpoint**: `aimcs-endpoint-f0ghgcatf4fufndr.z02.azurefd.net`
+- **Origin**: Azure Static Web App (`proud-hill-01b4b180f.1.azurestaticapps.net`)
+- **Custom Domain**: `aimcs.net` (✅ Validated and Approved)
+- **SSL**: Automatic certificate provisioning
+- **Global CDN**: 118+ edge locations worldwide
+
+#### Domain Configuration
+- **Primary Domain**: `aimcs.net` → Azure Front Door (✅ HTTPS Working)
+- **WWW Subdomain**: `www.aimcs.net` → Azure Front Door (⚠️ HTTP only)
+- **API Domain**: `api.aimcs.net` → Azure Container App (✅ Direct connection)
 
 ## 📱 Features
 
@@ -184,6 +199,8 @@ npm run build
 - Input validation
 - Rate limiting
 - Secure API key handling
+- Azure Front Door DDoS protection
+- Automatic SSL certificate management
 
 ## 📊 Monitoring
 
@@ -191,6 +208,7 @@ npm run build
 - Request logging
 - Error tracking
 - Performance monitoring
+- Azure Front Door analytics and metrics
 
 ## 🤝 Contributing
 
@@ -214,6 +232,8 @@ For issues and questions:
 ## 🔄 Updates
 
 ### Latest Updates (Latest)
+- **Azure Front Door Integration**: Global CDN with 118+ edge locations
+- **Custom Domain Validation**: `aimcs.net` fully operational with HTTPS
 - **Enhanced Audio/Text Response**: Users can now see text responses with optional audio playback
 - **Improved Audio Controls**: Better visual design and user experience for audio controls
 - **Audio Availability Indicators**: Clear visual indicators when audio is available
@@ -222,10 +242,11 @@ For issues and questions:
 ### Deployment Updates
 - **Frontend**: Automatically deployed on push to `main`
 - **Backend**: Manual deployment via Azure Container Apps
+- **CDN**: Azure Front Door Standard with global edge caching
 - **Dependencies**: Regular security updates via npm audit
 
 ---
 
 **Live Demo**: [https://aimcs.net](https://aimcs.net)  
 **API Documentation**: [https://api.aimcs.net](https://api.aimcs.net)
-# Deployment trigger - Sat Jul  5 08:35:37 MST 2025
+# Deployment trigger - Sun Jul  6 20:24:00 MST 2025

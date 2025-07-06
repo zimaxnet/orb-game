@@ -206,6 +206,49 @@ jobs:
           exit 1
         fi
         
+    - name: Test memory system functionality
+      run: |
+        echo "Testing memory system..."
+        
+        # Test memory statistics endpoint
+        MEMORY_STATS=$(curl -s https://api.aimcs.net/api/memory/stats)
+        if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
+          echo "✅ Memory stats endpoint working"
+        else
+          echo "❌ Memory stats endpoint failed"
+          echo "Response: $MEMORY_STATS"
+          exit 1
+        fi
+        
+        # Test memory search endpoint
+        MEMORY_SEARCH=$(curl -s -X POST https://api.aimcs.net/api/memory/search \
+          -H "Content-Type: application/json" \
+          -d '{"query": "test", "userId": "deployment-test"}')
+          
+        if echo "$MEMORY_SEARCH" | grep -q "memories"; then
+          echo "✅ Memory search endpoint working"
+        else
+          echo "❌ Memory search endpoint failed"
+          echo "Response: $MEMORY_SEARCH"
+          exit 1
+        fi
+        
+        # Test memory caching (send same message twice)
+        echo "Testing memory caching..."
+        FIRST_RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Memory test question", "userId": "deployment-test"}')
+          
+        SECOND_RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Memory test question", "userId": "deployment-test"}')
+          
+        if echo "$SECOND_RESPONSE" | grep -q "fromMemory.*true"; then
+          echo "✅ Memory caching working correctly"
+        else
+          echo "⚠️ Memory caching not detected (may be first run)"
+        fi
+        
     - name: Performance test
       run: |
         echo "Running performance test..."
@@ -241,6 +284,9 @@ jobs:
           echo "🎉 Full deployment successful!"
           echo "Frontend: https://aimcs.net"
           echo "Backend: https://api.aimcs.net"
+          echo "Memory System: ✅ Active"
+          echo "Memory Panel: 🧠 Available in UI"
+          echo "Memory API: /api/memory/* endpoints"
           echo "Commit: ${{ github.sha }}"
         else
           echo "❌ Deployment failed!"

@@ -361,6 +361,11 @@ const ChatInterface = () => {
                 <div className="message-content">
                   <div className="message-sender">
                     {message.sender}
+                    {message.fromMemory && (
+                      <span className="memory-indicator" title="Response from memory">
+                        🧠
+                      </span>
+                    )}
                     {message.searchUsed && (
                       <span className="search-indicator" title={translations[language].webSearchUsed}>
                         🌐
@@ -444,16 +449,6 @@ const ChatInterface = () => {
                 <div className="message-content">
                   <div className="message-sender">
                     AIMCS AI
-                    {message.fromMemory && (
-                      <span className="memory-indicator" title="Response from memory">
-                        🧠
-                      </span>
-                    )}
-                    {message.searchUsed && (
-                      <span className="search-indicator" title={translations[language].webSearchUsed}>
-                        🌐
-                      </span>
-                    )}
                   </div>
                   <div className="typing-indicator">
                     <div className="typing-dot"></div>

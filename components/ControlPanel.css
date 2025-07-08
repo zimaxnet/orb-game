@@ -1,0 +1,212 @@
+/* Control Panel Overlay */
+.control-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+/* Control Panel */
+.control-panel {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+.control-panel.open {
+  left: 0;
+}
+
+/* Control Panel Header */
+.control-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.close-controls-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-controls-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Control Panel Content */
+.control-panel-content {
+  padding: 24px;
+  color: white;
+}
+
+.control-section {
+  margin-bottom: 32px;
+}
+
+.control-section h4 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  opacity: 0.9;
+}
+
+.control-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+.control-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+}
+
+.control-description {
+  margin: 8px 0 0 0;
+  font-size: 0.875rem;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+/* Search Mode Button */
+.search-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-mode-icon {
+  font-size: 1.2rem;
+}
+
+.search-mode-label {
+  flex: 1;
+  text-align: left;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.quick-actions .control-btn {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .control-panel {
+    width: 280px;
+    left: -280px;
+  }
+  
+  .control-panel-content {
+    padding: 20px;
+  }
+  
+  .control-section {
+    margin-bottom: 24px;
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .quick-actions .control-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .control-panel {
+    width: 260px;
+    left: -260px;
+  }
+  
+  .control-panel-header {
+    padding: 16px 20px;
+  }
+  
+  .control-panel-content {
+    padding: 16px;
+  }
+}
+
+/* Animation for smooth transitions */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+} 

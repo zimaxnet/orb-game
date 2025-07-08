@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMCS.NET - AI-Powered Customer Platform</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .preview-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 80px;
+            box-sizing: border-box;
+        }
+        
+        .content {
+            flex: 1;
+            color: white;
+            z-index: 2;
+        }
+        
+        .logo-section {
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+        
+        .description {
+            font-size: 20px;
+            line-height: 1.4;
+            margin: 32px 0;
+            font-weight: 400;
+            max-width: 600px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 32px 0;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .url {
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 32px;
+            letter-spacing: 1px;
+        }
+        
+        .visual-element {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.1;
+        }
+        
+        .geometric-shapes {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .shape1 {
+            width: 120px;
+            height: 120px;
+            top: 20px;
+            right: 40px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape2 {
+            width: 80px;
+            height: 80px;
+            top: 150px;
+            right: 120px;
+            animation: float 4s ease-in-out infinite reverse;
+        }
+        
+        .shape3 {
+            width: 60px;
+            height: 60px;
+            top: 80px;
+            right: 180px;
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .ai-icon {
+            position: absolute;
+            top: 50px;
+            right: 80px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="content">
+            <div class="logo-section">
+                <div class="logo">AIMCS.NET</div>
+                <div class="tagline">AI-Powered Customer Platform</div>
+            </div>
+            
+            <div class="description">
+                Advanced AI assistant with <span class="highlight">intelligent memory</span>, 
+                web search capabilities, and multimodal interactions powered by cutting-edge AI.
+            </div>
+            
+            <div class="features">
+                <div class="feature">🧠 Memory</div>
+                <div class="feature">🔍 Web Search</div>
+                <div class="feature">🗣️ Text-to-Speech</div>
+                <div class="feature">🤖 o4-mini</div>
+                <div class="feature">🔬 Perplexity Sonar</div>
+            </div>
+            
+            <div class="url">aimcs.net</div>
+        </div>
+        
+        <div class="geometric-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+        </div>
+        
+        <div class="ai-icon">🧠</div>
+        
+        <!-- Background decoration -->
+        <svg class="visual-element" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="150" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+            <circle cx="200" cy="200" r="100" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+            <circle cx="200" cy="200" r="50" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        </svg>
+    </div>
+</body>
+</html>

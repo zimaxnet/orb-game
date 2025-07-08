@@ -62,52 +62,7 @@
   align-items: center;
 }
 
-.search-mode-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.search-mode-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.search-mode-icon {
-  font-size: 1.1rem;
-}
-
-.search-mode-label {
-  font-size: 0.8rem;
-}
-
-.language-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.language-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+/* Search mode and language controls moved to ControlPanel */
 
 /* Messages Container */
 .messages-container {
@@ -572,14 +527,7 @@
     font-size: 3rem;
   }
   
-  .search-mode-toggle {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-  
-  .search-mode-label {
-    display: none;
-  }
+  /* Control panel handles mobile responsiveness */
 }
 
 @media (max-width: 480px) {
@@ -632,26 +580,28 @@
   }
 }
 
-.memory-toggle {
+.menu-toggle {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 0.9rem;
+  padding: 8px 12px;
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
 }
 
-.memory-toggle:hover {
+.menu-toggle:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.memory-toggle:active {
+.menu-toggle:active {
   transform: translateY(0);
 } 

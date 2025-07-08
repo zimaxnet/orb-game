@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatInterface.css';
 import MemoryPanel from './MemoryPanel.jsx';
+import ControlPanel from './ControlPanel.jsx';
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
@@ -11,6 +12,7 @@ const ChatInterface = () => {
   const [showSources, setShowSources] = useState(false);
   const [audioStates, setAudioStates] = useState({}); // Track audio state for each message
   const [showMemoryPanel, setShowMemoryPanel] = useState(false); // New state for memory panel
+  const [showControlPanel, setShowControlPanel] = useState(false); // New state for control panel
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const audioRefs = useRef({}); // Store audio elements for each message
@@ -310,26 +312,11 @@ const ChatInterface = () => {
           </div>
           <div className="header-controls">
             <button 
-              className="memory-toggle"
-              onClick={() => setShowMemoryPanel(true)}
-              title="View Memory & History"
+              className="menu-toggle"
+              onClick={() => setShowControlPanel(true)}
+              title="Open Controls"
             >
-              🧠 Memory
-            </button>
-            <button 
-              className="search-mode-toggle"
-              onClick={toggleSearchMode}
-              title={`${translations[language].searchMode}: ${getSearchModeLabel()}`}
-            >
-              <span className="search-mode-icon">{getSearchModeIcon()}</span>
-              <span className="search-mode-label">{getSearchModeLabel()}</span>
-            </button>
-            <button 
-              className="language-toggle"
-              onClick={toggleLanguage}
-              title={translations[language].switchLanguage}
-            >
-              {language === 'en' ? 'ES' : 'EN'}
+              ☰
             </button>
           </div>
         </div>
@@ -499,6 +486,21 @@ const ChatInterface = () => {
       <MemoryPanel 
         isOpen={showMemoryPanel} 
         onClose={() => setShowMemoryPanel(false)} 
+      />
+
+      {/* Control Panel */}
+      <ControlPanel 
+        isOpen={showControlPanel}
+        onClose={() => setShowControlPanel(false)}
+        language={language}
+        searchMode={searchMode}
+        onToggleLanguage={toggleLanguage}
+        onToggleSearchMode={toggleSearchMode}
+        onOpenMemory={() => {
+          setShowControlPanel(false);
+          setShowMemoryPanel(true);
+        }}
+        translations={translations}
       />
     </div>
   );

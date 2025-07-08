@@ -236,6 +236,23 @@ This script will:
 - Test all memory endpoints
 - Verify functionality
 
+### 🧠 Shared Memory System
+
+**Public Demo Features:**
+- **Collaborative Learning**: All users share the same memory pool
+- **PII Protection**: Automatic removal of personal information
+- **Community Knowledge**: Builds shared knowledge base across users
+- **Privacy Safe**: Sensitive data is sanitized before storage
+
+**PII Removal Includes:**
+- Email addresses → `[EMAIL]`
+- Phone numbers → `[PHONE]`
+- Credit card numbers → `[CARD]`
+- Social security numbers → `[SSN]`
+- IP addresses → `[IP]`
+- Names → `[NAME]`
+- Addresses → `[ADDRESS]`
+
 ## 🔧 Configuration
 
 ### Frontend Configuration
@@ -252,8 +269,8 @@ This script will:
 - **Health Check**: Available at `/health`
 - **Memory API**: Available at `/api/memory/*`
   - `GET /api/memory/stats` - Memory statistics
-  - `POST /api/memory/search` - Search memories
-  - `GET /api/memory/export` - Export all memories
+  - `POST /api/memory/search` - Search memories (shared across all users)
+  - `GET /api/memory/export` - Export all memories (shared pool)
 
 ### Azure Front Door Configuration
 
@@ -294,7 +311,9 @@ This script will:
 - **Memory Panel**: Search and browse conversation history
 - **Usage Analytics**: Track memory usage patterns and statistics
 - **Memory Management**: Automatic cleanup of old, unused memories
-- **User Isolation**: Separate memory stores per user
+- **🆕 Shared Demo System**: Collaborative memory across all users
+- **🛡️ PII Protection**: Automatic removal of personal information
+- **🌐 Community Learning**: Users can learn from each other's interactions
 
 ### Audio Features
 - **Dual Response Mode**: Users can see text responses AND play audio
@@ -354,13 +373,16 @@ For issues and questions:
 ## 🔄 Updates
 
 ### Latest Updates (Latest)
+- **🧠 Shared Memory System**: Implemented collaborative memory across all users for public demo
+- **🛡️ PII Protection**: Automatic removal of personal information (emails, phones, cards, etc.)
+- **🌐 Community Learning**: Users can learn from each other's interactions safely
 - **🔧 Azure OpenAI SDK Migration**: Migrated from direct fetch calls to Azure OpenAI SDK for better reliability
 - **🛡️ Enhanced Error Handling**: Improved error handling with detailed error messages and graceful fallbacks
 - **📊 Token Limit Optimization**: Increased from 1000 to 2000 tokens for better customer service responses
 - **🔐 Security Improvements**: Fixed API key exposure and implemented proper variable scope handling
 - **📱 Mobile Control Panel**: Added slide-out control panel for better mobile experience
 - **🎛️ Organized Controls**: Memory, search mode, language, and quick actions in organized sections
-- **🧠 Memory System Integration**: Intelligent caching and retrieval of chat completions
+- **Memory System Integration**: Intelligent caching and retrieval of chat completions
 - **Memory Panel**: Search and browse conversation history with statistics
 - **Memory Indicators**: Visual indicators when responses come from memory
 - **Azure Front Door Integration**: Global CDN with 118+ edge locations

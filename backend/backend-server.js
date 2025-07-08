@@ -333,7 +333,7 @@ app.post('/api/chat', async (req, res) => {
           searchUsed = true;
           const enhancedMessage = `${message}\n\nCurrent information from web search:\n${webSearchData.content}`;
           
-          const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
+          const openaiUrl = 'https://aimcs-openai.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
           const openaiResponse = await fetch(openaiUrl, {
             method: 'POST',
             headers: {
@@ -362,7 +362,7 @@ app.post('/api/chat', async (req, res) => {
 
       // If no web search was used or it failed, use regular AI response
       if (!searchUsed) {
-        const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
+        const openaiUrl = 'https://aimcs-openai.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview';
         const openaiResponse = await fetch(openaiUrl, {
           method: 'POST',
           headers: {

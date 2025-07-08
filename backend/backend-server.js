@@ -348,7 +348,7 @@ app.post('/api/chat', async (req, res) => {
                 },
                 { role: 'user', content: enhancedMessage }
               ],
-              max_completion_tokens: 1000,
+              max_completion_tokens: 2000,
               response_format: { type: 'text' }
             }),
           });
@@ -374,7 +374,7 @@ app.post('/api/chat', async (req, res) => {
               { role: 'system', content: 'You are a helpful AI assistant.' },
               { role: 'user', content: message }
             ],
-            max_completion_tokens: 1000,
+            max_completion_tokens: 2000,
             response_format: { type: 'text' }
           }),
         });

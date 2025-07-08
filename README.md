@@ -4,7 +4,7 @@ A modern AI-powered chat interface with web search capabilities, built with Reac
 
 ## 🚀 Features
 
-- **AI Chat Interface**: Powered by Azure OpenAI GPT-4o-mini
+- **AI Chat Interface**: Powered by Azure OpenAI o4-mini
 - **🧠 Memory System**: Intelligent caching and retrieval of chat completions
 - **Dual Response Mode**: Text responses with optional audio playback
 - **Web Search Integration**: Automatic web search for current information

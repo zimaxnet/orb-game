@@ -121,6 +121,29 @@ PORT=3000
 
 ### Example Configuration
 
+#### Using Azure OpenAI SDK (Recommended)
+
+```javascript
+import { AzureOpenAI } from 'openai';
+
+const client = new AzureOpenAI({
+  endpoint: 'https://aimcs-foundry.cognitiveservices.azure.com/',
+  apiKey: 'your-api-key',
+  deployment: 'o4-mini',
+  apiVersion: '2024-12-01-preview'
+});
+
+const response = await client.chat.completions.create({
+  messages: [
+    { role: 'user', content: 'Hello' }
+  ],
+  max_completion_tokens: 2000,  // ✅ Optimized for customer service
+  response_format: { type: 'text' }
+});
+```
+
+#### Using Direct API Calls (Legacy)
+
 ```javascript
 // Correct configuration for o4-mini
 const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview';
@@ -141,6 +164,17 @@ const response = await fetch(openaiUrl, {
 });
 ```
 
+### SDK vs Direct API
+
+**Recommended**: Use Azure OpenAI SDK for better reliability and error handling.
+
+**Benefits of SDK:**
+- ✅ **Automatic retries** and error handling
+- ✅ **Better error messages** with detailed information
+- ✅ **Type safety** and IntelliSense support
+- ✅ **Future-proof** - handles API changes automatically
+- ✅ **Consistent patterns** across different Azure services
+
 ### Common Issues
 
 1. **"Model o4-mini is enabled only for api versions 2024-12-01-preview and later"**
@@ -153,6 +187,9 @@ const response = await fetch(openaiUrl, {
    - Solution: Ensure deployments exist in Azure Portal:
      - `o4-mini` for chat completions
      - `gpt-4o-mini-tts` for text-to-speech
+
+4. **"searchAnalysis is not defined"**
+   - Solution: Ensure variable scope is correct in JavaScript functions
 
 ## 🚀 Deployment
 
@@ -317,6 +354,10 @@ For issues and questions:
 ## 🔄 Updates
 
 ### Latest Updates (Latest)
+- **🔧 Azure OpenAI SDK Migration**: Migrated from direct fetch calls to Azure OpenAI SDK for better reliability
+- **🛡️ Enhanced Error Handling**: Improved error handling with detailed error messages and graceful fallbacks
+- **📊 Token Limit Optimization**: Increased from 1000 to 2000 tokens for better customer service responses
+- **🔐 Security Improvements**: Fixed API key exposure and implemented proper variable scope handling
 - **📱 Mobile Control Panel**: Added slide-out control panel for better mobile experience
 - **🎛️ Organized Controls**: Memory, search mode, language, and quick actions in organized sections
 - **🧠 Memory System Integration**: Intelligent caching and retrieval of chat completions

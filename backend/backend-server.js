@@ -305,6 +305,7 @@ app.post('/api/chat', async (req, res) => {
     let webSearchData = null;
     let searchUsed = false;
     let fromMemory = false;
+    let searchAnalysis = null; // Move declaration outside the else block
 
     if (memoryResult) {
       // Use cached response from memory
@@ -314,7 +315,6 @@ app.post('/api/chat', async (req, res) => {
       console.log(`Using memory response for: "${message.substring(0, 50)}..."`);
     } else {
       // No memory found, proceed with normal flow
-      let searchAnalysis = null;
       let shouldUseWebSearch = false;
       
       if (useWebSearch === 'web') {

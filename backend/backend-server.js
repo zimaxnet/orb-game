@@ -432,7 +432,7 @@ app.post('/api/chat', async (req, res) => {
       searchUsed: searchUsed,
       originalMessage: message,
       fromMemory: fromMemory, // New field indicating if response came from memory
-      searchAnalysis: searchAnalysis // Include AI analysis results
+      searchAnalysis: searchAnalysis || null // Include AI analysis results (null if from memory)
     };
     
     if (audioData) {

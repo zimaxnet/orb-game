@@ -1,5 +1,11 @@
-// AIMCS Memory Service
+// AIMCS Memory Service - Shared Demo System
 // Handles storage and retrieval of chat completions for memory/context
+// 
+// DEMO SYSTEM FEATURES:
+// - Shared memories across all users for collaborative learning
+// - PII removal to protect privacy in shared environment
+// - Cross-user memory retrieval and search
+// - Enhanced community knowledge base
 
 class MemoryService {
   constructor() {
@@ -8,10 +14,11 @@ class MemoryService {
     this.similarityThreshold = 0.8; // Threshold for considering queries similar
   }
 
-  // Generate a memory key from user message
+  // Generate a memory key from user message (shared across all users for demo)
   generateMemoryKey(message, userId = 'default') {
     const cleanMessage = message.toLowerCase().trim();
-    return `${userId}:${this.hashString(cleanMessage)}`;
+    // For demo system, use shared key without userId to allow cross-user memory sharing
+    return `shared:${this.hashString(cleanMessage)}`;
   }
 
   // Simple hash function for message
@@ -25,14 +32,46 @@ class MemoryService {
     return Math.abs(hash).toString(36);
   }
 
-  // Store a completion in memory
+  // Remove PII from messages for shared demo system
+  removePII(message) {
+    if (!message) return message;
+    
+    let sanitized = message;
+    
+    // Remove email addresses
+    sanitized = sanitized.replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g, '[EMAIL]');
+    
+    // Remove phone numbers (various formats)
+    sanitized = sanitized.replace(/\b(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b/g, '[PHONE]');
+    
+    // Remove credit card numbers
+    sanitized = sanitized.replace(/\b\d{4}[-.\s]?\d{4}[-.\s]?\d{4}[-.\s]?\d{4}\b/g, '[CARD]');
+    
+    // Remove social security numbers
+    sanitized = sanitized.replace(/\b\d{3}-\d{2}-\d{4}\b/g, '[SSN]');
+    
+    // Remove IP addresses
+    sanitized = sanitized.replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, '[IP]');
+    
+    // Remove names (simple pattern - could be enhanced)
+    sanitized = sanitized.replace(/\b[A-Z][a-z]+ [A-Z][a-z]+\b/g, '[NAME]');
+    
+    // Remove addresses (basic pattern)
+    sanitized = sanitized.replace(/\b\d+\s+[A-Za-z\s]+(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Place|Pl|Way|Circle|Cir)\b/gi, '[ADDRESS]');
+    
+    return sanitized;
+  }
+
+  // Store a completion in memory (shared across all users for demo)
   async storeCompletion(userMessage, aiResponse, metadata = {}) {
     try {
-      const memoryKey = this.generateMemoryKey(userMessage, metadata.userId);
+      // Remove PII from user message for shared demo system
+      const sanitizedMessage = this.removePII(userMessage);
+      const memoryKey = this.generateMemoryKey(sanitizedMessage, metadata.userId);
       
       const memoryEntry = {
         id: memoryKey,
-        userMessage: userMessage,
+        userMessage: sanitizedMessage, // Store sanitized version
         aiResponse: aiResponse,
         timestamp: new Date().toISOString(),
         metadata: {
@@ -40,7 +79,9 @@ class MemoryService {
           searchUsed: metadata.searchUsed || false,
           audioGenerated: metadata.audioGenerated || false,
           model: metadata.model || 'gpt-4o-mini',
-          tokens: metadata.tokens || 0
+          tokens: metadata.tokens || 0,
+          originalUserId: metadata.userId, // Keep track of original user for analytics
+          isShared: true // Flag to indicate this is shared memory
         },
         usageCount: 1,
         lastUsed: new Date().toISOString()
@@ -72,10 +113,12 @@ class MemoryService {
     }
   }
 
-  // Retrieve a completion from memory
+  // Retrieve a completion from memory (shared across all users for demo)
   async retrieveCompletion(userMessage, userId = 'default') {
     try {
-      const memoryKey = this.generateMemoryKey(userMessage, userId);
+      // Sanitize the query for shared memory lookup
+      const sanitizedMessage = this.removePII(userMessage);
+      const memoryKey = this.generateMemoryKey(sanitizedMessage, userId);
       const exactMatch = this.memoryStore.get(memoryKey);
       
       if (exactMatch) {
@@ -86,8 +129,8 @@ class MemoryService {
         return exactMatch;
       }
 
-      // Try fuzzy matching for similar queries
-      const fuzzyMatch = this.findSimilarMemory(userMessage, userId);
+      // Try fuzzy matching for similar queries across all users
+      const fuzzyMatch = this.findSimilarMemory(sanitizedMessage, userId);
       if (fuzzyMatch) {
         console.log(`Memory hit (fuzzy): ${fuzzyMatch.id}`);
         return fuzzyMatch;
@@ -101,15 +144,15 @@ class MemoryService {
     }
   }
 
-  // Find similar memories using simple keyword matching
+  // Find similar memories using simple keyword matching (shared across all users)
   findSimilarMemory(userMessage, userId = 'default') {
-    const userMemories = Array.from(this.memoryStore.values())
-      .filter(memory => memory.metadata.userId === userId)
+    // For demo system, search across ALL memories, not just user-specific
+    const allMemories = Array.from(this.memoryStore.values())
       .sort((a, b) => b.usageCount - a.usageCount); // Sort by usage
 
     const userWords = userMessage.toLowerCase().split(/\s+/);
     
-    for (const memory of userMemories) {
+    for (const memory of allMemories) {
       const memoryWords = memory.userMessage.toLowerCase().split(/\s+/);
       const commonWords = userWords.filter(word => 
         memoryWords.includes(word) && word.length > 3
@@ -162,14 +205,14 @@ class MemoryService {
     };
   }
 
-  // Search memories by keyword
+  // Search memories by keyword (shared across all users for demo)
   searchMemories(query, userId = 'default', limit = 10) {
-    const userMemories = Array.from(this.memoryStore.values())
-      .filter(memory => memory.metadata.userId === userId);
+    // For demo system, search across ALL memories, not just user-specific
+    const allMemories = Array.from(this.memoryStore.values());
     
     const queryWords = query.toLowerCase().split(/\s+/);
     
-    const scoredMemories = userMemories.map(memory => {
+    const scoredMemories = allMemories.map(memory => {
       const memoryWords = memory.userMessage.toLowerCase().split(/\s+/);
       const commonWords = queryWords.filter(word => 
         memoryWords.includes(word) && word.length > 2

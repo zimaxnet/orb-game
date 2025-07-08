@@ -98,10 +98,61 @@ AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/
 AZURE_OPENAI_API_KEY=your-api-key
 AZURE_OPENAI_DEPLOYMENT=o4-mini
 AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
-AZURE_OPENAI_API_VERSION=2025-01-01-preview
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
 PERPLEXITY_API_KEY=your-perplexity-key
 PORT=3000
 ```
+
+## 🔧 Azure OpenAI Configuration
+
+### API Version Requirements
+
+**Important**: Different Azure OpenAI models require specific API versions:
+
+- **o4-mini (Chat Completions)**: Requires `2024-12-01-preview` or later
+- **gpt-4o-mini-tts (Text-to-Speech)**: Requires `2025-03-01-preview` or later
+
+### Token Parameters
+
+**Critical**: The o4-mini model uses different parameter names than older models:
+
+- ✅ **Use**: `max_completion_tokens` (for o4-mini)
+- ❌ **Don't use**: `max_tokens` (not supported by o4-mini)
+
+### Example Configuration
+
+```javascript
+// Correct configuration for o4-mini
+const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview';
+
+const response = await fetch(openaiUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'api-key': AZURE_OPENAI_API_KEY,
+  },
+  body: JSON.stringify({
+    messages: [
+      { role: 'user', content: 'Hello' }
+    ],
+    max_completion_tokens: 1000,  // ✅ Correct for o4-mini
+    response_format: { type: 'text' }
+  }),
+});
+```
+
+### Common Issues
+
+1. **"Model o4-mini is enabled only for api versions 2024-12-01-preview and later"**
+   - Solution: Use `2024-12-01-preview` API version
+
+2. **"Unsupported parameter: 'max_tokens' is not supported with this model"**
+   - Solution: Use `max_completion_tokens` instead of `max_tokens`
+
+3. **"DeploymentNotFound"**
+   - Solution: Ensure deployments exist in Azure Portal:
+     - `o4-mini` for chat completions
+     - `gpt-4o-mini-tts` for text-to-speech
 
 ## 🚀 Deployment
 

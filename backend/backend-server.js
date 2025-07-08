@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import MemoryService from './memory-service.js';
+import { AzureOpenAI } from 'openai';
 
 const app = express();
 
@@ -30,6 +31,14 @@ app.use(express.json({ limit: '10mb' }));
 
 // Initialize memory service
 const memoryService = new MemoryService();
+
+// Initialize Azure OpenAI client
+const azureOpenAIClient = new AzureOpenAI({
+  endpoint: AZURE_OPENAI_ENDPOINT,
+  apiKey: AZURE_OPENAI_API_KEY,
+  deployment: AZURE_OPENAI_DEPLOYMENT,
+  apiVersion: '2024-12-01-preview'
+});
 
 // Basic API endpoints
 app.get('/health', (req, res) => {
@@ -153,18 +162,11 @@ const analyzeWebSearchNeeds = async (message) => {
   }
 
   try {
-    const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview';
-    const response = await fetch(openaiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': AZURE_OPENAI_API_KEY,
-      },
-      body: JSON.stringify({
-        messages: [
-          {
-            role: 'system',
-            content: `You are a web search classifier. Analyze if the user's query requires current, real-time, or up-to-date information from the web.
+    const response = await azureOpenAIClient.chat.completions.create({
+      messages: [
+        {
+          role: 'system',
+          content: `You are a web search classifier. Analyze if the user's query requires current, real-time, or up-to-date information from the web.
 
 Consider these categories that typically need web search:
 1. **Time-sensitive information**: Current events, recent news, today's weather, live sports scores
@@ -189,23 +191,17 @@ Examples:
 - "How do I make coffee?" → needsWebSearch: false (general knowledge)
 - "What's the latest on the election?" → needsWebSearch: true (current events, time-sensitive)
 - "What is photosynthesis?" → needsWebSearch: false (static knowledge)`
-          },
-          {
-            role: 'user',
-            content: message
-          }
-        ],
-        max_completion_tokens: 200,
-        response_format: { type: 'json_object' }
-      }),
+        },
+        {
+          role: 'user',
+          content: message
+        }
+      ],
+      max_completion_tokens: 200,
+      response_format: { type: 'json_object' }
     });
 
-    if (!response.ok) {
-      throw new Error(`OpenAI error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const analysis = JSON.parse(data.choices[0].message.content);
+    const analysis = JSON.parse(response.choices[0].message.content);
     
     return {
       needsWebSearch: analysis.needsWebSearch,
@@ -333,14 +329,8 @@ app.post('/api/chat', async (req, res) => {
           searchUsed = true;
           const enhancedMessage = `${message}\n\nCurrent information from web search:\n${webSearchData.content}`;
           
-          const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview';
-          const openaiResponse = await fetch(openaiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'api-key': AZURE_OPENAI_API_KEY,
-            },
-            body: JSON.stringify({
+          try {
+            const openaiResponse = await azureOpenAIClient.chat.completions.create({
               messages: [
                 { 
                   role: 'system', 
@@ -350,42 +340,33 @@ app.post('/api/chat', async (req, res) => {
               ],
               max_completion_tokens: 2000,
               response_format: { type: 'text' }
-            }),
-          });
-          
-          if (openaiResponse.ok) {
-            const openaiData = await openaiResponse.json();
-            aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
+            });
+            
+            aiResponse = openaiResponse.choices?.[0]?.message?.content || 'No response from AI';
+          } catch (error) {
+            console.error('Azure OpenAI error:', error);
+            aiResponse = 'Sorry, I encountered an error processing your request.';
           }
         }
       }
 
       // If no web search was used or it failed, use regular AI response
       if (!searchUsed) {
-        const openaiUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview';
-        const openaiResponse = await fetch(openaiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': AZURE_OPENAI_API_KEY,
-          },
-          body: JSON.stringify({
+        try {
+          const openaiResponse = await azureOpenAIClient.chat.completions.create({
             messages: [
               { role: 'system', content: 'You are a helpful AI assistant.' },
               { role: 'user', content: message }
             ],
             max_completion_tokens: 2000,
             response_format: { type: 'text' }
-          }),
-        });
-        
-        if (!openaiResponse.ok) {
-          const errorText = await openaiResponse.text();
-          return res.status(500).json({ error: `OpenAI error: ${openaiResponse.status} - ${errorText}` });
+          });
+          
+          aiResponse = openaiResponse.choices?.[0]?.message?.content || 'No response from AI';
+        } catch (error) {
+          console.error('Azure OpenAI error:', error);
+          return res.status(500).json({ error: `OpenAI error: ${error.message}` });
         }
-        
-        const openaiData = await openaiResponse.json();
-        aiResponse = openaiData.choices?.[0]?.message?.content || 'No response from AI';
       }
 
       // Store the new completion in memory (only for non-memory responses)

@@ -52,10 +52,13 @@ const MemoryPanel = ({ isOpen, onClose }) => {
       const response = await fetch(`${BACKEND_URL}/api/memory/export`);
       if (response.ok) {
         const memories = await response.json();
-        setAllMemories(memories);
+        setAllMemories(Array.isArray(memories) ? memories : []);
+      } else {
+        setAllMemories([]);
       }
     } catch (error) {
       console.error('Error loading memories:', error);
+      setAllMemories([]);
     } finally {
       setIsLoading(false);
     }
@@ -77,10 +80,13 @@ const MemoryPanel = ({ isOpen, onClose }) => {
 
       if (response.ok) {
         const results = await response.json();
-        setSearchResults(results);
+        setSearchResults(Array.isArray(results) ? results : []);
+      } else {
+        setSearchResults([]);
       }
     } catch (error) {
       console.error('Error searching memories:', error);
+      setSearchResults([]);
     } finally {
       setIsLoading(false);
     }
@@ -118,8 +124,21 @@ const MemoryPanel = ({ isOpen, onClose }) => {
       older: []
     };
 
+    if (!Array.isArray(memories)) return groups;
+
     memories.forEach(memory => {
-      const memoryDate = new Date(memory.metadata?.timestamp || memory.created_at);
+      const memoryDateStr = memory.metadata?.timestamp || memory.created_at;
+      if (!memoryDateStr) {
+        groups.older.push(memory);
+        return;
+      }
+      
+      const memoryDate = new Date(memoryDateStr);
+      if (isNaN(memoryDate.getTime())) {
+        groups.older.push(memory);
+        return;
+      }
+
       const diffDays = (now - memoryDate) / (1000 * 60 * 60 * 24);
 
       if (diffDays < 1) groups.today.push(memory);
@@ -140,7 +159,10 @@ const MemoryPanel = ({ isOpen, onClose }) => {
   const groupedMemories = groupMemoriesByTime(displayMemories);
 
   const formatDate = (dateString) => {
+    if (!dateString) return 'No date';
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return 'Invalid date';
+
     return date.toLocaleDateString('en-US', { 
       month: 'short', 
       day: 'numeric',

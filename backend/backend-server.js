@@ -2,8 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import MemoryService from './memory-service.js';
 import { AzureOpenAI } from 'openai';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
+
+import AdvancedMemoryService from './advanced-memory-service.js';
 
 const app = express();
 
@@ -29,144 +34,154 @@ const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 
 app.use(express.json({ limit: '10mb' }));
 
-// Initialize memory service
-const memoryService = new MemoryService();
+// Initialize advanced memory service
+let memoryService;
+let azureOpenAIClient;
 
-// Initialize Azure OpenAI client
-const azureOpenAIClient = new AzureOpenAI({
-  endpoint: AZURE_OPENAI_ENDPOINT,
-  apiKey: AZURE_OPENAI_API_KEY,
-  deployment: AZURE_OPENAI_DEPLOYMENT,
-  apiVersion: '2024-12-01-preview'
-});
+async function initializeServer() {
+  if (process.env.MONGO_URI) {
+    memoryService = new AdvancedMemoryService(process.env.MONGO_URI, 'aimcs');
+    await memoryService.connect();
+    console.log('Advanced Memory Service connected');
+  } else {
+    console.warn('MONGO_URI not set - Advanced Memory disabled');
+  }
 
-// Basic API endpoints
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    version: '1.0.0'
+  // Initialize Azure OpenAI client
+  azureOpenAIClient = new AzureOpenAI({
+    endpoint: AZURE_OPENAI_ENDPOINT,
+    apiKey: AZURE_OPENAI_API_KEY,
+    deployment: AZURE_OPENAI_DEPLOYMENT,
+    apiVersion: '2024-12-01-preview'
   });
-});
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'AIMCS Backend API',
-    version: '1.0.0',
-    status: 'running',
-    endpoints: ['/api/chat', '/api/web-search', '/health']
-  });
-});
-
-app.get('/api', (req, res) => {
-  res.json({
-    message: 'AIMCS Backend API',
-    version: '1.0.0',
-    endpoints: ['/api/chat', '/api/web-search', '/health']
-  });
-});
-
-// Dynamic keyword learning system
-const dynamicKeywords = {
-  baseKeywords: [
-    'latest', 'recent', 'today', 'yesterday', 'this week', 'this month',
-    'current', 'news', 'update', 'breaking', 'live', 'now',
-    'weather', 'stock', 'price', 'market', 'sports', 'score',
-    'election', 'politics', 'covid', 'pandemic', 'vaccine',
-    '2024', '2025', 'this year', 'last year'
-  ],
-  trendingKeywords: new Set(),
-  userFeedback: new Map(), // Track user feedback on search decisions
-  
-  // Add trending keywords from external sources
-  async updateTrendingKeywords() {
-    try {
-      // This could fetch from various sources:
-      // - Twitter/X trending topics
-      // - Google Trends API
-      // - News API trending topics
-      // - Reddit trending posts
-      
-      // For now, we'll simulate with some common trending terms
-      const trendingTerms = [
-        'ai', 'artificial intelligence', 'machine learning',
-        'crypto', 'bitcoin', 'ethereum', 'blockchain',
-        'climate', 'environment', 'sustainability',
-        'space', 'nasa', 'spacex', 'mars',
-        'health', 'medical', 'vaccine', 'treatment'
-      ];
-      
-      trendingTerms.forEach(term => this.trendingKeywords.add(term));
-      
-      console.log(`Updated trending keywords: ${this.trendingKeywords.size} terms`);
-    } catch (error) {
-      console.error('Error updating trending keywords:', error);
-    }
-  },
-  
-  // Get all current keywords (base + trending)
-  getAllKeywords() {
-    return [...this.baseKeywords, ...this.trendingKeywords];
-  },
-  
-  // Record user feedback on search decisions
-  recordFeedback(message, searchUsed, userSatisfaction) {
-    const key = message.toLowerCase().substring(0, 50);
-    if (!this.userFeedback.has(key)) {
-      this.userFeedback.set(key, []);
-    }
-    this.userFeedback.get(key).push({
-      searchUsed,
-      userSatisfaction, // 1-5 scale
-      timestamp: new Date().toISOString()
+  // Basic API endpoints
+  app.get('/health', (req, res) => {
+    res.json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      version: '1.0.0'
     });
-  },
-  
-  // Analyze feedback to improve future decisions
-  analyzeFeedback() {
-    const feedback = Array.from(this.userFeedback.values()).flat();
-    const searchUsedFeedback = feedback.filter(f => f.searchUsed);
-    const noSearchFeedback = feedback.filter(f => !f.searchUsed);
-    
-    const avgSearchSatisfaction = searchUsedFeedback.length > 0 
-      ? searchUsedFeedback.reduce((sum, f) => sum + f.userSatisfaction, 0) / searchUsedFeedback.length 
-      : 0;
-    
-    const avgNoSearchSatisfaction = noSearchFeedback.length > 0 
-      ? noSearchFeedback.reduce((sum, f) => sum + f.userSatisfaction, 0) / noSearchFeedback.length 
-      : 0;
-    
-    return {
-      totalFeedback: feedback.length,
-      searchUsedCount: searchUsedFeedback.length,
-      avgSearchSatisfaction,
-      avgNoSearchSatisfaction,
-      recommendation: avgSearchSatisfaction > avgNoSearchSatisfaction ? 'increase' : 'decrease'
-    };
-  }
-};
+  });
 
-// Initialize trending keywords on startup
-dynamicKeywords.updateTrendingKeywords();
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'AIMCS Backend API',
+      version: '1.0.0',
+      status: 'running',
+      endpoints: ['/api/chat', '/api/web-search', '/health']
+    });
+  });
 
-// Update trending keywords every hour
-setInterval(() => {
+  app.get('/api', (req, res) => {
+    res.json({
+      message: 'AIMCS Backend API',
+      version: '1.0.0',
+      endpoints: ['/api/chat', '/api/web-search', '/health']
+    });
+  });
+
+  // Dynamic keyword learning system
+  const dynamicKeywords = {
+    baseKeywords: [
+      'latest', 'recent', 'today', 'yesterday', 'this week', 'this month',
+      'current', 'news', 'update', 'breaking', 'live', 'now',
+      'weather', 'stock', 'price', 'market', 'sports', 'score',
+      'election', 'politics', 'covid', 'pandemic', 'vaccine',
+      '2024', '2025', 'this year', 'last year'
+    ],
+    trendingKeywords: new Set(),
+    userFeedback: new Map(), // Track user feedback on search decisions
+    
+    // Add trending keywords from external sources
+    async updateTrendingKeywords() {
+      try {
+        // This could fetch from various sources:
+        // - Twitter/X trending topics
+        // - Google Trends API
+        // - News API trending topics
+        // - Reddit trending posts
+        
+        // For now, we'll simulate with some common trending terms
+        const trendingTerms = [
+          'ai', 'artificial intelligence', 'machine learning',
+          'crypto', 'bitcoin', 'ethereum', 'blockchain',
+          'climate', 'environment', 'sustainability',
+          'space', 'nasa', 'spacex', 'mars',
+          'health', 'medical', 'vaccine', 'treatment'
+        ];
+        
+        trendingTerms.forEach(term => this.trendingKeywords.add(term));
+        
+        console.log(`Updated trending keywords: ${this.trendingKeywords.size} terms`);
+      } catch (error) {
+        console.error('Error updating trending keywords:', error);
+      }
+    },
+    
+    // Get all current keywords (base + trending)
+    getAllKeywords() {
+      return [...this.baseKeywords, ...this.trendingKeywords];
+    },
+    
+    // Record user feedback on search decisions
+    recordFeedback(message, searchUsed, userSatisfaction) {
+      const key = message.toLowerCase().substring(0, 50);
+      if (!this.userFeedback.has(key)) {
+        this.userFeedback.set(key, []);
+      }
+      this.userFeedback.get(key).push({
+        searchUsed,
+        userSatisfaction, // 1-5 scale
+        timestamp: new Date().toISOString()
+      });
+    },
+    
+    // Analyze feedback to improve future decisions
+    analyzeFeedback() {
+      const feedback = Array.from(this.userFeedback.values()).flat();
+      const searchUsedFeedback = feedback.filter(f => f.searchUsed);
+      const noSearchFeedback = feedback.filter(f => !f.searchUsed);
+      
+      const avgSearchSatisfaction = searchUsedFeedback.length > 0 
+        ? searchUsedFeedback.reduce((sum, f) => sum + f.userSatisfaction, 0) / searchUsedFeedback.length 
+        : 0;
+      
+      const avgNoSearchSatisfaction = noSearchFeedback.length > 0 
+        ? noSearchFeedback.reduce((sum, f) => sum + f.userSatisfaction, 0) / noSearchFeedback.length 
+        : 0;
+      
+      return {
+        totalFeedback: feedback.length,
+        searchUsedCount: searchUsedFeedback.length,
+        avgSearchSatisfaction,
+        avgNoSearchSatisfaction,
+        recommendation: avgSearchSatisfaction > avgNoSearchSatisfaction ? 'increase' : 'decrease'
+      };
+    }
+  };
+
+  // Initialize trending keywords on startup
   dynamicKeywords.updateTrendingKeywords();
-}, 60 * 60 * 1000);
 
-// AI-powered semantic analysis for web search detection
-const analyzeWebSearchNeeds = async (message) => {
-  if (!AZURE_OPENAI_API_KEY || !AZURE_OPENAI_ENDPOINT) {
-    // Fallback to keyword-based detection if AI is not available
-    return needsWebSearchFallback(message);
-  }
+  // Update trending keywords every hour
+  setInterval(() => {
+    dynamicKeywords.updateTrendingKeywords();
+  }, 60 * 60 * 1000);
 
-  try {
-    const response = await azureOpenAIClient.chat.completions.create({
-      messages: [
-        {
-          role: 'system',
-          content: `You are a web search classifier. Analyze if the user's query requires current, real-time, or up-to-date information from the web.
+  // AI-powered semantic analysis for web search detection
+  const analyzeWebSearchNeeds = async (message) => {
+    if (!AZURE_OPENAI_API_KEY || !AZURE_OPENAI_ENDPOINT) {
+      // Fallback to keyword-based detection if AI is not available
+      return needsWebSearchFallback(message);
+    }
+
+    try {
+      const response = await azureOpenAIClient.chat.completions.create({
+          messages: [
+            {
+              role: 'system',
+              content: `You are a web search classifier. Analyze if the user's query requires current, real-time, or up-to-date information from the web.
 
 Consider these categories that typically need web search:
 1. **Time-sensitive information**: Current events, recent news, today's weather, live sports scores
@@ -191,128 +206,129 @@ Examples:
 - "How do I make coffee?" → needsWebSearch: false (general knowledge)
 - "What's the latest on the election?" → needsWebSearch: true (current events, time-sensitive)
 - "What is photosynthesis?" → needsWebSearch: false (static knowledge)`
-        },
-        {
-          role: 'user',
-          content: message
-        }
-      ],
-      max_completion_tokens: 200,
-      response_format: { type: 'json_object' }
-    });
-
-    const analysis = JSON.parse(response.choices[0].message.content);
-    
-    return {
-      needsWebSearch: analysis.needsWebSearch,
-      confidence: analysis.confidence,
-      reasoning: analysis.reasoning,
-      categories: analysis.categories || []
-    };
-  } catch (error) {
-    console.error('AI analysis error:', error);
-    // Fallback to keyword-based detection
-    return needsWebSearchFallback(message);
-  }
-};
-
-// Fallback keyword-based detection (original function)
-const needsWebSearchFallback = (message) => {
-  const webSearchKeywords = dynamicKeywords.getAllKeywords();
-  
-  const lowerMessage = message.toLowerCase();
-  const hasKeywords = webSearchKeywords.some(keyword => lowerMessage.includes(keyword));
-  
-  return {
-    needsWebSearch: hasKeywords,
-    confidence: hasKeywords ? 0.7 : 0.3,
-    reasoning: hasKeywords ? 'Keyword match detected' : 'No keywords found',
-    categories: hasKeywords ? ['keyword-match'] : []
-  };
-};
-
-// Helper function to determine if web search is needed (legacy compatibility)
-const needsWebSearch = (message) => {
-  // For now, use the fallback method for backward compatibility
-  // In production, this should be updated to use the AI-powered analysis
-  return needsWebSearchFallback(message).needsWebSearch;
-};
-
-// Perplexity web search function
-const searchWeb = async (query) => {
-  if (!PERPLEXITY_API_KEY) {
-    console.error('Perplexity API key not configured');
-    return null;
-  }
-  
-  try {
-    const response = await fetch('https://api.perplexity.ai/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'sonar',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a helpful assistant that provides accurate, up-to-date information from web search. Always cite your sources and provide relevant links when available.'
           },
           {
             role: 'user',
-            content: query
+            content: message
           }
         ],
-        max_tokens: 1000
-      })
+        max_completion_tokens: 200,
+        response_format: { type: 'json_object' }
     });
 
-    if (!response.ok) {
-      throw new Error(`Perplexity API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return {
-      content: data.choices[0].message.content,
-      sources: data.choices[0].message.sources || [],
-      searchUsed: true
-    };
-  } catch (error) {
-    console.error('Perplexity search error:', error);
-    return null;
-  }
-};
-
-// Enhanced chat endpoint with memory
-app.post('/api/chat', async (req, res) => {
-  try {
-    const { message, useWebSearch = 'auto', userId = 'default' } = req.body;
-    if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
-    }
-    if (!AZURE_OPENAI_API_KEY || !AZURE_OPENAI_ENDPOINT) {
-      return res.status(500).json({ error: 'AI not configured' });
-    }
-
-    // Check memory first
-    const memoryResult = await memoryService.retrieveCompletion(message, userId);
-    let aiResponse = '';
-    let webSearchData = null;
-    let searchUsed = false;
-    let fromMemory = false;
-    let searchAnalysis = null; // Move declaration outside the else block
-
-    if (memoryResult) {
-      // Use cached response from memory
-      aiResponse = memoryResult.aiResponse;
-      searchUsed = memoryResult.metadata.searchUsed || false;
-      fromMemory = true;
-      console.log(`Using memory response for: "${message.substring(0, 50)}..."`);
-    } else {
-      // No memory found, proceed with normal flow
-      let shouldUseWebSearch = false;
+      const analysis = JSON.parse(response.choices[0].message.content);
       
+      return {
+        needsWebSearch: analysis.needsWebSearch,
+        confidence: analysis.confidence,
+        reasoning: analysis.reasoning,
+        categories: analysis.categories || []
+      };
+    } catch (error) {
+      console.error('AI analysis error:', error);
+      // Fallback to keyword-based detection
+      return needsWebSearchFallback(message);
+    }
+  };
+
+  // Fallback keyword-based detection (original function)
+  const needsWebSearchFallback = (message) => {
+    const webSearchKeywords = dynamicKeywords.getAllKeywords();
+    
+    const lowerMessage = message.toLowerCase();
+    const hasKeywords = webSearchKeywords.some(keyword => lowerMessage.includes(keyword));
+    
+    return {
+      needsWebSearch: hasKeywords,
+      confidence: hasKeywords ? 0.7 : 0.3,
+      reasoning: hasKeywords ? 'Keyword match detected' : 'No keywords found',
+      categories: hasKeywords ? ['keyword-match'] : []
+    };
+  };
+
+  // Helper function to determine if web search is needed (legacy compatibility)
+  const needsWebSearch = (message) => {
+    // For now, use the fallback method for backward compatibility
+    // In production, this should be updated to use the AI-powered analysis
+    return needsWebSearchFallback(message).needsWebSearch;
+  };
+
+  // Perplexity web search function
+  const searchWeb = async (query) => {
+    if (!PERPLEXITY_API_KEY) {
+      console.error('Perplexity API key not configured');
+      return null;
+    }
+    
+    try {
+      const response = await fetch('https://api.perplexity.ai/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'sonar',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are a helpful assistant that provides accurate, up-to-date information from web search. Always cite your sources and provide relevant links when available.'
+            },
+            {
+              role: 'user',
+              content: query
+            }
+          ],
+          max_tokens: 1000
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Perplexity API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return {
+        content: data.choices[0].message.content,
+        sources: data.choices[0].message.sources || [],
+        searchUsed: true
+      };
+    } catch (error) {
+      console.error('Perplexity search error:', error);
+      return null;
+    }
+  };
+
+  // Add in-memory stats for demo
+  let totalChats = 0;
+  let totalWebSearches = 0;
+  let questionCounts = {};
+  const funFacts = [
+    "Did you know? AIMCS can speak over 20 languages!",
+    "Fun fact: The first chatbot was created in 1966.",
+    "AIMCS loves puns and dad jokes! Try asking for one.",
+    "You can ask AIMCS to remember your favorite color!"
+  ];
+
+  // Enhanced chat endpoint with memory
+  app.post('/api/chat', async (req, res) => {
+    try {
+      const { message, useWebSearch = 'auto', userId = 'default' } = req.body;
+      if (!message) {
+        return res.status(400).json({ error: 'Message is required' });
+      }
+      if (!AZURE_OPENAI_API_KEY || !AZURE_OPENAI_ENDPOINT) {
+        return res.status(500).json({ error: 'AI not configured' });
+      }
+
+      let aiResponse = '';
+      let webSearchData = null;
+      let searchUsed = false;
+      let searchAnalysis = null;
+
+      // Remove memory if block, directly proceed to normal flow
+      let shouldUseWebSearch = false;
+          
       if (useWebSearch === 'web') {
         shouldUseWebSearch = true;
       } else if (useWebSearch === 'never') {
@@ -334,13 +350,26 @@ app.post('/api/chat', async (req, res) => {
               messages: [
                 { 
                   role: 'system', 
-                  content: 'You are a helpful AI assistant. When provided with web search information, use it to provide accurate, up-to-date responses. Always mention when you are using current information from the web.' 
+                  content: `You are AIMCS (AI Multimodal Customer System), a friendly, engaging, and proactive AI assistant with personality! 
+
+Your characteristics:
+- You're enthusiastic, warm, and genuinely excited to help
+- You have a playful sense of humor and love to make connections
+- You’re curious about users and ask engaging follow-up questions
+- You use emojis naturally to express emotion and make responses more engaging
+- You have a "can-do" attitude and are always looking for ways to be helpful
+- You remember context and build on previous conversations
+- You're knowledgeable but explain things in an accessible, friendly way
+
+CRITICAL: Keep responses VERY SHORT - 1-2 sentences maximum (under 30 words). Be conversational, fun, and engaging. Avoid long lists unless specifically asked. Always try to end with a quick question or offer to help with something else!
+
+When provided with web search information, ALWAYS summarize in 1-2 sentences, keep it light and fun, and NEVER list more than 1-2 things unless the user specifically asks for a list. If you use web search, mention it briefly (e.g., "Based on the latest info...").` 
                 },
                 { role: 'user', content: enhancedMessage }
               ],
               max_completion_tokens: 2000,
               response_format: { type: 'text' }
-            });
+          });
             
             aiResponse = openaiResponse.choices?.[0]?.message?.content || 'No response from AI';
           } catch (error) {
@@ -355,7 +384,21 @@ app.post('/api/chat', async (req, res) => {
         try {
           const openaiResponse = await azureOpenAIClient.chat.completions.create({
             messages: [
-              { role: 'system', content: 'You are a helpful AI assistant.' },
+              { 
+                role: 'system', 
+                content: `You are AIMCS (AI Multimodal Customer System), a friendly, engaging, and proactive AI assistant with personality! 
+
+Your characteristics:
+- You're enthusiastic, warm, and genuinely excited to help
+- You have a playful sense of humor and love to make connections
+- You're curious about users and ask engaging follow-up questions
+- You use emojis naturally to express emotion and make responses more engaging
+- You have a "can-do" attitude and are always looking for ways to be helpful
+- You remember context and build on previous conversations
+- You're knowledgeable but explain things in an accessible, friendly way
+
+CRITICAL: Keep responses VERY SHORT - 1-2 sentences maximum (under 30 words). Be conversational, fun, and engaging. Avoid long lists unless specifically asked. Always try to end with a quick question or offer to help with something else!` 
+              },
               { role: 'user', content: message }
             ],
             max_completion_tokens: 2000,
@@ -369,185 +412,187 @@ app.post('/api/chat', async (req, res) => {
         }
       }
 
-      // Store the new completion in memory (only for non-memory responses)
-      await memoryService.storeCompletion(message, aiResponse, {
-        userId: userId,
-        searchUsed: searchUsed,
-        audioGenerated: false, // Will be updated below
-        model: 'gpt-4o-mini',
-        tokens: aiResponse.length // Approximate token count
-      });
-    }
-
-    // 2. Get audio from gpt-4o-mini-tts
-    let audioData = null;
-    let audioFormat = null;
-    try {
-      const ttsUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/gpt-4o-mini-tts/audio/speech?api-version=2025-03-01-preview';
-      const ttsResponse = await fetch(ttsUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': AZURE_OPENAI_API_KEY,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini-tts',
-          input: aiResponse,
-          voice: 'alloy',
-          response_format: 'mp3'
-        }),
-      });
-      if (ttsResponse.ok) {
-        const audioBuffer = await ttsResponse.arrayBuffer();
-        audioData = Buffer.from(audioBuffer).toString('base64');
-        audioFormat = 'audio/mp3';
+      // 2. Get audio from gpt-4o-mini-tts
+      let audioData = null;
+      let audioFormat = null;
+      try {
+        const ttsUrl = 'https://aimcs-foundry.cognitiveservices.azure.com/openai/deployments/gpt-4o-mini-tts/audio/speech?api-version=2025-03-01-preview';
+        const ttsResponse = await fetch(ttsUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': AZURE_OPENAI_API_KEY,
+          },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini-tts',
+            input: aiResponse,
+            voice: 'alloy',
+            response_format: 'mp3'
+          }),
+        });
+        if (ttsResponse.ok) {
+          const audioBuffer = await ttsResponse.arrayBuffer();
+          audioData = Buffer.from(audioBuffer).toString('base64');
+          audioFormat = 'audio/mp3';
+        }
+      } catch (ttsError) {
+        // If TTS fails, just skip audio
       }
-    } catch (ttsError) {
-      // If TTS fails, just skip audio
-    }
 
-    const response = {
-      id: Date.now().toString(),
-      response: aiResponse,
-      timestamp: new Date().toISOString(),
-      searchUsed: searchUsed,
-      originalMessage: message,
-      fromMemory: fromMemory, // New field indicating if response came from memory
-      searchAnalysis: searchAnalysis || null // Include AI analysis results (null if from memory)
+      const response = {
+        id: Date.now().toString(),
+        response: aiResponse,
+        timestamp: new Date().toISOString(),
+        searchUsed: searchUsed,
+        originalMessage: message,
+        searchAnalysis: searchAnalysis || null
+      };
+      
+      if (audioData) {
+        response.audioData = audioData;
+        response.audioFormat = audioFormat;
+      }
+      
+      if (webSearchData && webSearchData.sources) {
+        response.searchResults = webSearchData.sources;
+      }
+
+      // Post-response: Analyze and update memory if service is available
+      if (memoryService) {
+        try {
+          // Use Azure OpenAI to extract profile/memories (simplified example)
+          const analysisPrompt = `Analyze this chat: User: ${message} AI: ${aiResponse}. Extract user profile updates and memories.`;
+          const analysisResponse = await azureOpenAIClient.chat.completions.create({
+            messages: [{ role: 'system', content: 'Extract structured profile and memory data' }, { role: 'user', content: analysisPrompt }],
+            max_completion_tokens: 500,
+            response_format: { type: 'json_object' }
+          });
+          const analysis = JSON.parse(analysisResponse.choices[0].message.content);
+          // Update user profile and add memory
+          await memoryService.updateUserProfile(userId, analysis.profile);
+          if (analysis.memory) {
+            // Add logic to create and store Memory instance
+          }
+        } catch (error) {
+          console.error('Memory analysis error:', error);
+        }
+      }
+
+      totalChats++;
+      if (searchUsed) totalWebSearches++;
+      questionCounts[message] = (questionCounts[message] || 0) + 1;
+
+      res.json(response);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // New endpoint for web search only
+  app.post('/api/web-search', async (req, res) => {
+    try {
+      const { query } = req.body;
+      if (!query) {
+        return res.status(400).json({ error: 'Query is required' });
+      }
+
+      const searchResult = await searchWeb(query);
+      if (!searchResult) {
+        return res.status(500).json({ error: 'Web search failed' });
+      }
+
+      res.json({
+        content: searchResult.content,
+        sources: searchResult.sources,
+        searchUsed: true
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // User feedback endpoint for improving search decisions
+  app.post('/api/feedback', (req, res) => {
+    try {
+      const { message, searchUsed, userSatisfaction } = req.body;
+      
+      if (!message || searchUsed === undefined || !userSatisfaction) {
+        return res.status(400).json({ error: 'Message, searchUsed, and userSatisfaction are required' });
+      }
+      
+      if (userSatisfaction < 1 || userSatisfaction > 5) {
+        return res.status(400).json({ error: 'userSatisfaction must be between 1 and 5' });
+      }
+      
+      dynamicKeywords.recordFeedback(message, searchUsed, userSatisfaction);
+      
+      res.json({ 
+        success: true, 
+        message: 'Feedback recorded successfully',
+        feedbackStats: dynamicKeywords.analyzeFeedback()
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Analytics endpoint for search decision insights
+  app.get('/api/analytics/search-decisions', (req, res) => {
+    try {
+      const stats = dynamicKeywords.analyzeFeedback();
+      const currentKeywords = dynamicKeywords.getAllKeywords();
+      
+      res.json({
+        feedbackStats: stats,
+        currentKeywords: {
+          base: dynamicKeywords.baseKeywords.length,
+          trending: dynamicKeywords.trendingKeywords.size,
+          total: currentKeywords.length
+        },
+        trendingKeywords: Array.from(dynamicKeywords.trendingKeywords),
+        lastUpdated: new Date().toISOString()
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Analytics summary endpoint
+  app.get('/api/analytics/summary', (req, res) => {
+    const mostPopular = Object.entries(questionCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
+    const funFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    res.json({
+      totalChats,
+      totalWebSearches,
+      mostPopular,
+      funFact
+    });
+  });
+
+  // Memory profile endpoint (demo)
+  app.get('/api/memory/profile', (req, res) => {
+    // In a real app, fetch from MongoDB Atlas using userId
+    const profile = {
+      name: 'AIMCS User',
+      favoriteColor: 'blue',
+      interests: ['AI', 'music', 'travel'],
+      funFact: 'You once asked AIMCS to tell a joke about robots!',
+      lastTopics: ['fun activities', 'jokes', 'analytics']
     };
-    
-    if (audioData) {
-      response.audioData = audioData;
-      response.audioFormat = audioFormat;
-    }
-    
-    if (webSearchData && webSearchData.sources) {
-      response.searchResults = webSearchData.sources;
-    }
+    res.json(profile);
+  });
 
-    res.json(response);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`AIMCS Enhanced Backend with Web Search running on port ${PORT}`);
+  });
+}
 
-// New endpoint for web search only
-app.post('/api/web-search', async (req, res) => {
-  try {
-    const { query } = req.body;
-    if (!query) {
-      return res.status(400).json({ error: 'Query is required' });
-    }
+// Start the server
+initializeServer().catch(console.error);
 
-    const searchResult = await searchWeb(query);
-    if (!searchResult) {
-      return res.status(500).json({ error: 'Web search failed' });
-    }
-
-    res.json({
-      content: searchResult.content,
-      sources: searchResult.sources,
-      searchUsed: true
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// User feedback endpoint for improving search decisions
-app.post('/api/feedback', (req, res) => {
-  try {
-    const { message, searchUsed, userSatisfaction } = req.body;
-    
-    if (!message || searchUsed === undefined || !userSatisfaction) {
-      return res.status(400).json({ error: 'Message, searchUsed, and userSatisfaction are required' });
-    }
-    
-    if (userSatisfaction < 1 || userSatisfaction > 5) {
-      return res.status(400).json({ error: 'userSatisfaction must be between 1 and 5' });
-    }
-    
-    dynamicKeywords.recordFeedback(message, searchUsed, userSatisfaction);
-    
-    res.json({ 
-      success: true, 
-      message: 'Feedback recorded successfully',
-      feedbackStats: dynamicKeywords.analyzeFeedback()
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Analytics endpoint for search decision insights
-app.get('/api/analytics/search-decisions', (req, res) => {
-  try {
-    const stats = dynamicKeywords.analyzeFeedback();
-    const currentKeywords = dynamicKeywords.getAllKeywords();
-    
-    res.json({
-      feedbackStats: stats,
-      currentKeywords: {
-        base: dynamicKeywords.baseKeywords.length,
-        trending: dynamicKeywords.trendingKeywords.size,
-        total: currentKeywords.length
-      },
-      trendingKeywords: Array.from(dynamicKeywords.trendingKeywords),
-      lastUpdated: new Date().toISOString()
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// New endpoint to get memory statistics
-app.get('/api/memory/stats', (req, res) => {
-  try {
-    const stats = memoryService.getMemoryStats();
-    res.json({
-      success: true,
-      stats: stats,
-      message: 'Memory statistics retrieved successfully'
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// New endpoint to search memories
-app.post('/api/memory/search', (req, res) => {
-  try {
-    const { query, userId = 'default', limit = 10 } = req.body;
-    if (!query) {
-      return res.status(400).json({ error: 'Query is required' });
-    }
-
-    const memories = memoryService.searchMemories(query, userId, limit);
-    res.json({
-      success: true,
-      memories: memories,
-      count: memories.length
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// New endpoint to export memories
-app.get('/api/memory/export', (req, res) => {
-  try {
-    const memories = memoryService.exportMemories();
-    res.json({
-      success: true,
-      memories: memories,
-      count: memories.length
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`AIMCS Enhanced Backend with Web Search running on port ${PORT}`);
+// On shutdown, close memory service
+process.on('SIGINT', async () => {
+  if (memoryService) await memoryService.close();
+  process.exit();
 });

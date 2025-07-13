@@ -8,7 +8,6 @@ const ChatInterface = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState('en');
-  const [searchMode, setSearchMode] = useState('auto'); // auto, web, local
   const [showSources, setShowSources] = useState(false);
   const [audioStates, setAudioStates] = useState({}); // Track audio state for each message
   const [showMemoryPanel, setShowMemoryPanel] = useState(false); // New state for memory panel
@@ -79,6 +78,17 @@ const ChatInterface = () => {
     inputRef.current?.focus();
   }, []);
 
+  // Auto-send welcome message on first load
+  useEffect(() => {
+    const hasWelcomed = sessionStorage.getItem('aimcs-welcomed');
+    if (!hasWelcomed && messages.length === 0) {
+      // Send a proactive greeting
+      const welcomeMessage = "Hey there! 👋 I'm AIMCS, your AI assistant. I'm excited to help you with anything you need! What would you like to explore today?";
+      addMessage('AIMCS AI', welcomeMessage, 'ai');
+      sessionStorage.setItem('aimcs-welcomed', 'true');
+    }
+  }, [messages.length]);
+
   // Cleanup audio when component unmounts
   useEffect(() => {
     return () => {
@@ -136,7 +146,7 @@ const ChatInterface = () => {
         },
         body: JSON.stringify({ 
           message: userMessage,
-          useWebSearch: searchMode,
+          useWebSearch: 'auto',
           userId: 'default' // You can make this dynamic based on user authentication
         }),
       });
@@ -273,31 +283,6 @@ const ChatInterface = () => {
     setLanguage(language === 'en' ? 'es' : 'en');
   };
 
-  const toggleSearchMode = () => {
-    const modes = ['auto', 'web', 'local'];
-    const currentIndex = modes.indexOf(searchMode);
-    const nextIndex = (currentIndex + 1) % modes.length;
-    setSearchMode(modes[nextIndex]);
-  };
-
-  const getSearchModeLabel = () => {
-    const modeLabels = {
-      auto: translations[language].auto,
-      web: translations[language].web,
-      local: translations[language].local
-    };
-    return modeLabels[searchMode];
-  };
-
-  const getSearchModeIcon = () => {
-    const modeIcons = {
-      auto: '🔄',
-      web: '🌐',
-      local: '🤖'
-    };
-    return modeIcons[searchMode];
-  };
-
   return (
     <div className="chat-container">
       {/* Header */}
@@ -326,16 +311,11 @@ const ChatInterface = () => {
       <div className="messages-container">
         {messages.length === 0 ? (
           <div className="welcome-message fade-in">
-            <div className="welcome-icon">👋</div>
-            <h2>{translations[language].welcome}</h2>
-            <p>I'm here to help you with any questions or tasks you might have.</p>
-            <div className="search-mode-info">
-              <p>Current search mode: <strong>{getSearchModeIcon()} {getSearchModeLabel()}</strong></p>
-              <p className="search-mode-description">
-                {searchMode === 'auto' && 'Automatically uses web search when needed'}
-                {searchMode === 'web' && 'Always uses web search for current information'}
-                {searchMode === 'local' && 'Uses only local AI knowledge'}
-              </p>
+            <div className="welcome-icon">🚀</div>
+            <h2>Welcome to AIMCS!</h2>
+            <p>Your AI assistant is ready to help you explore, learn, and discover amazing things!</p>
+            <div className="welcome-tips">
+              <p>💡 <strong>Pro tip:</strong> Try asking me anything - I love learning new things and helping you discover amazing information!</p>
             </div>
           </div>
         ) : (
@@ -493,9 +473,9 @@ const ChatInterface = () => {
         isOpen={showControlPanel}
         onClose={() => setShowControlPanel(false)}
         language={language}
-        searchMode={searchMode}
+        searchMode={null} // Removed search mode prop
         onToggleLanguage={toggleLanguage}
-        onToggleSearchMode={toggleSearchMode}
+        onToggleSearchMode={null} // Removed search mode toggle function
         onOpenMemory={() => {
           setShowControlPanel(false);
           setShowMemoryPanel(true);

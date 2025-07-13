@@ -193,6 +193,20 @@ Your characteristics:
 CRITICAL: Keep responses VERY SHORT - 1-2 sentences maximum (under 30 words). Be conversational, fun, and engaging. Avoid long lists unless specifically asked. Always try to end with a quick question or offer to help with something else!`;
 ```
 
+## 📊 Analytics & Memory Endpoints
+
+AIMCS provides comprehensive analytics and memory information for all users:
+
+### Analytics Endpoints
+- **`/api/analytics/summary`**: Returns total chats, total web searches, most popular question/word, top words, average words per message, search usage percentage, fun fact, uptime, and last updated.
+- **`/api/analytics/detailed`**: Returns a full breakdown of usage, trends, system status, fun facts, and more.
+
+### Memory Endpoints
+- **`/api/memory/profile`**: Returns user profile info including name, favorite color, interests, fun fact, last topics, conversation style, preferred topics, total interactions, average response time, memory usage, personality traits, and recent questions.
+- **`/api/memory/stats`**: Returns total memories, total usage, storage used, average memory size, memory retrieval rate, most accessed memories, memory accuracy, last update, and system status.
+
+**Anyone using AIMCS can view this information via the API or the flyout panel!**
+
 ## 🚀 Deployment
 
 ### Frontend (Azure Static Web Apps)

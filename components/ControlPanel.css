@@ -199,6 +199,18 @@
   opacity: 0.9;
 }
 
+.about-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.about-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
 /* Quick Actions */
 .quick-actions {
   display: flex;

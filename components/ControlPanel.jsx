@@ -135,7 +135,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
             <h4>ℹ️ About</h4>
             <div className="version-info">
               <p>AIMCS v2.1.0</p>
-              <p>Powered by Azure OpenAI</p>
+              <p>Powered by <a href="https://zimax.net" target="_blank" rel="noopener noreferrer" className="about-link">Zimax AI Labs</a></p>
               <p>Built with ❤️ and React</p>
             </div>
           </div>

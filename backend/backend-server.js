@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import OpenAI from 'openai';
+import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file
@@ -43,24 +43,27 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    version: '1.0.0'
+    version: '1.0.1',
+    build: '2025-07-13-21:55'
   });
 });
 
 app.get('/', (req, res) => {
   res.json({
     message: 'AIMCS Backend API',
-    version: '1.0.0',
+    version: '1.0.1',
     status: 'running',
-    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health']
+    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
+    build: '2025-07-13-21:55'
   });
 });
 
 app.get('/api', (req, res) => {
   res.json({
     message: 'AIMCS Backend API',
-    version: '1.0.0',
-    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health']
+    version: '1.0.1',
+    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
+    build: '2025-07-13-21:55'
   });
 });
 
@@ -100,14 +103,194 @@ app.get('/api/memory/profile', (req, res) => {
   res.json(profile);
 });
 
+// Enhanced chat endpoint with Azure OpenAI integration
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
+    // Track analytics
+    totalChats++;
+    const words = message.toLowerCase().split(' ');
+    words.forEach(word => {
+      if (word.length > 3) {
+        questionCounts[word] = (questionCounts[word] || 0) + 1;
+      }
+    });
+
+    // Get memory context if available
+    let memoryContext = '';
+    if (memoryService) {
+      try {
+        const memories = await memoryService.getRelevantMemories(message, 3);
+        if (memories.length > 0) {
+          memoryContext = `\n\nRelevant memories: ${memories.map(m => m.content).join('; ')}`;
+        }
+      } catch (memoryError) {
+        console.warn('Memory retrieval failed:', memoryError.message);
+      }
+    }
+
+    // Enhanced system prompt from README
+    const systemPrompt = `You are AIMCS (AI Multimodal Customer System), a friendly, engaging, and proactive AI assistant with personality!
+
+Your characteristics:
+- You're enthusiastic, warm, and genuinely excited to help
+- You have a playful sense of humor and love to make connections
+- You're curious about users and ask engaging follow-up questions
+- You use emojis naturally to express emotion and make responses more engaging
+- You have a "can-do" attitude and are always looking for ways to be helpful
+- You remember context and build on previous conversations
+- You're knowledgeable but explain things in an accessible, friendly way
+
+CRITICAL: Keep responses VERY SHORT - 1-2 sentences maximum (under 30 words). Be conversational, fun, and engaging. Avoid long lists unless specifically asked. Always try to end with a quick question or offer to help with something else!
+
+Current conversation context: ${memoryContext}`;
+
+    // Check if web search is needed
+    const searchKeywords = ['latest', 'news', 'current', 'recent', 'today', 'now', 'update', 'trending'];
+    const needsSearch = searchKeywords.some(keyword => 
+      message.toLowerCase().includes(keyword)
+    );
+
+    let searchResults = '';
+    if (needsSearch) {
+      try {
+        const searchResponse = await fetch('https://api.perplexity.ai/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.PERPLEXITY_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'llama-3.1-sonar-small-128k-online',
+            messages: [{
+              role: 'user',
+              content: `Search for current information about: ${message}`
+            }],
+            max_tokens: 200
+          })
+        });
+
+        if (searchResponse.ok) {
+          const searchData = await searchResponse.json();
+          searchResults = searchData.choices[0].message.content;
+          totalWebSearches++;
+        }
+      } catch (searchError) {
+        console.warn('Web search failed:', searchError.message);
+      }
+    }
+
+    // Combine search results with user message
+    const fullMessage = searchResults 
+      ? `${message}\n\nCurrent information: ${searchResults}`
+      : message;
+
+    // Get AI response using Azure OpenAI
+    let aiResponse = '';
+    console.log('🤖 Attempting Azure OpenAI call...');
+    console.log('Client available:', !!azureOpenAIClient);
+    
+    if (azureOpenAIClient) {
+      try {
+        console.log('📤 Sending request to Azure OpenAI...');
+        const chatResponse = await azureOpenAIClient.getChatCompletions(
+          process.env.AZURE_OPENAI_DEPLOYMENT,
+          [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: fullMessage }
+          ],
+          {
+            maxCompletionTokens: 100
+          }
+        );
+        console.log('✅ Azure OpenAI response received');
+        aiResponse = chatResponse.choices[0].message.content;
+      } catch (openaiError) {
+        console.error('❌ Azure OpenAI failed:', openaiError);
+        console.error('Error details:', openaiError.message);
+        aiResponse = `Hey there! 👋 I'm AIMCS, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
+      }
+    } else {
+      console.warn('⚠️ Azure OpenAI client not available');
+      aiResponse = `Hey there! 👋 I'm AIMCS, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
+    }
+
+    // Store in memory if available
+    if (memoryService) {
+      try {
+        await memoryService.storeMemory('default-user', message, aiResponse);
+      } catch (memoryError) {
+        console.warn('Memory storage failed:', memoryError.message);
+      }
+    }
+
+    // Generate TTS audio using Azure OpenAI TTS
+    let audioData = null;
+    if (aiResponse) {
+      try {
+        console.log('🎵 Generating TTS audio for:', aiResponse.substring(0, 50) + '...');
+        
+        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            input: aiResponse,
+            voice: 'alloy',
+            response_format: 'mp3',
+            speed: 1.0
+          })
+        });
+
+        if (ttsResponse.ok) {
+          const audioBuffer = await ttsResponse.arrayBuffer();
+          audioData = Buffer.from(audioBuffer).toString('base64');
+          console.log('✅ TTS audio generated successfully');
+        } else {
+          const errorText = await ttsResponse.text();
+          console.warn('⚠️ TTS request failed:', ttsResponse.status, ttsResponse.statusText);
+          console.warn('TTS error details:', errorText);
+        }
+      } catch (ttsError) {
+        console.warn('TTS failed:', ttsError.message);
+      }
+    }
+
+    res.json({
+      response: aiResponse,
+      audioData: audioData,
+      searchUsed: needsSearch
+    });
+
+  } catch (error) {
+    console.error('Chat endpoint error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 async function initializeServer() {
   try {
-    // Initialize Azure OpenAI client
-    azureOpenAIClient = new OpenAI({
-      endpoint: process.env.AZURE_OPENAI_ENDPOINT,
-      apiKey: process.env.AZURE_OPENAI_API_KEY,
-      apiVersion: process.env.AZURE_OPENAI_API_VERSION
-    });
+    // Initialize Azure OpenAI client with correct API version
+    console.log('🔧 Initializing Azure OpenAI client...');
+    console.log('Endpoint:', process.env.AZURE_OPENAI_ENDPOINT);
+    console.log('Deployment:', process.env.AZURE_OPENAI_DEPLOYMENT);
+    console.log('API Version:', "2024-12-01-preview");
+    
+    azureOpenAIClient = new OpenAIClient(
+      process.env.AZURE_OPENAI_ENDPOINT,
+      new AzureKeyCredential(process.env.AZURE_OPENAI_API_KEY),
+      {
+        apiVersion: "2024-12-01-preview"
+      }
+    );
+    console.log('✅ Azure OpenAI client initialized successfully');
 
     // Initialize memory service with error handling
     try {
@@ -120,135 +303,7 @@ async function initializeServer() {
       memoryService = null;
     }
 
-    // Enhanced chat endpoint with memory
-    app.post('/api/chat', async (req, res) => {
-      try {
-        const { message } = req.body;
-        if (!message) {
-          return res.status(400).json({ error: 'Message is required' });
-        }
-
-        // Track analytics
-        totalChats++;
-        const words = message.toLowerCase().split(' ');
-        words.forEach(word => {
-          if (word.length > 3) {
-            questionCounts[word] = (questionCounts[word] || 0) + 1;
-          }
-        });
-
-        // Get memory context if available
-        let memoryContext = '';
-        if (memoryService) {
-          try {
-            const memories = await memoryService.getRelevantMemories(message, 3);
-            if (memories.length > 0) {
-              memoryContext = `\n\nRelevant memories: ${memories.map(m => m.content).join('; ')}`;
-            }
-          } catch (memoryError) {
-            console.warn('Memory retrieval failed:', memoryError.message);
-          }
-        }
-
-        // Enhanced system prompt with personality
-        const systemPrompt = `You are AIMCS (AI Multimodal Customer System), a friendly and engaging AI assistant with a warm personality. You love to:
-
-- Be proactive and engaging
-- Use humor and dad jokes when appropriate
-- Keep responses short and conversational (under 30 words)
-- Show genuine interest in users
-- Remember personal details when possible
-
-Current conversation context: ${memoryContext}
-
-Always respond in a friendly, helpful tone. Keep it short and sweet!`;
-
-        // Check if web search is needed
-        const searchKeywords = ['latest', 'news', 'current', 'recent', 'today', 'now', 'update', 'trending'];
-        const needsSearch = searchKeywords.some(keyword => 
-          message.toLowerCase().includes(keyword)
-        );
-
-        let searchResults = '';
-        if (needsSearch) {
-          try {
-            const searchResponse = await fetch('https://api.perplexity.ai/chat/completions', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${process.env.PERPLEXITY_API_KEY}`,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                model: 'llama-3.1-sonar-small-128k-online',
-                messages: [{
-                  role: 'user',
-                  content: `Search for current information about: ${message}`
-                }],
-                max_tokens: 200
-              })
-            });
-
-            if (searchResponse.ok) {
-              const searchData = await searchResponse.json();
-              searchResults = searchData.choices[0].message.content;
-              totalWebSearches++;
-            }
-          } catch (searchError) {
-            console.warn('Web search failed:', searchError.message);
-          }
-        }
-
-        // Combine search results with user message
-        const fullMessage = searchResults 
-          ? `${message}\n\nCurrent information: ${searchResults}`
-          : message;
-
-        // Get AI response
-        const chatResponse = await azureOpenAIClient.chat.completions.create({
-          model: process.env.AZURE_OPENAI_DEPLOYMENT,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: fullMessage }
-          ],
-          max_tokens: 150,
-          temperature: 0.7
-        });
-
-        const aiResponse = chatResponse.choices[0].message.content;
-
-        // Store in memory if available
-        if (memoryService) {
-          try {
-            await memoryService.storeMemory(message, aiResponse);
-          } catch (memoryError) {
-            console.warn('Memory storage failed:', memoryError.message);
-          }
-        }
-
-        // Generate TTS audio
-        const ttsResponse = await azureOpenAIClient.audio.speech.create({
-          model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
-          voice: 'alloy',
-          input: aiResponse
-        });
-
-        let audioBuffer = Buffer.alloc(0);
-        for await (const chunk of ttsResponse.body) {
-          audioBuffer = Buffer.concat([audioBuffer, chunk]);
-        }
-        const audioData = audioBuffer.toString('base64');
-
-        res.json({
-          response: aiResponse,
-          audioData: audioData,
-          searchUsed: needsSearch
-        });
-
-      } catch (error) {
-        console.error('Chat endpoint error:', error);
-        res.status(500).json({ error: 'Internal server error' });
-      }
-    });
+    // Enhanced chat endpoint is now defined outside the async function
 
     // Web search decisions endpoint
     app.get('/api/analytics/search-decisions', (req, res) => {

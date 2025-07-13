@@ -14,6 +14,7 @@ A modern AI-powered chat interface with engaging personality, proactive engageme
 - **🎵 Audio Responses**: Text-to-speech using Azure OpenAI TTS
 - **🌍 Multilingual Support**: English and Spanish interface
 - **📱 Modern UI**: Responsive design with beautiful animations and gradients
+- **🎮 Interactive Flyout Panel**: Real-time clock, rotating fun facts, system status, and enhanced modals
 - **☁️ Azure Deployment**: Frontend on Static Web Apps, Backend on Container Apps
 - **🌐 Global CDN**: Azure Front Door Standard with 118+ edge locations worldwide
 
@@ -33,6 +34,14 @@ A modern AI-powered chat interface with engaging personality, proactive engageme
 - **User Profiles**: AIMCS remembers your interests and preferences
 - **Conversation History**: Track recent topics and interactions
 - **Fun Facts**: Personalized insights about your chat patterns
+
+### 🎮 Interactive Flyout Panel
+- **🕐 Real-time Clock**: Live time display that updates every second
+- **💡 Rotating Fun Facts**: Interesting facts about AIMCS that rotate every 5 seconds
+- **🔧 System Status**: Live indicators for Backend, Memory, and TTS status
+- **📊 Enhanced Analytics**: Beautiful grid layout with detailed statistics
+- **⚙️ Settings Dashboard**: Clean layout showing current configuration
+- **🧠 Memory Profile**: Detailed cards showing what AIMCS remembers
 
 ## 📁 Project Structure
 
@@ -188,13 +197,9 @@ CRITICAL: Keep responses VERY SHORT - 1-2 sentences maximum (under 30 words). Be
 
 ### Frontend (Azure Static Web Apps)
 
-The frontend is automatically deployed via GitHub Actions when you push to the `main` branch.
+The frontend is automatically deployed via Azure Static Web Apps when you push to the `main` branch. No manual deployment required!
 
-**Manual deployment:**
-```bash
-npm run build
-# Deploy dist/ folder to Azure Static Web Apps
-```
+**Live URL**: https://aimcs.net
 
 ### Backend (Azure Container Apps)
 
@@ -222,22 +227,34 @@ npm run build
 
 ## 🎮 Quick Actions Guide
 
+### Using the Interactive Flyout Panel
+- **Click the ☰ menu button** in the top-right corner of the chat interface
+- **Explore real-time features**: Watch the live clock, read rotating fun facts, check system status
+- **Access all controls**: Analytics, Settings, Memory, and Language toggle
+
 ### Using Analytics
-- Click the **📊 Analytics** button in the control panel
+- Click the **📊 Analytics** button in the flyout panel
 - View real-time chat statistics and fun facts
 - Track your conversation patterns and engagement
 
 ### Using Settings
-- Click the **⚙️ Settings** button in the control panel
+- Click the **⚙️ Settings** button in the flyout panel
 - Toggle between English and Spanish
-- Configure audio preferences (coming soon)
+- View current system configuration
 
 ### Using Memory
-- Click the **🧠 Memory** button in the control panel
+- Click the **🧠 Memory** button in the flyout panel
 - See what AIMCS remembers about you
 - View your profile, interests, and conversation history
 
 ## 🔄 Recent Updates
+
+### v2.1 - Enhanced Flyout Panel & Deployment Fixes
+- ✅ **Interactive Flyout Panel**: Real-time clock, rotating fun facts, system status indicators
+- ✅ **Enhanced Modals**: Beautiful analytics grid, settings dashboard, memory profile cards
+- ✅ **Fixed Deployment**: Removed duplicate deployment workflows, streamlined CI/CD
+- ✅ **Improved UX**: Smooth animations, hover effects, and modern styling
+- ✅ **Real-time Features**: Live clock updates, rotating fun facts every 5 seconds
 
 ### v2.0 - Enhanced Personality & Memory
 - ✅ **Proactive Engagement**: AIMCS greets users immediately

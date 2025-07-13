@@ -165,3 +165,47 @@ chmod +x deploy-backend.sh
    ```bash
    docker build -f backend-Dockerfile -t aimcs-backend:latest .
    ```
+
+## 🛠️ Recent Fixes: Azure OpenAI TTS & MongoDB Atlas SSL
+
+### Azure OpenAI TTS (Text-to-Speech)
+- Integrated Azure OpenAI TTS endpoint for audio responses.
+- Uses deployment (e.g., `gpt-4o-mini-tts`) and API version `2025-03-01-preview`.
+- Requires these environment variables:
+  - `AZURE_OPENAI_TTS_DEPLOYMENT` (e.g., `gpt-4o-mini-tts`)
+  - `AZURE_OPENAI_ENDPOINT` (e.g., `https://aimcs-foundry.cognitiveservices.azure.com/`)
+  - `AZURE_OPENAI_API_KEY`
+- Backend returns base64-encoded audio in `audioData` field.
+
+### MongoDB Atlas SSL/TLS Connection
+- Explicitly sets `tls: true` and `tlsAllowInvalidCertificates: false` in MongoClient options for robust Atlas SSL support.
+- No longer uses deprecated `ssl`/`sslValidate` options.
+- If running in Docker/Azure, ensure the container trusts the Atlas CA (see `atlas-ca.pem`).
+- Dockerfile updated to copy `atlas-ca.pem` if needed.
+- Troubleshooting: If you see SSL/TLS errors, verify your connection string, driver version, and CA trust settings.
+
+### Example MongoClient Initialization
+```js
+this.client = new MongoClient(this.mongoUri, {
+  tls: true,
+  tlsAllowInvalidCertificates: false,
+});
+```
+
+### Example TTS API Call
+```js
+const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'api-key': process.env.AZURE_OPENAI_API_KEY,
+  },
+  body: JSON.stringify({
+    model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+    input: aiResponse,
+    voice: 'alloy',
+    response_format: 'mp3',
+    speed: 1.0
+  })
+});
+```

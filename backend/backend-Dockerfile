@@ -13,6 +13,7 @@ RUN npm install --production
 # Copy server code
 COPY backend-server.js .
 COPY advanced-memory-service.js .
+COPY atlas-ca.pem .
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs

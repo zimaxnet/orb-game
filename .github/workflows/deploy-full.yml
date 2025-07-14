@@ -40,9 +40,9 @@ jobs:
           --platform linux/amd64 \
           --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
           --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
-          --file backend-Dockerfile \
+          --file backend/backend-Dockerfile \
           --push \
-          .
+          ./backend
           
     - name: Deploy to Azure Container Apps
       run: |

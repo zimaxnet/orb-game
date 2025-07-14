@@ -281,6 +281,37 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: space-between;
+}
+
+.modal-back-btn {
+  padding: 10px 16px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.modal-back-btn:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.modal-actions .modal-close-btn {
+  flex: 1;
+  margin-top: 0;
+}
+
 /* Analytics Grid */
 .analytics-grid {
   display: grid;

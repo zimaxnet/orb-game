@@ -3,10 +3,6 @@
 # AIMCS Memory Function Test Script
 # Tests all memory endpoints and functionality
 
-set -e
-
-echo "🧠 Testing AIMCS Memory Functions..."
-
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -14,13 +10,17 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Dependency check
+for dep in curl jq; do
+  if ! command -v $dep &> /dev/null; then
+    echo -e "${RED}❌ Missing dependency: $dep. Please install it first.${NC}"
+    exit 1
+  fi
+done
+
 # Configuration
 BACKEND_URL="https://api.aimcs.net"
 TEST_USER_ID="memory-test-user-$(date +%s)"
-
-echo -e "${BLUE}📋 Test Configuration:${NC}"
-echo "  Backend URL: $BACKEND_URL"
-echo "  Test User ID: $TEST_USER_ID"
 
 # Test counter
 TESTS_PASSED=0
@@ -35,14 +35,15 @@ run_test() {
     echo -e "\n${YELLOW}🧪 Testing: $test_name${NC}"
     echo "Command: $test_command"
     
-    if eval "$test_command" | grep -q "$expected_pattern"; then
+    local output
+    output=$(eval "$test_command" 2>&1)
+    if echo "$output" | grep -q "$expected_pattern"; then
         echo -e "${GREEN}✅ PASS: $test_name${NC}"
         ((TESTS_PASSED++))
     else
         echo -e "${RED}❌ FAIL: $test_name${NC}"
         echo "Expected pattern: $expected_pattern"
-        echo "Actual output:"
-        eval "$test_command"
+        echo -e "Actual output:\n$output"
         ((TESTS_FAILED++))
     fi
 }
@@ -62,6 +63,15 @@ test_endpoint() {
     
     run_test "$test_name" "$curl_command" "$expected_pattern"
 }
+
+# Print configuration
+print_config() {
+  echo -e "${BLUE}📋 Test Configuration:${NC}"
+  echo "  Backend URL: $BACKEND_URL"
+  echo "  Test User ID: $TEST_USER_ID"
+}
+
+print_config
 
 echo -e "\n${BLUE}🚀 Starting Memory Function Tests...${NC}"
 

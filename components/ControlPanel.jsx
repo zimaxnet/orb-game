@@ -276,7 +276,10 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
             ) : (
               <div className="loading-spinner">Loading analytics...</div>
             )}
-            <button className="modal-close-btn" onClick={() => setShowAnalytics(false)}>Close</button>
+            <div className="modal-actions">
+              <button className="modal-back-btn" onClick={() => setShowAnalytics(false)}>← Back to Controls</button>
+              <button className="modal-close-btn" onClick={onClose}>Return to Chat</button>
+            </div>
           </div>
         </div>
       )}
@@ -304,7 +307,10 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
                 <span>Auto 🔄</span>
               </div>
             </div>
-            <button className="modal-close-btn" onClick={() => setShowSettings(false)}>Close</button>
+            <div className="modal-actions">
+              <button className="modal-back-btn" onClick={() => setShowSettings(false)}>← Back to Controls</button>
+              <button className="modal-close-btn" onClick={onClose}>Return to Chat</button>
+            </div>
           </div>
         </div>
       )}
@@ -348,7 +354,10 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
             ) : (
               <div className="loading-spinner">Loading memory profile...</div>
             )}
-            <button className="modal-close-btn" onClick={() => setShowMemory(false)}>Close</button>
+            <div className="modal-actions">
+              <button className="modal-back-btn" onClick={() => setShowMemory(false)}>← Back to Controls</button>
+              <button className="modal-close-btn" onClick={onClose}>Return to Chat</button>
+            </div>
           </div>
         </div>
       )}

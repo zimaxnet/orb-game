@@ -33,6 +33,33 @@ jobs:
       run: |
         az acr login --name ${{ env.CONTAINER_REGISTRY }}
         
+    - name: Wait for any active provisioning to complete
+      run: |
+        echo "Checking for active provisioning operations..."
+        retries=12
+        for i in $(seq 1 $retries); do
+          STATUS=$(az containerapp show \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "properties.provisioningState" \
+            --output tsv 2>/dev/null || echo "Failed")
+          
+          if [ "$STATUS" = "Succeeded" ]; then
+            echo "✅ Container App is ready for update."
+            break
+          elif [ "$STATUS" = "Failed" ]; then
+            echo "❌ Container App provisioning failed. Proceeding anyway..."
+            break
+          else
+            echo "⏳ Provisioning in progress... retrying in 10s (attempt $i/$retries)"
+            sleep 10
+          fi
+        done
+        
+        if [ "$STATUS" != "Succeeded" ] && [ "$STATUS" != "Failed" ]; then
+          echo "⚠️ Provisioning still in progress after $retries retries. Proceeding with deployment..."
+        fi
+        
     - name: Build and push container image
       run: |
         # Build for AMD64 platform (required for Azure)
@@ -61,6 +88,7 @@ jobs:
           --query "[?properties.active].name" \
           --output tsv | head -1)
         echo "current_revision=$CURRENT_REVISION" >> $GITHUB_OUTPUT
+        echo "Current active revision: $CURRENT_REVISION"
         
     - name: Deploy to Azure Container Apps
       run: |
@@ -74,7 +102,8 @@ jobs:
             AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
             AZURE_OPENAI_DEPLOYMENT="${{ secrets.AZURE_OPENAI_DEPLOYMENT }}" \
             AZURE_OPENAI_TTS_DEPLOYMENT="${{ secrets.AZURE_OPENAI_TTS_DEPLOYMENT }}" \
-            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}"
+            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}" \
+            MONGO_URI="${{ secrets.MONGO_URI }}"
             
     - name: Wait for deployment to complete
       run: |
@@ -88,9 +117,20 @@ jobs:
           --query "[?properties.active].name" \
           --output tsv | head -1)
           
+        echo "New active revision: $NEW_REVISION"
+        echo "Previous revision: ${{ steps.get-current-revision.outputs.current_revision }}"
+        
         if [ "$NEW_REVISION" = "${{ steps.get-current-revision.outputs.current_revision }}" ]; then
-          echo "❌ New revision is not active yet. Waiting more..."
+          echo "⏳ New revision is not active yet. Waiting more..."
           sleep 60
+          
+          # Check again
+          NEW_REVISION=$(az containerapp revision list \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "[?properties.active].name" \
+            --output tsv | head -1)
+          echo "Final active revision: $NEW_REVISION"
         fi
         
     - name: Verify deployment health
@@ -122,17 +162,25 @@ jobs:
       if: failure()
       run: |
         echo "❌ Deployment failed, rolling back to previous revision..."
-        az containerapp revision activate \
-          --name ${{ steps.get-current-revision.outputs.current_revision }} \
-          --app ${{ env.CONTAINER_APP_NAME }} \
-          --resource-group ${{ env.RESOURCE_GROUP }}
+        PREV_REVISION="${{ steps.get-current-revision.outputs.current_revision }}"
+        
+        if [ -n "$PREV_REVISION" ]; then
+          echo "Rolling back to revision: $PREV_REVISION"
+          az containerapp revision activate \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --revision "$PREV_REVISION" || echo "Rollback failed, but continuing..."
+        else
+          echo "No previous revision found for rollback"
+        fi
           
     - name: Notify deployment status
       if: always()
       run: |
-        if [ ${{ job.status }} == 'success' ]; then
+        if [ "${{ job.status }}" == "success" ]; then
           echo "✅ Backend deployment successful!"
           echo "New image: ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}"
         else
           echo "❌ Backend deployment failed!"
-          exit 1 
+          exit 1
+        fi 

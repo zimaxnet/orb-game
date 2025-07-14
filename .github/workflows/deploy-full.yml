@@ -3,7 +3,7 @@ name: Full System Deployment
 on:
   push:
     branches: [ main ]
-    paths: [ 'src/**', 'backend-*', 'scripts/**', '.github/workflows/deploy-full.yml' ]
+    paths: [ 'components/**', 'backend/**', 'scripts/**', '.github/workflows/deploy-full.yml' ]
   workflow_dispatch:
 
 env:
@@ -55,7 +55,8 @@ jobs:
             AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
             AZURE_OPENAI_DEPLOYMENT="${{ secrets.AZURE_OPENAI_DEPLOYMENT }}" \
             AZURE_OPENAI_TTS_DEPLOYMENT="${{ secrets.AZURE_OPENAI_TTS_DEPLOYMENT }}" \
-            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}"
+            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}" \
+            MONGO_URI="${{ secrets.MONGO_URI }}"
             
     - name: Wait for backend deployment
       run: |
@@ -95,17 +96,15 @@ jobs:
     - name: Install dependencies
       run: |
         npm ci
-        cd src && npm ci
         
     - name: Build frontend
       run: |
-        cd src
         npm run build
         
     - name: Verify build output
       run: |
-        ls -la src/dist/
-        test -f src/dist/index.html || exit 1
+        ls -la dist/
+        test -f dist/index.html || exit 1
         
     - name: Login to Azure
       uses: azure/login@v1
@@ -121,7 +120,7 @@ jobs:
         DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "properties.apiKey" --output tsv)
         
         # Deploy using Static Web Apps CLI
-        swa deploy src/dist --deployment-token $DEPLOYMENT_TOKEN --env production
+        swa deploy dist --deployment-token $DEPLOYMENT_TOKEN --env production
         
     - name: Wait for frontend deployment
       run: |

@@ -72,6 +72,15 @@ class AdvancedMemoryService {
       this.users = this.db.collection('users');
       this.agents = this.db.collection('agents');
       this.tasks = this.db.collection('tasks');
+      
+      // Create text index for memory search
+      try {
+        await this.users.createIndex({ "memories.content": "text" });
+        console.log('✅ Text index created for memory search');
+      } catch (indexError) {
+        console.warn('⚠️ Text index creation failed (may already exist):', indexError.message);
+      }
+      
       console.log('✅ MongoDB Atlas connected successfully');
     } catch (error) {
       console.error('❌ MongoDB Atlas connection failed:', error.message);
@@ -95,16 +104,27 @@ class AdvancedMemoryService {
 
   async getRelevantMemories(query, limit = 5) {
     try {
-      // Simple text search for relevant memories
-      const memories = await this.users.find({
-        $text: { $search: query }
+      // Search for users with memories containing the query
+      const users = await this.users.find({
+        "memories.content": { $regex: query, $options: 'i' }
       }).limit(limit).toArray();
       
-      return memories.map(memory => ({
-        id: memory._id,
-        content: memory.content || memory.profile?.toString() || '',
-        created_at: memory.created_at
-      }));
+      const memories = [];
+      users.forEach(user => {
+        if (user.memories) {
+          user.memories.forEach(memory => {
+            if (memory.content && memory.content.toLowerCase().includes(query.toLowerCase())) {
+              memories.push({
+                id: memory.id,
+                content: memory.content,
+                created_at: memory.created_at
+              });
+            }
+          });
+        }
+      });
+      
+      return memories.slice(0, limit);
     } catch (error) {
       console.warn('Memory search failed:', error.message);
       return [];

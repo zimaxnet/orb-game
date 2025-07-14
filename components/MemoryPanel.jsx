@@ -12,7 +12,7 @@ const VIEW_MODES = [
   { label: 'Grid', value: 'grid', icon: '🔲' }
 ];
 
-const MemoryPanel = ({ isOpen, onClose }) => {
+const MemoryPanel = ({ isOpen, onClose, onContinueConversation }) => {
   const [memoryStats, setMemoryStats] = useState(null);
   const [allMemories, setAllMemories] = useState([]); // cache all memories
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,6 +21,9 @@ const MemoryPanel = ({ isOpen, onClose }) => {
   const [sortType, setSortType] = useState('all');
   const [viewMode, setViewMode] = useState('grid');
   const [selectedMemory, setSelectedMemory] = useState(null);
+  const [continueMessage, setContinueMessage] = useState('');
+  const [showContinueInput, setShowContinueInput] = useState(false);
+  const [activeMemory, setActiveMemory] = useState(null);
 
   const BACKEND_URL = 'https://api.aimcs.net';
 
@@ -31,6 +34,8 @@ const MemoryPanel = ({ isOpen, onClose }) => {
       setSearchQuery('');
       setSearchResults([]);
       setSelectedMemory(null);
+      setShowContinueInput(false);
+      setActiveMemory(null);
     }
   }, [isOpen]);
 
@@ -80,7 +85,7 @@ const MemoryPanel = ({ isOpen, onClose }) => {
 
       if (response.ok) {
         const results = await response.json();
-        setSearchResults(Array.isArray(results) ? results : []);
+        setSearchResults(Array.isArray(results.memories) ? results.memories : []);
       } else {
         setSearchResults([]);
       }
@@ -89,6 +94,29 @@ const MemoryPanel = ({ isOpen, onClose }) => {
       setSearchResults([]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const continueConversation = async (memory, additionalMessage = '') => {
+    if (!onContinueConversation) return;
+    
+    const fullMessage = additionalMessage 
+      ? `${memory.key} - ${additionalMessage}`
+      : memory.key;
+    
+    onContinueConversation(fullMessage);
+    onClose();
+  };
+
+  const startContinueConversation = (memory) => {
+    setActiveMemory(memory);
+    setShowContinueInput(true);
+    setContinueMessage('');
+  };
+
+  const handleContinueSubmit = () => {
+    if (activeMemory && continueMessage.trim()) {
+      continueConversation(activeMemory, continueMessage.trim());
     }
   };
 
@@ -237,6 +265,26 @@ const MemoryPanel = ({ isOpen, onClose }) => {
         <div className="memory-footer">
           <span className="memory-date">{formatDate(memory.metadata?.timestamp || memory.created_at)}</span>
           <div className="memory-actions">
+            <button 
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                continueConversation(memory); 
+              }} 
+              title="Continue Conversation"
+              className="continue-btn"
+            >
+              💬
+            </button>
+            <button 
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                startContinueConversation(memory); 
+              }} 
+              title="Continue with Additional Context"
+              className="continue-with-context-btn"
+            >
+              ➕
+            </button>
             <button onClick={(e) => { e.stopPropagation(); exportMemory(memory); }} title="Export">
               📤
             </button>
@@ -350,6 +398,49 @@ const MemoryPanel = ({ isOpen, onClose }) => {
             </div>
           )}
         </div>
+
+        {/* Continue Conversation Modal */}
+        {showContinueInput && activeMemory && (
+          <div className="continue-modal">
+            <div className="continue-modal-content">
+              <h3>💬 Continue Conversation</h3>
+              <div className="original-conversation">
+                <p><strong>Original:</strong> {activeMemory.key}</p>
+                <p><strong>Response:</strong> {activeMemory.content}</p>
+              </div>
+              <div className="continue-input-section">
+                <input
+                  type="text"
+                  placeholder="Add more context or ask a follow-up question..."
+                  value={continueMessage}
+                  onChange={(e) => setContinueMessage(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleContinueSubmit()}
+                  className="continue-input"
+                  autoFocus
+                />
+                <div className="continue-actions">
+                  <button 
+                    onClick={handleContinueSubmit}
+                    className="continue-submit-btn"
+                    disabled={!continueMessage.trim()}
+                  >
+                    Continue 💬
+                  </button>
+                  <button 
+                    onClick={() => {
+                      setShowContinueInput(false);
+                      setActiveMemory(null);
+                      setContinueMessage('');
+                    }}
+                    className="cancel-btn"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

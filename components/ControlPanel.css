@@ -435,3 +435,256 @@
     transform: translateX(-100%);
   }
 } 
+
+/* Enhanced Analytics Modal */
+.analytics-modal {
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.analytics-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.analytics-section {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.analytics-section h4 {
+  margin: 0 0 16px 0;
+  color: #1f2937;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.primary {
+  border-left: 4px solid #3b82f6;
+}
+
+.stat-card.secondary {
+  border-left: 4px solid #8b5cf6;
+}
+
+.stat-card.success {
+  border-left: 4px solid #10b981;
+}
+
+.stat-card.info {
+  border-left: 4px solid #06b6d4;
+}
+
+.stat-icon {
+  font-size: 2rem;
+  margin-right: 12px;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Topics List */
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+.topic-item:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.topic-rank {
+  font-weight: 700;
+  color: #3b82f6;
+  margin-right: 12px;
+  min-width: 30px;
+}
+
+.topic-name {
+  flex: 1;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.topic-count {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Insights Grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+.insight-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.insight-icon {
+  font-size: 1.5rem;
+  margin-right: 12px;
+  margin-top: 2px;
+}
+
+.insight-content h5 {
+  margin: 0 0 4px 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.insight-content p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* System Status */
+.system-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.system-status .status-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.system-status .status-item.online {
+  border-left: 3px solid #10b981;
+}
+
+.system-status .status-item.offline {
+  border-left: 3px solid #ef4444;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-item.online .status-dot {
+  background: #10b981;
+}
+
+.status-item.offline .status-dot {
+  background: #ef4444;
+}
+
+/* Fun Fact Card */
+.fun-fact-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+
+.fun-fact-icon {
+  font-size: 1.5rem;
+  margin-right: 12px;
+  margin-top: 2px;
+}
+
+.fun-fact-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* No Data State */
+.no-data {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .analytics-modal {
+    margin: 16px;
+    max-height: calc(100vh - 32px);
+  }
+} 

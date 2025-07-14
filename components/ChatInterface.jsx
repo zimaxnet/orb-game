@@ -272,6 +272,13 @@ const ChatInterface = () => {
     }
   };
 
+  const handleContinueConversation = (message) => {
+    // Set the input message to the continued conversation
+    setInputMessage(message);
+    // Focus the input field
+    inputRef.current?.focus();
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -466,6 +473,7 @@ const ChatInterface = () => {
       <MemoryPanel 
         isOpen={showMemoryPanel} 
         onClose={() => setShowMemoryPanel(false)} 
+        onContinueConversation={handleContinueConversation}
       />
 
       {/* Control Panel */}

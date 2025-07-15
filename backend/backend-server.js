@@ -260,14 +260,17 @@ app.post('/api/memory/search', async (req, res) => {
 
     res.json({
       success: true,
-      memories: memories.map(memory => ({
-        id: memory.id,
-        userMessage: memory.content.split(' - ')[0] || memory.content,
-        aiResponse: memory.content.split(' - ')[1] || '',
-        score: 0.85, // Mock similarity score
-        usageCount: 1,
-        timestamp: memory.created_at
-      })),
+      memories: memories.map(memory => {
+        const parts = memory.content.split(' - ');
+        return {
+          id: memory.id,
+          userMessage: parts[0] || memory.content,
+          aiResponse: parts[1] || '',
+          score: 0.85, // Mock similarity score
+          usageCount: 1,
+          timestamp: memory.created_at
+        };
+      }),
       count: memories.length
     });
   } catch (error) {
@@ -282,20 +285,29 @@ app.get('/api/memory/export', async (req, res) => {
     let memories = [];
     if (memoryService) {
       try {
-        // Get all memories for default user
-        const user = await memoryService.users.findOne({ userId: 'default-user' });
-        if (user && user.memories) {
-          memories = user.memories.map(memory => ({
-            key: memory.content.split(' - ')[0] || memory.content,
-            content: memory.content.split(' - ')[1] || memory.content,
-            created_at: memory.created_at,
-            metadata: {
-              timestamp: memory.created_at,
-              usageCount: 1,
-              searchUsed: false
-            }
-          }));
-        }
+        // Get all users with memories
+        const users = await memoryService.users.find({ "memories": { $exists: true, $ne: [] } }).toArray();
+        
+        users.forEach(user => {
+          if (user.memories) {
+            user.memories.forEach(memory => {
+              const parts = memory.content.split(' - ');
+              memories.push({
+                key: parts[0] || memory.content,
+                content: parts[1] || memory.content,
+                created_at: memory.created_at,
+                metadata: {
+                  timestamp: memory.created_at,
+                  usageCount: 1,
+                  searchUsed: false
+                }
+              });
+            });
+          }
+        });
+        
+        // Sort by creation date (newest first)
+        memories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       } catch (error) {
         console.warn('Memory export failed:', error.message);
       }

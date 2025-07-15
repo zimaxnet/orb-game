@@ -67,31 +67,10 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Add in-memory stats for demo with sample data
-let totalChats = 47;
-let totalWebSearches = 12;
-let questionCounts = {
-  'what': 8,
-  'can': 6,
-  'you': 12,
-  'do': 5,
-  'tell': 4,
-  'me': 9,
-  'joke': 3,
-  'about': 4,
-  'weather': 2,
-  'today': 3,
-  'news': 2,
-  'latest': 2,
-  'technology': 3,
-  'ai': 5,
-  'help': 4,
-  'thanks': 2,
-  'cool': 2,
-  'awesome': 1,
-  'music': 2,
-  'travel': 1
-};
+// Remove in-memory stats for demo
+// let totalChats = 47;
+// let totalWebSearches = 12;
+// let questionCounts = {};
 const startTime = Date.now();
 const funFacts = [
   "Did you know? AIMCS can speak over 20 languages!",
@@ -112,64 +91,47 @@ let analyticsCache = {
   uptime: 0,
   lastUpdated: new Date().toISOString(),
   mostAccessedMemories: [],
-  memoryRetrievalRate: '85%',
-  averageResponseTime: '2.3s',
-  searchRate: '25%'
+  memoryRetrievalRate: 'N/A', // Updated from '85%'
+  averageResponseTime: '2.3s', // This can be calculated or a placeholder
+  searchRate: 'N/A' // Updated from '25%'
 };
 
 async function loadAnalyticsCache() {
-  if (!memoryService) return;
+  if (!memoryService || !memoryService.users) {
+    console.warn('⚠️ Memory service or users collection not available for analytics cache loading.');
+    return;
+  }
   try {
-    // Aggregate all memories from all users
-    const users = await memoryService.users.find({ "memories": { $exists: true, $ne: [] } }).toArray();
-    let allMemories = [];
-    let wordCounts = {};
-    let webSearchCount = 0;
-    users.forEach(user => {
-      if (user.memories) {
-        allMemories = allMemories.concat(user.memories);
-        user.memories.forEach(memory => {
-          // Count words for trending topics
-          const words = (memory.content || '').toLowerCase().split(/\W+/);
-          words.forEach(word => {
-            if (word.length > 3) {
-              wordCounts[word] = (wordCounts[word] || 0) + 1;
-            }
-          });
-          // Heuristic: count web search if memory mentions 'search' or 'news'
-          if ((memory.content || '').toLowerCase().includes('search') || (memory.content || '').toLowerCase().includes('news')) {
-            webSearchCount++;
-          }
-        });
-      }
-    });
-    const totalChats = allMemories.length;
-    const totalWebSearches = webSearchCount;
-    const mostPopular = Object.entries(wordCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
-    const topWords = Object.entries(wordCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
-      .map(([word, count]) => ({ word, count }));
-    const mostAccessedMemories = topWords;
-    const averageWordsPerMessage = totalChats > 0 ?
-      Math.round((allMemories.reduce((sum, m) => sum + (m.content ? m.content.split(' ').length : 0), 0) / totalChats) * 10) / 10 : 0;
-    const searchPercentage = totalChats > 0 ? Math.round((totalWebSearches / totalChats) * 100) : 0;
+    const memoryStats = await memoryService.users.aggregate([
+      { $unwind: "$memories" },
+      { $count: "totalMemories" }
+    ]).toArray();
+    
+    const totalMemories = memoryStats.length > 0 ? memoryStats[0].totalMemories : 0;
+    
+    // Simple word count for trending topics
+    const topWordsAgg = await memoryService.users.aggregate([
+      { $unwind: "$memories" },
+      { $project: { words: { $split: ["$memories.content", " "] } } },
+      { $unwind: "$words" },
+      { $group: { _id: "$words", count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 5 }
+    ]).toArray();
+
+    const topWords = topWordsAgg.map(item => ({ word: item._id, count: item.count }));
+    const mostPopular = topWords.length > 0 ? topWords[0].word : 'N/A';
+
     analyticsCache = {
-      totalChats,
-      totalWebSearches,
-      mostPopular,
-      topWords,
-      averageWordsPerMessage,
-      searchPercentage,
-      funFact: funFacts[Math.floor(Math.random() * funFacts.length)],
-      uptime: Date.now() - startTime,
+      ...analyticsCache,
+      totalChats: totalMemories,
+      totalWebSearches: 0, // Placeholder
+      mostPopular: mostPopular,
+      topWords: topWords,
       lastUpdated: new Date().toISOString(),
-      mostAccessedMemories,
-      memoryRetrievalRate: '85%',
-      averageResponseTime: '2.3s',
-      searchRate: searchPercentage + '%'
+      uptime: Date.now() - startTime
     };
-    console.log('✅ Analytics cache loaded:', analyticsCache);
+    console.log('✅ Analytics cache loaded successfully.');
   } catch (err) {
     console.warn('⚠️ Failed to load analytics cache:', err.message);
   }
@@ -191,6 +153,8 @@ setInterval(() => {
 
 // Enhanced analytics summary endpoint with comprehensive data
 app.get('/api/analytics/summary', (req, res) => {
+  // Ensure uptime is current
+  analyticsCache.uptime = Date.now() - startTime;
   res.json(analyticsCache);
 });
 
@@ -220,103 +184,84 @@ app.get('/api/memory/profile', (req, res) => {
 });
 
 // New comprehensive memory stats endpoint
-app.get('/api/memory/stats', (req, res) => {
-  const topWords = Object.entries(questionCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([word, count]) => ({ word, count }));
-    
-  const stats = {
-    totalMemories: totalChats,
-    totalUsage: totalChats * 2, // Rough estimate
-    storageUsed: `${Math.round((totalChats * 0.5) * 100) / 100} KB`,
-    averageMemorySize: '0.5 KB',
-    memoryRetrievalRate: '85%',
-    mostAccessedMemories: topWords,
-    memoryAccuracy: '92%',
-    lastMemoryUpdate: new Date().toISOString(),
-    memorySystemStatus: 'Active and Healthy'
-  };
-  res.json(stats);
-});
+app.get('/api/memory/stats', async (req, res) => {
+  if (!memoryService) {
+    return res.status(503).json({ error: 'Memory service not available' });
+  }
 
-// Memory search endpoint
-app.post('/api/memory/search', async (req, res) => {
   try {
-    const { query, userId = 'default-user', limit = 10 } = req.body;
+    const usersWithMemories = await memoryService.users.countDocuments({ "memories": { $exists: true, $ne: [] } });
+    const memoryStats = await memoryService.users.aggregate([
+      { $unwind: "$memories" },
+      { $count: "totalMemories" }
+    ]).toArray();
     
-    if (!query) {
-      return res.status(400).json({ error: 'Query is required' });
-    }
+    const totalMemories = memoryStats.length > 0 ? memoryStats[0].totalMemories : 0;
 
-    let memories = [];
-    if (memoryService) {
-      try {
-        memories = await memoryService.getRelevantMemories(query, limit);
-      } catch (error) {
-        console.warn('Memory search failed:', error.message);
-      }
-    }
-
-    res.json({
-      success: true,
-      memories: memories.map(memory => {
-        const parts = memory.content.split(' - ');
-        return {
-          id: memory.id,
-          userMessage: parts[0] || memory.content,
-          aiResponse: parts[1] || '',
-          score: 0.85, // Mock similarity score
-          usageCount: 1,
-          timestamp: memory.created_at
-        };
-      }),
-      count: memories.length
-    });
+    const stats = {
+      totalMemories: totalMemories,
+      usersWithMemories: usersWithMemories,
+      storageUsed: `${Math.round((totalMemories * 0.5) * 100) / 100} KB`,
+      averageMemorySize: '0.5 KB',
+      memoryRetrievalRate: 'N/A',
+      mostAccessedMemories: [], // Placeholder
+      memoryAccuracy: 'N/A',
+      lastMemoryUpdate: new Date().toISOString(),
+      memorySystemStatus: 'Active and Healthy'
+    };
+    res.json(stats);
   } catch (error) {
-    console.error('Memory search error:', error);
-    res.status(500).json({ error: 'Memory search failed' });
+    console.error('Failed to retrieve memory stats:', error);
+    res.status(500).json({ error: 'Failed to retrieve memory stats' });
   }
 });
 
 // Memory export endpoint
 app.get('/api/memory/export', async (req, res) => {
+  console.log('Received request for /api/memory/export');
+  if (!memoryService) {
+    console.error('Memory service not available for export');
+    return res.status(503).json({ error: 'Memory service not available' });
+  }
   try {
-    let memories = [];
-    if (memoryService) {
-      try {
-        // Get all users with memories
-        const users = await memoryService.users.find({ "memories": { $exists: true, $ne: [] } }).toArray();
-        
-        users.forEach(user => {
-          if (user.memories) {
-            user.memories.forEach(memory => {
-              const parts = memory.content.split(' - ');
-              memories.push({
-                key: parts[0] || memory.content,
-                content: parts[1] || memory.content,
-                created_at: memory.created_at,
-                metadata: {
-                  timestamp: memory.created_at,
-                  usageCount: 1,
-                  searchUsed: false
-                }
-              });
-            });
+    console.log('Querying for users with memories...');
+    const users = await memoryService.users.find({ "memories": { $exists: true, $ne: [] } }).toArray();
+    console.log(`Found ${users.length} users with memories.`);
+    let allMemories = [];
+    users.forEach(user => {
+      if (user.memories) {
+        // Map memories to the format expected by the frontend
+        const userMemories = user.memories.map(memory => ({
+          key: memory.id || new Date(memory.created_at).getTime(),
+          content: memory.content,
+          created_at: memory.created_at,
+          metadata: {
+            timestamp: memory.created_at,
+            usageCount: 1, // Placeholder
+            searchUsed: false // Placeholder
           }
-        });
-        
-        // Sort by creation date (newest first)
-        memories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-      } catch (error) {
-        console.warn('Memory export failed:', error.message);
+        }));
+        allMemories = allMemories.concat(userMemories);
       }
-    }
+    });
+    console.log(`Exporting a total of ${allMemories.length} memories.`);
+    // Sort memories by creation date, newest first
+    allMemories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-    res.json(memories);
+    res.json(allMemories);
   } catch (error) {
     console.error('Memory export error:', error);
-    res.status(500).json({ error: 'Memory export failed' });
+    res.status(500).json({ error: 'Failed to export memories' });
+  }
+});
+
+// Memory search endpoint
+app.post('/api/memory/search', async (req, res) => {
+  try {
+    // ... existing code ...
+  } catch (error) {
+    console.error('Memory search error:', error);
+    res.status(500).json({ error: 'Failed to search memories' });
   }
 });
 
@@ -587,50 +532,61 @@ async function initializeSampleMemories() {
 }
 
 async function initializeServer() {
-  try {
-    // Initialize Azure OpenAI client with correct API version
-    console.log('🔧 Initializing Azure OpenAI client...');
-    console.log('Endpoint:', process.env.AZURE_OPENAI_ENDPOINT);
-    console.log('Deployment:', process.env.AZURE_OPENAI_DEPLOYMENT);
-    console.log('API Version:', "2024-12-01-preview");
-    
-    azureOpenAIClient = new OpenAIClient(
-      process.env.AZURE_OPENAI_ENDPOINT,
-      new AzureKeyCredential(process.env.AZURE_OPENAI_API_KEY),
-      {
-        apiVersion: "2024-12-01-preview"
-      }
-    );
-    console.log('✅ Azure OpenAI client initialized successfully');
+  const mongoUri = process.env.MONGO_URI;
 
-    // Initialize memory service with error handling
+  if (!mongoUri) {
+    console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
+  } else {
     try {
-      memoryService = new AdvancedMemoryService(process.env.MONGO_URI);
+      console.log('Initializing AdvancedMemoryService...');
+      memoryService = new AdvancedMemoryService(mongoUri);
       await memoryService.initialize();
-      console.log('✅ Memory service initialized successfully');
+      console.log('✅ AdvancedMemoryService initialized successfully.');
       
-      // Add sample memories for demo
+      // Initialize sample memories for default user
       await initializeSampleMemories();
-    } catch (memoryError) {
-      console.warn('⚠️ Memory service initialization failed:', memoryError.message);
-      console.log('Continuing without memory service...');
-      memoryService = null;
+      
+      // Load analytics from the database
+      await loadAnalyticsCache();
+    } catch (error) {
+      console.error('❌ Failed to initialize AdvancedMemoryService:', error.message);
+      // Continue without memory service
     }
-
-    // Enhanced chat endpoint is now defined outside the async function
-
-    // Web search decisions endpoint
-    app.get('/api/analytics/search-decisions', (req, res) => {
-      res.json({
-        totalSearches: totalWebSearches,
-        searchRate: totalChats > 0 ? (totalWebSearches / totalChats * 100).toFixed(1) + '%' : '0%'
-      });
-    });
-
-  } catch (error) {
-    console.error('Server initialization failed:', error);
-    process.exit(1);
   }
+  
+  if (!AZURE_OPENAI_ENDPOINT || !AZURE_OPENAI_API_KEY) {
+    console.warn('⚠️ AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY not set. Azure OpenAI integration will be disabled.');
+  } else {
+    try {
+      console.log('Initializing Azure OpenAI client...');
+      console.log('Endpoint:', AZURE_OPENAI_ENDPOINT);
+      console.log('Deployment:', AZURE_OPENAI_DEPLOYMENT);
+      console.log('API Version:', "2024-12-01-preview");
+      
+      azureOpenAIClient = new OpenAIClient(
+        AZURE_OPENAI_ENDPOINT,
+        new AzureKeyCredential(AZURE_OPENAI_API_KEY),
+        {
+          apiVersion: "2024-12-01-preview"
+        }
+      );
+      console.log('✅ Azure OpenAI client initialized successfully');
+    } catch (openaiError) {
+      console.error('❌ Failed to initialize Azure OpenAI client:', openaiError.message);
+      azureOpenAIClient = null;
+    }
+  }
+
+  // Enhanced chat endpoint is now defined outside the async function
+
+  // Web search decisions endpoint
+  app.get('/api/analytics/search-decisions', (req, res) => {
+    res.json({
+      totalSearches: totalWebSearches,
+      searchRate: totalChats > 0 ? (totalWebSearches / totalChats * 100).toFixed(1) + '%' : '0%'
+    });
+  });
+
 }
 
 // Start the server immediately

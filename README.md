@@ -55,6 +55,22 @@ AIMCS is an advanced AI-powered chat system with memory, analytics, and multimod
 - **Memory Analytics**: Aggregated conversation data and trending topics
 - **Real-time Caching**: In-memory analytics cache for instant responses
 
+## ⚙️ Deployment Configuration
+
+Before deploying the backend, you must set the `MONGO_URI` environment variable in your terminal. This is required for the backend to connect to your MongoDB Atlas database.
+
+**PowerShell:**
+```powershell
+$env:MONGO_URI="<YOUR_MONGODB_ATLAS_CONNECTION_STRING>"
+```
+
+**Bash/Zsh:**
+```bash
+export MONGO_URI="<YOUR_MONGODB_ATLAS_CONNECTION_STRING>"
+```
+
+Replace `<YOUR_MONGODB_ATLAS_CONNECTION_STRING>` with your actual connection string from the Atlas portal. The deployment scripts use this variable to configure the Azure Container App. If this variable is not set, the backend will fail to connect to the database.
+
 ## 🚀 Quick Start
 
 ### Prerequisites

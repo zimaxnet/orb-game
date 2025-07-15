@@ -1,5 +1,15 @@
 # AIMCS - AI Multimodal Customer System
 
+---
+
+## 🆕 Changelog
+
+### 2024-07-15
+- Fixed a bug where the memory export endpoint (`/api/memory/export`) returned an empty array despite existing memories. The backend now correctly retrieves and exports all stored memories.
+- If the Memory Panel does not show memories, verify the backend is running the latest code and that the `/api/memory/export` endpoint returns data. Use `curl https://api.aimcs.net/api/memory/export` to check.
+
+---
+
 AIMCS is an advanced AI-powered chat system with memory, analytics, and multimodal capabilities, deployed on Azure with a React frontend and Node.js backend.
 
 ## 🚀 Features

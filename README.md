@@ -4,6 +4,9 @@
 
 ## 🆕 Changelog
 
+### 2024-07-16
+- Added a new **Memory Trivia** mini-game accessible from the Control Panel. Compete with yourself by guessing answers from your past conversations!
+
 ### 2024-07-15
 - Fixed a bug where the memory export endpoint (`/api/memory/export`) returned an empty array despite existing memories. The backend now correctly retrieves and exports all stored memories.
 - If the Memory Panel does not show memories, verify the backend is running the latest code and that the `/api/memory/export` endpoint returns data. Use `curl https://api.aimcs.net/api/memory/export` to check.
@@ -33,6 +36,7 @@ AIMCS is an advanced AI-powered chat system with memory, analytics, and multimod
 - **Navigation Improvements**: Easy navigation between chat, controls, and analytics
 - **Memory Panel**: Browse, search, and continue conversations
 - **Control Panel**: Real-time system status and quick actions
+- **Memory Trivia Game**: Fun quiz that tests knowledge of stored memories 🎮
 - **Responsive Design**: Works seamlessly on desktop and mobile
 
 ## 🏗️ Architecture
@@ -139,6 +143,9 @@ npm run build
 - **Modal Actions**: Consistent navigation across all panels
 - **Quick Access**: Easy switching between chat and analytics
 - **Responsive Design**: Works on all screen sizes
+
+### Quick Games
+- **Memory Trivia**: Guess the correct answer to random memory questions and build your high score!
 
 ### Analytics Dashboard
 - **Overview Stats**: Total conversations, web searches, memory usage

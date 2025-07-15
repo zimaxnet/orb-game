@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import ReactWordcloud from 'react-wordcloud';
 import './ControlPanel.css';
+import MemoryTrivia from './MemoryTrivia';
 
 const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemory, translations }) => {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [analyticsData, setAnalyticsData] = useState(null);
+  const [wordCloudData, setWordCloudData] = useState([]);
   const [showSettings, setShowSettings] = useState(false);
   const [showMemory, setShowMemory] = useState(false);
   const [memoryProfile, setMemoryProfile] = useState(null);
@@ -16,6 +19,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
     "Amazing: I can generate audio responses for you! 🔊"
   ]);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
+  const [showTrivia, setShowTrivia] = useState(false);
 
   // Update time every second
   useEffect(() => {
@@ -35,10 +39,39 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
 
   const fetchAnalytics = async () => {
     setShowAnalytics(true);
+    setAnalyticsData(null); // Reset on open
+    setWordCloudData([]);
+
     try {
-      const res = await fetch('https://api.aimcs.net/api/analytics/summary');
-      const data = await res.json();
-      setAnalyticsData(data);
+      // Fetch summary data
+      const summaryRes = await fetch('https://api.aimcs.net/api/analytics/summary');
+      const summaryData = await summaryRes.json();
+      setAnalyticsData(summaryData);
+
+      // Fetch full memory export for word cloud
+      const memoryRes = await fetch('https://api.aimcs.net/api/memory/export');
+      const memoryData = await memoryRes.json();
+      
+      // Process data for word cloud
+      const text = memoryData.map(mem => mem.content).join(' ');
+      const words = text.split(/[\\s,.-?!]+/);
+      const frequencies = {};
+      const stopWords = new Set(['the', 'a', 'an', 'is', 'are', 'in', 'on', 'to', 'and', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'what', 'who', 'when', 'where', 'why', 'how', 'me', 'my', 'your', 'our', 'their']);
+
+      words.forEach(word => {
+        const lowerWord = word.toLowerCase();
+        if (lowerWord && !stopWords.has(lowerWord) && isNaN(lowerWord)) {
+          frequencies[lowerWord] = (frequencies[lowerWord] || 0) + 1;
+        }
+      });
+
+      const processedData = Object.keys(frequencies).map(key => ({
+        text: key,
+        value: frequencies[key]
+      })).sort((a, b) => b.value - a.value).slice(0, 100); // Top 100 words
+
+      setWordCloudData(processedData);
+
     } catch {
       setAnalyticsData({ error: 'Failed to load analytics.' });
     }
@@ -97,6 +130,10 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
               </button>
               <button className="control-btn" onClick={fetchMemory}>
                 <span>🧠 Memory</span>
+                <span className="action-icon">→</span>
+              </button>
+              <button className="control-btn" onClick={() => setShowTrivia(true)}>
+                <span>🎮 Trivia</span>
                 <span className="action-icon">→</span>
               </button>
             </div>
@@ -186,6 +223,21 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
                       </div>
                     </div>
                   </div>
+
+                  {/* Word Cloud */}
+                  {wordCloudData.length > 0 && (
+                    <div className="analytics-section">
+                      <h4>☁️ Memory Cloud</h4>
+                      <div className="wordcloud-container">
+                        <ReactWordcloud words={wordCloudData} options={{
+                          rotations: 2,
+                          rotationAngles: [-90, 0],
+                          fontSizes: [20, 60],
+                          padding: 1,
+                        }} />
+                      </div>
+                    </div>
+                  )}
 
                   {/* Popular Topics */}
                   <div className="analytics-section">
@@ -360,6 +412,14 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
             </div>
           </div>
         </div>
+      )}
+
+      {/* Trivia Modal */}
+      {showTrivia && (
+        <MemoryTrivia
+          onBack={() => setShowTrivia(false)}
+          onClose={onClose}
+        />
       )}
     </>
   );

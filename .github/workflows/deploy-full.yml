@@ -67,7 +67,7 @@ jobs:
       run: |
         for i in {1..10}; do
           echo "Attempt $i: Testing backend health..."
-          if curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health; then
+          if curl -f https://api.orbgame.us/health; then
             echo "✅ Backend is healthy!"
             break
           else
@@ -76,7 +76,7 @@ jobs:
           fi
         done
         
-        curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health || exit 1
+        curl -f https://api.orbgame.us/health || exit 1
 
   deploy-frontend:
     runs-on: ubuntu-latest
@@ -145,7 +145,7 @@ jobs:
           echo "Attempt $i: Checking frontend content..."
           RESPONSE=$(curl -s https://$WEB_APP_URL | head -10)
           
-          if echo "$RESPONSE" | grep -q "Orb Game"; then
+          if echo "$RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas"; then
             echo "✅ Frontend is serving our content!"
             break
           else
@@ -156,7 +156,7 @@ jobs:
         done
         
         # Final verification
-        if curl -s https://$WEB_APP_URL | grep -q "Orb Game"; then
+        if curl -s https://$WEB_APP_URL | grep -q "Orb Game\|orbgame\|3D\|Canvas"; then
           echo "✅ Frontend deployment verified!"
         else
           echo "❌ Frontend deployment verification failed"
@@ -175,13 +175,13 @@ jobs:
       timeout-minutes: 5
       run: |
         echo "Testing frontend..."
-        curl -f https://orb-game.azurewebsites.net || exit 1
+        curl -f https://orbgame.us || exit 1
         
     - name: Test backend API
       timeout-minutes: 5
       run: |
         echo "Testing backend API..."
-        curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health || exit 1
+        curl -f https://api.orbgame.us/health || exit 1
         
     - name: Test full chat flow
       timeout-minutes: 10

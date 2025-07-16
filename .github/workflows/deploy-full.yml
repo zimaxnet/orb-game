@@ -67,7 +67,7 @@ jobs:
       run: |
         for i in {1..10}; do
           echo "Attempt $i: Testing backend health..."
-          if curl -f https://api.aimcs.net/health; then
+          if curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health; then
             echo "✅ Backend is healthy!"
             break
           else
@@ -76,7 +76,7 @@ jobs:
           fi
         done
         
-        curl -f https://api.aimcs.net/health || exit 1
+        curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health || exit 1
 
   deploy-frontend:
     runs-on: ubuntu-latest
@@ -127,11 +127,13 @@ jobs:
           --src dist.zip
         
     - name: Wait for frontend deployment
+      timeout-minutes: 5
       run: |
         echo "Waiting for frontend deployment to complete..."
         sleep 120
         
     - name: Verify frontend deployment
+      timeout-minutes: 10
       run: |
         echo "Verifying frontend deployment..."
         
@@ -170,21 +172,24 @@ jobs:
     
     steps:
     - name: Test frontend accessibility
+      timeout-minutes: 5
       run: |
         echo "Testing frontend..."
         curl -f https://orb-game.azurewebsites.net || exit 1
         
     - name: Test backend API
+      timeout-minutes: 5
       run: |
         echo "Testing backend API..."
-        curl -f https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/health || exit 1
+        curl -f https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health || exit 1
         
     - name: Test full chat flow
+      timeout-minutes: 10
       run: |
         echo "Testing complete chat flow..."
         
         # Test chat endpoint
-        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
+        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Hello, this is a deployment test"}')
           
@@ -197,10 +202,11 @@ jobs:
         fi
         
     - name: Test web search functionality
+      timeout-minutes: 10
       run: |
         echo "Testing web search..."
         
-        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
+        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "What is the latest news today?", "useWebSearch": "auto"}')
           
@@ -213,11 +219,12 @@ jobs:
         fi
         
     - name: Test memory system functionality
+      timeout-minutes: 15
       run: |
         echo "Testing memory system..."
         
         # Test memory statistics endpoint
-        MEMORY_STATS=$(curl -s https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/memory/stats)
+        MEMORY_STATS=$(curl -s https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/memory/stats)
         if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
           echo "✅ Memory stats endpoint working"
         else
@@ -227,7 +234,7 @@ jobs:
         fi
         
         # Test memory search endpoint
-        MEMORY_SEARCH=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/memory/search \
+        MEMORY_SEARCH=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/memory/search \
           -H "Content-Type: application/json" \
           -d '{"query": "test", "userId": "deployment-test"}')
           
@@ -241,11 +248,11 @@ jobs:
         
         # Test memory caching (send same message twice)
         echo "Testing memory caching..."
-        FIRST_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
+        FIRST_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Memory test question", "userId": "deployment-test"}')
           
-        SECOND_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
+        SECOND_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Memory test question", "userId": "deployment-test"}')
           
@@ -256,12 +263,13 @@ jobs:
         fi
         
     - name: Performance test
+      timeout-minutes: 5
       run: |
         echo "Running performance test..."
         
         # Test response time
         START_TIME=$(date +%s)
-        curl -s -X POST https://api.aimcs.net/api/chat \
+        curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Quick test"}' > /dev/null
         END_TIME=$(date +%s)
@@ -288,8 +296,8 @@ jobs:
            [ ${{ needs.deploy-frontend.result }} == 'success' ] && \
            [ ${{ needs.system-test.result }} == 'success' ]; then
           echo "🎉 Full deployment successful!"
-          echo "Frontend: https://aimcs.net"
-          echo "Backend: https://api.aimcs.net"
+          echo "Frontend: https://orb-game.azurewebsites.net"
+          echo "Backend: https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io"
           echo "Memory System: ✅ Active"
           echo "Memory Panel: 🧠 Available in UI"
           echo "Memory API: /api/memory/* endpoints"

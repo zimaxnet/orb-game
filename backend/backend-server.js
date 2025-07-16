@@ -606,3 +606,54 @@ process.on('SIGINT', async () => {
   if (memoryService) await memoryService.close();
   process.exit();
 });
+
+// Sample topics data (in real app, fetch from DB)
+const sampleTopics = [
+  { id: 1, category: 'Technology', headline: 'AI Helps Doctors Diagnose Faster', summary: 'New AI breakthrough in healthcare.', color: '#00ff88' },
+  { id: 2, category: 'Science', headline: 'New Species Discovered in Ocean', summary: 'Amazing underwater find.', color: '#3366ff' },
+  { id: 3, category: 'Art', headline: 'Street Art Transforms City', summary: 'Creative urban renewal.', color: '#ff6b6b' },
+  { id: 4, category: 'Nature', headline: 'Bee Population Recovers', summary: 'Good news for the environment.', color: '#4ecdc4' },
+  { id: 5, category: 'Sports', headline: 'Athletes Break Records', summary: 'Inspiring athletic achievements.', color: '#ffa726' },
+  { id: 6, category: 'Music', headline: 'New Instrument Invented', summary: 'Innovation in sound.', color: '#ab47bc' },
+  { id: 7, category: 'Space', headline: 'Mars Mission Finds Water', summary: 'Step closer to colonization.', color: '#7c4dff' },
+  { id: 8, category: 'Innovation', headline: 'Clean Energy Breakthrough', summary: 'Sustainable power for all.', color: '#26c6da' }
+];
+
+// Get topics
+app.get('/api/orb/topics', async (req, res) => {
+  res.json({ topics: sampleTopics });
+});
+
+// Generate TTS for topic
+app.post('/api/orb/tts', async (req, res) => {
+  const { topicId } = req.body;
+  const topic = sampleTopics.find(t => t.id === topicId);
+  if (!topic) return res.status(404).json({ error: 'Topic not found' });
+
+  try {
+    const speechConfig = speechsdk.SpeechConfig.fromSubscription(process.env.AZURE_OPENAI_TTS_API_KEY, 'eastus2');
+    speechConfig.speechSynthesisVoiceName = 'en-US-AvaNeural';
+    const synthesizer = new speechsdk.SpeechSynthesizer(speechConfig);
+
+    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+      <voice name="en-US-AvaNeural">
+        ${topic.headline}: ${topic.summary}
+      </voice>
+    </speak>`;
+
+    synthesizer.speakSsmlAsync(ssml, result => {
+      if (result.reason === speechsdk.ResultReason.SynthesizingAudioCompleted) {
+        res.json({ audioData: Buffer.from(result.audioData).toString('base64') });
+      } else {
+        res.status(500).json({ error: 'TTS generation failed' });
+      }
+      synthesizer.close();
+    }, error => {
+      console.error(error);
+      synthesizer.close();
+      res.status(500).json({ error: 'TTS error' });
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});

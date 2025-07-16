@@ -101,10 +101,17 @@ jobs:
       run: |
         npm run build
         
+    - name: Zip build output
+      run: |
+        cd dist
+        zip -r ../dist.zip .
+        cd ..
+        
     - name: Verify build output
       run: |
         ls -la dist/
         test -f dist/index.html || exit 1
+        test -f dist.zip || exit 1
         
     - name: Login to Azure
       uses: azure/login@v1

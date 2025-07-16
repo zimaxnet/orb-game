@@ -29,11 +29,11 @@ if ! az account show &> /dev/null; then
 fi
 
 # Configuration variables (you can override these)
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
-WEB_APP_NAME=${WEB_APP_NAME:-"aimcs"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"orb-game-rg-eastus2"}
+WEB_APP_NAME=${WEB_APP_NAME:-"orb-game"}
 LOCATION=${LOCATION:-"eastus2"}
 NODE_VERSION=${NODE_VERSION:-"20-lts"}
-OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"aimcs-foundry"}
+OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"orb-game-foundry"}
 
 echo "📋 Deployment Configuration:"
 echo "   Resource Group: $RESOURCE_GROUP"
@@ -117,7 +117,7 @@ ENV_SETTINGS="WEBSITE_NODE_DEFAULT_VERSION=${NODE_VERSION} NPM_CONFIG_PRODUCTION
 
 # Add Azure OpenAI environment variables if available
 if [ -n "$VITE_AZURE_OPENAI_ENDPOINT" ]; then
-  ENV_SETTINGS="$ENV_SETTINGS VITE_AZURE_OPENAI_ENDPOINT=\"https://aimcs-foundry.cognitiveservices.azure.com/\""
+  ENV_SETTINGS="$ENV_SETTINGS VITE_AZURE_OPENAI_ENDPOINT=\"https://orb-game-foundry.cognitiveservices.azure.com/\""
 fi
 
 if [ -n "$VITE_AZURE_OPENAI_API_KEY" ]; then

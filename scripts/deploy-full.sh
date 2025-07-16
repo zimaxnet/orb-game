@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# AIMCS Full Deployment Script
+# Orb Game Full Deployment Script
 # This script deploys both frontend and backend to Azure
 
 set -e
 
-echo "🚀 AIMCS Full Deployment Script"
-echo "================================"
+echo "🚀 Orb Game Full Deployment Script"
+echo "=================================="
 echo ""
 
 # Check if Azure CLI is installed
@@ -23,11 +23,11 @@ if ! az account show &> /dev/null; then
 fi
 
 # Configuration variables
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
-FRONTEND_APP_NAME=${FRONTEND_APP_NAME:-"aimcs"}
-BACKEND_APP_NAME=${BACKEND_APP_NAME:-"aimcs-backend-eastus2"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"orb-game-rg-eastus2"}
+FRONTEND_APP_NAME=${FRONTEND_APP_NAME:-"orb-game"}
+BACKEND_APP_NAME=${BACKEND_APP_NAME:-"orb-game-backend-eastus2"}
 LOCATION=${LOCATION:-"eastus2"}
-REGISTRY_NAME=${REGISTRY_NAME:-"aimcsregistry"}
+REGISTRY_NAME=${REGISTRY_NAME:-"orbgameregistry"}
 
 echo "📋 Deployment Configuration:"
 echo "   Resource Group: $RESOURCE_GROUP"
@@ -84,7 +84,7 @@ fi
 
 # Build backend Docker image
 echo "🐳 Building backend Docker image..."
-docker build -f backend-Dockerfile -t $REGISTRY_NAME.azurecr.io/aimcs-backend:latest .
+docker build -f backend/backend-Dockerfile -t $REGISTRY_NAME.azurecr.io/orb-game-backend:latest ./backend
 
 # Login to Azure Container Registry
 echo "🔐 Logging into Azure Container Registry..."
@@ -92,7 +92,7 @@ az acr login --name $REGISTRY_NAME
 
 # Push Docker image
 echo "📤 Pushing Docker image..."
-docker push $REGISTRY_NAME.azurecr.io/aimcs-backend:latest
+docker push $REGISTRY_NAME.azurecr.io/orb-game-backend:latest
 
 # Deploy to Azure Container Apps
 echo "🚀 Deploying to Azure Container Apps..."

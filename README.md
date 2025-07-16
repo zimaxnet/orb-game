@@ -59,6 +59,82 @@ AIMCS is an advanced AI-powered chat system with memory, analytics, and multimod
 - **Memory Analytics**: Aggregated conversation data and trending topics
 - **Real-time Caching**: In-memory analytics cache for instant responses
 
+## ☁️ Azure Infrastructure
+
+### Primary Resource Group: `orb-game-rg-eastus2`
+**Location**: East US 2 (Virginia)
+
+### Frontend Deployment
+- **Service**: Azure Web App
+- **Name**: `orb-game`
+- **Plan**: `orb-game-plan` (B1 Linux)
+- **Runtime**: Node.js 20 LTS
+- **URL**: https://orb-game.azurewebsites.net
+- **Deployment**: GitHub Actions with Azure service principal
+
+### Backend Deployment
+- **Service**: Azure Container Apps
+- **Name**: `orb-game-backend-eastus2`
+- **Environment**: `orb-game-env`
+- **Registry**: `orbgameregistry` (Azure Container Registry)
+- **Image**: `orbgameregistry.azurecr.io/orb-game-backend:latest`
+- **Scaling**: Auto-scaling with min replicas
+- **URL**: https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io
+
+### Container Registry
+- **Name**: `orbgameregistry`
+- **Type**: Azure Container Registry
+- **Location**: East US 2
+- **Authentication**: Service principal with push/pull permissions
+
+### Monitoring & Logging
+- **Workspace**: `workspace-orbgamergeastus2sCvX`
+- **Service**: Azure Monitor (Operational Insights)
+- **Log Analytics**: Centralized logging for both frontend and backend
+
+### Security & Access
+- **Service Principal**: `orb-game-sp` with Contributor role on resource group
+- **GitHub Secrets**: All credentials stored securely in GitHub Actions
+- **Environment Variables**: Configured via Azure Web App settings and Container Apps
+
+### Network Configuration
+- **Frontend**: Public web app with custom domain support
+- **Backend**: Container app with ingress enabled
+- **CORS**: Configured for cross-origin requests between frontend and backend
+- **SSL**: Automatic HTTPS with Azure-managed certificates
+
+### Deployment Pipeline
+- **CI/CD**: GitHub Actions with Azure service principal
+- **Build**: Vite build for frontend, Docker build for backend
+- **Deploy**: Automated deployment on push to main branch
+- **Secrets**: All Azure credentials managed via GitHub Secrets
+
+---
+
+### Legacy Infrastructure: `aimcs-rg-eastus2`
+**Location**: East US 2 (Virginia)
+
+### CDN & Global Distribution
+- **Service**: Azure Front Door (CDN)
+- **Profile**: `zimax-fd`
+- **SKU**: Standard_AzureFrontDoor
+- **Location**: Global
+- **Endpoints**: 
+  - `orb-game-endpoint` (for Orb Game)
+  - `aimcs-endpoint` (for AIMCS)
+  - `zimax` (custom endpoint)
+- **Purpose**: Global content delivery, SSL termination, custom domains
+
+### Additional Services
+- **Container Registry**: `aimcsregistry`
+- **Cognitive Services**: 
+  - `aimcs-openai` (Azure OpenAI)
+  - `aimcs-speech-eastus2` (Speech Services)
+- **Web Apps**: `aimcs` (Static Web App)
+- **Container Apps**: `aimcs-backend-eastus2`
+- **DNS Zone**: `aimcs.net` (custom domain)
+- **SSL Certificates**: `aimcs.net-aimcs`
+
 ## ⚙️ Deployment Configuration
 
 Before deploying the backend, you must set the `MONGO_URI` environment variable in your terminal. This is required for the backend to connect to your MongoDB Atlas database.
@@ -206,8 +282,8 @@ bash scripts/test-memory.sh
 
 ## 🔗 Links
 
-- **Frontend**: https://aimcs.azurewebsites.net
-- **Backend API**: https://api.aimcs.net
+- **Frontend**: https://orb-game.azurewebsites.net
+- **Backend API**: https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io
 - **Azure Portal**: https://portal.azure.com
 - **Documentation**: See individual component READMEs
 

@@ -1,5 +1,5 @@
 {
-  "name": "aimcs-backend",
+  "name": "orb-game-backend",
   "version": "1.0.0",
   "description": "AIMCS Backend API",
   "main": "backend-server.js",

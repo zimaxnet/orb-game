@@ -99,7 +99,7 @@ echo "🚀 Deploying to Azure Container Apps..."
 az containerapp update \
     --name $BACKEND_APP_NAME \
     --resource-group $RESOURCE_GROUP \
-    --image $REGISTRY_NAME.azurecr.io/aimcs-backend:latest \
+    --image $REGISTRY_NAME.azurecr.io/orb-game-backend:latest \
     --output none
 
 echo ""

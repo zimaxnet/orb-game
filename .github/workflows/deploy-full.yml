@@ -7,11 +7,11 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_RESOURCE_GROUP: aimcs-rg-eastus2
-  BACKEND_RESOURCE_GROUP: aimcs-rg-eastus2
-  CONTAINER_APP_NAME: aimcs-backend-eastus2
-  CONTAINER_REGISTRY: aimcsregistry
-  IMAGE_NAME: aimcs-backend
+  FRONTEND_RESOURCE_GROUP: orb-game-rg-eastus2
+  BACKEND_RESOURCE_GROUP: orb-game-rg-eastus2
+  CONTAINER_APP_NAME: orb-game-backend-eastus2
+  CONTAINER_REGISTRY: orbgameregistry
+  IMAGE_NAME: orb-game-backend
 
 jobs:
   deploy-backend:
@@ -116,11 +116,11 @@ jobs:
         # Install Static Web Apps CLI
         npm install -g @azure/static-web-apps-cli
         
-        # Get deployment token
-        DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "properties.apiKey" --output tsv)
-        
-        # Deploy using Static Web Apps CLI
-        swa deploy dist --deployment-token $DEPLOYMENT_TOKEN --env production
+        # Deploy to Azure Web App
+        az webapp deployment source config-zip \
+          --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} \
+          --name orb-game \
+          --src dist.zip
         
     - name: Wait for frontend deployment
       run: |
@@ -131,15 +131,15 @@ jobs:
       run: |
         echo "Verifying frontend deployment..."
         
-        # Get Static Web App URL
-        STATIC_WEB_APP_URL=$(az staticwebapp show --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostname" --output tsv)
+        # Get Web App URL
+        WEB_APP_URL=$(az webapp show --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
         
         # Check if the site is serving our content
         for i in {1..5}; do
           echo "Attempt $i: Checking frontend content..."
-          RESPONSE=$(curl -s https://$STATIC_WEB_APP_URL | head -10)
+          RESPONSE=$(curl -s https://$WEB_APP_URL | head -10)
           
-          if echo "$RESPONSE" | grep -q "AIMCS"; then
+          if echo "$RESPONSE" | grep -q "Orb Game"; then
             echo "✅ Frontend is serving our content!"
             break
           else
@@ -149,7 +149,7 @@ jobs:
         done
         
         # Final verification
-        if curl -s https://$STATIC_WEB_APP_URL | grep -q "AIMCS"; then
+        if curl -s https://$WEB_APP_URL | grep -q "Orb Game"; then
           echo "✅ Frontend deployment verified!"
         else
           echo "❌ Frontend deployment verification failed"
@@ -165,19 +165,19 @@ jobs:
     - name: Test frontend accessibility
       run: |
         echo "Testing frontend..."
-        curl -f https://aimcs.net || exit 1
+        curl -f https://orb-game.azurewebsites.net || exit 1
         
     - name: Test backend API
       run: |
         echo "Testing backend API..."
-        curl -f https://api.aimcs.net/health || exit 1
+        curl -f https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/health || exit 1
         
     - name: Test full chat flow
       run: |
         echo "Testing complete chat flow..."
         
         # Test chat endpoint
-        RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Hello, this is a deployment test"}')
           
@@ -193,7 +193,7 @@ jobs:
       run: |
         echo "Testing web search..."
         
-        RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "What is the latest news today?", "useWebSearch": "auto"}')
           
@@ -210,7 +210,7 @@ jobs:
         echo "Testing memory system..."
         
         # Test memory statistics endpoint
-        MEMORY_STATS=$(curl -s https://api.aimcs.net/api/memory/stats)
+        MEMORY_STATS=$(curl -s https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/memory/stats)
         if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
           echo "✅ Memory stats endpoint working"
         else
@@ -220,7 +220,7 @@ jobs:
         fi
         
         # Test memory search endpoint
-        MEMORY_SEARCH=$(curl -s -X POST https://api.aimcs.net/api/memory/search \
+        MEMORY_SEARCH=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/memory/search \
           -H "Content-Type: application/json" \
           -d '{"query": "test", "userId": "deployment-test"}')
           
@@ -234,11 +234,11 @@ jobs:
         
         # Test memory caching (send same message twice)
         echo "Testing memory caching..."
-        FIRST_RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+        FIRST_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Memory test question", "userId": "deployment-test"}')
           
-        SECOND_RESPONSE=$(curl -s -X POST https://api.aimcs.net/api/chat \
+        SECOND_RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Memory test question", "userId": "deployment-test"}')
           

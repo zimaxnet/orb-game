@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDisturbMaterial } from '@react-three/drei';
+import { OrbitControls, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
 import { getTopics, generateTTS } from '../api/orbApi'; // We'll implement this
@@ -47,7 +47,7 @@ function OrbGame() {
         
         // Central Orb
         <Sphere args={[1, 64, 64]} position={[0, 0, 0]}>
-          <MeshDisturbMaterial color="#3366ff" speed={1} />
+          <meshStandardMaterial color="#3366ff" emissive="#222244" emissiveIntensity={0.5} />
         </Sphere>
         
         // Orbiting Satellites

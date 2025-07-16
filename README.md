@@ -337,8 +337,8 @@ bash scripts/test-memory.sh
 
 ## 🔗 Links
 
-- **Frontend**: https://orb-game.azurewebsites.net
-- **Backend API**: https://orb-game-backend-eastus2.greenwave-bb2ac4ae.eastus2.azurecontainerapps.io
+- **Frontend**: https://orbgame.us
+- **Backend API**: https://api.orbgame.us
 - **Azure Portal**: https://portal.azure.com
 - **Documentation**: See individual component READMEs
 

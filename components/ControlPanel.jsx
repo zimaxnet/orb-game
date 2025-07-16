@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactWordcloud from 'react-wordcloud';
+import ReactWordcloud from 'react-wordcloud-plus';
 import './ControlPanel.css';
 import MemoryTrivia from './MemoryTrivia';
 

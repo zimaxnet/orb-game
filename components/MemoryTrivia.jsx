@@ -9,7 +9,7 @@ const MemoryTrivia = ({ onBack, onClose }) => {
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(0);
 
-  const BACKEND_URL = 'https://api.aimcs.net';
+  const BACKEND_URL = 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
 
   // Fetch memories once on mount
   useEffect(() => {

@@ -25,7 +25,7 @@ const MemoryPanel = ({ isOpen, onClose, onContinueConversation }) => {
   const [showContinueInput, setShowContinueInput] = useState(false);
   const [activeMemory, setActiveMemory] = useState(null);
 
-  const BACKEND_URL = 'https://api.aimcs.net';
+  const BACKEND_URL = 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
 
   useEffect(() => {
     if (isOpen) {

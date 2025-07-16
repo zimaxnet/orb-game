@@ -16,8 +16,8 @@ const ChatInterface = () => {
   const inputRef = useRef(null);
   const audioRefs = useRef({}); // Store audio elements for each message
   
-  // Use Azure default backend URL for now
-  const BACKEND_URL = 'https://api.aimcs.net';
+  // Use Azure Container App backend URL
+const BACKEND_URL = 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
 
   const translations = {
     en: {

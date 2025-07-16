@@ -1,4 +1,53 @@
-# AIMCS - AI Multimodal Customer System
+# Orb Game - AI Multimodal Gaming System
+
+---
+
+## 🚨 **IMPORTANT: Developer Setup Notes**
+
+### **Required Name Changes for New Developers**
+
+When setting up this project for the first time, you **MUST** update the following names to match your own Azure resources:
+
+#### **1. Azure Resource Names (Critical)**
+- **Resource Group**: Change `orb-game-rg-eastus2` to your resource group name
+- **Container App**: Change `orb-game-backend-eastus2` to your container app name
+- **Web App**: Change `orb-game` to your web app name
+- **Container Registry**: Change `orbgameregistry` to your registry name
+
+#### **2. Backend URL Configuration**
+Update these files to use your Azure Container App URL:
+- `components/ChatInterface.jsx` - Line 19
+- `components/MemoryPanel.jsx` - Line 27
+- `components/MemoryTrivia.jsx` - Line 11
+- `components/OrbGame.jsx` - Line 172
+
+**Current URL**: `https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io`
+**Replace with**: Your Azure Container App URL
+
+#### **3. Custom Domain (Optional)**
+- **Domain**: `api.orbgame.us` - Change to your custom domain
+- **Certificate**: Must be configured in Azure Container App
+- **DNS**: Point your domain to the Azure Container App
+
+#### **4. GitHub Secrets**
+Ensure these secrets are set in your GitHub repository:
+- `AZURE_CREDENTIALS`
+- `AZURE_WEBAPP_PUBLISH_PROFILE`
+- `AZURE_OPENAI_ENDPOINT`
+- `AZURE_OPENAI_API_KEY`
+- `AZURE_OPENAI_DEPLOYMENT`
+- `AZURE_OPENAI_TTS_DEPLOYMENT`
+- `PERPLEXITY_API_KEY`
+- `MONGO_URI`
+
+#### **5. Environment Variables**
+Update Azure Container App environment variables:
+- `MONGO_URI`: Your MongoDB Atlas connection string
+- `AZURE_OPENAI_ENDPOINT`: Your Azure OpenAI endpoint
+- `AZURE_OPENAI_API_KEY`: Your Azure OpenAI API key
+- `AZURE_OPENAI_DEPLOYMENT`: Your Azure OpenAI deployment name
+- `AZURE_OPENAI_TTS_DEPLOYMENT`: Your Azure OpenAI TTS deployment name
+- `PERPLEXITY_API_KEY`: Your Perplexity API key
 
 ---
 
@@ -7,13 +56,19 @@
 ### 2024-07-16
 - Added a new **Memory Trivia** mini-game accessible from the Control Panel. Compete with yourself by guessing answers from your past conversations!
 
+### 2024-07-16
+- **MAJOR UPDATE**: Converted from AIMCS to Orb Game branding throughout the application
+- Updated all frontend components to use Azure Container App backend URL
+- Fixed deployment verification to look for "Orb Game" instead of "AIMCS"
+- Added comprehensive developer setup notes for new developers
+
 ### 2024-07-15
 - Fixed a bug where the memory export endpoint (`/api/memory/export`) returned an empty array despite existing memories. The backend now correctly retrieves and exports all stored memories.
-- If the Memory Panel does not show memories, verify the backend is running the latest code and that the `/api/memory/export` endpoint returns data. Use `curl https://api.aimcs.net/api/memory/export` to check.
+- If the Memory Panel does not show memories, verify the backend is running the latest code and that the `/api/memory/export` endpoint returns data. Use `curl https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/memory/export` to check.
 
 ---
 
-AIMCS is an advanced AI-powered chat system with memory, analytics, and multimodal capabilities, deployed on Azure with a React frontend and Node.js backend.
+Orb Game is an advanced AI-powered gaming system with memory, analytics, and multimodal capabilities, deployed on Azure with a React frontend and Node.js backend.
 
 ## 🚀 Features
 

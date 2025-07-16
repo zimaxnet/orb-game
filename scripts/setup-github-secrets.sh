@@ -32,6 +32,7 @@ echo "4. AZURE_OPENAI_API_KEY - Your Azure OpenAI API key"
 echo "5. AZURE_OPENAI_DEPLOYMENT - Your Azure OpenAI deployment name"
 echo "6. AZURE_OPENAI_TTS_DEPLOYMENT - Your Azure OpenAI TTS deployment name"
 echo "7. PERPLEXITY_API_KEY - Your Perplexity API key for web search"
+echo "8. MONGO_URI - Your MongoDB Atlas connection string"
 echo ""
 
 echo "🚀 Setting up secrets..."
@@ -82,6 +83,14 @@ AZURE_OPENAI_TTS_DEPLOYMENT=${AZURE_OPENAI_TTS_DEPLOYMENT:-gpt-4o-mini-tts}
 # Perplexity API Key
 read -p "Perplexity API Key: " PERPLEXITY_API_KEY
 
+# MongoDB URI
+echo ""
+echo "🔑 MongoDB Atlas Connection String:"
+echo "   Format: mongodb+srv://username:password@cluster.mongodb.net/"
+echo "   This will be hidden when typing for security"
+read -s -p "MongoDB URI: " MONGO_URI
+echo ""
+
 echo ""
 echo "🔐 Setting secrets in GitHub..."
 
@@ -93,6 +102,7 @@ set_secret "AZURE_OPENAI_API_KEY" "$AZURE_OPENAI_API_KEY" "Azure OpenAI API key"
 set_secret "AZURE_OPENAI_DEPLOYMENT" "$AZURE_OPENAI_DEPLOYMENT" "Azure OpenAI deployment name"
 set_secret "AZURE_OPENAI_TTS_DEPLOYMENT" "$AZURE_OPENAI_TTS_DEPLOYMENT" "Azure OpenAI TTS deployment name"
 set_secret "PERPLEXITY_API_KEY" "$PERPLEXITY_API_KEY" "Perplexity API key for web search"
+set_secret "MONGO_URI" "$MONGO_URI" "MongoDB Atlas connection string"
 
 echo "✅ All secrets have been set successfully!"
 echo ""

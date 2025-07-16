@@ -21,8 +21,8 @@ const ChatInterface = () => {
 
   const translations = {
     en: {
-      title: 'AIMCS',
-      subtitle: 'AI Multimodal Customer System',
+      title: 'Orb Game',
+      subtitle: 'AI Multimodal Gaming System',
       welcome: 'Welcome! Start a conversation with me.',
       placeholder: 'Type your message...',
       send: 'Send',
@@ -44,8 +44,8 @@ const ChatInterface = () => {
       readingAlong: '📖 Reading along with audio...'
     },
     es: {
-      title: 'AIMCS',
-      subtitle: 'Sistema de Cliente Multimodal con IA',
+      title: 'Orb Game',
+      subtitle: 'Sistema de Juego Multimodal con IA',
       welcome: '¡Bienvenido! Comienza una conversación conmigo.',
       placeholder: 'Escribe tu mensaje...',
       send: 'Enviar',
@@ -80,12 +80,12 @@ const ChatInterface = () => {
 
   // Auto-send welcome message on first load
   useEffect(() => {
-    const hasWelcomed = sessionStorage.getItem('aimcs-welcomed');
+    const hasWelcomed = sessionStorage.getItem('orbgame-welcomed');
     if (!hasWelcomed && messages.length === 0) {
       // Send a proactive greeting
-      const welcomeMessage = "Hey there! 👋 I'm AIMCS, your AI assistant. I'm excited to help you with anything you need! What would you like to explore today?";
-      addMessage('AIMCS AI', welcomeMessage, 'ai');
-      sessionStorage.setItem('aimcs-welcomed', 'true');
+      const welcomeMessage = "Hey there! 👋 I'm Orb Game AI, your gaming assistant. I'm excited to help you with anything you need! What would you like to explore today?";
+      addMessage('Orb Game AI', welcomeMessage, 'ai');
+      sessionStorage.setItem('orbgame-welcomed', 'true');
     }
   }, [messages.length]);
 
@@ -153,7 +153,7 @@ const ChatInterface = () => {
 
       if (response.ok) {
         const data = await response.json();
-        addMessage('AIMCS AI', data.response, 'ai', data.audioData, data.searchResults, data.searchUsed, data.fromMemory);
+        addMessage('Orb Game AI', data.response, 'ai', data.audioData, data.searchResults, data.searchUsed, data.fromMemory);
       } else {
         addMessage('System', 'Sorry, I encountered an error. Please try again.', 'error');
       }
@@ -319,7 +319,7 @@ const ChatInterface = () => {
         {messages.length === 0 ? (
           <div className="welcome-message fade-in">
             <div className="welcome-icon">🚀</div>
-            <h2>Welcome to AIMCS!</h2>
+            <h2>Welcome to Orb Game!</h2>
             <p>Your AI assistant is ready to help you explore, learn, and discover amazing things!</p>
             <div className="welcome-tips">
               <p>💡 <strong>Pro tip:</strong> Try asking me anything - I love learning new things and helping you discover amazing information!</p>
@@ -422,7 +422,7 @@ const ChatInterface = () => {
               <div className="message ai fade-in">
                 <div className="message-content">
                   <div className="message-sender">
-                    AIMCS AI
+                    Orb Game AI
                   </div>
                   <div className="typing-indicator">
                     <div className="typing-dot"></div>

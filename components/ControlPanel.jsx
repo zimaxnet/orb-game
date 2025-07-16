@@ -12,7 +12,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
   const [memoryProfile, setMemoryProfile] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [funFacts, setFunFacts] = useState([
-    "Did you know? AIMCS can remember up to 1000 conversations! 🧠",
+    "Did you know? Orb Game can remember up to 1000 conversations! 🧠",
     "Fun fact: Your AI assistant gets smarter with every chat! 🚀",
     "Pro tip: Try asking me about current events - I love web searches! 🌐",
     "Cool feature: I can speak in multiple languages! 🌍",
@@ -95,7 +95,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
       <div className="control-panel-overlay" onClick={onClose}></div>
       <div className={`control-panel ${isOpen ? 'open' : ''}`}>
         <div className="control-panel-header">
-          <h3>🎮 AIMCS Controls</h3>
+          <h3>🎮 Orb Game Controls</h3>
           <button className="close-controls-btn" onClick={onClose}>×</button>
         </div>
         
@@ -171,7 +171,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
           <div className="control-section">
             <h4>ℹ️ About</h4>
             <div className="version-info">
-              <p>AIMCS v2.1.0</p>
+              <p>Orb Game v2.1.0</p>
               <p>Powered by <a href="https://zimax.net" target="_blank" rel="noopener noreferrer" className="about-link">Zimax AI Labs</a></p>
               <p>Built with ❤️ and React</p>
             </div>
@@ -320,7 +320,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
                     <h4>🎉 Fun Fact</h4>
                     <div className="fun-fact-card">
                       <div className="fun-fact-icon">💡</div>
-                      <p>{analyticsData.funFact || 'AIMCS can remember conversations and continue them later!'}</p>
+                      <p>{analyticsData.funFact || 'Orb Game can remember conversations and continue them later!'}</p>
                     </div>
                   </div>
                 </div>
@@ -371,7 +371,7 @@ const ControlPanel = ({ isOpen, onClose, language, onToggleLanguage, onOpenMemor
       {showMemory && (
         <div className="modal-overlay" onClick={() => setShowMemory(false)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3>🧠 What AIMCS Remembers</h3>
+            <h3>🧠 What Orb Game Remembers</h3>
             {memoryProfile ? (
               memoryProfile.error ? (
                 <p>{memoryProfile.error}</p>

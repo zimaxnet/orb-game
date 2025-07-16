@@ -67,10 +67,10 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Remove in-memory stats for demo
-// let totalChats = 47;
-// let totalWebSearches = 12;
-// let questionCounts = {};
+// In-memory stats for tracking
+let totalChats = 0;
+let totalWebSearches = 0;
+let questionCounts = {};
 const startTime = Date.now();
 const funFacts = [
   "Did you know? AIMCS can speak over 20 languages!",

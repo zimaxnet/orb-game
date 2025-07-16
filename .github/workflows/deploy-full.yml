@@ -129,7 +129,7 @@ jobs:
     - name: Wait for frontend deployment
       run: |
         echo "Waiting for frontend deployment to complete..."
-        sleep 60
+        sleep 120
         
     - name: Verify frontend deployment
       run: |
@@ -148,6 +148,7 @@ jobs:
             break
           else
             echo "❓ Unknown response, waiting..."
+            echo "Response preview: $RESPONSE"
             sleep 30
           fi
         done
@@ -157,6 +158,8 @@ jobs:
           echo "✅ Frontend deployment verified!"
         else
           echo "❌ Frontend deployment verification failed"
+          echo "Full response for debugging:"
+          curl -s https://$WEB_APP_URL | head -20
           exit 1
         fi
 

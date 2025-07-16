@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Setup GitHub Secrets for AIMCS Deployment
+# Setup GitHub Secrets for Orb Game Deployment
 # This script helps you set up the required GitHub secrets
 
 set -e
 
-echo "🔧 Setting up GitHub Secrets for AIMCS Deployment"
-echo "=================================================="
+echo "🔧 Setting up GitHub Secrets for Orb Game Deployment"
+echo "===================================================="
 echo ""
 
 # Check if gh CLI is installed
@@ -25,12 +25,13 @@ fi
 echo "📋 Required GitHub Secrets:"
 echo "==========================="
 echo ""
-echo "1. AZURE_CREDENTIALS - Azure service principal credentials"
-echo "2. AZURE_OPENAI_ENDPOINT - Your Azure OpenAI endpoint"
-echo "3. AZURE_OPENAI_API_KEY - Your Azure OpenAI API key"
-echo "4. AZURE_OPENAI_DEPLOYMENT - Your Azure OpenAI deployment name"
-echo "5. AZURE_OPENAI_TTS_DEPLOYMENT - Your Azure OpenAI TTS deployment name"
-echo "6. PERPLEXITY_API_KEY - Your Perplexity API key for web search"
+echo "1. AZURE_WEBAPP_PUBLISH_PROFILE - Azure Web App publish profile"
+echo "2. AZURE_CREDENTIALS - Azure service principal credentials"
+echo "3. AZURE_OPENAI_ENDPOINT - Your Azure OpenAI endpoint"
+echo "4. AZURE_OPENAI_API_KEY - Your Azure OpenAI API key"
+echo "5. AZURE_OPENAI_DEPLOYMENT - Your Azure OpenAI deployment name"
+echo "6. AZURE_OPENAI_TTS_DEPLOYMENT - Your Azure OpenAI TTS deployment name"
+echo "7. PERPLEXITY_API_KEY - Your Perplexity API key for web search"
 echo ""
 
 echo "🚀 Setting up secrets..."
@@ -57,10 +58,17 @@ set_secret() {
 echo "Please provide the following values:"
 echo ""
 
+# Azure Web App Publish Profile
+echo "🔑 Azure Web App Publish Profile:"
+echo "   Getting publish profile from Azure..."
+AZURE_WEBAPP_PUBLISH_PROFILE=$(az webapp deployment list-publishing-profiles --name orb-game --resource-group orb-game-rg-eastus2 --xml)
+echo "✅ Publish profile retrieved successfully"
+echo ""
+
 # Azure Credentials
 echo "🔑 Azure Service Principal Credentials (JSON format):"
-echo "   Run: az ad sp create-for-rbac --name aimcs-deploy --role contributor --scopes /subscriptions/YOUR_SUBSCRIPTION_ID --sdk-auth"
-echo "   Copy the entire JSON output:"
+echo "   If you haven't created the service principal yet, run: ./scripts/setup-azure-service-principal.sh"
+echo "   Copy the entire AZURE_CREDENTIALS JSON output from that script:"
 read -p "Azure Credentials JSON: " AZURE_CREDENTIALS
 
 # Azure OpenAI
@@ -78,6 +86,7 @@ echo ""
 echo "🔐 Setting secrets in GitHub..."
 
 # Set all secrets
+set_secret "AZURE_WEBAPP_PUBLISH_PROFILE" "$AZURE_WEBAPP_PUBLISH_PROFILE" "Azure Web App publish profile"
 set_secret "AZURE_CREDENTIALS" "$AZURE_CREDENTIALS" "Azure service principal credentials"
 set_secret "AZURE_OPENAI_ENDPOINT" "$AZURE_OPENAI_ENDPOINT" "Azure OpenAI endpoint"
 set_secret "AZURE_OPENAI_API_KEY" "$AZURE_OPENAI_API_KEY" "Azure OpenAI API key"

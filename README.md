@@ -213,6 +213,7 @@ Replace `<YOUR_MONGODB_ATLAS_CONNECTION_STRING>` with your actual connection str
 - Docker
 - Azure CLI
 - MongoDB Atlas account
+- **React 19.x and ReactDOM 19.x are now required. All dependencies are compatible with React 19.**
 
 ### Local Development
 ```bash

@@ -20,10 +20,69 @@
   padding: 15px;
   color: white;
   text-align: right;
+  z-index: 10;
 }
 
 .score-panel h2, .score-panel h3 {
   margin: 5px 0;
+}
+
+.playing-indicator {
+  color: #00ff88;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  max-width: 300px;
+  z-index: 10;
+}
+
+.instructions h3 {
+  margin: 0 0 15px 0;
+  color: #00ff88;
+}
+
+.instructions p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.topic-preview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  max-width: 400px;
+  z-index: 10;
+  border: 2px solid #00ff88;
+}
+
+.topic-preview h4 {
+  margin: 0 0 10px 0;
+  color: #00ff88;
+  font-size: 18px;
+}
+
+.topic-preview p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
@@ -32,5 +91,33 @@
     right: 10px;
     padding: 10px;
     font-size: 0.8em;
+  }
+  
+  .instructions {
+    bottom: 10px;
+    left: 10px;
+    padding: 15px;
+    max-width: 250px;
+  }
+  
+  .instructions h3 {
+    font-size: 16px;
+  }
+  
+  .instructions p {
+    font-size: 12px;
+  }
+  
+  .topic-preview {
+    max-width: 300px;
+    padding: 15px;
+  }
+  
+  .topic-preview h4 {
+    font-size: 16px;
+  }
+  
+  .topic-preview p {
+    font-size: 14px;
   }
 } 

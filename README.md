@@ -42,12 +42,24 @@ Ensure these secrets are set in your GitHub repository:
 
 #### **5. Environment Variables**
 Update Azure Container App environment variables:
+
+**Option A: Manual Setup (Azure Portal)**
 - `MONGO_URI`: Your MongoDB Atlas connection string
 - `AZURE_OPENAI_ENDPOINT`: Your Azure OpenAI endpoint
 - `AZURE_OPENAI_API_KEY`: Your Azure OpenAI API key
 - `AZURE_OPENAI_DEPLOYMENT`: Your Azure OpenAI deployment name
 - `AZURE_OPENAI_TTS_DEPLOYMENT`: Your Azure OpenAI TTS deployment name
 - `PERPLEXITY_API_KEY`: Your Perplexity API key
+
+**Option B: Automated Setup (Scripts)**
+```bash
+# Interactive setup with prompts
+./scripts/setup-azure-build-env.sh
+
+# Automated setup (requires environment variables)
+export PERPLEXITY_API_KEY="your-perplexity-keyexport MONGO_URI="your-mongodb-uri"
+./scripts/set-azure-build-env.sh
+```
 
 ---
 

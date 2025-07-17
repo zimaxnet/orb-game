@@ -13,6 +13,7 @@ RUN npm install --production
 # Copy server code
 COPY backend-server.js .
 COPY advanced-memory-service.js .
+COPY positive-news-service.js .
 COPY atlas-ca.pem .
 
 # Create non-root user

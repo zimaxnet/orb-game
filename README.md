@@ -407,3 +407,39 @@ MIT License - see LICENSE file for details.
 
 **Built with ❤️ by Zimax AI Labs**
 # Deployment fix applied
+
+## MongoDB Connection & Environment Helpers
+
+The project now includes scripts to verify your Atlas connection locally and propagate the same connection string to CI/CD and Azure:
+
+1. **Configure `.env`**
+   
+   Put your connection string in the root `.env` file:
+   
+   ```bash
+   MONGO_URI=mongodb+srv://<user>:<password>@aimcs-cluster.rpcaamg.mongodb.net/?retryWrites=true&w=majority
+   ```
+
+2. **Local connectivity test**
+   
+   ```bash
+   cd scripts
+   ./test-mongodb.sh   # runs scripts/test-mongodb.mjs
+   ```
+   You should see green *Ping successful* messages. If authentication fails, fix the user/password in Atlas or whitelist your IP.
+
+3. **Propagate to GitHub Secrets & Azure**
+   
+   After the URI works locally, push it to both GitHub Actions and the Azure Container App with one command:
+   
+   ```bash
+   scripts/update-mongo-env.sh
+   ```
+   Requirements:
+   * `gh` CLI logged-in (`gh auth login`)
+   * `az` CLI logged-in (`az login`)
+
+   The default resource-group and container-app names are set at the top of the script; adjust if your Azure names differ.
+
+These helpers ensure the same `MONGO_URI` is used locally, in CI pipelines, and at runtime in Azure.  
+Happy hacking!

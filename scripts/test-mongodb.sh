@@ -62,7 +62,7 @@ echo -e "${BLUE}🔧 Running MongoDB connection test...${NC}"
 echo ""
 
 # Run the test script
-if node scripts/test-mongodb.js; then
+if node scripts/test-mongodb.mjs; then
     echo ""
     echo -e "${GREEN}✅ MongoDB test completed successfully!${NC}"
     echo -e "${GREEN}Your MongoDB Atlas connection is working properly.${NC}"

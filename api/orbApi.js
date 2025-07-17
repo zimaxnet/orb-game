@@ -1,35 +1,31 @@
-const BACKEND_URL = 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
+const BACKEND_URL = 'https://api.orbgame.us';
 
-export async function getTopics() {
+export async function getPositiveNews(category) {
   try {
-    const response = await fetch(`${BACKEND_URL}/api/orb/topics`);
-    if (!response.ok) throw new Error('Failed to fetch topics');
+    const response = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category}`);
+    if (!response.ok) throw new Error('Failed to fetch positive news');
     const data = await response.json();
-    return data.topics || [];
+    return data;
   } catch (error) {
-    console.error('Error fetching topics:', error);
-    // Fallback sample data
-    return [
-      { id: 1, category: 'Technology', headline: 'AI Breakthrough', color: '#00ff88' },
-      { id: 2, category: 'Science', headline: 'Ocean Discovery', color: '#3366ff' },
-      { id: 3, category: 'Art', headline: 'Digital Art', color: '#ff6b6b' },
-      { id: 4, category: 'Nature', headline: 'Bee Recovery', color: '#4ecdc4' },
-      { id: 5, category: 'Sports', headline: 'Olympic Records', color: '#ffa726' },
-      { id: 6, category: 'Music', headline: 'New Instrument', color: '#ab47bc' },
-      { id: 7, category: 'Space', headline: 'Mars Mission', color: '#7c4dff' },
-      { id: 8, category: 'Innovation', headline: 'Clean Energy', color: '#26c6da' }
-    ];
+    console.error('Error fetching positive news:', error);
+    // Fallback data if API fails
+    return {
+      headline: 'Positive News',
+      summary: 'Stay tuned for more positive stories!',
+      fullText: 'We\'re working on bringing you the latest positive news.',
+      source: 'Orb Game',
+      publishedAt: new Date().toISOString(),
+      ttsAudio: null
+    };
   }
 }
 
+// Legacy function for backward compatibility (returns empty array)
+export async function getTopics() {
+  return [];
+}
+
+// Legacy function for backward compatibility (returns null)
 export async function generateTTS(topicId) {
-  try {
-    const response = await fetch(`${BACKEND_URL}/api/orb/tts/${topicId}`);
-    if (!response.ok) throw new Error('Failed to generate TTS');
-    const data = await response.json();
-    return `data:audio/mp3;base64,${data.audioData}`;
-  } catch (error) {
-    console.error('Error generating TTS:', error);
-    throw error;
-  }
+  return null;
 } 

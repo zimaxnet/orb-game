@@ -53,6 +53,9 @@ Update Azure Container App environment variables:
 
 ## 🆕 Changelog
 
+### 2024-07-17
+- **MAJOR UPDATE**: Positive News system now fetches, stores, and serves fresh, positive news stories by category from Perplexity Sonar, with TTS audio, using MongoDB for caching and fast response. See new API endpoint `/api/orb/positive-news/:category`.
+
 ### 2024-07-16
 - Added a new **Memory Trivia** mini-game accessible from the Control Panel. Compete with yourself by guessing answers from your past conversations!
 
@@ -78,6 +81,7 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Web Search**: Real-time information retrieval via Perplexity API
 - **Text-to-Speech**: Audio responses for enhanced accessibility
 - **Multi-language Support**: English and Spanish with easy language switching
+- **Positive News System**: Fresh, positive news stories by category, updated every 15 minutes from Perplexity Sonar, served instantly from MongoDB with pre-generated TTS audio.
 
 ### Advanced Memory & Analytics
 - **Smart Memory Retrieval**: Automatically finds relevant past conversations
@@ -105,9 +109,49 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 ### Backend (Node.js + Express)
 - **Azure OpenAI Integration**: GPT-4o-mini for chat, TTS for audio
 - **Memory Service**: MongoDB Atlas for persistent conversation storage
+- **Positive News Service**: Fetches and stores positive news by category from Perplexity Sonar, caches in MongoDB, and pre-generates TTS audio for instant response
 - **Analytics Caching**: Preloaded memory data for instant analytics
 - **Web Search**: Perplexity API for real-time information
 - **Container Deployment**: Azure Container Apps with auto-scaling
+
+### Positive News System (Backend)
+- **Source**: Perplexity Sonar API (every 15 minutes, per category)
+- **Storage**: MongoDB collection `positive_news_stories`
+- **Serving**: Fast, cached, random story per category (cycles through if no new news)
+- **TTS**: Pre-generated using Azure OpenAI TTS, returned as base64 mp3
+- **API Endpoint**: `/api/orb/positive-news/:category` (GET)
+- **Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation, Health, Education
+
+#### Example API Usage
+
+```
+GET https://api.orbgame.us/api/orb/positive-news/Technology
+```
+
+**Response:**
+```json
+{
+  "headline": "AI Helps Doctors Diagnose Faster",
+  "summary": "A new AI system is helping doctors diagnose diseases more quickly and accurately.",
+  "fullText": "Researchers have developed an AI tool that assists doctors in diagnosing complex diseases, reducing errors and improving patient outcomes.",
+  "source": "Perplexity Sonar",
+  "publishedAt": "2024-07-17T12:00:00Z",
+  "ttsAudio": "<base64 mp3>"
+}
+```
+
+#### Required Environment Variables (Backend)
+- `MONGO_URI`: MongoDB Atlas connection string
+- `PERPLEXITY_API_KEY`: Perplexity Sonar API key
+- `AZURE_OPENAI_ENDPOINT`: Azure OpenAI endpoint
+- `AZURE_OPENAI_API_KEY`: Azure OpenAI API key
+- `AZURE_OPENAI_TTS_DEPLOYMENT`: Azure OpenAI TTS deployment name
+
+#### How It Works
+- Every 15 minutes, the backend fetches the latest positive news for each category from Perplexity Sonar
+- New stories are added to MongoDB; if no new stories, cycles through existing ones
+- TTS audio is pre-generated and stored with each story
+- When a user requests a story, a random (fresh) story is served instantly with text and audio
 
 ### Data Storage
 - **MongoDB Atlas**: Cloud database for memories and user profiles

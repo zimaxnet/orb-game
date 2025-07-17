@@ -4,11 +4,13 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
 import dotenv from 'dotenv';
+import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
 
 // Load environment variables from .env file
 dotenv.config();
 
 import AdvancedMemoryService from './advanced-memory-service.js';
+import PositiveNewsService from './positive-news-service.js';
 
 const app = express();
 
@@ -37,6 +39,7 @@ app.use(express.json({ limit: '10mb' }));
 // Initialize advanced memory service
 let memoryService;
 let azureOpenAIClient;
+let positiveNewsService;
 
 // Basic API endpoints (available immediately)
 app.get('/health', (req, res) => {
@@ -548,8 +551,13 @@ async function initializeServer() {
       
       // Load analytics from the database
       await loadAnalyticsCache();
+      // Initialize PositiveNewsService
+      console.log('Initializing PositiveNewsService...');
+      positiveNewsService = new PositiveNewsService(mongoUri);
+      await positiveNewsService.initialize();
+      console.log('✅ PositiveNewsService initialized successfully.');
     } catch (error) {
-      console.error('❌ Failed to initialize AdvancedMemoryService:', error.message);
+      console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error.message);
       // Continue without memory service
     }
   }
@@ -607,53 +615,26 @@ process.on('SIGINT', async () => {
   process.exit();
 });
 
-// Sample topics data (in real app, fetch from DB)
-const sampleTopics = [
-  { id: 1, category: 'Technology', headline: 'AI Helps Doctors Diagnose Faster', summary: 'New AI breakthrough in healthcare.', color: '#00ff88' },
-  { id: 2, category: 'Science', headline: 'New Species Discovered in Ocean', summary: 'Amazing underwater find.', color: '#3366ff' },
-  { id: 3, category: 'Art', headline: 'Street Art Transforms City', summary: 'Creative urban renewal.', color: '#ff6b6b' },
-  { id: 4, category: 'Nature', headline: 'Bee Population Recovers', summary: 'Good news for the environment.', color: '#4ecdc4' },
-  { id: 5, category: 'Sports', headline: 'Athletes Break Records', summary: 'Inspiring athletic achievements.', color: '#ffa726' },
-  { id: 6, category: 'Music', headline: 'New Instrument Invented', summary: 'Innovation in sound.', color: '#ab47bc' },
-  { id: 7, category: 'Space', headline: 'Mars Mission Finds Water', summary: 'Step closer to colonization.', color: '#7c4dff' },
-  { id: 8, category: 'Innovation', headline: 'Clean Energy Breakthrough', summary: 'Sustainable power for all.', color: '#26c6da' }
-];
-
-// Get topics
-app.get('/api/orb/topics', async (req, res) => {
-  res.json({ topics: sampleTopics });
-});
-
-// Generate TTS for topic
-app.post('/api/orb/tts', async (req, res) => {
-  const { topicId } = req.body;
-  const topic = sampleTopics.find(t => t.id === topicId);
-  if (!topic) return res.status(404).json({ error: 'Topic not found' });
-
+// New endpoint: Get a random positive news story (with TTS) by category
+app.get('/api/orb/positive-news/:category', async (req, res) => {
+  if (!positiveNewsService) {
+    return res.status(503).json({ error: 'Positive news service not available' });
+  }
+  const category = req.params.category;
   try {
-    const speechConfig = speechsdk.SpeechConfig.fromSubscription(process.env.AZURE_OPENAI_TTS_API_KEY, 'eastus2');
-    speechConfig.speechSynthesisVoiceName = 'en-US-AvaNeural';
-    const synthesizer = new speechsdk.SpeechSynthesizer(speechConfig);
-
-    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-      <voice name="en-US-AvaNeural">
-        ${topic.headline}: ${topic.summary}
-      </voice>
-    </speak>`;
-
-    synthesizer.speakSsmlAsync(ssml, result => {
-      if (result.reason === speechsdk.ResultReason.SynthesizingAudioCompleted) {
-        res.json({ audioData: Buffer.from(result.audioData).toString('base64') });
-      } else {
-        res.status(500).json({ error: 'TTS generation failed' });
-      }
-      synthesizer.close();
-    }, error => {
-      console.error(error);
-      synthesizer.close();
-      res.status(500).json({ error: 'TTS error' });
+    const story = await positiveNewsService.getRandomStory(category);
+    if (!story) {
+      return res.status(404).json({ error: 'No positive news found for this category' });
+    }
+    res.json({
+      headline: story.headline,
+      summary: story.summary,
+      fullText: story.fullText,
+      source: story.source,
+      publishedAt: story.publishedAt,
+      ttsAudio: story.ttsAudio
     });
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Failed to fetch positive news' });
   }
 });

@@ -3,39 +3,67 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-import { getTopics, generateTTS } from '../api/orbApi';
+import { getPositiveNews } from '../api/orbApi';
 
 import './OrbGame.css';
 
 function OrbGame() {
-  const [topics, setTopics] = useState([]);
+  const [categories] = useState([
+    { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
+    { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' }
+  ]);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hoveredTopic, setHoveredTopic] = useState(null);
+  const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [currentNews, setCurrentNews] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(new Audio());
 
-  useEffect(() => {
-    // Fetch topics from backend
-    getTopics().then(setTopics);
-  }, []);
-
-  const handleSatelliteClick = async (topic) => {
-    if (isPlaying) return;
-    setIsPlaying(true);
+  const handleSatelliteClick = async (category) => {
+    if (isPlaying || isLoading) return;
     
+    setIsLoading(true);
     try {
-      const audioUrl = await generateTTS(topic.id);
-      audioRef.current.src = audioUrl;
-      audioRef.current.play();
-      audioRef.current.onended = () => setIsPlaying(false);
+      const news = await getPositiveNews(category.name);
+      setCurrentNews(news);
+      
+      if (news.ttsAudio && !isMuted) {
+        setIsPlaying(true);
+        audioRef.current.src = `data:audio/mp3;base64,${news.ttsAudio}`;
+        audioRef.current.play();
+        audioRef.current.onended = () => setIsPlaying(false);
+      }
       
       // Update score and streak
       setScore(prev => prev + 10);
       setStreak(prev => prev + 1);
     } catch (error) {
-      console.error('TTS error:', error);
-      setIsPlaying(false);
+      console.error('Error fetching news:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (isPlaying) {
+      if (isMuted) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const playAudio = () => {
+    if (currentNews?.ttsAudio && !isMuted) {
+      setIsPlaying(true);
+      audioRef.current.src = `data:audio/mp3;base64,${currentNews.ttsAudio}`;
+      audioRef.current.play();
+      audioRef.current.onended = () => setIsPlaying(false);
     }
   };
 
@@ -52,16 +80,17 @@ function OrbGame() {
         </Sphere>
         
         {/* Orbiting Satellites */}
-        {topics.map((topic, index) => (
+        {categories.map((category, index) => (
           <OrbitingSatellite
-            key={topic.id}
-            topic={topic}
+            key={category.name}
+            category={category}
             index={index}
-            totalTopics={topics.length}
-            onClick={() => handleSatelliteClick(topic)}
-            onHover={() => setHoveredTopic(topic)}
-            onUnhover={() => setHoveredTopic(null)}
-            isHovered={hoveredTopic?.id === topic.id}
+            totalCategories={categories.length}
+            onClick={() => handleSatelliteClick(category)}
+            onHover={() => setHoveredCategory(category)}
+            onUnhover={() => setHoveredCategory(null)}
+            isHovered={hoveredCategory?.name === category.name}
+            isLoading={isLoading}
           />
         ))}
       </Canvas>
@@ -70,6 +99,7 @@ function OrbGame() {
         <h2>Score: {score}</h2>
         <h3>Streak: {streak}</h3>
         {isPlaying && <div className="playing-indicator">🎵 Playing...</div>}
+        {isLoading && <div className="loading-indicator">⏳ Loading...</div>}
       </div>
       
       <div className="instructions">
@@ -79,17 +109,46 @@ function OrbGame() {
         <p>🌟 Build your streak by playing daily</p>
       </div>
       
-      {hoveredTopic && (
-        <div className="topic-preview">
-          <h4>{hoveredTopic.category}</h4>
-          <p>{hoveredTopic.headline}</p>
+      {currentNews && (
+        <div className="news-panel">
+          <div className="news-header">
+            <h4>{currentNews.headline}</h4>
+            <div className="audio-controls">           <button 
+                onClick={playAudio}
+                disabled={!currentNews.ttsAudio || isMuted}
+                className={`play-button ${isPlaying ? 'playing' : ''}`}
+              >
+                {isPlaying ? '⏸️' : '▶️'}
+              </button>
+              <button 
+                onClick={toggleMute}
+                className={`mute-button ${isMuted ? 'muted' : ''}`}
+              >
+                {isMuted ? '🔇' : '🔊'}
+              </button>
+            </div>
+          </div>
+          <p className="news-summary">{currentNews.summary}</p>
+          <p className="news-full-text">{currentNews.fullText}</p>
+          <div className="news-meta">
+            <span className="news-source">Source: {currentNews.source}</span>
+            <span className="news-date">              {new Date(currentNews.publishedAt).toLocaleDateString()}
+            </span>
+          </div>
+        </div>
+      )}
+      
+      {hoveredCategory && !currentNews && (
+        <div className="category-preview">
+          <h4>{hoveredCategory.name}</h4>
+          <p>Click to hear positive news about {hoveredCategory.name.toLowerCase()}!</p>
         </div>
       )}
     </div>
   );
 }
 
-function OrbitingSatellite({ topic, index, totalTopics, onClick, onHover, onUnhover, isHovered }) {
+function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading }) {
   const meshRef = useRef();
   const groupRef = useRef();
   
@@ -98,7 +157,7 @@ function OrbitingSatellite({ topic, index, totalTopics, onClick, onHover, onUnho
       const time = clock.getElapsedTime();
       const radius = 3;
       const speed = 0.3;
-      const angle = (index / totalTopics) * Math.PI * 2 + time * speed;
+      const angle = (index / totalCategories) * Math.PI * 2 + time * speed;
       
       meshRef.current.position.x = Math.cos(angle) * radius;
       meshRef.current.position.z = Math.sin(angle) * radius;
@@ -120,8 +179,8 @@ function OrbitingSatellite({ topic, index, totalTopics, onClick, onHover, onUnho
         onPointerOut={onUnhover}
       >
         <meshStandardMaterial 
-          color={topic.color} 
-          emissive={isHovered ? topic.color : "#000000"}
+          color={category.color} 
+          emissive={isHovered ? category.color : "#000000"}
           emissiveIntensity={isHovered ? 0.3 : 0.1}
         />
       </Sphere>
@@ -134,7 +193,7 @@ function OrbitingSatellite({ topic, index, totalTopics, onClick, onHover, onUnho
           anchorX="center"
           anchorY="middle"
         >
-          {topic.category}
+          {category.name}
         </Text>
       )}
     </group>

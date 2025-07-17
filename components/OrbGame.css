@@ -126,7 +126,7 @@
   align-items: center;
 }
 
-.play-button, .mute-button {
+.play-button, .mute-button, .close-button {
   background: #667eea;
   color: white;
   border: none;
@@ -142,7 +142,7 @@
   justify-content: center;
 }
 
-.play-button:hover, .mute-button:hover {
+.play-button:hover, .mute-button:hover, .close-button:hover {
   background: #5a67d8;
   transform: scale(1.05);
 }
@@ -159,6 +159,15 @@
 
 .mute-button.muted {
   background: #ff6b6b;
+}
+
+.close-button {
+  background: #ff6b6b !important;
+  font-weight: bold;
+}
+
+.close-button:hover {
+  background: #e74c3c !important;
 }
 
 .news-summary {

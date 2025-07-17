@@ -188,7 +188,7 @@ app.get('/api/memory/profile', (req, res) => {
 
 // New comprehensive memory stats endpoint
 app.get('/api/memory/stats', async (req, res) => {
-  if (!memoryService) {
+  if (!isMemoryServiceReady()) {
     return res.status(503).json({ error: 'Memory service not available' });
   }
 
@@ -222,7 +222,7 @@ app.get('/api/memory/stats', async (req, res) => {
 // Memory export endpoint
 app.get('/api/memory/export', async (req, res) => {
   console.log('Received request for /api/memory/export');
-  if (!memoryService) {
+  if (!isMemoryServiceReady()) {
     console.error('Memory service not available for export');
     return res.status(503).json({ error: 'Memory service not available' });
   }
@@ -260,8 +260,39 @@ app.get('/api/memory/export', async (req, res) => {
 
 // Memory search endpoint
 app.post('/api/memory/search', async (req, res) => {
+  if (!isMemoryServiceReady()) {
+    return res.status(503).json({ error: 'Memory service not available' });
+  }
   try {
-    // ... existing code ...
+    const { query, limit = 10 } = req.body || {};
+    if (!query || typeof query !== 'string' || query.trim().length === 0) {
+      return res.status(400).json({ error: 'Query is required' });
+    }
+
+    let docs = await memoryService.users.find({
+      "memories.content": { $regex: query, $options: 'i' }
+    }, {
+      projection: { _id: 0, memories: 1 }
+    }).limit(Number(limit) * 5).toArray();
+
+    const memories = [];
+    for (const doc of docs) {
+      if (Array.isArray(doc.memories)) {
+        for (const m of doc.memories) {
+          if (m.content && m.content.toLowerCase().includes(query.toLowerCase())) {
+            memories.push({
+              id: m.id,
+              content: m.content,
+              created_at: m.created_at
+            });
+            if (memories.length >= limit) break;
+          }
+        }
+      }
+      if (memories.length >= limit) break;
+    }
+
+    res.json({ memories });
   } catch (error) {
     console.error('Memory search error:', error);
     res.status(500).json({ error: 'Failed to search memories' });
@@ -374,14 +405,14 @@ Current conversation context: ${memoryContext}`;
             'Authorization': `Bearer ${process.env.PERPLEXITY_API_KEY}`,
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            model: 'llama-3.1-sonar-small-128k-online',
-            messages: [{
-              role: 'user',
-              content: `Search for current information about: ${message}`
-            }],
-            max_tokens: 200
-          })
+                  body: JSON.stringify({
+          model: 'sonar',
+          messages: [{
+            role: 'user',
+            content: `Search for current information about: ${message}`
+          }],
+          max_tokens: 200
+        })
         });
 
         if (searchResponse.ok) {
@@ -558,7 +589,8 @@ async function initializeServer() {
       console.log('✅ PositiveNewsService initialized successfully.');
     } catch (error) {
       console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error.message);
-      // Continue without memory service
+      memoryService = null;
+      positiveNewsService = null;
     }
   }
   
@@ -638,3 +670,8 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch positive news' });
   }
 });
+
+// Helper to check if memory service is fully ready
+function isMemoryServiceReady() {
+  return memoryService && memoryService.users;
+}

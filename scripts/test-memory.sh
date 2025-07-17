@@ -19,7 +19,7 @@ for dep in curl jq; do
 done
 
 # Configuration
-BACKEND_URL="https://api.aimcs.net"
+BACKEND_URL="https://api.orbgame.us"
 TEST_USER_ID="memory-test-user-$(date +%s)"
 
 # Test counter

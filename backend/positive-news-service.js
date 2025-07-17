@@ -96,11 +96,14 @@ class PositiveNewsService {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'sonar-small-online',
+          model: 'sonar',
+          stream: false,
+          max_tokens: 800,
+          temperature: 0.7,
           messages: [
             {
               role: 'user',
-              content: `Find the latest positive news in ${category}. Return only 3 positive stories in this format: { "stories": [ { "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence detailed story", "source": "Source name" } ] }`
+              content: `Find the latest positive news in ${category}. Return only 3 positive stories in this JSON format: { "stories": [ { "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence detailed story", "source": "Source name" } ] }`
             }
           ]
         })

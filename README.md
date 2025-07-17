@@ -65,6 +65,11 @@ export PERPLEXITY_API_KEY="your-perplexity-keyexport MONGO_URI="your-mongodb-uri
 
 ## 🆕 Changelog
 
+### 2024-12-19
+- **NEW FEATURE**: Added close button (✕) to news panel in Orb Game - users can now easily exit news view and return to orb exploration
+- **PERPLEXITY API FIX**: Updated backend to use correct `sonar` model name instead of outdated model names
+- **BACKEND DEPLOYMENT**: Successfully rebuilt and deployed backend with working Perplexity API integration
+
 ### 2024-07-17
 - **MAJOR UPDATE**: Positive News system now fetches, stores, and serves fresh, positive news stories by category from Perplexity Sonar, with TTS audio, using MongoDB for caching and fast response. See new API endpoint `/api/orb/positive-news/:category`.
 
@@ -108,6 +113,7 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Memory Panel**: Browse, search, and continue conversations
 - **Control Panel**: Real-time system status and quick actions
 - **Memory Trivia Game**: Fun quiz that tests knowledge of stored memories 🎮
+- **Orb Game**: Interactive 3D orb exploration with positive news stories and easy close functionality
 - **Responsive Design**: Works seamlessly on desktop and mobile
 
 ## 🏗️ Architecture
@@ -334,6 +340,22 @@ npm run build
 
 ### Quick Games
 - **Memory Trivia**: Guess the correct answer to random memory questions and build your high score!
+
+## 🌟 Orb Game
+
+### Interactive 3D Experience
+- **3D Orb Exploration**: Click on orbiting satellites to discover positive news
+- **Category-based News**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
+- **Audio Integration**: Text-to-speech for news stories with play/pause controls
+- **Easy Navigation**: Close button (✕) to exit news and return to orb view
+- **Visual Feedback**: Hover effects and animations for enhanced user experience
+- **Score System**: Earn points and build streaks by exploring different categories
+
+### News Panel Features
+- **Close Button**: Red ✕ button in top-right corner for easy exit
+- **Audio Controls**: Play/pause and mute buttons for news audio
+- **Category Stories**: Fresh positive news from Perplexity Sonar API
+- **Responsive Design**: Works on desktop and mobile devices
 
 ### Analytics Dashboard
 - **Overview Stats**: Total conversations, web searches, memory usage

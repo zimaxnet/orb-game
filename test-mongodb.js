@@ -33,7 +33,7 @@ function log(message, color = '') {
 
 const uri = process.env.MONGO_URI;
 
-if (!uri || uri.includes('<db_password>')) {
+if (!uri || uri.includes('YOUR_ACTUAL_PASSWORD')) {
   log('❌ Error: MONGO_URI environment variable not set or contains placeholder password', colors.red);
   log('Please set MONGO_URI in your .env file with the actual password', colors.yellow);
   process.exit(1);
@@ -48,8 +48,6 @@ const client = new MongoClient(uri, {
   },
   tls: true,
   tlsAllowInvalidCertificates: false,
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
 });
 
 async function testConnection() {
@@ -132,14 +130,14 @@ async function testConnection() {
     
     if (error.message.includes('authentication failed')) {
       log('\n💡 Troubleshooting tips:', colors.yellow);
-      log('   - Check if your MongoDB password is correct', colors.yellow);
-      log('   - Verify your database user exists and has the right permissions', colors.yellow);
-      log('   - Make sure your IP address is whitelisted in MongoDB Atlas', colors.yellow);
+      log('   - Check if your MongoDB password is correct in the .env file.', colors.yellow);
+      log('   - Verify your database user exists and has the right permissions.', colors.yellow);
+      log('   - Make sure your current IP address is whitelisted in MongoDB Atlas.', colors.yellow);
     } else if (error.message.includes('network')) {
       log('\n💡 Troubleshooting tips:', colors.yellow);
-      log('   - Check your internet connection', colors.yellow);
-      log('   - Verify your MongoDB Atlas cluster is running', colors.yellow);
-      log('   - Check if your firewall is blocking the connection', colors.yellow);
+      log('   - Check your internet connection.', colors.yellow);
+      log('   - Verify your MongoDB Atlas cluster is running.', colors.yellow);
+      log('   - Check if a firewall or VPN is blocking the connection.', colors.yellow);
     }
     
     process.exit(1);

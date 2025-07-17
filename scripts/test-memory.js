@@ -9,7 +9,7 @@ import https from 'https';
 import { URL } from 'url';
 
 // Configuration
-const BACKEND_URL = 'https://api.aimcs.net';
+const BACKEND_URL = 'https://api.orbgame.us';
 const TEST_USER_ID = `memory-test-user-${Date.now()}`;
 
 // Test results

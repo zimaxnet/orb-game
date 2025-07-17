@@ -113,7 +113,8 @@ function OrbGame() {
         <div className="news-panel">
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
-            <div className="audio-controls">           <button 
+            <div className="audio-controls">
+              <button 
                 onClick={playAudio}
                 disabled={!currentNews.ttsAudio || isMuted}
                 className={`play-button ${isPlaying ? 'playing' : ''}`}
@@ -126,13 +127,21 @@ function OrbGame() {
               >
                 {isMuted ? '🔇' : '🔊'}
               </button>
+              <button 
+                onClick={() => setCurrentNews(null)}
+                className="close-button"
+                title="Close news"
+              >
+                ✕
+              </button>
             </div>
           </div>
           <p className="news-summary">{currentNews.summary}</p>
           <p className="news-full-text">{currentNews.fullText}</p>
           <div className="news-meta">
             <span className="news-source">Source: {currentNews.source}</span>
-            <span className="news-date">              {new Date(currentNews.publishedAt).toLocaleDateString()}
+            <span className="news-date">
+              {new Date(currentNews.publishedAt).toLocaleDateString()}
             </span>
           </div>
         </div>

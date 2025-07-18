@@ -67,6 +67,14 @@ export MONGO_URI="your-mongodb-uri"
 ## 🆕 Changelog
 
 ### 2024-12-19
+- **NEW FEATURE**: Added stunning Milky Way background with 5,000 animated stars, nebula clouds, and dynamic space environment
+- **NEW FEATURE**: Implemented orb movement stopping - orbs now stop moving when clicked, providing better user experience and visual feedback
+- **NEW FEATURE**: Added scrollable text in news panels - users can now read full news content with smooth scrolling
+- **ENHANCED UX**: Updated background gradient to darker space theme for better contrast with the Milky Way
+- **VISUAL IMPROVEMENTS**: Clicked orbs now have subtle glow effects to indicate they've been explored
+- **PERFORMANCE**: Optimized star rendering with efficient Three.js BufferGeometry for smooth 60fps performance
+
+### 2024-12-19
 - **NEW FEATURE**: Added prominent "How to Play" overlay with swipe-to-dismiss functionality - users now see comprehensive game instructions when they first load the Orb Game
 - **ENHANCED UX**: The overlay includes step-by-step instructions with icons, animations, and responsive design for both mobile and desktop
 - **INTERACTIVE DISMISSAL**: Users can swipe in any direction or click to dismiss the overlay and start playing immediately
@@ -125,11 +133,15 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 
 ### Orb Game Features
 - **Interactive 3D Environment**: Beautiful 3D orb with orbiting satellites representing different news categories
+- **Milky Way Background**: Stunning space environment with 5,000 animated stars, nebula clouds, and dynamic movement
+- **Orb Movement Control**: Orbs stop moving when clicked, providing clear visual feedback of explored categories
 - **Positive News Stories**: Click satellites to hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
+- **Scrollable News Content**: Full news stories with smooth scrolling for complete reading experience
 - **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
 - **Score System**: Earn points and build streaks by discovering new stories
 - **Swipe-to-Dismiss Instructions**: Intuitive "How to Play" overlay that users can swipe away once they're ready
 - **Mobile Optimized**: Touch-friendly controls and responsive design for all devices
+- **Visual Feedback**: Clicked orbs have subtle glow effects to indicate exploration progress
 
 ## 🏗️ Architecture
 
@@ -219,12 +231,14 @@ curl https://your-backend-url/api/orb/positive-news/Technology
 4. **Start Playing**: Once dismissed, you're ready to explore the 3D orb environment
 
 ### Game Mechanics
-1. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it
+1. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it in a stunning Milky Way background
 2. **Hover for Info**: Hover over satellites to see their category names (Technology, Science, Art, etc.)
 3. **Click to Listen**: Click any satellite to hear a positive news story from that category
-4. **Build Your Score**: Each story you discover earns you points and builds your streak
-5. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
-6. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
+4. **Watch Orbs Stop**: Clicked orbs will stop moving and glow slightly to show you've explored them
+5. **Read Full Stories**: Scroll through complete news content in the news panel
+6. **Build Your Score**: Each story you discover earns you points and builds your streak
+7. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
+8. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
 
 ### Categories Available
 - **Technology**: Latest tech innovations and breakthroughs
@@ -402,17 +416,22 @@ npm run build
 
 ### Interactive 3D Experience
 - **3D Orb Exploration**: Click on orbiting satellites to discover positive news
+- **Milky Way Environment**: Immersive space background with 5,000 animated stars and nebula clouds
+- **Orb Movement Control**: Satellites stop moving when clicked, providing clear exploration feedback
 - **Category-based News**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
 - **Audio Integration**: Text-to-speech for news stories with play/pause controls
+- **Scrollable Content**: Full news stories with smooth scrolling for complete reading
 - **Easy Navigation**: Close button (✕) to exit news and return to orb view
-- **Visual Feedback**: Hover effects and animations for enhanced user experience
+- **Visual Feedback**: Hover effects, animations, and glow effects for enhanced user experience
 - **Score System**: Earn points and build streaks by exploring different categories
 
 ### News Panel Features
 - **Close Button**: Red ✕ button in top-right corner for easy exit
 - **Audio Controls**: Play/pause and mute buttons for news audio
+- **Scrollable Content**: Smooth scrolling for reading full news stories
 - **Category Stories**: Fresh positive news from Perplexity Sonar API
 - **Responsive Design**: Works on desktop and mobile devices
+- **Visual Indicators**: Scrollbar styling for better user experience
 
 ### Analytics Dashboard
 - **Overview Stats**: Total conversations, web searches, memory usage
@@ -477,6 +496,14 @@ bash scripts/test-memory.sh
 - **Backend API**: https://api.orbgame.us
 - **Azure Portal**: https://portal.azure.com
 - **Documentation**: See individual component READMEs
+
+## 🌟 Live Features
+
+- **Milky Way Background**: Stunning space environment with animated stars
+- **Orb Movement Control**: Orbs stop when clicked for better UX
+- **Scrollable News**: Complete news content with smooth scrolling
+- **Visual Feedback**: Glow effects on explored orbs
+- **Space Theme**: Dark gradient background for immersive experience
 
 ## 📝 License
 

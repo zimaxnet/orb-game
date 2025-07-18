@@ -57,7 +57,8 @@ Update Azure Container App environment variables:
 ./scripts/setup-azure-build-env.sh
 
 # Automated setup (requires environment variables)
-export PERPLEXITY_API_KEY="your-perplexity-keyexport MONGO_URI="your-mongodb-uri"
+export PERPLEXITY_API_KEY="your-perplexity-key"
+export MONGO_URI="your-mongodb-uri"
 ./scripts/set-azure-build-env.sh
 ```
 
@@ -66,7 +67,12 @@ export PERPLEXITY_API_KEY="your-perplexity-keyexport MONGO_URI="your-mongodb-uri
 ## 🆕 Changelog
 
 ### 2024-12-19
+- **NEW FEATURE**: Added prominent "How to Play" overlay with swipe-to-dismiss functionality - users now see comprehensive game instructions when they first load the Orb Game
+- **ENHANCED UX**: The overlay includes step-by-step instructions with icons, animations, and responsive design for both mobile and desktop
+- **INTERACTIVE DISMISSAL**: Users can swipe in any direction or click to dismiss the overlay and start playing immediately
 - **NEW FEATURE**: Added close button (✕) to news panel in Orb Game - users can now easily exit news view and return to orb exploration
+- **FALLBACK SYSTEM**: Enhanced positive news system with o4-mini fallback - all topics now have content even when Perplexity API is unavailable
+- **RELIABILITY IMPROVEMENT**: Added automatic content generation for empty categories and direct fallback when services are unavailable
 - **PERPLEXITY API FIX**: Updated backend to use correct `sonar` model name instead of outdated model names
 - **BACKEND DEPLOYMENT**: Successfully rebuilt and deployed backend with working Perplexity API integration
 
@@ -114,7 +120,16 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Control Panel**: Real-time system status and quick actions
 - **Memory Trivia Game**: Fun quiz that tests knowledge of stored memories 🎮
 - **Orb Game**: Interactive 3D orb exploration with positive news stories and easy close functionality
+- **How to Play Overlay**: Prominent, swipeable instructions that guide new users through the game mechanics
 - **Responsive Design**: Works seamlessly on desktop and mobile
+
+### Orb Game Features
+- **Interactive 3D Environment**: Beautiful 3D orb with orbiting satellites representing different news categories
+- **Positive News Stories**: Click satellites to hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
+- **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
+- **Score System**: Earn points and build streaks by discovering new stories
+- **Swipe-to-Dismiss Instructions**: Intuitive "How to Play" overlay that users can swipe away once they're ready
+- **Mobile Optimized**: Touch-friendly controls and responsive design for all devices
 
 ## 🏗️ Architecture
 
@@ -122,7 +137,8 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **ChatInterface**: Main chat interface with memory integration
 - **ControlPanel**: Analytics dashboard and system controls
 - **MemoryPanel**: Memory browsing and conversation management
-- **Responsive Design**: Modern UI with smooth animations
+- **OrbGame**: Interactive 3D gaming experience with positive news integration
+- **Responsive Design**: Modern UI with smooth animations and touch interactions
 
 ### Backend (Node.js + Express)
 - **Azure OpenAI Integration**: GPT-4o-mini for chat, TTS for audio
@@ -134,11 +150,13 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 
 ### Positive News System (Backend)
 - **Source**: Perplexity Sonar API (every 15 minutes, per category)
+- **Fallback**: o4-mini generates content when Perplexity API is unavailable or no stories exist
 - **Storage**: MongoDB collection `positive_news_stories`
 - **Serving**: Fast, cached, random story per category (cycles through if no new news)
 - **TTS**: Pre-generated using Azure OpenAI TTS, returned as base64 mp3
 - **API Endpoint**: `/api/orb/positive-news/:category` (GET)
 - **Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation, Health, Education
+- **Reliability**: Ensures all categories always have content, even when external APIs fail
 
 #### Example API Usage
 
@@ -163,18 +181,60 @@ GET https://api.orbgame.us/api/orb/positive-news/Technology
 - `PERPLEXITY_API_KEY`: Perplexity Sonar API key
 - `AZURE_OPENAI_ENDPOINT`: Azure OpenAI endpoint
 - `AZURE_OPENAI_API_KEY`: Azure OpenAI API key
+- `AZURE_OPENAI_DEPLOYMENT`: Azure OpenAI deployment name (for fallback content generation)
 - `AZURE_OPENAI_TTS_DEPLOYMENT`: Azure OpenAI TTS deployment name
+
+#### Testing the Fallback System
+```bash
+# Test all categories to ensure they have content
+node scripts/test-positive-news-fallback.js
+
+# Backfill all topics with o4-mini content
+node scripts/backfill-topics.js
+
+# Test individual category
+curl https://your-backend-url/api/orb/positive-news/Technology
+```
 
 #### How It Works
 - Every 15 minutes, the backend fetches the latest positive news for each category from Perplexity Sonar
 - New stories are added to MongoDB; if no new stories, cycles through existing ones
-- TTS audio is pre-generated and stored with each story
+- **Fallback System**: If no stories exist for a category, o4-mini generates positive content automatically
+- **Service Resilience**: If Perplexity API is unavailable, the system generates content directly using Azure OpenAI
+- TTS audio is pre-generated and stored with each story (including fallback content)
 - When a user requests a story, a random (fresh) story is served instantly with text and audio
+- **Guaranteed Content**: All categories always have content, ensuring a smooth user experience
 
 ### Data Storage
 - **MongoDB Atlas**: Cloud database for memories and user profiles
 - **Memory Analytics**: Aggregated conversation data and trending topics
 - **Real-time Caching**: In-memory analytics cache for instant responses
+
+## 🎮 How to Play Orb Game
+
+### Getting Started
+1. **First Time Users**: When you load the Orb Game, you'll see a prominent "How to Play" overlay
+2. **Swipe to Dismiss**: Swipe in any direction (up, down, left, right) to dismiss the instructions
+3. **Click to Dismiss**: Alternatively, click anywhere on the overlay or the ✕ button
+4. **Start Playing**: Once dismissed, you're ready to explore the 3D orb environment
+
+### Game Mechanics
+1. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it
+2. **Hover for Info**: Hover over satellites to see their category names (Technology, Science, Art, etc.)
+3. **Click to Listen**: Click any satellite to hear a positive news story from that category
+4. **Build Your Score**: Each story you discover earns you points and builds your streak
+5. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
+6. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
+
+### Categories Available
+- **Technology**: Latest tech innovations and breakthroughs
+- **Science**: Scientific discoveries and research advances
+- **Art**: Creative achievements and cultural highlights
+- **Nature**: Environmental wins and conservation success
+- **Sports**: Athletic achievements and inspiring moments
+- **Music**: Musical innovations and cultural milestones
+- **Space**: Space exploration and astronomical discoveries
+- **Innovation**: General innovation and human progress
 
 ## ☁️ Azure Infrastructure
 
@@ -248,9 +308,6 @@ GET https://api.orbgame.us/api/orb/positive-news/Technology
   - `aimcs-openai` (Azure OpenAI)
   - `aimcs-speech-eastus2` (Speech Services)
 - **Web Apps**: `aimcs` (Static Web App)
-- **Container Apps**: `aimcs-backend-eastus2`
-- **DNS Zone**: `aimcs.net` (custom domain)
-- **SSL Certificates**: `aimcs.net-aimcs`
 
 ## ⚙️ Deployment Configuration
 

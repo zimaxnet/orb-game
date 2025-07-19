@@ -5,6 +5,7 @@ import * as THREE from 'three';
 
 import { getPositiveNews } from '../api/orbApi';
 import { BACKEND_URL } from '../api/orbApi';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import './OrbGame.css';
 
@@ -112,6 +113,8 @@ function MilkyWayBackground() {
 }
 
 function OrbGame() {
+  const { language, toggleLanguage, t } = useLanguage();
+  
   const [categories] = useState([
     { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
     { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' }
@@ -142,10 +145,10 @@ function OrbGame() {
   const [currentAISource, setCurrentAISource] = useState('');
   
   // Add AI model selection state
-  const [selectedModel, setSelectedModel] = useState('grok');
+  const [selectedModel, setSelectedModel] = useState('grok-4');
   const aiModels = [
-    { id: 'grok', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
-    { id: 'perplexity', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
+    { id: 'grok-4', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
+    { id: 'perplexity-sonar', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
     { id: 'o4-mini', name: 'O4-Mini', description: 'Fast and efficient processing' }
   ];
   
@@ -154,10 +157,7 @@ function OrbGame() {
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   
-  // Add news panel swipe state
-  const [newsPanelSwipeDirection, setNewsPanelSwipeDirection] = useState(null);
-  const newsPanelTouchStartRef = useRef({ x: 0, y: 0 });
-  const newsPanelTouchEndRef = useRef({ x: 0, y: 0 });
+
 
   // Enhanced touch/swipe handlers for the how to play overlay
   const handleTouchStart = (e) => {
@@ -199,40 +199,7 @@ function OrbGame() {
     setShowHowToPlay(false);
   };
 
-  // News panel swipe handlers
-  const handleNewsPanelTouchStart = (e) => {
-    const touch = e.touches[0];
-    newsPanelTouchStartRef.current = { x: touch.clientX, y: touch.clientY };
-    setNewsPanelSwipeDirection(null);
-  };
 
-  const handleNewsPanelTouchMove = (e) => {
-    const touch = e.touches[0];
-    newsPanelTouchEndRef.current = { x: touch.clientX, y: touch.clientY };
-    
-    // Calculate swipe direction for visual feedback
-    const deltaX = newsPanelTouchEndRef.current.x - newsPanelTouchStartRef.current.x;
-    const deltaY = newsPanelTouchEndRef.current.y - newsPanelTouchStartRef.current.y;
-    
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      setNewsPanelSwipeDirection(deltaX > 0 ? 'right' : 'left');
-    } else {
-      setNewsPanelSwipeDirection(deltaY > 0 ? 'down' : 'up');
-    }
-  };
-
-  const handleNewsPanelTouchEnd = () => {
-    const deltaX = newsPanelTouchEndRef.current.x - newsPanelTouchStartRef.current.x;
-    const deltaY = newsPanelTouchEndRef.current.y - newsPanelTouchStartRef.current.y;
-    const minSwipeDistance = 50; // Minimum swipe distance to trigger
-
-    // Check if swipe distance is sufficient
-    if (Math.abs(deltaX) > minSwipeDistance || Math.abs(deltaY) > minSwipeDistance) {
-      // Any direction swipe will close the news panel
-      releaseOrbFromCenter();
-    }
-    setNewsPanelSwipeDirection(null);
-  };
 
   const handleSatelliteClick = async (category) => {
     if (isPlaying || isLoading || orbInCenter) return;
@@ -270,57 +237,110 @@ function OrbGame() {
     
     setCurrentAISource(selectedModelInfo.name);
     setCurrentNews({
-      headline: 'Gathering your story...',
-      summary: `Searching for fascinating ${category.name} stories from ${epochDesc} using ${selectedModelInfo.name}...`,
-      fullText: 'Please wait while we gather the perfect story for you!',
+      headline: t('news.generating'),
+      summary: `${t(`loading.${currentEpoch.toLowerCase()}.${category.name.toLowerCase()}`)} ${selectedModelInfo.name}...`,
+      fullText: t('news.creating'),
       source: selectedModelInfo.name,
       publishedAt: new Date().toISOString(),
       ttsAudio: null
     });
     
     try {
-      console.log('Fetching stories for:', category.name, 'epoch:', currentEpoch, 'model:', selectedModel, 'URL:', `${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}&model=${selectedModel}`);
-      const response = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}&model=${selectedModel}`);
-      console.log('Response status:', response.status, 'ok:', response.ok);
-      const stories = await response.json();
-      console.log('Stories received:', stories);
+      // Always generate fresh stories from the AI model
+      console.log('Generating fresh stories for:', category.name, 'epoch:', currentEpoch, 'model:', selectedModel);
       
-      if (!stories) {
-        setNewsStories([]);
-        setCurrentNews({
-          headline: 'No stories found',
-          summary: `No positive news stories are available for ${category.name} in the ${currentEpoch} epoch. Try another category or epoch!`,
-          fullText: '',
-          source: '',
-          publishedAt: new Date().toISOString(),
-          ttsAudio: null
-        });
-        setCurrentNewsIndex(0);
-      } else {
-        // API returns a single story object, not an array
-        const storyArray = Array.isArray(stories) ? stories : [stories];
-        setNewsStories(storyArray);
-        setCurrentNewsIndex(0);
-        setCurrentNews(storyArray[0]);
+      const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=5`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          category: category.name,
+          epoch: currentEpoch,
+          model: selectedModel,
+          count: 5,
+          prompt: `Generate 5 fascinating, positive ${category.name} stories from ${epochDesc}. Each story should be engaging, informative, and highlight remarkable achievements or discoveries. Make each story unique and captivating.`
+        })
+      });
+      
+      if (generateResponse.ok) {
+        const newStories = await generateResponse.json();
+        console.log('Generated fresh stories:', newStories);
         
-        // Autoplay audio if available
-        if (storyArray[0]?.ttsAudio && !isMuted) {
-          setTimeout(() => {
-            playAudio();
-          }, 500); // Small delay to ensure audio is loaded
+        if (newStories && newStories.length > 0) {
+          setNewsStories(newStories);
+          setCurrentNewsIndex(0);
+          setCurrentNews(newStories[0]);
+          
+          // Autoplay audio if available
+          if (newStories[0]?.ttsAudio && !isMuted) {
+            setTimeout(() => {
+              playAudio();
+            }, 500);
+          }
+        } else {
+          // If no stories generated, try one more time with a different approach
+          console.log('No stories generated, trying alternative approach...');
+          setCurrentNews({
+            headline: t('news.alternative'),
+            summary: `${t(`loading.${currentEpoch.toLowerCase()}.${category.name.toLowerCase()}`)} ${selectedModelInfo.name}...`,
+            fullText: t('news.creating'),
+            source: selectedModelInfo.name,
+            publishedAt: new Date().toISOString(),
+            ttsAudio: null
+          });
+          
+          const alternativeResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=3`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              category: category.name,
+              epoch: currentEpoch,
+              model: selectedModel,
+              count: 3,
+              prompt: `Tell me about 3 incredible ${category.name} achievements from ${epochDesc}. Focus on the most remarkable and inspiring stories.`
+            })
+          });
+          
+          if (alternativeResponse.ok) {
+            const alternativeStories = await alternativeResponse.json();
+            if (alternativeStories && alternativeStories.length > 0) {
+              setNewsStories(alternativeStories);
+              setCurrentNewsIndex(0);
+              setCurrentNews(alternativeStories[0]);
+              
+              if (alternativeStories[0]?.ttsAudio && !isMuted) {
+                setTimeout(() => {
+                  playAudio();
+                }, 500);
+              }
+            } else {
+              throw new Error('No stories could be generated');
+            }
+          } else {
+            throw new Error('Alternative generation failed');
+          }
         }
+      } else {
+        throw new Error('Failed to generate stories');
       }
-          } catch (error) {
-        console.error('Error fetching news:', error);
-        console.error('Error details:', error.message, error.stack);
+    } catch (error) {
+      console.error('Error generating stories:', error);
+      console.error('Error details:', error.message, error.stack);
+      
+      // Even on error, try to provide some content
       setCurrentNews({
-        headline: 'Error loading story',
-        summary: 'Failed to load news story. Please try again.',
-        fullText: '',
-        source: '',
+        headline: t('news.connection.issue'),
+        summary: `${t('news.try.again')} ${selectedModelInfo.name}.`,
+        fullText: t('news.unavailable') + ' ' + t('news.switch.model'),
+        source: selectedModelInfo.name,
         publishedAt: new Date().toISOString(),
         ttsAudio: null
       });
+      setNewsStories([]);
+      setCurrentNewsIndex(0);
     } finally {
       setIsLoading(false);
       setCurrentAISource('');
@@ -365,17 +385,48 @@ function OrbGame() {
 
 
   const nextStory = () => {
-    setCurrentNewsIndex((prev) => (prev + 1) % newsStories.length);
-    setCurrentNews(newsStories[(currentNewsIndex + 1) % newsStories.length]);
+    if (newsStories.length > 1) {
+      const nextIndex = (currentNewsIndex + 1) % newsStories.length;
+      setCurrentNewsIndex(nextIndex);
+      setCurrentNews(newsStories[nextIndex]);
+      
+      // Autoplay audio for the new story
+      if (newsStories[nextIndex]?.ttsAudio && !isMuted) {
+        setTimeout(() => {
+          playAudio();
+        }, 300);
+      }
+    }
   };
 
   const prevStory = () => {
-    setCurrentNewsIndex((prev) => (prev - 1 + newsStories.length) % newsStories.length);
-    setCurrentNews(newsStories[(currentNewsIndex - 1 + newsStories.length) % newsStories.length]);
+    if (newsStories.length > 1) {
+      const prevIndex = (currentNewsIndex - 1 + newsStories.length) % newsStories.length;
+      setCurrentNewsIndex(prevIndex);
+      setCurrentNews(newsStories[prevIndex]);
+      
+      // Autoplay audio for the new story
+      if (newsStories[prevIndex]?.ttsAudio && !isMuted) {
+        setTimeout(() => {
+          playAudio();
+        }, 300);
+      }
+    }
   };
 
   return (
     <div className="orb-game-container">
+      {/* Language Toggle */}
+      <div className="language-toggle">
+        <button 
+          onClick={toggleLanguage}
+          className={`language-button ${language === 'es' ? 'spanish' : 'english'}`}
+          title={t('language.toggle')}
+        >
+          {language === 'en' ? '🇪🇸' : '🇺🇸'} {t(language === 'en' ? 'language.spanish' : 'language.english')}
+        </button>
+      </div>
+      
       {/* How to Play Overlay */}
       {showHowToPlay && (
         <div 
@@ -388,7 +439,7 @@ function OrbGame() {
         >
           <div className="how-to-play-content">
             <div className="how-to-play-header">
-              <h2>🎮 How to Play</h2>
+              <h2>🎮 {t('orb.game.how.to.play')}</h2>
               <button 
                 className="close-how-to-play"
                 onClick={(e) => {
@@ -403,34 +454,34 @@ function OrbGame() {
               <div className="step">
                 <span className="step-icon">🎯</span>
                 <div className="step-text">
-                  <h3>Drag Orbs to Center</h3>
-                  <p>Click on any labeled orb to drag it to the center and hear its story</p>
+                  <h3>{t('orb.game.how.to.play.step1')}</h3>
+                  <p>{t('orb.game.how.to.play.step2')}</p>
                 </div>
               </div>
               <div className="step">
                 <span className="step-icon">🎵</span>
                 <div className="step-text">
-                  <h3>Listen to Stories</h3>
-                  <p>Each orb plays audio news stories about positive developments</p>
+                  <h3>{t('orb.game.how.to.play.step3')}</h3>
+                  <p>{t('orb.game.how.to.play.step4')}</p>
                 </div>
               </div>
               <div className="step">
                 <span className="step-icon">🔄</span>
                 <div className="step-text">
-                  <h3>Release Back to Orbit</h3>
-                  <p>Click the ✕ button to release the orb back into orbit</p>
+                  <h3>{t('orb.game.how.to.play.step4')}</h3>
+                  <p>{t('orb.game.how.to.play.step4')}</p>
                 </div>
               </div>
               <div className="step">
                 <span className="step-icon">🌟</span>
                 <div className="step-text">
                   <h3>Explore Categories</h3>
-                  <p>See labeled orbs: Technology, Science, Art, Nature, Sports, Music, Space, Innovation</p>
+                  <p>See labeled orbs: {t('category.technology')}, {t('category.science')}, {t('category.art')}, {t('category.nature')}, {t('category.sports')}, {t('category.music')}, {t('category.space')}, {t('category.innovation')}</p>
                 </div>
               </div>
             </div>
             <div className="how-to-play-footer">
-              <p className="swipe-hint">💡 Swipe in any direction or click to start playing!</p>
+              <p className="swipe-hint">💡 {t('orb.game.how.to.play.swipe')} {t('orb.game.how.to.play.click')}</p>
             </div>
           </div>
         </div>
@@ -449,15 +500,7 @@ function OrbGame() {
           <meshStandardMaterial color="#3366ff" />
         </Sphere>
         
-        {/* Center indicator when no orb is in center */}
-        {!orbInCenter && (
-          <group>
-            <mesh position={[0, 0, 0]}>
-              <ringGeometry args={[1.2, 1.4, 32]} />
-              <meshBasicMaterial color="rgba(255, 255, 255, 0.1)" transparent={true} />
-            </mesh>
-          </group>
-        )}
+
         
         {/* Orbiting Satellites */}
         {categories.map((category, index) => (
@@ -483,7 +526,7 @@ function OrbGame() {
         <label>Time Epoch:</label>
         <select value={currentEpoch} onChange={(e) => setCurrentEpoch(e.target.value)}>
           {epochs.map(epoch => (
-            <option key={epoch} value={epoch}>{epoch}</option>
+            <option key={epoch} value={epoch}>{t(`epoch.${epoch.toLowerCase()}`)}</option>
           ))}
         </select>
       </div>
@@ -495,20 +538,21 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>Gathering your story...</h4>
+            <h4>{currentNews?.headline || 'Gathering your story...'}</h4>
             <p>Searching for positive news using <strong>{currentAISource}</strong> AI</p>
-            <p className="loading-detail">This may take a few seconds as we find the perfect story for you!</p>
+            <p className="loading-detail">{currentNews?.summary || 'This may take a few seconds as we find the perfect story for you!'}</p>
+            <div className="loading-progress">
+              <div className="progress-bar">
+                <div className="progress-fill"></div>
+              </div>
+              <p className="progress-text">Connecting to {selectedModel}...</p>
+            </div>
           </div>
         </div>
       )}
       
       {currentNews && (
-        <div 
-          className={`news-panel ${newsPanelSwipeDirection ? `swipe-${newsPanelSwipeDirection}` : ''}`}
-          onTouchStart={handleNewsPanelTouchStart}
-          onTouchMove={handleNewsPanelTouchMove}
-          onTouchEnd={handleNewsPanelTouchEnd}
-        >
+        <div className="news-panel">
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
             <div className="audio-controls">
@@ -537,11 +581,11 @@ function OrbGame() {
           
           {/* AI Model Selector in News Panel */}
           <div className="news-model-selector">
-            <label>AI Model:</label>
+            <label>{t('ai.model.select')}:</label>
             <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
-                  {model.name} - {model.description}
+                  {t(`ai.model.${model.id}`)} - {model.description}
                 </option>
               ))}
             </select>
@@ -550,7 +594,7 @@ function OrbGame() {
               className="go-button"
               disabled={isLoading}
             >
-              {isLoading ? '⏳' : 'Go'}
+              {isLoading ? '⏳' : t('news.go')}
             </button>
           </div>
           <div className="news-content">
@@ -565,9 +609,23 @@ function OrbGame() {
             </span>
           </div>
           <div className="news-navigation">
-            <button onClick={prevStory}>← Previous</button>
-            <span>{currentNewsIndex + 1} / {newsStories.length}</span>
-            <button onClick={nextStory}>Next →</button>
+            <button 
+              onClick={prevStory} 
+              disabled={newsStories.length <= 1}
+              className={newsStories.length <= 1 ? 'disabled' : ''}
+            >
+              ← {t('news.previous')}
+            </button>
+            <span className="story-counter">
+              {currentNewsIndex + 1} {t('news.story.of')} {newsStories.length} {t('news.stories')}
+            </span>
+            <button 
+              onClick={nextStory} 
+              disabled={newsStories.length <= 1}
+              className={newsStories.length <= 1 ? 'disabled' : ''}
+            >
+              {t('news.next')} →
+            </button>
           </div>
         </div>
       )}

@@ -66,6 +66,27 @@ export MONGO_URI="your-mongodb-uri"
 
 ## 🆕 Changelog
 
+### 2025-07-19 (Latest)
+- **🔧 BACKEND FIXES**: Fixed Azure OpenAI API parameters - replaced `max_tokens` with `max_completion_tokens` and removed unsupported `temperature` parameter
+- **📈 TOKEN LIMITS**: Increased token limits from 800 to 1500 for main generation and 300 to 500 for fallback stories
+- **🗄️ MONGODB UPDATE**: Migrated from MongoDB Atlas to Azure Cosmos DB for improved performance and reliability
+- **🚀 DEPLOYMENT**: Successfully deployed latest backend revision with all fixes applied
+- **🔍 CONTAINER REVISION**: Currently running revision `orb-game-backend-eastus2--0000064` with latest code
+- **✅ API VERIFICATION**: Azure OpenAI API working correctly with updated parameters
+- **⚠️ FRONTEND STATUS**: Frontend needs rebuild and redeploy to get latest changes
+
+### 2025-01-19
+- **🤖 AI MODEL SELECTION**: Users can now choose between Grok 4, Perplexity Sonar, and O4-Mini for story generation
+- **🔄 FRESH STORY GENERATION**: Always generates fresh stories from AI models instead of using cached content
+- **📚 STORY CATALOGUE**: Builds a catalogue of 5 stories per session for users to cycle through
+- **🎯 EPOCH-SPECIFIC PROMPTS**: Custom prompts for each time period (Ancient, Medieval, Industrial, Modern, Future)
+- **⚡ PROGRESS INDICATORS**: Animated progress bars and dynamic loading messages during story generation
+- **🔄 FALLBACK SYSTEM**: If no stories exist, automatically generates new content from the selected AI model
+- **🎵 AUDIO AUTOPLAY**: Stories automatically play audio when loaded
+- **🎮 MANUAL CONTROLS**: "Go" button for manual story retrieval from selected model
+- **🎨 UI IMPROVEMENTS**: Darker model selector text, better placement, and enhanced visual feedback
+- **🧹 DEPLOYMENT CLEANUP**: Removed unnecessary files to streamline build and deployment
+
 ### 2024-12-19
 - **NEW FEATURE**: Replaced scoring panel with rotating epoch roller - users can now select time periods to get era-specific positive news stories
 - **TIME-TRAVEL GAMEPLAY**: Added epochs like Ancient, Medieval, Modern, Future - modifies news content to fit the selected time period
@@ -113,6 +134,33 @@ export MONGO_URI="your-mongodb-uri"
 
 ---
 
+## 🚀 Current Status (2025-07-19)
+
+### ✅ **Backend Status**
+- **Container Revision**: `orb-game-backend-eastus2--0000064` (Latest)
+- **Azure OpenAI API**: ✅ Working correctly with updated parameters
+- **MongoDB**: ✅ Connected to Azure Cosmos DB
+- **Deployment**: ✅ Healthy and operational
+- **Traffic**: 100% directed to latest revision
+
+### ⚠️ **Frontend Status**
+- **Last Build**: July 18, 2025 at 18:23:48
+- **Status**: Needs rebuild and redeploy to get latest changes
+- **Backend URL**: Correctly pointing to `https://api.orbgame.us`
+
+### 🔧 **Recent Fixes Applied**
+- Fixed Azure OpenAI API parameter issues (`max_tokens` → `max_completion_tokens`)
+- Increased token limits for better story generation
+- Migrated to Azure Cosmos DB for improved reliability
+- Updated container deployment with latest code
+
+### 📋 **Next Steps**
+1. Commit current changes to git
+2. Rebuild frontend with latest code
+3. Redeploy frontend to get latest version live
+
+---
+
 Orb Game is an advanced AI-powered gaming system with memory, analytics, and multimodal capabilities, deployed on Azure with a React frontend and Node.js backend.
 
 ## 🚀 Features
@@ -123,7 +171,13 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Web Search**: Real-time information retrieval via Perplexity API
 - **Text-to-Speech**: Audio responses for enhanced accessibility
 - **Multi-language Support**: English and Spanish with easy language switching
-- **Positive News System**: Fresh, positive news stories by category, updated every 15 minutes from Perplexity Sonar, served instantly from MongoDB with pre-generated TTS audio.
+- **🤖 Multi-Model AI System**: Choose between Grok 4, Perplexity Sonar, and O4-Mini for story generation
+- **🔄 Fresh Story Generation**: Always generates fresh, engaging content from selected AI models
+- **📚 Story Catalogue**: Builds a catalogue of 5 stories per session for rich content exploration
+- **🎯 Epoch-Specific Content**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **⚡ Progress Indicators**: Real-time progress bars and dynamic loading messages
+- **🔄 Intelligent Fallback**: Automatically generates new content when no stories exist
+- **🎵 Audio Integration**: Automatic audio playback with TTS for immersive experience
 
 ### Advanced Memory & Analytics
 - **Smart Memory Retrieval**: Automatically finds relevant past conversations
@@ -143,6 +197,14 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Responsive Design**: Works seamlessly on desktop and mobile
 
 ### Orb Game Features
+- **🤖 AI Model Selection**: Choose between Grok 4, Perplexity Sonar, and O4-Mini for story generation
+- **🔄 Fresh Content Generation**: Always generates fresh stories from selected AI models
+- **📚 Story Catalogue System**: Builds a catalogue of 5 stories per session for rich exploration
+- **🎯 Epoch-Specific Prompts**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **⚡ Progress Indicators**: Animated progress bars and dynamic loading messages during generation
+- **🎮 Manual Controls**: "Go" button for manual story retrieval from selected model
+- **🎵 Audio Autoplay**: Stories automatically play audio when loaded
+- **🔄 Intelligent Fallback**: Generates new content when no stories exist in database
 - **Interactive 3D Environment**: Beautiful 3D orb with orbiting satellites representing different news categories
 - **Milky Way Background**: Stunning space environment with 5,000 animated stars, nebula clouds, and dynamic movement
 - **Epoch Roller**: Rotating time selector to choose eras (Ancient to Future) for era-specific positive news
@@ -153,7 +215,7 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Positive News Stories**: Hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
 - **Scrollable News Content**: Full news stories with smooth scrolling for complete reading experience
 - **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
-- **Story Cycling**: Previous/Next buttons to browse multiple stories per topic
+- **Story Cycling**: Previous/Next buttons to browse multiple stories per topic with enhanced navigation
 - **AI Source Rotation**: Stories gathered from Grok, Perplexity Sonar, and Azure AI with loading indicators
 
 ## 🏗️ Architecture
@@ -166,71 +228,102 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Responsive Design**: Modern UI with smooth animations and touch interactions
 
 ### Backend (Node.js + Express)
-- **Azure OpenAI Integration**: GPT-4o-mini for chat, TTS for audio
-- **Memory Service**: MongoDB Atlas for persistent conversation storage
-- **Positive News Service**: Fetches and stores positive news by category from Perplexity Sonar, caches in MongoDB, and pre-generates TTS audio for instant response
+- **Azure OpenAI Integration**: GPT-4o-mini for chat, TTS for audio with updated API parameters
+- **Memory Service**: Azure Cosmos DB for persistent conversation storage
+- **Positive News Service**: Fetches and stores positive news by category from Perplexity Sonar, caches in Cosmos DB, and pre-generates TTS audio for instant response
 - **Analytics Caching**: Preloaded memory data for instant analytics
 - **Web Search**: Perplexity API for real-time information
-- **Container Deployment**: Azure Container Apps with auto-scaling
+- **Container Deployment**: Azure Container Apps with auto-scaling (currently running revision 0000064)
 
-### Positive News System (Backend)
-- **Source**: Perplexity Sonar API (every 15 minutes, per category)
-- **Fallback**: o4-mini generates content when Perplexity API is unavailable or no stories exist
-- **Storage**: MongoDB collection `positive_news_stories`
-- **Serving**: Fast, cached, random story per category (cycles through if no new news)
-- **TTS**: Pre-generated using Azure OpenAI TTS, returned as base64 mp3
-- **API Endpoint**: `/api/orb/positive-news/:category` (GET)
+### 🤖 Multi-Model AI Story Generation System (Backend)
+- **🤖 AI Model Selection**: Users can choose between Grok 4, Perplexity Sonar, and O4-Mini
+- **🔄 Fresh Story Generation**: Always generates fresh stories from selected AI models via POST requests
+- **📚 Story Catalogue**: Builds a catalogue of 5 stories per session for rich content exploration
+- **🎯 Epoch-Specific Prompts**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **⚡ Progress Indicators**: Real-time progress bars and dynamic loading messages
+- **🔄 Intelligent Fallback**: Automatically generates new content when no stories exist
+- **🎵 Audio Integration**: Automatic TTS generation and playback for immersive experience
+- **API Endpoints**: 
+  - `/api/orb/positive-news/:category` (GET) - Legacy cached stories
+  - `/api/orb/generate-news/:category` (POST) - Fresh AI-generated stories
 - **Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation, Health, Education
-- **Reliability**: Ensures all categories always have content, even when external APIs fail
+- **Reliability**: Ensures all categories always have content with intelligent fallback system
 
 #### Example API Usage
 
+**Legacy Cached Stories:**
 ```
 GET https://api.orbgame.us/api/orb/positive-news/Technology
 ```
 
+**Fresh AI-Generated Stories:**
+```
+POST https://api.orbgame.us/api/orb/generate-news/Technology
+Content-Type: application/json
+
+{
+  "category": "Technology",
+  "epoch": "Modern",
+  "model": "grok-4",
+  "count": 5,
+  "prompt": "Generate 5 fascinating, positive Technology stories from modern times..."
+}
+```
+
 **Response:**
 ```json
-{
-  "headline": "AI Helps Doctors Diagnose Faster",
-  "summary": "A new AI system is helping doctors diagnose diseases more quickly and accurately.",
-  "fullText": "Researchers have developed an AI tool that assists doctors in diagnosing complex diseases, reducing errors and improving patient outcomes.",
-  "source": "Perplexity Sonar",
-  "publishedAt": "2024-07-17T12:00:00Z",
-  "ttsAudio": "<base64 mp3>"
-}
+[
+  {
+    "headline": "AI Helps Doctors Diagnose Faster",
+    "summary": "A new AI system is helping doctors diagnose diseases more quickly and accurately.",
+    "fullText": "Researchers have developed an AI tool that assists doctors in diagnosing complex diseases, reducing errors and improving patient outcomes.",
+    "source": "Grok 4",
+    "publishedAt": "2025-01-19T12:00:00Z",
+    "ttsAudio": "<base64 mp3>"
+  }
+]
 ```
 
 #### Required Environment Variables (Backend)
 - `MONGO_URI`: MongoDB Atlas connection string
-- `PERPLEXITY_API_KEY`: Perplexity Sonar API key
-- `GROK_API_KEY`: (Optional) xAI Grok API key for alternative news generation
+- `PERPLEXITY_API_KEY`: Perplexity Sonar API key (for perplexity-sonar model)
+- `GROK_API_KEY`: xAI Grok API key (for grok-4 model)
 - `AZURE_OPENAI_ENDPOINT`: Azure OpenAI endpoint
 - `AZURE_OPENAI_API_KEY`: Azure OpenAI API key
-- `AZURE_OPENAI_DEPLOYMENT`: Azure OpenAI deployment name (for fallback content generation)
+- `AZURE_OPENAI_DEPLOYMENT`: Azure OpenAI deployment name (for o4-mini model)
 - `AZURE_OPENAI_TTS_DEPLOYMENT`: Azure OpenAI TTS deployment name
 
-#### Testing the Fallback System
+#### Testing the AI Model Generation System
 ```bash
+# Test all AI models and categories
+node scripts/test-ai-models.js
+
 # Test all categories to ensure they have content
 node scripts/test-positive-news-fallback.js
 
 # Backfill all topics with o4-mini content
 node scripts/backfill-topics.js
 
-# Test individual category
+# Test individual category (legacy)
 curl https://your-backend-url/api/orb/positive-news/Technology
+
+# Test fresh AI generation
+curl -X POST https://your-backend-url/api/orb/generate-news/Technology \
+  -H "Content-Type: application/json" \
+  -d '{"category":"Technology","epoch":"Modern","model":"grok-4","count":3}'
 ```
 
 #### How It Works
-- Every 15 minutes, the backend fetches the latest positive news for each category from Perplexity Sonar
-- New stories are added to MongoDB; if no new stories, cycles through existing ones
-- **Grok Integration**: If `GROK_API_KEY` is set and Perplexity fails, falls back to Grok API for generating positive stories
-- **Fallback System**: If no stories exist for a category, o4-mini generates positive content automatically
-- **Service Resilience**: If Perplexity API is unavailable, the system generates content directly using Azure OpenAI
-- TTS audio is pre-generated and stored with each story (including fallback content)
-- When a user requests a story, a random (fresh) story is served instantly with text and audio
+- **🤖 Multi-Model Selection**: Users can choose between Grok 4, Perplexity Sonar, and O4-Mini for story generation
+- **🔄 Fresh Generation**: Always generates fresh stories from selected AI models via POST requests to `/api/orb/generate-news/:category`
+- **📚 Story Catalogue**: Builds a catalogue of 5 stories per session for rich content exploration
+- **🎯 Epoch-Specific Prompts**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **⚡ Progress Indicators**: Real-time progress bars and dynamic loading messages during generation
+- **🔄 Intelligent Fallback**: If no stories exist, automatically generates new content from the selected AI model
+- **🎵 Audio Integration**: Automatic TTS generation and playback for immersive experience
+- **Service Resilience**: If any AI model is unavailable, falls back to alternative models or generates content directly
 - **Guaranteed Content**: All categories always have content, ensuring a smooth user experience
+- **Legacy Support**: Still supports cached stories via `/api/orb/positive-news/:category` for backward compatibility
 
 ### Data Storage
 - **MongoDB Atlas**: Cloud database for memories and user profiles
@@ -465,7 +558,8 @@ npm run build
 - `GET /api/memory/profile` - User memory profile
 - `POST /api/memory/search` - Search through memories
 - `GET /api/memory/export` - Export conversation data
-- `GET /api/orb/positive-news/:category?count=3&epoch=Ancient` - Get array of stories for cycling, with optional count and epoch for time-themed content
+- `GET /api/orb/positive-news/:category?count=3&epoch=Ancient` - Legacy cached stories for cycling
+- `POST /api/orb/generate-news/:category` - Fresh AI-generated stories from selected model
 
 ### Health & Status
 - `GET /health` - System health check
@@ -488,6 +582,9 @@ npm run dev
 
 ### Testing
 ```bash
+# Test AI model generation
+node scripts/test-ai-models.js
+
 # Test memory functions
 bash scripts/test-memory.sh
 
@@ -518,6 +615,13 @@ bash scripts/test-memory.sh
 
 ## 🌟 Live Features
 
+- **🤖 AI Model Selection**: Choose between Grok 4, Perplexity Sonar, and O4-Mini
+- **🔄 Fresh Story Generation**: Always generates fresh content from selected AI models
+- **📚 Story Catalogue**: Rich catalogue of 5 stories per session for exploration
+- **🎯 Epoch-Specific Content**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **⚡ Progress Indicators**: Real-time progress bars and dynamic loading messages
+- **🎵 Audio Autoplay**: Automatic audio playback for immersive experience
+- **🎮 Manual Controls**: "Go" button for manual story retrieval
 - **Milky Way Background**: Stunning space environment with animated stars
 - **Orb Movement Control**: Orbs stop when clicked for better UX
 - **Scrollable News**: Complete news content with smooth scrolling

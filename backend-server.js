@@ -411,7 +411,7 @@ Current conversation context: ${memoryContext}`;
             role: 'user',
             content: `Search for current information about: ${message}`
           }],
-          max_completion_tokens: 200
+          max_tokens: 200
         })
         });
 
@@ -900,7 +900,8 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
             content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
           }
         ],
-        max_completion_tokens: 1500
+        max_tokens: 800,
+        temperature: 0.7
       })
     });
 
@@ -985,7 +986,8 @@ async function generateDirectFallbackStory(category) {
 }`
           }
         ],
-        max_completion_tokens: 500
+        max_tokens: 300,
+        temperature: 0.7
       })
     });
 

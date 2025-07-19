@@ -121,7 +121,8 @@ class PositiveNewsService {
               content: `Generate a positive news story about ${category}. Return ONLY a valid JSON object: { "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Grok AI" }`
             }
           ],
-          max_completion_tokens: 500
+          max_tokens: 300,
+          temperature: 0.7
         })
       });
 
@@ -156,7 +157,8 @@ class PositiveNewsService {
         body: JSON.stringify({
           model: 'sonar',
           stream: false,
-          max_completion_tokens: 1500,
+          max_tokens: 800,
+          temperature: 0.7,
           messages: [
             {
               role: 'user',
@@ -307,7 +309,8 @@ class PositiveNewsService {
 }`
             }
           ],
-          max_completion_tokens: 500
+          max_tokens: 300,
+          temperature: 0.7
         })
       });
 

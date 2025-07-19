@@ -359,283 +359,123 @@ function OrbGame() {
   };
   
   const loadStoryForOrb = async (category) => {
-    if (isPlaying || isLoading) return;
-    console.log('BACKEND_URL:', BACKEND_URL);
     setIsLoading(true);
-    
-    // Set initial loading message based on selected model and epoch
-    const selectedModelInfo = aiModels.find(model => model.id === selectedModel);
-    const epochDescriptions = {
-      'Ancient': 'ancient civilizations and discoveries',
-      'Medieval': 'medieval innovations and breakthroughs',
-      'Industrial': 'industrial revolution and technological advances',
-      'Modern': 'modern breakthroughs and innovations',
-      'Future': 'futuristic technologies and possibilities'
-    };
-    
-    // Check if we have preloaded stories for this category and model
-    const preloadedCategoryStories = preloadedStories[category.name];
-    const preloadedModelStories = preloadedCategoryStories?.[selectedModel];
-    
-    if (preloadedModelStories && preloadedModelStories.length > 0) {
-      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.name}`);
-      setNewsStories(preloadedModelStories);
-      setCurrentNewsIndex(0);
-      setCurrentNews(preloadedModelStories[0]);
-      setCurrentAISource(selectedModelInfo.name);
-      
-      // Ensure TTS is ready before autoplaying
-      if (preloadedModelStories[0]?.ttsAudio && !isMuted) {
-        setTimeout(() => {
-          playAudio();
-        }, 800);
-      }
-      
-      setIsLoading(false);
-      return;
-    }
-    
-    // Enhanced prompts for each epoch and category
-    const getExcitingPrompt = (category, epoch, model) => {
-      if (language === 'es') {
-        // Spanish prompts
-        const spanishCategoryPrompts = {
-          'Technology': {
-            'Ancient': `¡Descubre 5 maravillas tecnológicas asombrosas de las civilizaciones antiguas! De los conocimientos perdidos de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, hazañas de ingeniería y avances tecnológicos que dieron forma al progreso humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos pioneros tecnológicos antiguos cambiaron el mundo!`,
-            'Medieval': `¡Descubre 5 innovaciones tecnológicas revolucionarias de la era medieval! De las mentes ingeniosas de los tiempos ${epoch.toLowerCase()}, revela los inventos más extraordinarios, maravillas mecánicas y saltos tecnológicos que transformaron la sociedad. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos visionarios tecnológicos medievales empujaron los límites de lo posible!`,
-            'Industrial': `¡Explora 5 revoluciones tecnológicas innovadoras de la era industrial! De las innovaciones explosivas de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, maravillas de ingeniería y avances tecnológicos que impulsaron el mundo moderno. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos pioneros industriales desataron la revolución tecnológica!`,
-            'Modern': `¡Revela 5 avances tecnológicos de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela los inventos más alucinantes, revoluciones digitales y saltos tecnológicos que están remodelando nuestro futuro. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos visionarios tecnológicos modernos están cambiando el mundo!`,
-            'Future': `¡Imagina 5 maravillas tecnológicas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los inventos más asombrosos, avances de IA y saltos tecnológicos que transformarán la humanidad. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos pioneros tecnológicos futuros remodelarán nuestro mundo!`
-          },
-          'Science': {
-            'Ancient': `¡Revela 5 descubrimientos científicos extraordinarios de las civilizaciones antiguas! De las mentes brillantes de los tiempos ${epoch.toLowerCase()}, descubre los avances más asombrosos, fenómenos naturales y revelaciones científicas que sentaron las bases de la ciencia moderna. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos científicos antiguos desbloquearon los secretos del universo!`,
-            'Medieval': `¡Descubre 5 avances científicos revolucionarios de la era medieval! De las mentes pioneras de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos más extraordinarios, maravillas naturales y revelaciones científicas que avanzaron el conocimiento humano. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos científicos medievales expandieron nuestra comprensión del mundo!`,
-            'Industrial': `¡Explora 5 revoluciones científicas innovadoras de la era industrial! De los descubrimientos explosivos de los tiempos ${epoch.toLowerCase()}, revela los avances más increíbles, fenómenos naturales y revelaciones científicas que impulsaron la revolución científica moderna. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos científicos industriales transformaron nuestra comprensión de la naturaleza!`,
-            'Modern': `¡Revela 5 avances científicos de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela las revelaciones más alucinantes, maravillas naturales y saltos científicos que están remodelando nuestra comprensión del universo. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos científicos modernos están desbloqueando los misterios de la existencia!`,
-            'Future': `¡Imagina 5 maravillas científicas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos más asombrosos, avances impulsados por IA y saltos científicos que transformarán nuestra comprensión de la realidad. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos científicos futuros desbloquearán los secretos del cosmos!`
-          },
-          'Art': {
-            'Ancient': `¡Descubre 5 obras maestras artísticas impresionantes de las civilizaciones antiguas! Del genio creativo de los tiempos ${epoch.toLowerCase()}, revela las obras de arte más asombrosas, expresiones culturales y revelaciones artísticas que dieron forma a la creatividad humana. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos artistas antiguos capturaron la belleza y el misterio de su mundo!`,
-            'Medieval': `¡Descubre 5 innovaciones artísticas revolucionarias de la era medieval! De las mentes visionarias de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más extraordinarias, expresiones culturales y avances artísticos que transformaron la expresión humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos artistas medievales empujaron los límites de la creatividad!`,
-            'Industrial': `¡Explora 5 revoluciones artísticas innovadoras de la era industrial! De la creatividad explosiva de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más increíbles, expresiones culturales y revelaciones artísticas que reflejaron el mundo cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos artistas industriales capturaron el espíritu de su era!`,
-            'Modern': `¡Revela 5 avances artísticos de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más alucinantes, arte digital y saltos artísticos que están remodelando la expresión creativa. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos artistas modernos están redefiniendo lo que puede ser el arte!`,
-            'Future': `¡Imagina 5 maravillas artísticas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más asombrosas, arte generado por IA y saltos artísticos que transformarán la creatividad humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos artistas futuros crearán arte más allá de nuestros sueños más salvajes!`
-          },
-          'Nature': {
-            'Ancient': `¡Revela 5 maravillas naturales extraordinarias de las civilizaciones antiguas! De la belleza prístina de los tiempos ${epoch.toLowerCase()}, descubre los fenómenos naturales más asombrosos, descubrimientos ambientales y revelaciones ecológicas que dieron forma a nuestra comprensión de la Tierra. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo la gente antigua se maravillaba del mundo natural!`,
-            'Medieval': `¡Descubre 5 descubrimientos naturales revolucionarios de la era medieval! De la exploración de los tiempos ${epoch.toLowerCase()}, revela las maravillas naturales más extraordinarias, fenómenos ambientales y avances ecológicos que expandieron el conocimiento humano de la naturaleza. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los exploradores medievales descubrieron los secretos de la Tierra!`,
-            'Industrial': `¡Explora 5 revelaciones naturales innovadoras de la era industrial! Del paisaje cambiante de los tiempos ${epoch.toLowerCase()}, revela los fenómenos naturales más increíbles, descubrimientos ambientales y perspectivas ecológicas que surgieron durante el desarrollo rápido. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los naturalistas de la era industrial documentaron la transformación de la Tierra!`,
-            'Modern': `¡Revela 5 avances naturales de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela las maravillas naturales más alucinantes, fenómenos ambientales y revelaciones ecológicas que están remodelando nuestra comprensión de la Tierra. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los científicos modernos están descubriendo los secretos de la naturaleza!`,
-            'Future': `¡Imagina 5 maravillas naturales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los fenómenos ambientales más asombrosos, descubrimientos asistidos por IA y saltos ecológicos que transformarán nuestra relación con la naturaleza. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los ambientalistas futuros protegerán y entenderán nuestro planeta!`
-          },
-          'Sports': {
-            'Ancient': `¡Descubre 5 logros atléticos extraordinarios de las civilizaciones antiguas! Del espíritu competitivo de los tiempos ${epoch.toLowerCase()}, revela los eventos deportivos más asombrosos, hazañas físicas y revelaciones atléticas que celebraron el potencial humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los atletas antiguos empujaron los límites del rendimiento humano!`,
-            'Medieval': `¡Descubre 5 innovaciones deportivas revolucionarias de la era medieval! De las tradiciones competitivas de los tiempos ${epoch.toLowerCase()}, revela los eventos atléticos más extraordinarios, desafíos físicos y avances deportivos que probaron los límites humanos. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los atletas medievales celebraron la fuerza y la habilidad!`,
-            'Industrial': `¡Explora 5 revoluciones deportivas innovadoras de la era industrial! Del espíritu competitivo de los tiempos ${epoch.toLowerCase()}, revela los eventos atléticos más increíbles, logros físicos y revelaciones deportivas que reflejaron la sociedad cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los atletas de la era industrial redefinieron lo que era posible!`,
-            'Modern': `¡Revela 5 avances deportivos de vanguardia de la era moderna! De los últimos logros de los tiempos ${epoch.toLowerCase()}, revela las hazañas atléticas más alucinantes, innovaciones tecnológicas y saltos deportivos que están redefiniendo el potencial humano. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los atletas modernos están rompiendo todos los récords!`,
-            'Future': `¡Imagina 5 maravillas deportivas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los logros atléticos más asombrosos, rendimiento mejorado por IA y saltos deportivos que transformarán la competencia humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los atletas futuros empujarán más allá de los límites actuales!`
-          },
-          'Music': {
-            'Ancient': `¡Revela 5 obras maestras musicales extraordinarias de las civilizaciones antiguas! Del genio melódico de los tiempos ${epoch.toLowerCase()}, descubre las innovaciones musicales más asombrosas, expresiones culturales y revelaciones armónicas que dieron forma a la emoción humana. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los músicos antiguos crearon los primeros sonidos que movieron el alma!`,
-            'Medieval': `¡Descubre 5 innovaciones musicales revolucionarias de la era medieval! De las tradiciones armónicas de los tiempos ${epoch.toLowerCase()}, revela las composiciones más extraordinarias, expresiones culturales y avances musicales que transformaron la expresión humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los músicos medievales crearon melodías que aún resuenan hoy!`,
-            'Industrial': `¡Explora 5 revoluciones musicales innovadoras de la era industrial! De los sonidos en evolución de los tiempos ${epoch.toLowerCase()}, revela las composiciones más increíbles, expresiones culturales y revelaciones musicales que reflejaron la sociedad cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los músicos de la era industrial capturaron el ritmo del progreso!`,
-            'Modern': `¡Revela 5 avances musicales de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela las composiciones más alucinantes, música digital y saltos musicales que están remodelando la expresión humana. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los músicos modernos están creando sonidos nunca antes escuchados!`,
-            'Future': `¡Imagina 5 maravillas musicales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela las composiciones más asombrosas, música generada por IA y saltos musicales que transformarán la creatividad humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los músicos futuros crearán armonías más allá de nuestra imaginación!`
-          },
-          'Space': {
-            'Ancient': `¡Descubre 5 descubrimientos cósmicos extraordinarios de las civilizaciones antiguas! De la sabiduría de observación de estrellas de los tiempos ${epoch.toLowerCase()}, revela las observaciones astronómicas más asombrosas, fenómenos celestes y revelaciones espaciales que dieron forma a la comprensión humana del cosmos. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los astrónomos antiguos mapearon los cielos!`,
-            'Medieval': `¡Descubre 5 observaciones espaciales revolucionarias de la era medieval! Del conocimiento celeste de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos astronómicos más extraordinarios, fenómenos cósmicos y revelaciones espaciales que expandieron la comprensión humana del universo. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los astrónomos medievales estudiaron las estrellas!`,
-            'Industrial': `¡Explora 5 revelaciones espaciales innovadoras de la era industrial! Del conocimiento en expansión de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos astronómicos más increíbles, fenómenos cósmicos y revelaciones espaciales que allanaron el camino para la astronomía moderna. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los astrónomos de la era industrial desbloquearon secretos cósmicos!`,
-            'Modern': `¡Revela 5 avances espaciales de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela los fenómenos cósmicos más alucinantes, innovaciones tecnológicas y revelaciones espaciales que están remodelando nuestra comprensión del universo. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los astrónomos modernos están descubriendo misterios cósmicos!`,
-            'Future': `¡Imagina 5 maravillas espaciales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos cósmicos más asombrosos, exploración impulsada por IA y saltos espaciales que transformarán nuestra comprensión del universo. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los exploradores espaciales futuros desbloquearán los secretos del cosmos!`
-          },
-          'Innovation': {
-            'Ancient': `¡Revela 5 avances innovadores extraordinarios de las civilizaciones antiguas! Del genio creativo de los tiempos ${epoch.toLowerCase()}, descubre los inventos más asombrosos, hazañas de resolución de problemas y revelaciones innovadoras que dieron forma al progreso humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los innovadores antiguos resolvieron desafíos imposibles!`,
-            'Medieval': `¡Descubre 5 logros innovadores revolucionarios de la era medieval! De las mentes creativas de los tiempos ${epoch.toLowerCase()}, revela los inventos más extraordinarios, avances en resolución de problemas y revelaciones innovadoras que avanzaron la civilización humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los innovadores medievales empujaron los límites de lo posible!`,
-            'Industrial': `¡Explora 5 revoluciones innovadoras innovadoras de la era industrial! De la creatividad explosiva de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, hazañas de resolución de problemas y revelaciones innovadoras que impulsaron el mundo moderno. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los innovadores industriales desataron la era de la invención!`,
-            'Modern': `¡Revela 5 avances innovadores de vanguardia de la era moderna! De las últimas creaciones de los tiempos ${epoch.toLowerCase()}, revela los inventos más alucinantes, saltos tecnológicos y revelaciones innovadoras que están remodelando nuestro futuro. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los innovadores modernos están resolviendo los problemas del mañana hoy!`,
-            'Future': `¡Imagina 5 maravillas innovadoras revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los inventos más asombrosos, avances impulsados por IA y saltos innovadores que transformarán la civilización humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los innovadores futuros crearán soluciones más allá de nuestros sueños más salvajes!`
-          }
-        };
-        
-        return spanishCategoryPrompts[category]?.[epoch] || `Genera 5 historias fascinantes y positivas de ${category} de los tiempos ${epoch.toLowerCase()}. Cada historia debe ser atractiva, informativa y destacar logros o descubrimientos notables. Haz cada historia única y cautivadora.`;
-      }
-      
-      // English prompts (existing)
-      const categoryPrompts = {
-        'Technology': {
-          'Ancient': `Uncover 5 mind-blowing technological marvels from ancient civilizations! From lost knowledge of ${epoch.toLowerCase()} times, reveal the most astonishing inventions, engineering feats, and technological breakthroughs that shaped human progress. Make each story absolutely captivating with incredible details about how these ancient tech pioneers changed the world!`,
-          'Medieval': `Discover 5 revolutionary technological innovations from the medieval era! From the ingenious minds of ${epoch.toLowerCase()} times, reveal the most extraordinary inventions, mechanical wonders, and technological leaps that transformed society. Make each story thrilling with fascinating details about how these medieval tech visionaries pushed the boundaries of what was possible!`,
-          'Industrial': `Explore 5 groundbreaking technological revolutions from the industrial age! From the explosive innovations of ${epoch.toLowerCase()} times, reveal the most incredible inventions, engineering marvels, and technological breakthroughs that powered the modern world. Make each story electrifying with amazing details about how these industrial pioneers sparked the technological revolution!`,
-          'Modern': `Unveil 5 cutting-edge technological breakthroughs from the modern era! From the latest innovations of ${epoch.toLowerCase()} times, reveal the most mind-bending inventions, digital revolutions, and technological leaps that are reshaping our future. Make each story absolutely fascinating with incredible details about how these modern tech visionaries are changing the world!`,
-          'Future': `Imagine 5 revolutionary technological marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing inventions, AI breakthroughs, and technological leaps that will transform humanity. Make each story absolutely mind-blowing with fascinating details about how these future tech pioneers will reshape our world!`
-        },
-        'Science': {
-          'Ancient': `Reveal 5 extraordinary scientific discoveries from ancient civilizations! From the brilliant minds of ${epoch.toLowerCase()} times, uncover the most astonishing breakthroughs, natural phenomena, and scientific revelations that laid the foundation for modern science. Make each story absolutely captivating with incredible details about how these ancient scientists unlocked the secrets of the universe!`,
-          'Medieval': `Discover 5 revolutionary scientific breakthroughs from the medieval era! From the pioneering minds of ${epoch.toLowerCase()} times, reveal the most extraordinary discoveries, natural wonders, and scientific revelations that advanced human knowledge. Make each story thrilling with fascinating details about how these medieval scientists expanded our understanding of the world!`,
-          'Industrial': `Explore 5 groundbreaking scientific revolutions from the industrial age! From the explosive discoveries of ${epoch.toLowerCase()} times, reveal the most incredible breakthroughs, natural phenomena, and scientific revelations that powered the modern scientific revolution. Make each story electrifying with amazing details about how these industrial scientists transformed our understanding of nature!`,
-          'Modern': `Unveil 5 cutting-edge scientific breakthroughs from the modern era! From the latest discoveries of ${epoch.toLowerCase()} times, reveal the most mind-bending revelations, natural wonders, and scientific leaps that are reshaping our understanding of the universe. Make each story absolutely fascinating with incredible details about how these modern scientists are unlocking the mysteries of existence!`,
-          'Future': `Imagine 5 revolutionary scientific marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing discoveries, AI-powered breakthroughs, and scientific leaps that will transform our understanding of reality. Make each story absolutely mind-blowing with fascinating details about how these future scientists will unlock the secrets of the cosmos!`
-        },
-        'Art': {
-          'Ancient': `Uncover 5 breathtaking artistic masterpieces from ancient civilizations! From the creative genius of ${epoch.toLowerCase()} times, reveal the most astonishing artworks, cultural expressions, and artistic revelations that shaped human creativity. Make each story absolutely captivating with incredible details about how these ancient artists captured the beauty and mystery of their world!`,
-          'Medieval': `Discover 5 revolutionary artistic innovations from the medieval era! From the visionary minds of ${epoch.toLowerCase()} times, reveal the most extraordinary masterpieces, cultural expressions, and artistic breakthroughs that transformed human expression. Make each story thrilling with fascinating details about how these medieval artists pushed the boundaries of creativity!`,
-          'Industrial': `Explore 5 groundbreaking artistic revolutions from the industrial age! From the explosive creativity of ${epoch.toLowerCase()} times, reveal the most incredible masterpieces, cultural expressions, and artistic revelations that reflected the changing world. Make each story electrifying with amazing details about how these industrial artists captured the spirit of their era!`,
-          'Modern': `Unveil 5 cutting-edge artistic breakthroughs from the modern era! From the latest innovations of ${epoch.toLowerCase()} times, reveal the most mind-bending masterpieces, digital art, and artistic leaps that are reshaping creative expression. Make each story absolutely fascinating with incredible details about how these modern artists are redefining what art can be!`,
-          'Future': `Imagine 5 revolutionary artistic marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing masterpieces, AI-generated art, and artistic leaps that will transform human creativity. Make each story absolutely mind-blowing with fascinating details about how these future artists will create art beyond our wildest dreams!`
-        },
-        'Nature': {
-          'Ancient': `Reveal 5 extraordinary natural wonders from ancient civilizations! From the pristine beauty of ${epoch.toLowerCase()} times, uncover the most astonishing natural phenomena, environmental discoveries, and ecological revelations that shaped our understanding of Earth. Make each story absolutely captivating with incredible details about how ancient people marveled at the natural world!`,
-          'Medieval': `Discover 5 revolutionary natural discoveries from the medieval era! From the exploration of ${epoch.toLowerCase()} times, reveal the most extraordinary natural wonders, environmental phenomena, and ecological breakthroughs that expanded human knowledge of nature. Make each story thrilling with fascinating details about how medieval explorers uncovered Earth's secrets!`,
-          'Industrial': `Explore 5 groundbreaking natural revelations from the industrial age! From the changing landscape of ${epoch.toLowerCase()} times, reveal the most incredible natural phenomena, environmental discoveries, and ecological insights that emerged during rapid development. Make each story electrifying with amazing details about how industrial-era naturalists documented Earth's transformation!`,
-          'Modern': `Unveil 5 cutting-edge natural breakthroughs from the modern era! From the latest discoveries of ${epoch.toLowerCase()} times, reveal the most mind-bending natural wonders, environmental phenomena, and ecological revelations that are reshaping our understanding of Earth. Make each story absolutely fascinating with incredible details about how modern scientists are uncovering nature's secrets!`,
-          'Future': `Imagine 5 revolutionary natural marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing environmental phenomena, AI-assisted discoveries, and ecological leaps that will transform our relationship with nature. Make each story absolutely mind-blowing with fascinating details about how future environmentalists will protect and understand our planet!`
-        },
-        'Sports': {
-          'Ancient': `Uncover 5 extraordinary athletic achievements from ancient civilizations! From the competitive spirit of ${epoch.toLowerCase()} times, reveal the most astonishing sporting events, physical feats, and athletic revelations that celebrated human potential. Make each story absolutely captivating with incredible details about how ancient athletes pushed the limits of human performance!`,
-          'Medieval': `Discover 5 revolutionary sporting innovations from the medieval era! From the competitive traditions of ${epoch.toLowerCase()} times, reveal the most extraordinary athletic events, physical challenges, and sporting breakthroughs that tested human limits. Make each story thrilling with fascinating details about how medieval athletes celebrated strength and skill!`,
-          'Industrial': `Explore 5 groundbreaking sporting revolutions from the industrial age! From the competitive spirit of ${epoch.toLowerCase()} times, reveal the most incredible athletic events, physical achievements, and sporting revelations that reflected changing society. Make each story electrifying with amazing details about how industrial-era athletes redefined what was possible!`,
-          'Modern': `Unveil 5 cutting-edge sporting breakthroughs from the modern era! From the latest achievements of ${epoch.toLowerCase()} times, reveal the most mind-bending athletic feats, technological innovations, and sporting leaps that are redefining human potential. Make each story absolutely fascinating with incredible details about how modern athletes are breaking every record!`,
-          'Future': `Imagine 5 revolutionary sporting marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing athletic achievements, AI-enhanced performance, and sporting leaps that will transform human competition. Make each story absolutely mind-blowing with fascinating details about how future athletes will push beyond current limits!`
-        },
-        'Music': {
-          'Ancient': `Reveal 5 extraordinary musical masterpieces from ancient civilizations! From the melodic genius of ${epoch.toLowerCase()} times, uncover the most astonishing musical innovations, cultural expressions, and harmonic revelations that shaped human emotion. Make each story absolutely captivating with incredible details about how ancient musicians created the first sounds that moved the soul!`,
-          'Medieval': `Discover 5 revolutionary musical innovations from the medieval era! From the harmonic traditions of ${epoch.toLowerCase()} times, reveal the most extraordinary compositions, cultural expressions, and musical breakthroughs that transformed human expression. Make each story thrilling with fascinating details about how medieval musicians crafted melodies that still resonate today!`,
-          'Industrial': `Explore 5 groundbreaking musical revolutions from the industrial age! From the evolving sounds of ${epoch.toLowerCase()} times, reveal the most incredible compositions, cultural expressions, and musical revelations that reflected changing society. Make each story electrifying with amazing details about how industrial-era musicians captured the rhythm of progress!`,
-          'Modern': `Unveil 5 cutting-edge musical breakthroughs from the modern era! From the latest innovations of ${epoch.toLowerCase()} times, reveal the most mind-bending compositions, digital music, and musical leaps that are reshaping human expression. Make each story absolutely fascinating with incredible details about how modern musicians are creating sounds never heard before!`,
-          'Future': `Imagine 5 revolutionary musical marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing compositions, AI-generated music, and musical leaps that will transform human creativity. Make each story absolutely mind-blowing with fascinating details about how future musicians will create harmonies beyond our imagination!`
-        },
-        'Space': {
-          'Ancient': `Uncover 5 extraordinary cosmic discoveries from ancient civilizations! From the stargazing wisdom of ${epoch.toLowerCase()} times, reveal the most astonishing astronomical observations, celestial phenomena, and space revelations that shaped human understanding of the cosmos. Make each story absolutely captivating with incredible details about how ancient astronomers mapped the heavens!`,
-          'Medieval': `Discover 5 revolutionary space observations from the medieval era! From the celestial knowledge of ${epoch.toLowerCase()} times, reveal the most extraordinary astronomical discoveries, cosmic phenomena, and space revelations that expanded human understanding of the universe. Make each story thrilling with fascinating details about how medieval astronomers studied the stars!`,
-          'Industrial': `Explore 5 groundbreaking space revelations from the industrial age! From the expanding knowledge of ${epoch.toLowerCase()} times, reveal the most incredible astronomical discoveries, cosmic phenomena, and space revelations that paved the way for modern astronomy. Make each story electrifying with amazing details about how industrial-era astronomers unlocked cosmic secrets!`,
-          'Modern': `Unveil 5 cutting-edge space breakthroughs from the modern era! From the latest discoveries of ${epoch.toLowerCase()} times, reveal the most mind-bending cosmic phenomena, technological innovations, and space revelations that are reshaping our understanding of the universe. Make each story absolutely fascinating with incredible details about how modern astronomers are uncovering cosmic mysteries!`,
-          'Future': `Imagine 5 revolutionary space marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing cosmic discoveries, AI-powered exploration, and space leaps that will transform our understanding of the universe. Make each story absolutely mind-blowing with fascinating details about how future space explorers will unlock the secrets of the cosmos!`
-        },
-        'Innovation': {
-          'Ancient': `Reveal 5 extraordinary innovative breakthroughs from ancient civilizations! From the creative genius of ${epoch.toLowerCase()} times, uncover the most astonishing inventions, problem-solving feats, and innovative revelations that shaped human progress. Make each story absolutely captivating with incredible details about how ancient innovators solved impossible challenges!`,
-          'Medieval': `Discover 5 revolutionary innovative achievements from the medieval era! From the creative minds of ${epoch.toLowerCase()} times, reveal the most extraordinary inventions, problem-solving breakthroughs, and innovative revelations that advanced human civilization. Make each story thrilling with fascinating details about how medieval innovators pushed the boundaries of what was possible!`,
-          'Industrial': `Explore 5 groundbreaking innovative revolutions from the industrial age! From the explosive creativity of ${epoch.toLowerCase()}, reveal the most incredible inventions, problem-solving feats, and innovative revelations that powered the modern world. Make each story electrifying with amazing details about how industrial innovators sparked the age of invention!`,
-          'Modern': `Unveil 5 cutting-edge innovative breakthroughs from the modern era! From the latest creations of ${epoch.toLowerCase()} times, reveal the most mind-bending inventions, technological leaps, and innovative revelations that are reshaping our future. Make each story absolutely fascinating with incredible details about how modern innovators are solving tomorrow's problems today!`,
-          'Future': `Imagine 5 revolutionary innovative marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing inventions, AI-powered breakthroughs, and innovative leaps that will transform human civilization. Make each story absolutely mind-blowing with fascinating details about how future innovators will create solutions beyond our wildest dreams!`
-        }
-      };
-      
-      return categoryPrompts[category]?.[epoch] || `Generate 5 fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries. Make each story unique and captivating.`;
-    };
-    const epochDesc = epochDescriptions[currentEpoch] || currentEpoch.toLowerCase();
-    
-    setCurrentAISource(selectedModelInfo.name);
-    setCurrentNews({
-      headline: t('news.generating'),
-      summary: `${t(`loading.${currentEpoch.toLowerCase()}.${category.name.toLowerCase()}`)} ${selectedModelInfo.name}...`,
-      fullText: t('news.creating'),
-      source: selectedModelInfo.name,
-      publishedAt: new Date().toISOString(),
-      ttsAudio: null
-    });
+    setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
     
     try {
-      // Always generate fresh stories from the AI model
-      console.log('Generating fresh stories for:', category.name, 'epoch:', currentEpoch, 'model:', selectedModel);
+      // First try to get preloaded stories
+      if (preloadedStories[category.name]?.[selectedModel]?.length > 0) {
+        const stories = preloadedStories[category.name][selectedModel];
+        setNewsStories(stories);
+        setCurrentNewsIndex(0);
+        setCurrentNews(stories[0]);
+        setIsLoading(false);
+        return;
+      }
       
-      const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=5&language=${language}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          category: category.name,
-          epoch: currentEpoch,
-          model: selectedModel,
-          count: 5,
-          language: language,
-          prompt: getExcitingPrompt(category.name, currentEpoch, selectedModel)
-        })
-      });
+      // Fallback: Generate fresh stories with retry logic
+      let attempts = 0;
+      const maxAttempts = 3;
+      let success = false;
       
-      if (generateResponse.ok) {
-        const newStories = await generateResponse.json();
-        console.log('Generated fresh stories:', newStories);
+      while (attempts < maxAttempts && !success) {
+        attempts++;
+        console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name}`);
         
-        if (newStories && newStories.length > 0) {
-          setNewsStories(newStories);
-          setCurrentNewsIndex(0);
-          setCurrentNews(newStories[0]);
-          
-          // Ensure TTS is ready before autoplaying
-          if (newStories[0]?.ttsAudio && !isMuted) {
-            // Small delay to ensure UI is updated before playing audio
-            setTimeout(() => {
-              playAudio();
-            }, 800); // Increased delay to ensure proper synchronization
-          }
-        } else {
-          // If no stories generated, try one more time with a different approach
-          console.log('No stories generated, trying alternative approach...');
-          setCurrentNews({
-            headline: t('news.alternative'),
-            summary: `${t(`loading.${currentEpoch.toLowerCase()}.${category.name.toLowerCase()}`)} ${selectedModelInfo.name}...`,
-            fullText: t('news.creating'),
-            source: selectedModelInfo.name,
-            publishedAt: new Date().toISOString(),
-            ttsAudio: null
-          });
-          
-          const alternativeResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=3`, {
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              category: category.name,
-              epoch: currentEpoch,
-              model: selectedModel,
-              count: 3,
-              prompt: getExcitingPrompt(category.name, currentEpoch, selectedModel).replace('5', '3').replace('5 fascinating', '3 incredible')
-            })
+              message: getExcitingPrompt(category, currentEpoch, selectedModel),
+              useWebSearch: 'auto'
+            }),
           });
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+
+          const data = await response.json();
           
-          if (alternativeResponse.ok) {
-            const alternativeStories = await alternativeResponse.json();
-            if (alternativeStories && alternativeStories.length > 0) {
-              setNewsStories(alternativeStories);
-              setCurrentNewsIndex(0);
-              setCurrentNews(alternativeStories[0]);
-              
-              if (alternativeStories[0]?.ttsAudio && !isMuted) {
-                setTimeout(() => {
-                  playAudio();
-                }, 800); // Increased delay to ensure proper synchronization
+          if (data.response && data.response.trim()) {
+            // Create a story object from the response
+            const story = {
+              headline: `Positive ${category.name} News`,
+              summary: data.response,
+              fullText: data.response,
+              source: `${selectedModel} AI`,
+              publishedAt: new Date().toISOString(),
+              ttsAudio: data.audioData || null,
+              category: category.name,
+              aiModel: selectedModel
+            };
+            
+            setNewsStories([story]);
+            setCurrentNewsIndex(0);
+            setCurrentNews(story);
+            success = true;
+            
+            // Store in preloaded stories for future use
+            setPreloadedStories(prev => ({
+              ...prev,
+              [category.name]: {
+                ...prev[category.name],
+                [selectedModel]: [story]
               }
-            } else {
-              throw new Error('No stories could be generated');
-            }
+            }));
           } else {
-            throw new Error('Alternative generation failed');
+            throw new Error('Empty response from AI');
+          }
+        } catch (error) {
+          console.error(`Attempt ${attempts} failed:`, error);
+          
+          if (attempts === maxAttempts) {
+            // Final fallback: Create a simple story
+            const fallbackStory = {
+              headline: `${category.name} News`,
+              summary: `Discover amazing positive news about ${category.name.toLowerCase()}! Click to explore more stories.`,
+              fullText: `We're preparing some exciting ${category.name.toLowerCase()} stories for you. Please try again in a moment or select a different category.`,
+              source: 'Orb Game',
+              publishedAt: new Date().toISOString(),
+              ttsAudio: null,
+              category: category.name,
+              aiModel: 'fallback'
+            };
+            
+            setNewsStories([fallbackStory]);
+            setCurrentNewsIndex(0);
+            setCurrentNews(fallbackStory);
+            setCurrentAISource('Fallback');
+          } else {
+            // Wait before retry
+            await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
           }
         }
-      } else {
-        throw new Error('Failed to generate stories');
       }
     } catch (error) {
-      console.error('Error generating stories:', error);
-      console.error('Error details:', error.message, error.stack);
+      console.error('Failed to load stories:', error);
       
-      // Even on error, try to provide some content
-      setCurrentNews({
-        headline: t('news.connection.issue'),
-        summary: `${t('news.try.again')} ${selectedModelInfo.name}.`,
-        fullText: t('news.unavailable') + ' ' + t('news.switch.model'),
-        source: selectedModelInfo.name,
+      // Ultimate fallback
+      const errorStory = {
+        headline: `${category.name} Stories`,
+        summary: `We're experiencing some technical difficulties. Please try again or select a different category.`,
+        fullText: `Our AI is taking a moment to gather the latest positive ${category.name.toLowerCase()} news. Please try again in a moment.`,
+        source: 'Orb Game',
         publishedAt: new Date().toISOString(),
-        ttsAudio: null
-      });
-      setNewsStories([]);
+        ttsAudio: null,
+        category: category.name,
+        aiModel: 'error'
+      };
+      
+      setNewsStories([errorStory]);
       setCurrentNewsIndex(0);
+      setCurrentNews(errorStory);
+      setCurrentAISource('Error');
     } finally {
       setIsLoading(false);
-      setCurrentAISource('');
     }
   };
   
@@ -1081,37 +921,49 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       
       // Smooth scale effect on hover (only when not in center)
       if (!isInCenter && !isDragged) {
-        const targetScale = isHovered ? 1.5 : 1.0;
+        const targetScale = isHovered ? 1.8 : 1.0; // Increased hover scale
         const currentScale = meshRef.current.scale.x;
         const scaleDiff = targetScale - currentScale;
-        meshRef.current.scale.setScalar(currentScale + scaleDiff * 0.1); // Smooth scale transition
+        meshRef.current.scale.setScalar(currentScale + scaleDiff * 0.15); // Faster scale transition
       }
     }
   });
   
   // Determine emissive intensity based on state
   let emissiveIntensity = 0.1; // Default dim
-  let opacity = hasStoriesLoaded ? 1.0 : 0.4; // Dim if no stories loaded
+  let opacity = hasStoriesLoaded ? 1.0 : 0.3; // More dim if no stories loaded
   
   if (isPreloading) {
-    emissiveIntensity = 0.8; // Bright when preloading
+    emissiveIntensity = 0.9; // Brighter when preloading
     opacity = 1.0;
   } else if (isHovered) {
-    emissiveIntensity = 0.3; // Normal hover brightness
+    emissiveIntensity = 0.5; // Brighter hover
     opacity = 1.0;
   } else if (hasStoriesLoaded) {
-    emissiveIntensity = 0.2; // Normal brightness when stories are loaded
+    emissiveIntensity = 0.3; // Brighter when stories are loaded
     opacity = 1.0;
   }
   
   return (
     <group ref={groupRef}>
+      {/* Invisible larger sphere for easier clicking */}
       <Sphere 
-        ref={meshRef} 
-        args={[0.3, 32, 32]} 
+        args={[0.6, 32, 32]} 
         onPointerDown={onClick}
         onPointerOver={onHover}
         onPointerOut={onUnhover}
+        position={meshRef.current?.position || [0, 0, 0]}
+      >
+        <meshBasicMaterial 
+          transparent={true}
+          opacity={0.0} // Invisible but clickable
+        />
+      </Sphere>
+      
+      {/* Visible orb */}
+      <Sphere 
+        ref={meshRef} 
+        args={[0.3, 32, 32]} 
       >
         <meshStandardMaterial 
           color={category.color} 
@@ -1122,15 +974,27 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
         />
       </Sphere>
       
+      {/* Glow effect for better visibility */}
+      {isHovered && (
+        <Sphere args={[0.4, 32, 32]}>
+          <meshBasicMaterial 
+            color={category.color}
+            transparent={true}
+            opacity={0.3}
+          />
+        </Sphere>
+      )}
+      
       {/* Always show label below the orb */}
       <Text
         position={[0, -0.6, 0]}
         fontSize={isInCenter ? 0.25 : 0.2}
-        color={isInCenter ? "white" : hasStoriesLoaded ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.4)"}
+        color={isInCenter ? "white" : hasStoriesLoaded ? "rgba(255, 255, 255, 0.9)" : "rgba(255, 255, 255, 0.3)"}
         anchorX="center"
         anchorY="middle"
-        outlineWidth={0.01}
+        outlineWidth={0.02}
         outlineColor="black"
+        font="/fonts/Inter-Bold.woff"
       >
         {category.name}
       </Text>
@@ -1140,11 +1004,28 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
         <Text
           position={[0, -1.0, 0]}
           fontSize={0.15}
-          color="rgba(255, 255, 255, 0.7)"
+          color="rgba(255, 255, 255, 0.8)"
           anchorX="center"
           anchorY="middle"
+          outlineWidth={0.01}
+          outlineColor="black"
         >
           Click ✕ to release
+        </Text>
+      )}
+      
+      {/* Loading indicator */}
+      {isPreloading && (
+        <Text
+          position={[0, 0.6, 0]}
+          fontSize={0.12}
+          color="rgba(255, 255, 255, 0.8)"
+          anchorX="center"
+          anchorY="middle"
+          outlineWidth={0.01}
+          outlineColor="black"
+        >
+          Loading...
         </Text>
       )}
     </group>

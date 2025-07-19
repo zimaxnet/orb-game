@@ -683,9 +683,9 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
 // New endpoint: Generate fresh stories from AI models
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt } = req.body;
+  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt, language = 'en' } = req.body;
   
-  console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch...`);
+  console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
   
   try {
     let stories = [];
@@ -693,14 +693,14 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
     // Generate stories based on the selected model
     switch (model) {
       case 'grok-4':
-        stories = await generateStoriesWithGrok(category, epoch, count, prompt);
+        stories = await generateStoriesWithGrok(category, epoch, count, prompt, language);
         break;
       case 'perplexity-sonar':
-        stories = await generateStoriesWithPerplexity(category, epoch, count, prompt);
+        stories = await generateStoriesWithPerplexity(category, epoch, count, prompt, language);
         break;
       case 'o4-mini':
       default:
-        stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt);
+        stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language);
         break;
     }
     
@@ -720,7 +720,7 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
 });
 
 // Helper functions to generate stories with different AI models
-async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
+async function generateStoriesWithGrok(category, epoch, count, customPrompt, language = 'en') {
   try {
     const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
@@ -763,6 +763,9 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        // Use Spanish voice for Spanish language
+        const voice = language === 'es' ? 'jorge' : 'alloy';
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -772,7 +775,7 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
           body: JSON.stringify({
             model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
-            voice: 'alloy',
+            voice: voice,
             response_format: 'mp3'
           })
         });
@@ -798,7 +801,7 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
   }
 }
 
-async function generateStoriesWithPerplexity(category, epoch, count, customPrompt) {
+async function generateStoriesWithPerplexity(category, epoch, count, customPrompt, language = 'en') {
   try {
     const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
@@ -842,6 +845,9 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        // Use Spanish voice for Spanish language
+        const voice = language === 'es' ? 'jorge' : 'alloy';
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -851,7 +857,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
           body: JSON.stringify({
             model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
-            voice: 'alloy',
+            voice: voice,
             response_format: 'mp3'
           })
         });
@@ -877,7 +883,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
   }
 }
 
-async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt) {
+async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en') {
   try {
     const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
@@ -924,6 +930,9 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        // Use Spanish voice for Spanish language
+        const voice = language === 'es' ? 'jorge' : 'alloy';
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -933,7 +942,7 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
           body: JSON.stringify({
             model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
-            voice: 'alloy',
+            voice: voice,
             response_format: 'mp3'
           })
         });

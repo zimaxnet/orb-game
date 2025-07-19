@@ -171,6 +171,11 @@ function OrbGame() {
     preloadStoriesForEpoch(currentEpoch);
   }, []); // Only run on mount
   
+  // Preload stories when language changes
+  useEffect(() => {
+    preloadStoriesForEpoch(currentEpoch);
+  }, [language]); // Re-run when language changes
+  
 
 
   // Enhanced touch/swipe handlers for the how to play overlay
@@ -233,7 +238,7 @@ function OrbGame() {
         try {
           console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch...`);
           
-          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${epoch}&model=${model.id}&count=3`, {
+          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${epoch}&model=${model.id}&count=3&language=${language}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -243,6 +248,7 @@ function OrbGame() {
               epoch: epoch,
               model: model.id,
               count: 3,
+              language: language,
               prompt: getExcitingPrompt(category.name, epoch, model.id)
             })
           });
@@ -338,6 +344,71 @@ function OrbGame() {
     
     // Enhanced prompts for each epoch and category
     const getExcitingPrompt = (category, epoch, model) => {
+      if (language === 'es') {
+        // Spanish prompts
+        const spanishCategoryPrompts = {
+          'Technology': {
+            'Ancient': `¡Descubre 5 maravillas tecnológicas asombrosas de las civilizaciones antiguas! De los conocimientos perdidos de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, hazañas de ingeniería y avances tecnológicos que dieron forma al progreso humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos pioneros tecnológicos antiguos cambiaron el mundo!`,
+            'Medieval': `¡Descubre 5 innovaciones tecnológicas revolucionarias de la era medieval! De las mentes ingeniosas de los tiempos ${epoch.toLowerCase()}, revela los inventos más extraordinarios, maravillas mecánicas y saltos tecnológicos que transformaron la sociedad. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos visionarios tecnológicos medievales empujaron los límites de lo posible!`,
+            'Industrial': `¡Explora 5 revoluciones tecnológicas innovadoras de la era industrial! De las innovaciones explosivas de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, maravillas de ingeniería y avances tecnológicos que impulsaron el mundo moderno. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos pioneros industriales desataron la revolución tecnológica!`,
+            'Modern': `¡Revela 5 avances tecnológicos de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela los inventos más alucinantes, revoluciones digitales y saltos tecnológicos que están remodelando nuestro futuro. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos visionarios tecnológicos modernos están cambiando el mundo!`,
+            'Future': `¡Imagina 5 maravillas tecnológicas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los inventos más asombrosos, avances de IA y saltos tecnológicos que transformarán la humanidad. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos pioneros tecnológicos futuros remodelarán nuestro mundo!`
+          },
+          'Science': {
+            'Ancient': `¡Revela 5 descubrimientos científicos extraordinarios de las civilizaciones antiguas! De las mentes brillantes de los tiempos ${epoch.toLowerCase()}, descubre los avances más asombrosos, fenómenos naturales y revelaciones científicas que sentaron las bases de la ciencia moderna. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos científicos antiguos desbloquearon los secretos del universo!`,
+            'Medieval': `¡Descubre 5 avances científicos revolucionarios de la era medieval! De las mentes pioneras de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos más extraordinarios, maravillas naturales y revelaciones científicas que avanzaron el conocimiento humano. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos científicos medievales expandieron nuestra comprensión del mundo!`,
+            'Industrial': `¡Explora 5 revoluciones científicas innovadoras de la era industrial! De los descubrimientos explosivos de los tiempos ${epoch.toLowerCase()}, revela los avances más increíbles, fenómenos naturales y revelaciones científicas que impulsaron la revolución científica moderna. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos científicos industriales transformaron nuestra comprensión de la naturaleza!`,
+            'Modern': `¡Revela 5 avances científicos de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela las revelaciones más alucinantes, maravillas naturales y saltos científicos que están remodelando nuestra comprensión del universo. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos científicos modernos están desbloqueando los misterios de la existencia!`,
+            'Future': `¡Imagina 5 maravillas científicas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos más asombrosos, avances impulsados por IA y saltos científicos que transformarán nuestra comprensión de la realidad. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos científicos futuros desbloquearán los secretos del cosmos!`
+          },
+          'Art': {
+            'Ancient': `¡Descubre 5 obras maestras artísticas impresionantes de las civilizaciones antiguas! Del genio creativo de los tiempos ${epoch.toLowerCase()}, revela las obras de arte más asombrosas, expresiones culturales y revelaciones artísticas que dieron forma a la creatividad humana. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo estos artistas antiguos capturaron la belleza y el misterio de su mundo!`,
+            'Medieval': `¡Descubre 5 innovaciones artísticas revolucionarias de la era medieval! De las mentes visionarias de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más extraordinarias, expresiones culturales y avances artísticos que transformaron la expresión humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo estos artistas medievales empujaron los límites de la creatividad!`,
+            'Industrial': `¡Explora 5 revoluciones artísticas innovadoras de la era industrial! De la creatividad explosiva de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más increíbles, expresiones culturales y revelaciones artísticas que reflejaron el mundo cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo estos artistas industriales capturaron el espíritu de su era!`,
+            'Modern': `¡Revela 5 avances artísticos de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más alucinantes, arte digital y saltos artísticos que están remodelando la expresión creativa. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo estos artistas modernos están redefiniendo lo que puede ser el arte!`,
+            'Future': `¡Imagina 5 maravillas artísticas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela las obras maestras más asombrosas, arte generado por IA y saltos artísticos que transformarán la creatividad humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo estos artistas futuros crearán arte más allá de nuestros sueños más salvajes!`
+          },
+          'Nature': {
+            'Ancient': `¡Revela 5 maravillas naturales extraordinarias de las civilizaciones antiguas! De la belleza prístina de los tiempos ${epoch.toLowerCase()}, descubre los fenómenos naturales más asombrosos, descubrimientos ambientales y revelaciones ecológicas que dieron forma a nuestra comprensión de la Tierra. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo la gente antigua se maravillaba del mundo natural!`,
+            'Medieval': `¡Descubre 5 descubrimientos naturales revolucionarios de la era medieval! De la exploración de los tiempos ${epoch.toLowerCase()}, revela las maravillas naturales más extraordinarias, fenómenos ambientales y avances ecológicos que expandieron el conocimiento humano de la naturaleza. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los exploradores medievales descubrieron los secretos de la Tierra!`,
+            'Industrial': `¡Explora 5 revelaciones naturales innovadoras de la era industrial! Del paisaje cambiante de los tiempos ${epoch.toLowerCase()}, revela los fenómenos naturales más increíbles, descubrimientos ambientales y perspectivas ecológicas que surgieron durante el desarrollo rápido. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los naturalistas de la era industrial documentaron la transformación de la Tierra!`,
+            'Modern': `¡Revela 5 avances naturales de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela las maravillas naturales más alucinantes, fenómenos ambientales y revelaciones ecológicas que están remodelando nuestra comprensión de la Tierra. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los científicos modernos están descubriendo los secretos de la naturaleza!`,
+            'Future': `¡Imagina 5 maravillas naturales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los fenómenos ambientales más asombrosos, descubrimientos asistidos por IA y saltos ecológicos que transformarán nuestra relación con la naturaleza. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los ambientalistas futuros protegerán y entenderán nuestro planeta!`
+          },
+          'Sports': {
+            'Ancient': `¡Descubre 5 logros atléticos extraordinarios de las civilizaciones antiguas! Del espíritu competitivo de los tiempos ${epoch.toLowerCase()}, revela los eventos deportivos más asombrosos, hazañas físicas y revelaciones atléticas que celebraron el potencial humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los atletas antiguos empujaron los límites del rendimiento humano!`,
+            'Medieval': `¡Descubre 5 innovaciones deportivas revolucionarias de la era medieval! De las tradiciones competitivas de los tiempos ${epoch.toLowerCase()}, revela los eventos atléticos más extraordinarios, desafíos físicos y avances deportivos que probaron los límites humanos. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los atletas medievales celebraron la fuerza y la habilidad!`,
+            'Industrial': `¡Explora 5 revoluciones deportivas innovadoras de la era industrial! Del espíritu competitivo de los tiempos ${epoch.toLowerCase()}, revela los eventos atléticos más increíbles, logros físicos y revelaciones deportivas que reflejaron la sociedad cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los atletas de la era industrial redefinieron lo que era posible!`,
+            'Modern': `¡Revela 5 avances deportivos de vanguardia de la era moderna! De los últimos logros de los tiempos ${epoch.toLowerCase()}, revela las hazañas atléticas más alucinantes, innovaciones tecnológicas y saltos deportivos que están redefiniendo el potencial humano. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los atletas modernos están rompiendo todos los récords!`,
+            'Future': `¡Imagina 5 maravillas deportivas revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los logros atléticos más asombrosos, rendimiento mejorado por IA y saltos deportivos que transformarán la competencia humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los atletas futuros empujarán más allá de los límites actuales!`
+          },
+          'Music': {
+            'Ancient': `¡Revela 5 obras maestras musicales extraordinarias de las civilizaciones antiguas! Del genio melódico de los tiempos ${epoch.toLowerCase()}, descubre las innovaciones musicales más asombrosas, expresiones culturales y revelaciones armónicas que dieron forma a la emoción humana. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los músicos antiguos crearon los primeros sonidos que movieron el alma!`,
+            'Medieval': `¡Descubre 5 innovaciones musicales revolucionarias de la era medieval! De las tradiciones armónicas de los tiempos ${epoch.toLowerCase()}, revela las composiciones más extraordinarias, expresiones culturales y avances musicales que transformaron la expresión humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los músicos medievales crearon melodías que aún resuenan hoy!`,
+            'Industrial': `¡Explora 5 revoluciones musicales innovadoras de la era industrial! De los sonidos en evolución de los tiempos ${epoch.toLowerCase()}, revela las composiciones más increíbles, expresiones culturales y revelaciones musicales que reflejaron la sociedad cambiante. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los músicos de la era industrial capturaron el ritmo del progreso!`,
+            'Modern': `¡Revela 5 avances musicales de vanguardia de la era moderna! De las últimas innovaciones de los tiempos ${epoch.toLowerCase()}, revela las composiciones más alucinantes, música digital y saltos musicales que están remodelando la expresión humana. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los músicos modernos están creando sonidos nunca antes escuchados!`,
+            'Future': `¡Imagina 5 maravillas musicales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela las composiciones más asombrosas, música generada por IA y saltos musicales que transformarán la creatividad humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los músicos futuros crearán armonías más allá de nuestra imaginación!`
+          },
+          'Space': {
+            'Ancient': `¡Descubre 5 descubrimientos cósmicos extraordinarios de las civilizaciones antiguas! De la sabiduría de observación de estrellas de los tiempos ${epoch.toLowerCase()}, revela las observaciones astronómicas más asombrosas, fenómenos celestes y revelaciones espaciales que dieron forma a la comprensión humana del cosmos. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los astrónomos antiguos mapearon los cielos!`,
+            'Medieval': `¡Descubre 5 observaciones espaciales revolucionarias de la era medieval! Del conocimiento celeste de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos astronómicos más extraordinarios, fenómenos cósmicos y revelaciones espaciales que expandieron la comprensión humana del universo. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los astrónomos medievales estudiaron las estrellas!`,
+            'Industrial': `¡Explora 5 revelaciones espaciales innovadoras de la era industrial! Del conocimiento en expansión de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos astronómicos más increíbles, fenómenos cósmicos y revelaciones espaciales que allanaron el camino para la astronomía moderna. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los astrónomos de la era industrial desbloquearon secretos cósmicos!`,
+            'Modern': `¡Revela 5 avances espaciales de vanguardia de la era moderna! De los últimos descubrimientos de los tiempos ${epoch.toLowerCase()}, revela los fenómenos cósmicos más alucinantes, innovaciones tecnológicas y revelaciones espaciales que están remodelando nuestra comprensión del universo. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los astrónomos modernos están descubriendo misterios cósmicos!`,
+            'Future': `¡Imagina 5 maravillas espaciales revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los descubrimientos cósmicos más asombrosos, exploración impulsada por IA y saltos espaciales que transformarán nuestra comprensión del universo. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los exploradores espaciales futuros desbloquearán los secretos del cosmos!`
+          },
+          'Innovation': {
+            'Ancient': `¡Revela 5 avances innovadores extraordinarios de las civilizaciones antiguas! Del genio creativo de los tiempos ${epoch.toLowerCase()}, descubre los inventos más asombrosos, hazañas de resolución de problemas y revelaciones innovadoras que dieron forma al progreso humano. ¡Haz cada historia absolutamente cautivadora con detalles increíbles sobre cómo los innovadores antiguos resolvieron desafíos imposibles!`,
+            'Medieval': `¡Descubre 5 logros innovadores revolucionarios de la era medieval! De las mentes creativas de los tiempos ${epoch.toLowerCase()}, revela los inventos más extraordinarios, avances en resolución de problemas y revelaciones innovadoras que avanzaron la civilización humana. ¡Haz cada historia emocionante con detalles fascinantes sobre cómo los innovadores medievales empujaron los límites de lo posible!`,
+            'Industrial': `¡Explora 5 revoluciones innovadoras innovadoras de la era industrial! De la creatividad explosiva de los tiempos ${epoch.toLowerCase()}, revela los inventos más increíbles, hazañas de resolución de problemas y revelaciones innovadoras que impulsaron el mundo moderno. ¡Haz cada historia electrizante con detalles asombrosos sobre cómo los innovadores industriales desataron la era de la invención!`,
+            'Modern': `¡Revela 5 avances innovadores de vanguardia de la era moderna! De las últimas creaciones de los tiempos ${epoch.toLowerCase()}, revela los inventos más alucinantes, saltos tecnológicos y revelaciones innovadoras que están remodelando nuestro futuro. ¡Haz cada historia absolutamente fascinante con detalles increíbles sobre cómo los innovadores modernos están resolviendo los problemas del mañana hoy!`,
+            'Future': `¡Imagina 5 maravillas innovadoras revolucionarias del futuro! De las increíbles posibilidades de los tiempos ${epoch.toLowerCase()}, revela los inventos más asombrosos, avances impulsados por IA y saltos innovadores que transformarán la civilización humana. ¡Haz cada historia absolutamente alucinante con detalles fascinantes sobre cómo los innovadores futuros crearán soluciones más allá de nuestros sueños más salvajes!`
+          }
+        };
+        
+        return spanishCategoryPrompts[category]?.[epoch] || `Genera 5 historias fascinantes y positivas de ${category} de los tiempos ${epoch.toLowerCase()}. Cada historia debe ser atractiva, informativa y destacar logros o descubrimientos notables. Haz cada historia única y cautivadora.`;
+      }
+      
+      // English prompts (existing)
       const categoryPrompts = {
         'Technology': {
           'Ancient': `Uncover 5 mind-blowing technological marvels from ancient civilizations! From lost knowledge of ${epoch.toLowerCase()} times, reveal the most astonishing inventions, engineering feats, and technological breakthroughs that shaped human progress. Make each story absolutely captivating with incredible details about how these ancient tech pioneers changed the world!`,
@@ -415,7 +486,7 @@ function OrbGame() {
       // Always generate fresh stories from the AI model
       console.log('Generating fresh stories for:', category.name, 'epoch:', currentEpoch, 'model:', selectedModel);
       
-      const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=5`, {
+      const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${currentEpoch}&model=${selectedModel}&count=5&language=${language}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -425,6 +496,7 @@ function OrbGame() {
           epoch: currentEpoch,
           model: selectedModel,
           count: 5,
+          language: language,
           prompt: getExcitingPrompt(category.name, currentEpoch, selectedModel)
         })
       });

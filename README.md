@@ -67,6 +67,13 @@ export MONGO_URI="your-mongodb-uri"
 ## 🆕 Changelog
 
 ### 2024-12-19
+- **NEW FEATURE**: Replaced scoring panel with rotating epoch roller - users can now select time periods to get era-specific positive news stories
+- **TIME-TRAVEL GAMEPLAY**: Added epochs like Ancient, Medieval, Modern, Future - modifies news content to fit the selected time period
+- **BACKEND SUPPORT**: API now accepts ?epoch param to generate time-themed stories using rotated sources (Sonar, Grok, Azure)
+- **REMOVED**: Scoring and streak system to focus on exploration and time-based discovery
+- **UI ENHANCEMENTS**: Animated rotating selector with hover-pause for fun interaction
+
+### 2024-12-19
 - **NEW FEATURE**: Added stunning Milky Way background with 5,000 animated stars, nebula clouds, and dynamic space environment
 - **NEW FEATURE**: Implemented orb movement stopping - orbs now stop moving when clicked, providing better user experience and visual feedback
 - **NEW FEATURE**: Added scrollable text in news panels - users can now read full news content with smooth scrolling
@@ -134,11 +141,12 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 ### Orb Game Features
 - **Interactive 3D Environment**: Beautiful 3D orb with orbiting satellites representing different news categories
 - **Milky Way Background**: Stunning space environment with 5,000 animated stars, nebula clouds, and dynamic movement
+- **Epoch Roller**: Rotating time selector to choose eras (Ancient to Future) for era-specific positive news
 - **Orb Movement Control**: Orbs stop moving when clicked, providing clear visual feedback of explored categories
 - **Positive News Stories**: Click satellites to hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
 - **Scrollable News Content**: Full news stories with smooth scrolling for complete reading experience
 - **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
-- **Score System**: Earn points and build streaks by discovering new stories
+- **Story Cycling**: Previous/Next buttons to browse multiple stories per topic
 - **Swipe-to-Dismiss Instructions**: Intuitive "How to Play" overlay that users can swipe away once they're ready
 - **Mobile Optimized**: Touch-friendly controls and responsive design for all devices
 - **Visual Feedback**: Clicked orbs have subtle glow effects to indicate exploration progress
@@ -191,6 +199,7 @@ GET https://api.orbgame.us/api/orb/positive-news/Technology
 #### Required Environment Variables (Backend)
 - `MONGO_URI`: MongoDB Atlas connection string
 - `PERPLEXITY_API_KEY`: Perplexity Sonar API key
+- `GROK_API_KEY`: (Optional) xAI Grok API key for alternative news generation
 - `AZURE_OPENAI_ENDPOINT`: Azure OpenAI endpoint
 - `AZURE_OPENAI_API_KEY`: Azure OpenAI API key
 - `AZURE_OPENAI_DEPLOYMENT`: Azure OpenAI deployment name (for fallback content generation)
@@ -211,6 +220,7 @@ curl https://your-backend-url/api/orb/positive-news/Technology
 #### How It Works
 - Every 15 minutes, the backend fetches the latest positive news for each category from Perplexity Sonar
 - New stories are added to MongoDB; if no new stories, cycles through existing ones
+- **Grok Integration**: If `GROK_API_KEY` is set and Perplexity fails, falls back to Grok API for generating positive stories
 - **Fallback System**: If no stories exist for a category, o4-mini generates positive content automatically
 - **Service Resilience**: If Perplexity API is unavailable, the system generates content directly using Azure OpenAI
 - TTS audio is pre-generated and stored with each story (including fallback content)
@@ -231,14 +241,15 @@ curl https://your-backend-url/api/orb/positive-news/Technology
 4. **Start Playing**: Once dismissed, you're ready to explore the 3D orb environment
 
 ### Game Mechanics
-1. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it in a stunning Milky Way background
-2. **Hover for Info**: Hover over satellites to see their category names (Technology, Science, Art, etc.)
-3. **Click to Listen**: Click any satellite to hear a positive news story from that category
-4. **Watch Orbs Stop**: Clicked orbs will stop moving and glow slightly to show you've explored them
-5. **Read Full Stories**: Scroll through complete news content in the news panel
-6. **Build Your Score**: Each story you discover earns you points and builds your streak
-7. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
-8. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
+1. **Select Epoch**: Use the rotating roller (top-right) to choose a time period - it spins for fun, hover to select!
+2. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it in a stunning Milky Way background
+3. **Hover for Info**: Hover over satellites to see their category names (Technology, Science, Art, etc.)
+4. **Click to Listen**: Click any satellite to hear a positive news story from that category, themed to your selected epoch
+5. **Watch Orbs Stop**: Clicked orbs will stop moving and glow slightly to show you've explored them
+6. **Cycle Stories**: Use Previous/Next buttons to browse different stories for the topic
+7. **Read Full Stories**: Scroll through complete news content in the news panel
+8. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
+9. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
 
 ### Categories Available
 - **Technology**: Latest tech innovations and breakthroughs
@@ -417,13 +428,14 @@ npm run build
 ### Interactive 3D Experience
 - **3D Orb Exploration**: Click on orbiting satellites to discover positive news
 - **Milky Way Environment**: Immersive space background with 5,000 animated stars and nebula clouds
+- **Epoch Time Travel**: Rotating roller to select historical/futuristic eras for themed stories
 - **Orb Movement Control**: Satellites stop moving when clicked, providing clear exploration feedback
 - **Category-based News**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
 - **Audio Integration**: Text-to-speech for news stories with play/pause controls
 - **Scrollable Content**: Full news stories with smooth scrolling for complete reading
+- **Story Cycling**: Browse multiple stories per topic with navigation buttons
 - **Easy Navigation**: Close button (✕) to exit news and return to orb view
 - **Visual Feedback**: Hover effects, animations, and glow effects for enhanced user experience
-- **Score System**: Earn points and build streaks by exploring different categories
 
 ### News Panel Features
 - **Close Button**: Red ✕ button in top-right corner for easy exit
@@ -447,6 +459,7 @@ npm run build
 - `GET /api/memory/profile` - User memory profile
 - `POST /api/memory/search` - Search through memories
 - `GET /api/memory/export` - Export conversation data
+- `GET /api/orb/positive-news/:category?count=3&epoch=Ancient` - Get array of stories for cycling, with optional count and epoch for time-themed content
 
 ### Health & Status
 - `GET /health` - System health check

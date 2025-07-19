@@ -156,10 +156,20 @@ function OrbGame() {
     { id: 'o4-mini', name: 'O4-Mini', description: 'Fast and efficient processing' }
   ];
   
+  // Add preloaded stories state
+  const [preloadedStories, setPreloadedStories] = useState({});
+  const [isPreloading, setIsPreloading] = useState(false);
+  const [preloadProgress, setPreloadProgress] = useState(0);
+  
   // Add drag and center state
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  
+  // Preload stories on component mount
+  useEffect(() => {
+    preloadStoriesForEpoch(currentEpoch);
+  }, []); // Only run on mount
   
 
 
@@ -202,6 +212,72 @@ function OrbGame() {
   const handleHowToPlayClick = () => {
     setShowHowToPlay(false);
   };
+  
+  // Preload stories for all categories and models when epoch changes
+  const preloadStoriesForEpoch = async (epoch) => {
+    if (isPreloading) return;
+    
+    setIsPreloading(true);
+    setPreloadProgress(0);
+    
+    const newPreloadedStories = {};
+    const totalRequests = categories.length * aiModels.length;
+    let completedRequests = 0;
+    
+    console.log(`🔄 Preloading stories for ${epoch} epoch...`);
+    
+    for (const category of categories) {
+      newPreloadedStories[category.name] = {};
+      
+      for (const model of aiModels) {
+        try {
+          console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch...`);
+          
+          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${epoch}&model=${model.id}&count=3`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              category: category.name,
+              epoch: epoch,
+              model: model.id,
+              count: 3,
+              prompt: getExcitingPrompt(category.name, epoch, model.id)
+            })
+          });
+          
+          if (response.ok) {
+            const stories = await response.json();
+            if (stories && stories.length > 0) {
+              newPreloadedStories[category.name][model.id] = stories;
+              console.log(`✅ Preloaded ${stories.length} stories for ${category.name} from ${model.name}`);
+            } else {
+              console.log(`⚠️ No stories generated for ${category.name} from ${model.name}`);
+            }
+          } else {
+            console.log(`❌ Failed to preload stories for ${category.name} from ${model.name}`);
+          }
+        } catch (error) {
+          console.error(`❌ Error preloading ${category.name} from ${model.name}:`, error);
+        }
+        
+        completedRequests++;
+        setPreloadProgress((completedRequests / totalRequests) * 100);
+      }
+    }
+    
+    setPreloadedStories(newPreloadedStories);
+    setIsPreloading(false);
+    setPreloadProgress(0);
+    console.log(`✅ Preloading complete for ${epoch} epoch!`);
+  };
+  
+  // Handle epoch change
+  const handleEpochChange = (newEpoch) => {
+    setCurrentEpoch(newEpoch);
+    preloadStoriesForEpoch(newEpoch);
+  };
 
 
 
@@ -237,6 +313,28 @@ function OrbGame() {
       'Modern': 'modern breakthroughs and innovations',
       'Future': 'futuristic technologies and possibilities'
     };
+    
+    // Check if we have preloaded stories for this category and model
+    const preloadedCategoryStories = preloadedStories[category.name];
+    const preloadedModelStories = preloadedCategoryStories?.[selectedModel];
+    
+    if (preloadedModelStories && preloadedModelStories.length > 0) {
+      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.name}`);
+      setNewsStories(preloadedModelStories);
+      setCurrentNewsIndex(0);
+      setCurrentNews(preloadedModelStories[0]);
+      setCurrentAISource(selectedModelInfo.name);
+      
+      // Ensure TTS is ready before autoplaying
+      if (preloadedModelStories[0]?.ttsAudio && !isMuted) {
+        setTimeout(() => {
+          playAudio();
+        }, 800);
+      }
+      
+      setIsLoading(false);
+      return;
+    }
     
     // Enhanced prompts for each epoch and category
     const getExcitingPrompt = (category, epoch, model) => {
@@ -632,11 +730,19 @@ function OrbGame() {
       {/* Add epoch roller */}
       <div className="epoch-roller">
         <label>Time Epoch:</label>
-        <select value={currentEpoch} onChange={(e) => setCurrentEpoch(e.target.value)}>
+        <select value={currentEpoch} onChange={(e) => handleEpochChange(e.target.value)}>
           {epochs.map(epoch => (
             <option key={epoch} value={epoch}>{t(`epoch.${epoch.toLowerCase()}`)}</option>
           ))}
         </select>
+        {isPreloading && (
+          <div className="preload-indicator">
+            <div className="preload-progress">
+              <div className="preload-fill" style={{width: `${preloadProgress}%`}}></div>
+            </div>
+            <span>Preloading stories... {Math.round(preloadProgress)}%</span>
+          </div>
+        )}
       </div>
       
 
@@ -697,7 +803,24 @@ function OrbGame() {
           {/* AI Model Selector in News Panel */}
           <div className="news-model-selector">
             <label>{t('ai.model.select')}:</label>
-            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
+            <select value={selectedModel} onChange={(e) => {
+              setSelectedModel(e.target.value);
+              // Check if we have preloaded stories for this model and category
+              if (orbInCenter && preloadedStories[orbInCenter.name]?.[e.target.value]) {
+                const stories = preloadedStories[orbInCenter.name][e.target.value];
+                setNewsStories(stories);
+                setCurrentNewsIndex(0);
+                setCurrentNews(stories[0]);
+                setCurrentAISource(aiModels.find(m => m.id === e.target.value).name);
+                
+                // Play audio if available
+                if (stories[0]?.ttsAudio && !isMuted) {
+                  setTimeout(() => {
+                    playAudio();
+                  }, 800);
+                }
+              }
+            }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
                   {t(`ai.model.${model.id}`)} - {model.description}
@@ -705,7 +828,26 @@ function OrbGame() {
               ))}
             </select>
             <button 
-              onClick={() => loadStoryForOrb(orbInCenter)}
+              onClick={() => {
+                // Check if we have preloaded stories for this model and category
+                if (orbInCenter && preloadedStories[orbInCenter.name]?.[selectedModel]) {
+                  const stories = preloadedStories[orbInCenter.name][selectedModel];
+                  setNewsStories(stories);
+                  setCurrentNewsIndex(0);
+                  setCurrentNews(stories[0]);
+                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
+                  
+                  // Play audio if available
+                  if (stories[0]?.ttsAudio && !isMuted) {
+                    setTimeout(() => {
+                      playAudio();
+                    }, 800);
+                  }
+                } else {
+                  // Fallback to generating fresh stories
+                  loadStoryForOrb(orbInCenter);
+                }
+              }}
               className="go-button"
               disabled={isLoading}
             >

@@ -785,4 +785,4 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
   );
 }
 
-export default OrbGame; # Trigger deployment
+export default OrbGame; 

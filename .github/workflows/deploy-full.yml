@@ -153,14 +153,20 @@ jobs:
         # Check if the site is serving our content with more attempts and longer waits
         for i in {1..10}; do
           echo "Attempt $i/10: Checking frontend content..."
-          RESPONSE=$(curl -s --max-time 30 https://$WEB_APP_URL | head -10)
+          RESPONSE=$(curl -s --max-time 30 https://$WEB_APP_URL)
           
-          if echo "$RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas\|React\|Vite"; then
+          # Check for multiple indicators of our content
+          if echo "$RESPONSE" | grep -q "Orb Game" || \
+             echo "$RESPONSE" | grep -q "orbgame" || \
+             echo "$RESPONSE" | grep -q "AI Multimodal Gaming System" || \
+             echo "$RESPONSE" | grep -q "main.jsx" || \
+             echo "$RESPONSE" | grep -q "favicon.svg"; then
             echo "✅ Frontend is serving our content!"
             break
           else
             echo "❓ Unknown response, waiting 60 seconds..."
-            echo "Response preview: $RESPONSE"
+            echo "Response preview:"
+            echo "$RESPONSE" | head -15
             sleep 60
           fi
         done
@@ -169,17 +175,28 @@ jobs:
         echo "🔍 Final verification..."
         FINAL_RESPONSE=$(curl -s --max-time 30 https://$WEB_APP_URL)
         
-        if echo "$FINAL_RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas\|React\|Vite"; then
+        # Check for multiple indicators of our content
+        if echo "$FINAL_RESPONSE" | grep -q "Orb Game" || \
+           echo "$FINAL_RESPONSE" | grep -q "orbgame" || \
+           echo "$FINAL_RESPONSE" | grep -q "AI Multimodal Gaming System" || \
+           echo "$FINAL_RESPONSE" | grep -q "main.jsx" || \
+           echo "$FINAL_RESPONSE" | grep -q "favicon.svg"; then
           echo "✅ Frontend deployment verified!"
-          echo "📄 Content preview:"
-          echo "$FINAL_RESPONSE" | head -5
+          echo "📄 Content indicators found:"
+          echo "$FINAL_RESPONSE" | grep -E "(Orb Game|orbgame|AI Multimodal Gaming System|main.jsx|favicon.svg)" | head -5
         else
           echo "❌ Frontend deployment verification failed"
           echo "📄 Full response for debugging:"
-          echo "$FINAL_RESPONSE" | head -20
+          echo "$FINAL_RESPONSE" | head -30
           echo "🔍 Checking if site is accessible at all..."
           HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://$WEB_APP_URL)
           echo "HTTP Status: $HTTP_STATUS"
+          echo "🔍 Checking for any HTML content..."
+          if echo "$FINAL_RESPONSE" | grep -q "<!doctype html\|<html\|<head\|<body"; then
+            echo "✅ HTML structure detected, but missing expected content"
+          else
+            echo "❌ No HTML structure detected"
+          fi
           exit 1
         fi
 

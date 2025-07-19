@@ -153,7 +153,7 @@ function OrbGame() {
     { id: 'grok-4', name: 'Grok 4', shortName: 'Grok', description: 'Advanced reasoning and analysis' },
     { id: 'perplexity-sonar', name: 'Perplexity Sonar', shortName: 'Sonar', description: 'Real-time web search and synthesis' },
     { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', shortName: 'Gemini', description: 'Fast and creative content generation' },
-    { id: 'o4-mini', name: 'O4-Mini', shortName: 'O4', description: 'Fast and efficient processing' }
+    { id: 'o4-mini', name: 'O4-Mini', shortName: 'o4', description: 'Fast and efficient processing' }
   ];
   
   // Add preloaded stories state

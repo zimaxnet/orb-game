@@ -1,17 +1,18 @@
-name: Full System Deployment
+name: Deploy Full Stack
 
 on:
   push:
     branches: [ main ]
-    paths: [ 'components/**', 'backend/**', 'scripts/**', '.github/workflows/deploy-full.yml' ]
   workflow_dispatch:
 
 env:
-  FRONTEND_RESOURCE_GROUP: orb-game-rg-eastus2
   BACKEND_RESOURCE_GROUP: orb-game-rg-eastus2
-  CONTAINER_APP_NAME: orb-game-backend-eastus2
-  CONTAINER_REGISTRY: orbgameregistry
-  IMAGE_NAME: orb-game-backend
+  FRONTEND_RESOURCE_GROUP: orb-game-rg-eastus2
+  BACKEND_CONTAINER_APP: orb-game-backend-eastus2
+  FRONTEND_WEB_APP: orb-game
+  ACR_NAME: orbgame
+  BACKEND_IMAGE: orb-game-backend
+  FRONTEND_IMAGE: orb-game-frontend
 
 jobs:
   deploy-backend:
@@ -32,14 +33,14 @@ jobs:
         
     - name: Login to Azure Container Registry
       run: |
-        az acr login --name ${{ env.CONTAINER_REGISTRY }}
+        az acr login --name ${{ env.ACR_NAME }}
         
     - name: Build and push container image
       run: |
         docker buildx build \
           --platform linux/amd64 \
-          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
+          --tag ${{ env.ACR_NAME }}.azurecr.io/${{ env.BACKEND_IMAGE }}:${{ github.sha }} \
+          --tag ${{ env.ACR_NAME }}.azurecr.io/${{ env.BACKEND_IMAGE }}:latest \
           --file backend/backend-Dockerfile \
           --push \
           ./backend
@@ -47,9 +48,9 @@ jobs:
     - name: Deploy to Azure Container Apps
       run: |
         az containerapp update \
-          --name ${{ env.CONTAINER_APP_NAME }} \
+          --name ${{ env.BACKEND_CONTAINER_APP }} \
           --resource-group ${{ env.BACKEND_RESOURCE_GROUP }} \
-          --image ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --image ${{ env.ACR_NAME }}.azurecr.io/${{ env.BACKEND_IMAGE }}:${{ github.sha }} \
           --set-env-vars \
             AZURE_OPENAI_ENDPOINT="https://aimcs-foundry.cognitiveservices.azure.com/" \
             AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
@@ -123,17 +124,17 @@ jobs:
         # Deploy to Azure Web App using newer command
         az webapp deploy \
           --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} \
-          --name aimcs \
+          --name ${{ env.FRONTEND_WEB_APP }} \
           --src-path dist.zip
         
         # Restart the web app to ensure changes propagate
         echo "🔄 Restarting web app to ensure changes propagate..."
-        az webapp restart --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }}
+        az webapp restart --name ${{ env.FRONTEND_WEB_APP }} --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }}
         
         # Clear any cached content
         echo "🧹 Clearing cached content..."
-        az webapp config appsettings set --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=0
-        az webapp config appsettings set --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=1
+        az webapp config appsettings set --name ${{ env.FRONTEND_WEB_APP }} --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=0
+        az webapp config appsettings set --name ${{ env.FRONTEND_WEB_APP }} --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=1
         
     - name: Wait for frontend deployment
       timeout-minutes: 10
@@ -147,7 +148,7 @@ jobs:
         echo "Verifying frontend deployment..."
         
         # Get Web App URL
-        WEB_APP_URL=$(az webapp show --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
+        WEB_APP_URL=$(az webapp show --name ${{ env.FRONTEND_WEB_APP }} --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
         echo "🌐 Web App URL: https://$WEB_APP_URL"
         
         # Check if the site is serving our content with more attempts and longer waits
@@ -224,7 +225,7 @@ jobs:
         echo "Testing complete chat flow..."
         
         # Test chat endpoint
-        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
+        RESPONSE=$(curl -s -X POST https://api.orbgame.us/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "Hello, this is a deployment test"}')
           
@@ -241,7 +242,7 @@ jobs:
       run: |
         echo "Testing web search..."
         
-        RESPONSE=$(curl -s -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
+        RESPONSE=$(curl -s -X POST https://api.orbgame.us/api/chat \
           -H "Content-Type: application/json" \
           -d '{"message": "What is the latest news today?", "useWebSearch": "auto"}')
           
@@ -263,7 +264,7 @@ jobs:
         MEMORY_STATS=""
         for i in {1..5}; do
           echo "Attempt $i/5: Testing memory stats endpoint..."
-          MEMORY_STATS=$(curl -s --max-time 30 https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/memory/stats)
+          MEMORY_STATS=$(curl -s --max-time 30 https://api.orbgame.us/api/memory/stats)
           
           if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
             echo "✅ Memory stats endpoint working on attempt $i"
@@ -282,7 +283,7 @@ jobs:
           echo "❌ Memory stats endpoint failed after all retries"
           echo "Final response: $MEMORY_STATS"
           echo "🔍 Checking if backend is accessible..."
-          BACKEND_HEALTH=$(curl -s --max-time 10 https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/health)
+          BACKEND_HEALTH=$(curl -s --max-time 10 https://api.orbgame.us/health)
           echo "Backend health: $BACKEND_HEALTH"
           echo "⚠️ Memory service may not be initialized - continuing with other tests"
         else
@@ -294,7 +295,7 @@ jobs:
         MEMORY_SEARCH=""
         for i in {1..3}; do
           echo "Attempt $i/3: Testing memory search endpoint..."
-          MEMORY_SEARCH=$(curl -s --max-time 30 -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/memory/search \
+          MEMORY_SEARCH=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/memory/search \
             -H "Content-Type: application/json" \
             -d '{"query": "test", "userId": "deployment-test"}')
           
@@ -326,7 +327,7 @@ jobs:
         
         for i in {1..3}; do
           echo "Attempt $i/3: Testing memory caching..."
-          FIRST_RESPONSE=$(curl -s --max-time 30 -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
+          FIRST_RESPONSE=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/chat \
             -H "Content-Type: application/json" \
             -d '{"message": "Memory test question", "userId": "deployment-test"}')
           
@@ -349,7 +350,7 @@ jobs:
           # Wait a moment before second request
           sleep 10
           
-          SECOND_RESPONSE=$(curl -s --max-time 30 -X POST https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io/api/chat \
+          SECOND_RESPONSE=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/chat \
             -H "Content-Type: application/json" \
             -d '{"message": "Memory test question", "userId": "deployment-test"}')
           
@@ -379,8 +380,8 @@ jobs:
            [ ${{ needs.deploy-frontend.result }} == 'success' ] && \
            [ ${{ needs.system-test.result }} == 'success' ]; then
           echo "🎉 Full deployment successful!"
-          echo "Frontend: https://orb-game.azurewebsites.net"
-          echo "Backend: https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io"
+          echo "Frontend: https://orbgame.us"
+          echo "Backend: https://api.orbgame.us"
           echo "Memory System: ✅ Active"
           echo "Memory Panel: 🧠 Available in UI"
           echo "Memory API: /api/memory/* endpoints"

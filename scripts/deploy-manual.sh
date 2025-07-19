@@ -18,8 +18,8 @@ RESOURCE_GROUP_BACKEND="aimcs-rg-eastus2"
 CONTAINER_APP_NAME="aimcs-backend-eastus2"
 CONTAINER_REGISTRY="orbgameregistry"
 IMAGE_NAME="aimcs-backend"
-FRONTEND_URL="https://aimcs.net"
-BACKEND_URL="https://api.aimcs.net"
+FRONTEND_URL="https://orbgame.us"
+BACKEND_URL="https://api.orbgame.us"
 
 # Function to print colored output
 print_status() {

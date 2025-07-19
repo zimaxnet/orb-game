@@ -61,7 +61,7 @@ sleep 60
 
 # Test memory export endpoint
 echo "Testing memory export..."
-MEMORY_COUNT=$(curl -s https://api.aimcs.net/api/memory/export | jq 'length')
+MEMORY_COUNT=$(curl -s https://api.orbgame.us/api/memory/export | jq 'length')
 if [[ "$MEMORY_COUNT" -ge 0 ]]; then
   echo -e "${GREEN}✅ Memory export working. Count: $MEMORY_COUNT${NC}"
 else
@@ -71,7 +71,7 @@ fi
 
 # Test memory statistics endpoint
 echo "Testing memory statistics..."
-MEMORY_STATS=$(curl -s https://api.aimcs.net/api/memory/stats)
+MEMORY_STATS=$(curl -s https://api.orbgame.us/api/memory/stats)
 if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
   echo -e "${GREEN}✅ Memory stats working${NC}"
 else

@@ -50,7 +50,7 @@ Use tools like:
   - 🔊 Text-to-Speech
   - ⚡ GPT-4o-mini
 - **Chat Interface Preview**: Shows actual UI elements
-- **Website URL**: aimcs.net prominently displayed
+- **Website URL**: orbgame.us prominently displayed
 
 ### Visual Design
 - **Background**: Purple gradient (#667eea to #764ba2)
@@ -62,13 +62,13 @@ Use tools like:
 ## 🔍 Testing Your Previews
 
 ### X (Twitter)
-1. Post your URL: `https://aimcs.net`
+1. Post your URL: `https://orbgame.us`
 2. Wait for preview to load
 3. Check image, title, and description
 
 ### Facebook/LinkedIn
 1. Use [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
-2. Enter your URL: `https://aimcs.net`
+2. Enter your URL: `https://orbgame.us`
 3. Click "Debug" to see preview
 
 ### General Testing
@@ -83,17 +83,17 @@ Use [OpenGraph.xyz](https://www.opengraph.xyz/) to test multiple platforms at on
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aimcs.net/" />
+<meta property="og:url" content="https://orbgame.us/" />
 <meta property="og:title" content="AIMCS - AI Multimodal Customer System" />
 <meta property="og:description" content="Experience the future of AI conversation..." />
-<meta property="og:image" content="https://aimcs.net/social-preview.png" />
+<meta property="og:image" content="https://orbgame.us/social-preview.png" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://aimcs.net/" />
+<meta property="twitter:url" content="https://orbgame.us/" />
 <meta property="twitter:title" content="AIMCS - AI Multimodal Customer System" />
 <meta property="twitter:description" content="Experience the future of AI conversation..." />
-<meta property="twitter:image" content="https://aimcs.net/social-preview.png" />
+<meta property="twitter:image" content="https://orbgame.us/social-preview.png" />
 ```
 
 ## 🚀 Deployment
@@ -144,7 +144,7 @@ Monitor social media engagement through:
 
 ### Preview Not Showing
 1. Clear social media cache using platform debug tools
-2. Check image URL is accessible: `https://aimcs.net/social-preview.png`
+2. Check image URL is accessible: `https://orbgame.us/social-preview.png`
 3. Verify meta tags are in `<head>` section
 4. Ensure image is exactly 1200x630 pixels
 

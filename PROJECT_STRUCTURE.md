@@ -149,12 +149,12 @@ npm start
 ### Frontend (Azure Static Web Apps)
 - **Build Output**: `dist/` directory
 - **Deployment**: GitHub Actions workflow
-- **Domain**: `aimcs.net`
+- **Domain**: `orbgame.us`
 
 ### Backend (Azure Container Apps)
 - **Build Output**: Docker image
 - **Deployment**: Azure Container Registry
-- **Domain**: `api.aimcs.net`
+- **Domain**: `api.orbgame.us`
 
 ## 📋 Verification Checklist
 

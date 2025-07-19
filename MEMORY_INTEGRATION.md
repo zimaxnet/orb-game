@@ -126,7 +126,7 @@ this.similarityThreshold = 0.8;   // Fuzzy match threshold
 ### Test Memory Storage
 ```bash
 # Send a test message
-curl -X POST https://api.aimcs.net/api/chat \
+curl -X POST https://api.orbgame.us/api/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "What is the capital of France?", "userId": "test-user"}'
 ```
@@ -134,7 +134,7 @@ curl -X POST https://api.aimcs.net/api/chat \
 ### Test Memory Retrieval
 ```bash
 # Send the same message again
-curl -X POST https://api.aimcs.net/api/chat \
+curl -X POST https://api.orbgame.us/api/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "What is the capital of France?", "userId": "test-user"}'
 # Should return from memory (faster response)
@@ -143,13 +143,13 @@ curl -X POST https://api.aimcs.net/api/chat \
 ### Test Memory Statistics
 ```bash
 # Get memory stats
-curl https://api.aimcs.net/api/memory/stats
+curl https://api.orbgame.us/api/memory/stats
 ```
 
 ### Test Memory Search
 ```bash
 # Search memories
-curl -X POST https://api.aimcs.net/api/memory/search \
+curl -X POST https://api.orbgame.us/api/memory/search \
   -H "Content-Type: application/json" \
   -d '{"query": "capital", "userId": "test-user"}'
 ```
@@ -222,7 +222,7 @@ curl -X POST https://api.aimcs.net/api/memory/search \
 #### Memory Not Working
 ```bash
 # Check if memory service is loaded
-curl https://api.aimcs.net/api/memory/stats
+curl https://api.orbgame.us/api/memory/stats
 ```
 
 #### Slow Response Times
@@ -238,15 +238,15 @@ curl https://api.aimcs.net/api/memory/stats
 ### Debug Commands
 ```bash
 # Check memory statistics
-curl https://api.aimcs.net/api/memory/stats
+curl https://api.orbgame.us/api/memory/stats
 
 # Search for specific memories
-curl -X POST https://api.aimcs.net/api/memory/search \
+curl -X POST https://api.orbgame.us/api/memory/search \
   -H "Content-Type: application/json" \
   -d '{"query": "debug", "userId": "test-user"}'
 
 # Export all memories
-curl https://api.aimcs.net/api/memory/export
+curl https://api.orbgame.us/api/memory/export
 ```
 
 ## 📚 API Reference

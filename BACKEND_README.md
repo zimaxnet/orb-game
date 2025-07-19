@@ -43,7 +43,7 @@ node backend-server.js
 docker build -f backend-Dockerfile -t aimcs-backend:latest .
 
 # Deploy to Azure Container Apps
-az containerapp update --name aimcs-backend-eastus2 --resource-group aimcs-rg-eastus2 --image aimcsregistry.azurecr.io/aimcs-backend:latest
+az containerapp update --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --image orbgameregistry.azurecr.io/orb-game-backend:latest
 ```
 
 ## 🚀 **Current Status**

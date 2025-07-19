@@ -9,7 +9,7 @@ on:
 env:
   RESOURCE_GROUP: aimcs-rg-eastus2
   CONTAINER_APP_NAME: aimcs-backend-eastus2
-  CONTAINER_REGISTRY: aimcsregistry
+  CONTAINER_REGISTRY: orbgameregistry
   LOCATION: eastus2
   IMAGE_NAME: aimcs-backend
 

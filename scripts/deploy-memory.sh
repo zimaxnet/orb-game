@@ -17,7 +17,7 @@ NC='\033[0m' # No Color
 # Configuration
 RESOURCE_GROUP="aimcs-rg-eastus2"
 CONTAINER_APP_NAME="aimcs-backend-eastus2"
-ACR_NAME="aimcsregistry"
+ACR_NAME="orbgameregistry"
 IMAGE_NAME="aimcs-backend-memory"
 IMAGE_TAG="latest"
 

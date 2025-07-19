@@ -428,7 +428,7 @@ curl -X POST https://your-backend-url/api/orb/generate-news/Technology \
 - **Purpose**: Global content delivery, SSL termination, custom domains
 
 ### Additional Services
-- **Container Registry**: `aimcsregistry`
+- **Container Registry**: `orbgameregistry`
 - **Cognitive Services**: 
   - `aimcs-openai` (Azure OpenAI)
   - `aimcs-speech-eastus2` (Speech Services)

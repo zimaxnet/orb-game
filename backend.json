@@ -40,15 +40,15 @@
       "registries": [
         {
           "identity": "",
-          "passwordSecretRef": "aimcsregistryazurecrio-aimcsregistry",
-          "server": "aimcsregistry.azurecr.io",
-          "username": "aimcsregistry"
+                  "passwordSecretRef": "orbgameregistryazurecrio-orbgameregistry",
+        "server": "orbgameregistry.azurecr.io",
+        "username": "orbgameregistry"
         }
       ],
       "runtime": null,
       "secrets": [
         {
-          "name": "aimcsregistryazurecrio-aimcsregistry"
+          "name": "orbgameregistryazurecrio-orbgameregistry"
         }
       ],
       "service": null
@@ -174,7 +174,7 @@
               "value": "2025-03-01-preview"
             }
           ],
-          "image": "aimcsregistry.azurecr.io/aimcs-backend:256b5808d01d4c1ad6e6e20b6d75faf49f8bb9c3",
+          "image": "orbgameregistry.azurecr.io/orb-game-backend:256b5808d01d4c1ad6e6e20b6d75faf49f8bb9c3",
           "name": "aimcs-backend-eastus2",
           "resources": {
             "cpu": 1.0,

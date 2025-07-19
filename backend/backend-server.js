@@ -1264,4 +1264,4 @@ async function generateDirectFallbackStory(category) {
 // Helper to check if memory service is fully ready
 function isMemoryServiceReady() {
   return memoryService && memoryService.users;
-}
+}# Trigger deployment

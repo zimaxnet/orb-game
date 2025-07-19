@@ -470,4 +470,4 @@ class PositiveNewsService {
   }
 }
 
-export default PositiveNewsService; 
+export { PositiveNewsService }; 

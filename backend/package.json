@@ -10,18 +10,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@azure/identity": "^4.2.0",
+    "@azure/keyvault-secrets": "^4.8.0",
     "@azure/openai": "^1.0.0-beta.10",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
     "microsoft-cognitiveservices-speech-sdk": "^1.45.0",
-    "mongodb": "^6.8.0",
+    "mongodb": "^6.17.0",
     "morgan": "^1.10.0",
-    "node-fetch": "^3.3.2",
     "node-cache": "^5.1.2",
-    "@azure/identity": "^4.2.0",
-    "@azure/keyvault-secrets": "^4.8.0"
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

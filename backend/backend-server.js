@@ -9,8 +9,8 @@ import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
 // Load environment variables from .env file
 dotenv.config();
 
-import AdvancedMemoryService from './advanced-memory-service.js';
-import PositiveNewsService from './positive-news-service.js';
+import { AdvancedMemoryService } from './advanced-memory-service.js';
+import { PositiveNewsService } from './positive-news-service.js';
 
 const app = express();
 
@@ -411,7 +411,7 @@ Current conversation context: ${memoryContext}`;
             role: 'user',
             content: `Search for current information about: ${message}`
           }],
-          max_tokens: 200
+          max_completion_tokens: 200
         })
         });
 
@@ -739,7 +739,7 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt, lan
             content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Grok 4" }]`
           }
         ],
-        max_tokens: 800,
+        max_completion_tokens: 800,
         temperature: 0.7
       })
     });
@@ -769,7 +769,7 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt, lan
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'api-key': process.env.AZURE_OPENAI_API_KEY,
+            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -815,7 +815,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
       body: JSON.stringify({
         model: 'sonar',
         stream: false,
-        max_tokens: 800,
+        max_completion_tokens: 800,
         temperature: 0.7,
         messages: [
           {
@@ -851,7 +851,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'api-key': process.env.AZURE_OPENAI_API_KEY,
+            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -906,8 +906,7 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
             content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
           }
         ],
-        max_tokens: 800,
-        temperature: 0.7
+        max_completion_tokens: 1000
       })
     });
 
@@ -936,7 +935,7 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'api-key': process.env.AZURE_OPENAI_API_KEY,
+            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -995,8 +994,7 @@ async function generateDirectFallbackStory(category) {
 }`
           }
         ],
-        max_tokens: 300,
-        temperature: 0.7
+        max_completion_tokens: 500
       })
     });
 
@@ -1026,7 +1024,7 @@ async function generateDirectFallbackStory(category) {
       const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
         method: 'POST',
         headers: {
-          'api-key': process.env.AZURE_OPENAI_API_KEY,
+          'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

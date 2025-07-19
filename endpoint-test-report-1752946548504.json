@@ -1,0 +1,281 @@
+{
+  "baseUrl": "https://api.orbgame.us",
+  "results": [
+    {
+      "name": "Health",
+      "method": "GET",
+      "path": "/health",
+      "success": true,
+      "status": 200,
+      "duration": 266,
+      "body": {
+        "status": "healthy",
+        "timestamp": "2025-07-19T17:35:47.865Z",
+        "version": "1.0.1",
+        "build": "2025-07-13-21:55"
+      }
+    },
+    {
+      "name": "Root",
+      "method": "GET",
+      "path": "/",
+      "success": true,
+      "status": 200,
+      "duration": 58,
+      "body": {
+        "message": "AIMCS Backend API",
+        "version": "1.0.1",
+        "status": "running",
+        "endpoints": [
+          "/api/chat",
+          "/api/analytics/summary",
+          "/api/memory/profile",
+          "/health"
+        ],
+        "build": "2025-07-13-21:55"
+      }
+    },
+    {
+      "name": "API Info",
+      "method": "GET",
+      "path": "/api",
+      "success": true,
+      "status": 200,
+      "duration": 62,
+      "body": {
+        "message": "AIMCS Backend API",
+        "version": "1.0.1",
+        "endpoints": [
+          "/api/chat",
+          "/api/analytics/summary",
+          "/api/memory/profile",
+          "/health"
+        ],
+        "build": "2025-07-13-21:55"
+      }
+    },
+    {
+      "name": "Analytics Summary",
+      "method": "GET",
+      "path": "/api/analytics/summary",
+      "success": true,
+      "status": 200,
+      "duration": 60,
+      "body": {
+        "totalChats": 0,
+        "totalWebSearches": 0,
+        "mostPopular": "N/A",
+        "topWords": [],
+        "averageWordsPerMessage": 0,
+        "searchPercentage": 0,
+        "funFact": "Did you know? AIMCS can speak over 20 languages!",
+        "uptime": 5442428,
+        "lastUpdated": "2025-07-19T16:05:05.624Z",
+        "mostAccessedMemories": [],
+        "memoryRetrievalRate": "N/A",
+        "averageResponseTime": "2.3s",
+        "searchRate": "N/A"
+      }
+    },
+    {
+      "name": "Analytics Detailed",
+      "method": "GET",
+      "path": "/api/analytics/detailed",
+      "success": true,
+      "status": 200,
+      "duration": 60,
+      "body": {
+        "overview": {
+          "totalChats": 10,
+          "totalWebSearches": 0,
+          "uptime": 5442487,
+          "averageResponseTime": "2.3 seconds"
+        },
+        "trends": {
+          "mostPopularWords": [
+            {
+              "word": "what",
+              "count": 4
+            },
+            {
+              "word": "hello,",
+              "count": 3
+            },
+            {
+              "word": "about",
+              "count": 3
+            },
+            {
+              "word": "hello",
+              "count": 2
+            },
+            {
+              "word": "models",
+              "count": 2
+            }
+          ],
+          "searchUsage": {
+            "percentage": 0,
+            "totalSearches": 0,
+            "averageWordsPerMessage": 3.4
+          },
+          "conversationPatterns": {
+            "averageMessageLength": "15 words",
+            "commonTopics": [
+              "AI",
+              "Technology",
+              "Entertainment",
+              "Learning"
+            ],
+            "userEngagement": "High"
+          }
+        },
+        "system": {
+          "azureOpenAIStatus": "Disconnected",
+          "memoryServiceStatus": "Inactive",
+          "ttsServiceStatus": "Available",
+          "webSearchStatus": "Available"
+        },
+        "funFacts": [
+          "Did you know? AIMCS can speak over 20 languages!",
+          "Fun fact: The first chatbot was created in 1966.",
+          "AIMCS loves puns and dad jokes! Try asking for one.",
+          "You can ask AIMCS to remember your favorite color!"
+        ],
+        "lastUpdated": "2025-07-19T17:35:48.111Z"
+      }
+    },
+    {
+      "name": "Search Decisions",
+      "method": "GET",
+      "path": "/api/analytics/search-decisions",
+      "success": true,
+      "status": 200,
+      "duration": 57,
+      "body": {
+        "totalSearches": 0,
+        "searchRate": "0.0%"
+      }
+    },
+    {
+      "name": "Memory Profile",
+      "method": "GET",
+      "path": "/api/memory/profile",
+      "success": true,
+      "status": 200,
+      "duration": 58,
+      "body": {
+        "name": "AIMCS User",
+        "favoriteColor": "blue",
+        "interests": [
+          "AI",
+          "music",
+          "travel",
+          "technology",
+          "learning"
+        ],
+        "funFact": "You once asked AIMCS to tell a joke about robots!",
+        "lastTopics": [
+          "fun activities",
+          "jokes",
+          "analytics",
+          "AI capabilities",
+          "web search"
+        ],
+        "conversationStyle": "Engaging and curious",
+        "preferredTopics": [
+          "Technology",
+          "Entertainment",
+          "Learning"
+        ],
+        "totalInteractions": 47,
+        "averageResponseTime": "2.3 seconds",
+        "memoryUsage": "Active",
+        "personalityTraits": [
+          "Curious",
+          "Helpful",
+          "Playful"
+        ],
+        "recentQuestions": [
+          "What can you do?",
+          "Tell me a joke",
+          "How does web search work?",
+          "What are your features?"
+        ]
+      }
+    },
+    {
+      "name": "Memory Stats",
+      "method": "GET",
+      "path": "/api/memory/stats",
+      "success": false,
+      "status": 503,
+      "duration": 63,
+      "body": {
+        "error": "Memory service not available"
+      }
+    },
+    {
+      "name": "Memory Export",
+      "method": "GET",
+      "path": "/api/memory/export",
+      "success": false,
+      "status": 503,
+      "duration": 60,
+      "body": {
+        "error": "Memory service not available"
+      }
+    },
+    {
+      "name": "Memory Search",
+      "method": "POST",
+      "path": "/api/memory/search",
+      "data": {
+        "query": "capital",
+        "userId": "endpoint-test-user",
+        "limit": 1
+      },
+      "success": false,
+      "status": 503,
+      "duration": 60,
+      "body": {
+        "error": "Memory service not available"
+      }
+    },
+    {
+      "name": "Chat",
+      "method": "POST",
+      "path": "/api/chat",
+      "data": {
+        "message": "Hello! What can you do?",
+        "userId": "endpoint-test-user"
+      },
+      "success": true,
+      "status": 200,
+      "duration": 95,
+      "body": {
+        "response": "Hey there! 👋 I'm AIMCS, your friendly AI assistant. \"Hello! What can you do?\" sounds interesting! What can I help you with today?",
+        "audioData": null,
+        "searchUsed": false
+      }
+    },
+    {
+      "name": "Positive News (Technology)",
+      "method": "GET",
+      "path": "/api/orb/positive-news/Technology",
+      "success": true,
+      "status": 200,
+      "duration": 61,
+      "body": [
+        {
+          "headline": "Positive Technology News",
+          "summary": "Great things are happening in technology that inspire hope and progress.",
+          "fullText": "The field of technology continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.",
+          "source": "AI Generated",
+          "publishedAt": "2025-07-19T17:35:48.568Z",
+          "ttsAudio": null
+        }
+      ]
+    }
+  ]
+}

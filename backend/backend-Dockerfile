@@ -1,5 +1,5 @@
-# Use Node.js 20 LTS
-FROM node:20-alpine
+# Use Node.js 20 LTS with specific platform
+FROM --platform=linux/amd64 node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -14,6 +14,7 @@ RUN npm install --production
 COPY backend-server.js .
 COPY advanced-memory-service.js .
 COPY positive-news-service.js .
+COPY story-cache-service.js .
 COPY atlas-ca.pem .
 
 # Create non-root user

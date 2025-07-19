@@ -163,4 +163,4 @@ class AdvancedMemoryService {
   }
 }
 
-export default AdvancedMemoryService; 
+export { AdvancedMemoryService }; 

@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
-const uri = process.env.MONGO_URI || "mongodb+srv://derek:<db_password>@aimcs-cluster.rpcaamg.mongodb.net/?retryWrites=true&w=majority&appName=AIMCS-Cluster";
+const uri = process.env.MONGO_URI || "mongodb://<account-name>:<primary-key>@<account-name>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<account-name>@";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -21,14 +21,14 @@ const client = new MongoClient(uri, {
 
 async function testConnection() {
   try {
-    console.log('🔌 Attempting to connect to MongoDB Atlas...');
+    console.log('🔌 Attempting to connect to Azure Cosmos DB for MongoDB...');
     
     // Connect the client to the server (optional starting in v4.7)
     await client.connect();
     
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log("✅ Successfully connected to MongoDB Atlas!");
+    console.log("✅ Successfully connected to Azure Cosmos DB for MongoDB!");
     
     // Test database access
     const db = client.db('aimcs');
@@ -55,12 +55,12 @@ async function testConnection() {
     console.log('✅ Cleanup operation successful');
     
   } catch (error) {
-    console.error('❌ MongoDB connection test failed:', error.message);
+    console.error('❌ Azure Cosmos DB connection test failed:', error.message);
     console.error('Error details:', error);
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
-    console.log('🔌 MongoDB connection closed');
+    console.log('🔌 Azure Cosmos DB connection closed');
   }
 }
 

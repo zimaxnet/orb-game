@@ -141,7 +141,7 @@ flowchart TD
 
 | Service | Model | Purpose | Input | Output |
 |---------|-------|---------|-------|--------|
-| **Memory Service** | MongoDB Atlas | Memory retrieval & storage | User message | Relevant memories |
+| **Memory Service** | Azure Cosmos DB for MongoDB | Memory retrieval & storage | User message | Relevant memories |
 | **Perplexity** | `sonar` | Web search & current info | User query | Search results + sources |
 | **Azure OpenAI** | `o4-mini` | AI response generation | Enhanced message (memory + web search) | Text response |
 | **Azure OpenAI** | `gpt-4o-mini-tts` | Text-to-speech | AI response text | MP3 audio (base64) |
@@ -175,7 +175,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[MongoDB Atlas] --> B[Memory Service]
+    A[Azure Cosmos DB for MongoDB] --> B[Memory Service]
     B --> C[Conversation Storage]
     B --> D[Memory Profile]
     B --> E[Analytics Data]
@@ -227,7 +227,7 @@ flowchart TD
     B --> C[Azure OpenAI Status]
     B --> D[Memory Service Status]
     B --> E[Perplexity API Status]
-    B --> F[MongoDB Atlas Status]
+    B --> F[Azure Cosmos DB Status]
     
     C --> G[Update Health Dashboard]
     D --> G

@@ -1,3 +1,5 @@
+console.log("Starting backend server - Version 2025-07-19-0515");
+
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -5,6 +7,8 @@ import morgan from 'morgan';
 import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
 import dotenv from 'dotenv';
 import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
+import { DefaultAzureCredential } from '@azure/identity';
+import { SecretClient } from '@azure/keyvault-secrets';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -13,6 +17,42 @@ import AdvancedMemoryService from './advanced-memory-service.js';
 import PositiveNewsService from './positive-news-service.js';
 
 const app = express();
+const port = process.env.PORT || 3000;
+
+// --- Key Vault Setup ---
+async function initializeSecrets() {
+  const keyVaultName = process.env.KEY_VAULT_NAME;
+  if (keyVaultName) {
+    console.log(`Initializing secrets from Azure Key Vault: ${keyVaultName}`);
+    try {
+      const credential = new DefaultAzureCredential();
+      const client = new SecretClient(`https://${keyVaultName}.vault.azure.net`, credential);
+
+      // Fetch secrets and set them as environment variables
+      const [azureOpenaiApiKey, perplexityApiKey, mongoUri, geminiApiKey, grokApiKey] = await Promise.all([
+          client.getSecret("AZURE-OPENAI-API-KEY"),
+          client.getSecret("PERPLEXITY-API-KEY"),
+          client.getSecret("MONGO-URI"),
+          client.getSecret("GEMINI-API-KEY"),
+          client.getSecret("GROK-API-KEY")
+      ]);
+
+      process.env.AZURE_OPENAI_API_KEY = azureOpenaiApiKey.value;
+      process.env.PERPLEXITY_API_KEY = perplexityApiKey.value;
+      process.env.MONGO_URI = mongoUri.value;
+      process.env.GEMINI_API_KEY = geminiApiKey.value;
+      process.env.GROK_API_KEY = grokApiKey.value;
+
+      console.log("Successfully loaded secrets from Azure Key Vault.");
+    } catch (error) {
+      console.error("Failed to load secrets from Azure Key Vault:", error);
+      // Depending on the desired behavior, you might want to exit the process
+      // process.exit(1);
+    }
+  } else {
+    console.log("KEY_VAULT_NAME not set, skipping Key Vault initialization (development mode).");
+  }
+}
 
 // CORS middleware to allow cross-origin requests
 app.use((req, res, next) => {
@@ -33,6 +73,8 @@ const AZURE_OPENAI_API_KEY = process.env.AZURE_OPENAI_API_KEY;
 const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
 const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || 'gpt-4o-mini-tts';
 const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GROK_API_KEY = process.env.GROK_API_KEY;
 
 app.use(express.json({ limit: '10mb' }));
 
@@ -140,20 +182,6 @@ async function loadAnalyticsCache() {
   }
 }
 
-// --- Periodically refresh analytics cache ---
-setInterval(() => {
-  loadAnalyticsCache();
-}, 60000); // every 60 seconds
-
-// --- On server startup, load analytics cache ---
-(async () => {
-  // Wait for memoryService to be initialized
-  while (!memoryService) {
-    await new Promise(r => setTimeout(r, 500));
-  }
-  await loadAnalyticsCache();
-})();
-
 // Enhanced analytics summary endpoint with comprehensive data
 app.get('/api/analytics/summary', (req, res) => {
   // Ensure uptime is current
@@ -163,7 +191,7 @@ app.get('/api/analytics/summary', (req, res) => {
 
 // Enhanced memory profile endpoint with comprehensive user data
 app.get('/api/memory/profile', (req, res) => {
-  // In a real app, fetch from MongoDB Atlas using userId
+  // In a real app, fetch from Azure Cosmos DB for MongoDB using userId
   const profile = {
     name: 'AIMCS User',
     favoriteColor: 'blue',
@@ -587,8 +615,14 @@ async function initializeServer() {
       positiveNewsService = new PositiveNewsService(mongoUri);
       await positiveNewsService.initialize();
       console.log('✅ PositiveNewsService initialized successfully.');
+
+      // --- Periodically refresh analytics cache ---
+      setInterval(() => {
+        loadAnalyticsCache();
+      }, 60000); // every 60 seconds
+
     } catch (error) {
-      console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error.message);
+      console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error);
       memoryService = null;
       positiveNewsService = null;
     }
@@ -629,17 +663,33 @@ async function initializeServer() {
 
 }
 
-// Start the server immediately
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`AIMCS Enhanced Backend running on port ${PORT}`);
+// --- Server Initialization ---
+async function startServer() {
+  await initializeSecrets();
+
+  const app = express();
+  const port = process.env.PORT || 3000;
+
+  // Middleware setup...
+  app.use(cors({ origin: '*' }));
+  app.use(express.json({ limit: '50mb' }));
+  app.use(morgan('dev'));
+  app.use(helmet());
+
+  // API routes...
+
+  app.listen(port, () => {
+    console.log(`AIMCS Enhanced Backend running on port ${port}`);
+    initializeServer(); // This will run in the background
+  });
+}
+
+startServer().catch(error => {
+  console.error("Failed to start the server:", error);
+  process.exit(1);
 });
 
-// Initialize services in the background
-initializeServer().catch(error => {
-  console.error('Background initialization failed:', error);
-  console.log('Server continues running with basic functionality...');
-});
+
 
 // On shutdown, close memory service
 process.on('SIGINT', async () => {
@@ -698,6 +748,9 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
       case 'perplexity-sonar':
         stories = await generateStoriesWithPerplexity(category, epoch, count, prompt);
         break;
+      case 'gemini-1.5-flash':
+        stories = await generateStoriesWithGemini(category, epoch, count, prompt);
+        break;
       case 'o4-mini':
       default:
         stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt);
@@ -732,15 +785,20 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'grok-beta',
+        model: 'grok-4',
         messages: [
+          {
+            role: 'system',
+            content: 'You are a creative assistant for the Orb Game, an AI-powered multimodal gaming system. Your role is to generate positive, engaging news stories for a specified category and epoch. Create fascinating, optimistic stories that fit the requested category and epoch. The story should include a headline (short, catchy title), a summary (1-2 sentences), and full text (a detailed, vivid narrative). Ensure the content is positive, inspiring, and suitable for text-to-speech narration. Format the response as a JSON array with fields: headline, summary, fullText, source (set to "Grok 4"), and publishedAt (current timestamp in ISO format). Avoid negative or controversial topics, and focus on innovation, progress, or human achievement.'
+          },
           {
             role: 'user',
             content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Grok 4" }]`
           }
         ],
-        max_tokens: 800,
-        temperature: 0.7
+        stream: false,
+        temperature: 0,
+        max_completion_tokens: 1500
       })
     });
 
@@ -763,6 +821,8 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        console.log(`🎵 Generating TTS for Grok story: "${story.summary.substring(0, 50)}..."`);
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -776,9 +836,14 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt) {
             response_format: 'mp3'
           })
         });
+        
         if (ttsResponse.ok) {
           const audioBuffer = await ttsResponse.arrayBuffer();
           ttsAudio = Buffer.from(audioBuffer).toString('base64');
+          console.log(`✅ TTS generated successfully for Grok story`);
+        } else {
+          const errorText = await ttsResponse.text();
+          console.warn(`⚠️ TTS generation failed for Grok story: ${ttsResponse.status} - ${errorText}`);
         }
       } catch (ttsError) {
         console.warn('TTS generation failed for Grok story:', ttsError.message);
@@ -842,6 +907,8 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        console.log(` Generating TTS for Perplexity story: "${story.summary.substring(0, 50)}..."`);
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -855,9 +922,14 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
             response_format: 'mp3'
           })
         });
+        
         if (ttsResponse.ok) {
           const audioBuffer = await ttsResponse.arrayBuffer();
           ttsAudio = Buffer.from(audioBuffer).toString('base64');
+          console.log(`✅ TTS generated successfully for Perplexity story`);
+        } else {
+          const errorText = await ttsResponse.text();
+          console.warn(`⚠️ TTS generation failed for Perplexity story: ${ttsResponse.status} - ${errorText}`);
         }
       } catch (ttsError) {
         console.warn('TTS generation failed for Perplexity story:', ttsError.message);
@@ -877,35 +949,145 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
   }
 }
 
+async function generateStoriesWithGemini(category, epoch, count, customPrompt) {
+  try {
+    const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
+    const prompt = customPrompt || defaultPrompt;
+    
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Gemini 1.5 Flash" }]`
+              }
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 800
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const content = data.candidates[0].content.parts[0].text;
+    
+    let stories;
+    try {
+      stories = JSON.parse(content);
+    } catch (parseError) {
+      console.warn('Gemini JSON parse failed:', parseError.message);
+      return [];
+    }
+    
+    // Generate TTS for each story
+    const storiesWithTTS = await Promise.all(stories.map(async (story) => {
+      let ttsAudio = null;
+      try {
+        console.log(`🎵 Generating TTS for Gemini story: "${story.summary.substring(0, 50)}..."`);
+        
+        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+          method: 'POST',
+          headers: {
+            'api-key': process.env.AZURE_OPENAI_API_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            input: story.summary,
+            voice: 'alloy',
+            response_format: 'mp3'
+          })
+        });
+        
+        if (ttsResponse.ok) {
+          const audioBuffer = await ttsResponse.arrayBuffer();
+          ttsAudio = Buffer.from(audioBuffer).toString('base64');
+          console.log(`✅ TTS generated successfully for Gemini story`);
+        } else {
+          const errorText = await ttsResponse.text();
+          console.warn(`⚠️ TTS generation failed for Gemini story: ${ttsResponse.status} - ${errorText}`);
+        }
+      } catch (ttsError) {
+        console.warn('TTS generation failed for Gemini story:', ttsError.message);
+      }
+      
+      return {
+        ...story,
+        publishedAt: new Date().toISOString(),
+        ttsAudio: ttsAudio
+      };
+    }));
+    
+    return storiesWithTTS;
+  } catch (error) {
+    console.error(`Gemini story generation failed for ${category}:`, error.message);
+    return [];
+  }
+}
+
 async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt) {
   try {
     const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
     
-    const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: process.env.AZURE_OPENAI_DEPLOYMENT,
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
-          },
-          {
-            role: 'user',
-            content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
-          }
-        ],
-        max_completion_tokens: 1500
-      })
+    const requestBody = {
+      model: 'o4-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+        },
+        {
+          role: 'user',
+          content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
+        }
+      ],
+      max_completion_tokens: 1500
+    };
+    const requestHeaders = {
+      'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+      'Content-Type': 'application/json'
+    };
+    console.log('Azure OpenAI API request details:', {
+      url: `${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`,
+      headers: requestHeaders,
+      body: requestBody
     });
+    let response;
+    try {
+      response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
+        method: 'POST',
+        headers: requestHeaders,
+        body: JSON.stringify(requestBody)
+      });
+    } catch (fetchError) {
+      console.error('Fetch/network error calling Azure OpenAI API:', fetchError);
+      throw fetchError;
+    }
 
     if (!response.ok) {
-      throw new Error(`Azure OpenAI API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`Azure OpenAI API error details for ${category}:`, {
+        status: response.status,
+        statusText: response.statusText,
+        errorText: errorText,
+        url: `${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`,
+        apiKey: process.env.AZURE_OPENAI_API_KEY ? `${process.env.AZURE_OPENAI_API_KEY.substring(0, 10)}...` : 'missing',
+        deployment: process.env.AZURE_OPENAI_DEPLOYMENT
+      });
+      throw new Error(`Azure OpenAI API error: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();
@@ -923,6 +1105,8 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        console.log(`🎵 Generating TTS for story: "${story.summary.substring(0, 50)}..."`);
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -936,9 +1120,14 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
             response_format: 'mp3'
           })
         });
+        
         if (ttsResponse.ok) {
           const audioBuffer = await ttsResponse.arrayBuffer();
           ttsAudio = Buffer.from(audioBuffer).toString('base64');
+          console.log(`✅ TTS generated successfully for story`);
+        } else {
+          const errorText = await ttsResponse.text();
+          console.warn(`⚠️ TTS generation failed for story: ${ttsResponse.status} - ${errorText}`);
         }
       } catch (ttsError) {
         console.warn('TTS generation failed for Azure OpenAI story:', ttsError.message);
@@ -990,7 +1179,15 @@ async function generateDirectFallbackStory(category) {
     });
 
     if (!response.ok) {
-      throw new Error(`Azure OpenAI API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`Direct fallback API error details for ${category}:`, {
+        status: response.status,
+        statusText: response.statusText,
+        errorText: errorText,
+        url: `${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`,
+        apiKey: process.env.AZURE_OPENAI_API_KEY ? `${process.env.AZURE_OPENAI_API_KEY.substring(0, 10)}...` : 'missing'
+      });
+      throw new Error(`Azure OpenAI API error: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();
@@ -1012,6 +1209,8 @@ async function generateDirectFallbackStory(category) {
     // Generate TTS for the fallback story
     let ttsAudio = null;
     try {
+      console.log(`🎵 Generating TTS for direct fallback story: "${storyData.summary.substring(0, 50)}..."`);
+      
       const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
         method: 'POST',
         headers: {
@@ -1025,9 +1224,14 @@ async function generateDirectFallbackStory(category) {
           response_format: 'mp3'
         })
       });
+      
       if (ttsResponse.ok) {
         const audioBuffer = await ttsResponse.arrayBuffer();
         ttsAudio = Buffer.from(audioBuffer).toString('base64');
+        console.log(`✅ TTS generated successfully for direct fallback story`);
+      } else {
+        const errorText = await ttsResponse.text();
+        console.warn(`⚠️ TTS generation failed for direct fallback story: ${ttsResponse.status} - ${errorText}`);
       }
     } catch (ttsError) {
       console.warn('TTS generation failed for direct fallback:', ttsError.message);

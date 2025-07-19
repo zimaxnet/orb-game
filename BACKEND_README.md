@@ -166,7 +166,7 @@ chmod +x deploy-backend.sh
    docker build -f backend-Dockerfile -t aimcs-backend:latest .
    ```
 
-## 🛠️ Recent Fixes: Azure OpenAI TTS & MongoDB Atlas SSL
+## 🛠️ Recent Fixes: Azure OpenAI TTS & Azure Cosmos DB SSL
 
 ### Azure OpenAI TTS (Text-to-Speech)
 - Integrated Azure OpenAI TTS endpoint for audio responses.
@@ -177,10 +177,10 @@ chmod +x deploy-backend.sh
   - `AZURE_OPENAI_API_KEY`
 - Backend returns base64-encoded audio in `audioData` field.
 
-### MongoDB Atlas SSL/TLS Connection
-- Explicitly sets `tls: true` and `tlsAllowInvalidCertificates: false` in MongoClient options for robust Atlas SSL support.
+### Azure Cosmos DB SSL/TLS Connection
+- Explicitly sets `tls: true` and `tlsAllowInvalidCertificates: false` in MongoClient options for robust Azure Cosmos DB SSL support.
 - No longer uses deprecated `ssl`/`sslValidate` options.
-- If running in Docker/Azure, ensure the container trusts the Atlas CA (see `atlas-ca.pem`).
+- If running in Docker/Azure, ensure the container trusts the Azure Cosmos DB CA (see `atlas-ca.pem`).
 - Dockerfile updated to copy `atlas-ca.pem` if needed.
 - Troubleshooting: If you see SSL/TLS errors, verify your connection string, driver version, and CA trust settings.
 

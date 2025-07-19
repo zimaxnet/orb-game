@@ -338,11 +338,25 @@
 }
 
 .play-button.playing {
-  background: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  animation: pulse 1s infinite;
+}
+
+.play-button.loading {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  animation: spin 1s linear infinite;
 }
 
 .mute-button.muted {
-  background: #ff6b6b;
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+}
+
+.audio-error {
+  color: #e74c3c;
+  font-size: 16px;
+  margin-left: 8px;
+  animation: pulse 1s infinite;
+  cursor: help;
 }
 
 .close-button {

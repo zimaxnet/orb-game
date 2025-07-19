@@ -5,7 +5,7 @@ _Last updated: 2025-07-16 (Business Widget Edition)_
 ---
 
 ## 1. Purpose & Vision
-The **Orb Game Widget** is a lightweight, embeddable engagement tool that businesses can drop into their websites to increase dwell time and user satisfaction. Like LinkedIn's puzzle games, it provides a quick dopamine hit while users browse, encouraging them to stick around and explore more content. The widget learns from MongoDB Atlas memory storage across all sites, creating personalized experiences that adapt and improve over time.
+The **Orb Game Widget** is a lightweight, embeddable engagement tool that businesses can drop into their websites to increase dwell time and user satisfaction. Like LinkedIn's puzzle games, it provides a quick dopamine hit while users browse, encouraging them to stick around and explore more content. The widget learns from Azure Cosmos DB for MongoDB memory storage across all sites, creating personalized experiences that adapt and improve over time.
 
 **Key Goals:**
 - **2-5 minute engagement boost** per site visit
@@ -31,7 +31,7 @@ flowchart TD
     
     subgraph "Shared Backend"
       API["Widget API"]
-      Memory[("MongoDB Atlas<br/>Cross-Site Memory")]
+      Memory[("Azure Cosmos DB<br/>Cross-Site Memory")]
       ContentEngine["Smart Content Engine"]
       API <--> Memory
       API <--> ContentEngine
@@ -87,7 +87,7 @@ flowchart TD
 - **Social proof**: "47 people discovered this topic today"
 - **Progress persistence**: Continue where you left off across sites
 
-### 4.3 MongoDB Atlas Memory Schema
+### 4.3 Azure Cosmos DB for MongoDB Memory Schema
 ```javascript
 // Cross-site user engagement tracking
 {

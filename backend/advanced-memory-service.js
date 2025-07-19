@@ -74,17 +74,13 @@ class AdvancedMemoryService {
       this.agents = this.db.collection('agents');
       this.tasks = this.db.collection('tasks');
       
-      // Create text index for memory search
-      try {
-        await this.users.createIndex({ "memories.content": "text" });
-        console.log('✅ Text index created for memory search');
-      } catch (indexError) {
-        console.warn('⚠️ Text index creation failed (may already exist):', indexError.message);
-      }
+      // Note: Azure Cosmos DB for MongoDB doesn't support text indexes
+      // Memory search will use regex queries instead
+      console.log('ℹ️ Skipping text index creation (not supported in Azure Cosmos DB)');
       
-      console.log('✅ MongoDB Atlas connected successfully');
+      console.log('✅ Azure Cosmos DB for MongoDB connected successfully');
     } catch (error) {
-      console.error('❌ MongoDB Atlas connection failed:', error.message);
+      console.error('❌ Azure Cosmos DB for MongoDB connection failed:', error.message);
       throw error;
     }
   }

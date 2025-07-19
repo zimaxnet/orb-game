@@ -150,10 +150,10 @@ function OrbGame() {
   // Add AI model selection state
   const [selectedModel, setSelectedModel] = useState('grok-4');
   const aiModels = [
-    { id: 'grok-4', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
-    { id: 'perplexity-sonar', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
-    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', description: 'Fast and creative content generation' },
-    { id: 'o4-mini', name: 'O4-Mini', description: 'Fast and efficient processing' }
+    { id: 'grok-4', name: 'Grok 4', shortName: 'Grok', description: 'Advanced reasoning and analysis' },
+    { id: 'perplexity-sonar', name: 'Perplexity Sonar', shortName: 'Sonar', description: 'Real-time web search and synthesis' },
+    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', shortName: 'Gemini', description: 'Fast and creative content generation' },
+    { id: 'o4-mini', name: 'O4-Mini', shortName: 'O4', description: 'Fast and efficient processing' }
   ];
   
   // Add preloaded stories state
@@ -306,7 +306,9 @@ function OrbGame() {
         }
         
         completedRequests++;
-        setPreloadProgress((completedRequests / totalRequests) * 100);
+        const progress = Math.round((completedRequests / totalRequests) * 100);
+        setPreloadProgress(progress);
+        console.log(`📊 Preload progress: ${progress}% (${completedRequests}/${totalRequests})`);
       }
       
       // Remove this category from preloading set when all models are done
@@ -376,11 +378,11 @@ function OrbGame() {
     const preloadedModelStories = preloadedCategoryStories?.[selectedModel];
     
     if (preloadedModelStories && preloadedModelStories.length > 0) {
-      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.name}`);
+      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.shortName}`);
       setNewsStories(preloadedModelStories);
       setCurrentNewsIndex(0);
       setCurrentNews(preloadedModelStories[0]);
-      setCurrentAISource(selectedModelInfo.name);
+      setCurrentAISource(selectedModelInfo.shortName);
       
       // Ensure TTS is ready before autoplaying
       if (preloadedModelStories[0]?.ttsAudio && !isMuted) {
@@ -832,23 +834,29 @@ function OrbGame() {
 
         
         {/* Orbiting Satellites */}
-        {categories.map((category, index) => (
-          <OrbitingSatellite
-            key={category.name}
-            category={category}
-            index={index}
-            totalCategories={categories.length}
-            onClick={() => handleSatelliteClick(category)}
-            onHover={() => setHoveredCategory(category)}
-            onUnhover={() => setHoveredCategory(null)}
-            isHovered={hoveredCategory?.name === category.name}
-            isLoading={isLoading}
-            isClicked={clickedOrbs.has(category.name)}
-            isDragged={draggedOrb?.name === category.name}
-            isInCenter={orbInCenter?.name === category.name}
-            isPreloading={preloadingOrbs.has(category.name)}
-          />
-        ))}
+        {categories.map((category, index) => {
+          // Check if stories are loaded for this specific category and selected model
+          const hasStoriesForThisOrb = preloadedStories[category.name]?.[selectedModel]?.length > 0;
+          
+          return (
+            <OrbitingSatellite
+              key={category.name}
+              category={category}
+              index={index}
+              totalCategories={categories.length}
+              onClick={() => handleSatelliteClick(category)}
+              onHover={() => setHoveredCategory(category)}
+              onUnhover={() => setHoveredCategory(null)}
+              isHovered={hoveredCategory?.name === category.name}
+              isLoading={isLoading}
+              isClicked={clickedOrbs.has(category.name)}
+              isDragged={draggedOrb?.name === category.name}
+              isInCenter={orbInCenter?.name === category.name}
+              isPreloading={preloadingOrbs.has(category.name)}
+              hasStoriesLoaded={hasStoriesForThisOrb}
+            />
+          );
+        })}
       </Canvas>
       
       {/* Add epoch roller */}
@@ -942,7 +950,7 @@ function OrbGame() {
                 setNewsStories(stories);
                 setCurrentNewsIndex(0);
                 setCurrentNews(stories[0]);
-                setCurrentAISource(aiModels.find(m => m.id === e.target.value).name);
+                setCurrentAISource(aiModels.find(m => m.id === e.target.value).shortName);
                 
                 // Play audio if available
                 if (stories[0]?.ttsAudio && !isMuted) {
@@ -954,7 +962,7 @@ function OrbGame() {
             }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
-                  {t(`ai.model.${model.id}`)} - {model.description}
+                  {model.shortName} - {model.description}
                 </option>
               ))}
             </select>
@@ -966,7 +974,7 @@ function OrbGame() {
                   setNewsStories(stories);
                   setCurrentNewsIndex(0);
                   setCurrentNews(stories[0]);
-                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
+                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).shortName);
                   
                   // Play audio if available
                   if (stories[0]?.ttsAudio && !isMuted) {
@@ -1028,7 +1036,7 @@ function OrbGame() {
   );
 }
 
-function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter, isPreloading }) {
+function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter, isPreloading, hasStoriesLoaded }) {
   const meshRef = useRef();
   const groupRef = useRef();
   const dragStartTime = useRef();
@@ -1082,11 +1090,18 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
   });
   
   // Determine emissive intensity based on state
-  let emissiveIntensity = 0.1; // Default
+  let emissiveIntensity = 0.1; // Default dim
+  let opacity = hasStoriesLoaded ? 1.0 : 0.4; // Dim if no stories loaded
+  
   if (isPreloading) {
     emissiveIntensity = 0.8; // Bright when preloading
+    opacity = 1.0;
   } else if (isHovered) {
     emissiveIntensity = 0.3; // Normal hover brightness
+    opacity = 1.0;
+  } else if (hasStoriesLoaded) {
+    emissiveIntensity = 0.2; // Normal brightness when stories are loaded
+    opacity = 1.0;
   }
   
   return (
@@ -1102,6 +1117,8 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
           color={category.color} 
           emissive={isPreloading ? category.color : isHovered ? category.color : "#000000"}
           emissiveIntensity={emissiveIntensity}
+          transparent={true}
+          opacity={opacity}
         />
       </Sphere>
       
@@ -1109,7 +1126,7 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       <Text
         position={[0, -0.6, 0]}
         fontSize={isInCenter ? 0.25 : 0.2}
-        color={isInCenter ? "white" : "rgba(255, 255, 255, 0.8)"}
+        color={isInCenter ? "white" : hasStoriesLoaded ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.4)"}
         anchorX="center"
         anchorY="middle"
         outlineWidth={0.01}

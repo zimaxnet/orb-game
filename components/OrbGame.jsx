@@ -160,6 +160,7 @@ function OrbGame() {
   const [preloadedStories, setPreloadedStories] = useState({});
   const [isPreloading, setIsPreloading] = useState(false);
   const [preloadProgress, setPreloadProgress] = useState(0);
+  const [preloadingOrbs, setPreloadingOrbs] = useState(new Set());
   
   // Add drag and center state
   const [draggedOrb, setDraggedOrb] = useState(null);
@@ -224,6 +225,7 @@ function OrbGame() {
     
     setIsPreloading(true);
     setPreloadProgress(0);
+    setPreloadingOrbs(new Set(categories.map(cat => cat.name))); // Start with all orbs
     
     const newPreloadedStories = {};
     const totalRequests = categories.length * aiModels.length;
@@ -271,11 +273,19 @@ function OrbGame() {
         completedRequests++;
         setPreloadProgress((completedRequests / totalRequests) * 100);
       }
+      
+      // Remove this category from preloading set when all models are done
+      setPreloadingOrbs(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(category.name);
+        return newSet;
+      });
     }
     
     setPreloadedStories(newPreloadedStories);
     setIsPreloading(false);
     setPreloadProgress(0);
+    setPreloadingOrbs(new Set()); // Clear all preloading orbs
     console.log(`✅ Preloading complete for ${epoch} epoch!`);
   };
   
@@ -795,6 +805,7 @@ function OrbGame() {
             isClicked={clickedOrbs.has(category.name)}
             isDragged={draggedOrb?.name === category.name}
             isInCenter={orbInCenter?.name === category.name}
+            isPreloading={preloadingOrbs.has(category.name)}
           />
         ))}
       </Canvas>
@@ -969,7 +980,7 @@ function OrbGame() {
   );
 }
 
-function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter }) {
+function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter, isPreloading }) {
   const meshRef = useRef();
   const groupRef = useRef();
   const dragStartTime = useRef();
@@ -1018,6 +1029,14 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
     }
   });
   
+  // Determine emissive intensity based on state
+  let emissiveIntensity = 0.1; // Default
+  if (isPreloading) {
+    emissiveIntensity = 0.8; // Bright when preloading
+  } else if (isHovered) {
+    emissiveIntensity = 0.3; // Normal hover brightness
+  }
+  
   return (
     <group ref={groupRef}>
       <Sphere 
@@ -1029,8 +1048,8 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       >
         <meshStandardMaterial 
           color={category.color} 
-          emissive={isHovered ? category.color : "#000000"}
-          emissiveIntensity={isHovered ? 0.3 : 0.1}
+          emissive={isPreloading ? category.color : isHovered ? category.color : "#000000"}
+          emissiveIntensity={emissiveIntensity}
         />
       </Sphere>
       

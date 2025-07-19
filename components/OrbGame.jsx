@@ -428,17 +428,7 @@ function OrbGame() {
         </select>
       </div>
       
-      {/* Add AI model selector */}
-      <div className="ai-model-selector">
-        <label>AI Model:</label>
-        <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
-          {aiModels.map(model => (
-            <option key={model.id} value={model.id}>
-              {model.name} - {model.description}
-            </option>
-          ))}
-        </select>
-      </div>
+
       
       {/* Loading indicator for AI source */}
       {isLoading && currentAISource && (
@@ -478,6 +468,18 @@ function OrbGame() {
                 ✕
               </button>
             </div>
+          </div>
+          
+          {/* AI Model Selector in News Panel */}
+          <div className="news-model-selector">
+            <label>AI Model:</label>
+            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
+              {aiModels.map(model => (
+                <option key={model.id} value={model.id}>
+                  {model.name} - {model.description}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="news-content">
             <p className="news-summary">{currentNews.summary}</p>

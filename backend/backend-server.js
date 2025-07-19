@@ -572,38 +572,68 @@ async function initializeServer() {
 
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
+    memoryService = null;
+    positiveNewsService = null;
+    storyCacheService = null;
   } else {
     try {
-      console.log('Initializing AdvancedMemoryService...');
+      console.log('🔧 Initializing AdvancedMemoryService...');
+      console.log('📡 MongoDB URI:', mongoUri.replace(/\/\/.*@/, '//***:***@')); // Hide credentials
+      
       memoryService = new AdvancedMemoryService(mongoUri);
       await memoryService.initialize();
       console.log('✅ AdvancedMemoryService initialized successfully.');
       
       // Initialize sample memories for default user
-      await initializeSampleMemories();
+      try {
+        await initializeSampleMemories();
+        console.log('✅ Sample memories initialized successfully.');
+      } catch (memoryError) {
+        console.warn('⚠️ Sample memory initialization failed:', memoryError.message);
+      }
       
       // Load analytics from the database
-      await loadAnalyticsCache();
+      try {
+        await loadAnalyticsCache();
+        console.log('✅ Analytics cache loaded successfully.');
+      } catch (analyticsError) {
+        console.warn('⚠️ Analytics cache loading failed:', analyticsError.message);
+      }
+      
       // Initialize PositiveNewsService
-      console.log('Initializing PositiveNewsService...');
-      positiveNewsService = new PositiveNewsService(mongoUri);
-      await positiveNewsService.initialize();
-      console.log('✅ PositiveNewsService initialized successfully.');
+      try {
+        console.log('🔧 Initializing PositiveNewsService...');
+        positiveNewsService = new PositiveNewsService(mongoUri);
+        await positiveNewsService.initialize();
+        console.log('✅ PositiveNewsService initialized successfully.');
+      } catch (newsError) {
+        console.warn('⚠️ PositiveNewsService initialization failed:', newsError.message);
+        positiveNewsService = null;
+      }
 
       // Initialize StoryCacheService
-      console.log('Initializing StoryCacheService...');
-      storyCacheService = new StoryCacheService();
-      const cacheConnected = await storyCacheService.initialize();
-      if (cacheConnected) {
-        console.log('✅ StoryCacheService initialized successfully.');
-      } else {
-        console.warn('⚠️ StoryCacheService failed to connect, caching will be disabled.');
+      try {
+        console.log('🔧 Initializing StoryCacheService...');
+        storyCacheService = new StoryCacheService();
+        const cacheConnected = await storyCacheService.initialize();
+        if (cacheConnected) {
+          console.log('✅ StoryCacheService initialized successfully.');
+        } else {
+          console.warn('⚠️ StoryCacheService failed to connect, caching will be disabled.');
+          storyCacheService = null;
+        }
+      } catch (cacheError) {
+        console.warn('⚠️ StoryCacheService initialization failed:', cacheError.message);
         storyCacheService = null;
       }
+      
     } catch (error) {
-      console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error.message);
+      console.error('❌ Failed to initialize memory services:', error.message);
+      console.error('🔍 Error details:', error.stack);
+      console.warn('⚠️ Memory features will be disabled, but core chat functionality will continue.');
       memoryService = null;
       positiveNewsService = null;
+      storyCacheService = null;
     }
   }
   
@@ -1252,5 +1282,23 @@ async function generateDirectFallbackStory(category) {
 
 // Helper to check if memory service is fully ready
 function isMemoryServiceReady() {
-  return memoryService && memoryService.users;
+  if (!memoryService) {
+    console.log('🔍 Memory service check: memoryService is null');
+    return false;
+  }
+  
+  if (!memoryService.users) {
+    console.log('🔍 Memory service check: memoryService.users is null');
+    return false;
+  }
+  
+  try {
+    // Test if we can actually connect to the database
+    const testConnection = memoryService.users.findOne({}).limit(1);
+    console.log('🔍 Memory service check: Database connection test passed');
+    return true;
+  } catch (error) {
+    console.log('🔍 Memory service check: Database connection test failed:', error.message);
+    return false;
+  }
 }

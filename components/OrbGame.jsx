@@ -4,6 +4,7 @@ import { OrbitControls, Sphere, Text } from '@react-three/drei';
 import * as THREE from 'three';
 
 import { getPositiveNews } from '../api/orbApi';
+import { BACKEND_URL } from '../api/orbApi';
 
 import './OrbGame.css';
 

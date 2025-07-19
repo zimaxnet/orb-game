@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://api.orbgame.us';
+export const BACKEND_URL = 'https://api.orbgame.us';
 
 export async function getPositiveNews(category) {
   try {

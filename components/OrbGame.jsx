@@ -206,6 +206,7 @@ function OrbGame() {
   
   const loadStoryForOrb = async (category) => {
     if (isPlaying || isLoading) return;
+    console.log('BACKEND_URL:', BACKEND_URL);
     setIsLoading(true);
     
     // Set initial loading message
@@ -220,10 +221,13 @@ function OrbGame() {
     });
     
     try {
+      console.log('Fetching stories for:', category.name, 'epoch:', currentEpoch, 'URL:', `${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}`);
       const response = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}`);
+      console.log('Response status:', response.status, 'ok:', response.ok);
       const stories = await response.json();
+      console.log('Stories received:', stories);
       
-      if (!stories || stories.length === 0) {
+      if (!stories) {
         setNewsStories([]);
         setCurrentNews({
           headline: 'No stories found',
@@ -235,12 +239,15 @@ function OrbGame() {
         });
         setCurrentNewsIndex(0);
       } else {
-        setNewsStories(stories);
+        // API returns a single story object, not an array
+        const storyArray = Array.isArray(stories) ? stories : [stories];
+        setNewsStories(storyArray);
         setCurrentNewsIndex(0);
-        setCurrentNews(stories[0]);
+        setCurrentNews(storyArray[0]);
       }
-    } catch (error) {
-      console.error('Error fetching news:', error);
+          } catch (error) {
+        console.error('Error fetching news:', error);
+        console.error('Error details:', error.message, error.stack);
       setCurrentNews({
         headline: 'Error loading story',
         summary: 'Failed to load news story. Please try again.',

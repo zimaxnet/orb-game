@@ -10,7 +10,7 @@ env:
   FRONTEND_RESOURCE_GROUP: orb-game-rg-eastus2
   BACKEND_CONTAINER_APP: orb-game-backend-eastus2
   FRONTEND_WEB_APP: orb-game
-  ACR_NAME: orbgame
+  ACR_NAME: orbgameregistry
   BACKEND_IMAGE: orb-game-backend
   FRONTEND_IMAGE: orb-game-frontend
 

@@ -27,7 +27,7 @@ async function generateSocialPreview() {
     });
     
     // Load the HTML file
-    const htmlPath = path.join(__dirname, '..', 'aimcs_social_preview.html');
+    const htmlPath = path.join(__dirname, '..', 'orbgame_social_preview.html');
     const htmlContent = await import('fs').then(fs => fs.readFileSync(htmlPath, 'utf8'));
     await page.setContent(htmlContent);
     

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# AIMCS Memory Function Test Script
+# Orb Game Memory Function Test Script
 # Tests all memory endpoints and functionality
 
 # Colors for output

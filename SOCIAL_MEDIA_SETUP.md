@@ -1,6 +1,6 @@
-# Social Media Preview Setup for AIMCS
+# Social Media Preview Setup for Orb Game
 
-This document explains how to set up and generate social media previews for AIMCS when sharing on platforms like X (Twitter), Facebook, LinkedIn, etc.
+This document explains how to set up and generate social media previews for Orb Game when sharing on platforms like X (Twitter), Facebook, LinkedIn, etc.
 
 ## 🎯 What's Been Implemented
 
@@ -41,7 +41,7 @@ Use tools like:
 ## 📱 Social Media Preview Features
 
 ### Content Included
-- **AIMCS Logo**: Robot emoji + brand name
+- **Orb Game Logo**: Robot emoji + brand name
 - **Tagline**: "AI Multimodal Customer System"
 - **Description**: Key value proposition
 - **Feature Badges**: 

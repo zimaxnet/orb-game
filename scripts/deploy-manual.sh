@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# AIMCS Manual Deployment Script
+# Orb Game Manual Deployment Script
 # This script deploys both frontend and backend to Azure
 
 set -e  # Exit on any error
@@ -188,7 +188,7 @@ show_usage() {
 
 # Main script
 main() {
-    print_status "AIMCS Deployment Script"
+    print_status "Orb Game Deployment Script"
     print_status "========================"
     
     # Check prerequisites

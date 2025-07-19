@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# AIMCS Memory Integration Deployment Script
-# This script deploys the memory-enhanced version of AIMCS
+# Orb Game Memory Integration Deployment Script
+# This script deploys the memory-enhanced version of Orb Game
 
 set -e
 
-echo "🧠 Deploying AIMCS Backend with Memory Integration..."
+echo "🧠 Deploying Orb Game Backend with Memory Integration..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -79,5 +79,5 @@ else
   exit 1
 fi
 
-echo -e "\n${GREEN}🎉 AIMCS Backend Deployment Complete!${NC}"
+echo -e "\n${GREEN}🎉 Orb Game Backend Deployment Complete!${NC}"
 echo -e "Backend API is available at the container app URL." 

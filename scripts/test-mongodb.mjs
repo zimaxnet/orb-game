@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * AIMCS MongoDB Connection Test Script
+ * Orb Game MongoDB Connection Test Script
  * Tests MongoDB Atlas connection and basic operations using ES Modules.
  */
 
@@ -54,7 +54,7 @@ const client = new MongoClient(uri, {
 });
 
 async function testConnection() {
-  log('🚀 AIMCS MongoDB Connection Test Starting...', colors.blue);
+  log('🚀 Orb Game MongoDB Connection Test Starting...', colors.blue);
   log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', colors.blue);
   
   try {
@@ -65,7 +65,7 @@ async function testConnection() {
     await client.db("admin").command({ ping: 1 });
     log('✅ Ping command successful - MongoDB Atlas is reachable.', colors.green);
     
-    const db = client.db('aimcs');
+    const db = client.db('orbgame');
     log(`✅ Database "${db.databaseName}" accessible.`, colors.green);
     
     const collections = await db.listCollections().toArray();

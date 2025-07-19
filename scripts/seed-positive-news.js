@@ -70,7 +70,7 @@ async function seedStories() {
 
   try {
     await client.connect();
-    const db = client.db('aimcs');
+    const db = client.db('orbgame');
     const stories = db.collection('positive_news_stories');
 
     console.log('🌱 Seeding positive news stories...');

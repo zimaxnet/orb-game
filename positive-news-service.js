@@ -20,7 +20,7 @@ class PositiveNewsStory {
 }
 
 class PositiveNewsService {
-  constructor(mongoUri, dbName = 'aimcs') {
+  constructor(mongoUri, dbName = 'orbgame') {
     this.mongoUri = mongoUri;
     this.dbName = dbName;
     this.client = null;

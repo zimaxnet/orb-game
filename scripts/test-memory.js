@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * AIMCS Memory Function Test Script (Node.js)
+ * Orb Game Memory Function Test Script (Node.js)
  * Tests all memory endpoints and functionality programmatically
  */
 
@@ -41,7 +41,7 @@ function makeRequest(endpoint, method = 'GET', data = null) {
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'AIMCS-Memory-Test/1.0'
+        'User-Agent': 'Orb-Game-Memory-Test/1.0'
       }
     };
 
@@ -216,7 +216,7 @@ async function testPerformance() {
 
 // Main test runner
 async function runAllTests() {
-  log('🧠 Testing AIMCS Memory Functions...', colors.blue);
+  log('🧠 Testing Orb Game Memory Functions...', colors.blue);
   log(`📋 Test Configuration:`, colors.blue);
   log(`  Backend URL: ${BACKEND_URL}`, colors.blue);
   log(`  Test User ID: ${TEST_USER_ID}`, colors.blue);

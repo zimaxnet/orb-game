@@ -7,11 +7,11 @@ on:
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP: aimcs-rg-eastus2
-  CONTAINER_APP_NAME: aimcs-backend-eastus2
+  RESOURCE_GROUP: orbgame-rg-eastus2
+  CONTAINER_APP_NAME: orb-game-backend-eastus2
   CONTAINER_REGISTRY: orbgameregistry
   LOCATION: eastus2
-  IMAGE_NAME: aimcs-backend
+  IMAGE_NAME: orbgame-backend
 
 jobs:
   deploy:
@@ -138,7 +138,7 @@ jobs:
         # Test the backend health endpoint
         for i in {1..10}; do
           echo "Attempt $i: Testing backend health..."
-          if curl -f https://api.aimcs.net/health; then
+          if curl -f https://api.aimcs.us/health; then
             echo "✅ Backend is healthy!"
             break
           else
@@ -148,12 +148,12 @@ jobs:
         done
         
         # Final health check
-        curl -f https://api.aimcs.net/health || exit 1
+        curl -f https://api.orbgame.us/health || exit 1
         
     - name: Test API functionality
       run: |
         # Test the main chat endpoint
-        curl -f https://api.aimcs.net/api/chat \
+        curl -f https://api.orbgame.us/api/chat \
           -X POST \
           -H "Content-Type: application/json" \
           -d '{"message": "Hello"}' || exit 1

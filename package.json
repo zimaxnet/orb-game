@@ -1,7 +1,7 @@
 {
   "name": "orb-game-backend",
   "version": "1.0.0",
-  "description": "AIMCS Backend API",
+  "description": "Orb Game Backend API",
   "main": "backend-server.js",
   "type": "module",
   "scripts": {
@@ -40,6 +40,6 @@
     "api",
     "azure"
   ],
-  "author": "AIMCS Team",
+  "author": "Orb Game Team",
   "license": "MIT"
 }

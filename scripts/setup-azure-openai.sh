@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Azure OpenAI Setup Script for AIMCS Voice Chat
+# Azure OpenAI Setup Script for Orb Game Voice Chat
 # This script creates an Azure OpenAI resource and deploys the necessary models
 
 set -e
 
-echo "🚀 Setting up Azure OpenAI for AIMCS Voice Chat..."
+echo "🚀 Setting up Azure OpenAI for Orb Game Voice Chat..."
 
 # Configuration variables
 RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
@@ -224,6 +224,6 @@ echo ""
 echo "🔗 Azure Portal: https://portal.azure.com/#@/resource/subscriptions/*/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$OPENAI_RESOURCE_NAME"
 echo ""
 echo "🧪 Next steps:"
-echo "   1. Test the voice chat at https://aimcs.net"
+    echo "   1. Test the voice chat at https://orbgame.us"
 echo "   2. Use the setup screen to verify configuration"
 echo "   3. Test microphone and WebSocket connections" 

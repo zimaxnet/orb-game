@@ -95,7 +95,7 @@ app.get('/health', (req, res) => {
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'AIMCS Backend API',
+    message: 'Orb Game Backend API',
     version: '1.0.1',
     status: 'running',
     endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
@@ -105,7 +105,7 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
   res.json({
-    message: 'AIMCS Backend API',
+    message: 'Orb Game Backend API',
     version: '1.0.1',
     endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
     build: '2025-07-13-21:55'
@@ -118,10 +118,10 @@ let totalWebSearches = 0;
 let questionCounts = {};
 const startTime = Date.now();
 const funFacts = [
-  "Did you know? AIMCS can speak over 20 languages!",
+  "Did you know? Orb Game can speak over 20 languages!",
   "Fun fact: The first chatbot was created in 1966.",
-  "AIMCS loves puns and dad jokes! Try asking for one.",
-  "You can ask AIMCS to remember your favorite color!"
+  "Orb Game loves puns and dad jokes! Try asking for one.",
+  "You can ask Orb Game to remember your favorite color!"
 ];
 
 // --- Analytics Cache ---
@@ -193,10 +193,10 @@ app.get('/api/analytics/summary', (req, res) => {
 app.get('/api/memory/profile', (req, res) => {
   // In a real app, fetch from Azure Cosmos DB for MongoDB using userId
   const profile = {
-    name: 'AIMCS User',
+    name: 'Orb Game User',
     favoriteColor: 'blue',
     interests: ['AI', 'music', 'travel', 'technology', 'learning'],
-    funFact: 'You once asked AIMCS to tell a joke about robots!',
+    funFact: 'You once asked Orb Game to tell a joke about robots!',
     lastTopics: ['fun activities', 'jokes', 'analytics', 'AI capabilities', 'web search'],
     conversationStyle: 'Engaging and curious',
     preferredTopics: ['Technology', 'Entertainment', 'Learning'],
@@ -403,7 +403,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Enhanced system prompt from README
-    const systemPrompt = `You are AIMCS (AI Multimodal Customer System), a friendly, engaging, and proactive AI assistant with personality!
+    const systemPrompt = `You are Orb Game, a friendly, engaging, and proactive AI assistant with personality!
 
 Your characteristics:
 - You're enthusiastic, warm, and genuinely excited to help
@@ -481,11 +481,11 @@ Current conversation context: ${memoryContext}`;
       } catch (openaiError) {
         console.error('❌ Azure OpenAI failed:', openaiError);
         console.error('Error details:', openaiError.message);
-        aiResponse = `Hey there! 👋 I'm AIMCS, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
+        aiResponse = `Hey there! 👋 I'm Orb Game, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
       }
     } else {
       console.warn('⚠️ Azure OpenAI client not available');
-      aiResponse = `Hey there! 👋 I'm AIMCS, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
+              aiResponse = `Hey there! 👋 I'm Orb Game, your friendly AI assistant. "${message}" sounds interesting! What can I help you with today?`;
     }
 
     // Store in memory if available
@@ -550,7 +550,7 @@ async function initializeSampleMemories() {
     
     const sampleMemories = [
       {
-        content: "What can you do? - I'm AIMCS, your friendly AI assistant! I can help with questions, tell jokes, search the web for current info, and even remember our conversations. What would you like to explore? 😊",
+        content: "What can you do? - I'm Orb Game, your friendly AI assistant! I can help with questions, tell jokes, search the web for current info, and even remember our conversations. What would you like to explore? 😊",
         category: "conversation"
       },
       {
@@ -679,7 +679,7 @@ async function startServer() {
   // API routes...
 
   app.listen(port, () => {
-    console.log(`AIMCS Enhanced Backend running on port ${port}`);
+    console.log(`Orb Game Enhanced Backend running on port ${port}`);
     initializeServer(); // This will run in the background
   });
 }

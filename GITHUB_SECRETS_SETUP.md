@@ -36,7 +36,7 @@ The following secrets need to be configured in your GitHub repository:
 
 1. **Go to your GitHub repository settings**:
    ```
-   https://github.com/zimaxnet/aimcs-deploy/settings/secrets/actions
+   https://github.com/zimaxnet/orb-game/settings/secrets/actions
    ```
 
 2. **Add each secret** by clicking "New repository secret"
@@ -73,8 +73,8 @@ az ad sp create-for-rbac --name aimcs-deploy --role contributor --scopes /subscr
 ### Option 2: Manual Update
 ```bash
 az containerapp update \
-  --name aimcs-backend-eastus2 \
-  --resource-group aimcs-rg-eastus2 \
+  --name oorb-game-backend-eastus2 \
+  --resource-group orb-game-rg-eastus2 \
   --set-env-vars \
     AZURE_OPENAI_ENDPOINT="https://aimcs-foundry.cognitiveservices.azure.com/" \
     AZURE_OPENAI_API_KEY="your-key" \
@@ -87,12 +87,12 @@ After setting up the secrets, test the web search functionality:
 
 ```bash
 # Test web search endpoint
-curl -X POST https://api.aimcs.net/api/web-search \
+curl -X POST https://api.orbgame.us/api/web-search \
   -H "Content-Type: application/json" \
   -d '{"query": "latest AI news today"}'
 
 # Test chat with web search
-curl -X POST https://api.aimcs.net/api/chat \
+curl -X POST https://api.orbgame.us/api/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "What are the latest news about AI today?"}'
 ```

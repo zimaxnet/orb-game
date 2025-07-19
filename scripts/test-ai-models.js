@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const BACKEND_URL = process.env.BACKEND_URL || 'https://aimcs-backend-eastus2.icybay-f279066f.eastus2.azurecontainerapps.io';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
 
 const aiModels = [
   { id: 'grok-4', name: 'Grok 4' },

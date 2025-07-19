@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# AIMCS MongoDB Connection Test Runner
+# Orb Game MongoDB Connection Test Runner
 # This script tests the MongoDB Atlas connection
 
 set -e  # Exit on any error
@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🚀 AIMCS MongoDB Connection Test${NC}"
+echo -e "${BLUE}🚀 Orb Game MongoDB Connection Test${NC}"
 echo -e "${BLUE}================================${NC}"
 
 # Get the directory of this script

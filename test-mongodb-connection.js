@@ -31,8 +31,8 @@ async function testConnection() {
     console.log("✅ Successfully connected to Azure Cosmos DB for MongoDB!");
     
     // Test database access
-    const db = client.db('aimcs');
-    console.log('✅ Database "aimcs" accessible');
+      const db = client.db('orbgame');
+  console.log('✅ Database "orbgame" accessible');
     
     // List collections to verify access
     const collections = await db.listCollections().toArray();

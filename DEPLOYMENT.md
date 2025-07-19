@@ -123,7 +123,7 @@ VITE_AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini-realtime-preview
 - **Azure OpenAI Documentation**: [https://docs.microsoft.com/en-us/azure/ai-services/openai/](https://docs.microsoft.com/en-us/azure/ai-services/openai/)
 - **GitHub Issues**: Report bugs in the repository
 
-# AIMCS Frontend: Deployment & Authentication Journey
+# Orb Game Frontend: Deployment & Authentication Journey
 
 ## Project Goals
 
@@ -142,7 +142,7 @@ VITE_AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini-realtime-preview
 
 ### 2. Authentication with Azure CIAM
 - Registered the app in Azure Entra External ID (CIAM).
-- Configured the app for **ID token implicit flow** and set the redirect URI to `https://aimcs.net/`.
+- Configured the app for **ID token implicit flow** and set the redirect URI to `https://orbgame.us/`.
 - Added `email` as an optional claim and enabled ID tokens in the app registration.
 - Used a direct redirect to the working CIAM login URL for reliability:
   ```
@@ -212,5 +212,5 @@ function getIdTokenFromUrl() {
 
 ---
 
-**This journey and these lessons are now part of the AIMCS project.  
+**This journey and these lessons are now part of the Orb Game project.  
 Feel free to contribute, learn, and build on this foundation!** 

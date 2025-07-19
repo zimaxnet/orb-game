@@ -11,7 +11,7 @@ echo "=================================="
 # Configuration
 CLIENT_ID="a9ad55e2-d46f-4bad-bce6-c95f1bc43018"
 TENANT_ID="96e7dd96-48b5-4991-a67e-1563013dfbe2"
-REDIRECT_URI="https://aimcs.net/"
+REDIRECT_URI="https://orbgame.us/"
 AUTHORITY="https://zimaxai.ciamlogin.com/96e7dd96-48b5-4991-a67e-1563013dfbe2"
 METADATA_URL="https://zimaxai.ciamlogin.com/zimaxai.onmicrosoft.com/v2.0/.well-known/openid-configuration?appid=$CLIENT_ID"
 

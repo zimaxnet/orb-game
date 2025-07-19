@@ -1294,7 +1294,7 @@ function isMemoryServiceReady() {
   
   try {
     // Test if we can actually connect to the database
-    const testConnection = memoryService.users.findOne({}).limit(1);
+    const testConnection = memoryService.users.findOne({});
     console.log('🔍 Memory service check: Database connection test passed');
     return true;
   } catch (error) {

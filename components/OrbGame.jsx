@@ -480,6 +480,13 @@ function OrbGame() {
                 </option>
               ))}
             </select>
+            <button 
+              onClick={() => loadStoryForOrb(orbInCenter)}
+              className="go-button"
+              disabled={isLoading}
+            >
+              {isLoading ? '⏳' : 'Go'}
+            </button>
           </div>
           <div className="news-content">
             <p className="news-summary">{currentNews.summary}</p>

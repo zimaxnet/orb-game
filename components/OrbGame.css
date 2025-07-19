@@ -578,18 +578,46 @@
 
 .news-model-selector select {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
-  min-width: 250px;
+  min-width: 200px;
   font-size: 13px;
+  font-weight: 500;
 }
 
 .news-model-selector select:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.5);
+}
+
+.go-button {
+  background: linear-gradient(135deg, #3366ff, #4ecdc4);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.go-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4ecdc4, #3366ff);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(51, 102, 255, 0.3);
+}
+
+.go-button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {

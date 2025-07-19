@@ -64,8 +64,9 @@ class AdvancedMemoryService {
     this.client = new MongoClient(this.mongoUri, {
       tls: true,
       tlsAllowInvalidCertificates: false,
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
+      // Remove deprecated options for MongoDB 3.6 compatibility
+      // useUnifiedTopology: true,
+      // useNewUrlParser: true,
     });
       await this.client.connect();
       this.db = this.client.db(this.dbName);

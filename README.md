@@ -72,6 +72,10 @@ export MONGO_URI="your-mongodb-uri"
 - **BACKEND SUPPORT**: API now accepts ?epoch param to generate time-themed stories using rotated sources (Sonar, Grok, Azure)
 - **REMOVED**: Scoring and streak system to focus on exploration and time-based discovery
 - **UI ENHANCEMENTS**: Animated rotating selector with hover-pause for fun interaction
+- **DRAG MECHANICS**: Users now drag orbs to the center to hear stories, with smooth animations and visual feedback
+- **ORB LABELING**: All orbs now display their category labels permanently for easy identification
+- **CENTER INTERACTION**: Orbs animate to center when clicked, show "Click ✕ to release" instruction
+- **RELEASE MECHANISM**: Users can release orbs back to orbit using the ✕ button in the news panel
 
 ### 2024-12-19
 - **NEW FEATURE**: Added stunning Milky Way background with 5,000 animated stars, nebula clouds, and dynamic space environment
@@ -142,14 +146,15 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Interactive 3D Environment**: Beautiful 3D orb with orbiting satellites representing different news categories
 - **Milky Way Background**: Stunning space environment with 5,000 animated stars, nebula clouds, and dynamic movement
 - **Epoch Roller**: Rotating time selector to choose eras (Ancient to Future) for era-specific positive news
-- **Orb Movement Control**: Orbs stop moving when clicked, providing clear visual feedback of explored categories
-- **Positive News Stories**: Click satellites to hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
+- **Drag-to-Center Mechanics**: Click orbs to drag them to the center for story interaction
+- **Permanent Orb Labels**: All orbs display their category names (Technology, Science, Art, etc.) for easy identification
+- **Center Interaction**: Orbs animate smoothly to center when clicked, with visual feedback and instructions
+- **Release Mechanism**: Click ✕ to release orbs back into orbit after hearing stories
+- **Positive News Stories**: Hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
 - **Scrollable News Content**: Full news stories with smooth scrolling for complete reading experience
 - **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
 - **Story Cycling**: Previous/Next buttons to browse multiple stories per topic
-- **Swipe-to-Dismiss Instructions**: Intuitive "How to Play" overlay that users can swipe away once they're ready
-- **Mobile Optimized**: Touch-friendly controls and responsive design for all devices
-- **Visual Feedback**: Clicked orbs have subtle glow effects to indicate exploration progress
+- **AI Source Rotation**: Stories gathered from Grok, Perplexity Sonar, and Azure AI with loading indicators
 
 ## 🏗️ Architecture
 
@@ -242,14 +247,15 @@ curl https://your-backend-url/api/orb/positive-news/Technology
 
 ### Game Mechanics
 1. **Select Epoch**: Use the rotating roller (top-right) to choose a time period - it spins for fun, hover to select!
-2. **Explore the Orb**: You'll see a central orb with colorful satellites orbiting around it in a stunning Milky Way background
-3. **Hover for Info**: Hover over satellites to see their category names (Technology, Science, Art, etc.)
-4. **Click to Listen**: Click any satellite to hear a positive news story from that category, themed to your selected epoch
-5. **Watch Orbs Stop**: Clicked orbs will stop moving and glow slightly to show you've explored them
+2. **Explore the Orb**: You'll see a central orb with colorful labeled satellites orbiting around it in a stunning Milky Way background
+3. **Read Orb Labels**: Each orb displays its category name (Technology, Science, Art, etc.) for easy identification
+4. **Drag to Center**: Click any orb to drag it to the center - watch the smooth animation as it moves!
+5. **Hear Stories**: Once in the center, the orb will gather and play positive news stories from that category
 6. **Cycle Stories**: Use Previous/Next buttons to browse different stories for the topic
 7. **Read Full Stories**: Scroll through complete news content in the news panel
-8. **Close Stories**: Use the ✕ button in the news panel to return to orb exploration
-9. **Audio Controls**: Use the play/pause and mute buttons to control audio playback
+8. **Release Back to Orbit**: Click the ✕ button to release the orb back into orbit
+9. **Audio Controls**: Use the play/pause and mute buttons to control story narration
+10. **Try Different Epochs**: Change the time period to hear era-specific stories!
 
 ### Categories Available
 - **Technology**: Latest tech innovations and breakthroughs

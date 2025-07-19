@@ -649,27 +649,136 @@ process.on('SIGINT', async () => {
 
 // New endpoint: Get a random positive news story (with TTS) by category
 app.get('/api/orb/positive-news/:category', async (req, res) => {
-  if (!positiveNewsService) {
-    return res.status(503).json({ error: 'Positive news service not available' });
-  }
   const category = req.params.category;
-  try {
-    const story = await positiveNewsService.getRandomStory(category);
-    if (!story) {
-      return res.status(404).json({ error: 'No positive news found for this category' });
+  const count = parseInt(req.query.count) || 3;  // Allow client to specify number of stories
+  const epoch = req.query.epoch || 'Modern';
+  
+  // If positive news service is not available, generate fallback content directly
+  if (!positiveNewsService) {
+    console.log(`📝 Positive news service not available, generating fallback for ${category}...`);
+    try {
+      const fallbackStory = await generateDirectFallbackStory(category);
+      res.json([fallbackStory]);  // Return as array
+    } catch (error) {
+      console.error('Failed to generate direct fallback story:', error);
+      res.status(500).json({ error: 'Failed to generate positive news content' });
     }
-    res.json({
-      headline: story.headline,
-      summary: story.summary,
-      fullText: story.fullText,
-      source: story.source,
-      publishedAt: story.publishedAt,
-      ttsAudio: story.ttsAudio
-    });
+    return;
+  }
+  
+  try {
+    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch);
+    if (stories.length === 0) {
+      const fallbackStory = await positiveNewsService.generateFallbackStory(category);
+      res.json([fallbackStory]);
+    } else {
+      res.json(stories);
+    }
   } catch (error) {
+    console.error('Positive news endpoint error:', error);
     res.status(500).json({ error: 'Failed to fetch positive news' });
   }
 });
+
+// Helper function to generate fallback stories when service is not available
+async function generateDirectFallbackStory(category) {
+  try {
+    const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'o4-mini',
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+          },
+          {
+            role: 'user',
+            content: `Create a positive news story about ${category}. Return the story in this exact JSON format:
+{
+  "headline": "Brief, engaging headline",
+  "summary": "One sentence summary of the story",
+  "fullText": "2-3 sentence detailed story with positive tone",
+  "source": "AI Generated"
+}`
+          }
+        ],
+        max_tokens: 300,
+        temperature: 0.7
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Azure OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices[0].message.content;
+    
+    let storyData;
+    try {
+      storyData = JSON.parse(content);
+    } catch (parseError) {
+      console.warn(`Failed to parse direct fallback story for ${category}:`, parseError.message);
+      storyData = {
+        headline: `Positive ${category} Development`,
+        summary: `Exciting progress is being made in ${category.toLowerCase()} that brings hope and innovation.`,
+        fullText: `Recent developments in ${category.toLowerCase()} show promising advances that could benefit many people. This positive trend demonstrates the power of human ingenuity and collaboration.`,
+        source: 'AI Generated'
+      };
+    }
+
+    // Generate TTS for the fallback story
+    let ttsAudio = null;
+    try {
+      const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+        method: 'POST',
+        headers: {
+          'api-key': process.env.AZURE_OPENAI_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+          input: storyData.summary,
+          voice: 'alloy',
+          response_format: 'mp3'
+        })
+      });
+      if (ttsResponse.ok) {
+        const audioBuffer = await ttsResponse.arrayBuffer();
+        ttsAudio = Buffer.from(audioBuffer).toString('base64');
+      }
+    } catch (ttsError) {
+      console.warn('TTS generation failed for direct fallback:', ttsError.message);
+    }
+
+    return {
+      headline: storyData.headline,
+      summary: storyData.summary,
+      fullText: storyData.fullText,
+      source: storyData.source,
+      publishedAt: new Date().toISOString(),
+      ttsAudio: ttsAudio
+    };
+
+  } catch (error) {
+    console.error(`Failed to generate direct fallback story for ${category}:`, error.message);
+    
+    // Return a basic fallback story if all else fails
+    return {
+      headline: `Positive ${category} News`,
+      summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
+      fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
+      source: 'AI Generated',
+      publishedAt: new Date().toISOString(),
+      ttsAudio: null
+    };
+  }
+}
 
 // Helper to check if memory service is fully ready
 function isMemoryServiceReady() {

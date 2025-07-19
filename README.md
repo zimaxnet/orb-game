@@ -67,6 +67,9 @@ export MONGO_URI="your-mongodb-uri"
 ## 🆕 Changelog
 
 ### 2025-07-19 (Latest)
+- **🎯 ENHANCED PROMPTS**: Created exciting, epoch-specific prompts for each category and AI model with 40 unique, tailored prompts
+- **🎨 UI IMPROVEMENTS**: Moved category labels below orbiting orbs for better visibility and cleaner layout
+- **🔧 DEPLOYMENT FIXES**: Disabled problematic auto-deploy trigger that was causing build errors
 - **🤖 MULTI-AI INTEGRATION**: Successfully integrated 4 AI models - Grok 4, Perplexity Sonar, Gemini 1.5 Flash, and O4-Mini
 - **🔑 SECURE API MANAGEMENT**: All API keys now stored securely in Azure Key Vault
 - **📈 PERFORMANCE OPTIMIZATION**: Auto-scaling Azure Cosmos DB (1000-4000 RU/s) with 15-40% cost savings
@@ -136,16 +139,19 @@ export MONGO_URI="your-mongodb-uri"
 ## 🚀 Current Status (2025-07-19)
 
 ### ✅ **Backend Status**
-- **Container Revision**: `orb-game-backend-eastus2--0000085` (Latest)
+- **Container Revision**: `orb-game-backend-eastus2--0000094` (Latest)
 - **Multi-AI Models**: ✅ All 4 AI models working (Grok 4, Perplexity Sonar, Gemini 1.5 Flash, O4-Mini)
 - **Azure Cosmos DB**: ✅ Auto-scaling (1000-4000 RU/s) with cost optimization
 - **Key Vault Integration**: ✅ All API keys securely managed
+- **Memory System**: ✅ Fixed database connection and working perfectly
 - **Deployment**: ✅ Healthy and operational
 - **Traffic**: 100% directed to latest revision
 
 ### ✅ **Frontend Status**
 - **AI Model Selection**: ✅ 4 AI models available for users
 - **Model Integration**: ✅ Gemini 1.5 Flash added to selection
+- **Enhanced Prompts**: ✅ 40 unique, exciting prompts for each epoch and category
+- **UI Improvements**: ✅ Category labels positioned below orbs for better visibility
 - **Backend URL**: Correctly pointing to `https://api.orbgame.us`
 
 ### 🎯 **AI Models Performance**
@@ -159,6 +165,8 @@ export MONGO_URI="your-mongodb-uri"
 - ✅ Secure API key management in Azure Key Vault
 - ✅ Auto-scaling database with cost optimization
 - ✅ Complete frontend integration with model selection
+- ✅ Enhanced prompts for exciting, engaging content
+- ✅ Memory system fully operational
 
 ---
 
@@ -198,10 +206,11 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Responsive Design**: Works seamlessly on desktop and mobile
 
 ### Orb Game Features
+- **🎯 Enhanced Prompts**: 40 unique, exciting prompts tailored for each epoch and category combination
 - **🤖 AI Model Selection**: Choose between Grok 4, Perplexity Sonar, Gemini 1.5 Flash, and O4-Mini for story generation
 - **🔄 Fresh Content Generation**: Always generates fresh stories from selected AI models
 - **📚 Story Catalogue System**: Builds a catalogue of 5 stories per session for rich exploration
-- **🎯 Epoch-Specific Prompts**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
+- **🎯 Epoch-Specific Content**: Custom prompts for Ancient, Medieval, Industrial, Modern, and Future epochs
 - **⚡ Progress Indicators**: Animated progress bars and dynamic loading messages during generation
 - **🎮 Manual Controls**: "Go" button for manual story retrieval from selected model
 - **🎵 Audio Autoplay**: Stories automatically play audio when loaded
@@ -210,7 +219,7 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Milky Way Background**: Stunning space environment with 5,000 animated stars, nebula clouds, and dynamic movement
 - **Epoch Roller**: Rotating time selector to choose eras (Ancient to Future) for era-specific positive news
 - **Drag-to-Center Mechanics**: Click orbs to drag them to the center for story interaction
-- **Permanent Orb Labels**: All orbs display their category names (Technology, Science, Art, etc.) for easy identification
+- **Improved Orb Labels**: Category labels positioned below orbs for better visibility and cleaner layout
 - **Center Interaction**: Orbs animate smoothly to center when clicked, with visual feedback and instructions
 - **Release Mechanism**: Click ✕ to release orbs back into orbit after hearing stories
 - **Positive News Stories**: Hear positive news from Technology, Science, Art, Nature, Sports, Music, Space, and Innovation
@@ -218,6 +227,24 @@ Orb Game is an advanced AI-powered gaming system with memory, analytics, and mul
 - **Audio Experience**: Text-to-speech narration of news stories for immersive gameplay
 - **Story Cycling**: Previous/Next buttons to browse multiple stories per topic with enhanced navigation
 - **AI Source Rotation**: Stories gathered from Grok, Perplexity Sonar, and Azure AI with loading indicators
+
+### 🎯 Enhanced Prompt System
+The game now features 40 unique, exciting prompts tailored for each combination of epoch and category:
+
+**Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
+**Epochs**: Ancient, Medieval, Industrial, Modern, Future
+
+Each prompt is designed to:
+- **Generate exciting, engaging content** with emotional language
+- **Be epoch-specific** with appropriate historical context
+- **Focus on category-relevant themes** and terminology
+- **Optimize for AI models** to produce better stories
+- **Maintain educational value** while being highly entertaining
+
+**Example Prompts**:
+- **Technology + Ancient**: "Uncover 5 mind-blowing technological marvels from ancient civilizations!"
+- **Science + Future**: "Imagine 5 revolutionary scientific marvels from the future!"
+- **Art + Medieval**: "Discover 5 revolutionary artistic innovations from the medieval era!"
 
 ## 🏗️ Architecture
 

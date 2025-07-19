@@ -141,6 +141,14 @@ function OrbGame() {
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
   
+  // Add AI model selection state
+  const [selectedModel, setSelectedModel] = useState('grok');
+  const aiModels = [
+    { id: 'grok', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
+    { id: 'perplexity', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
+    { id: 'o4-mini', name: 'O4-Mini', description: 'Fast and efficient processing' }
+  ];
+  
   // Add drag and center state
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
@@ -209,20 +217,21 @@ function OrbGame() {
     console.log('BACKEND_URL:', BACKEND_URL);
     setIsLoading(true);
     
-    // Set initial loading message
-    setCurrentAISource('Grok');
+    // Set initial loading message based on selected model
+    const selectedModelInfo = aiModels.find(model => model.id === selectedModel);
+    setCurrentAISource(selectedModelInfo.name);
     setCurrentNews({
       headline: 'Gathering your story...',
-      summary: `Searching for positive ${category.name} stories from the ${currentEpoch} epoch using Grok AI...`,
+      summary: `Searching for positive ${category.name} stories from the ${currentEpoch} epoch using ${selectedModelInfo.name}...`,
       fullText: 'Please wait while we gather the perfect story for you!',
-      source: 'Grok AI',
+      source: selectedModelInfo.name,
       publishedAt: new Date().toISOString(),
       ttsAudio: null
     });
     
     try {
-      console.log('Fetching stories for:', category.name, 'epoch:', currentEpoch, 'URL:', `${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}`);
-      const response = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}`);
+      console.log('Fetching stories for:', category.name, 'epoch:', currentEpoch, 'model:', selectedModel, 'URL:', `${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}&model=${selectedModel}`);
+      const response = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=5&epoch=${currentEpoch}&model=${selectedModel}`);
       console.log('Response status:', response.status, 'ok:', response.ok);
       const stories = await response.json();
       console.log('Stories received:', stories);
@@ -419,6 +428,18 @@ function OrbGame() {
         </select>
       </div>
       
+      {/* Add AI model selector */}
+      <div className="ai-model-selector">
+        <label>AI Model:</label>
+        <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
+          {aiModels.map(model => (
+            <option key={model.id} value={model.id}>
+              {model.name} - {model.description}
+            </option>
+          ))}
+        </select>
+      </div>
+      
       {/* Loading indicator for AI source */}
       {isLoading && currentAISource && (
         <div className="ai-loading-indicator">
@@ -464,6 +485,7 @@ function OrbGame() {
           </div>
           <div className="news-meta">
             <span className="news-source">Source: {currentNews.source}</span>
+            <span className="ai-model-used">AI: {currentAISource}</span>
             <span className="news-date">
               {new Date(currentNews.publishedAt).toLocaleDateString()}
             </span>

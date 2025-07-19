@@ -127,20 +127,7 @@ function OrbGame() {
   const [showHowToPlay, setShowHowToPlay] = useState(true);
   const [clickedOrbs, setClickedOrbs] = useState(new Set());
   const audioRef = useRef(new Audio());
-  const backgroundAudioRef = useRef(new Audio());
-  const [isBackgroundAudioPlaying, setIsBackgroundAudioPlaying] = useState(false);
   const howToPlayRef = useRef(null);
-
-  // Start background audio when component mounts
-  useEffect(() => {
-    if (!isMuted) {
-      startBackgroundAudio();
-    }
-    
-    return () => {
-      stopBackgroundAudio();
-    };
-  }, [isMuted]);
   const touchStartRef = useRef({ x: 0, y: 0 });
   const touchEndRef = useRef({ x: 0, y: 0 });
   const [swipeDirection, setSwipeDirection] = useState(null);
@@ -364,13 +351,6 @@ function OrbGame() {
         audioRef.current.play();
       }
     }
-    
-    // Control background audio
-    if (newMutedState) {
-      stopBackgroundAudio();
-    } else {
-      startBackgroundAudio();
-    }
   };
 
   const playAudio = () => {
@@ -382,41 +362,7 @@ function OrbGame() {
     }
   };
 
-  const startBackgroundAudio = () => {
-    if (!isBackgroundAudioPlaying && !isMuted) {
-      // Create a simple ambient sound using Web Audio API
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(220, audioContext.currentTime); // A3 note
-      oscillator.frequency.setValueAtTime(440, audioContext.currentTime + 2); // A4 note
-      oscillator.frequency.setValueAtTime(330, audioContext.currentTime + 4); // E4 note
-      
-      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 10);
-      
-      oscillator.start();
-      oscillator.stop(audioContext.currentTime + 10);
-      
-      setIsBackgroundAudioPlaying(true);
-      
-      // Loop the ambient sound
-      setTimeout(() => {
-        if (!isMuted) {
-          startBackgroundAudio();
-        }
-      }, 10000);
-    }
-  };
 
-  const stopBackgroundAudio = () => {
-    setIsBackgroundAudioPlaying(false);
-  };
 
   const nextStory = () => {
     setCurrentNewsIndex((prev) => (prev + 1) % newsStories.length);

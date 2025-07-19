@@ -756,9 +756,9 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
         />
       </Sphere>
       
-      {/* Always show label, but with different styling based on state */}
+      {/* Always show label below the orb */}
       <Text
-        position={[0, 0.6, 0]}
+        position={[0, -0.6, 0]}
         fontSize={isInCenter ? 0.25 : 0.2}
         color={isInCenter ? "white" : "rgba(255, 255, 255, 0.8)"}
         anchorX="center"
@@ -772,7 +772,7 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       {/* Show "Release" text when in center */}
       {isInCenter && (
         <Text
-          position={[0, -0.6, 0]}
+          position={[0, -1.0, 0]}
           fontSize={0.15}
           color="rgba(255, 255, 255, 0.7)"
           anchorX="center"

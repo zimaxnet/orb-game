@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orb Game - AI-Powered Interactive Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 1000px;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .orb {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffffff 0%, #f0f8ff 50%, #e6f3ff 100%);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            margin-top: 30px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: sparkle 4s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            50% { opacity: 1; transform: translateY(-20px) scale(1); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 2.8s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="orb">🎮</div>
+        <h1 class="title">Orb Game</h1>
+        <p class="subtitle">AI-Powered Interactive Experience</p>
+        
+        <div class="features">
+            <div class="feature">🤖 Multi-AI Models</div>
+            <div class="feature">🎯 Memory System</div>
+            <div class="feature">🔍 Web Search</div>
+            <div class="feature">🎨 3D Graphics</div>
+        </div>
+        
+        <p class="tagline">Experience the future of AI gaming</p>
+    </div>
+</body>
+</html> 

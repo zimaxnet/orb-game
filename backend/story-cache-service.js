@@ -12,6 +12,10 @@ class StoryCacheService {
     this.isConnected = false;
   }
 
+  async initialize() {
+    return await this.connect();
+  }
+
   async connect() {
     try {
       const mongoUri = process.env.MONGO_URI;
@@ -48,6 +52,7 @@ class StoryCacheService {
       return true;
     } catch (error) {
       console.error('❌ Failed to connect to MongoDB for story caching:', error);
+      this.isConnected = false;
       return false;
     }
   }

@@ -652,69 +652,111 @@
 .epoch-roller {
   position: absolute;
   top: 20px;
-  right: 20px;
+  left: 20px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 10px;
-  color: white;
-  z-index: 10;
+  padding: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .epoch-roller label {
+  color: #ffffff;
+  font-weight: 600;
   font-size: 14px;
 }
 
 .epoch-roller select {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 14px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.epoch-roller select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.epoch-roller select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+.load-stories-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.load-stories-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+.load-stories-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .news-model-selector {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 15px 0;
+  margin-bottom: 15px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .news-model-selector label {
+  color: #ffffff;
+  font-weight: 600;
   font-size: 14px;
-  color: white;
-  font-weight: 500;
+  white-space: nowrap;
 }
 
 .news-model-selector select {
-  background: rgba(255, 255, 255, 0.2);
-  color: #000000;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
   padding: 8px 12px;
-  border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
-  min-width: 200px;
-  font-size: 13px;
-  font-weight: 600;
+  transition: all 0.3s ease;
+  flex: 1;
 }
 
 .news-model-selector select option {
-  color: #000000;
-  background: #ffffff;
-  font-weight: 500;
+  background: #2a2a4a;
+  color: #ffffff;
 }
 
 .news-model-selector select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.5);
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
 }
 
 .go-button {

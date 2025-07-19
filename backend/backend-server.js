@@ -11,6 +11,7 @@ dotenv.config();
 
 import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { PositiveNewsService } from './positive-news-service.js';
+import { StoryCacheService } from './story-cache-service.js';
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use(express.json({ limit: '10mb' }));
 let memoryService;
 let azureOpenAIClient;
 let positiveNewsService;
+let storyCacheService;
 
 // Basic API endpoints (available immediately)
 app.get('/health', (req, res) => {
@@ -587,6 +589,17 @@ async function initializeServer() {
       positiveNewsService = new PositiveNewsService(mongoUri);
       await positiveNewsService.initialize();
       console.log('✅ PositiveNewsService initialized successfully.');
+
+      // Initialize StoryCacheService
+      console.log('Initializing StoryCacheService...');
+      storyCacheService = new StoryCacheService();
+      const cacheConnected = await storyCacheService.initialize();
+      if (cacheConnected) {
+        console.log('✅ StoryCacheService initialized successfully.');
+      } else {
+        console.warn('⚠️ StoryCacheService failed to connect, caching will be disabled.');
+        storyCacheService = null;
+      }
     } catch (error) {
       console.error('❌ Failed to initialize AdvancedMemoryService or PositiveNewsService:', error.message);
       memoryService = null;
@@ -683,12 +696,21 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
 // New endpoint: Generate fresh stories from AI models
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt, language = 'en' } = req.body;
+  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt, language = 'en', ensureCaching = true } = req.body;
   
   console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
   
   try {
     let stories = [];
+    
+    // First, try to get from cache if available
+    if (storyCacheService && ensureCaching) {
+      const cachedStories = await storyCacheService.getStories(category, epoch, model, language);
+      if (cachedStories && cachedStories.length > 0) {
+        console.log(`🎯 Using cached stories for ${category}-${epoch}-${model}-${language}`);
+        return res.json(cachedStories);
+      }
+    }
     
     // Generate stories based on the selected model
     switch (model) {
@@ -710,12 +732,174 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
       stories = [fallbackStory];
     }
     
+    // Store in cache if caching is enabled and service is available
+    if (ensureCaching && storyCacheService) {
+      try {
+        await storyCacheService.storeStories(category, epoch, model, language, stories);
+        console.log(`💾 Cached ${stories.length} stories for ${category}-${epoch}-${model}-${language}`);
+      } catch (cacheError) {
+        console.warn(`⚠️ Failed to cache stories:`, cacheError.message);
+      }
+    }
+    
     console.log(`✅ Generated ${stories.length} stories for ${category}`);
     res.json(stories);
     
   } catch (error) {
     console.error(`❌ Error generating stories for ${category}:`, error.message);
     res.status(500).json({ error: 'Failed to generate stories' });
+  }
+});
+
+// New endpoint: Preload stories for all categories of an epoch
+app.post('/api/cache/preload/:epoch', async (req, res) => {
+  const epoch = req.params.epoch;
+  const { categories = [], models = [], languages = ['en'], ensureCaching = true } = req.body;
+  
+  console.log(`🔄 Preloading stories for ${epoch} epoch...`);
+  console.log(`📋 Categories: ${categories.join(', ')}`);
+  console.log(`🤖 Models: ${models.join(', ')}`);
+  console.log(`🌍 Languages: ${languages.join(', ')}`);
+  
+  try {
+    const results = {
+      epoch: epoch,
+      totalCombinations: categories.length * models.length * languages.length,
+      completed: 0,
+      successful: 0,
+      failed: 0,
+      details: []
+    };
+    
+    // Default categories if none provided
+    const defaultCategories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const categoriesToProcess = categories.length > 0 ? categories : defaultCategories;
+    
+    // Default models if none provided
+    const defaultModels = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    const modelsToProcess = models.length > 0 ? models : defaultModels;
+    
+    for (const category of categoriesToProcess) {
+      for (const model of modelsToProcess) {
+        for (const language of languages) {
+          try {
+            console.log(`📚 Preloading ${category}-${epoch}-${model}-${language}...`);
+            
+            let stories = [];
+            
+            // Generate stories based on the selected model
+            switch (model) {
+              case 'grok-4':
+                stories = await generateStoriesWithGrok(category, epoch, 3, null, language);
+                break;
+              case 'perplexity-sonar':
+                stories = await generateStoriesWithPerplexity(category, epoch, 3, null, language);
+                break;
+              case 'o4-mini':
+              default:
+                stories = await generateStoriesWithAzureOpenAI(category, epoch, 3, null, language);
+                break;
+            }
+            
+            if (stories.length === 0) {
+              console.log(`⚠️ No stories generated for ${category}, using fallback...`);
+              const fallbackStory = await generateDirectFallbackStory(category);
+              stories = [fallbackStory];
+            }
+            
+            // Store in cache if caching is enabled
+            if (ensureCaching && storyCacheService) {
+              const cacheResult = await storyCacheService.storeStories(category, epoch, model, language, stories);
+              if (cacheResult) {
+                console.log(`💾 Cached ${stories.length} stories for ${category}-${epoch}-${model}-${language}`);
+              }
+            }
+            
+            results.successful++;
+            results.details.push({
+              category,
+              model,
+              language,
+              status: 'success',
+              storyCount: stories.length,
+              hasAudio: stories.some(story => story.ttsAudio)
+            });
+            
+          } catch (error) {
+            console.error(`❌ Failed to preload ${category}-${epoch}-${model}-${language}:`, error);
+            results.failed++;
+            results.details.push({
+              category,
+              model,
+              language,
+              status: 'failed',
+              error: error.message
+            });
+          }
+          
+          results.completed++;
+        }
+      }
+    }
+    
+    console.log(`✅ Preload complete for ${epoch} epoch!`);
+    console.log(`📊 Results: ${results.successful} successful, ${results.failed} failed`);
+    
+    res.json(results);
+    
+  } catch (error) {
+    console.error(`❌ Error during preload for ${epoch}:`, error);
+    res.status(500).json({ 
+      error: 'Failed to preload stories',
+      message: error.message 
+    });
+  }
+});
+
+// New endpoint: Get cache statistics
+app.get('/api/cache/stats', async (req, res) => {
+  try {
+    if (!storyCacheService) {
+      return res.status(503).json({ error: 'Cache service not available' });
+    }
+    
+    const stats = await storyCacheService.getCacheStats();
+    res.json(stats);
+  } catch (error) {
+    console.error('Failed to get cache stats:', error);
+    res.status(500).json({ error: 'Failed to get cache statistics' });
+  }
+});
+
+// New endpoint: Check if stories exist in cache
+app.get('/api/cache/check/:category/:epoch/:model/:language', async (req, res) => {
+  const { category, epoch, model, language } = req.params;
+  
+  try {
+    if (!storyCacheService) {
+      return res.json({ exists: false, reason: 'Cache service not available' });
+    }
+    
+    const exists = await storyCacheService.hasStories(category, epoch, model, language);
+    res.json({ exists, category, epoch, model, language });
+  } catch (error) {
+    console.error('Failed to check cache:', error);
+    res.status(500).json({ error: 'Failed to check cache' });
+  }
+});
+
+// New endpoint: Clear cache
+app.delete('/api/cache/clear', async (req, res) => {
+  try {
+    if (!storyCacheService) {
+      return res.status(503).json({ error: 'Cache service not available' });
+    }
+    
+    // This would clear the cache - implement as needed
+    res.json({ message: 'Cache clear endpoint - implement as needed' });
+  } catch (error) {
+    console.error('Failed to clear cache:', error);
+    res.status(500).json({ error: 'Failed to clear cache' });
   }
 });
 

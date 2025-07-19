@@ -233,6 +233,33 @@ function OrbGame() {
     
     console.log(`🔄 Preloading stories for ${epoch} epoch...`);
     
+    // First, trigger backend preload to ensure database caching
+    try {
+      console.log(`📚 Triggering backend preload for ${epoch} epoch...`);
+      const preloadResponse = await fetch(`${BACKEND_URL}/api/cache/preload/${epoch}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          epoch: epoch,
+          categories: categories.map(cat => cat.name),
+          models: aiModels.map(model => model.id),
+          languages: [language],
+          ensureCaching: true // Flag to ensure database storage
+        })
+      });
+      
+      if (preloadResponse.ok) {
+        const preloadResult = await preloadResponse.json();
+        console.log(`✅ Backend preload initiated:`, preloadResult);
+      } else {
+        console.warn(`⚠️ Backend preload failed, continuing with direct requests`);
+      }
+    } catch (error) {
+      console.warn(`⚠️ Backend preload error:`, error);
+    }
+    
     for (const category of categories) {
       newPreloadedStories[category.name] = {};
       
@@ -240,7 +267,8 @@ function OrbGame() {
         try {
           console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch...`);
           
-          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}?epoch=${epoch}&model=${model.id}&count=3&language=${language}`, {
+          // Use the generate-news endpoint which ensures database caching
+          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -251,20 +279,27 @@ function OrbGame() {
               model: model.id,
               count: 3,
               language: language,
-              prompt: getExcitingPrompt(category.name, epoch, model.id)
+              prompt: getExcitingPrompt(category.name, epoch, model.id),
+              ensureCaching: true // Ensure this gets cached in database
             })
           });
           
           if (response.ok) {
             const stories = await response.json();
             if (stories && stories.length > 0) {
-              newPreloadedStories[category.name][model.id] = stories;
-              console.log(`✅ Preloaded ${stories.length} stories for ${category.name} from ${model.name}`);
+              // Verify that stories have TTS audio
+              const storiesWithAudio = stories.filter(story => story.ttsAudio);
+              if (storiesWithAudio.length > 0) {
+                newPreloadedStories[category.name][model.id] = storiesWithAudio;
+                console.log(`✅ Preloaded ${storiesWithAudio.length} stories with audio for ${category.name} from ${model.name}`);
+              } else {
+                console.warn(`⚠️ No stories with audio for ${category.name} from ${model.name}`);
+              }
             } else {
               console.log(`⚠️ No stories generated for ${category.name} from ${model.name}`);
             }
           } else {
-            console.log(`❌ Failed to preload stories for ${category.name} from ${model.name}`);
+            console.log(`❌ Failed to preload stories for ${category.name} from ${model.name}: ${response.status}`);
           }
         } catch (error) {
           console.error(`❌ Error preloading ${category.name} from ${model.name}:`, error);
@@ -286,7 +321,13 @@ function OrbGame() {
     setIsPreloading(false);
     setPreloadProgress(0);
     setPreloadingOrbs(new Set()); // Clear all preloading orbs
-    console.log(`✅ Preloading complete for ${epoch} epoch!`);
+    
+    // Log summary of preloaded content
+    const totalStories = Object.values(newPreloadedStories).reduce((total, categoryStories) => {
+      return total + Object.values(categoryStories).reduce((catTotal, stories) => catTotal + (stories?.length || 0), 0);
+    }, 0);
+    
+    console.log(`✅ Preloading complete for ${epoch} epoch! Total stories cached: ${totalStories}`);
   };
   
   // Handle epoch change
@@ -472,7 +513,7 @@ function OrbGame() {
         'Innovation': {
           'Ancient': `Reveal 5 extraordinary innovative breakthroughs from ancient civilizations! From the creative genius of ${epoch.toLowerCase()} times, uncover the most astonishing inventions, problem-solving feats, and innovative revelations that shaped human progress. Make each story absolutely captivating with incredible details about how ancient innovators solved impossible challenges!`,
           'Medieval': `Discover 5 revolutionary innovative achievements from the medieval era! From the creative minds of ${epoch.toLowerCase()} times, reveal the most extraordinary inventions, problem-solving breakthroughs, and innovative revelations that advanced human civilization. Make each story thrilling with fascinating details about how medieval innovators pushed the boundaries of what was possible!`,
-          'Industrial': `Explore 5 groundbreaking innovative revolutions from the industrial age! From the explosive creativity of ${epoch.toLowerCase()} times, reveal the most incredible inventions, problem-solving feats, and innovative revelations that powered the modern world. Make each story electrifying with amazing details about how industrial innovators sparked the age of invention!`,
+          'Industrial': `Explore 5 groundbreaking innovative revolutions from the industrial age! From the explosive creativity of ${epoch.toLowerCase()}, reveal the most incredible inventions, problem-solving feats, and innovative revelations that powered the modern world. Make each story electrifying with amazing details about how industrial innovators sparked the age of invention!`,
           'Modern': `Unveil 5 cutting-edge innovative breakthroughs from the modern era! From the latest creations of ${epoch.toLowerCase()} times, reveal the most mind-bending inventions, technological leaps, and innovative revelations that are reshaping our future. Make each story absolutely fascinating with incredible details about how modern innovators are solving tomorrow's problems today!`,
           'Future': `Imagine 5 revolutionary innovative marvels from the future! From the incredible possibilities of ${epoch.toLowerCase()} times, reveal the most astonishing inventions, AI-powered breakthroughs, and innovative leaps that will transform human civilization. Make each story absolutely mind-blowing with fascinating details about how future innovators will create solutions beyond our wildest dreams!`
         }
@@ -818,6 +859,13 @@ function OrbGame() {
             <option key={epoch} value={epoch}>{t(`epoch.${epoch.toLowerCase()}`)}</option>
           ))}
         </select>
+        <button 
+          onClick={() => preloadStoriesForEpoch(currentEpoch)}
+          className="load-stories-button"
+          disabled={isPreloading}
+        >
+          {isPreloading ? '⏳ Loading...' : '📚 Load Stories'}
+        </button>
         {isPreloading && (
           <div className="preload-indicator">
             <div className="preload-progress">
@@ -991,29 +1039,31 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       const radius = 3;
       const speed = 0.3;
       
-      // If orb is in center, position it at center
+      // If orb is in center, position it at center with smooth animation
       if (isInCenter) {
         meshRef.current.position.set(0, 0, 0);
         meshRef.current.scale.setScalar(1.5); // Make it slightly larger in center
       } else if (isDragged) {
-        // Animate to center position
+        // Smooth animation to center position with easing
         if (!dragStartTime.current) {
           dragStartTime.current = time;
         }
-        const progress = Math.min(1, (time - dragStartTime.current) / 1);
+        const progress = Math.min(1, (time - dragStartTime.current) / 1.5); // Slower animation
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+        
         const angle = (index / totalCategories) * Math.PI * 2;
         const startX = Math.cos(angle) * radius;
         const startZ = Math.sin(angle) * radius;
         const startY = Math.sin(time * 2 + index) * 0.5;
         
-        meshRef.current.position.x = startX + (0 - startX) * progress;
-        meshRef.current.position.z = startZ + (0 - startZ) * progress;
-        meshRef.current.position.y = startY + (0 - startY) * progress;
-        meshRef.current.scale.setScalar(1 + progress * 0.5);
+        meshRef.current.position.x = startX + (0 - startX) * easeProgress;
+        meshRef.current.position.z = startZ + (0 - startZ) * easeProgress;
+        meshRef.current.position.y = startY + (0 - startY) * easeProgress;
+        meshRef.current.scale.setScalar(1 + easeProgress * 0.5);
       } else {
         // Reset drag start time when not dragging
         dragStartTime.current = null;
-        // Normal orbiting movement
+        // Normal orbiting movement with smooth transitions
         const angle = (index / totalCategories) * Math.PI * 2 + time * speed;
         meshRef.current.position.x = Math.cos(angle) * radius;
         meshRef.current.position.z = Math.sin(angle) * radius;
@@ -1021,10 +1071,12 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
         meshRef.current.scale.setScalar(1.0);
       }
       
-      // Scale effect on hover (only when not in center)
+      // Smooth scale effect on hover (only when not in center)
       if (!isInCenter && !isDragged) {
-        const scale = isHovered ? 1.5 : 1.0;
-        meshRef.current.scale.setScalar(scale);
+        const targetScale = isHovered ? 1.5 : 1.0;
+        const currentScale = meshRef.current.scale.x;
+        const scaleDiff = targetScale - currentScale;
+        meshRef.current.scale.setScalar(currentScale + scaleDiff * 0.1); // Smooth scale transition
       }
     }
   });

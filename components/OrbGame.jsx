@@ -127,7 +127,20 @@ function OrbGame() {
   const [showHowToPlay, setShowHowToPlay] = useState(true);
   const [clickedOrbs, setClickedOrbs] = useState(new Set());
   const audioRef = useRef(new Audio());
+  const backgroundAudioRef = useRef(new Audio());
+  const [isBackgroundAudioPlaying, setIsBackgroundAudioPlaying] = useState(false);
   const howToPlayRef = useRef(null);
+
+  // Start background audio when component mounts
+  useEffect(() => {
+    if (!isMuted) {
+      startBackgroundAudio();
+    }
+    
+    return () => {
+      stopBackgroundAudio();
+    };
+  }, [isMuted]);
   const touchStartRef = useRef({ x: 0, y: 0 });
   const touchEndRef = useRef({ x: 0, y: 0 });
   const [swipeDirection, setSwipeDirection] = useState(null);
@@ -257,12 +270,21 @@ function OrbGame() {
     console.log('BACKEND_URL:', BACKEND_URL);
     setIsLoading(true);
     
-    // Set initial loading message based on selected model
+    // Set initial loading message based on selected model and epoch
     const selectedModelInfo = aiModels.find(model => model.id === selectedModel);
+    const epochDescriptions = {
+      'Ancient': 'ancient civilizations and discoveries',
+      'Medieval': 'medieval innovations and breakthroughs',
+      'Industrial': 'industrial revolution and technological advances',
+      'Modern': 'modern breakthroughs and innovations',
+      'Future': 'futuristic technologies and possibilities'
+    };
+    const epochDesc = epochDescriptions[currentEpoch] || currentEpoch.toLowerCase();
+    
     setCurrentAISource(selectedModelInfo.name);
     setCurrentNews({
       headline: 'Gathering your story...',
-      summary: `Searching for positive ${category.name} stories from the ${currentEpoch} epoch using ${selectedModelInfo.name}...`,
+      summary: `Searching for fascinating ${category.name} stories from ${epochDesc} using ${selectedModelInfo.name}...`,
       fullText: 'Please wait while we gather the perfect story for you!',
       source: selectedModelInfo.name,
       publishedAt: new Date().toISOString(),
@@ -331,14 +353,23 @@ function OrbGame() {
   };
 
   const toggleMute = () => {
-    setIsMuted(!isMuted);
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    
     if (isPlaying) {
-      if (isMuted) {
-        audioRef.current.play();
-      } else {
+      if (newMutedState) {
         audioRef.current.pause();
         setIsPlaying(false);
+      } else {
+        audioRef.current.play();
       }
+    }
+    
+    // Control background audio
+    if (newMutedState) {
+      stopBackgroundAudio();
+    } else {
+      startBackgroundAudio();
     }
   };
 
@@ -349,6 +380,42 @@ function OrbGame() {
       audioRef.current.play();
       audioRef.current.onended = () => setIsPlaying(false);
     }
+  };
+
+  const startBackgroundAudio = () => {
+    if (!isBackgroundAudioPlaying && !isMuted) {
+      // Create a simple ambient sound using Web Audio API
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(220, audioContext.currentTime); // A3 note
+      oscillator.frequency.setValueAtTime(440, audioContext.currentTime + 2); // A4 note
+      oscillator.frequency.setValueAtTime(330, audioContext.currentTime + 4); // E4 note
+      
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 10);
+      
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 10);
+      
+      setIsBackgroundAudioPlaying(true);
+      
+      // Loop the ambient sound
+      setTimeout(() => {
+        if (!isMuted) {
+          startBackgroundAudio();
+        }
+      }, 10000);
+    }
+  };
+
+  const stopBackgroundAudio = () => {
+    setIsBackgroundAudioPlaying(false);
   };
 
   const nextStory = () => {
@@ -433,7 +500,7 @@ function OrbGame() {
         
         {/* Central Orb */}
         <Sphere args={[1, 64, 64]} position={[0, 0, 0]}>
-          <meshStandardMaterial color="#3366ff" emissive="#222244" emissiveIntensity={0.5} />
+          <meshStandardMaterial color="#3366ff" />
         </Sphere>
         
         {/* Center indicator when no orb is in center */}
@@ -629,8 +696,8 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       >
         <meshStandardMaterial 
           color={category.color} 
-          emissive={isHovered ? category.color : (isInCenter ? category.color : "#000000")}
-          emissiveIntensity={isHovered ? 0.3 : (isInCenter ? 0.4 : 0.1)}
+          emissive={isHovered ? category.color : "#000000"}
+          emissiveIntensity={isHovered ? 0.3 : 0.1}
         />
       </Sphere>
       

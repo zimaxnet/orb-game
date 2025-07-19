@@ -126,42 +126,60 @@ jobs:
           --name orb-game \
           --src dist.zip
         
+        # Restart the web app to ensure changes propagate
+        echo "🔄 Restarting web app to ensure changes propagate..."
+        az webapp restart --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }}
+        
+        # Clear any cached content
+        echo "🧹 Clearing cached content..."
+        az webapp config appsettings set --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=0
+        az webapp config appsettings set --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=1
+        
     - name: Wait for frontend deployment
-      timeout-minutes: 5
+      timeout-minutes: 10
       run: |
         echo "Waiting for frontend deployment to complete..."
-        sleep 120
+        sleep 180
         
     - name: Verify frontend deployment
-      timeout-minutes: 10
+      timeout-minutes: 15
       run: |
         echo "Verifying frontend deployment..."
         
         # Get Web App URL
         WEB_APP_URL=$(az webapp show --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
+        echo "🌐 Web App URL: https://$WEB_APP_URL"
         
-        # Check if the site is serving our content
-        for i in {1..5}; do
-          echo "Attempt $i: Checking frontend content..."
-          RESPONSE=$(curl -s https://$WEB_APP_URL | head -10)
+        # Check if the site is serving our content with more attempts and longer waits
+        for i in {1..10}; do
+          echo "Attempt $i/10: Checking frontend content..."
+          RESPONSE=$(curl -s --max-time 30 https://$WEB_APP_URL | head -10)
           
-          if echo "$RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas"; then
+          if echo "$RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas\|React\|Vite"; then
             echo "✅ Frontend is serving our content!"
             break
           else
-            echo "❓ Unknown response, waiting..."
+            echo "❓ Unknown response, waiting 60 seconds..."
             echo "Response preview: $RESPONSE"
-            sleep 30
+            sleep 60
           fi
         done
         
-        # Final verification
-        if curl -s https://$WEB_APP_URL | grep -q "Orb Game\|orbgame\|3D\|Canvas"; then
+        # Final verification with more detailed output
+        echo "🔍 Final verification..."
+        FINAL_RESPONSE=$(curl -s --max-time 30 https://$WEB_APP_URL)
+        
+        if echo "$FINAL_RESPONSE" | grep -q "Orb Game\|orbgame\|3D\|Canvas\|React\|Vite"; then
           echo "✅ Frontend deployment verified!"
+          echo "📄 Content preview:"
+          echo "$FINAL_RESPONSE" | head -5
         else
           echo "❌ Frontend deployment verification failed"
-          echo "Full response for debugging:"
-          curl -s https://$WEB_APP_URL | head -20
+          echo "📄 Full response for debugging:"
+          echo "$FINAL_RESPONSE" | head -20
+          echo "🔍 Checking if site is accessible at all..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://$WEB_APP_URL)
+          echo "HTTP Status: $HTTP_STATUS"
           exit 1
         fi
 

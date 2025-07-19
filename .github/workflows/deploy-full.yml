@@ -120,20 +120,20 @@ jobs:
         
     - name: Deploy to Azure Web App
       run: |
-        # Deploy to Azure Web App
-        az webapp deployment source config-zip \
+        # Deploy to Azure Web App using newer command
+        az webapp deploy \
           --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} \
-          --name orb-game \
-          --src dist.zip
+          --name aimcs \
+          --src-path dist.zip
         
         # Restart the web app to ensure changes propagate
         echo "🔄 Restarting web app to ensure changes propagate..."
-        az webapp restart --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }}
+        az webapp restart --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }}
         
         # Clear any cached content
         echo "🧹 Clearing cached content..."
-        az webapp config appsettings set --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=0
-        az webapp config appsettings set --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=1
+        az webapp config appsettings set --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=0
+        az webapp config appsettings set --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --settings WEBSITE_DYNAMIC_CACHE=1
         
     - name: Wait for frontend deployment
       timeout-minutes: 10
@@ -147,7 +147,7 @@ jobs:
         echo "Verifying frontend deployment..."
         
         # Get Web App URL
-        WEB_APP_URL=$(az webapp show --name orb-game --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
+        WEB_APP_URL=$(az webapp show --name aimcs --resource-group ${{ env.FRONTEND_RESOURCE_GROUP }} --query "defaultHostName" --output tsv)
         echo "🌐 Web App URL: https://$WEB_APP_URL"
         
         # Check if the site is serving our content with more attempts and longer waits

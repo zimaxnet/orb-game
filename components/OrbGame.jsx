@@ -153,6 +153,11 @@ function OrbGame() {
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  
+  // Add news panel swipe state
+  const [newsPanelSwipeDirection, setNewsPanelSwipeDirection] = useState(null);
+  const newsPanelTouchStartRef = useRef({ x: 0, y: 0 });
+  const newsPanelTouchEndRef = useRef({ x: 0, y: 0 });
 
   // Enhanced touch/swipe handlers for the how to play overlay
   const handleTouchStart = (e) => {
@@ -192,6 +197,41 @@ function OrbGame() {
   // Mouse click handler for desktop
   const handleHowToPlayClick = () => {
     setShowHowToPlay(false);
+  };
+
+  // News panel swipe handlers
+  const handleNewsPanelTouchStart = (e) => {
+    const touch = e.touches[0];
+    newsPanelTouchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    setNewsPanelSwipeDirection(null);
+  };
+
+  const handleNewsPanelTouchMove = (e) => {
+    const touch = e.touches[0];
+    newsPanelTouchEndRef.current = { x: touch.clientX, y: touch.clientY };
+    
+    // Calculate swipe direction for visual feedback
+    const deltaX = newsPanelTouchEndRef.current.x - newsPanelTouchStartRef.current.x;
+    const deltaY = newsPanelTouchEndRef.current.y - newsPanelTouchStartRef.current.y;
+    
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      setNewsPanelSwipeDirection(deltaX > 0 ? 'right' : 'left');
+    } else {
+      setNewsPanelSwipeDirection(deltaY > 0 ? 'down' : 'up');
+    }
+  };
+
+  const handleNewsPanelTouchEnd = () => {
+    const deltaX = newsPanelTouchEndRef.current.x - newsPanelTouchStartRef.current.x;
+    const deltaY = newsPanelTouchEndRef.current.y - newsPanelTouchStartRef.current.y;
+    const minSwipeDistance = 50; // Minimum swipe distance to trigger
+
+    // Check if swipe distance is sufficient
+    if (Math.abs(deltaX) > minSwipeDistance || Math.abs(deltaY) > minSwipeDistance) {
+      // Any direction swipe will close the news panel
+      releaseOrbFromCenter();
+    }
+    setNewsPanelSwipeDirection(null);
   };
 
   const handleSatelliteClick = async (category) => {
@@ -253,6 +293,13 @@ function OrbGame() {
         setNewsStories(storyArray);
         setCurrentNewsIndex(0);
         setCurrentNews(storyArray[0]);
+        
+        // Autoplay audio if available
+        if (storyArray[0]?.ttsAudio && !isMuted) {
+          setTimeout(() => {
+            playAudio();
+          }, 500); // Small delay to ensure audio is loaded
+        }
       }
           } catch (error) {
         console.error('Error fetching news:', error);
@@ -443,7 +490,12 @@ function OrbGame() {
       )}
       
       {currentNews && (
-        <div className="news-panel">
+        <div 
+          className={`news-panel ${newsPanelSwipeDirection ? `swipe-${newsPanelSwipeDirection}` : ''}`}
+          onTouchStart={handleNewsPanelTouchStart}
+          onTouchMove={handleNewsPanelTouchMove}
+          onTouchEnd={handleNewsPanelTouchEnd}
+        >
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
             <div className="audio-controls">

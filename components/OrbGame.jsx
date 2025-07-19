@@ -150,10 +150,10 @@ function OrbGame() {
   // Add AI model selection state
   const [selectedModel, setSelectedModel] = useState('grok-4');
   const aiModels = [
-    { id: 'grok-4', name: 'Grok 4', shortName: 'Grok', description: 'Advanced reasoning and analysis' },
-    { id: 'perplexity-sonar', name: 'Perplexity Sonar', shortName: 'Sonar', description: 'Real-time web search and synthesis' },
-    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', shortName: 'Gemini', description: 'Fast and creative content generation' },
-    { id: 'o4-mini', name: 'O4-Mini', shortName: 'o4', description: 'Fast and efficient processing' }
+    { id: 'grok-4', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
+    { id: 'perplexity-sonar', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
+    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', description: 'Fast and creative content generation' },
+    { id: 'o4-mini', name: 'o4-mini', description: 'Fast and efficient processing' }
   ];
   
   // Add preloaded stories state
@@ -378,11 +378,11 @@ function OrbGame() {
     const preloadedModelStories = preloadedCategoryStories?.[selectedModel];
     
     if (preloadedModelStories && preloadedModelStories.length > 0) {
-      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.shortName}`);
+      console.log(`🎯 Using preloaded stories for ${category.name} from ${selectedModelInfo.name}`);
       setNewsStories(preloadedModelStories);
       setCurrentNewsIndex(0);
       setCurrentNews(preloadedModelStories[0]);
-      setCurrentAISource(selectedModelInfo.shortName);
+      setCurrentAISource(selectedModelInfo.name);
       
       // Ensure TTS is ready before autoplaying
       if (preloadedModelStories[0]?.ttsAudio && !isMuted) {
@@ -950,7 +950,7 @@ function OrbGame() {
                 setNewsStories(stories);
                 setCurrentNewsIndex(0);
                 setCurrentNews(stories[0]);
-                setCurrentAISource(aiModels.find(m => m.id === e.target.value).shortName);
+                setCurrentAISource(aiModels.find(m => m.id === e.target.value).name);
                 
                 // Play audio if available
                 if (stories[0]?.ttsAudio && !isMuted) {
@@ -962,7 +962,7 @@ function OrbGame() {
             }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
-                  {model.shortName} - {model.description}
+                  {model.name}
                 </option>
               ))}
             </select>
@@ -974,7 +974,7 @@ function OrbGame() {
                   setNewsStories(stories);
                   setCurrentNewsIndex(0);
                   setCurrentNews(stories[0]);
-                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).shortName);
+                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
                   
                   // Play audio if available
                   if (stories[0]?.ttsAudio && !isMuted) {

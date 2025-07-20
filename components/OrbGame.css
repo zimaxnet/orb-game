@@ -790,6 +790,23 @@
   box-shadow: none;
 }
 
+/* Fallback notice styles */
+.fallback-notice {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.fallback-text {
+  color: #ffc107;
+  font-size: 12px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 768px) {
   .how-to-play-overlay {
     padding: 15px;

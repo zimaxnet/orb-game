@@ -141,6 +141,9 @@ function OrbGame() {
   const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [audioError, setAudioError] = useState(null);
   
+  // Add click outside handler for story panel
+  const storyPanelRef = useRef(null);
+  
 
 
   // Add epoch state
@@ -172,6 +175,27 @@ function OrbGame() {
     const categoryName = typeof category === 'string' ? category : category.name;
     return promptManager.getFrontendPrompt(categoryName, epoch, language);
   };
+  
+  // Handle click outside story panel
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (storyPanelRef.current && !storyPanelRef.current.contains(event.target)) {
+        // Check if click is not on an orb (to avoid closing when clicking orbs)
+        const isOrbClick = event.target.closest('.orb-game-container canvas');
+        if (!isOrbClick) {
+          releaseOrbFromCenter();
+        }
+      }
+    };
+    
+    if (currentNews) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [currentNews]);
   
   // Preloading disabled - removed automatic triggers
   
@@ -306,13 +330,25 @@ function OrbGame() {
             console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
             
             if (storiesWithTTS.length > 0) {
-              setNewsStories(storiesWithTTS);
-              setCurrentNewsIndex(0);
-              setCurrentNews(storiesWithTTS[0]);
-              setCurrentAISource('Database');
-              setIsLoading(false);
+              // Check if database stories are fallback stories
+              const hasFallbackStories = storiesWithTTS.some(story => 
+                story.aiModel === 'fallback' || 
+                story.aiModel === 'error' || 
+                story.source === 'Orb Game'
+              );
               
-              return;
+              if (hasFallbackStories) {
+                console.log('🔄 Database contains fallback stories, getting fresh AI stories instead...');
+                // Don't use fallback stories from database, continue to AI generation
+              } else {
+                setNewsStories(storiesWithTTS);
+                setCurrentNewsIndex(0);
+                setCurrentNews(storiesWithTTS[0]);
+                setCurrentAISource('Database');
+                setIsLoading(false);
+                
+                return;
+              }
             }
           }
         }
@@ -403,6 +439,78 @@ function OrbGame() {
             setCurrentNewsIndex(0);
             setCurrentNews(stories[0]);
             success = true;
+            
+            // Check if any of the stories are fallback stories and regenerate if needed
+            const hasFallbackStories = stories.some(story => 
+              story.aiModel === 'fallback' || 
+              story.aiModel === 'error' || 
+              story.source === 'Orb Game'
+            );
+            
+            if (hasFallbackStories && stories.length < 3) {
+              console.log('🔄 Detected fallback stories, attempting to get fresh AI stories...');
+              // Try to get more fresh stories
+              try {
+                const freshResponse = await fetch(`${BACKEND_URL}/api/chat`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 3 different stories.',
+                    useWebSearch: 'auto',
+                    language: language,
+                    count: 3
+                  }),
+                });
+                
+                if (freshResponse.ok) {
+                  const freshData = await freshResponse.json();
+                  
+                  if (freshData.response && freshData.response.trim()) {
+                    // Parse fresh stories
+                    const storySeparators = ['---', '###', '***', '\n\n\n'];
+                    let freshStoryTexts = [freshData.response];
+                    
+                    for (const separator of storySeparators) {
+                      if (freshData.response.includes(separator)) {
+                        freshStoryTexts = freshData.response.split(separator).filter(text => text.trim());
+                        break;
+                      }
+                    }
+                    
+                    // Create fresh story objects
+                    const freshStories = [];
+                    freshStoryTexts.forEach((storyText, index) => {
+                      if (storyText.trim()) {
+                        const freshStory = {
+                          headline: language === 'es' ? `Noticias Positivas de ${category.name} #${index + 1}` : `Positive ${category.name} News #${index + 1}`,
+                          summary: storyText.trim(),
+                          fullText: storyText.trim(),
+                          source: `${selectedModel} AI`,
+                          publishedAt: new Date().toISOString(),
+                          ttsAudio: freshData.audioData || null,
+                          category: category.name,
+                          aiModel: selectedModel,
+                          language: language
+                        };
+                        freshStories.push(freshStory);
+                      }
+                    });
+                    
+                    if (freshStories.length > 0) {
+                      console.log(`✅ Generated ${freshStories.length} fresh AI stories`);
+                      setNewsStories(freshStories);
+                      setCurrentNewsIndex(0);
+                      setCurrentNews(freshStories[0]);
+                      setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
+                    }
+                  }
+                }
+              } catch (freshError) {
+                console.warn('Failed to get fresh stories:', freshError);
+              }
+            }
             
             // Cache storage removed - preloading disabled
           } else {
@@ -725,7 +833,7 @@ function OrbGame() {
       )}
       
       {currentNews && (
-        <div className="news-panel">
+        <div className="news-panel" ref={storyPanelRef}>
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
             <div className="audio-controls">
@@ -765,10 +873,7 @@ function OrbGame() {
             <label>{t('ai.model.select')}:</label>
             <select value={selectedModel} onChange={(e) => {
               setSelectedModel(e.target.value);
-              // Clear current stories when model changes
-              setNewsStories([]);
-              setCurrentNewsIndex(0);
-              setCurrentNews(null);
+              // Don't clear stories - keep panel visible until user manually closes
             }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
@@ -778,15 +883,21 @@ function OrbGame() {
             </select>
             <button 
               onClick={() => {
-                // Preloaded stories check removed - preloading disabled
-                // Always generate fresh stories
-                loadStoryForOrb(orbInCenter);
+                // Generate fresh stories with current model but keep panel open
+                if (orbInCenter) {
+                  loadStoryForOrb(orbInCenter);
+                }
               }}
               className="go-button"
               disabled={isLoading}
             >
               {isLoading ? '⏳' : t('news.go')}
             </button>
+            {currentNews && (currentNews.aiModel === 'fallback' || currentNews.aiModel === 'error' || currentNews.source === 'Orb Game') && (
+              <div className="fallback-notice">
+                <span className="fallback-text">⚠️ Fallback story detected - click "Go" for fresh AI stories</span>
+              </div>
+            )}
           </div>
           <div className="news-content">
             <p className="news-summary">{currentNews.summary}</p>

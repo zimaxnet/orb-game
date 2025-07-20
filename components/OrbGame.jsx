@@ -167,6 +167,71 @@ function OrbGame() {
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   
+  // Add getExcitingPrompt function
+  const getExcitingPrompt = (category, epoch, model) => {
+    const categoryName = typeof category === 'string' ? category : category.name;
+    const prompts = {
+      'Technology': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} innovations, discoveries, or achievements that would have amazed people in ancient times. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} developments, inventions, or breakthroughs that would have been revolutionary in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} advancements, innovations, or discoveries that transformed society. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} innovations, breakthroughs, or achievements that are making a positive impact today. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring.`
+      },
+      'Science': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} discoveries, scientific breakthroughs, or natural phenomena that would have fascinated ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} research, discoveries, or scientific achievements that would have been groundbreaking in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} discoveries, scientific advancements, or research breakthroughs that transformed understanding. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} discoveries, research breakthroughs, or scientific achievements that are advancing human knowledge. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} research, scientific possibilities, or breakthrough technologies that could revolutionize science. Make it visionary and inspiring.`
+      },
+      'Art': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} masterpieces, artistic innovations, or cultural achievements that would have inspired ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} creations, artistic breakthroughs, or cultural developments that would have been revolutionary in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} movements, artistic innovations, or cultural achievements that transformed society. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} innovations, artistic breakthroughs, or cultural achievements that are enriching society today. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} possibilities, artistic innovations, or cultural developments that could revolutionize creative expression. Make it visionary and inspiring.`
+      },
+      'Nature': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} discoveries, environmental wonders, or natural phenomena that would have amazed ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} observations, natural discoveries, or environmental achievements that would have been remarkable in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} conservation efforts, environmental discoveries, or natural wonders that transformed understanding. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} conservation efforts, environmental breakthroughs, or natural discoveries that are protecting our planet. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} innovations, environmental technologies, or conservation breakthroughs that could revolutionize our relationship with nature. Make it visionary and inspiring.`
+      },
+      'Sports': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} achievements, athletic innovations, or sporting events that would have inspired ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} competitions, athletic achievements, or sporting traditions that would have been celebrated in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} developments, athletic innovations, or sporting achievements that transformed recreation. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} achievements, athletic breakthroughs, or sporting innovations that are inspiring people today. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} possibilities, athletic innovations, or sporting technologies that could revolutionize sports. Make it visionary and inspiring.`
+      },
+      'Music': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} innovations, musical discoveries, or cultural achievements that would have enchanted ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} developments, musical breakthroughs, or cultural traditions that would have been revolutionary in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} innovations, musical advancements, or cultural developments that transformed entertainment. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} innovations, musical breakthroughs, or cultural achievements that are enriching lives today. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} possibilities, musical innovations, or cultural technologies that could revolutionize music. Make it visionary and inspiring.`
+      },
+      'Space': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} observations, astronomical discoveries, or celestial phenomena that would have fascinated ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} discoveries, astronomical observations, or celestial events that would have been remarkable in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} discoveries, astronomical innovations, or celestial observations that transformed understanding. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} discoveries, space exploration achievements, or astronomical breakthroughs that are expanding our cosmic knowledge. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} possibilities, space exploration innovations, or astronomical breakthroughs that could revolutionize our understanding of the universe. Make it visionary and inspiring.`
+      },
+      'Innovation': {
+        'Ancient': `Generate an exciting positive news story about ancient ${categoryName.toLowerCase()} breakthroughs, technological discoveries, or creative achievements that would have revolutionized ancient civilizations. Make it engaging and inspiring.`,
+        'Medieval': `Create a fascinating positive news story about medieval ${categoryName.toLowerCase()} developments, technological breakthroughs, or creative innovations that would have been groundbreaking in medieval times. Make it captivating and uplifting.`,
+        'Industrial': `Write an inspiring positive news story about industrial revolution era ${categoryName.toLowerCase()} innovations, technological advancements, or creative breakthroughs that transformed society. Make it exciting and motivational.`,
+        'Modern': `Generate a compelling positive news story about modern ${categoryName.toLowerCase()} innovations, technological breakthroughs, or creative achievements that are transforming the world today. Make it engaging and inspiring.`,
+        'Future': `Create an exciting positive news story about futuristic ${categoryName.toLowerCase()} possibilities, technological innovations, or creative breakthroughs that could revolutionize human civilization. Make it visionary and inspiring.`
+      }
+    };
+    
+    return prompts[categoryName]?.[epoch] || `Generate an exciting positive news story about ${categoryName.toLowerCase()} in the ${epoch} epoch. Make it engaging and inspiring.`;
+  };
+  
   // Preload stories on component mount
   useEffect(() => {
     preloadStoriesForEpoch(currentEpoch);
@@ -405,7 +470,7 @@ function OrbGame() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              message: getExcitingPrompt(category, currentEpoch, selectedModel),
+              message: getExcitingPrompt(category.name, currentEpoch, selectedModel),
               useWebSearch: 'auto',
               language: language // Include current language
             }),

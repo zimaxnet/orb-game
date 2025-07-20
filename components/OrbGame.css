@@ -834,6 +834,23 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.generating-notice {
+  background: rgba(52, 152, 219, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 8px;
+}
+
+.generating-text {
+  color: #3498db;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 @media (max-width: 768px) {
   .how-to-play-overlay {
     padding: 15px;

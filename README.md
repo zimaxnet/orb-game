@@ -186,15 +186,15 @@ The rebuild script now automatically:
 ## 🆕 Changelog
 
 ### 2025-01-20 (Latest)
-- **🔄 AUTO-RELEASE ORBS**: Added automatic orb release after 15 seconds with visual countdown indicator
-- **📚 MULTIPLE STORIES**: Enhanced story loading to request and display 3 stories per orb click
-- **⏱️ COUNTDOWN TIMER**: Visual countdown bar showing when orb will auto-release (15 seconds)
-- **🎯 STORY NAVIGATION**: Users can now cycle through multiple stories using Previous/Next buttons
-- **🔄 SMART STORY PARSING**: Automatic parsing of multiple stories separated by ---, ###, ***, or line breaks
-- **🎨 ENHANCED UI**: Added countdown progress bar with smooth animations and visual feedback
-- **⚡ IMPROVED UX**: Orbs no longer stay stuck in center - automatic release improves flow
-- **📖 STORY NUMBERING**: Each story gets numbered headline (e.g., "Positive Technology News #1", "#2", "#3")
-- **🎮 BETTER GAMEPLAY**: Manual release still available via "✕" button before auto-release
+- **🌍 COMPREHENSIVE SPANISH TRANSLATION**: Complete Spanish translation for all story panel controls and information
+- **🔄 FRESH STORY LOGIC FOR SPANISH**: Fresh story generation works seamlessly in Spanish with proper caching
+- **📚 LANGUAGE-AWARE CACHING**: Stories cached separately for each language with epoch and category support
+- **🎯 SMART STORY NAVIGATION**: Previous/Next buttons work with filtered stories by language and epoch
+- **🎵 AUTO-PLAY AUDIO**: Previous/Next buttons automatically play audio when navigating stories
+- **🔄 LANGUAGE TOGGLE REFRESH**: Automatically refreshes stories when switching languages
+- **📊 FILTERED STORY COUNTER**: Story counter shows filtered count based on current language and epoch
+- **🎨 TRANSLATED UI ELEMENTS**: All story panel controls, notices, and hints translated to Spanish
+- **⚡ IMPROVED USER EXPERIENCE**: Seamless language switching with fresh story generation
 - **🧠 REVOLUTIONARY PROMPT MANAGEMENT**: Implemented centralized prompt management system using PROMPTS_REFERENCE.md as single source of truth
 - **📚 320+ CURATED PROMPTS**: 80+ prompts across 8 categories × 5 epochs × 2 languages with full validation
 - **🌍 BILINGUAL EXCELLENCE**: Complete English and Spanish support with culturally appropriate content
@@ -410,7 +410,7 @@ Each prompt is designed to:
 - **Art + Medieval**: "Discover 5 revolutionary artistic innovations from the medieval era!"
 
 ### 🌍 Spanish Language Support
-The system now includes comprehensive Spanish language support with full TTS audio generation:
+The system now includes comprehensive Spanish language support with full TTS audio generation and complete UI translation:
 
 **Spanish Features:**
 - **🌍 Language Toggle**: Switch between English and Spanish seamlessly
@@ -419,6 +419,12 @@ The system now includes comprehensive Spanish language support with full TTS aud
 - **🗄️ Spanish Content Caching**: Spanish stories and audio cached in MongoDB database
 - **🎯 Spanish Preload System**: "Load Stories" button preloads Spanish content for selected epochs
 - **🔄 Spanish Cache Retrieval**: Fast retrieval of cached Spanish content from database
+- **🎨 Complete UI Translation**: All story panel controls, notices, and hints translated to Spanish
+- **🔄 Fresh Story Logic**: Fresh story generation works seamlessly in Spanish with proper caching
+- **📚 Language-Aware Caching**: Stories cached separately for each language with epoch and category support
+- **🎯 Smart Navigation**: Previous/Next buttons work with filtered stories by language and epoch
+- **🎵 Auto-Play Audio**: Previous/Next buttons automatically play audio when navigating stories
+- **🔄 Language Toggle Refresh**: Automatically refreshes stories when switching languages
 
 **Spanish TTS Audio Generation:**
 - **Voice Selection**: Uses Spanish voice 'jorge' when `language: 'es'`

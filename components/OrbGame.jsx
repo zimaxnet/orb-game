@@ -176,6 +176,15 @@ function OrbGame() {
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  // Filter stories by current language and epoch
+  const getFilteredStories = () => {
+    return newsStories.filter(story => 
+      story.language === language && 
+      story.epoch === currentEpoch &&
+      story.category === (orbInCenter?.name || '')
+    );
+  };
   
   // Use centralized prompt manager for all prompts
   const getExcitingPrompt = (category, epoch, model) => {
@@ -244,11 +253,15 @@ function OrbGame() {
   
   // Preloading disabled - removed automatic triggers
   
-  // Custom language toggle handler to clear current content
+  // Custom language toggle handler to refresh stories for new language
   const handleLanguageToggle = () => {
-    // Don't clear current stories - just toggle the language
-    // The useEffect will handle preloading new stories in the background
     toggleLanguage();
+    
+    // If there's a current orb, refresh stories for the new language
+    if (orbInCenter) {
+      console.log(`🔄 Refreshing stories for ${orbInCenter.name} in ${language === 'en' ? 'Spanish' : 'English'}`);
+      loadStoryForOrb(orbInCenter, true); // Force fresh generation for new language
+    }
   };
 
 
@@ -395,51 +408,55 @@ function OrbGame() {
     }
   };
   
-  const loadStoryForOrb = async (category) => {
+  const loadStoryForOrb = async (category, forceFresh = false) => {
     setIsLoading(true);
-            setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
+    setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
     
     try {
-      // Try to get stories from database first
-      console.log(`📚 Loading stories from database for ${category.name}...`);
-      try {
-        const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}`);
-        
-        if (dbResponse.ok) {
-          const dbStories = await dbResponse.json();
+      // Try to get stories from database first (unless forceFresh is true)
+      if (!forceFresh) {
+        console.log(`📚 Loading stories from database for ${category.name} in ${language}...`);
+        try {
+          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}&language=${language}`);
           
-          if (Array.isArray(dbStories) && dbStories.length > 0) {
-            console.log(`✅ Found ${dbStories.length} stories in database for ${category.name}`);
+          if (dbResponse.ok) {
+            const dbStories = await dbResponse.json();
             
-            // Check if stories have TTS audio
-            const storiesWithTTS = dbStories.filter(story => story.ttsAudio);
-            console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
-            
-            if (storiesWithTTS.length > 0) {
-              // Check if database stories are fallback stories
-              const hasFallbackStories = storiesWithTTS.some(story => 
-                story.aiModel === 'fallback' || 
-                story.aiModel === 'error' || 
-                story.source === 'Orb Game'
-              );
+            if (Array.isArray(dbStories) && dbStories.length > 0) {
+              console.log(`✅ Found ${dbStories.length} stories in database for ${category.name}`);
               
-              if (hasFallbackStories) {
-                console.log('🔄 Database contains fallback stories, getting fresh AI stories instead...');
-                // Don't use fallback stories from database, continue to AI generation
-              } else {
-                setNewsStories(storiesWithTTS);
-                setCurrentNewsIndex(0);
-                setCurrentNews(storiesWithTTS[0]);
-                setCurrentAISource('Database');
-                setIsLoading(false);
+              // Check if stories have TTS audio
+              const storiesWithTTS = dbStories.filter(story => story.ttsAudio);
+              console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
+              
+              if (storiesWithTTS.length > 0) {
+                // Check if database stories are fallback stories
+                const hasFallbackStories = storiesWithTTS.some(story => 
+                  story.aiModel === 'fallback' || 
+                  story.aiModel === 'error' || 
+                  story.source === 'Orb Game'
+                );
                 
-                return;
+                if (hasFallbackStories) {
+                  console.log('🔄 Database contains fallback stories, getting fresh AI stories instead...');
+                  // Don't use fallback stories from database, continue to AI generation
+                } else {
+                  setNewsStories(storiesWithTTS);
+                  setCurrentNewsIndex(0);
+                  setCurrentNews(storiesWithTTS[0]);
+                  setCurrentAISource('Database');
+                  setIsLoading(false);
+                  
+                  return;
+                }
               }
             }
           }
+        } catch (dbError) {
+          console.warn('Database fetch failed, falling back to AI generation:', dbError.message);
         }
-      } catch (dbError) {
-        console.warn('Database fetch failed, falling back to AI generation:', dbError.message);
+      } else {
+        console.log('🔄 Force fresh generation - skipping database cache');
       }
       
       // Fallback: Generate fresh stories with retry logic
@@ -499,7 +516,8 @@ function OrbGame() {
                   ttsAudio: data.audioData || null,
                   category: category.name,
                   aiModel: selectedModel,
-                  language: language // Store the language used
+                  language: language, // Store the language used
+                  epoch: currentEpoch // Store the epoch used
                 };
                 stories.push(story);
               }
@@ -516,7 +534,8 @@ function OrbGame() {
                 ttsAudio: data.audioData || null,
                 category: category.name,
                 aiModel: selectedModel,
-                language: language
+                language: language,
+                epoch: currentEpoch
               };
               stories = [story];
             }
@@ -578,7 +597,8 @@ function OrbGame() {
                           ttsAudio: freshData.audioData || null,
                           category: category.name,
                           aiModel: selectedModel,
-                          language: language
+                          language: language,
+                          epoch: currentEpoch
                         };
                         freshStories.push(freshStory);
                       }
@@ -755,22 +775,34 @@ function OrbGame() {
 
 
   const nextStory = () => {
-    if (newsStories.length > 1) {
-      const nextIndex = (currentNewsIndex + 1) % newsStories.length;
+    const filteredStories = getFilteredStories();
+    if (filteredStories.length > 1) {
+      const nextIndex = (currentNewsIndex + 1) % filteredStories.length;
       setCurrentNewsIndex(nextIndex);
-      setCurrentNews(newsStories[nextIndex]);
+      setCurrentNews(filteredStories[nextIndex]);
       
-      // Removed autoplay - user must manually click play button
+      // Auto-play audio if available and not muted
+      if (filteredStories[nextIndex]?.ttsAudio && !isMuted) {
+        setTimeout(() => {
+          playAudio();
+        }, 100);
+      }
     }
   };
 
   const prevStory = () => {
-    if (newsStories.length > 1) {
-      const prevIndex = (currentNewsIndex - 1 + newsStories.length) % newsStories.length;
+    const filteredStories = getFilteredStories();
+    if (filteredStories.length > 1) {
+      const prevIndex = (currentNewsIndex - 1 + filteredStories.length) % filteredStories.length;
       setCurrentNewsIndex(prevIndex);
-      setCurrentNews(newsStories[prevIndex]);
+      setCurrentNews(filteredStories[prevIndex]);
       
-      // Removed autoplay - user must manually click play button
+      // Auto-play audio if available and not muted
+      if (filteredStories[prevIndex]?.ttsAudio && !isMuted) {
+        setTimeout(() => {
+          playAudio();
+        }, 100);
+      }
     }
   };
 
@@ -923,7 +955,7 @@ function OrbGame() {
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
             <div className="escape-hint">
-              <span className="escape-text">Press <kbd>Esc</kbd> to exit</span>
+              <span className="escape-text">{t('news.escape.hint').replace('Esc', '<kbd>Esc</kbd>')}</span>
             </div>
             <div className="audio-controls">
               <button 
@@ -971,10 +1003,25 @@ function OrbGame() {
               ))}
             </select>
             <button 
-              onClick={() => {
-                // Generate fresh stories with current model but keep panel open
+              onClick={async () => {
+                // Generate fresh stories with current model and ensure audio is cached
                 if (orbInCenter) {
-                  loadStoryForOrb(orbInCenter);
+                  console.log(`🔄 Generating fresh stories with ${selectedModel} for ${orbInCenter.name}`);
+                  
+                  // Clear current stories to force fresh generation
+                  setNewsStories([]);
+                  setCurrentNews(null);
+                  setCurrentNewsIndex(0);
+                  
+                  // Load fresh stories with audio (force fresh generation)
+                  await loadStoryForOrb(orbInCenter, true);
+                  
+                  // Auto-play audio if available and not muted
+                  if (currentNews?.ttsAudio && !isMuted) {
+                    setTimeout(() => {
+                      playAudio();
+                    }, 500); // Small delay to ensure audio is ready
+                  }
                 }
               }}
               className="go-button"
@@ -984,7 +1031,12 @@ function OrbGame() {
             </button>
             {currentNews && (currentNews.aiModel === 'fallback' || currentNews.aiModel === 'error' || currentNews.source === 'Orb Game') && (
               <div className="fallback-notice">
-                <span className="fallback-text">⚠️ Fallback story detected - click "Go" for fresh AI stories</span>
+                <span className="fallback-text">⚠️ {t('news.fallback.detected')}</span>
+              </div>
+            )}
+            {isLoading && (
+              <div className="generating-notice">
+                <span className="generating-text">🔄 {t('news.generating.fresh')} {availableModels.find(m => m.id === selectedModel)?.name || selectedModel}...</span>
               </div>
             )}
           </div>
@@ -993,8 +1045,8 @@ function OrbGame() {
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>
           <div className="news-meta">
-            <span className="news-source">Source: {currentNews.source}</span>
-            <span className="ai-model-used">AI: {currentAISource}</span>
+            <span className="news-source">{t('news.source')}: {currentNews.source}</span>
+            <span className="ai-model-used">{t('news.ai.model')}: {currentAISource}</span>
             <span className="news-date">
               {new Date(currentNews.publishedAt).toLocaleDateString()}
             </span>
@@ -1002,18 +1054,18 @@ function OrbGame() {
           <div className="news-navigation">
             <button 
               onClick={prevStory} 
-              disabled={newsStories.length <= 1}
-              className={newsStories.length <= 1 ? 'disabled' : ''}
+              disabled={getFilteredStories().length <= 1}
+              className={getFilteredStories().length <= 1 ? 'disabled' : ''}
             >
               ← {t('news.previous')}
             </button>
             <span className="story-counter">
-              {currentNewsIndex + 1} {t('news.story.of')} {newsStories.length} {t('news.stories')}
+              {currentNewsIndex + 1} {t('news.story.of')} {getFilteredStories().length} {t('news.stories')}
             </span>
             <button 
               onClick={nextStory} 
-              disabled={newsStories.length <= 1}
-              className={newsStories.length <= 1 ? 'disabled' : ''}
+              disabled={getFilteredStories().length <= 1}
+              className={getFilteredStories().length <= 1 ? 'disabled' : ''}
             >
               {t('news.next')} →
             </button>

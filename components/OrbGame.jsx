@@ -225,6 +225,22 @@ function OrbGame() {
 
     checkModelReliability();
   }, []);
+
+  // Add escape key handler to exit stories
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && currentNews) {
+        console.log('🔙 Escape key pressed - releasing orb from center');
+        releaseOrbFromCenter();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [currentNews]);
   
   // Preloading disabled - removed automatic triggers
   
@@ -333,38 +349,45 @@ function OrbGame() {
 
   const handleSatelliteClick = async (category) => {
     try {
-      if (isPlaying || isLoading) {
-        console.log('Orb click blocked - already processing');
+      // Allow clicking if we're switching orbs or if nothing is currently processing
+      if (isLoading && orbInCenter !== category) {
+        console.log('Orb click blocked - loading in progress');
         return;
       }
       
       console.log(`🎯 Orb clicked: ${category.name}`);
       
-      // Clear any existing orb and stories
-      setOrbInCenter(null);
-      setCurrentNews(null);
-      setNewsStories([]);
-      setCurrentNewsIndex(0);
+      // If clicking the same orb that's already in center, do nothing
+      if (orbInCenter === category) {
+        console.log('Same orb already in center');
+        return;
+      }
       
-      // Start dragging the orb to center
+      // If clicking a different orb, immediately set it as the new center orb
+      if (orbInCenter && orbInCenter !== category) {
+        console.log('Switching from', orbInCenter.name, 'to', category.name);
+        setOrbInCenter(category);
+        setCurrentNews(null);
+        setNewsStories([]);
+        setCurrentNewsIndex(0);
+        setIsLoading(false); // Reset loading state when switching orbs
+      } else {
+        // First orb click - set it as center orb
+        setOrbInCenter(category);
+      }
+      
+      // Start dragging animation
       setDraggedOrb(category);
       setIsDragging(true);
       
-      // Move orb to center position
+      // Load stories immediately without waiting for animation
+      loadStoryForOrb(category);
+      
+      // Complete the animation after a short delay
       setTimeout(() => {
-        try {
-          setOrbInCenter(category);
-          setIsDragging(false);
-          setDraggedOrb(null);
-          
-          // Now load the story
-          loadStoryForOrb(category);
-        } catch (error) {
-          console.error('Error in orb center animation:', error);
-          setDraggedOrb(null);
-          setIsDragging(false);
-        }
-      }, 1000); // 1 second animation to center
+        setIsDragging(false);
+        setDraggedOrb(null);
+      }, 800); // Reduced animation time
     } catch (error) {
       console.error('Error in handleSatelliteClick:', error);
       setDraggedOrb(null);
@@ -899,6 +922,9 @@ function OrbGame() {
         <div className="news-panel" ref={storyPanelRef}>
           <div className="news-header">
             <h4>{currentNews.headline}</h4>
+            <div className="escape-hint">
+              <span className="escape-text">Press <kbd>Esc</kbd> to exit</span>
+            </div>
             <div className="audio-controls">
               <button 
                 onClick={playAudio}

@@ -15,7 +15,7 @@ async function run() {
     await client.connect();
     
     // Check different possible database names
-    const dbNames = ["aimcs", "test", "development", "production"];
+    const dbNames = ["orbgame", "test", "development", "production"];
     
     for (const dbName of dbNames) {
       console.log(`\n=== Checking database: ${dbName} ===`);

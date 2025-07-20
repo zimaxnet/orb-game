@@ -8,7 +8,7 @@ set -e
 echo "🔍 Fetching Azure OpenAI configuration..."
 
 # Configuration variables (you can override these)
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"orb-game-rg-eastus2"}
 OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"aimcs-resource"}
 
 # Check if Azure CLI is installed

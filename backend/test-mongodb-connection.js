@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
-const uri = process.env.MONGO_URI || "mongodb+srv://derek:<db_password>@aimcs-cluster.rpcaamg.mongodb.net/?retryWrites=true&w=majority&appName=AIMCS-Cluster";
+const uri = process.env.MONGO_URI || "mongodb://orb-game-mongodb-eastus2:<primary-key>@orb-game-mongodb-eastus2.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@orb-game-mongodb-eastus2@";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -31,8 +31,8 @@ async function testConnection() {
     console.log("✅ Successfully connected to MongoDB Atlas!");
     
     // Test database access
-    const db = client.db('aimcs');
-    console.log('✅ Database "aimcs" accessible');
+    const db = client.db('orbgame');
+    console.log('✅ Database "orbgame" accessible');
     
     // List collections to verify access
     const collections = await db.listCollections().toArray();

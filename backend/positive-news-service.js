@@ -227,17 +227,13 @@ class PositiveNewsService {
 
   async getRandomStory(category) {
     try {
+      // Try to get a story with TTS audio first
       let story = await this.stories.findOne({
         category,
-        isFresh: true,
-        lastUsed: { $exists: false }
+        ttsAudio: { $exists: true, $ne: null }
       });
-      if (!story) {
-        story = await this.stories.findOne(
-          { category },
-          { sort: { useCount: 1, lastUsed: 1 } }
-        );
-      }
+      
+      // If no story with TTS, try to get any story
       if (!story) {
         story = await this.stories.findOne({ category });
       }
@@ -249,6 +245,7 @@ class PositiveNewsService {
       }
       
       if (story) {
+        // Update usage stats (simplified)
         await this.stories.updateOne(
           { _id: story._id },
           {
@@ -256,6 +253,8 @@ class PositiveNewsService {
             $set: { lastUsed: new Date().toISOString() }
           }
         );
+        
+        // Generate TTS if not available
         if (!story.ttsAudio) {
           try {
             story.ttsAudio = await this.generateTTS(story.summary);
@@ -427,35 +426,47 @@ class PositiveNewsService {
 
   async getStoriesForCycling(category, count = 3, epoch = 'Modern') {
     try {
-      // Get stories from different sources if possible
-      const stories = await this.stories.aggregate([
-        { $match: { category } },
-        { $sort: { lastUsed: 1, useCount: 1 } },
-        { $limit: count },
-        { $group: { _id: '$source', stories: { $push: '$$ROOT' } } },
-        { $project: { story: { $arrayElemAt: ['$stories', 0] } } },
-        { $replaceRoot: { newRoot: '$story' } }
-      ]).toArray();
+      console.log(`📚 Getting stories for ${category} (requested: ${count})`);
       
-      // If less than requested, fill with generated ones
-      while (stories.length < count) {
-        const nextSource = this.getNextSource();
-        let newStory;
-        if (nextSource === 'perplexity') {
-          await this.fetchAndStorePositiveNews(category);
-          newStory = await this.getRandomStory(category);
-        } else if (nextSource === 'grok') {
-          const grokData = await this.fetchFromGrok(category);
-          if (grokData) {
-            newStory = new PositiveNewsStory({ ...grokData, category });
-            await this.stories.insertOne(newStory);
-          }
-        } else {
-          newStory = await this.generateFallbackStory(category);
-        }
-        if (newStory) stories.push(newStory);
+      // Simple query to get stories with TTS audio first
+      const storiesWithTTS = await this.stories.find({ 
+        category,
+        ttsAudio: { $exists: true, $ne: null }
+      }).limit(count).toArray();
+      
+      console.log(`📚 Found ${storiesWithTTS.length} stories with TTS for ${category}`);
+      
+      // If we have enough stories with TTS, return them
+      if (storiesWithTTS.length >= count) {
+        console.log(`✅ Returning ${storiesWithTTS.length} stories with TTS for ${category}`);
+        return storiesWithTTS.slice(0, count);
       }
-      return stories;
+      
+      // If we don't have enough stories with TTS, try to get any stories without complex sorting
+      const allStories = await this.stories.find({ 
+        category
+      }).limit(count * 2).toArray(); // Get more to have options
+      
+      console.log(`📚 Found ${allStories.length} total stories for ${category}`);
+      
+      // Prioritize stories with TTS, then take the first available ones
+      const prioritizedStories = [
+        ...storiesWithTTS,
+        ...allStories.filter(story => !story.ttsAudio)
+      ].slice(0, count);
+      
+      console.log(`📚 Returning ${prioritizedStories.length} stories for ${category} (${prioritizedStories.filter(s => s.ttsAudio).length} with TTS)`);
+      
+      // If we still don't have enough, just return what we have
+      if (prioritizedStories.length > 0) {
+        return prioritizedStories;
+      }
+      
+      // Only generate new stories if we have absolutely nothing
+      console.log(`⚠️ No stories found for ${category}, generating fallback...`);
+      const fallbackStory = await this.generateFallbackStory(category);
+      return [fallbackStory];
+      
     } catch (error) {
       console.error('Failed to get cycling stories:', error);
       return [];

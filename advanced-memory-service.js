@@ -48,7 +48,7 @@ class AgentExperience {
 }
 
 class AdvancedMemoryService {
-  constructor(mongoUri, dbName = 'aimcs') {
+  constructor(mongoUri, dbName = 'orbgame') {
     this.mongoUri = mongoUri;
     this.dbName = dbName;
     this.client = null;

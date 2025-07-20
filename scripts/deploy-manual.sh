@@ -13,11 +13,11 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-RESOURCE_GROUP_FRONTEND="aimcs-rg-eastus2"
-RESOURCE_GROUP_BACKEND="aimcs-rg-eastus2"
-CONTAINER_APP_NAME="aimcs-backend-eastus2"
+RESOURCE_GROUP_FRONTEND="orb-game-rg-eastus2"
+RESOURCE_GROUP_BACKEND="orb-game-rg-eastus2"
+CONTAINER_APP_NAME="orb-game-backend-eastus2"
 CONTAINER_REGISTRY="orbgameregistry"
-IMAGE_NAME="aimcs-backend"
+IMAGE_NAME="orb-game-backend"
 FRONTEND_URL="https://orbgame.us"
 BACKEND_URL="https://api.orbgame.us"
 
@@ -119,7 +119,7 @@ deploy_frontend() {
     print_status "Deploying to Azure Static Web App..."
     
     # Get deployment token
-    DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name aimcs --resource-group ${RESOURCE_GROUP_FRONTEND} --query "properties.apiKey" --output tsv)
+    DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name orb-game --resource-group ${RESOURCE_GROUP_FRONTEND} --query "properties.apiKey" --output tsv)
     
     # Deploy using Static Web Apps CLI
     swa deploy src/dist --deployment-token $DEPLOYMENT_TOKEN --env production

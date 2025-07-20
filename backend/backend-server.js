@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
+import { DefaultAzureCredential } from '@azure/identity';
+import { SecretClient } from '@azure/keyvault-secrets';
 import dotenv from 'dotenv';
 import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
 
@@ -28,12 +30,61 @@ app.use((req, res, next) => {
   }
 });
 
-// Strictly required environment variables
-const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT;
-const AZURE_OPENAI_API_KEY = process.env.AZURE_OPENAI_API_KEY;
+// Initialize Azure Key Vault client
+let secretClient;
+let secrets = {};
+
+// Function to initialize secrets from Key Vault
+async function initializeSecrets() {
+  try {
+    console.log('🔐 Initializing Azure Key Vault secrets...');
+    
+    // Use DefaultAzureCredential for managed identity
+    const credential = new DefaultAzureCredential();
+    const keyVaultName = process.env.KEY_VAULT_NAME || 'orb-game-kv-eastus2';
+    const keyVaultUrl = `https://${keyVaultName}.vault.azure.net/`;
+    
+    secretClient = new SecretClient(keyVaultUrl, credential);
+    
+    // Fetch all required secrets
+    const secretNames = [
+      'AZURE-OPENAI-API-KEY',
+      'PERPLEXITY-API-KEY',
+      'MONGO-URI'
+    ];
+    
+    const secretPromises = secretNames.map(async (secretName) => {
+      try {
+        const secret = await secretClient.getSecret(secretName);
+        return { name: secretName, value: secret.value };
+      } catch (error) {
+        console.warn(`⚠️ Failed to fetch secret ${secretName}:`, error.message);
+        return { name: secretName, value: null };
+      }
+    });
+    
+    const secretResults = await Promise.all(secretPromises);
+    
+    // Store secrets in memory
+    secretResults.forEach(({ name, value }) => {
+      if (value) {
+        const envName = name.replace(/-/g, '_');
+        secrets[envName] = value;
+        console.log(`✅ Loaded secret: ${name}`);
+      }
+    });
+    
+    console.log('✅ Azure Key Vault secrets initialized successfully');
+  } catch (error) {
+    console.error('❌ Failed to initialize Azure Key Vault secrets:', error.message);
+    console.warn('⚠️ Falling back to environment variables');
+  }
+}
+
+// Environment variables with fallback to Key Vault secrets
+const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT || 'https://aimcs-foundry.cognitiveservices.azure.com/';
 const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
 const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || 'gpt-4o-mini-tts';
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 
 app.use(express.json({ limit: '10mb' }));
 
@@ -42,6 +93,7 @@ let memoryService;
 let azureOpenAIClient;
 let positiveNewsService;
 let storyCacheService;
+let azureOpenAIApiKey; // Global variable for API key
 
 // Basic API endpoints (available immediately)
 app.get('/health', (req, res) => {
@@ -404,7 +456,7 @@ Current conversation context: ${memoryContext}`;
         const searchResponse = await fetch('https://api.perplexity.ai/chat/completions', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.PERPLEXITY_API_KEY}`,
+            'Authorization': `Bearer ${perplexityApiKey}`,
             'Content-Type': 'application/json'
           },
                   body: JSON.stringify({
@@ -441,7 +493,7 @@ Current conversation context: ${memoryContext}`;
       try {
         console.log('📤 Sending request to Azure OpenAI...');
         const chatResponse = await azureOpenAIClient.getChatCompletions(
-          process.env.AZURE_OPENAI_DEPLOYMENT,
+          AZURE_OPENAI_DEPLOYMENT,
           [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: fullMessage }
@@ -477,18 +529,16 @@ Current conversation context: ${memoryContext}`;
       try {
         console.log('🎵 Generating TTS audio for:', aiResponse.substring(0, 50) + '...');
         
-        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${azureOpenAIApiKey}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            model: AZURE_OPENAI_TTS_DEPLOYMENT,
             input: aiResponse,
-            voice: 'alloy',
-            response_format: 'mp3',
-            speed: 1.0
+            voice: 'alloy'
           })
         });
 
@@ -568,7 +618,13 @@ async function initializeSampleMemories() {
 }
 
 async function initializeServer() {
-  const mongoUri = process.env.MONGO_URI;
+  // Initialize secrets from Key Vault first
+  await initializeSecrets();
+  
+  // Get secrets with fallback to environment variables
+  const mongoUri = secrets['MONGO_URI'] || process.env.MONGO_URI;
+  azureOpenAIApiKey = secrets['AZURE_OPENAI_API_KEY'] || process.env.AZURE_OPENAI_API_KEY;
+  const perplexityApiKey = secrets['PERPLEXITY_API_KEY'] || process.env.PERPLEXITY_API_KEY;
 
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
@@ -637,7 +693,7 @@ async function initializeServer() {
     }
   }
   
-  if (!AZURE_OPENAI_ENDPOINT || !AZURE_OPENAI_API_KEY) {
+  if (!AZURE_OPENAI_ENDPOINT || !azureOpenAIApiKey) {
     console.warn('⚠️ AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY not set. Azure OpenAI integration will be disabled.');
   } else {
     try {
@@ -648,7 +704,7 @@ async function initializeServer() {
       
       azureOpenAIClient = new OpenAIClient(
         AZURE_OPENAI_ENDPOINT,
-        new AzureKeyCredential(AZURE_OPENAI_API_KEY),
+        new AzureKeyCredential(azureOpenAIApiKey),
         {
           apiVersion: "2024-12-01-preview"
         }
@@ -980,14 +1036,14 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt, lan
         // Use Spanish voice for Spanish language
         const voice = language === 'es' ? 'jorge' : 'alloy';
         
-        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${azureOpenAIApiKey}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            model: AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
             voice: voice,
             response_format: 'mp3'
@@ -1023,7 +1079,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
     const response = await fetch('https://api.perplexity.ai/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.PERPLEXITY_API_KEY}`,
+        'Authorization': `Bearer ${perplexityApiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -1062,14 +1118,14 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
         // Use Spanish voice for Spanish language
         const voice = language === 'es' ? 'jorge' : 'alloy';
         
-        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${azureOpenAIApiKey}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            model: AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
             voice: voice,
             response_format: 'mp3'
@@ -1102,14 +1158,14 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
     const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
     
-    const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
+    const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${azureOpenAIApiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.AZURE_OPENAI_DEPLOYMENT,
+        model: AZURE_OPENAI_DEPLOYMENT,
         messages: [
           {
             role: 'system',
@@ -1146,14 +1202,14 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         // Use Spanish voice for Spanish language
         const voice = language === 'es' ? 'jorge' : 'alloy';
         
-        const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${azureOpenAIApiKey}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+            model: AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
             voice: voice,
             response_format: 'mp3'
@@ -1184,10 +1240,10 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
 // Helper function to generate fallback stories when service is not available
 async function generateDirectFallbackStory(category) {
   try {
-    const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
+    const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${azureOpenAIApiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -1235,14 +1291,14 @@ async function generateDirectFallbackStory(category) {
     // Generate TTS for the fallback story
     let ttsAudio = null;
     try {
-      const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
+      const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.AZURE_OPENAI_API_KEY}`,
+          'Authorization': `Bearer ${azureOpenAIApiKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
+          model: AZURE_OPENAI_TTS_DEPLOYMENT,
           input: storyData.summary,
           voice: 'alloy',
           response_format: 'mp3'

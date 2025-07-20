@@ -138,7 +138,7 @@ jobs:
         # Test the backend health endpoint
         for i in {1..10}; do
           echo "Attempt $i: Testing backend health..."
-          if curl -f https://api.aimcs.us/health; then
+          if curl -f https://api.orbgame.us/health; then
             echo "✅ Backend is healthy!"
             break
           else

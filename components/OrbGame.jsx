@@ -360,6 +360,35 @@ function OrbGame() {
         }
       }
       
+      // Try to get stories from database first
+      console.log(`📚 Loading stories from database for ${category.name}...`);
+      try {
+        const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}`);
+        
+        if (dbResponse.ok) {
+          const dbStories = await dbResponse.json();
+          
+          if (Array.isArray(dbStories) && dbStories.length > 0) {
+            console.log(`✅ Found ${dbStories.length} stories in database for ${category.name}`);
+            
+            // Check if stories have TTS audio
+            const storiesWithTTS = dbStories.filter(story => story.ttsAudio);
+            console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
+            
+            if (storiesWithTTS.length > 0) {
+              setNewsStories(storiesWithTTS);
+              setCurrentNewsIndex(0);
+              setCurrentNews(storiesWithTTS[0]);
+              setCurrentAISource('Database');
+              setIsLoading(false);
+              return;
+            }
+          }
+        }
+      } catch (dbError) {
+        console.warn('Database fetch failed, falling back to AI generation:', dbError.message);
+      }
+      
       // Fallback: Generate fresh stories with retry logic
       let attempts = 0;
       const maxAttempts = 3;

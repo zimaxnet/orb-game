@@ -202,6 +202,13 @@ The rebuild script now automatically:
 ### 2024-07-16
 - Added a new **Memory Trivia** mini-game accessible from the Control Panel. Compete with yourself by guessing answers from your past conversations!
 
+### 2025-01-20
+- **DATABASE MIGRATION**: Successfully migrated all stories from `aimcs` database to `orbgame` database
+- **DATABASE CLEANUP**: Dropped `aimcs` database and removed all references from codebase
+- **TTS PRESERVATION**: Preserved 911 stories with TTS audio (79.6% coverage) during migration
+- **CODE CLEANUP**: Updated all scripts to use only `orbgame` database
+- **VERIFICATION**: Created migration verification scripts to confirm successful transition
+
 ### 2024-07-16
 - **MAJOR UPDATE**: Converted from AIMCS to Orb Game branding throughout the application
 - Updated all frontend components to use Azure Container App backend URL

@@ -8,7 +8,7 @@ set -e
 echo "🚀 Setting up Azure OpenAI for Orb Game Voice Chat..."
 
 # Configuration variables
-RESOURCE_GROUP=${RESOURCE_GROUP:-"aimcs-rg-eastus2"}
+RESOURCE_GROUP=${RESOURCE_GROUP:-"orb-game-rg-eastus2"}
 OPENAI_RESOURCE_NAME=${OPENAI_RESOURCE_NAME:-"aimcs-openai"}
 LOCATION=${LOCATION:-"eastus2"}
 SKU=${SKU:-"S0"}
@@ -189,7 +189,7 @@ echo "VITE_AZURE_OPENAI_DEPLOYMENT=$REALTIME_DEPLOYMENT"
 # Set environment variables in Azure Web App
 echo ""
 echo "🚀 Setting environment variables in Azure Web App..."
-WEB_APP_NAME="aimcs"
+WEB_APP_NAME="orb-game"
 
 if az webapp show --name $WEB_APP_NAME --resource-group $RESOURCE_GROUP &> /dev/null; then
     az webapp config appsettings set \

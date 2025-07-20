@@ -15,10 +15,10 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-RESOURCE_GROUP="aimcs-rg-eastus2"
-CONTAINER_APP_NAME="aimcs-backend-eastus2"
+RESOURCE_GROUP="orb-game-rg-eastus2"
+CONTAINER_APP_NAME="orb-game-backend-eastus2"
 ACR_NAME="orbgameregistry"
-IMAGE_NAME="aimcs-backend-memory"
+IMAGE_NAME="orb-game-backend-memory"
 IMAGE_TAG="latest"
 
 echo -e "${BLUE}📋 Configuration:${NC}"

@@ -285,7 +285,17 @@ function OrbGame() {
   // Handle epoch change
   const handleEpochChange = (newEpoch) => {
     setCurrentEpoch(newEpoch);
-    // Preloading disabled - no longer preload on epoch change
+    // Clear orb state and stories when switching epochs
+    setOrbInCenter(null);
+    setCurrentNews(null);
+    setNewsStories([]);
+    setCurrentNewsIndex(0);
+    setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    console.log(`🔄 Epoch changed to ${newEpoch} - orb state cleared`);
   };
 
 

@@ -140,6 +140,9 @@ function OrbGame() {
   // Add audio loading state
   const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [audioError, setAudioError] = useState(null);
+  
+  // Add auto-release countdown state
+  const [autoReleaseCountdown, setAutoReleaseCountdown] = useState(0);
 
   // Add epoch state
   const [currentEpoch, setCurrentEpoch] = useState('Modern');
@@ -303,6 +306,23 @@ function OrbGame() {
               setCurrentNews(storiesWithTTS[0]);
               setCurrentAISource('Database');
               setIsLoading(false);
+              
+              // Auto-release orb after 15 seconds with countdown
+              setAutoReleaseCountdown(15);
+              const countdownInterval = setInterval(() => {
+                setAutoReleaseCountdown(prev => {
+                  if (prev <= 1) {
+                    clearInterval(countdownInterval);
+                    if (orbInCenter?.name === category.name) {
+                      console.log('🔄 Auto-releasing orb after countdown');
+                      releaseOrbFromCenter();
+                    }
+                    return 0;
+                  }
+                  return prev - 1;
+                });
+              }, 1000);
+              
               return;
             }
           }
@@ -321,15 +341,17 @@ function OrbGame() {
         console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
         
         try {
+          // Request multiple stories from the backend
           const response = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              message: getExcitingPrompt(category.name, currentEpoch, selectedModel),
+              message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 3 different stories.',
               useWebSearch: 'auto',
-              language: language // Include current language
+              language: language, // Include current language
+              count: 3 // Request 3 stories
             }),
           });
 
@@ -340,23 +362,74 @@ function OrbGame() {
           const data = await response.json();
           
           if (data.response && data.response.trim()) {
-            // Create a story object from the response
-            const story = {
-              headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
-              summary: data.response,
-              fullText: data.response,
-              source: `${selectedModel} AI`,
-              publishedAt: new Date().toISOString(),
-              ttsAudio: data.audioData || null,
-              category: category.name,
-              aiModel: selectedModel,
-              language: language // Store the language used
-            };
+            // Try to parse multiple stories from the response
+            let stories = [];
             
-            setNewsStories([story]);
+            // Check if response contains multiple stories (separated by --- or ###)
+            const storySeparators = ['---', '###', '***', '\n\n\n'];
+            let storyTexts = [data.response];
+            
+            for (const separator of storySeparators) {
+              if (data.response.includes(separator)) {
+                storyTexts = data.response.split(separator).filter(text => text.trim());
+                break;
+              }
+            }
+            
+            // Create story objects from the response
+            storyTexts.forEach((storyText, index) => {
+              if (storyText.trim()) {
+                const story = {
+                  headline: language === 'es' ? `Noticias Positivas de ${category.name} #${index + 1}` : `Positive ${category.name} News #${index + 1}`,
+                  summary: storyText.trim(),
+                  fullText: storyText.trim(),
+                  source: `${selectedModel} AI`,
+                  publishedAt: new Date().toISOString(),
+                  ttsAudio: data.audioData || null,
+                  category: category.name,
+                  aiModel: selectedModel,
+                  language: language // Store the language used
+                };
+                stories.push(story);
+              }
+            });
+            
+            // If no multiple stories found, create single story
+            if (stories.length === 0) {
+              const story = {
+                headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
+                summary: data.response,
+                fullText: data.response,
+                source: `${selectedModel} AI`,
+                publishedAt: new Date().toISOString(),
+                ttsAudio: data.audioData || null,
+                category: category.name,
+                aiModel: selectedModel,
+                language: language
+              };
+              stories = [story];
+            }
+            
+            setNewsStories(stories);
             setCurrentNewsIndex(0);
-            setCurrentNews(story);
+            setCurrentNews(stories[0]);
             success = true;
+            
+            // Auto-release orb after 15 seconds with countdown
+            setAutoReleaseCountdown(15);
+            const countdownInterval = setInterval(() => {
+              setAutoReleaseCountdown(prev => {
+                if (prev <= 1) {
+                  clearInterval(countdownInterval);
+                  if (orbInCenter?.name === category.name) {
+                    console.log('🔄 Auto-releasing orb after countdown');
+                    releaseOrbFromCenter();
+                  }
+                  return 0;
+                }
+                return prev - 1;
+              });
+            }, 1000);
             
             // Cache storage removed - preloading disabled
           } else {
@@ -387,6 +460,22 @@ function OrbGame() {
             setCurrentNewsIndex(0);
             setCurrentNews(fallbackStory);
             setCurrentAISource('Fallback');
+            
+            // Auto-release orb after 15 seconds with countdown
+            setAutoReleaseCountdown(15);
+            const countdownInterval = setInterval(() => {
+              setAutoReleaseCountdown(prev => {
+                if (prev <= 1) {
+                  clearInterval(countdownInterval);
+                  if (orbInCenter?.name === category.name) {
+                    console.log('🔄 Auto-releasing orb after countdown');
+                    releaseOrbFromCenter();
+                  }
+                  return 0;
+                }
+                return prev - 1;
+              });
+            }, 1000);
           } else {
             // Wait before retry
             await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
@@ -417,6 +506,22 @@ function OrbGame() {
       setCurrentNewsIndex(0);
       setCurrentNews(errorStory);
       setCurrentAISource('Error');
+      
+      // Auto-release orb after 15 seconds with countdown
+      setAutoReleaseCountdown(15);
+      const countdownInterval = setInterval(() => {
+        setAutoReleaseCountdown(prev => {
+          if (prev <= 1) {
+            clearInterval(countdownInterval);
+            if (orbInCenter?.name === category.name) {
+              console.log('🔄 Auto-releasing orb after countdown');
+              releaseOrbFromCenter();
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
     } finally {
       setIsLoading(false);
     }
@@ -428,6 +533,7 @@ function OrbGame() {
     setNewsStories([]);
     setCurrentNewsIndex(0);
     setIsPlaying(false);
+    setAutoReleaseCountdown(0); // Clear countdown
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -711,6 +817,17 @@ function OrbGame() {
                 ✕
               </button>
             </div>
+            {autoReleaseCountdown > 0 && (
+              <div className="auto-release-countdown">
+                <span className="countdown-text">Auto-release in {autoReleaseCountdown}s</span>
+                <div className="countdown-bar">
+                  <div 
+                    className="countdown-fill" 
+                    style={{ width: `${(autoReleaseCountdown / 15) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            )}
           </div>
           
           {/* AI Model Selector in News Panel */}

@@ -186,6 +186,15 @@ The rebuild script now automatically:
 ## 🆕 Changelog
 
 ### 2025-01-20 (Latest)
+- **🔄 AUTO-RELEASE ORBS**: Added automatic orb release after 15 seconds with visual countdown indicator
+- **📚 MULTIPLE STORIES**: Enhanced story loading to request and display 3 stories per orb click
+- **⏱️ COUNTDOWN TIMER**: Visual countdown bar showing when orb will auto-release (15 seconds)
+- **🎯 STORY NAVIGATION**: Users can now cycle through multiple stories using Previous/Next buttons
+- **🔄 SMART STORY PARSING**: Automatic parsing of multiple stories separated by ---, ###, ***, or line breaks
+- **🎨 ENHANCED UI**: Added countdown progress bar with smooth animations and visual feedback
+- **⚡ IMPROVED UX**: Orbs no longer stay stuck in center - automatic release improves flow
+- **📖 STORY NUMBERING**: Each story gets numbered headline (e.g., "Positive Technology News #1", "#2", "#3")
+- **🎮 BETTER GAMEPLAY**: Manual release still available via "✕" button before auto-release
 - **🧠 REVOLUTIONARY PROMPT MANAGEMENT**: Implemented centralized prompt management system using PROMPTS_REFERENCE.md as single source of truth
 - **📚 320+ CURATED PROMPTS**: 80+ prompts across 8 categories × 5 epochs × 2 languages with full validation
 - **🌍 BILINGUAL EXCELLENCE**: Complete English and Spanish support with culturally appropriate content

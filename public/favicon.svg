@@ -1,4 +1,43 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="32,6 39,24 58,24 42,36 48,54 32,43 16,54 22,36 6,24 25,24" fill="#764ba2"/>
-  <circle cx="32" cy="30" r="6" fill="#FFD600"/>
+  <!-- Background circle with gradient -->
+  <defs>
+    <radialGradient id="orbGradient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#f0f8ff"/>
+      <stop offset="100%" stop-color="#e6f3ff"/>
+    </radialGradient>
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main orb circle -->
+  <circle cx="32" cy="32" r="28" fill="url(#orbGradient)" stroke="url(#borderGradient)" stroke-width="2"/>
+  
+  <!-- Gaming controller icon -->
+  <g transform="translate(32, 32)">
+    <!-- Controller body -->
+    <rect x="-8" y="-4" width="16" height="8" rx="2" fill="#333" opacity="0.8"/>
+    
+    <!-- Left button -->
+    <circle cx="-4" cy="-1" r="1.5" fill="#4CAF50"/>
+    
+    <!-- Right button -->
+    <circle cx="4" cy="-1" r="1.5" fill="#FF5722"/>
+    
+    <!-- Center button -->
+    <circle cx="0" cy="2" r="1" fill="#2196F3"/>
+  </g>
+  
+  <!-- Sparkle effects -->
+  <circle cx="12" cy="12" r="1" fill="#ffffff" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="52" cy="16" r="0.8" fill="#ffffff" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="48" cy="48" r="1.2" fill="#ffffff" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
 </svg> 

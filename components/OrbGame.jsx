@@ -141,8 +141,7 @@ function OrbGame() {
   const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [audioError, setAudioError] = useState(null);
   
-  // Add auto-release countdown state
-  const [autoReleaseCountdown, setAutoReleaseCountdown] = useState(0);
+
 
   // Add epoch state
   const [currentEpoch, setCurrentEpoch] = useState('Modern');
@@ -247,12 +246,18 @@ function OrbGame() {
 
   const handleSatelliteClick = async (category) => {
     try {
-      if (isPlaying || isLoading || orbInCenter) {
+      if (isPlaying || isLoading) {
         console.log('Orb click blocked - already processing');
         return;
       }
       
       console.log(`🎯 Orb clicked: ${category.name}`);
+      
+      // Clear any existing orb and stories
+      setOrbInCenter(null);
+      setCurrentNews(null);
+      setNewsStories([]);
+      setCurrentNewsIndex(0);
       
       // Start dragging the orb to center
       setDraggedOrb(category);
@@ -306,22 +311,6 @@ function OrbGame() {
               setCurrentNews(storiesWithTTS[0]);
               setCurrentAISource('Database');
               setIsLoading(false);
-              
-              // Auto-release orb after 15 seconds with countdown
-              setAutoReleaseCountdown(15);
-              const countdownInterval = setInterval(() => {
-                setAutoReleaseCountdown(prev => {
-                  if (prev <= 1) {
-                    clearInterval(countdownInterval);
-                    if (orbInCenter?.name === category.name) {
-                      console.log('🔄 Auto-releasing orb after countdown');
-                      releaseOrbFromCenter();
-                    }
-                    return 0;
-                  }
-                  return prev - 1;
-                });
-              }, 1000);
               
               return;
             }
@@ -415,22 +404,6 @@ function OrbGame() {
             setCurrentNews(stories[0]);
             success = true;
             
-            // Auto-release orb after 15 seconds with countdown
-            setAutoReleaseCountdown(15);
-            const countdownInterval = setInterval(() => {
-              setAutoReleaseCountdown(prev => {
-                if (prev <= 1) {
-                  clearInterval(countdownInterval);
-                  if (orbInCenter?.name === category.name) {
-                    console.log('🔄 Auto-releasing orb after countdown');
-                    releaseOrbFromCenter();
-                  }
-                  return 0;
-                }
-                return prev - 1;
-              });
-            }, 1000);
-            
             // Cache storage removed - preloading disabled
           } else {
             throw new Error('Empty response from AI');
@@ -460,22 +433,6 @@ function OrbGame() {
             setCurrentNewsIndex(0);
             setCurrentNews(fallbackStory);
             setCurrentAISource('Fallback');
-            
-            // Auto-release orb after 15 seconds with countdown
-            setAutoReleaseCountdown(15);
-            const countdownInterval = setInterval(() => {
-              setAutoReleaseCountdown(prev => {
-                if (prev <= 1) {
-                  clearInterval(countdownInterval);
-                  if (orbInCenter?.name === category.name) {
-                    console.log('🔄 Auto-releasing orb after countdown');
-                    releaseOrbFromCenter();
-                  }
-                  return 0;
-                }
-                return prev - 1;
-              });
-            }, 1000);
           } else {
             // Wait before retry
             await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
@@ -506,22 +463,6 @@ function OrbGame() {
       setCurrentNewsIndex(0);
       setCurrentNews(errorStory);
       setCurrentAISource('Error');
-      
-      // Auto-release orb after 15 seconds with countdown
-      setAutoReleaseCountdown(15);
-      const countdownInterval = setInterval(() => {
-        setAutoReleaseCountdown(prev => {
-          if (prev <= 1) {
-            clearInterval(countdownInterval);
-            if (orbInCenter?.name === category.name) {
-              console.log('🔄 Auto-releasing orb after countdown');
-              releaseOrbFromCenter();
-            }
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
     } finally {
       setIsLoading(false);
     }
@@ -533,7 +474,6 @@ function OrbGame() {
     setNewsStories([]);
     setCurrentNewsIndex(0);
     setIsPlaying(false);
-    setAutoReleaseCountdown(0); // Clear countdown
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -817,17 +757,7 @@ function OrbGame() {
                 ✕
               </button>
             </div>
-            {autoReleaseCountdown > 0 && (
-              <div className="auto-release-countdown">
-                <span className="countdown-text">Auto-release in {autoReleaseCountdown}s</span>
-                <div className="countdown-bar">
-                  <div 
-                    className="countdown-fill" 
-                    style={{ width: `${(autoReleaseCountdown / 15) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-            )}
+
           </div>
           
           {/* AI Model Selector in News Panel */}
@@ -835,7 +765,10 @@ function OrbGame() {
             <label>{t('ai.model.select')}:</label>
             <select value={selectedModel} onChange={(e) => {
               setSelectedModel(e.target.value);
-              // Preloaded stories check removed - preloading disabled
+              // Clear current stories when model changes
+              setNewsStories([]);
+              setCurrentNewsIndex(0);
+              setCurrentNews(null);
             }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>

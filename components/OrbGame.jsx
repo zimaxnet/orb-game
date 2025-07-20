@@ -179,18 +179,8 @@ function OrbGame() {
   
   // Custom language toggle handler to clear current content
   const handleLanguageToggle = () => {
-    // Clear current stories and news when language changes
-    setCurrentNews(null);
-    setNewsStories([]);
-    setCurrentNewsIndex(0);
-    setOrbInCenter(null);
-    setIsPlaying(false);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-    
-    // Toggle the language (this will trigger the useEffect above)
+    // Don't clear current stories - just toggle the language
+    // The useEffect will handle preloading new stories in the background
     toggleLanguage();
   };
 

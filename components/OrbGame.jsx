@@ -389,21 +389,38 @@ function OrbGame() {
 
 
   const handleSatelliteClick = async (category) => {
-    if (isPlaying || isLoading || orbInCenter) return;
-    
-    // Start dragging the orb to center
-    setDraggedOrb(category);
-    setIsDragging(true);
-    
-    // Move orb to center position
-    setTimeout(() => {
-      setOrbInCenter(category);
-      setIsDragging(false);
-      setDraggedOrb(null);
+    try {
+      if (isPlaying || isLoading || orbInCenter) {
+        console.log('Orb click blocked - already processing');
+        return;
+      }
       
-      // Now load the story
-      loadStoryForOrb(category);
-    }, 1000); // 1 second animation to center
+      console.log(`🎯 Orb clicked: ${category.name}`);
+      
+      // Start dragging the orb to center
+      setDraggedOrb(category);
+      setIsDragging(true);
+      
+      // Move orb to center position
+      setTimeout(() => {
+        try {
+          setOrbInCenter(category);
+          setIsDragging(false);
+          setDraggedOrb(null);
+          
+          // Now load the story
+          loadStoryForOrb(category);
+        } catch (error) {
+          console.error('Error in orb center animation:', error);
+          setDraggedOrb(null);
+          setIsDragging(false);
+        }
+      }, 1000); // 1 second animation to center
+    } catch (error) {
+      console.error('Error in handleSatelliteClick:', error);
+      setDraggedOrb(null);
+      setIsDragging(false);
+    }
   };
   
   const loadStoryForOrb = async (category) => {
@@ -599,50 +616,66 @@ function OrbGame() {
   };
 
   const playAudio = () => {
-    if (currentNews?.ttsAudio && !isMuted) {
-      setIsAudioLoading(true);
-      setAudioError(null);
-      
-      try {
-        audioRef.current.src = `data:audio/mp3;base64,${currentNews.ttsAudio}`;
-        
-        // Add event listeners for better audio handling
-        audioRef.current.onloadstart = () => {
-          setIsAudioLoading(true);
-        };
-        
-        audioRef.current.oncanplay = () => {
-          setIsAudioLoading(false);
-          setIsPlaying(true);
-        };
-        
-        audioRef.current.onended = () => {
-          setIsPlaying(false);
-          setIsAudioLoading(false);
-        };
-        
-        audioRef.current.onerror = (error) => {
-          console.error('Audio playback error:', error);
-          setAudioError('Failed to play audio');
-          setIsAudioLoading(false);
-          setIsPlaying(false);
-        };
-        
-        // Start playing
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.error('Audio play failed:', error);
-            setAudioError('Failed to start audio playback');
-            setIsAudioLoading(false);
-            setIsPlaying(false);
-          });
-        }
-      } catch (error) {
-        console.error('Audio setup error:', error);
-        setAudioError('Failed to setup audio');
+    if (!currentNews?.ttsAudio) {
+      console.log('No TTS audio available to play');
+      return;
+    }
+    
+    if (isMuted) {
+      console.log('Audio is muted');
+      return;
+    }
+    
+    setIsAudioLoading(true);
+    setAudioError(null);
+    
+    try {
+      // Ensure audioRef exists
+      if (!audioRef.current) {
+        console.error('Audio reference not available');
+        setAudioError('Audio system not ready');
         setIsAudioLoading(false);
+        return;
       }
+      
+      audioRef.current.src = `data:audio/mp3;base64,${currentNews.ttsAudio}`;
+      
+      // Add event listeners for better audio handling
+      audioRef.current.onloadstart = () => {
+        setIsAudioLoading(true);
+      };
+      
+      audioRef.current.oncanplay = () => {
+        setIsAudioLoading(false);
+        setIsPlaying(true);
+      };
+      
+      audioRef.current.onended = () => {
+        setIsPlaying(false);
+        setIsAudioLoading(false);
+      };
+      
+      audioRef.current.onerror = (error) => {
+        console.error('Audio playback error:', error);
+        setAudioError('Failed to play audio');
+        setIsAudioLoading(false);
+        setIsPlaying(false);
+      };
+      
+      // Start playing with better error handling
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error('Audio play failed:', error);
+          setAudioError('Failed to start audio playback');
+          setIsAudioLoading(false);
+          setIsPlaying(false);
+        });
+      }
+    } catch (error) {
+      console.error('Audio setup error:', error);
+      setAudioError('Failed to setup audio');
+      setIsAudioLoading(false);
     }
   };
 
@@ -654,12 +687,7 @@ function OrbGame() {
       setCurrentNewsIndex(nextIndex);
       setCurrentNews(newsStories[nextIndex]);
       
-      // Ensure TTS is ready before autoplaying for the new story
-      if (newsStories[nextIndex]?.ttsAudio && !isMuted) {
-        setTimeout(() => {
-          playAudio();
-        }, 500); // Delay for story transition
-      }
+      // Removed autoplay - user must manually click play button
     }
   };
 
@@ -669,12 +697,7 @@ function OrbGame() {
       setCurrentNewsIndex(prevIndex);
       setCurrentNews(newsStories[prevIndex]);
       
-      // Ensure TTS is ready before autoplaying for the new story
-      if (newsStories[prevIndex]?.ttsAudio && !isMuted) {
-        setTimeout(() => {
-          playAudio();
-        }, 500); // Delay for story transition
-      }
+      // Removed autoplay - user must manually click play button
     }
   };
 
@@ -885,12 +908,7 @@ function OrbGame() {
                 setCurrentNews(stories[0]);
                 setCurrentAISource(aiModels.find(m => m.id === e.target.value).name);
                 
-                // Play audio if available
-                if (stories[0]?.ttsAudio && !isMuted) {
-                  setTimeout(() => {
-                    playAudio();
-                  }, 800);
-                }
+                // Removed autoplay - user must manually click play button
               }
             }}>
               {aiModels.map(model => (
@@ -909,12 +927,7 @@ function OrbGame() {
                   setCurrentNews(stories[0]);
                   setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
                   
-                  // Play audio if available
-                  if (stories[0]?.ttsAudio && !isMuted) {
-                    setTimeout(() => {
-                      playAudio();
-                    }, 800);
-                  }
+                  // Removed autoplay - user must manually click play button
                 } else {
                   // Fallback to generating fresh stories
                   loadStoryForOrb(orbInCenter);

@@ -118,7 +118,8 @@ function OrbGame() {
   
   const [categories] = useState([
     { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
-    { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' }
+    { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' },
+    { name: 'Spirituality', color: '#ff9800' }, { name: 'Positive Comments', color: '#e91e63' }
   ]);
   // Remove score/streak state
   // const [score, setScore] = useState(0);
@@ -148,19 +149,25 @@ function OrbGame() {
 
   // Add epoch state
   const [currentEpoch, setCurrentEpoch] = useState('Modern');
-  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
   
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
   
   // Add AI model selection state
   const [selectedModel, setSelectedModel] = useState('grok-4');
+  const [reliableModels, setReliableModels] = useState([]);
   const aiModels = [
     { id: 'grok-4', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
     { id: 'perplexity-sonar', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
     { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', description: 'Fast and creative content generation' },
     { id: 'o4-mini', name: 'o4-mini', description: 'Fast and efficient processing' }
   ];
+
+  // Filter models to only show reliable ones
+  const availableModels = aiModels.filter(model => 
+    reliableModels.length === 0 || reliableModels.includes(model.id)
+  );
   
   // Add preloaded stories state
   // Preloading state variables removed - preloading disabled
@@ -196,6 +203,28 @@ function OrbGame() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [currentNews]);
+  
+  // Check model reliability on component mount
+  useEffect(() => {
+    const checkModelReliability = async () => {
+      try {
+        console.log('🔍 Checking model reliability on game load...');
+        const response = await fetch(`${BACKEND_URL}/api/models/reliability`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setReliableModels(data.reliableModels);
+            console.log('✅ Reliable models loaded:', data.reliableModels);
+          }
+        }
+      } catch (error) {
+        console.error('❌ Error checking model reliability:', error);
+      }
+    };
+
+    checkModelReliability();
+  }, []);
   
   // Preloading disabled - removed automatic triggers
   
@@ -244,8 +273,42 @@ function OrbGame() {
   };
 
   // Mouse click handler for desktop
-  const handleHowToPlayClick = () => {
+  const handleHowToPlayClick = async () => {
     setShowHowToPlay(false);
+    
+    // Fetch cached modern epoch story after user acknowledges instructions
+    try {
+      console.log('🔍 Fetching cached modern epoch story...');
+      const response = await fetch(`${BACKEND_URL}/api/stories/modern-cached`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.story) {
+          console.log('✅ Loaded cached modern epoch story:', data.story.headline);
+          
+          // Set the cached story as the current story for Technology category
+          setStories([data.story]);
+          setCurrentStoryIndex(0);
+          setSelectedCategory('Technology');
+          setCurrentEpoch('Modern');
+          setSelectedModel(data.story.source || 'Cached');
+          setStoriesLoaded(true);
+          setShowStoryPanel(true);
+          
+          // Play audio if available
+          if (data.story.ttsAudio) {
+            setCurrentAudio(data.story.ttsAudio);
+            if (!isMuted) {
+              playAudio();
+            }
+          }
+        }
+      } else {
+        console.log('ℹ️ No cached modern story available');
+      }
+    } catch (error) {
+      console.error('❌ Error fetching cached modern story:', error);
+    }
   };
   
   // Preload function removed - preloading disabled
@@ -311,7 +374,7 @@ function OrbGame() {
   
   const loadStoryForOrb = async (category) => {
     setIsLoading(true);
-    setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
+            setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
     
     try {
       // Try to get stories from database first
@@ -503,7 +566,7 @@ function OrbGame() {
                       setNewsStories(freshStories);
                       setCurrentNewsIndex(0);
                       setCurrentNews(freshStories[0]);
-                      setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
+                      setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
                     }
                   }
                 }
@@ -875,7 +938,7 @@ function OrbGame() {
               setSelectedModel(e.target.value);
               // Don't clear stories - keep panel visible until user manually closes
             }}>
-              {aiModels.map(model => (
+              {availableModels.map(model => (
                 <option key={model.id} value={model.id}>
                   {model.name}
                 </option>
@@ -1044,34 +1107,6 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
             opacity={0.3}
           />
         </Sphere>
-      )}
-      
-      {/* Always show label below the orb */}
-      <Text
-        position={[0, -0.6, 0]}
-        fontSize={isInCenter ? 0.25 : 0.2}
-        color={isInCenter ? "white" : hasStoriesLoaded ? "rgba(255, 255, 255, 0.9)" : "rgba(255, 255, 255, 0.3)"}
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.02}
-        outlineColor="black"
-      >
-        {category.name}
-      </Text>
-      
-      {/* Show "Release" text when in center */}
-      {isInCenter && (
-        <Text
-          position={[0, -1.0, 0]}
-          fontSize={0.15}
-          color="rgba(255, 255, 255, 0.8)"
-          anchorX="center"
-          anchorY="middle"
-          outlineWidth={0.01}
-          outlineColor="black"
-        >
-          Click ✕ to release
-        </Text>
       )}
       
       {/* Loading indicator */}

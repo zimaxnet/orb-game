@@ -7,7 +7,7 @@
 ### 🌟 **Core Concept**
 - **Interactive 3D Interface**: Players click on floating orbs to discover stories
 - **Positive News Focus**: All content is uplifting, inspiring, and solution-oriented
-- **Multi-Epoch Exploration**: Stories span from Ancient times to the Future
+- **Multi-Epoch Exploration**: Stories span from Ancient times to the Digital Era
 - **AI-Powered Content**: Real-time generation using multiple AI models
 - **Multi-Language Support**: Full English and Spanish experience
 - **Audio Narration**: Text-to-speech brings stories to life
@@ -18,13 +18,13 @@ The Orb Game experience requires an extensive prompt system because:
 
 1. **Category Diversity**: 8 distinct categories (Technology, Science, Art, Nature, Sports, Music, Space, Innovation) each need specialized prompts that capture their unique essence and appeal to different interests.
 
-2. **Epoch Immersion**: 5 historical periods (Ancient, Medieval, Industrial, Modern, Future) require prompts that authentically capture the spirit, achievements, and context of each era while maintaining relevance and inspiration.
+2. **Epoch Immersion**: 6 historical periods (Ancient, Medieval, Industrial, Modern, Future, Enlightenment Era, Digital Era) require prompts that authentically capture the spirit, achievements, and context of each era while maintaining relevance and inspiration.
 
 3. **AI Model Optimization**: Different AI models (Azure OpenAI, Grok 4, Perplexity Sonar) have different strengths and require tailored prompts to maximize their capabilities for story generation.
 
 4. **Language Authenticity**: Both English and Spanish prompts must feel natural and culturally appropriate, not just translated, to create genuine experiences for different language speakers.
 
-5. **Consistency & Quality**: With 400+ unique prompt combinations (8 categories × 5 epochs × 2 languages × 5+ models), maintaining consistent quality and tone across all interactions is crucial for user experience.
+5. **Consistency & Quality**: With 480+ unique prompt combinations (8 categories × 6 epochs × 2 languages × 5+ models), maintaining consistent quality and tone across all interactions is crucial for user experience.
 
 6. **Dynamic Content**: Unlike static content, AI-generated stories need carefully crafted prompts to ensure they're always positive, engaging, and appropriate for the gaming context.
 
@@ -76,6 +76,8 @@ graph TB
         W[Music]
         X[Space]
         Y[Innovation]
+        Y1[Spirituality]
+        Y2[Positive Comments]
     end
 
     subgraph "⏰ Epochs"
@@ -84,6 +86,8 @@ graph TB
         BB[Industrial]
         CC[Modern]
         DD[Future]
+        EE[Enlightenment Era]
+        FF[Digital Era]
     end
 
     subgraph "🌍 Languages"
@@ -195,7 +199,7 @@ flowchart TD
 
 ```mermaid
 graph LR
-    subgraph "8 Categories"
+    subgraph "10 Categories"
         A1[Technology]
         A2[Science]
         A3[Art]
@@ -204,14 +208,18 @@ graph LR
         A6[Music]
         A7[Space]
         A8[Innovation]
+        A9[Spirituality]
+        A10[Positive Comments]
     end
     
-    subgraph "5 Epochs"
+    subgraph "7 Epochs"
         B1[Ancient]
         B2[Medieval]
         B3[Industrial]
         B4[Modern]
         B5[Future]
+        B6[Enlightenment Era]
+        B7[Digital Era]
     end
     
     subgraph "2 Languages"
@@ -226,7 +234,7 @@ graph LR
         D4[Gemini]
     end
     
-    A1 --> E[40 Prompts per Category]
+    A1 --> E[70 Prompts per Category]
     A2 --> E
     A3 --> E
     A4 --> E
@@ -234,17 +242,21 @@ graph LR
     A6 --> E
     A7 --> E
     A8 --> E
+    A9 --> E
+    A10 --> E
     
-    B1 --> F[8 Prompts per Epoch]
+    B1 --> F[10 Prompts per Epoch]
     B2 --> F
     B3 --> F
     B4 --> F
     B5 --> F
+    B6 --> F
+    B7 --> F
     
-    C1 --> G[200 Prompts per Language]
+    C1 --> G[350 Prompts per Language]
     C2 --> G
     
-    D1 --> H[100 Prompts per Model]
+    D1 --> H[175 Prompts per Model]
     D2 --> H
     D3 --> H
     D4 --> H
@@ -304,6 +316,14 @@ This document contains all prompts used in the Orb Game system, organized by cat
 #### Future Epoch
 - **English**: `Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring.`
 - **Spanish**: `Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring. Generate all content in Spanish.`
+
+#### Enlightenment Era Epoch
+- **English**: `Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring.`
+- **Spanish**: `Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Digital Era Epoch
+- **English**: `Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring.`
+- **Spanish**: `Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring. Generate all content in Spanish.`
 
 ### Science Category
 
@@ -442,6 +462,66 @@ This document contains all prompts used in the Orb Game system, organized by cat
 #### Ancient Epoch
 - **English**: `Generate an exciting positive news story about ancient innovation breakthroughs, technological discoveries, or creative achievements that would have revolutionized ancient civilizations. Make it engaging and inspiring.`
 - **Spanish**: `Generate an exciting positive news story about ancient innovation breakthroughs, technological discoveries, or creative achievements that would have revolutionized ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.`
+
+### Spirituality Category
+
+#### Ancient Epoch
+- **English**: `Generate an exciting positive news story about ancient spiritual wisdom, philosophical insights, or mindfulness practices that would have guided ancient civilizations. Make it engaging and inspiring.`
+- **Spanish**: `Generate an exciting positive news story about ancient spiritual wisdom, philosophical insights, or mindfulness practices that would have guided ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Medieval Epoch
+- **English**: `Create a fascinating positive news story about medieval spiritual practices, philosophical developments, or mindfulness traditions that would have been transformative in medieval times. Make it captivating and uplifting.`
+- **Spanish**: `Create a fascinating positive news story about medieval spiritual practices, philosophical developments, or mindfulness traditions that would have been transformative in medieval times. Make it captivating and uplifting. Generate all content in Spanish.`
+
+#### Industrial Epoch
+- **English**: `Write an inspiring positive news story about industrial revolution era spiritual movements, philosophical breakthroughs, or mindfulness innovations that transformed society. Make it exciting and motivational.`
+- **Spanish**: `Write an inspiring positive news story about industrial revolution era spiritual movements, philosophical breakthroughs, or mindfulness innovations that transformed society. Make it exciting and motivational. Generate all content in Spanish.`
+
+#### Modern Epoch
+- **English**: `Generate a compelling positive news story about modern spiritual practices, mindfulness innovations, or philosophical breakthroughs that are enriching lives today. Make it engaging and inspiring.`
+- **Spanish**: `Generate a compelling positive news story about modern spiritual practices, mindfulness innovations, or philosophical breakthroughs that are enriching lives today. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Future Epoch
+- **English**: `Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring.`
+- **Spanish**: `Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring. Generate all content in Spanish.`
+
+#### Enlightenment Era Epoch
+- **English**: `Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring.`
+- **Spanish**: `Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Digital Era Epoch
+- **English**: `Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring.`
+- **Spanish**: `Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring. Generate all content in Spanish.`
+
+### Positive Comments Category
+
+#### Ancient Epoch
+- **English**: `Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring.`
+- **Spanish**: `Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Medieval Epoch
+- **English**: `Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting.`
+- **Spanish**: `Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting. Generate all content in Spanish.`
+
+#### Industrial Epoch
+- **English**: `Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational.`
+- **Spanish**: `Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational. Generate all content in Spanish.`
+
+#### Modern Epoch
+- **English**: `Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring.`
+- **Spanish**: `Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Future Epoch
+- **English**: `Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring.`
+- **Spanish**: `Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring. Generate all content in Spanish.`
+
+#### Enlightenment Era Epoch
+- **English**: `Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring.`
+- **Spanish**: `Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.`
+
+#### Digital Era Epoch
+- **English**: `Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring.`
+- **Spanish**: `Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring. Generate all content in Spanish.`
 
 #### Medieval Epoch
 - **English**: `Create a fascinating positive news story about medieval innovation developments, technological breakthroughs, or creative innovations that would have been groundbreaking in medieval times. Make it captivating and uplifting.`

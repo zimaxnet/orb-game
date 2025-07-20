@@ -14,6 +14,7 @@ dotenv.config();
 import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { PositiveNewsService } from './positive-news-service.js';
 import { StoryCacheService } from './story-cache-service.js';
+import { ModelReliabilityChecker } from './model-reliability-checker.js';
 
 const app = express();
 
@@ -93,6 +94,7 @@ let memoryService;
 let azureOpenAIClient;
 let positiveNewsService;
 let storyCacheService;
+let modelReliabilityChecker;
 let azureOpenAIApiKey; // Global variable for API key
 
 // Basic API endpoints (available immediately)
@@ -714,6 +716,33 @@ async function initializeServer() {
       console.error('❌ Failed to initialize Azure OpenAI client:', openaiError.message);
       azureOpenAIClient = null;
     }
+  }
+
+  // Initialize model reliability checker
+  try {
+    console.log('🔍 Initializing ModelReliabilityChecker...');
+    modelReliabilityChecker = new ModelReliabilityChecker(secrets);
+    
+    // Check model reliability and cache modern epoch story
+    console.log('🔍 Checking model reliability...');
+    const reliabilityResults = await modelReliabilityChecker.checkModelReliability();
+    
+    if (reliabilityResults.reliableModels.length > 0) {
+      console.log(`✅ Found ${reliabilityResults.reliableModels.length} reliable models:`, reliabilityResults.reliableModels);
+      
+      // Cache a story for the modern epoch
+      const cachedStory = await modelReliabilityChecker.cacheModernEpochStory();
+      if (cachedStory) {
+        console.log('✅ Successfully cached modern epoch story');
+      } else {
+        console.warn('⚠️ Failed to cache modern epoch story');
+      }
+    } else {
+      console.warn('⚠️ No reliable models found');
+    }
+  } catch (reliabilityError) {
+    console.error('❌ Failed to initialize ModelReliabilityChecker:', reliabilityError.message);
+    modelReliabilityChecker = null;
   }
 
   // Enhanced chat endpoint is now defined outside the async function
@@ -1358,3 +1387,52 @@ function isMemoryServiceReady() {
     return false;
   }
 }
+
+// Get cached modern epoch story endpoint
+app.get('/api/stories/modern-cached', async (req, res) => {
+  try {
+    if (!modelReliabilityChecker) {
+      return res.status(503).json({ error: 'Model reliability checker not available' });
+    }
+
+    const cachedStory = modelReliabilityChecker.getCachedModernStory();
+    
+    if (cachedStory) {
+      res.json({
+        success: true,
+        story: cachedStory,
+        source: 'modern-cache',
+        category: 'Technology',
+        epoch: 'Modern'
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        error: 'No cached modern story available'
+      });
+    }
+  } catch (error) {
+    console.error('❌ Error fetching cached modern story:', error);
+    res.status(500).json({ error: 'Failed to fetch cached modern story' });
+  }
+});
+
+// Get model reliability status endpoint
+app.get('/api/models/reliability', async (req, res) => {
+  try {
+    if (!modelReliabilityChecker) {
+      return res.status(503).json({ error: 'Model reliability checker not available' });
+    }
+
+    const reliableModels = modelReliabilityChecker.getReliableModels();
+    
+    res.json({
+      success: true,
+      reliableModels,
+      count: reliableModels.length
+    });
+  } catch (error) {
+    console.error('❌ Error fetching model reliability:', error);
+    res.status(500).json({ error: 'Failed to fetch model reliability' });
+  }
+});

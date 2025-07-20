@@ -105,7 +105,7 @@ class PromptManager {
    * Get all prompts for a specific category
    */
   getCategoryPrompts(category, language = 'en') {
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
     const prompts = {};
     
     epochs.forEach(epoch => {
@@ -119,7 +119,7 @@ class PromptManager {
    * Get all prompts for a specific epoch
    */
   getEpochPrompts(epoch, language = 'en') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -133,8 +133,8 @@ class PromptManager {
    * Get all prompts for a specific language
    */
   getLanguagePrompts(language = 'en') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -153,11 +153,11 @@ class PromptManager {
   getPromptStats() {
     return {
       totalCached: this.cache.size,
-      categories: 8,
-      epochs: 5,
+      categories: 10,
+      epochs: 7,
       languages: 2,
       models: 4,
-      totalCombinations: 8 * 5 * 2 * 4
+      totalCombinations: 10 * 7 * 2 * 4
     };
   }
 
@@ -165,8 +165,8 @@ class PromptManager {
    * Validate that all prompts exist
    */
   validatePrompts() {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
     const languages = ['en', 'es'];
     const missing = [];
 

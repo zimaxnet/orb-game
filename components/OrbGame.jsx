@@ -177,6 +177,23 @@ function OrbGame() {
     preloadStoriesForEpoch(currentEpoch);
   }, [language]); // Re-run when language changes
   
+  // Custom language toggle handler to clear current content
+  const handleLanguageToggle = () => {
+    // Clear current stories and news when language changes
+    setCurrentNews(null);
+    setNewsStories([]);
+    setCurrentNewsIndex(0);
+    setOrbInCenter(null);
+    setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    
+    // Toggle the language (this will trigger the useEffect above)
+    toggleLanguage();
+  };
+
 
 
   // Enhanced touch/swipe handlers for the how to play overlay
@@ -231,16 +248,16 @@ function OrbGame() {
     const totalRequests = categories.length * aiModels.length;
     let completedRequests = 0;
     
-    console.log(`🔄 Preloading stories for ${epoch} epoch...`);
+    console.log(`🔄 Preloading stories for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}...`);
     
     for (const category of categories) {
       newPreloadedStories[category.name] = {};
       
       for (const model of aiModels) {
         try {
-          console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch...`);
+          console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}...`);
           
-          // Use the existing /api/chat endpoint
+          // Use the existing /api/chat endpoint with language support
           const response = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
             headers: {
@@ -248,7 +265,8 @@ function OrbGame() {
             },
             body: JSON.stringify({
               message: getExcitingPrompt(category.name, epoch, model.id),
-              useWebSearch: 'auto'
+              useWebSearch: 'auto',
+              language: language // Include current language
             })
           });
           
@@ -257,18 +275,19 @@ function OrbGame() {
             if (data.response && data.response.trim()) {
               // Create a story object from the response
               const story = {
-                headline: `Positive ${category.name} News`,
+                headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
                 summary: data.response,
                 fullText: data.response,
                 source: `${model.name} AI`,
                 publishedAt: new Date().toISOString(),
                 ttsAudio: data.audioData || null,
                 category: category.name,
-                aiModel: model.id
+                aiModel: model.id,
+                language: language // Store the language used
               };
               
               newPreloadedStories[category.name][model.id] = [story];
-              console.log(`✅ Preloaded story for ${category.name} from ${model.name}`);
+              console.log(`✅ Preloaded story for ${category.name} from ${model.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
             } else {
               console.warn(`⚠️ No response for ${category.name} from ${model.name}`);
             }
@@ -303,7 +322,7 @@ function OrbGame() {
       return total + Object.values(categoryStories).reduce((catTotal, stories) => catTotal + (stories?.length || 0), 0);
     }, 0);
     
-    console.log(`✅ Preloading complete for ${epoch} epoch! Total stories cached: ${totalStories}`);
+    console.log(`✅ Preloading complete for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}! Total stories cached: ${totalStories}`);
   };
   
   // Handle epoch change
@@ -337,14 +356,18 @@ function OrbGame() {
     setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
     
     try {
-      // First try to get preloaded stories
+      // First try to get preloaded stories (check if language matches)
       if (preloadedStories[category.name]?.[selectedModel]?.length > 0) {
         const stories = preloadedStories[category.name][selectedModel];
-        setNewsStories(stories);
-        setCurrentNewsIndex(0);
-        setCurrentNews(stories[0]);
-        setIsLoading(false);
-        return;
+        // Check if the preloaded stories are in the current language
+        const currentLanguageStories = stories.filter(story => story.language === language);
+        if (currentLanguageStories.length > 0) {
+          setNewsStories(currentLanguageStories);
+          setCurrentNewsIndex(0);
+          setCurrentNews(currentLanguageStories[0]);
+          setIsLoading(false);
+          return;
+        }
       }
       
       // Fallback: Generate fresh stories with retry logic
@@ -354,7 +377,7 @@ function OrbGame() {
       
       while (attempts < maxAttempts && !success) {
         attempts++;
-        console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name}`);
+        console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
         
         try {
           const response = await fetch(`${BACKEND_URL}/api/chat`, {
@@ -364,7 +387,8 @@ function OrbGame() {
             },
             body: JSON.stringify({
               message: getExcitingPrompt(category, currentEpoch, selectedModel),
-              useWebSearch: 'auto'
+              useWebSearch: 'auto',
+              language: language // Include current language
             }),
           });
 
@@ -377,14 +401,15 @@ function OrbGame() {
           if (data.response && data.response.trim()) {
             // Create a story object from the response
             const story = {
-              headline: `Positive ${category.name} News`,
+              headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
               summary: data.response,
               fullText: data.response,
               source: `${selectedModel} AI`,
               publishedAt: new Date().toISOString(),
               ttsAudio: data.audioData || null,
               category: category.name,
-              aiModel: selectedModel
+              aiModel: selectedModel,
+              language: language // Store the language used
             };
             
             setNewsStories([story]);
@@ -409,14 +434,19 @@ function OrbGame() {
           if (attempts === maxAttempts) {
             // Final fallback: Create a simple story
             const fallbackStory = {
-              headline: `${category.name} News`,
-              summary: `Discover amazing positive news about ${category.name.toLowerCase()}! Click to explore more stories.`,
-              fullText: `We're preparing some exciting ${category.name.toLowerCase()} stories for you. Please try again in a moment or select a different category.`,
+              headline: language === 'es' ? `Noticias de ${category.name}` : `${category.name} News`,
+              summary: language === 'es' 
+                ? `¡Descubre noticias positivas increíbles sobre ${category.name.toLowerCase()}! Haz clic para explorar más historias.`
+                : `Discover amazing positive news about ${category.name.toLowerCase()}! Click to explore more stories.`,
+              fullText: language === 'es'
+                ? `Estamos preparando algunas historias emocionantes de ${category.name.toLowerCase()} para ti. Por favor, inténtalo de nuevo en un momento o selecciona una categoría diferente.`
+                : `We're preparing some exciting ${category.name.toLowerCase()} stories for you. Please try again in a moment or select a different category.`,
               source: 'Orb Game',
               publishedAt: new Date().toISOString(),
               ttsAudio: null,
               category: category.name,
-              aiModel: 'fallback'
+              aiModel: 'fallback',
+              language: language
             };
             
             setNewsStories([fallbackStory]);
@@ -434,14 +464,19 @@ function OrbGame() {
       
       // Ultimate fallback
       const errorStory = {
-        headline: `${category.name} Stories`,
-        summary: `We're experiencing some technical difficulties. Please try again or select a different category.`,
-        fullText: `Our AI is taking a moment to gather the latest positive ${category.name.toLowerCase()} news. Please try again in a moment.`,
+        headline: language === 'es' ? `Historias de ${category.name}` : `${category.name} Stories`,
+        summary: language === 'es'
+          ? `Estamos experimentando algunas dificultades técnicas. Por favor, inténtalo de nuevo o selecciona una categoría diferente.`
+          : `We're experiencing some technical difficulties. Please try again or select a different category.`,
+        fullText: language === 'es'
+          ? `Nuestra IA está tomando un momento para recopilar las últimas noticias positivas de ${category.name.toLowerCase()}. Por favor, inténtalo de nuevo en un momento.`
+          : `Our AI is taking a moment to gather the latest positive ${category.name.toLowerCase()} news. Please try again in a moment.`,
         source: 'Orb Game',
         publishedAt: new Date().toISOString(),
         ttsAudio: null,
         category: category.name,
-        aiModel: 'error'
+        aiModel: 'error',
+        language: language
       };
       
       setNewsStories([errorStory]);
@@ -564,7 +599,7 @@ function OrbGame() {
       {/* Language Toggle */}
       <div className="language-toggle">
         <button 
-          onClick={toggleLanguage}
+          onClick={handleLanguageToggle}
           className={`language-button ${language === 'es' ? 'spanish' : 'english'}`}
           title={t('language.toggle')}
         >

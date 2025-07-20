@@ -233,33 +233,6 @@ function OrbGame() {
     
     console.log(`🔄 Preloading stories for ${epoch} epoch...`);
     
-    // First, trigger backend preload to ensure database caching
-    try {
-      console.log(`📚 Triggering backend preload for ${epoch} epoch...`);
-      const preloadResponse = await fetch(`${BACKEND_URL}/api/cache/preload/${epoch}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          epoch: epoch,
-          categories: categories.map(cat => cat.name),
-          models: aiModels.map(model => model.id),
-          languages: [language],
-          ensureCaching: true // Flag to ensure database storage
-        })
-      });
-      
-      if (preloadResponse.ok) {
-        const preloadResult = await preloadResponse.json();
-        console.log(`✅ Backend preload initiated:`, preloadResult);
-      } else {
-        console.warn(`⚠️ Backend preload failed, continuing with direct requests`);
-      }
-    } catch (error) {
-      console.warn(`⚠️ Backend preload error:`, error);
-    }
-    
     for (const category of categories) {
       newPreloadedStories[category.name] = {};
       
@@ -267,36 +240,37 @@ function OrbGame() {
         try {
           console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch...`);
           
-          // Use the generate-news endpoint which ensures database caching
-          const response = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
+          // Use the existing /api/chat endpoint
+          const response = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              category: category.name,
-              epoch: epoch,
-              model: model.id,
-              count: 3,
-              language: language,
-              prompt: getExcitingPrompt(category.name, epoch, model.id),
-              ensureCaching: true // Ensure this gets cached in database
+              message: getExcitingPrompt(category.name, epoch, model.id),
+              useWebSearch: 'auto'
             })
           });
           
           if (response.ok) {
-            const stories = await response.json();
-            if (stories && stories.length > 0) {
-              // Verify that stories have TTS audio
-              const storiesWithAudio = stories.filter(story => story.ttsAudio);
-              if (storiesWithAudio.length > 0) {
-                newPreloadedStories[category.name][model.id] = storiesWithAudio;
-                console.log(`✅ Preloaded ${storiesWithAudio.length} stories with audio for ${category.name} from ${model.name}`);
-              } else {
-                console.warn(`⚠️ No stories with audio for ${category.name} from ${model.name}`);
-              }
+            const data = await response.json();
+            if (data.response && data.response.trim()) {
+              // Create a story object from the response
+              const story = {
+                headline: `Positive ${category.name} News`,
+                summary: data.response,
+                fullText: data.response,
+                source: `${model.name} AI`,
+                publishedAt: new Date().toISOString(),
+                ttsAudio: data.audioData || null,
+                category: category.name,
+                aiModel: model.id
+              };
+              
+              newPreloadedStories[category.name][model.id] = [story];
+              console.log(`✅ Preloaded story for ${category.name} from ${model.name}`);
             } else {
-              console.log(`⚠️ No stories generated for ${category.name} from ${model.name}`);
+              console.warn(`⚠️ No response for ${category.name} from ${model.name}`);
             }
           } else {
             console.log(`❌ Failed to preload stories for ${category.name} from ${model.name}: ${response.status}`);

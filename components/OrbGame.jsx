@@ -946,24 +946,13 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
   
   return (
     <group ref={groupRef}>
-      {/* Invisible larger sphere for easier clicking */}
-      <Sphere 
-        args={[0.6, 32, 32]} 
-        onPointerDown={onClick}
-        onPointerOver={onHover}
-        onPointerOut={onUnhover}
-        position={meshRef.current?.position || [0, 0, 0]}
-      >
-        <meshBasicMaterial 
-          transparent={true}
-          opacity={0.0} // Invisible but clickable
-        />
-      </Sphere>
-      
-      {/* Visible orb */}
+      {/* Visible orb with click handlers */}
       <Sphere 
         ref={meshRef} 
         args={[0.3, 32, 32]} 
+        onPointerDown={onClick}
+        onPointerOver={onHover}
+        onPointerOut={onUnhover}
       >
         <meshStandardMaterial 
           color={category.color} 
@@ -994,7 +983,6 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
         anchorY="middle"
         outlineWidth={0.02}
         outlineColor="black"
-        font="/fonts/Inter-Bold.woff"
       >
         {category.name}
       </Text>

@@ -177,7 +177,17 @@ The rebuild script now automatically:
 
 ## 🆕 Changelog
 
-### 2025-07-19 (Latest)
+### 2025-01-20 (Latest)
+- **⚡ PRELOADING DISABLED**: Removed automatic story preloading system to eliminate 2-3 minute startup delays
+- **🚀 INSTANT APP STARTUP**: App now loads instantly with no background API calls or TTS generation
+- **💰 COST OPTIMIZATION**: Reduced API costs by only generating stories when users actually request them
+- **🎯 ON-DEMAND LOADING**: Stories now load only when orbs are clicked (5s from database, 7s from AI)
+- **🎵 USER-CONTROLLED AUDIO**: Audio only plays when users explicitly click the play button
+- **🧹 CODE SIMPLIFICATION**: Removed complex preloading logic, progress indicators, and cache management
+- **📊 PERFORMANCE IMPROVEMENT**: Eliminated 32 API calls + 32 TTS generations on startup
+- **✅ VERIFIED FUNCTIONALITY**: All core features preserved - database loading, AI generation, audio controls
+
+### 2025-07-19
 - **🌍 SPANISH LANGUAGE SUPPORT**: Added comprehensive Spanish language support with TTS audio generation
 - **📚 STORY PRELOAD SYSTEM**: Implemented "Load Stories" button to preload and cache stories for selected epochs
 - **🎯 SMOOTH ORB DRAGGING**: Enhanced orb dragging experience with easing animations for smoother user interaction

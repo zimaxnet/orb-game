@@ -157,10 +157,7 @@ function OrbGame() {
   ];
   
   // Add preloaded stories state
-  const [preloadedStories, setPreloadedStories] = useState({});
-  const [isPreloading, setIsPreloading] = useState(false);
-  const [preloadProgress, setPreloadProgress] = useState(0);
-  const [preloadingOrbs, setPreloadingOrbs] = useState(new Set());
+  // Preloading state variables removed - preloading disabled
   
   // Add drag and center state
   const [draggedOrb, setDraggedOrb] = useState(null);
@@ -232,15 +229,7 @@ function OrbGame() {
     return prompts[categoryName]?.[epoch] || `Generate an exciting positive news story about ${categoryName.toLowerCase()} in the ${epoch} epoch. Make it engaging and inspiring.`;
   };
   
-  // Preload stories on component mount
-  useEffect(() => {
-    preloadStoriesForEpoch(currentEpoch);
-  }, []); // Only run on mount
-  
-  // Preload stories when language changes
-  useEffect(() => {
-    preloadStoriesForEpoch(currentEpoch);
-  }, [language]); // Re-run when language changes
+  // Preloading disabled - removed automatic triggers
   
   // Custom language toggle handler to clear current content
   const handleLanguageToggle = () => {
@@ -291,99 +280,12 @@ function OrbGame() {
     setShowHowToPlay(false);
   };
   
-  // Preload stories for all categories and models when epoch changes
-  const preloadStoriesForEpoch = async (epoch) => {
-    if (isPreloading) return;
-    
-    setIsPreloading(true);
-    setPreloadProgress(0);
-    setPreloadingOrbs(new Set(categories.map(cat => cat.name))); // Start with all orbs
-    
-    const newPreloadedStories = {};
-    const totalRequests = categories.length * aiModels.length;
-    let completedRequests = 0;
-    
-    console.log(`🔄 Preloading stories for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}...`);
-    
-    for (const category of categories) {
-      newPreloadedStories[category.name] = {};
-      
-      for (const model of aiModels) {
-        try {
-          console.log(`📚 Preloading ${category.name} stories from ${model.name} for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}...`);
-          
-          // Use the existing /api/chat endpoint with language support
-          const response = await fetch(`${BACKEND_URL}/api/chat`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              message: getExcitingPrompt(category.name, epoch, model.id),
-              useWebSearch: 'auto',
-              language: language // Include current language
-            })
-          });
-          
-          if (response.ok) {
-            const data = await response.json();
-            if (data.response && data.response.trim()) {
-              // Create a story object from the response
-              const story = {
-                headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
-                summary: data.response,
-                fullText: data.response,
-                source: `${model.name} AI`,
-                publishedAt: new Date().toISOString(),
-                ttsAudio: data.audioData || null,
-                category: category.name,
-                aiModel: model.id,
-                language: language // Store the language used
-              };
-              
-              newPreloadedStories[category.name][model.id] = [story];
-              console.log(`✅ Preloaded story for ${category.name} from ${model.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
-            } else {
-              console.warn(`⚠️ No response for ${category.name} from ${model.name}`);
-            }
-          } else {
-            console.log(`❌ Failed to preload stories for ${category.name} from ${model.name}: ${response.status}`);
-          }
-        } catch (error) {
-          console.error(`❌ Error preloading ${category.name} from ${model.name}:`, error);
-        }
-        
-        completedRequests++;
-        const progress = Math.round((completedRequests / totalRequests) * 100);
-        setPreloadProgress(progress);
-        console.log(`📊 Preload progress: ${progress}% (${completedRequests}/${totalRequests})`);
-      }
-      
-      // Remove this category from preloading set when all models are done
-      setPreloadingOrbs(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(category.name);
-        return newSet;
-      });
-    }
-    
-    setPreloadedStories(newPreloadedStories);
-    setIsPreloading(false);
-    setPreloadProgress(0);
-    setPreloadingOrbs(new Set()); // Clear all preloading orbs
-    
-    // Log summary of preloaded content
-    const totalStories = Object.values(newPreloadedStories).reduce((total, categoryStories) => {
-      return total + Object.values(categoryStories).reduce((catTotal, stories) => catTotal + (stories?.length || 0), 0);
-    }, 0);
-    
-    console.log(`✅ Preloading complete for ${epoch} epoch in ${language === 'es' ? 'Spanish' : 'English'}! Total stories cached: ${totalStories}`);
-  };
+  // Preload function removed - preloading disabled
   
   // Handle epoch change
   const handleEpochChange = (newEpoch) => {
     setCurrentEpoch(newEpoch);
-    preloadStoriesForEpoch(newEpoch);
+    // Preloading disabled - no longer preload on epoch change
   };
 
 
@@ -428,20 +330,6 @@ function OrbGame() {
     setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
     
     try {
-      // First try to get preloaded stories (check if language matches)
-      if (preloadedStories[category.name]?.[selectedModel]?.length > 0) {
-        const stories = preloadedStories[category.name][selectedModel];
-        // Check if the preloaded stories are in the current language
-        const currentLanguageStories = stories.filter(story => story.language === language);
-        if (currentLanguageStories.length > 0) {
-          setNewsStories(currentLanguageStories);
-          setCurrentNewsIndex(0);
-          setCurrentNews(currentLanguageStories[0]);
-          setIsLoading(false);
-          return;
-        }
-      }
-      
       // Try to get stories from database first
       console.log(`📚 Loading stories from database for ${category.name}...`);
       try {
@@ -518,14 +406,7 @@ function OrbGame() {
             setCurrentNews(story);
             success = true;
             
-            // Store in preloaded stories for future use
-            setPreloadedStories(prev => ({
-              ...prev,
-              [category.name]: {
-                ...prev[category.name],
-                [selectedModel]: [story]
-              }
-            }));
+            // Cache storage removed - preloading disabled
           } else {
             throw new Error('Empty response from AI');
           }
@@ -792,7 +673,7 @@ function OrbGame() {
         {/* Orbiting Satellites */}
         {categories.map((category, index) => {
           // Check if stories are loaded for this specific category and selected model
-          const hasStoriesForThisOrb = preloadedStories[category.name]?.[selectedModel]?.length > 0;
+          const hasStoriesForThisOrb = newsStories.filter(story => story.category === category.name).length > 0;
           
           return (
             <OrbitingSatellite
@@ -808,7 +689,6 @@ function OrbGame() {
               isClicked={clickedOrbs.has(category.name)}
               isDragged={draggedOrb?.name === category.name}
               isInCenter={orbInCenter?.name === category.name}
-              isPreloading={preloadingOrbs.has(category.name)}
               hasStoriesLoaded={hasStoriesForThisOrb}
             />
           );
@@ -823,21 +703,7 @@ function OrbGame() {
             <option key={epoch} value={epoch}>{t(`epoch.${epoch.toLowerCase()}`)}</option>
           ))}
         </select>
-        <button 
-          onClick={() => preloadStoriesForEpoch(currentEpoch)}
-          className="load-stories-button"
-          disabled={isPreloading}
-        >
-          {isPreloading ? '⏳ Loading...' : '📚 Load Stories'}
-        </button>
-        {isPreloading && (
-          <div className="preload-indicator">
-            <div className="preload-progress">
-              <div className="preload-fill" style={{width: `${preloadProgress}%`}}></div>
-            </div>
-            <span>Preloading stories... {Math.round(preloadProgress)}%</span>
-          </div>
-        )}
+        {/* Preload button removed - preloading disabled */}
       </div>
       
 
@@ -900,16 +766,7 @@ function OrbGame() {
             <label>{t('ai.model.select')}:</label>
             <select value={selectedModel} onChange={(e) => {
               setSelectedModel(e.target.value);
-              // Check if we have preloaded stories for this model and category
-              if (orbInCenter && preloadedStories[orbInCenter.name]?.[e.target.value]) {
-                const stories = preloadedStories[orbInCenter.name][e.target.value];
-                setNewsStories(stories);
-                setCurrentNewsIndex(0);
-                setCurrentNews(stories[0]);
-                setCurrentAISource(aiModels.find(m => m.id === e.target.value).name);
-                
-                // Removed autoplay - user must manually click play button
-              }
+              // Preloaded stories check removed - preloading disabled
             }}>
               {aiModels.map(model => (
                 <option key={model.id} value={model.id}>
@@ -919,19 +776,9 @@ function OrbGame() {
             </select>
             <button 
               onClick={() => {
-                // Check if we have preloaded stories for this model and category
-                if (orbInCenter && preloadedStories[orbInCenter.name]?.[selectedModel]) {
-                  const stories = preloadedStories[orbInCenter.name][selectedModel];
-                  setNewsStories(stories);
-                  setCurrentNewsIndex(0);
-                  setCurrentNews(stories[0]);
-                  setCurrentAISource(aiModels.find(m => m.id === selectedModel).name);
-                  
-                  // Removed autoplay - user must manually click play button
-                } else {
-                  // Fallback to generating fresh stories
-                  loadStoryForOrb(orbInCenter);
-                }
+                // Preloaded stories check removed - preloading disabled
+                // Always generate fresh stories
+                loadStoryForOrb(orbInCenter);
               }}
               className="go-button"
               disabled={isLoading}
@@ -982,7 +829,7 @@ function OrbGame() {
   );
 }
 
-function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter, isPreloading, hasStoriesLoaded }) {
+function OrbitingSatellite({ category, index, totalCategories, onClick, onHover, onUnhover, isHovered, isLoading, isClicked, isDragged, isInCenter, hasStoriesLoaded }) {
   const meshRef = useRef();
   const groupRef = useRef();
   const dragStartTime = useRef();
@@ -1039,10 +886,7 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
   let emissiveIntensity = 0.1; // Default dim
   let opacity = hasStoriesLoaded ? 1.0 : 0.3; // More dim if no stories loaded
   
-  if (isPreloading) {
-    emissiveIntensity = 0.9; // Brighter when preloading
-    opacity = 1.0;
-  } else if (isHovered) {
+  if (isHovered) {
     emissiveIntensity = 0.5; // Brighter hover
     opacity = 1.0;
   } else if (hasStoriesLoaded) {
@@ -1062,7 +906,7 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       >
         <meshStandardMaterial 
           color={category.color} 
-          emissive={isPreloading ? category.color : isHovered ? category.color : "#000000"}
+          emissive={isHovered ? category.color : "#000000"}
           emissiveIntensity={emissiveIntensity}
           transparent={true}
           opacity={opacity}
@@ -1109,7 +953,7 @@ function OrbitingSatellite({ category, index, totalCategories, onClick, onHover,
       )}
       
       {/* Loading indicator */}
-      {isPreloading && (
+      {isLoading && (
         <Text
           position={[0, 0.6, 0]}
           fontSize={0.12}

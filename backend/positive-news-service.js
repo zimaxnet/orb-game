@@ -324,7 +324,7 @@ class PositiveNewsService {
         console.warn(`Failed to parse fallback story for ${category}:`, parseError.message);
         // Create a basic fallback story
         storyData = {
-          headline: `Positive ${category} Development`,
+          headline: `Modern ${category} Story`,
           summary: `Exciting progress is being made in ${category.toLowerCase()} that brings hope and innovation.`,
           fullText: `Recent developments in ${category.toLowerCase()} show promising advances that could benefit many people. This positive trend demonstrates the power of human ingenuity and collaboration.`,
           source: 'AI Generated'
@@ -354,7 +354,7 @@ class PositiveNewsService {
       // Create a basic fallback story if all else fails
       const basicStory = new PositiveNewsStory({
         category,
-        headline: `Positive ${category} News`,
+        headline: `Modern ${category} Story`,
         summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
         fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
         source: 'AI Generated',
@@ -424,7 +424,7 @@ class PositiveNewsService {
     }
   }
 
-  async getStoriesForCycling(category, count = 3, epoch = 'Modern') {
+  async getStoriesForCycling(category, count = 1, epoch = 'Modern') {
     try {
       console.log(`📚 Getting stories for ${category} (requested: ${count})`);
       

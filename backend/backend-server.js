@@ -778,7 +778,7 @@ process.on('SIGINT', async () => {
 // New endpoint: Get a random positive news story (with TTS) by category
 app.get('/api/orb/positive-news/:category', async (req, res) => {
   const category = req.params.category;
-  const count = parseInt(req.query.count) || 3;  // Allow client to specify number of stories
+  const count = parseInt(req.query.count) || 1;  // Allow client to specify number of stories
   const epoch = req.query.epoch || 'Modern';
   
   // If positive news service is not available, generate fallback content directly
@@ -811,7 +811,7 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
 // New endpoint: Generate fresh stories from AI models
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt, language = 'en', ensureCaching = true } = req.body;
+  const { epoch = 'Modern', model = 'o4-mini', count = 1, prompt, language = 'en', ensureCaching = true } = req.body;
   
   console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
   
@@ -1021,7 +1021,7 @@ app.delete('/api/cache/clear', async (req, res) => {
 // Helper functions to generate stories with different AI models
 async function generateStoriesWithGrok(category, epoch, count, customPrompt, language = 'en') {
   try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
+    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
     
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
@@ -1102,7 +1102,7 @@ async function generateStoriesWithGrok(category, epoch, count, customPrompt, lan
 
 async function generateStoriesWithPerplexity(category, epoch, count, customPrompt, language = 'en') {
   try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
+    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
     
     const response = await fetch('https://api.perplexity.ai/chat/completions', {
@@ -1184,7 +1184,7 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
 
 async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en') {
   try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
+    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
     const prompt = customPrompt || defaultPrompt;
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
@@ -1310,7 +1310,7 @@ async function generateDirectFallbackStory(category) {
     } catch (parseError) {
       console.warn(`Failed to parse direct fallback story for ${category}:`, parseError.message);
       storyData = {
-        headline: `Positive ${category} Development`,
+        headline: `Modern ${category} Story`,
         summary: `Exciting progress is being made in ${category.toLowerCase()} that brings hope and innovation.`,
         fullText: `Recent developments in ${category.toLowerCase()} show promising advances that could benefit many people. This positive trend demonstrates the power of human ingenuity and collaboration.`,
         source: 'AI Generated'
@@ -1355,7 +1355,7 @@ async function generateDirectFallbackStory(category) {
     
     // Return a basic fallback story if all else fails
     return {
-      headline: `Positive ${category} News`,
+      headline: `Modern ${category} Story`,
       summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
       fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
       source: 'AI Generated',

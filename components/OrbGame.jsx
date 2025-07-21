@@ -417,7 +417,7 @@ function OrbGame() {
       if (!forceFresh) {
         console.log(`📚 Loading stories from database for ${category.name} in ${language}...`);
         try {
-          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}&language=${language}`);
+          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=1&epoch=${currentEpoch}&language=${language}`);
           
           if (dbResponse.ok) {
             const dbStories = await dbResponse.json();
@@ -469,17 +469,17 @@ function OrbGame() {
         console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
         
         try {
-          // Request multiple stories from the backend
+          // Request single story from the backend
           const response = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 3 different stories.',
+              message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 1 detailed story.',
               useWebSearch: 'auto',
               language: language, // Include current language
-              count: 3 // Request 3 stories
+              count: 1 // Request 1 story
             }),
           });
 
@@ -508,7 +508,7 @@ function OrbGame() {
             storyTexts.forEach((storyText, index) => {
               if (storyText.trim()) {
                 const story = {
-                  headline: language === 'es' ? `Noticias Positivas de ${category.name} #${index + 1}` : `Positive ${category.name} News #${index + 1}`,
+                  headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
                   summary: storyText.trim(),
                   fullText: storyText.trim(),
                   source: `${selectedModel} AI`,
@@ -526,7 +526,7 @@ function OrbGame() {
             // If no multiple stories found, create single story
             if (stories.length === 0) {
               const story = {
-                headline: language === 'es' ? `Noticias Positivas de ${category.name}` : `Positive ${category.name} News`,
+                headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
                 summary: data.response,
                 fullText: data.response,
                 source: `${selectedModel} AI`,
@@ -562,10 +562,10 @@ function OrbGame() {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
-                    message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 3 different stories.',
+                    message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 1 detailed story.',
                     useWebSearch: 'auto',
                     language: language,
-                    count: 3
+                    count: 1
                   }),
                 });
                 
@@ -589,7 +589,7 @@ function OrbGame() {
                     freshStoryTexts.forEach((storyText, index) => {
                       if (storyText.trim()) {
                         const freshStory = {
-                          headline: language === 'es' ? `Noticias Positivas de ${category.name} #${index + 1}` : `Positive ${category.name} News #${index + 1}`,
+                          headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
                           summary: storyText.trim(),
                           fullText: storyText.trim(),
                           source: `${selectedModel} AI`,
@@ -658,7 +658,7 @@ function OrbGame() {
       
       // Ultimate fallback
       const errorStory = {
-        headline: language === 'es' ? `Historias de ${category.name}` : `${category.name} Stories`,
+        headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
         summary: language === 'es'
           ? `Estamos experimentando algunas dificultades técnicas. Por favor, inténtalo de nuevo o selecciona una categoría diferente.`
           : `We're experiencing some technical difficulties. Please try again or select a different category.`,
@@ -796,6 +796,74 @@ function OrbGame() {
     }
   };
 
+  const learnMore = async () => {
+    if (!currentNews || !orbInCenter) return;
+    
+    setIsLoading(true);
+    console.log(`🔍 Learning more about ${currentNews.headline}...`);
+    
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `Based on this story: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide additional fascinating details, background information, and related developments about this topic. Make it engaging and informative.`,
+          useWebSearch: 'auto',
+          language: language,
+          count: 1
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      
+      if (data.response && data.response.trim()) {
+        // Create a new story with the additional information
+        const learnMoreStory = {
+          headline: language === 'es' ? `${currentEpoch} ${orbInCenter.name} Historia - Más Información` : `${currentEpoch} ${orbInCenter.name} Story - Learn More`,
+          summary: data.response.trim(),
+          fullText: data.response.trim(),
+          source: `${selectedModel} AI - Learn More`,
+          publishedAt: new Date().toISOString(),
+          ttsAudio: data.audioData || null,
+          category: orbInCenter.name,
+          aiModel: selectedModel,
+          language: language,
+          epoch: currentEpoch
+        };
+        
+        // Replace current story with learn more content
+        setNewsStories([learnMoreStory]);
+        setCurrentNewsIndex(0);
+        setCurrentNews(learnMoreStory);
+        setCurrentAISource(`${availableModels.find(m => m.id === selectedModel)?.name || selectedModel} - Learn More`);
+      }
+    } catch (error) {
+      console.error('Failed to learn more:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleZimaxAILabsClick = () => {
+    const message = language === 'es' 
+      ? '¿Te gustaría ir a la página de Zimax AI Labs para aprender más o regresar al Juego Orb?'
+      : 'Would you like to go to the Zimax AI Labs page to learn more or return to Orb Game?';
+    
+    const userChoice = confirm(message);
+    
+    if (userChoice) {
+      // User chose to go to Zimax AI Labs page
+      window.location.href = 'https://zimax.net/ailabs';
+    }
+    // If user cancels, they stay on the Orb Game page
+  };
+  
   return (
     <div className="orb-game-container">
       {/* Language Toggle */}
@@ -911,7 +979,7 @@ function OrbGame() {
       
       {/* Add epoch roller */}
       <div className="epoch-roller">
-        <label>Time Epoch:</label>
+        <label>Epoch:</label>
         <select value={currentEpoch} onChange={(e) => handleEpochChange(e.target.value)}>
           {epochs.map(epoch => (
             <option key={epoch} value={epoch}>{t(`epoch.${epoch.toLowerCase()}`)}</option>
@@ -943,7 +1011,6 @@ function OrbGame() {
       {currentNews && (
         <div className="news-panel" ref={storyPanelRef}>
           <div className="news-header">
-            <h4>{currentNews.headline}</h4>
             <div className="escape-hint">
               <span className="escape-text">{t('news.escape.hint').replace('Esc', '<kbd>Esc</kbd>')}</span>
             </div>
@@ -1029,9 +1096,25 @@ function OrbGame() {
             <p className="news-summary">{currentNews.summary}</p>
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>
+          <div className="news-actions">
+            <button 
+              onClick={learnMore}
+              disabled={isLoading}
+              className="learn-more-button"
+              title={language === 'es' ? 'Obtener más información sobre este tema' : 'Get more information about this topic'}
+            >
+              {isLoading ? '⏳' : '🔍'} {language === 'es' ? 'Aprender Más' : 'Learn More'}
+            </button>
+          </div>
           <div className="news-meta">
-            <span className="news-source">{t('news.source')}: {currentNews.source}</span>
-            <span className="ai-model-used">{t('news.ai.model')}: {currentAISource}</span>
+            <span className="zimax-ai-labs">
+              <a href="#" onClick={(e) => {
+                e.preventDefault();
+                handleZimaxAILabsClick();
+              }}>
+                Zimax AI Labs
+              </a> AI Model: {currentAISource}
+            </span>
             <span className="news-date">
               {new Date(currentNews.publishedAt).toLocaleDateString()}
             </span>

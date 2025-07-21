@@ -253,7 +253,7 @@ app.post('/api/chat', async (req, res) => {
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   try {
     const category = req.params.category;
-    const { epoch = 'Modern', model = 'o4-mini', count = 3, language = 'en', prompt } = req.body;
+    const { epoch = 'Modern', model = 'o4-mini', count = 1, language = 'en', prompt } = req.body;
     
     console.log(`📝 Generating ${count} stories for ${category} (${epoch} epoch) using ${model}`);
     
@@ -623,7 +623,7 @@ async function generateDirectFallbackStory(category, language = 'en') {
       publishedAt: new Date().toISOString(),
       ttsAudio: null
     } : {
-      headline: `Positive ${category} News`,
+      headline: `Modern ${category} Story`,
       summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
       fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
       source: 'AI Generated',

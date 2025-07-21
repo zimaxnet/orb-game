@@ -189,7 +189,7 @@ function OrbGame() {
   // Use centralized prompt manager for all prompts
   const getExcitingPrompt = (category, epoch, model) => {
     const categoryName = typeof category === 'string' ? category : category.name;
-    return promptManager.getFrontendPrompt(categoryName, epoch, language);
+    return promptManager.getFrontendPrompt(categoryName, epoch, language, model);
   };
   
   // Handle click outside story panel

@@ -37,6 +37,8 @@ export const LanguageProvider = ({ children }) => {
         'epoch.industrial': 'Industrial',
         'epoch.modern': 'Modern',
         'epoch.future': 'Future',
+        'epoch.enlightenment': 'Enlightenment',
+        'epoch.digital': 'Digital',
         
         // Categories
         'category.technology': 'Technology',
@@ -132,6 +134,8 @@ export const LanguageProvider = ({ children }) => {
         'epoch.industrial': 'Industrial',
         'epoch.modern': 'Moderno',
         'epoch.future': 'Futuro',
+        'epoch.enlightenment': 'Ilustración',
+        'epoch.digital': 'Digital',
         
         // Categories
         'category.technology': 'Tecnología',

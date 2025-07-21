@@ -30,11 +30,11 @@ export const PROMPT_REFERENCE_DATA = {
         en: 'Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring.',
         es: 'Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring. Generate all content in Spanish.'
       },
-      'Enlightenment Era': {
+      'Enlightenment': {
         en: 'Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring.',
         es: 'Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
       },
-      'Digital Era': {
+      'Digital': {
         en: 'Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring.',
         es: 'Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring. Generate all content in Spanish.'
       }
@@ -192,11 +192,11 @@ export const PROMPT_REFERENCE_DATA = {
         en: 'Create an exciting positive news story about futuristic innovation possibilities, technological innovations, or creative breakthroughs that could revolutionize human civilization. Make it visionary and inspiring.',
         es: 'Create an exciting positive news story about futuristic innovation possibilities, technological innovations, or creative breakthroughs that could revolutionize human civilization. Make it visionary and inspiring. Generate all content in Spanish.'
       },
-      'Enlightenment Era': {
+      'Enlightenment': {
         en: 'Generate an exciting positive news story about enlightenment era innovation breakthroughs, intellectual discoveries, or creative achievements that would have inspired intellectual growth. Make it engaging and inspiring.',
         es: 'Generate an exciting positive news story about enlightenment era innovation breakthroughs, intellectual discoveries, or creative achievements that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
       },
-      'Digital Era': {
+      'Digital': {
         en: 'Create an exciting positive news story about digital era innovation breakthroughs, digital discoveries, or creative achievements that are transforming modern society. Make it engaging and inspiring.',
         es: 'Create an exciting positive news story about digital era innovation breakthroughs, digital discoveries, or creative achievements that are transforming modern society. Make it engaging and inspiring. Generate all content in Spanish.'
       }
@@ -222,11 +222,11 @@ export const PROMPT_REFERENCE_DATA = {
         en: 'Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring.',
         es: 'Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring. Generate all content in Spanish.'
       },
-      'Enlightenment Era': {
+      'Enlightenment': {
         en: 'Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring.',
         es: 'Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
       },
-      'Digital Era': {
+      'Digital': {
         en: 'Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring.',
         es: 'Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring. Generate all content in Spanish.'
       }
@@ -252,11 +252,11 @@ export const PROMPT_REFERENCE_DATA = {
         en: 'Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring.',
         es: 'Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring. Generate all content in Spanish.'
       },
-      'Enlightenment Era': {
+      'Enlightenment': {
         en: 'Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring.',
         es: 'Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
       },
-      'Digital Era': {
+      'Digital': {
         en: 'Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring.',
         es: 'Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring. Generate all content in Spanish.'
       }

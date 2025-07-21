@@ -149,7 +149,7 @@ function OrbGame() {
 
   // Add epoch state
   const [currentEpoch, setCurrentEpoch] = useState('Modern');
-  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
+  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
   
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
@@ -781,12 +781,7 @@ function OrbGame() {
       setCurrentNewsIndex(nextIndex);
       setCurrentNews(filteredStories[nextIndex]);
       
-      // Auto-play audio if available and not muted
-      if (filteredStories[nextIndex]?.ttsAudio && !isMuted) {
-        setTimeout(() => {
-          playAudio();
-        }, 100);
-      }
+      // Removed auto-play audio - user must click play button
     }
   };
 
@@ -797,12 +792,7 @@ function OrbGame() {
       setCurrentNewsIndex(prevIndex);
       setCurrentNews(filteredStories[prevIndex]);
       
-      // Auto-play audio if available and not muted
-      if (filteredStories[prevIndex]?.ttsAudio && !isMuted) {
-        setTimeout(() => {
-          playAudio();
-        }, 100);
-      }
+      // Removed auto-play audio - user must click play button
     }
   };
 
@@ -991,7 +981,7 @@ function OrbGame() {
           
           {/* AI Model Selector in News Panel */}
           <div className="news-model-selector">
-            <label>{t('ai.model.select')}:</label>
+            <label>AI Model:</label>
             <select value={selectedModel} onChange={(e) => {
               setSelectedModel(e.target.value);
               // Don't clear stories - keep panel visible until user manually closes
@@ -1016,12 +1006,7 @@ function OrbGame() {
                   // Load fresh stories with audio (force fresh generation)
                   await loadStoryForOrb(orbInCenter, true);
                   
-                  // Auto-play audio if available and not muted
-                  if (currentNews?.ttsAudio && !isMuted) {
-                    setTimeout(() => {
-                      playAudio();
-                    }, 500); // Small delay to ensure audio is ready
-                  }
+                  // Removed auto-play audio - user must click play button
                 }
               }}
               className="go-button"

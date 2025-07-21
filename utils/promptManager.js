@@ -105,7 +105,7 @@ class PromptManager {
    * Get all prompts for a specific category
    */
   getCategoryPrompts(category, language = 'en') {
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
     const prompts = {};
     
     epochs.forEach(epoch => {
@@ -134,7 +134,7 @@ class PromptManager {
    */
   getLanguagePrompts(language = 'en') {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -166,7 +166,7 @@ class PromptManager {
    */
   validatePrompts() {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment Era', 'Digital Era'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
     const languages = ['en', 'es'];
     const missing = [];
 

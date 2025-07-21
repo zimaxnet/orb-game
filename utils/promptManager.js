@@ -119,7 +119,7 @@ class PromptManager {
    * Get all prompts for a specific epoch
    */
   getEpochPrompts(epoch, language = 'en') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -133,7 +133,7 @@ class PromptManager {
    * Get all prompts for a specific language
    */
   getLanguagePrompts(language = 'en') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
     const prompts = {};
     
@@ -153,11 +153,11 @@ class PromptManager {
   getPromptStats() {
     return {
       totalCached: this.cache.size,
-      categories: 10,
+      categories: 9,
       epochs: 7,
       languages: 2,
       models: 4,
-      totalCombinations: 10 * 7 * 2 * 4
+      totalCombinations: 9 * 7 * 2 * 4
     };
   }
 
@@ -165,7 +165,7 @@ class PromptManager {
    * Validate that all prompts exist
    */
   validatePrompts() {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality', 'Positive Comments'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
     const languages = ['en', 'es'];
     const missing = [];

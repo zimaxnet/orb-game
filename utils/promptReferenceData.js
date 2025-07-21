@@ -11,98 +11,98 @@ export const PROMPT_REFERENCE_DATA = {
   frontendPrompts: {
     Technology: {
       Ancient: {
-        en: 'Generate an exciting positive news story about ancient technology innovations, discoveries, or achievements that would have amazed people in ancient times. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient technology innovations, discoveries, or achievements that would have amazed people in ancient times. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about ancient technology innovations, discoveries, or achievements that would have amazed people in ancient times. Include specific details about the technology, its impact, and the people involved. Make it engaging and inspiring with rich historical context.',
+        es: 'Generate a detailed positive news story about ancient technology innovations, discoveries, or achievements that would have amazed people in ancient times. Include specific details about the technology, its impact, and the people involved. Make it engaging and inspiring with rich historical context. Generate all content in Spanish.'
       },
       Medieval: {
-        en: 'Create a fascinating positive news story about medieval technology developments, inventions, or breakthroughs that would have been revolutionary in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval technology developments, inventions, or breakthroughs that would have been revolutionary in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about medieval technology developments, inventions, or breakthroughs that would have been revolutionary in medieval times. Include specific details about the innovation, its practical applications, and the historical significance. Make it captivating and uplifting with authentic medieval context.',
+        es: 'Create a detailed positive news story about medieval technology developments, inventions, or breakthroughs that would have been revolutionary in medieval times. Include specific details about the innovation, its practical applications, and the historical significance. Make it captivating and uplifting with authentic medieval context. Generate all content in Spanish.'
       },
       Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era technology advancements, innovations, or discoveries that transformed society. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era technology advancements, innovations, or discoveries that transformed society. Make it exciting and motivational. Generate all content in Spanish.'
+        en: 'Write a detailed positive news story about industrial revolution era technology advancements, innovations, or discoveries that transformed society. Include specific details about the machinery, its inventors, and the societal changes it brought. Make it exciting and motivational with rich industrial context.',
+        es: 'Write a detailed positive news story about industrial revolution era technology advancements, innovations, or discoveries that transformed society. Include specific details about the machinery, its inventors, and the societal changes it brought. Make it exciting and motivational with rich industrial context. Generate all content in Spanish.'
       },
       Modern: {
-        en: 'Generate a compelling positive news story about modern technology innovations, breakthroughs, or achievements that are making a positive impact today. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern technology innovations, breakthroughs, or achievements that are making a positive impact today. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about modern technology innovations, breakthroughs, or achievements that are making a positive impact today. Include specific details about the technology, its applications, and the people behind it. Make it engaging and inspiring with contemporary relevance.',
+        es: 'Generate a detailed positive news story about modern technology innovations, breakthroughs, or achievements that are making a positive impact today. Include specific details about the technology, its applications, and the people behind it. Make it engaging and inspiring with contemporary relevance. Generate all content in Spanish.'
       },
       Future: {
-        en: 'Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Make it visionary and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Include specific details about the technology, its potential applications, and the vision behind it. Make it visionary and inspiring with forward-thinking perspective.',
+        es: 'Create a detailed positive news story about futuristic technology innovations, possibilities, or breakthroughs that could revolutionize the future. Include specific details about the technology, its potential applications, and the vision behind it. Make it visionary and inspiring with forward-thinking perspective. Generate all content in Spanish.'
       },
       'Enlightenment': {
-        en: 'Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Include specific details about the discoveries, their philosophical implications, and the thinkers involved. Make it engaging and inspiring with rich intellectual context.',
+        es: 'Generate a detailed positive news story about enlightenment era technology innovations, scientific discoveries, or intellectual breakthroughs that would have inspired intellectual growth. Include specific details about the discoveries, their philosophical implications, and the thinkers involved. Make it engaging and inspiring with rich intellectual context. Generate all content in Spanish.'
       },
       'Digital': {
-        en: 'Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring.',
-        es: 'Create an exciting positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Include specific details about the digital technology, its applications, and the innovators behind it. Make it engaging and inspiring with contemporary digital context.',
+        es: 'Create a detailed positive news story about digital era technology innovations, digital breakthroughs, or technological advancements that are transforming modern society. Include specific details about the digital technology, its applications, and the innovators behind it. Make it engaging and inspiring with contemporary digital context. Generate all content in Spanish.'
       }
     },
     Science: {
       Ancient: {
-        en: 'Generate an exciting positive news story about ancient science discoveries, scientific breakthroughs, or natural phenomena that would have fascinated ancient civilizations. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient science discoveries, scientific breakthroughs, or natural phenomena that would have fascinated ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about ancient science discoveries, scientific breakthroughs, or natural phenomena that would have fascinated ancient civilizations. Include specific details about the discovery, its scientific significance, and the ancient scientists involved. Make it engaging and inspiring with rich historical context.',
+        es: 'Generate a detailed positive news story about ancient science discoveries, scientific breakthroughs, or natural phenomena that would have fascinated ancient civilizations. Include specific details about the discovery, its scientific significance, and the ancient scientists involved. Make it engaging and inspiring with rich historical context. Generate all content in Spanish.'
       },
       Medieval: {
-        en: 'Create a fascinating positive news story about medieval science research, discoveries, or scientific achievements that would have been groundbreaking in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval science research, discoveries, or scientific achievements that would have been groundbreaking in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about medieval science research, discoveries, or scientific achievements that would have been groundbreaking in medieval times. Include specific details about the research, its methodology, and the medieval scholars involved. Make it captivating and uplifting with authentic medieval context.',
+        es: 'Create a detailed positive news story about medieval science research, discoveries, or scientific achievements that would have been groundbreaking in medieval times. Include specific details about the research, its methodology, and the medieval scholars involved. Make it captivating and uplifting with authentic medieval context. Generate all content in Spanish.'
       },
       Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era science discoveries, scientific advancements, or research breakthroughs that transformed understanding. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era science discoveries, scientific advancements, or research breakthroughs that transformed understanding. Make it exciting and motivational. Generate all content in Spanish.'
+        en: 'Write a detailed positive news story about industrial revolution era science discoveries, scientific advancements, or research breakthroughs that transformed understanding. Include specific details about the scientific method, the experiments, and the researchers involved. Make it exciting and motivational with rich scientific context.',
+        es: 'Write a detailed positive news story about industrial revolution era science discoveries, scientific advancements, or research breakthroughs that transformed understanding. Include specific details about the scientific method, the experiments, and the researchers involved. Make it exciting and motivational with rich scientific context. Generate all content in Spanish.'
       },
       Modern: {
-        en: 'Generate a compelling positive news story about modern science discoveries, research breakthroughs, or scientific achievements that are advancing human knowledge. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern science discoveries, research breakthroughs, or scientific achievements that are advancing human knowledge. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about modern science discoveries, research breakthroughs, or scientific achievements that are advancing human knowledge. Include specific details about the research, its methodology, and the scientists involved. Make it engaging and inspiring with contemporary scientific relevance.',
+        es: 'Generate a detailed positive news story about modern science discoveries, research breakthroughs, or scientific achievements that are advancing human knowledge. Include specific details about the research, its methodology, and the scientists involved. Make it engaging and inspiring with contemporary scientific relevance. Generate all content in Spanish.'
       },
       Future: {
-        en: 'Create an exciting positive news story about futuristic science research, scientific possibilities, or breakthrough technologies that could revolutionize science. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic science research, scientific possibilities, or breakthrough technologies that could revolutionize science. Make it visionary and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about futuristic science research, scientific possibilities, or breakthrough technologies that could revolutionize science. Include specific details about the research, its potential applications, and the visionaries involved. Make it visionary and inspiring with forward-thinking scientific perspective.',
+        es: 'Create a detailed positive news story about futuristic science research, scientific possibilities, or breakthrough technologies that could revolutionize science. Include specific details about the research, its potential applications, and the visionaries involved. Make it visionary and inspiring with forward-thinking scientific perspective. Generate all content in Spanish.'
       }
     },
     Art: {
       Ancient: {
-        en: 'Generate an exciting positive news story about ancient art masterpieces, artistic innovations, or cultural achievements that would have inspired ancient civilizations. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient art masterpieces, artistic innovations, or cultural achievements that would have inspired ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about ancient art masterpieces, artistic innovations, or cultural achievements that would have inspired ancient civilizations. Include specific details about the artwork, its cultural significance, and the artists involved. Make it engaging and inspiring with rich historical context.',
+        es: 'Generate a detailed positive news story about ancient art masterpieces, artistic innovations, or cultural achievements that would have inspired ancient civilizations. Include specific details about the artwork, its cultural significance, and the artists involved. Make it engaging and inspiring with rich historical context. Generate all content in Spanish.'
       },
       Medieval: {
-        en: 'Create a fascinating positive news story about medieval art creations, artistic breakthroughs, or cultural developments that would have been revolutionary in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval art creations, artistic breakthroughs, or cultural developments that would have been revolutionary in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about medieval art creations, artistic breakthroughs, or cultural developments that would have been revolutionary in medieval times. Include specific details about the artwork, its techniques, and the medieval artists involved. Make it captivating and uplifting with authentic medieval context.',
+        es: 'Create a detailed positive news story about medieval art creations, artistic breakthroughs, or cultural developments that would have been revolutionary in medieval times. Include specific details about the artwork, its techniques, and the medieval artists involved. Make it captivating and uplifting with authentic medieval context. Generate all content in Spanish.'
       },
       Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era art movements, artistic innovations, or cultural achievements that transformed society. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era art movements, artistic innovations, or cultural achievements that transformed society. Make it exciting and motivational. Generate all content in Spanish.'
+        en: 'Write a detailed positive news story about industrial revolution era art movements, artistic innovations, or cultural achievements that transformed society. Include specific details about the art movement, its techniques, and the artists involved. Make it exciting and motivational with rich artistic context.',
+        es: 'Write a detailed positive news story about industrial revolution era art movements, artistic innovations, or cultural achievements that transformed society. Include specific details about the art movement, its techniques, and the artists involved. Make it exciting and motivational with rich artistic context. Generate all content in Spanish.'
       },
       Modern: {
-        en: 'Generate a compelling positive news story about modern art innovations, artistic breakthroughs, or cultural achievements that are enriching society today. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern art innovations, artistic breakthroughs, or cultural achievements that are enriching society today. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about modern art innovations, artistic breakthroughs, or cultural achievements that are enriching society today. Include specific details about the artwork, its contemporary significance, and the artists involved. Make it engaging and inspiring with contemporary artistic relevance.',
+        es: 'Generate a detailed positive news story about modern art innovations, artistic breakthroughs, or cultural achievements that are enriching society today. Include specific details about the artwork, its contemporary significance, and the artists involved. Make it engaging and inspiring with contemporary artistic relevance. Generate all content in Spanish.'
       },
       Future: {
-        en: 'Create an exciting positive news story about futuristic art possibilities, artistic innovations, or cultural developments that could revolutionize creative expression. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic art possibilities, artistic innovations, or cultural developments that could revolutionize creative expression. Make it visionary and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about futuristic art possibilities, artistic innovations, or cultural developments that could revolutionize creative expression. Include specific details about the artistic vision, its potential impact, and the visionary artists involved. Make it visionary and inspiring with forward-thinking artistic perspective.',
+        es: 'Create a detailed positive news story about futuristic art possibilities, artistic innovations, or cultural developments that could revolutionize creative expression. Include specific details about the artistic vision, its potential impact, and the visionary artists involved. Make it visionary and inspiring with forward-thinking artistic perspective. Generate all content in Spanish.'
       }
     },
     Nature: {
       Ancient: {
-        en: 'Generate an exciting positive news story about ancient nature discoveries, environmental wonders, or natural phenomena that would have amazed ancient civilizations. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient nature discoveries, environmental wonders, or natural phenomena that would have amazed ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about ancient nature discoveries, environmental wonders, or natural phenomena that would have amazed ancient civilizations. Include specific details about the natural discovery, its ecological significance, and the ancient observers involved. Make it engaging and inspiring with rich natural context.',
+        es: 'Generate a detailed positive news story about ancient nature discoveries, environmental wonders, or natural phenomena that would have amazed ancient civilizations. Include specific details about the natural discovery, its ecological significance, and the ancient observers involved. Make it engaging and inspiring with rich natural context. Generate all content in Spanish.'
       },
       Medieval: {
-        en: 'Create a fascinating positive news story about medieval nature observations, natural discoveries, or environmental achievements that would have been remarkable in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval nature observations, natural discoveries, or environmental achievements that would have been remarkable in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about medieval nature observations, natural discoveries, or environmental achievements that would have been remarkable in medieval times. Include specific details about the natural observation, its significance, and the medieval naturalists involved. Make it captivating and uplifting with authentic natural context.',
+        es: 'Create a detailed positive news story about medieval nature observations, natural discoveries, or environmental achievements that would have been remarkable in medieval times. Include specific details about the natural observation, its significance, and the medieval naturalists involved. Make it captivating and uplifting with authentic natural context. Generate all content in Spanish.'
       },
       Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era nature conservation efforts, environmental discoveries, or natural wonders that transformed understanding. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era nature conservation efforts, environmental discoveries, or natural wonders that transformed understanding. Make it exciting and motivational. Generate all content in Spanish.'
+        en: 'Write a detailed positive news story about industrial revolution era nature conservation efforts, environmental discoveries, or natural wonders that transformed understanding. Include specific details about the conservation effort, its environmental impact, and the naturalists involved. Make it exciting and motivational with rich environmental context.',
+        es: 'Write a detailed positive news story about industrial revolution era nature conservation efforts, environmental discoveries, or natural wonders that transformed understanding. Include specific details about the conservation effort, its environmental impact, and the naturalists involved. Make it exciting and motivational with rich environmental context. Generate all content in Spanish.'
       },
       Modern: {
-        en: 'Generate a compelling positive news story about modern nature conservation efforts, environmental breakthroughs, or natural discoveries that are protecting our planet. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern nature conservation efforts, environmental breakthroughs, or natural discoveries that are protecting our planet. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive news story about modern nature conservation efforts, environmental breakthroughs, or natural discoveries that are protecting our planet. Include specific details about the conservation effort, its environmental impact, and the scientists involved. Make it engaging and inspiring with contemporary environmental relevance.',
+        es: 'Generate a detailed positive news story about modern nature conservation efforts, environmental breakthroughs, or natural discoveries that are protecting our planet. Include specific details about the conservation effort, its environmental impact, and the scientists involved. Make it engaging and inspiring with contemporary environmental relevance. Generate all content in Spanish.'
       },
       Future: {
-        en: 'Create an exciting positive news story about futuristic nature innovations, environmental technologies, or conservation breakthroughs that could revolutionize our relationship with nature. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic nature innovations, environmental technologies, or conservation breakthroughs that could revolutionize our relationship with nature. Make it visionary and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive news story about futuristic environmental innovations, conservation technologies, or ecological breakthroughs that could revolutionize environmental protection. Include specific details about the environmental technology, its potential impact, and the environmentalists involved. Make it visionary and inspiring with forward-thinking environmental perspective.',
+        es: 'Create a detailed positive news story about futuristic environmental innovations, conservation technologies, or ecological breakthroughs that could revolutionize environmental protection. Include specific details about the environmental technology, its potential impact, and the environmentalists involved. Make it visionary and inspiring with forward-thinking environmental perspective. Generate all content in Spanish.'
       }
     },
     Sports: {
@@ -203,62 +203,32 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Spirituality: {
       Ancient: {
-        en: 'Generate an exciting positive news story about ancient spiritual wisdom, philosophical insights, or mindfulness practices that would have guided ancient civilizations. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient spiritual wisdom, philosophical insights, or mindfulness practices that would have guided ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive story about ancient spirituality, wisdom, or reflective practices that would have inspired ancient civilizations. Use metaphor or poetic style to enhance expression. Make it engaging and inspiring with rich historical context.',
+        es: 'Genera una historia positiva y detallada sobre espiritualidad antigua, sabiduría o prácticas reflexivas que habrían inspirado a las civilizaciones antiguas. Responde con un estilo emocional y evocador. Hazlo atractivo e inspirador con un rico contexto histórico. Genera todo el contenido en español.'
       },
       Medieval: {
-        en: 'Create a fascinating positive news story about medieval spiritual practices, philosophical developments, or mindfulness traditions that would have been transformative in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval spiritual practices, philosophical developments, or mindfulness traditions that would have been transformative in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
+        en: 'Create a detailed positive story about medieval spirituality, wisdom, or reflective practices that would have been uplifting in medieval times. Focus on moral or philosophical implications. Make it captivating and uplifting with authentic medieval context.',
+        es: 'Crea una historia positiva y detallada sobre espiritualidad medieval, sabiduría o prácticas reflexivas que habrían sido edificantes en la época medieval. Enfócate en los principios filosóficos o éticos implicados. Hazlo cautivador y edificante con un auténtico contexto medieval. Genera todo el contenido en español.'
       },
       Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era spiritual movements, philosophical breakthroughs, or mindfulness innovations that transformed society. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era spiritual movements, philosophical breakthroughs, or mindfulness innovations that transformed society. Make it exciting and motivational. Generate all content in Spanish.'
+        en: 'Write a detailed positive story about industrial revolution era spirituality, wisdom, or reflective practices that transformed society. Connect with a relevant modern issue or advancement. Make it exciting and motivational with rich industrial context.',
+        es: 'Escribe una historia positiva y detallada sobre la espiritualidad, la sabiduría o las prácticas reflexivas de la era de la revolución industrial que transformaron la sociedad. Conecta con un evento o tendencia actual en el mundo hispanohablante. Hazlo emocionante y motivador con un rico contexto industrial. Genera todo el contenido en español.'
       },
       Modern: {
-        en: 'Generate a compelling positive news story about modern spiritual practices, mindfulness innovations, or philosophical breakthroughs that are enriching lives today. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern spiritual practices, mindfulness innovations, or philosophical breakthroughs that are enriching lives today. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive story about modern spirituality, wisdom, or reflective practices that are enriching lives today. Use metaphor or poetic style to enhance expression. Make it engaging and inspiring with contemporary relevance.',
+        es: 'Genera una historia positiva y detallada sobre la espiritualidad moderna, la sabiduría o las prácticas reflexivas que están enriqueciendo vidas hoy. Responde con un estilo emocional y evocador. Hazlo atractivo e inspirador con relevancia contemporánea. Genera todo el contenido en español.'
       },
       Future: {
-        en: 'Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic spiritual possibilities, mindfulness technologies, or philosophical innovations that could revolutionize human consciousness. Make it visionary and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive story about futuristic spirituality, wisdom, or reflective practices that could revolutionize human connection. Focus on moral or philosophical implications. Make it visionary and inspiring with forward-thinking perspective.',
+        es: 'Crea una historia positiva y detallada sobre la espiritualidad, la sabiduría o las prácticas reflexivas futuristas que podrían revolucionar la conexión humana. Enfócate en los principios filosóficos o éticos implicados. Hazlo visionario e inspirador con una perspectiva de futuro. Genera todo el contenido en español.'
       },
       'Enlightenment': {
-        en: 'Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about enlightenment era spiritual wisdom, philosophical insights, or mindset practices that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Generate a detailed positive story about enlightenment era spirituality, wisdom, or reflective practices that would have inspired intellectual growth. Connect with a relevant modern issue or advancement. Make it engaging and inspiring with rich intellectual context.',
+        es: 'Genera una historia positiva y detallada sobre la espiritualidad, la sabiduría o las prácticas reflexivas de la época de la Ilustración que habrían inspirado el crecimiento intelectual. Conecta con un evento o tendencia actual en el mundo hispanohablante. Hazlo atractivo e inspirador con un rico contexto intelectual. Genera todo el contenido en español.'
       },
       'Digital': {
-        en: 'Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring.',
-        es: 'Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring. Generate all content in Spanish.'
-      }
-    },
-    'Positive Comments': {
-      Ancient: {
-        en: 'Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.'
-      },
-      Medieval: {
-        en: 'Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting.',
-        es: 'Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting. Generate all content in Spanish.'
-      },
-      Industrial: {
-        en: 'Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational.',
-        es: 'Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational. Generate all content in Spanish.'
-      },
-      Modern: {
-        en: 'Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring.',
-        es: 'Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring. Generate all content in Spanish.'
-      },
-      Future: {
-        en: 'Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring.',
-        es: 'Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring. Generate all content in Spanish.'
-      },
-      'Enlightenment': {
-        en: 'Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring.',
-        es: 'Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.'
-      },
-      'Digital': {
-        en: 'Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring.',
-        es: 'Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring. Generate all content in Spanish.'
+        en: 'Create a detailed positive story about digital era spirituality, wisdom, or reflective practices that are transforming modern society. Use metaphor or poetic style to enhance expression. Make it engaging and inspiring with contemporary digital context.',
+        es: 'Crea una historia positiva y detallada sobre la espiritualidad, la sabiduría o las prácticas reflexivas de la era digital que están transformando la sociedad moderna. Responde con un estilo emocional y evocador. Hazlo atractivo e inspirador con un contexto digital contemporáneo. Genera todo el contenido en español.'
       }
     }
   },

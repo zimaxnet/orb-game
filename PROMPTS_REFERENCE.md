@@ -77,7 +77,6 @@ graph TB
         X[Space]
         Y[Innovation]
         Y1[Spirituality]
-        Y2[Positive Comments]
     end
 
     subgraph "⏰ Epochs"
@@ -199,7 +198,7 @@ flowchart TD
 
 ```mermaid
 graph LR
-    subgraph "10 Categories"
+    subgraph "9 Categories"
         A1[Technology]
         A2[Science]
         A3[Art]
@@ -209,7 +208,6 @@ graph LR
         A7[Space]
         A8[Innovation]
         A9[Spirituality]
-        A10[Positive Comments]
     end
     
     subgraph "7 Epochs"
@@ -243,7 +241,6 @@ graph LR
     A7 --> E
     A8 --> E
     A9 --> E
-    A10 --> E
     
     B1 --> F[10 Prompts per Epoch]
     B2 --> F
@@ -492,52 +489,6 @@ This document contains all prompts used in the Orb Game system, organized by cat
 #### Digital Era Epoch
 - **English**: `Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring.`
 - **Spanish**: `Create an exciting positive news story about digital era spiritual practices, mindfulness apps, or philosophical innovations that are transforming modern consciousness. Make it engaging and inspiring. Generate all content in Spanish.`
-
-### Positive Comments Category
-
-#### Ancient Epoch
-- **English**: `Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring.`
-- **Spanish**: `Generate an exciting positive news story about ancient acts of kindness, encouraging words, or motivational practices that would have inspired ancient civilizations. Make it engaging and inspiring. Generate all content in Spanish.`
-
-#### Medieval Epoch
-- **English**: `Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting.`
-- **Spanish**: `Create a fascinating positive news story about medieval acts of encouragement, supportive traditions, or motivational practices that would have been uplifting in medieval times. Make it captivating and uplifting. Generate all content in Spanish.`
-
-#### Industrial Epoch
-- **English**: `Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational.`
-- **Spanish**: `Write an inspiring positive news story about industrial revolution era acts of kindness, encouraging movements, or motivational innovations that transformed society. Make it exciting and motivational. Generate all content in Spanish.`
-
-#### Modern Epoch
-- **English**: `Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring.`
-- **Spanish**: `Generate a compelling positive news story about modern acts of kindness, encouraging practices, or motivational breakthroughs that are enriching lives today. Make it engaging and inspiring. Generate all content in Spanish.`
-
-#### Future Epoch
-- **English**: `Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring.`
-- **Spanish**: `Create an exciting positive news story about futuristic acts of kindness, encouraging technologies, or motivational innovations that could revolutionize human connection. Make it visionary and inspiring. Generate all content in Spanish.`
-
-#### Enlightenment Era Epoch
-- **English**: `Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring.`
-- **Spanish**: `Generate an exciting positive news story about enlightenment era acts of encouragement, supportive wisdom, or motivational insights that would have inspired intellectual growth. Make it engaging and inspiring. Generate all content in Spanish.`
-
-#### Digital Era Epoch
-- **English**: `Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring.`
-- **Spanish**: `Create an exciting positive news story about digital era acts of kindness, encouraging social media practices, or motivational innovations that are transforming modern communication. Make it engaging and inspiring. Generate all content in Spanish.`
-
-#### Medieval Epoch
-- **English**: `Create a fascinating positive news story about medieval innovation developments, technological breakthroughs, or creative innovations that would have been groundbreaking in medieval times. Make it captivating and uplifting.`
-- **Spanish**: `Create a fascinating positive news story about medieval innovation developments, technological breakthroughs, or creative innovations that would have been groundbreaking in medieval times. Make it captivating and uplifting. Generate all content in Spanish.`
-
-#### Industrial Epoch
-- **English**: `Write an inspiring positive news story about industrial revolution era innovation innovations, technological advancements, or creative breakthroughs that transformed society. Make it exciting and motivational.`
-- **Spanish**: `Write an inspiring positive news story about industrial revolution era innovation innovations, technological advancements, or creative breakthroughs that transformed society. Make it exciting and motivational. Generate all content in Spanish.`
-
-#### Modern Epoch
-- **English**: `Generate a compelling positive news story about modern innovation innovations, technological breakthroughs, or creative achievements that are transforming the world today. Make it engaging and inspiring.`
-- **Spanish**: `Generate a compelling positive news story about modern innovation innovations, technological breakthroughs, or creative achievements that are transforming the world today. Make it engaging and inspiring. Generate all content in Spanish.`
-
-#### Future Epoch
-- **English**: `Create an exciting positive news story about futuristic innovation possibilities, technological innovations, or creative breakthroughs that could revolutionize human civilization. Make it visionary and inspiring.`
-- **Spanish**: `Create an exciting positive news story about futuristic innovation possibilities, technological innovations, or creative breakthroughs that could revolutionize human civilization. Make it visionary and inspiring. Generate all content in Spanish.`
 
 ---
 

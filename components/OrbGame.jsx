@@ -119,7 +119,7 @@ function OrbGame() {
   const [categories] = useState([
     { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
     { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' },
-    { name: 'Spirituality', color: '#ff9800' }, { name: 'Positive Comments', color: '#e91e63' }
+    { name: 'Spirituality', color: '#ff9800' }
   ]);
   // Remove score/streak state
   // const [score, setScore] = useState(0);
@@ -1093,7 +1093,6 @@ function OrbGame() {
             )}
           </div>
           <div className="news-content">
-            <p className="news-summary">{currentNews.summary}</p>
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>
           <div className="news-actions">
@@ -1106,6 +1105,9 @@ function OrbGame() {
               {isLoading ? '⏳' : '🔍'} {language === 'es' ? 'Aprender Más' : 'Learn More'}
             </button>
           </div>
+          <div className="ai-model-section">
+            <span className="ai-model-text">AI Model: {currentAISource}</span>
+          </div>
           <div className="news-meta">
             <span className="zimax-ai-labs">
               <a href="#" onClick={(e) => {
@@ -1113,7 +1115,7 @@ function OrbGame() {
                 handleZimaxAILabsClick();
               }}>
                 Zimax AI Labs
-              </a> AI Model: {currentAISource}
+              </a>
             </span>
             <span className="news-date">
               {new Date(currentNews.publishedAt).toLocaleDateString()}

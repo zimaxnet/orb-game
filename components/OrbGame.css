@@ -510,6 +510,24 @@
   box-shadow: none;
 }
 
+.ai-model-section {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 8px 0;
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.ai-model-text {
+  color: #000000;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-shadow: none;
+}
+
 .news-navigation button {
   background: rgba(255, 255, 255, 0.2);
   color: white;

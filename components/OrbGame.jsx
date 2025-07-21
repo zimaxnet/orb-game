@@ -996,7 +996,7 @@ function OrbGame() {
           <div className="loading-spinner"></div>
           <div className="loading-text">
             <h4>{currentNews?.headline || 'Gathering your story...'}</h4>
-            <p>Searching for positive news using <strong>{currentAISource}</strong> AI</p>
+            <p>Context engineered by Zimax AI Labs using <strong>{currentAISource}</strong> AI</p>
             <p className="loading-detail">{currentNews?.summary || 'This may take a few seconds as we find the perfect story for you!'}</p>
             <div className="loading-progress">
               <div className="progress-bar">

@@ -809,7 +809,9 @@ function OrbGame() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: `Based on this story: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide additional fascinating details, background information, and related developments about this topic. Make it engaging and informative.`,
+          message: language === 'es' 
+            ? `Basado en esta historia: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Por favor proporciona detalles adicionales fascinantes, información de antecedentes, desarrollos relacionados, contexto histórico, implicaciones futuras, y conexiones interesantes sobre este tema. Incluye datos específicos, investigaciones recientes, y perspectivas expertas. Hazlo muy detallado, atractivo e informativo con al menos 400-500 palabras. Responde en español.`
+            : `Based on this story: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide extensive additional fascinating details, background information, related developments, historical context, future implications, and interesting connections about this topic. Include specific data, recent research, and expert perspectives. Make it very detailed, engaging, and informative with at least 400-500 words. Respond in English.`,
           useWebSearch: 'auto',
           language: language,
           count: 1
@@ -826,7 +828,7 @@ function OrbGame() {
         // Create a new story with the additional information
         const learnMoreStory = {
           headline: language === 'es' ? `${currentEpoch} ${orbInCenter.name} Historia - Más Información` : `${currentEpoch} ${orbInCenter.name} Story - Learn More`,
-          summary: data.response.trim(),
+          summary: language === 'es' ? 'Información detallada y profunda sobre el tema' : 'Detailed and in-depth information about the topic',
           fullText: data.response.trim(),
           source: `${selectedModel} AI - Learn More`,
           publishedAt: new Date().toISOString(),
@@ -995,9 +997,9 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>{currentNews?.headline || 'Gathering your story...'}</h4>
-            <p>Context engineered by Zimax AI Labs using <strong>{currentAISource}</strong> AI</p>
-            <p className="loading-detail">{currentNews?.summary || 'This may take a few seconds as we find the perfect story for you!'}</p>
+            <h4>{currentNews?.headline || (language === 'es' ? 'Recopilando tu historia...' : 'Gathering your story...')}</h4>
+            <p>{language === 'es' ? 'Contexto diseñado por Zimax AI Labs usando' : 'Context engineered by Zimax AI Labs using'} <strong>{currentAISource}</strong> AI</p>
+            <p className="loading-detail">{currentNews?.summary || (language === 'es' ? '¡Esto puede tomar unos segundos mientras encontramos la historia perfecta para ti!' : 'This may take a few seconds as we find the perfect story for you!')}</p>
             <div className="loading-progress">
               <div className="progress-bar">
                 <div className="progress-fill"></div>
@@ -1120,25 +1122,6 @@ function OrbGame() {
             <span className="news-date">
               {new Date(currentNews.publishedAt).toLocaleDateString()}
             </span>
-          </div>
-          <div className="news-navigation">
-            <button 
-              onClick={prevStory} 
-              disabled={getFilteredStories().length <= 1}
-              className={getFilteredStories().length <= 1 ? 'disabled' : ''}
-            >
-              ← {t('news.previous')}
-            </button>
-            <span className="story-counter">
-              {currentNewsIndex + 1} {t('news.story.of')} {getFilteredStories().length} {t('news.stories')}
-            </span>
-            <button 
-              onClick={nextStory} 
-              disabled={getFilteredStories().length <= 1}
-              className={getFilteredStories().length <= 1 ? 'disabled' : ''}
-            >
-              {t('news.next')} →
-            </button>
           </div>
         </div>
       )}

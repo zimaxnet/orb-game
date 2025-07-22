@@ -1018,12 +1018,28 @@ function OrbGame() {
             </div>
             <div className="audio-controls">
               <button 
+                onClick={prevStory} 
+                disabled={getFilteredStories().length <= 1}
+                className={`nav-button prev-button ${getFilteredStories().length <= 1 ? 'disabled' : ''}`}
+                title={language === 'es' ? 'Historia anterior' : 'Previous story'}
+              >
+                ←
+              </button>
+              <button 
                 onClick={playAudio}
                 disabled={!currentNews.ttsAudio || isMuted || isAudioLoading}
                 className={`play-button ${isPlaying ? 'playing' : ''} ${isAudioLoading ? 'loading' : ''}`}
                 title={audioError ? 'Audio error - try again' : isAudioLoading ? 'Loading audio...' : isPlaying ? 'Pause audio' : 'Play audio'}
               >
                 {isAudioLoading ? '⏳' : isPlaying ? '⏸️' : '▶️'}
+              </button>
+              <button 
+                onClick={nextStory} 
+                disabled={getFilteredStories().length <= 1}
+                className={`nav-button next-button ${getFilteredStories().length <= 1 ? 'disabled' : ''}`}
+                title={language === 'es' ? 'Siguiente historia' : 'Next story'}
+              >
+                →
               </button>
               <button 
                 onClick={toggleMute}

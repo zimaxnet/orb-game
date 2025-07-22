@@ -337,7 +337,7 @@
   align-items: center;
 }
 
-.play-button, .mute-button, .close-button {
+.play-button, .mute-button, .close-button, .nav-button {
   background: #667eea;
   color: white;
   border: none;
@@ -353,7 +353,7 @@
   justify-content: center;
 }
 
-.play-button:hover, .mute-button:hover, .close-button:hover {
+.play-button:hover, .mute-button:hover, .close-button:hover, .nav-button:hover:not(.disabled) {
   background: #5a67d8;
   transform: scale(1.05);
 }
@@ -393,6 +393,18 @@
 
 .close-button:hover {
   background: #e74c3c !important;
+}
+
+.nav-button.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.5;
+}
+
+.nav-button.disabled:hover {
+  background: #ccc;
+  transform: none;
 }
 
 .news-content {

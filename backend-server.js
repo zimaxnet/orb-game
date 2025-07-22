@@ -437,15 +437,19 @@ Current conversation context: ${memoryContext}`;
     
     if (azureOpenAIClient) {
       try {
-        console.log('📤 Sending request to Azure OpenAI...');
+        // Use centralized prompt manager for enhanced prompts
+        const promptManager = await import('../utils/promptManager.js');
+        const enhancedSystemPrompt = promptManager.default.getSystemPrompt(language);
+        
+        console.log('📤 Sending request to Azure OpenAI with enhanced prompts...');
         const chatResponse = await azureOpenAIClient.getChatCompletions(
           process.env.AZURE_OPENAI_DEPLOYMENT,
           [
-            { role: 'system', content: systemPrompt },
+            { role: 'system', content: enhancedSystemPrompt },
             { role: 'user', content: fullMessage }
           ],
           {
-            maxCompletionTokens: 100
+            maxCompletionTokens: 800
           }
         );
         console.log('✅ Azure OpenAI response received');
@@ -475,6 +479,10 @@ Current conversation context: ${memoryContext}`;
       try {
         console.log('🎵 Generating TTS audio for:', aiResponse.substring(0, 50) + '...');
         
+        // Use centralized prompt manager for TTS voice selection
+        const promptManager = await import('../utils/promptManager.js');
+        const voice = promptManager.default.getTTSVoice(language);
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -484,7 +492,7 @@ Current conversation context: ${memoryContext}`;
           body: JSON.stringify({
             model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
             input: aiResponse,
-            voice: 'alloy',
+            voice: voice,
             response_format: 'mp3',
             speed: 1.0
           })
@@ -683,7 +691,7 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
 // New endpoint: Generate fresh stories from AI models
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt } = req.body;
+  const { epoch = 'Modern', model = 'o4-mini', count = 3, prompt, language = 'en' } = req.body;
   
   console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch...`);
   
@@ -693,20 +701,20 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
     // Generate stories based on the selected model
     switch (model) {
       case 'grok-4':
-        stories = await generateStoriesWithGrok(category, epoch, count, prompt);
+        stories = await generateStoriesWithGrok(category, epoch, count, prompt, language);
         break;
       case 'perplexity-sonar':
-        stories = await generateStoriesWithPerplexity(category, epoch, count, prompt);
+        stories = await generateStoriesWithPerplexity(category, epoch, count, prompt, language);
         break;
       case 'o4-mini':
       default:
-        stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt);
+        stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language);
         break;
     }
     
     if (stories.length === 0) {
       console.log(`⚠️ No stories generated for ${category}, using fallback...`);
-      const fallbackStory = await generateDirectFallbackStory(category);
+      const fallbackStory = await generateDirectFallbackStory(category, language);
       stories = [fallbackStory];
     }
     
@@ -877,10 +885,14 @@ async function generateStoriesWithPerplexity(category, epoch, count, customPromp
   }
 }
 
-async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt) {
+async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en') {
   try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
-    const prompt = customPrompt || defaultPrompt;
+    // Use centralized prompt manager for enhanced prompts
+    const promptManager = await import('../utils/promptManager.js');
+    const enhancedPrompt = promptManager.default.getBackendPromptTemplate('o4-mini', language)
+      .replace('{category}', category)
+      .replace('{epoch}', epoch);
+    const prompt = customPrompt || enhancedPrompt;
     
     const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
@@ -893,14 +905,14 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+            content: promptManager.default.getSystemPrompt(language)
           },
           {
             role: 'user',
-            content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
+            content: `${prompt} ${promptManager.default.getJSONResponseFormat('o4-mini')}`
           }
         ],
-        max_tokens: 800,
+        max_tokens: 1200,
         temperature: 0.7
       })
     });
@@ -924,6 +936,8 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
     const storiesWithTTS = await Promise.all(stories.map(async (story) => {
       let ttsAudio = null;
       try {
+        const voice = promptManager.default.getTTSVoice(language);
+        
         const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
           method: 'POST',
           headers: {
@@ -933,7 +947,7 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
           body: JSON.stringify({
             model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
             input: story.summary,
-            voice: 'alloy',
+            voice: voice,
             response_format: 'mp3'
           })
         });
@@ -960,8 +974,12 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
 }
 
 // Helper function to generate fallback stories when service is not available
-async function generateDirectFallbackStory(category) {
+async function generateDirectFallbackStory(category, language = 'en') {
   try {
+    // Use centralized prompt manager for enhanced prompts
+    const promptManager = await import('../utils/promptManager.js');
+    const fallbackStory = promptManager.default.getFallbackStory(category, language);
+    
     const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
       headers: {
@@ -973,20 +991,14 @@ async function generateDirectFallbackStory(category) {
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+            content: promptManager.default.getSystemPrompt(language)
           },
           {
             role: 'user',
-            content: `Create a positive news story about ${category}. Return the story in this exact JSON format:
-{
-  "headline": "Brief, engaging headline",
-  "summary": "One sentence summary of the story",
-  "fullText": "2-3 sentence detailed story with positive tone",
-  "source": "AI Generated"
-}`
+            content: `Create a detailed story about ${category}. ${promptManager.default.getJSONResponseFormat('o4-mini')}`
           }
         ],
-        max_tokens: 300,
+        max_tokens: 1200,
         temperature: 0.7
       })
     });
@@ -1014,6 +1026,8 @@ async function generateDirectFallbackStory(category) {
     // Generate TTS for the fallback story
     let ttsAudio = null;
     try {
+      const voice = promptManager.default.getTTSVoice(language);
+      
       const ttsResponse = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/${process.env.AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
         method: 'POST',
         headers: {
@@ -1023,7 +1037,7 @@ async function generateDirectFallbackStory(category) {
         body: JSON.stringify({
           model: process.env.AZURE_OPENAI_TTS_DEPLOYMENT,
           input: storyData.summary,
-          voice: 'alloy',
+          voice: voice,
           response_format: 'mp3'
         })
       });

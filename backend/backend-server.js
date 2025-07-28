@@ -780,6 +780,10 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   const category = req.params.category;
   const count = parseInt(req.query.count) || 1;  // Allow client to specify number of stories
   const epoch = req.query.epoch || 'Modern';
+  const storyType = req.query.storyType || 'historical-figure'; // Default to historical figures
+  const language = req.query.language || 'en';
+  
+  console.log(`📚 Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language})`);
   
   // If positive news service is not available, generate fallback content directly
   if (!positiveNewsService) {
@@ -795,11 +799,14 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   }
   
   try {
-    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch);
+    // Get stories from database with specific filters
+    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch, storyType, language);
     if (stories.length === 0) {
+      console.log(`⚠️ No ${storyType} stories found for ${category}, generating fallback...`);
       const fallbackStory = await positiveNewsService.generateFallbackStory(category);
       res.json([fallbackStory]);
     } else {
+      console.log(`✅ Found ${stories.length} ${storyType} stories for ${category}`);
       res.json(stories);
     }
   } catch (error) {
@@ -811,27 +818,27 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
 // New endpoint: Generate fresh stories from AI models (now only o4-mini)
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 1, prompt, language = 'en', ensureCaching = true } = req.body;
+  const { epoch = 'Modern', model = 'o4-mini', count = 1, prompt, language = 'en', ensureCaching = true, storyType = 'historical-figure' } = req.body;
   
-  console.log(`🤖 Generating fresh stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
+  console.log(`🤖 Generating fresh ${storyType} stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
   
   try {
     let stories = [];
     
     // First, try to get from cache if available
     if (storyCacheService && ensureCaching) {
-      const cachedStories = await storyCacheService.getStories(category, epoch, model, language);
+      const cachedStories = await storyCacheService.getStories(category, epoch, model, language, storyType);
       if (cachedStories && cachedStories.length > 0) {
-        console.log(`🎯 Using cached stories for ${category}-${epoch}-${model}-${language}`);
+        console.log(`🎯 Using cached ${storyType} stories for ${category}-${epoch}-${model}-${language}`);
         return res.json(cachedStories);
       }
     }
     
     // Only use o4-mini for dynamic generation
-    stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language);
+    stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language, storyType);
     
     if (stories.length === 0) {
-      console.log(`⚠️ No stories generated for ${category}, using fallback...`);
+      console.log(`⚠️ No ${storyType} stories generated for ${category}, using fallback...`);
       const fallbackStory = await generateDirectFallbackStory(category);
       stories = [fallbackStory];
     }
@@ -839,18 +846,18 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
     // Store in cache if caching is enabled and service is available
     if (ensureCaching && storyCacheService) {
       try {
-        await storyCacheService.storeStories(category, epoch, model, language, stories);
-        console.log(`💾 Cached ${stories.length} stories for ${category}-${epoch}-${model}-${language}`);
+        await storyCacheService.storeStories(category, epoch, model, language, stories, storyType);
+        console.log(`💾 Cached ${stories.length} ${storyType} stories for ${category}-${epoch}-${model}-${language}`);
       } catch (cacheError) {
-        console.warn(`⚠️ Failed to cache stories:`, cacheError.message);
+        console.warn(`⚠️ Failed to cache ${storyType} stories:`, cacheError.message);
       }
     }
     
-    console.log(`✅ Generated ${stories.length} stories for ${category}`);
+    console.log(`✅ Generated ${stories.length} ${storyType} stories for ${category}`);
     res.json(stories);
     
   } catch (error) {
-    console.error(`❌ Error generating stories for ${category}:`, error.message);
+    console.error(`❌ Error generating ${storyType} stories for ${category}:`, error.message);
     res.status(500).json({ error: 'Failed to generate stories' });
   }
 });
@@ -996,12 +1003,18 @@ app.delete('/api/cache/clear', async (req, res) => {
 // Helper function to generate stories with Azure OpenAI (o4-mini only)
 
 // Helper function to generate stories with Azure OpenAI (o4-mini only)
-async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en') {
+async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en', storyType = 'historical-figure') {
   try {
     // Use sophisticated prompt system instead of hardcoded prompts
     const promptManager = await import('../utils/promptManager.js');
     const defaultPrompt = promptManager.default.getFrontendPrompt(category, epoch, language, 'o4-mini');
     const prompt = customPrompt || defaultPrompt;
+    
+    // If generating historical figure stories, enhance the prompt
+    let enhancedPrompt = prompt;
+    if (storyType === 'historical-figure') {
+      enhancedPrompt = `${prompt} Focus on specific historical figures and their remarkable achievements in ${category.toLowerCase()} during ${epoch.toLowerCase()} times. Include their names, specific accomplishments, and the lasting impact of their contributions.`;
+    }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
@@ -1014,11 +1027,11 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+            content: 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific people and their achievements.'
           },
           {
             role: 'user',
-            content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
+            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
           }
         ],
         max_completion_tokens: 1000
@@ -1047,7 +1060,11 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         return {
           ...story,
           ttsAudio,
-          publishedAt: new Date().toISOString()
+          publishedAt: new Date().toISOString(),
+          storyType: storyType,
+          category: category,
+          epoch: epoch,
+          language: language
         };
       })
     );

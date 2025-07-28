@@ -424,30 +424,40 @@ class PositiveNewsService {
     }
   }
 
-  async getStoriesForCycling(category, count = 1, epoch = 'Modern') {
+  async getStoriesForCycling(category, count = 1, epoch = 'Modern', storyType = 'historical-figure', language = 'en') {
     try {
-      console.log(`📚 Getting stories for ${category} (requested: ${count})`);
+      console.log(`📚 Getting ${storyType} stories for ${category} in ${epoch} epoch (${language}) (requested: ${count})`);
       
-      // Simple query to get stories with TTS audio first
-      const storiesWithTTS = await this.stories.find({ 
+      // Build query with filters
+      const query = { 
         category,
+        storyType: storyType,
+        language: language
+      };
+      
+      // Add epoch filter if specified
+      if (epoch && epoch !== 'Modern') {
+        query.epoch = epoch;
+      }
+      
+      // Get stories with TTS audio first
+      const storiesWithTTS = await this.stories.find({ 
+        ...query,
         ttsAudio: { $exists: true, $ne: null }
       }).limit(count).toArray();
       
-      console.log(`📚 Found ${storiesWithTTS.length} stories with TTS for ${category}`);
+      console.log(`📚 Found ${storiesWithTTS.length} ${storyType} stories with TTS for ${category} in ${epoch} (${language})`);
       
       // If we have enough stories with TTS, return them
       if (storiesWithTTS.length >= count) {
-        console.log(`✅ Returning ${storiesWithTTS.length} stories with TTS for ${category}`);
+        console.log(`✅ Returning ${storiesWithTTS.length} ${storyType} stories with TTS for ${category}`);
         return storiesWithTTS.slice(0, count);
       }
       
-      // If we don't have enough stories with TTS, try to get any stories without complex sorting
-      const allStories = await this.stories.find({ 
-        category
-      }).limit(count * 2).toArray(); // Get more to have options
+      // If we don't have enough stories with TTS, try to get any stories matching the criteria
+      const allStories = await this.stories.find(query).limit(count * 2).toArray(); // Get more to have options
       
-      console.log(`📚 Found ${allStories.length} total stories for ${category}`);
+      console.log(`📚 Found ${allStories.length} total ${storyType} stories for ${category} in ${epoch} (${language})`);
       
       // Prioritize stories with TTS, then take the first available ones
       const prioritizedStories = [
@@ -455,7 +465,7 @@ class PositiveNewsService {
         ...allStories.filter(story => !story.ttsAudio)
       ].slice(0, count);
       
-      console.log(`📚 Returning ${prioritizedStories.length} stories for ${category} (${prioritizedStories.filter(s => s.ttsAudio).length} with TTS)`);
+      console.log(`📚 Returning ${prioritizedStories.length} ${storyType} stories for ${category} (${prioritizedStories.filter(s => s.ttsAudio).length} with TTS)`);
       
       // If we still don't have enough, just return what we have
       if (prioritizedStories.length > 0) {
@@ -463,7 +473,7 @@ class PositiveNewsService {
       }
       
       // Only generate new stories if we have absolutely nothing
-      console.log(`⚠️ No stories found for ${category}, generating fallback...`);
+      console.log(`⚠️ No ${storyType} stories found for ${category} in ${epoch} (${language}), generating fallback...`);
       const fallbackStory = await this.generateFallbackStory(category);
       return [fallbackStory];
       

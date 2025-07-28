@@ -462,20 +462,20 @@ function OrbGame() {
   
   const loadStoryForOrb = async (category, forceFresh = false) => {
     setIsLoading(true);
-            setCurrentAISource(aiModelName);
+    setCurrentAISource(aiModelName);
     
     try {
-      // Try to get stories from database first (unless forceFresh is true)
+      // Try to get historical figure stories from database first (unless forceFresh is true)
       if (!forceFresh) {
-        console.log(`📚 Loading stories from database for ${category.name} in ${language}...`);
+        console.log(`📚 Loading historical figure stories from database for ${category.name} in ${language}...`);
         try {
-          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=1&epoch=${currentEpoch}&language=${language}`);
+          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}&language=${language}&storyType=historical-figure`);
           
           if (dbResponse.ok) {
             const dbStories = await dbResponse.json();
             
             if (Array.isArray(dbStories) && dbStories.length > 0) {
-              console.log(`✅ Found ${dbStories.length} stories in database for ${category.name}`);
+              console.log(`✅ Found ${dbStories.length} historical figure stories in database for ${category.name}`);
               
               // Check if stories have TTS audio
               const storiesWithTTS = dbStories.filter(story => story.ttsAudio);
@@ -499,9 +499,60 @@ function OrbGame() {
         console.log('🔄 Force fresh generation - skipping database cache');
       }
       
-      // Only use prepopulated historical figure stories
-      console.log('📚 Using prepopulated historical figure stories only');
-      setIsLoading(false);
+      // If no historical figure stories found, try to generate new ones
+      console.log('📚 No historical figure stories found, generating new ones...');
+      try {
+        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            epoch: currentEpoch,
+            model: 'o4-mini',
+            count: 3,
+            language: language,
+            storyType: 'historical-figure'
+          }),
+        });
+
+        if (generateResponse.ok) {
+          const generatedStories = await generateResponse.json();
+          if (Array.isArray(generatedStories) && generatedStories.length > 0) {
+            console.log(`✅ Generated ${generatedStories.length} new historical figure stories`);
+            setNewsStories(generatedStories);
+            setCurrentNewsIndex(0);
+            setCurrentNews(generatedStories[0]);
+            setCurrentAISource('o4-mini');
+            setIsLoading(false);
+            return;
+          }
+        }
+      } catch (generateError) {
+        console.warn('Story generation failed:', generateError.message);
+      }
+      
+      // Ultimate fallback
+      const errorStory = {
+        headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
+        summary: language === 'es'
+          ? `Estamos experimentando algunas dificultades técnicas. Por favor, inténtalo de nuevo o selecciona una categoría diferente.`
+          : `We're experiencing some technical difficulties. Please try again or select a different category.`,
+        fullText: language === 'es'
+          ? `Nuestra IA está tomando un momento para recopilar las últimas noticias positivas de ${category.name.toLowerCase()}. Por favor, inténtalo de nuevo en un momento.`
+          : `Our AI is taking a moment to gather the latest positive ${category.name.toLowerCase()} news. Please try again in a moment.`,
+        source: 'Orb Game',
+        publishedAt: new Date().toISOString(),
+        ttsAudio: null,
+        category: category.name,
+        aiModel: 'error',
+        language: language
+      };
+      
+      setNewsStories([errorStory]);
+      setCurrentNewsIndex(0);
+      setCurrentNews(errorStory);
+      setCurrentAISource('Error');
     } catch (error) {
       console.error('Failed to load stories:', error);
       
@@ -649,7 +700,10 @@ function OrbGame() {
     if (!currentNews || !orbInCenter) return;
     
     setIsLoading(true);
-    console.log(`🔍 Learning more about ${currentNews.headline}...`);
+    console.log(`🔍 Learning more about the historical figure in: ${currentNews.headline}...`);
+    
+    // Extract historical figure name from the current story
+    const storyText = `${currentNews.headline} ${currentNews.summary} ${currentNews.fullText}`;
     
     try {
       const response = await fetch(`${BACKEND_URL}/api/chat`, {
@@ -659,8 +713,8 @@ function OrbGame() {
         },
         body: JSON.stringify({
           message: language === 'es' 
-            ? `Basado en esta historia: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Por favor proporciona detalles adicionales fascinantes, información de antecedentes, desarrollos relacionados, contexto histórico, implicaciones futuras, y conexiones interesantes sobre este tema. Incluye datos específicos, investigaciones recientes, y perspectivas expertas. Hazlo muy detallado, atractivo e informativo con al menos 400-500 palabras. Responde en español.`
-            : `Based on this story: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide extensive additional fascinating details, background information, related developments, historical context, future implications, and interesting connections about this topic. Include specific data, recent research, and expert perspectives. Make it very detailed, engaging, and informative with at least 400-500 words. Respond in English.`,
+            ? `Basado en esta historia sobre una figura histórica: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Por favor proporciona información MUY DETALLADA sobre esta figura histórica específica, incluyendo: 1) Su vida temprana y educación, 2) Los logros específicos mencionados en la historia y otros logros importantes, 3) El contexto histórico de su época, 4) El impacto duradero de sus contribuciones, 5) Anecdotas fascinantes y detalles poco conocidos, 6) Cómo sus innovaciones influyeron en el desarrollo posterior de ${orbInCenter.name.toLowerCase()}. Hazlo muy detallado, atractivo e informativo con al menos 500-600 palabras. Enfócate específicamente en la figura histórica mencionada en la historia. Responde en español.`
+            : `Based on this story about a historical figure: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide VERY DETAILED information about this specific historical figure, including: 1) Their early life and education, 2) The specific achievements mentioned in the story and other important accomplishments, 3) The historical context of their era, 4) The lasting impact of their contributions, 5) Fascinating anecdotes and little-known details, 6) How their innovations influenced the later development of ${orbInCenter.name.toLowerCase()}. Make it very detailed, engaging, and informative with at least 500-600 words. Focus specifically on the historical figure mentioned in the story. Respond in English.`,
           useWebSearch: 'auto',
           language: language,
           count: 1
@@ -674,10 +728,10 @@ function OrbGame() {
       const data = await response.json();
       
       if (data.response && data.response.trim()) {
-        // Create a new story with the additional information
+        // Create a new story with the additional information about the historical figure
         const learnMoreStory = {
-          headline: language === 'es' ? `${currentEpoch} ${orbInCenter.name} Historia - Más Información` : `${currentEpoch} ${orbInCenter.name} Story - Learn More`,
-          summary: language === 'es' ? 'Información detallada y profunda sobre el tema' : 'Detailed and in-depth information about the topic',
+          headline: language === 'es' ? `${currentEpoch} ${orbInCenter.name} - Más Sobre Esta Figura Histórica` : `${currentEpoch} ${orbInCenter.name} - More About This Historical Figure`,
+          summary: language === 'es' ? 'Información detallada y profunda sobre esta figura histórica específica' : 'Detailed and in-depth information about this specific historical figure',
           fullText: data.response.trim(),
           source: `${selectedModel} AI - Learn More`,
           publishedAt: new Date().toISOString(),

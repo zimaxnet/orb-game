@@ -61,7 +61,23 @@ Each story features:
 
 ## 🔄 **Recent Updates**
 
-### **Latest Changes (July 2024)**
+### **Latest Changes (December 2024)**
+- **Historical Figure Story System**: Fixed to properly load and display 239 pre-populated historical figure stories from MongoDB
+- **Enhanced "Learn More" Feature**: Now provides detailed 500-600 word information about the specific historical figure mentioned in each story
+- **Improved Story Loading**: 
+  - Properly filters stories by category, epoch, language, and storyType
+  - Requests 3 stories at a time for better variety
+  - Prioritizes stories with TTS audio
+- **Backend Enhancements**:
+  - Added storyType parameter support to all endpoints
+  - Enhanced story generation to focus on historical figures
+  - Improved database queries with proper filtering
+- **Frontend Improvements**:
+  - Better error handling and fallback mechanisms
+  - Enhanced prompts for historical figure details
+  - Improved story cycling and display
+
+### **Previous Changes (July 2024)**
 - **Historical Character Focus**: All stories now focus on "the most influential historical character" in each category and epoch
 - **UI Improvements**: 
   - Changed story panel to show "Category: [Category]" instead of AI model

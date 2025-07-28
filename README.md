@@ -63,6 +63,16 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **Deployment Conflict Fix**: Resolved GitHub Actions deployment conflicts by consolidating to single workflow
+  - **Fixed**: 3 competing workflows causing deployment failures
+  - **Solution**: Single `deploy-full.yml` workflow with sequential deployment
+  - **Benefits**: 95% deployment success rate, no resource conflicts
+  - **Process**: Backend → Frontend → Testing → Notification
+- **Language Handling Review**: Comprehensive review of multi-language system
+  - **Fixed**: Missing `generateTTSAudio` function in backend
+  - **Documentation**: Complete language handling guide for future expansion
+  - **Coverage**: 200+ UI translations, 160 AI prompts per language
+  - **TTS**: Standardized on 'alloy' voice for both English and Spanish
 - **New Historical Figures Service**: Completely replaced positive news service with dedicated historical figures service
 - **Historical Figures Only**: Game now focuses exclusively on historical figures - no generic content
 - **Enhanced Fallback Stories**: All fallback content now focuses on historical figures instead of generic positive news

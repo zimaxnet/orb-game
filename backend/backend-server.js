@@ -1055,6 +1055,39 @@ app.delete('/api/cache/clear', async (req, res) => {
   }
 });
 
+// Helper function to generate TTS audio
+async function generateTTSAudio(text, language = 'en') {
+  try {
+    // Use 'alloy' for both languages since 'jorge' is not supported
+    const voice = 'alloy';
+    
+    const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2024-12-01-preview`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${azureOpenAIApiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: AZURE_OPENAI_TTS_DEPLOYMENT,
+        input: text,
+        voice: voice,
+        response_format: 'mp3',
+        speed: 1.0
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`TTS API error: ${response.status}`);
+    }
+
+    const audioBuffer = await response.arrayBuffer();
+    return Buffer.from(audioBuffer).toString('base64');
+  } catch (error) {
+    console.warn(`TTS generation failed: ${error.message}`);
+    return null;
+  }
+}
+
 // Helper function to generate stories with Azure OpenAI (o4-mini only)
 
 // Helper function to generate stories with Azure OpenAI (o4-mini only)
@@ -1195,7 +1228,7 @@ Make it engaging and educational with concrete details about their life and work
 }
 
 // Helper function to generate fallback stories when service is not available
-async function generateDirectFallbackStory(category) {
+async function generateDirectFallbackStory(category, language = 'en') {
   try {
     // Load historical figures for the category and default to Modern epoch
     let historicalFigures = [];
@@ -1232,7 +1265,9 @@ Tell the story of the chosen historical figure, including:
 4. Their background and challenges they faced
 5. The lasting impact of their contributions
 
-Make it engaging and educational with concrete details about their life and work.`;
+Make it engaging and educational with concrete details about their life and work.
+
+${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`;
     } else {
       // If no historical figures found, create a prompt for a generic historical figure in this category
       enhancedPrompt = `Create a story about a specific historical figure in ${category}. 
@@ -1246,7 +1281,9 @@ Tell the story of a historical figure in ${category}, including:
 4. Their background and challenges they faced
 5. The lasting impact of their contributions
 
-Make it engaging and educational with concrete details about their life and work.`;
+Make it engaging and educational with concrete details about their life and work.
+
+${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`;
     }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
@@ -1260,7 +1297,7 @@ Make it engaging and educational with concrete details about their life and work
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
+            content: `You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure's name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories. ${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`
           },
           {
             role: 'user',

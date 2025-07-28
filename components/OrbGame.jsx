@@ -473,7 +473,7 @@ function OrbGame() {
       // For historical figures, always use the story generation endpoint
       console.log(`📚 Generating historical figure stories for ${category.name} in ${language}...`);
       try {
-        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
+        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-historical-figures/${category.name}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -483,7 +483,7 @@ function OrbGame() {
             model: 'o4-mini',
             count: 3,
             language: language,
-            storyType: 'historical-figure'
+            includeTTS: false
           }),
         });
 

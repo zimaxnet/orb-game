@@ -173,7 +173,9 @@ Tell the story of ${selectedFigure.name}, including:
 4. Their background and challenges they faced
 5. The lasting impact of their contributions
 
-Make it engaging and educational with concrete details about their life and work.`;
+Make it engaging and educational with concrete details about their life and work.
+
+${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe estar en español.' : 'IMPORTANT: Respond in English language.'}`;
 
       // Generate story using Azure OpenAI
       const storyData = await this.generateStoryWithAzureOpenAI(enhancedPrompt, language);
@@ -196,19 +198,23 @@ Make it engaging and educational with concrete details about their life and work
         storyType: 'historical-figure'
       });
 
-      // Generate TTS audio
+      // Generate TTS audio (but don't include in response to prevent JSON issues)
       try {
-        story.ttsAudio = await this.generateTTS(story.fullText, language);
+        const ttsAudio = await this.generateTTS(story.fullText, language);
+        story.ttsAudio = ttsAudio;
         story.ttsGeneratedAt = new Date().toISOString();
       } catch (ttsError) {
         console.warn('TTS generation failed:', ttsError.message);
+        story.ttsAudio = null;
       }
 
       // Store in database
       await this.stories.insertOne(story);
       console.log(`✅ Generated and stored historical figure story for ${selectedFigure.name}`);
       
-      return story;
+      // Remove TTS fields from response to prevent JSON issues
+      const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
+      return storyWithoutTTS;
     } catch (error) {
       console.error(`❌ Failed to generate historical figure story for ${category}-${epoch}-${language}:`, error.message);
       return null;
@@ -243,7 +249,7 @@ Make it engaging and educational with concrete details about their life and work
           messages: [
             {
               role: 'system',
-              content: 'You are a helpful assistant that creates engaging, educational stories about specific historical figures. You MUST focus on the exact historical figure mentioned and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
+              content: `You are a helpful assistant that creates engaging, educational stories about specific historical figures. You MUST focus on the exact historical figure mentioned and tell their story. Always include the historical figure's name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories. ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe estar en español.' : 'IMPORTANT: Respond in English language.'}`
             },
             {
               role: 'user',
@@ -298,7 +304,7 @@ Make it engaging and educational with concrete details about their life and work
         body: JSON.stringify({
           model: azureOpenAITTSDeployment,
           input: text,
-          voice: 'alloy', // Use alloy for both English and Spanish
+          voice: language === 'es' ? 'jorge' : 'alloy', // Use jorge for Spanish, alloy for English
           response_format: 'mp3'
         })
       });
@@ -328,17 +334,13 @@ Make it engaging and educational with concrete details about their life and work
       };
       
       // Get stories from database
-      let stories;
-      if (includeTTS) {
-        stories = await this.stories.find(query).limit(count * 2).toArray();
-      } else {
-        // Exclude TTS fields to prevent crashes
-        stories = await this.stories.find(query).limit(count * 2).toArray();
-        stories = stories.map(story => {
-          const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
-          return storyWithoutTTS;
-        });
-      }
+      let stories = await this.stories.find(query).limit(count * 2).toArray();
+      
+      // Always exclude TTS fields to prevent JSON response issues
+      stories = stories.map(story => {
+        const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
+        return storyWithoutTTS;
+      });
       
       console.log(`📚 Found ${stories.length} historical figure stories for ${category}-${epoch}-${language}`);
       

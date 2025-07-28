@@ -43,7 +43,7 @@ jobs:
           --tag ${{ env.ACR_NAME }}.azurecr.io/${{ env.BACKEND_IMAGE }}:latest \
           --file backend/backend-Dockerfile \
           --push \
-          ./backend
+          .
           
     - name: Deploy to Azure Container Apps
       run: |

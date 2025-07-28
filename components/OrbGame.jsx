@@ -241,6 +241,10 @@ function OrbGame() {
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Technology');
+  
+  // Add preloaded stories state for next/prev navigation
+  const [preloadedStories, setPreloadedStories] = useState([]);
+  const [isPreloading, setIsPreloading] = useState(false);
 
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
@@ -482,11 +486,17 @@ function OrbGame() {
               console.log(`📚 Found ${dbStories.length} stories from database`);
               
               if (dbStories.length > 0) {
+                // Set the first story immediately
                 setNewsStories(dbStories);
                 setCurrentNewsIndex(0);
                 setCurrentNews(dbStories[0]);
                 setCurrentAISource('Database');
                 setIsLoading(false);
+                
+                // Preload additional stories in the background if we have less than 3
+                if (dbStories.length < 3) {
+                  preloadAdditionalStories(category, dbStories.length);
+                }
                 
                 return;
               }
@@ -520,11 +530,19 @@ function OrbGame() {
           const generatedStories = await generateResponse.json();
           if (Array.isArray(generatedStories) && generatedStories.length > 0) {
             console.log(`✅ Generated ${generatedStories.length} new historical figure stories`);
+            
+            // Set the first story immediately
             setNewsStories(generatedStories);
             setCurrentNewsIndex(0);
             setCurrentNews(generatedStories[0]);
             setCurrentAISource('o4-mini');
             setIsLoading(false);
+            
+            // Preload additional stories in the background if we have less than 3
+            if (generatedStories.length < 3) {
+              preloadAdditionalStories(category, generatedStories.length);
+            }
+            
             return;
           }
         }
@@ -579,6 +597,50 @@ function OrbGame() {
       setCurrentAISource('Error');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // Preload additional historical figure stories in the background
+  const preloadAdditionalStories = async (category, existingCount) => {
+    if (isPreloading) return; // Prevent multiple preload requests
+    
+    setIsPreloading(true);
+    console.log(`🔄 Preloading additional historical figure stories for ${category.name}...`);
+    
+    try {
+      // Calculate how many more stories we need
+      const neededCount = 3 - existingCount;
+      
+      if (neededCount > 0) {
+        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            epoch: currentEpoch,
+            model: 'o4-mini',
+            count: neededCount,
+            language: language,
+            storyType: 'historical-figure'
+          }),
+        });
+
+        if (generateResponse.ok) {
+          const additionalStories = await generateResponse.json();
+          if (Array.isArray(additionalStories) && additionalStories.length > 0) {
+            console.log(`✅ Preloaded ${additionalStories.length} additional historical figure stories`);
+            
+            // Add the preloaded stories to the existing stories
+            setNewsStories(prevStories => [...prevStories, ...additionalStories]);
+            setPreloadedStories(additionalStories);
+          }
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to preload additional stories:', error.message);
+    } finally {
+      setIsPreloading(false);
     }
   };
   
@@ -722,6 +784,8 @@ function OrbGame() {
       setCurrentNews(filteredStories[nextIndex]);
       
       // Removed auto-play audio - user must click play button
+    } else if (isPreloading) {
+      console.log('⏳ Waiting for preloaded stories to be ready...');
     }
   };
 
@@ -733,6 +797,8 @@ function OrbGame() {
       setCurrentNews(filteredStories[prevIndex]);
       
       // Removed auto-play audio - user must click play button
+    } else if (isPreloading) {
+      console.log('⏳ Waiting for preloaded stories to be ready...');
     }
   };
 
@@ -958,10 +1024,10 @@ function OrbGame() {
               <button 
                 onClick={prevStory} 
                 disabled={getFilteredStories().length <= 1}
-                className={`nav-button prev-button ${getFilteredStories().length <= 1 ? 'disabled' : ''}`}
-                title={language === 'es' ? 'Historia anterior' : 'Previous story'}
+                className={`nav-button prev-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
+                title={isPreloading ? 'Preloading stories...' : language === 'es' ? 'Historia anterior' : 'Previous story'}
               >
-                ←
+                {isPreloading ? '⏳' : '←'}
               </button>
               <button 
                 onClick={playAudio}
@@ -974,10 +1040,10 @@ function OrbGame() {
               <button 
                 onClick={nextStory} 
                 disabled={getFilteredStories().length <= 1}
-                className={`nav-button next-button ${getFilteredStories().length <= 1 ? 'disabled' : ''}`}
-                title={language === 'es' ? 'Siguiente historia' : 'Next story'}
+                className={`nav-button next-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
+                title={isPreloading ? 'Preloading stories...' : language === 'es' ? 'Siguiente historia' : 'Next story'}
               >
-                →
+                {isPreloading ? '⏳' : '→'}
               </button>
               <button 
                 onClick={toggleMute}

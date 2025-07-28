@@ -404,9 +404,15 @@
   opacity: 0.5;
 }
 
-.nav-button.disabled:hover {
-  background: #ccc;
-  transform: none;
+.nav-button.preloading {
+  opacity: 0.7;
+  cursor: wait;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.nav-button.preloading:hover {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 .news-content {

@@ -16,7 +16,6 @@ COPY backend/advanced-memory-service.js .
 COPY backend/positive-news-service.js .
 COPY backend/story-cache-service.js .
 COPY backend/model-reliability-checker.js .
-COPY backend/atlas-ca.pem .
 COPY utils/ ./utils/
 COPY OrbGameInfluentialPeopleSeeds .
 

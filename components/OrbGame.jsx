@@ -240,11 +240,12 @@ function OrbGame() {
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('Technology');
 
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
     return newsStories.filter(story => 
-      story.category === selectedCategory && 
+      story.category === (orbInCenter?.name || selectedCategory) && 
       story.epoch === currentEpoch &&
       story.language === language
     );
@@ -477,14 +478,13 @@ function OrbGame() {
             if (Array.isArray(dbStories) && dbStories.length > 0) {
               console.log(`✅ Found ${dbStories.length} historical figure stories in database for ${category.name}`);
               
-              // Check if stories have TTS audio
-              const storiesWithTTS = dbStories.filter(story => story.ttsAudio);
-              console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
+              // Stories from database don't include TTS audio to prevent crashes
+              console.log(`📚 Found ${dbStories.length} stories from database`);
               
-              if (storiesWithTTS.length > 0) {
-                setNewsStories(storiesWithTTS);
+              if (dbStories.length > 0) {
+                setNewsStories(dbStories);
                 setCurrentNewsIndex(0);
-                setCurrentNews(storiesWithTTS[0]);
+                setCurrentNews(dbStories[0]);
                 setCurrentAISource('Database');
                 setIsLoading(false);
                 
@@ -608,9 +608,9 @@ function OrbGame() {
     }
   };
 
-  const playAudio = () => {
-    if (!currentNews?.ttsAudio) {
-      console.log('No TTS audio available to play');
+  const playAudio = async () => {
+    if (!currentNews) {
+      console.log('No current news to play audio for');
       return;
     }
     
@@ -623,6 +623,44 @@ function OrbGame() {
     setAudioError(null);
     
     try {
+      // If no TTS audio is available, generate it on-demand
+      if (!currentNews.ttsAudio) {
+        console.log('Generating TTS audio on-demand...');
+        
+        const ttsResponse = await fetch(`${BACKEND_URL}/api/tts/generate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            text: currentNews.fullText,
+            language: language
+          }),
+        });
+        
+        if (ttsResponse.ok) {
+          const ttsData = await ttsResponse.json();
+          if (ttsData.audio) {
+            // Update the current news with the generated TTS audio
+            const updatedNews = { ...currentNews, ttsAudio: ttsData.audio };
+            setCurrentNews(updatedNews);
+            
+            // Update the story in the stories array
+            setNewsStories(prevStories => 
+              prevStories.map(story => 
+                story === currentNews ? updatedNews : story
+              )
+            );
+            
+            console.log('✅ TTS audio generated successfully');
+          } else {
+            throw new Error('No audio data received');
+          }
+        } else {
+          throw new Error('Failed to generate TTS audio');
+        }
+      }
+      
       // Ensure audioRef exists
       if (!audioRef.current) {
         console.error('Audio reference not available');
@@ -631,7 +669,9 @@ function OrbGame() {
         return;
       }
       
-      audioRef.current.src = `data:audio/mp3;base64,${currentNews.ttsAudio}`;
+      // Use the current news (which may now have TTS audio)
+      const newsToPlay = currentNews.ttsAudio ? currentNews : currentNews;
+      audioRef.current.src = `data:audio/mp3;base64,${newsToPlay.ttsAudio}`;
       
       // Add event listeners for better audio handling
       audioRef.current.onloadstart = () => {

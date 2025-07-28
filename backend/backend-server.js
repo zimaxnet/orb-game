@@ -799,8 +799,8 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   }
   
   try {
-    // Get stories from database with specific filters
-    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch, storyType, language);
+    // Get stories from database with specific filters (exclude TTS audio to prevent crashes)
+    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch, storyType, language, false);
     if (stories.length === 0) {
       console.log(`⚠️ No ${storyType} stories found for ${category}, generating fallback...`);
       const fallbackStory = await positiveNewsService.generateFallbackStory(category);
@@ -859,6 +859,32 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
   } catch (error) {
     console.error(`❌ Error generating ${storyType} stories for ${category}:`, error.message);
     res.status(500).json({ error: 'Failed to generate stories' });
+  }
+});
+
+// TTS Generation endpoint
+app.post('/api/tts/generate', async (req, res) => {
+  const { text, language = 'en' } = req.body;
+  
+  if (!text) {
+    return res.status(400).json({ error: 'Text is required' });
+  }
+  
+  try {
+    console.log(`🎵 Generating TTS audio for ${language} text (${text.length} characters)...`);
+    
+    const audioData = await generateTTSAudio(text, language);
+    
+    if (audioData) {
+      console.log('✅ TTS audio generated successfully');
+      res.json({ audio: audioData });
+    } else {
+      console.error('❌ Failed to generate TTS audio');
+      res.status(500).json({ error: 'Failed to generate TTS audio' });
+    }
+  } catch (error) {
+    console.error('TTS generation error:', error);
+    res.status(500).json({ error: 'TTS generation failed' });
   }
 });
 
@@ -1005,15 +1031,64 @@ app.delete('/api/cache/clear', async (req, res) => {
 // Helper function to generate stories with Azure OpenAI (o4-mini only)
 async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en', storyType = 'historical-figure') {
   try {
-    // Use sophisticated prompt system instead of hardcoded prompts
-    const promptManager = await import('../utils/promptManager.js');
-    const defaultPrompt = promptManager.default.getFrontendPrompt(category, epoch, language, 'o4-mini');
-    const prompt = customPrompt || defaultPrompt;
+    // Load historical figures from the seed file
+    let historicalFigures = [];
+    try {
+      const fs = await import('fs');
+      const path = await import('path');
+      const filePath = path.join(process.cwd(), 'OrbGameInfluentialPeopleSeeds');
+      console.log(`🔍 Looking for historical figures file at: ${filePath}`);
+      
+      if (fs.existsSync(filePath)) {
+        console.log('✅ Historical figures file found');
+        const seedData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        console.log(`📚 Loaded seed data with categories: ${Object.keys(seedData).join(', ')}`);
+        
+        if (seedData[category] && seedData[category][epoch]) {
+          historicalFigures = seedData[category][epoch];
+          console.log(`📚 Found ${historicalFigures.length} historical figures for ${category}-${epoch}:`);
+          historicalFigures.forEach((fig, index) => {
+            console.log(`   ${index + 1}. ${fig.name} - ${fig.context}`);
+          });
+        } else {
+          console.log(`❌ No figures found for ${category}-${epoch}`);
+          console.log(`Available categories: ${Object.keys(seedData).join(', ')}`);
+          if (seedData[category]) {
+            console.log(`Available epochs for ${category}: ${Object.keys(seedData[category]).join(', ')}`);
+          }
+        }
+      } else {
+        console.log('❌ Historical figures file not found');
+        console.log('Current working directory:', process.cwd());
+        console.log('Files in current directory:', fs.readdirSync(process.cwd()));
+      }
+    } catch (error) {
+      console.warn('Failed to load historical figures:', error.message);
+    }
     
-    // If generating historical figure stories, enhance the prompt
-    let enhancedPrompt = prompt;
-    if (storyType === 'historical-figure') {
-      enhancedPrompt = `${prompt} Focus on specific historical figures and their remarkable achievements in ${category.toLowerCase()} during ${epoch.toLowerCase()} times. Include their names, specific accomplishments, and the lasting impact of their contributions.`;
+    // For historical figures, use direct prompt instead of prompt management system
+    let enhancedPrompt;
+    if (storyType === 'historical-figure' && historicalFigures.length > 0) {
+      const figureNames = historicalFigures.map(fig => fig.name).join(', ');
+      enhancedPrompt = `Generate a story about ONE of these specific historical figures: ${figureNames}. 
+
+IMPORTANT: You MUST choose ONE of these exact names and tell their story. Do NOT create a generic story.
+
+Choose from: ${figureNames}
+
+Tell the story of the chosen historical figure, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world during ${epoch.toLowerCase()} times
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
+    } else {
+      // Use sophisticated prompt system for non-historical figure stories
+      const promptManager = await import('../utils/promptManager.js');
+      const defaultPrompt = promptManager.default.getFrontendPrompt(category, epoch, language, 'o4-mini');
+      enhancedPrompt = customPrompt || defaultPrompt;
     }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
@@ -1027,11 +1102,13 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific people and their achievements.'
+            content: storyType === 'historical-figure' 
+              ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
+              : 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
           },
           {
             role: 'user',
-            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`
+            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline mentioning the historical figure", "summary": "One sentence summary", "fullText": "2-3 sentence story about the historical figure", "source": "O4-Mini", "historicalFigure": "Name of the historical figure" }]`
           }
         ],
         max_completion_tokens: 1000
@@ -1056,7 +1133,12 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
     // Generate TTS audio for each story
     const storiesWithAudio = await Promise.all(
       stories.map(async (story) => {
-        const ttsAudio = await generateTTSAudio(story.fullText, language);
+        let ttsAudio = null;
+        try {
+          ttsAudio = await generateTTSAudio(story.fullText, language);
+        } catch (error) {
+          console.warn('Failed to generate TTS audio:', error.message);
+        }
         return {
           ...story,
           ttsAudio,
@@ -1079,9 +1161,47 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
 // Helper function to generate fallback stories when service is not available
 async function generateDirectFallbackStory(category) {
   try {
-    // Use sophisticated prompt system for fallback stories
-    const promptManager = await import('../utils/promptManager.js');
-    const fallbackPrompt = promptManager.default.getFallbackStory(category, 'en');
+    // Load historical figures for the category and default to Modern epoch
+    let historicalFigures = [];
+    try {
+      const fs = await import('fs');
+      const path = await import('path');
+      const filePath = path.join(process.cwd(), 'OrbGameInfluentialPeopleSeeds');
+      
+      if (fs.existsSync(filePath)) {
+        const seedData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        
+        if (seedData[category] && seedData[category]['Modern']) {
+          historicalFigures = seedData[category]['Modern'];
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to load historical figures for fallback:', error.message);
+    }
+    
+    // Create historical figure focused prompt
+    let enhancedPrompt;
+    if (historicalFigures.length > 0) {
+      const figureNames = historicalFigures.map(fig => fig.name).join(', ');
+      enhancedPrompt = `Generate a story about ONE of these specific historical figures: ${figureNames}. 
+
+IMPORTANT: You MUST choose ONE of these exact names and tell their story. Do NOT create a generic story.
+
+Choose from: ${figureNames}
+
+Tell the story of the chosen historical figure, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world during modern times
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
+    } else {
+      // Use sophisticated prompt system for fallback stories
+      const promptManager = await import('../utils/promptManager.js');
+      enhancedPrompt = promptManager.default.getFrontendPrompt(category, 'Modern', 'en', 'o4-mini');
+    }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
@@ -1094,11 +1214,13 @@ async function generateDirectFallbackStory(category) {
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+            content: historicalFigures.length > 0 
+              ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
+              : 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific historical achievements.'
           },
           {
             role: 'user',
-            content: `Create a positive news story about ${category} using this format: ${promptManager.default.getJSONResponseFormat('o4-mini')}`
+            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline mentioning the historical figure", "summary": "One sentence summary", "fullText": "2-3 sentence story about the historical figure", "source": "O4-Mini", "historicalFigure": "Name of the historical figure" }]`
           }
         ],
         max_completion_tokens: 500
@@ -1115,13 +1237,18 @@ async function generateDirectFallbackStory(category) {
     let storyData;
     try {
       storyData = JSON.parse(content);
+      // Ensure we have an array and take the first story
+      if (Array.isArray(storyData) && storyData.length > 0) {
+        storyData = storyData[0];
+      }
     } catch (parseError) {
       console.warn(`Failed to parse direct fallback story for ${category}:`, parseError.message);
       storyData = {
-        headline: `Modern ${category} Story`,
-        summary: `Exciting progress is being made in ${category.toLowerCase()} that brings hope and innovation.`,
-        fullText: `Recent developments in ${category.toLowerCase()} show promising advances that could benefit many people. This positive trend demonstrates the power of human ingenuity and collaboration.`,
-        source: 'AI Generated'
+        headline: `Modern ${category} Historical Figure Story`,
+        summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
+        fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
+        source: 'O4-Mini',
+        historicalFigure: 'Historical Figure'
       };
     }
 
@@ -1155,20 +1282,22 @@ async function generateDirectFallbackStory(category) {
       fullText: storyData.fullText,
       source: storyData.source,
       publishedAt: new Date().toISOString(),
-      ttsAudio: ttsAudio
+      ttsAudio: ttsAudio,
+      historicalFigure: storyData.historicalFigure || 'Historical Figure'
     };
 
   } catch (error) {
     console.error(`Failed to generate direct fallback story for ${category}:`, error.message);
     
-    // Return a basic fallback story if all else fails
+    // Return a basic historical figure fallback story if all else fails
     return {
-      headline: `Modern ${category} Story`,
-      summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
-      fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
-      source: 'AI Generated',
+      headline: `Modern ${category} Historical Figure Story`,
+      summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
+      fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
+      source: 'O4-Mini',
       publishedAt: new Date().toISOString(),
-      ttsAudio: null
+      ttsAudio: null,
+      historicalFigure: 'Historical Figure'
     };
   }
 }

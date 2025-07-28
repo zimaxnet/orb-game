@@ -11,11 +11,14 @@ COPY package.json package.json
 RUN npm install --production
 
 # Copy server code
-COPY backend-server.js .
-COPY advanced-memory-service.js .
-COPY positive-news-service.js .
-COPY story-cache-service.js .
-COPY atlas-ca.pem .
+COPY backend/backend-server.js .
+COPY backend/advanced-memory-service.js .
+COPY backend/positive-news-service.js .
+COPY backend/story-cache-service.js .
+COPY backend/model-reliability-checker.js .
+COPY backend/atlas-ca.pem .
+COPY utils/ ./utils/
+COPY OrbGameInfluentialPeopleSeeds .
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs

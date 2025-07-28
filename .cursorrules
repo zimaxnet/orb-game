@@ -147,6 +147,57 @@ if (cachedStories.length > 0) {
 - **Registry**: Azure Container Registry (`orbgameregistry`)
 - **Key Vault**: `orb-game-kv-eastus2`
 
+### Deployment Automation
+- **GitHub Actions**: Automatic deployment on push to main branch
+  - Frontend: `.github/workflows/deploy-frontend.yml` - Auto-deploys on any push
+  - Backend: `.github/workflows/deploy-backend.yml` - Deploys on backend changes
+  - Full Deployment: `.github/workflows/deploy-full.yml` - Complete CI/CD pipeline
+- **Local Deployment**: Manual deployment scripts for development
+  - Frontend: `scripts/deploy-azure.sh` - Build and deploy frontend
+  - Backend: `scripts/build-backend.sh` - Build and push backend container
+  - Full: `scripts/deploy-full.sh` - Complete local deployment
+
+### Efficient Rebuild & Redeployment Procedures
+
+#### Quick Local Deployment (Development)
+```bash
+# Frontend only (fastest)
+npm run build
+cd dist && zip -r ../deploy.zip . && cd ..
+az webapp deploy --resource-group orb-game-rg-eastus2 --name orb-game --src-path deploy.zip --type zip
+
+# Backend only
+docker build --platform linux/amd64 -f backend/backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .
+az acr login --name orbgameregistry
+docker push orbgameregistry.azurecr.io/orb-game-backend:latest
+az containerapp update --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --image orbgameregistry.azurecr.io/orb-game-backend:latest
+
+# Full deployment (both frontend and backend)
+./scripts/deploy-full.sh
+```
+
+#### GitHub Actions Deployment (Production)
+- **Automatic**: Push to main branch triggers automatic deployment
+- **Frontend**: Deploys on any file change
+- **Backend**: Deploys only on backend-related changes (backend/, scripts/, .github/workflows/deploy-backend.yml)
+- **Manual**: Use GitHub Actions "workflow_dispatch" for manual deployment
+
+#### Deployment Verification
+```bash
+# Test frontend deployment
+curl -s "https://orbgame.us" | head -5
+
+# Test backend deployment
+curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | head -5
+
+# Check deployment status
+az webapp show --name orb-game --resource-group orb-game-rg-eastus2 --query "state"
+az containerapp show --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --query "properties.provisioningState"
+
+# Verify historical figure stories are working
+curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | jq '.[0].headline'
+```
+
 ### Docker Platform Requirements
 - **Backend Images**: Must be built for `linux/amd64` platform
 - **Build Command**: `docker build --platform linux/amd64 -f backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .`
@@ -158,6 +209,15 @@ if (cachedStories.length > 0) {
 - **Frontend Only**: `scripts/deploy-azure.sh`
 - **Backend Only**: `scripts/setup-backend.sh`
 - **Environment Setup**: `scripts/set-azure-build-env.sh`
+- **Quick Deploy**: `scripts/deploy-manual.sh` - Fast manual deployment
+
+### Current Deployment Status (December 2024)
+- **Frontend**: ✅ Live at https://orbgame.us (Azure Web App)
+- **Backend**: ✅ Live at https://api.orbgame.us (Azure Container Apps)
+- **Database**: ✅ Azure Cosmos DB for MongoDB with 239+ historical figure stories
+- **GitHub Actions**: ✅ Automatic deployment on push to main branch
+- **Historical Figures**: ✅ Working with proper storyType parameter support
+- **Learn More Feature**: ✅ Enhanced to provide detailed historical figure information
 
 ### Environment Variables
 ```bash
@@ -248,11 +308,29 @@ node backend-server.js
 ```
 
 ### Deployment Process
-1. Update Azure Key Vault secrets
-2. Build and test locally
-3. Run deployment scripts
-4. Verify Azure resources
-5. Test production endpoints
+
+#### Automated Deployment (Recommended)
+1. **GitHub Actions**: Push to main branch automatically triggers deployment
+   - Frontend: Any file change triggers frontend deployment
+   - Backend: Only backend-related changes trigger backend deployment
+   - Full: Complete CI/CD pipeline with testing and verification
+
+#### Manual Deployment (Development)
+1. Update Azure Key Vault secrets if needed
+2. Build and test locally: `npm run build && npm test`
+3. Run deployment scripts:
+   - Frontend only: `./scripts/deploy-azure.sh`
+   - Backend only: `./scripts/build-backend.sh`
+   - Full deployment: `./scripts/deploy-full.sh`
+4. Verify Azure resources and test production endpoints
+5. Monitor deployment logs and health checks
+
+#### Seamless Automation Features
+- **Automatic Testing**: GitHub Actions run tests before deployment
+- **Health Checks**: Automatic verification of deployed services
+- **Rollback Capability**: Previous versions can be restored if needed
+- **Environment Parity**: Local, staging, and production environments are consistent
+- **Secret Management**: Azure Key Vault integration for secure credential management
 
 ### Story Prepopulation Process
 1. Ensure Azure Key Vault credentials are set
@@ -268,6 +346,13 @@ node backend-server.js
 - Test changes before committing
 - Update documentation for new features
 - Follow semantic versioning
+
+### Deployment Verification & Monitoring
+- **Health Checks**: Verify both frontend and backend are responding
+- **Performance Monitoring**: Monitor Azure resource usage and response times
+- **Error Tracking**: Monitor application logs for errors and issues
+- **Automated Testing**: Run comprehensive test suite before deployment
+- **Rollback Procedures**: Keep previous versions available for quick rollback
 
 ## 📚 Documentation Standards
 

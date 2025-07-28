@@ -1,16 +1,17 @@
 # 🎮 Orb Game
 
-An advanced AI-powered interactive gaming platform that combines time travel, historical figure discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with o4-mini AI model integration, and comprehensive Azure cloud deployment.
+An advanced AI-powered interactive gaming platform that focuses exclusively on discovering the most influential historical figures across different categories and epochs. The system features a React frontend with 3D Three.js graphics, a Node.js backend with o4-mini AI model integration, and comprehensive Azure cloud deployment.
 
 ## 🌟 **Key Features**
 
-### **🎯 Historical Figure Stories**
-- **240 Pre-populated Stories**: Based on real historical figures and their accomplishments
+### **🎯 Historical Figure Stories - EXCLUSIVE FOCUS**
+- **240 Pre-populated Stories**: Based on real historical figures and their documented accomplishments
 - **8 Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
 - **5 Epochs**: Ancient, Medieval, Industrial, Modern, Future
 - **2 Languages**: English and Spanish with cultural sensitivity
 - **Educational Focus**: Learn about real people who shaped history
 - **Pre-populated Content**: All stories are pre-generated and stored in MongoDB
+- **Specific Historical Figures**: Each story focuses on one of the 3 most important figures for that category/epoch
 
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
@@ -22,20 +23,20 @@ An advanced AI-powered interactive gaming platform that combines time travel, hi
 ### **🎮 Interactive 3D Experience**
 - **Milky Way Background**: 5,000 animated stars for immersive atmosphere
 - **Orbiting Satellites**: 8 interactive orbs representing different categories
-- **Drag & Drop**: Intuitive 3D interaction to discover stories
+- **Drag & Drop**: Intuitive 3D interaction to discover historical figure stories
 - **Responsive Design**: Works on desktop and mobile devices
 - **Category Display**: Shows "Category: [Category]" instead of AI model
-- **More Button**: "More" button instead of "Dig Deeper" for additional content
+- **Learn More Button**: Provides detailed 500-600 word biographies of historical figures
 
 ### **📚 Story Content**
 Each story features:
-- **Historical Figure**: Real person from history
-- **Achievements**: Their specific accomplishments in the category
-- **Context**: Historical period and cultural background
-- **Impact**: How their work shaped history
-- **Personal Journey**: Their discoveries and contributions
+- **Historical Figure**: Real person from history with documented achievements
+- **Specific Achievements**: Their concrete accomplishments in the category
+- **Historical Context**: The period and cultural background
+- **Impact**: How their work shaped history and influenced future developments
+- **Personal Journey**: Their discoveries, challenges, and contributions
 - **Category Focus**: Stories specifically about the selected category
-- **Epoch Context**: Historical period-specific content
+- **Epoch Context**: Historical period-specific content and language
 
 ## 🏗️ **Architecture**
 
@@ -61,7 +62,14 @@ Each story features:
 
 ## 🔄 **Recent Updates**
 
-### **Latest Changes (December 2024)**
+### **Latest Changes (January 2025)**
+- **Historical Figures Only**: Game now focuses exclusively on historical figures - no generic content
+- **Enhanced Fallback Stories**: All fallback content now focuses on historical figures instead of generic positive news
+- **Improved Story Generation**: Backend forces AI to choose from specific historical figures in seed data
+- **Complete Coverage**: 120 historical figures across 8 categories × 5 epochs
+- **Educational Focus**: All content is educational and based on real historical achievements
+
+### **Previous Changes (December 2024)**
 - **Historical Figure Story System**: Fixed to properly load and display 239 pre-populated historical figure stories from MongoDB
 - **Enhanced "Learn More" Feature**: Now provides detailed 500-600 word information about the specific historical figure mentioned in each story
 - **Improved Story Loading**: 
@@ -76,16 +84,6 @@ Each story features:
   - Better error handling and fallback mechanisms
   - Enhanced prompts for historical figure details
   - Improved story cycling and display
-
-### **Previous Changes (July 2024)**
-- **Historical Character Focus**: All stories now focus on "the most influential historical character" in each category and epoch
-- **UI Improvements**: 
-  - Changed story panel to show "Category: [Category]" instead of AI model
-  - Updated "Dig Deeper" button to "More" with proper translations
-  - Removed fallback story notices and fresh generation indicators
-- **Pre-populated Content**: System now exclusively uses pre-generated historical figure stories stored in MongoDB
-- **Simplified Architecture**: Removed dynamic story generation, focusing only on prepopulated content
-- **Enhanced Prompts**: Historical character prompts emphasize achievements and world-changing contributions
 
 ## 🚀 **Quick Start**
 
@@ -128,20 +126,20 @@ node backend-server.js
 - Frontend: http://localhost:5173
 - Backend: http://localhost:3000
 
-## 📊 **Story Coverage**
+## 📊 **Historical Figures Coverage**
 
-### **Historical Figures by Category & Epoch**
+### **Complete Historical Figures Matrix**
 
 | Category | Ancient | Medieval | Industrial | Modern | Future |
 |----------|---------|----------|------------|--------|--------|
-| **Technology** | Archimedes, Imhotep, Hero | Al-Jazari, Gutenberg, Li Shizhen | Watt, Babbage, Morse | Berners-Lee, Jobs, Lamarr | Fei-Fei Li, Musk, Hassabis |
-| **Science** | Hippocrates, Euclid, Aristotle | Ibn al-Haytham, Bacon, Hildegard | Darwin, Pasteur, Mendeleev | Franklin, Einstein, Doudna | Youyou Tu, Sinclair, Quantum Pioneer |
-| **Art** | Phidias, Polygnotus, Imhotep | Giotto, Hildegard, Rublev | Monet, Blake, Courbet | Kahlo, Banksy, Kusama | Anadol, Crespo, Holographic Artist |
-| **Nature** | Theophrastus, Empedocles, Huang Di | Albertus Magnus, Avicenna, Francis | Darwin, Audubon, Anning | Goodall, Carson, Wilson | Conservation Leaders |
-| **Sports** | Ancient Olympic athletes | Medieval tournament champions | Industrial era pioneers | Modern Olympic legends | Future athletic innovators |
-| **Music** | Ancient composers | Medieval musicians | Classical composers | Modern music innovators | Future sound artists |
-| **Space** | Ancient astronomers | Medieval stargazers | Industrial astronomers | Modern space explorers | Future space pioneers |
-| **Innovation** | Ancient inventors | Medieval innovators | Industrial revolutionaries | Modern tech pioneers | Future visionaries |
+| **Technology** | Archimedes, Imhotep, Hero of Alexandria | Al-Jazari, Gutenberg, Li Shizhen | James Watt, Charles Babbage, Samuel Morse | Tim Berners-Lee, Steve Jobs, Hedy Lamarr | Fei-Fei Li, Elon Musk, Demis Hassabis |
+| **Science** | Hippocrates, Euclid, Aristotle | Ibn al-Haytham, Roger Bacon, Hildegard of Bingen | Charles Darwin, Louis Pasteur, Dmitri Mendeleev | Rosalind Franklin, Albert Einstein, Jennifer Doudna | Youyou Tu, David Sinclair, Quantum Pioneer |
+| **Art** | Phidias, Polygnotus, Imhotep | Giotto di Bondone, Hildegard of Bingen, Andrei Rublev | Claude Monet, William Blake, Gustave Courbet | Frida Kahlo, Banksy, Yayoi Kusama | Refik Anadol, Sofia Crespo, Holographic Artist |
+| **Nature** | Theophrastus, Empedocles, Huang Di | Albertus Magnus, Avicenna, Saint Francis of Assisi | Charles Darwin, John James Audubon, Mary Anning | Jane Goodall, David Attenborough, Wangari Maathai | Climate Engineer, Mercedes Bustamante, Paul Stamets |
+| **Sports** | Milo of Croton, Leonidas of Rhodes, Gaius Appuleius Diocles | William Marshal, Robin Hood, Richard FitzAlan | W.G. Grace, Pierre de Coubertin, James Naismith | Serena Williams, Pelé, Simone Biles | E-Sports Champion, Cyborg Athlete, Zero-gravity Inventor |
+| **Music** | Sappho, King David, Narada | Guillaume de Machaut, Hildegard von Bingen, Alfonso el Sabio | Ludwig van Beethoven, Fanny Mendelssohn, Frédéric Chopin | Louis Armstrong, The Beatles, BTS | Holly Herndon, Yannick Nézet-Séguin, Universal Music AI |
+| **Space** | Ptolemy, Aryabhata, Hypatia | Al-Battani, Nasir al-Din al-Tusi, Geoffrey Chaucer | Galileo Galilei, Edmond Halley, Caroline Herschel | Yuri Gagarin, Katherine Johnson, Stephen Hawking | Mars Colony Leader, Exoplanet Analyst, AI Probe Architect |
+| **Innovation** | Zhang Heng, Ctesibius, Aeneas Tacticus | Al-Jazari, Richard of Wallingford, Leonardo Fibonacci | Thomas Edison, Nikola Tesla, Alexander Graham Bell | Grace Hopper, Shigeru Miyamoto, Elon Musk | Fusion Energy Scientist, Translingual AI Architect, Synthetic Biology Entrepreneur |
 
 ### **Story Generation Process**
 ```
@@ -150,14 +148,15 @@ Historical Figure Data → O4-Mini Generation → TTS Audio → MongoDB Storage 
 
 ## 🎯 **Game Features**
 
-### **Story Discovery**
-- **Interactive Orbs**: Click orbs to discover historical figure stories
-- **Epoch Selection**: Travel through different time periods
+### **Historical Figure Discovery**
+- **Interactive Orbs**: Click orbs to discover stories about specific historical figures
+- **Epoch Selection**: Travel through different time periods to meet figures from each era
 - **Category Exploration**: Explore 8 different fields of achievement
 - **Language Support**: Switch between English and Spanish
+- **Learn More**: Get detailed 500-600 word biographies of historical figures
 
 ### **Audio Experience**
-- **Text-to-Speech**: Immersive audio narration
+- **Text-to-Speech**: Immersive audio narration of historical figure stories
 - **Voice Selection**: 'alloy' voice for both languages
 - **Audio Controls**: Play, pause, and mute functionality
 - **Background Music**: Atmospheric sound design
@@ -213,11 +212,11 @@ orb-game/
 - **Token Limits**: 2000 tokens for complete JSON responses
 - **TTS Voices**: Use `alloy` voice for both English and Spanish
 
-### **Story Generation**
-- **Historical Focus**: All stories based on real historical figures
-- **Personal Narratives**: First-person perspective from historical figures
-- **Educational Content**: Accurate historical information
-- **Rich Context**: Personal background and historical period
+### **Historical Figure Story Generation**
+- **Historical Focus**: All stories based on real historical figures from seed data
+- **Specific Figures**: AI forced to choose from specific named individuals
+- **Educational Content**: Accurate historical information and achievements
+- **Rich Context**: Personal background and historical period details
 
 ## 🌍 **Internationalization**
 
@@ -335,8 +334,8 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 
 ### **Core Gameplay**
 - **3D Environment**: Milky Way background with 5,000 animated stars
-- **Orb Interaction**: Drag orbs to center for story discovery
-- **Epoch Selection**: Time travel through different eras
+- **Orb Interaction**: Drag orbs to center for historical figure story discovery
+- **Epoch Selection**: Time travel through different eras to meet historical figures
 - **Category Exploration**: 8 different historical figure categories
 - **Audio Integration**: Text-to-speech for immersive experience
 
@@ -367,7 +366,7 @@ node backend-server.js
 4. Verify Azure resources
 5. Test production endpoints
 
-### **Story Prepopulation Process**
+### **Historical Figure Story Prepopulation Process**
 1. Ensure Azure Key Vault credentials are set
 2. Check existing stories: `node scripts/check-existing-stories.js`
 3. Run missing stories generation: `node scripts/generate-missing-stories.js`
@@ -467,6 +466,6 @@ node backend-server.js
 - **Multi-language Support**: English and Spanish with cultural sensitivity
 - **3D Interactive Experience**: Engaging Three.js powered interface
 - **Azure Cloud Deployment**: Scalable, secure, and performant
-- **Educational Value**: Real historical figures and their accomplishments
+- **Educational Value**: Real historical figures and their documented accomplishments
 
-The Orb Game provides an engaging, educational experience focused on real historical figures who shaped the world through their remarkable achievements! 🚀
+The Orb Game provides an engaging, educational experience focused exclusively on real historical figures who shaped the world through their remarkable achievements! 🚀

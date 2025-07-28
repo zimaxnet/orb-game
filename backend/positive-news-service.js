@@ -282,6 +282,46 @@ class PositiveNewsService {
 
   async generateFallbackStory(category) {
     try {
+      // Load historical figures for the category and default to Modern epoch
+      let historicalFigures = [];
+      try {
+        const fs = await import('fs');
+        const path = await import('path');
+        const filePath = path.join(process.cwd(), 'OrbGameInfluentialPeopleSeeds');
+        
+        if (fs.existsSync(filePath)) {
+          const seedData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          
+          if (seedData[category] && seedData[category]['Modern']) {
+            historicalFigures = seedData[category]['Modern'];
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to load historical figures for fallback:', error.message);
+      }
+      
+      // Create historical figure focused prompt
+      let enhancedPrompt;
+      if (historicalFigures.length > 0) {
+        const figureNames = historicalFigures.map(fig => fig.name).join(', ');
+        enhancedPrompt = `Generate a story about ONE of these specific historical figures: ${figureNames}. 
+
+IMPORTANT: You MUST choose ONE of these exact names and tell their story. Do NOT create a generic story.
+
+Choose from: ${figureNames}
+
+Tell the story of the chosen historical figure, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world during modern times
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
+      } else {
+        enhancedPrompt = `Create a positive news story about a historical figure in ${category}. Focus on their specific achievements and how they shaped history.`;
+      }
+      
       const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
         method: 'POST',
         headers: {
@@ -293,16 +333,19 @@ class PositiveNewsService {
           messages: [
             {
               role: 'system',
-              content: 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+              content: historicalFigures.length > 0 
+                ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
+                : 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific historical achievements.'
             },
             {
               role: 'user',
-              content: `Create a positive news story about ${category}. Return the story in this exact JSON format:
+              content: `${enhancedPrompt} Return the story in this exact JSON format:
 {
-  "headline": "Brief, engaging headline",
+  "headline": "Brief headline mentioning the historical figure",
   "summary": "One sentence summary of the story",
-  "fullText": "2-3 sentence detailed story with positive tone",
-  "source": "AI Generated"
+  "fullText": "2-3 sentence detailed story about the historical figure",
+  "source": "O4-Mini",
+  "historicalFigure": "Name of the historical figure"
 }`
             }
           ],
@@ -322,12 +365,13 @@ class PositiveNewsService {
         storyData = JSON.parse(content);
       } catch (parseError) {
         console.warn(`Failed to parse fallback story for ${category}:`, parseError.message);
-        // Create a basic fallback story
+        // Create a basic historical figure fallback story
         storyData = {
-          headline: `Modern ${category} Story`,
-          summary: `Exciting progress is being made in ${category.toLowerCase()} that brings hope and innovation.`,
-          fullText: `Recent developments in ${category.toLowerCase()} show promising advances that could benefit many people. This positive trend demonstrates the power of human ingenuity and collaboration.`,
-          source: 'AI Generated'
+          headline: `Modern ${category} Historical Figure Story`,
+          summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
+          fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
+          source: 'O4-Mini',
+          historicalFigure: 'Historical Figure'
         };
       }
 
@@ -338,34 +382,36 @@ class PositiveNewsService {
         fullText: storyData.fullText,
         source: storyData.source,
         publishedAt: new Date().toISOString(),
-        isFresh: false // Mark as fallback content
+        isFresh: false, // Mark as fallback content
+        historicalFigure: storyData.historicalFigure || 'Historical Figure'
       });
 
       // Store the fallback story
       const result = await this.stories.insertOne(fallbackStory);
       fallbackStory._id = result.insertedId;
       
-      console.log(`✅ Generated fallback story for ${category}: ${storyData.headline}`);
+      console.log(`✅ Generated historical figure fallback story for ${category}: ${storyData.headline}`);
       return fallbackStory;
 
     } catch (error) {
       console.error(`❌ Failed to generate fallback story for ${category}:`, error.message);
       
-      // Create a basic fallback story if all else fails
+      // Create a basic historical figure fallback story if all else fails
       const basicStory = new PositiveNewsStory({
         category,
-        headline: `Modern ${category} Story`,
-        summary: `Great things are happening in ${category.toLowerCase()} that inspire hope and progress.`,
-        fullText: `The field of ${category.toLowerCase()} continues to show remarkable progress and positive developments. These advances demonstrate the incredible potential for positive change and innovation in our world.`,
-        source: 'AI Generated',
+        headline: `Modern ${category} Historical Figure Story`,
+        summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
+        fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
+        source: 'O4-Mini',
         publishedAt: new Date().toISOString(),
-        isFresh: false
+        isFresh: false,
+        historicalFigure: 'Historical Figure'
       });
 
       const result = await this.stories.insertOne(basicStory);
       basicStory._id = result.insertedId;
       
-      console.log(`✅ Created basic fallback story for ${category}`);
+      console.log(`✅ Created basic historical figure fallback story for ${category}`);
       return basicStory;
     }
   }
@@ -424,9 +470,9 @@ class PositiveNewsService {
     }
   }
 
-  async getStoriesForCycling(category, count = 1, epoch = 'Modern', storyType = 'historical-figure', language = 'en') {
+  async getStoriesForCycling(category, count = 1, epoch = 'Modern', storyType = 'historical-figure', language = 'en', includeTTS = false) {
     try {
-      console.log(`📚 Getting ${storyType} stories for ${category} in ${epoch} epoch (${language}) (requested: ${count})`);
+      console.log(`📚 Getting ${storyType} stories for ${category} in ${epoch} epoch (${language}) (requested: ${count}, includeTTS: ${includeTTS})`);
       
       // Build query with filters
       const query = { 
@@ -440,36 +486,31 @@ class PositiveNewsService {
         query.epoch = epoch;
       }
       
-      // Get stories with TTS audio first
-      const storiesWithTTS = await this.stories.find({ 
-        ...query,
-        ttsAudio: { $exists: true, $ne: null }
-      }).limit(count).toArray();
-      
-      console.log(`📚 Found ${storiesWithTTS.length} ${storyType} stories with TTS for ${category} in ${epoch} (${language})`);
-      
-      // If we have enough stories with TTS, return them
-      if (storiesWithTTS.length >= count) {
-        console.log(`✅ Returning ${storiesWithTTS.length} ${storyType} stories with TTS for ${category}`);
-        return storiesWithTTS.slice(0, count);
+      // Get stories - exclude TTS audio unless specifically requested
+      let allStories;
+      if (includeTTS) {
+        console.log(`🎵 Including TTS audio for ${category} stories`);
+        allStories = await this.stories.find(query).limit(count * 2).toArray();
+      } else {
+        // Explicitly exclude TTS fields to prevent crashes
+        console.log(`🚫 Excluding TTS audio for ${category} stories to prevent crashes`);
+        allStories = await this.stories.find(query).limit(count * 2).toArray();
+        console.log(`📊 Found ${allStories.length} stories with TTS data, removing TTS fields...`);
+        allStories = allStories.map(story => {
+          const { ttsAudio, ttsGeneratedAt, ttsTextLength, ...storyWithoutTTS } = story;
+          console.log(`✅ Removed TTS fields from story: ${story.headline}`);
+          return storyWithoutTTS;
+        });
+        console.log(`✅ Processed ${allStories.length} stories without TTS audio`);
       }
       
-      // If we don't have enough stories with TTS, try to get any stories matching the criteria
-      const allStories = await this.stories.find(query).limit(count * 2).toArray(); // Get more to have options
+      console.log(`📚 Found ${allStories.length} ${storyType} stories for ${category} in ${epoch} (${language})`);
       
-      console.log(`📚 Found ${allStories.length} total ${storyType} stories for ${category} in ${epoch} (${language})`);
-      
-      // Prioritize stories with TTS, then take the first available ones
-      const prioritizedStories = [
-        ...storiesWithTTS,
-        ...allStories.filter(story => !story.ttsAudio)
-      ].slice(0, count);
-      
-      console.log(`📚 Returning ${prioritizedStories.length} ${storyType} stories for ${category} (${prioritizedStories.filter(s => s.ttsAudio).length} with TTS)`);
-      
-      // If we still don't have enough, just return what we have
-      if (prioritizedStories.length > 0) {
-        return prioritizedStories;
+      // If we have stories, return them
+      if (allStories.length > 0) {
+        const selectedStories = allStories.slice(0, count);
+        console.log(`✅ Returning ${selectedStories.length} ${storyType} stories for ${category}`);
+        return selectedStories;
       }
       
       // Only generate new stories if we have absolutely nothing

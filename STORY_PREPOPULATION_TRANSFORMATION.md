@@ -2,7 +2,7 @@
 
 ## 📋 **Executive Summary**
 
-The Orb Game has undergone a **major architectural transformation** from dynamic AI story generation to a **pre-populated story system** using the EpochalCategoryStoryMap and historical figures data. This change significantly improves performance, reliability, and user experience while reducing costs and complexity.
+The Orb Game has undergone a **major architectural transformation** from dynamic AI story generation to a **pre-populated story system** using historical figures data. This change significantly improves performance, reliability, and user experience while reducing costs and complexity.
 
 ## 🔄 **Key Changes Made**
 
@@ -17,9 +17,9 @@ The Orb Game has undergone a **major architectural transformation** from dynamic
 - **Benefits**: Faster response times, consistent quality, reduced API costs
 
 ### **3. Data Sources Integration**
-- **EpochalCategoryStoryMap.md**: Provides story topics for each category/epoch
 - **OrbGameInfluentialPeopleSeeds**: Provides historical figures for each category/epoch
-- **Combination**: Creates rich, diverse content covering both topics and personalities
+- **Focus**: All stories are based on real historical figures and their accomplishments
+- **Content**: Rich, diverse content covering influential personalities across history
 
 ## 📊 **Story Coverage Matrix**
 
@@ -44,15 +44,14 @@ The Orb Game has undergone a **major architectural transformation** from dynamic
 1. **English** - Primary language with 'alloy' TTS voice
 2. **Spanish** - Secondary language with 'jorge' TTS voice
 
-### **Story Types (2)**
-1. **Topic Stories** - Based on EpochalCategoryStoryMap topics
-2. **Historical Figure Stories** - Based on OrbGameInfluentialPeopleSeeds
+### **Story Type (1)**
+1. **Historical Figure Stories** - Based on OrbGameInfluentialPeopleSeeds
 
 ## 🎯 **Expected Story Count**
 
 ```
-8 categories × 5 epochs × 2 languages × 2 story types × 3 stories each
-= 480 total stories
+8 categories × 5 epochs × 2 languages × 3 historical figures each
+= 240 total stories
 ```
 
 ## 📁 **Files Created/Modified**
@@ -69,7 +68,6 @@ The Orb Game has undergone a **major architectural transformation** from dynamic
 - `PROMPTS_REFERENCE_MERGED.md` - Updated with Historical Figures category
 
 ### **Data Files**
-- `EpochalCategoryStoryMap.md` - Story topics by category/epoch
 - `OrbGameInfluentialPeopleSeeds` - Historical figures by category/epoch
 
 ## 🚀 **Implementation Process**
@@ -81,7 +79,7 @@ The Orb Game has undergone a **major architectural transformation** from dynamic
 
 This script will:
 - Generate stories for all category/epoch/language combinations
-- Create both topic-based and historical figure stories
+- Create stories based on historical figures and their accomplishments
 - Generate TTS audio for each story
 - Store everything in MongoDB with proper indexing
 
@@ -167,7 +165,7 @@ The frontend now:
   epoch: "Ancient",
   model: "o4-mini",
   language: "en",
-  storyType: "topic|historical",
+  storyType: "historical",
   storyIndex: 0,
   headline: "Story headline",
   summary: "One sentence summary",

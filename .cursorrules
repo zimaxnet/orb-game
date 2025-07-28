@@ -66,7 +66,8 @@ orb-game/
 ### AI Model Parameters
 - **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`), no `temperature` parameter
 - **TTS Models**: Use `Authorization: Bearer` header (not `api-key`)
-- **Token Limits**: 1000 tokens for complete JSON responses
+- **Token Limits**: 2000 tokens for complete JSON responses
+- **TTS Voices**: Use `alloy` voice for both English and Spanish (avoid `jorge` - not supported)
 
 ### Adding New AI Models
 1. Store API key in Azure Key Vault
@@ -77,12 +78,14 @@ orb-game/
 
 ### Story Prepopulation System
 - **Script**: `scripts/prepopulate-all-stories.js` - Generates 240+ historical figure stories
+- **Missing Stories Script**: `scripts/generate-missing-stories.js` - Generates only missing stories (token efficient)
 - **Key Vault Integration**: Automatically fetches credentials from `orb-game-kv-eastus2`
 - **Data Sources**: `EpochalCategoryStoryMap.md` and `OrbGameInfluentialPeopleSeeds`
 - **Execution**: `./scripts/run-prepopulation.sh` - Interactive script with confirmation
 - **Coverage**: 8 categories × 5 epochs × 2 languages × 3 figures = 240 stories
-- **TTS Integration**: Generates audio for each story using Azure OpenAI TTS
+- **TTS Integration**: Generates audio for each story using Azure OpenAI TTS (`alloy` voice)
 - **MongoDB Storage**: Stores stories with TTL for automatic cleanup
+- **Error Tracking**: Comprehensive error statistics for JSON parse, TTS, API, MongoDB, and network errors
 
 ## 🎯 Prompt Management System
 
@@ -118,10 +121,13 @@ const prompt = promptManager.getFrontendPrompt(category, epoch, language, model)
 ## 🗄️ Database & Caching
 
 ### MongoDB Integration
-- **Connection**: Azure Cosmos DB for MongoDB
+- **Connection**: Azure Cosmos DB for MongoDB (`orb-game-mongodb-eastus2`)
 - **Collections**: Stories, memories, analytics
+- **Throughput**: 2000 RU/s per collection (stories, positive_news_stories, audio, users, connection_test)
+- **Performance**: 5x throughput increase from 400 RU/s baseline
 - **Caching**: 88.2% performance improvement for cached requests
 - **TTL**: 30-day expiration for cached content
+- **Cost**: ~$0.008/hour per collection at 2000 RU/s
 
 ### Cache Management
 ```javascript
@@ -175,7 +181,9 @@ PERPLEXITY_API_KEY=your-perplexity-api-key
 
 ### Testing Guidelines
 - Run comprehensive test suite before deployment
-- Verify all AI models are working
+- Verify all AI models are working: `node scripts/test-ai-models.js`
+- Test story generation: `node scripts/test-fixed-story-generation.js`
+- Debug API issues: `node scripts/debug-api-response.js`
 - Check cache performance metrics
 - Validate multi-language support
 - Test Azure Key Vault integration
@@ -248,10 +256,12 @@ node backend-server.js
 
 ### Story Prepopulation Process
 1. Ensure Azure Key Vault credentials are set
-2. Run `./scripts/run-prepopulation.sh` for interactive confirmation
-3. Monitor progress (30-60 minutes for 240+ stories)
-4. Verify stories in MongoDB using `scripts/check-database-stories.js`
-5. Test story loading in the game interface
+2. Check existing stories: `node scripts/check-existing-stories.js`
+3. Run missing stories generation: `node scripts/generate-missing-stories.js` (token efficient)
+4. Or run full prepopulation: `./scripts/run-prepopulation.sh` for interactive confirmation
+5. Monitor progress and error statistics
+6. Verify stories in MongoDB using `scripts/check-database-stories.js`
+7. Test story loading in the game interface
 
 ### Git Workflow
 - Use descriptive commit messages
@@ -279,6 +289,8 @@ node backend-server.js
 - **O4-Mini Model**: Use `max_completion_tokens`, not `max_tokens`
 - **Temperature Parameter**: Not supported for O4-Mini (use default 1)
 - **Authorization Header**: Use `Authorization: Bearer` for Azure OpenAI
+- **TTS Voice**: Use `alloy` for both English and Spanish (avoid `jorge`)
+- **Token Limits**: Use 2000 tokens for complete story generation
 - **Database Migration**: All data migrated from `aimcs` to `orbgame`
 - **Registry Name**: Use `orbgame` registry, not `aimcsregistry`
 - **Docker Platform**: Always build with `--platform linux/amd64` for Azure Container Apps
@@ -291,6 +303,10 @@ node backend-server.js
 - Azure Container App scaling configuration
 - Docker platform mismatch (must use `linux/amd64` for Azure Container Apps)
 - Container App deployment failures due to wrong platform architecture
+- **API Parameter Issues**: Use `max_completion_tokens` not `max_tokens` for o4-mini
+- **TTS Voice Issues**: Use `alloy` voice (avoid `jorge` - not supported)
+- **Empty API Responses**: Check token limits and parameter names
+- **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
 
 ## 🎯 Best Practices
 
@@ -317,6 +333,13 @@ node backend-server.js
 - **Key Vault Integration**: All scripts fetch credentials from `orb-game-kv-eastus2`
 - **Managed Identity**: Container apps use managed identity for Key Vault access
 - **RBAC Authentication**: Role-based access control for Key Vault secrets
+
+### Error Handling
+- **JSON Error Recovery**: Implement JSON fix attempts for malformed responses
+- **Empty Content Detection**: Check for empty API responses before parsing
+- **Comprehensive Error Tracking**: Track JSON parse, TTS, API, MongoDB, and network errors
+- **Token Limit Management**: Use appropriate token limits for different model types
+- **API Parameter Validation**: Ensure correct parameter names for each model
 
 ### Testing
 - Write comprehensive test suites

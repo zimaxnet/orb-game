@@ -110,10 +110,7 @@ class PromptManager {
     
     // Model-specific fallback approaches
     const modelApproaches = {
-      'o4-mini': `Systematically analyze ${epochLower} ${categoryLower} innovations using logical reasoning. Present structured conclusions.`,
-      'grok-4': `Create witty, engaging content about ${epochLower} ${categoryLower} with characteristic humor and fresh perspective.`,
-      'perplexity-sonar': `Research and synthesize real data about ${epochLower} ${categoryLower}. Present authoritative information.`,
-      'gemini-1.5-flash': `Weave rich, multi-perspective narrative about ${epochLower} ${categoryLower}. Blend multiple viewpoints.`
+      'o4-mini': `Systematically analyze ${epochLower} ${categoryLower} innovations using logical reasoning. Present structured conclusions.`
     };
     
     const approach = modelApproaches[model] || modelApproaches['o4-mini'];
@@ -170,7 +167,7 @@ class PromptManager {
    * Get all available models
    */
   getAvailableModels() {
-    return ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    return ['o4-mini'];
   }
 
   /**
@@ -183,24 +180,6 @@ class PromptManager {
         description: 'Systematic, logical, structured analysis',
         style: 'Analytical and methodical',
         icon: '🔬'
-      },
-      'grok-4': {
-        name: 'Grok Perspective',
-        description: 'Witty, creative, unconventional insights',
-        style: 'Humorous and engaging',
-        icon: '🎭'
-      },
-      'perplexity-sonar': {
-        name: 'Perplexity Research',
-        description: 'Data-driven, authoritative, research-based',
-        style: 'Comprehensive and factual',
-        icon: '📊'
-      },
-      'gemini-1.5-flash': {
-        name: 'Gemini Synthesis',
-        description: 'Multi-perspective, immersive narratives',
-        style: 'Rich and multi-layered',
-        icon: '🌟'
       }
     };
   }

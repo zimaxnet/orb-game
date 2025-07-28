@@ -879,8 +879,8 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
     const defaultCategories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const categoriesToProcess = categories.length > 0 ? categories : defaultCategories;
     
-    // Default models if none provided
-    const defaultModels = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    // Default models if none provided - only o4-mini
+    const defaultModels = ['o4-mini'];
     const modelsToProcess = models.length > 0 ? models : defaultModels;
     
     for (const category of categoriesToProcess) {
@@ -891,19 +891,8 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
             
             let stories = [];
             
-            // Generate stories based on the selected model
-            switch (model) {
-              case 'grok-4':
-                stories = await generateStoriesWithGrok(category, epoch, 3, null, language);
-                break;
-              case 'perplexity-sonar':
-                stories = await generateStoriesWithPerplexity(category, epoch, 3, null, language);
-                break;
-              case 'o4-mini':
-              default:
-                stories = await generateStoriesWithAzureOpenAI(category, epoch, 3, null, language);
-                break;
-            }
+            // Only use o4-mini for story generation
+            stories = await generateStoriesWithAzureOpenAI(category, epoch, 3, null, language);
             
             if (stories.length === 0) {
               console.log(`⚠️ No stories generated for ${category}, using fallback...`);
@@ -930,13 +919,13 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
             });
             
           } catch (error) {
-            console.error(`❌ Failed to preload ${category}-${epoch}-${model}-${language}:`, error);
+            console.error(`❌ Failed to preload ${category}-${epoch}-${model}-${language}:`, error.message);
             results.failed++;
             results.details.push({
               category,
               model,
               language,
-              status: 'failed',
+              status: 'error',
               error: error.message
             });
           }
@@ -946,17 +935,14 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
       }
     }
     
-    console.log(`✅ Preload complete for ${epoch} epoch!`);
+    console.log(`✅ Preloading completed for ${epoch} epoch`);
     console.log(`📊 Results: ${results.successful} successful, ${results.failed} failed`);
     
     res.json(results);
     
   } catch (error) {
-    console.error(`❌ Error during preload for ${epoch}:`, error);
-    res.status(500).json({ 
-      error: 'Failed to preload stories',
-      message: error.message 
-    });
+    console.error(`❌ Error preloading stories for ${epoch}:`, error.message);
+    res.status(500).json({ error: 'Failed to preload stories' });
   }
 });
 

@@ -4,9 +4,9 @@ import { StoryCacheService } from './story-cache-service.js';
 export class ModelReliabilityChecker {
   constructor(secrets) {
     this.secrets = secrets;
-    this.storyCacheService = new StoryCacheService();
-    this.reliableModels = [];
-    this.cachedModernStory = null;
+    this.models = [
+      { id: 'o4-mini', name: 'O4-Mini', testFunction: this.testO4Mini.bind(this) }
+    ];
   }
 
   /**
@@ -247,30 +247,15 @@ export class ModelReliabilityChecker {
       return null;
     }
 
-    // Use the first reliable model
-    const selectedModel = this.reliableModels[0];
+    // Use o4-mini as the only reliable model
+    const selectedModel = 'o4-mini';
     console.log(`📝 Caching modern epoch story using ${selectedModel}...`);
 
     try {
       let story;
       
-      switch (selectedModel) {
-        case 'azure-openai':
-          story = await this.generateAzureOpenAIStory('Technology', 'Modern', 1);
-          break;
-        case 'grok-4':
-          story = await this.generateGrok4Story('Technology', 'Modern', 1);
-          break;
-        case 'perplexity-sonar':
-          story = await this.generatePerplexityStory('Technology', 'Modern', 1);
-          break;
-        case 'gemini-1.5-flash':
-          story = await this.generateGeminiStory('Technology', 'Modern', 1);
-          break;
-        default:
-          console.warn(`⚠️ Unknown model: ${selectedModel}`);
-          return null;
-      }
+      // Only use o4-mini for story generation
+      story = await this.generateAzureOpenAIStory('Technology', 'Modern', 1);
 
       if (story && story.length > 0) {
         this.cachedModernStory = story[0];
@@ -323,117 +308,16 @@ export class ModelReliabilityChecker {
   }
 
   /**
-   * Generate story using Grok 4
-   */
-  async generateGrok4Story(category, epoch, count) {
-    const prompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Grok 4" }]`;
-
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${this.secrets.GROK_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'llama-3-70b-8192',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 500,
-        temperature: 0.7
-      })
-    });
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    const content = data.choices[0]?.message?.content;
-    if (!content) return [];
-
-    try {
-      return JSON.parse(content);
-    } catch {
-      return [];
-    }
-  }
-
-  /**
-   * Generate story using Perplexity Sonar
-   */
-  async generatePerplexityStory(category, epoch, count) {
-    const prompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Perplexity Sonar" }]`;
-
-    const response = await fetch('https://api.perplexity.ai/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${this.secrets.PERPLEXITY_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'sonar-medium-online',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 500,
-        temperature: 0.7
-      })
-    });
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    const content = data.choices[0]?.message?.content;
-    if (!content) return [];
-
-    try {
-      return JSON.parse(content);
-    } catch {
-      return [];
-    }
-  }
-
-  /**
-   * Generate story using Gemini 1.5 Flash
-   */
-  async generateGeminiStory(category, epoch, count) {
-    const prompt = `Generate ${count} fascinating, positive ${category} stories from ${epoch.toLowerCase()} times. Each story should be engaging, informative, and highlight remarkable achievements or discoveries. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Gemini 1.5 Flash" }]`;
-
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.secrets.GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{ text: prompt }]
-        }],
-        generationConfig: {
-          maxOutputTokens: 500,
-          temperature: 0.7
-        }
-      })
-    });
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    const content = data.candidates[0]?.content?.parts[0]?.text;
-    if (!content) return [];
-
-    try {
-      return JSON.parse(content);
-    } catch {
-      return [];
-    }
-  }
-
-  /**
-   * Get cached modern story
+   * Get cached modern epoch story
    */
   getCachedModernStory() {
     return this.cachedModernStory;
   }
 
   /**
-   * Get reliable models
+   * Get list of reliable models
    */
   getReliableModels() {
-    return this.reliableModels;
+    return ['o4-mini'];
   }
 } 

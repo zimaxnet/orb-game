@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 
 import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
-import fs from 'fs';
-import path from 'path';
 import { DefaultAzureCredential } from '@azure/identity';
 import { SecretClient } from '@azure/keyvault-secrets';
+import fs from 'fs';
+import path from 'path';
 
-dotenv.config();
+// Import the historical figures data (need to go up one directory)
+const historicalFiguresData = JSON.parse(fs.readFileSync('../OrbGameInfluentialPeopleSeeds', 'utf8'));
 
-// Import the historical figures data
-const historicalFiguresData = JSON.parse(fs.readFileSync('OrbGameInfluentialPeopleSeeds', 'utf8'));
-
-// Import the sophisticated prompt management system
+// Import prompt manager (need to go up one directory)
 import promptManager from '../utils/promptManager.js';
 
-class StoryPrepopulator {
+class MissingStoryGenerator {
   constructor() {
     this.client = null;
     this.db = null;
@@ -37,7 +34,7 @@ class StoryPrepopulator {
   }
 
   async initialize() {
-    console.log('🚀 Initializing Story Prepopulator...');
+    console.log('🚀 Initializing Missing Story Generator (Backend)...');
     
     // Load Azure OpenAI credentials from Key Vault
     await this.loadCredentialsFromKeyVault();
@@ -65,9 +62,6 @@ class StoryPrepopulator {
       this.azureOpenAIDeployment = 'o4-mini';
       
       console.log('✅ Credentials loaded from Key Vault successfully');
-      console.log(`   Endpoint: ${this.azureOpenAIEndpoint}`);
-      console.log(`   API Key: ${this.azureOpenAIApiKey.substring(0, 8)}...`);
-      console.log(`   MongoDB: ${this.mongoUri.substring(0, 20)}...`);
       
     } catch (error) {
       console.error('❌ Failed to load credentials from Key Vault:', error.message);
@@ -87,18 +81,6 @@ class StoryPrepopulator {
       this.db = this.client.db('orbgame');
       this.storiesCollection = this.db.collection('stories');
       
-      // Create indexes for efficient queries
-      await this.storiesCollection.createIndex({ 
-        category: 1, 
-        epoch: 1, 
-        model: 1, 
-        language: 1 
-      });
-      
-      await this.storiesCollection.createIndex({ 
-        createdAt: 1 
-      }, { expireAfterSeconds: 30 * 24 * 60 * 60 }); // 30 days TTL
-      
       this.isConnected = true;
       console.log('✅ Connected to MongoDB');
       return true;
@@ -117,20 +99,31 @@ class StoryPrepopulator {
     }
   }
 
+  // Check existing stories for a specific combination
+  async getExistingStories(category, epoch, language) {
+    if (!this.isConnected) return [];
+    
+    try {
+      const stories = await this.storiesCollection.find({
+        category,
+        epoch,
+        language,
+        storyType: 'historical-figure'
+      }).toArray();
+      
+      return stories;
+    } catch (error) {
+      console.warn(`⚠️ Could not check existing stories for ${category}-${epoch}-${language}:`, error.message);
+      return [];
+    }
+  }
+
   // Generate story using o4-mini with sophisticated prompt system
   async generateStoryWithO4Mini(category, epoch, historicalFigure, language = 'en') {
     try {
-      let prompt;
-      
-      if (historicalFigure) {
-        // Generate story about historical figure using sophisticated prompt system
-        const basePrompt = promptManager.getFrontendPrompt(category, epoch, language, 'o4-mini');
-        prompt = `${basePrompt} Focus specifically on ${historicalFigure.name} and their remarkable achievements in ${category.toLowerCase()} during ${epoch.toLowerCase()} times. ${historicalFigure.context} Make it engaging, informative, and highlight their significant contributions that shaped history. Tell the story as if you are ${historicalFigure.name} sharing their journey, discoveries, and the impact they had on the world.`;
-      } else {
-        // Fallback: Generate generic story about the category and epoch
-        prompt = promptManager.getFrontendPrompt(category, epoch, language, 'o4-mini');
-        prompt += ` Focus on remarkable achievements and discoveries in ${category.toLowerCase()} during ${epoch.toLowerCase()} times.`;
-      }
+      // Generate story about historical figure using sophisticated prompt system
+      const basePrompt = promptManager.getFrontendPrompt(category, epoch, language, 'o4-mini');
+      const prompt = `${basePrompt} Focus specifically on ${historicalFigure.name} and their remarkable achievements in ${category.toLowerCase()} during ${epoch.toLowerCase()} times. ${historicalFigure.context} Make it engaging, informative, and highlight their significant contributions that shaped history. Tell the story as if you are ${historicalFigure.name} sharing their journey, discoveries, and the impact they had on the world.`;
 
       const response = await fetch(`${this.azureOpenAIEndpoint}openai/deployments/${this.azureOpenAIDeployment}/chat/completions?api-version=2024-12-01-preview`, {
         method: 'POST',
@@ -220,6 +213,24 @@ class StoryPrepopulator {
     }
   }
 
+  // Attempt to fix common JSON parsing issues
+  attemptJSONFix(content) {
+    // Remove any text before the first [
+    let fixed = content.replace(/^[^[]*/, '');
+    
+    // Remove any text after the last ]
+    fixed = fixed.replace(/[^]*$/, '');
+    
+    // Fix common issues
+    fixed = fixed.replace(/,\s*]/g, ']'); // Remove trailing commas
+    fixed = fixed.replace(/,\s*}/g, '}'); // Remove trailing commas in objects
+    fixed = fixed.replace(/\\"/g, '"'); // Fix escaped quotes
+    fixed = fixed.replace(/\\n/g, ' '); // Replace newlines with spaces
+    fixed = fixed.replace(/\\t/g, ' '); // Replace tabs with spaces
+    
+    return fixed;
+  }
+
   // Generate TTS audio using Azure OpenAI TTS
   async generateTTSAudio(text, language = 'en') {
     try {
@@ -285,9 +296,6 @@ class StoryPrepopulator {
         accessCount: 0
       }));
 
-      // Remove existing stories for this combination
-      await this.storiesCollection.deleteMany({ cacheKey });
-
       // Use batch insert with retry logic for rate limiting
       const result = await this.batchInsertWithRetry(storiesToStore);
       
@@ -335,58 +343,18 @@ class StoryPrepopulator {
     return results;
   }
 
-  // Attempt to fix common JSON parsing issues
-  attemptJSONFix(content) {
-    // Remove any text before the first [
-    let fixed = content.replace(/^[^[]*/, '');
+  // Generate missing stories
+  async generateMissingStories() {
+    console.log('🎯 Starting targeted generation of missing stories...');
     
-    // Remove any text after the last ]
-    fixed = fixed.replace(/[^]*$/, '');
-    
-    // Fix common issues
-    fixed = fixed.replace(/,\s*]/g, ']'); // Remove trailing commas
-    fixed = fixed.replace(/,\s*}/g, '}'); // Remove trailing commas in objects
-    fixed = fixed.replace(/\\"/g, '"'); // Fix escaped quotes
-    fixed = fixed.replace(/\\n/g, ' '); // Replace newlines with spaces
-    fixed = fixed.replace(/\\t/g, ' '); // Replace tabs with spaces
-    
-    return fixed;
-  }
-
-  // Check for existing stories to avoid regeneration
-  async checkExistingStories(category, epoch, model, language) {
-    if (!this.isConnected) return 0;
-    
-    try {
-      const count = await this.storiesCollection.countDocuments({
-        category,
-        epoch,
-        model,
-        language,
-        storyType: 'historical-figure'
-      });
-      return count;
-    } catch (error) {
-      console.warn(`⚠️ Could not check existing stories for ${category}-${epoch}-${language}:`, error.message);
-      return 0;
-    }
-  }
-
-  // Prepopulate all stories for the three most important historical figures per category/epoch
-  async prepopulateAllStories() {
-    console.log('🎯 Starting comprehensive story prepopulation for historical figures...');
-    console.log('🔍 Checking for existing stories to avoid regeneration...');
-    
-    // Define the 8 core categories
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
     const model = 'o4-mini';
     
-    let totalStories = 0;
-    let successfulStories = 0;
+    let totalMissing = 0;
+    let generatedStories = 0;
     let failedStories = 0;
-    let skippedStories = 0;
 
     for (const category of categories) {
       console.log(`\n📚 Processing category: ${category}`);
@@ -402,55 +370,48 @@ class StoryPrepopulator {
           continue;
         }
         
-        console.log(`    👥 Found ${historicalFigures.length} important figures for ${category}-${epoch}`);
-        
         for (const language of languages) {
           console.log(`      🌍 Processing language: ${language}`);
           
-          // Check if stories already exist for this combination
-          const existingCount = await this.checkExistingStories(category, epoch, model, language);
+          // Check existing stories for this combination
+          const existingStories = await this.getExistingStories(category, epoch, language);
+          const existingCount = existingStories.length;
           
           if (existingCount >= 3) {
-            console.log(`        ⏭️ Skipping ${category}-${epoch}-${language} (${existingCount} stories already exist)`);
-            skippedStories += 3;
+            console.log(`        ⏭️ Skipping ${category}-${epoch}-${language} (${existingCount}/3 stories exist)`);
             continue;
           }
           
-          try {
-            // Generate stories for each of the three most important figures
-            for (let figureIndex = 0; figureIndex < Math.min(3, historicalFigures.length); figureIndex++) {
-              const figure = historicalFigures[figureIndex];
-              console.log(`        👤 Generating story for ${figure.name} (${figureIndex + 1}/3)`);
-              
-              const stories = await this.generateStoryWithO4Mini(category, epoch, figure, language);
-              
-              if (stories.length > 0) {
-                await this.storeStories(category, epoch, model, language, stories, 'historical-figure');
-                successfulStories += stories.length;
-                totalStories += stories.length;
-              } else {
-                failedStories++;
-              }
-              
-              // Add delay to avoid rate limiting
-              await new Promise(resolve => setTimeout(resolve, 1000));
+          const missingCount = 3 - existingCount;
+          console.log(`        🔍 Missing ${missingCount} stories for ${category}-${epoch}-${language}`);
+          totalMissing += missingCount;
+          
+          // Generate missing stories
+          for (let i = 0; i < missingCount && i < historicalFigures.length; i++) {
+            const figure = historicalFigures[i];
+            console.log(`          👤 Generating story for ${figure.name} (${i + 1}/${missingCount})`);
+            
+            const stories = await this.generateStoryWithO4Mini(category, epoch, figure, language);
+            
+            if (stories.length > 0) {
+              await this.storeStories(category, epoch, model, language, stories, 'historical-figure');
+              generatedStories += stories.length;
+            } else {
+              failedStories++;
             }
             
-          } catch (error) {
-            console.error(`❌ Failed to process ${category}-${epoch}-${language}:`, error.message);
-            failedStories++;
+            // Add delay to avoid rate limiting
+            await new Promise(resolve => setTimeout(resolve, 2000));
           }
         }
       }
     }
 
-    console.log('\n📊 Prepopulation Summary:');
-    console.log(`✅ Total stories processed: ${totalStories}`);
-    console.log(`✅ Successful stories: ${successfulStories}`);
-    console.log(`⏭️ Skipped stories (already exist): ${skippedStories}`);
-    console.log(`❌ Failed stories: ${failedStories}`);
-    console.log(`📈 Success rate: ${Math.round((successfulStories / totalStories) * 100)}%`);
-    console.log(`💰 Token savings: Skipped ${skippedStories} story generations`);
+    console.log('\n📊 Missing Story Generation Summary:');
+    console.log(`🔍 Total missing stories identified: ${totalMissing}`);
+    console.log(`✅ Successfully generated: ${generatedStories}`);
+    console.log(`❌ Failed generations: ${failedStories}`);
+    console.log(`📈 Success rate: ${Math.round((generatedStories / totalMissing) * 100)}%`);
     
     console.log('\n🔍 Error Analysis:');
     console.log(`   JSON Parse Errors: ${this.errorStats.jsonParseErrors}`);
@@ -461,91 +422,35 @@ class StoryPrepopulator {
     console.log(`   Total Errors: ${this.errorStats.totalErrors}`);
     
     return {
-      totalStories,
-      successfulStories,
+      totalMissing,
+      generatedStories,
       failedStories,
-      skippedStories,
-      successRate: Math.round((successfulStories / totalStories) * 100),
+      successRate: Math.round((generatedStories / totalMissing) * 100),
       errorStats: this.errorStats
     };
-  }
-
-  // Get prepopulation statistics
-  async getPrepopulationStats() {
-    if (!this.isConnected) {
-      return null;
-    }
-
-    try {
-      const stats = await this.storiesCollection.aggregate([
-        {
-          $group: {
-            _id: {
-              category: '$category',
-              epoch: '$epoch',
-              language: '$language',
-              storyType: '$storyType'
-            },
-            count: { $sum: 1 }
-          }
-        },
-        {
-          $group: {
-            _id: '$_id.category',
-            epochs: {
-              $push: {
-                epoch: '$_id.epoch',
-                language: '$_id.language',
-                storyType: '$_id.storyType',
-                count: '$count'
-              }
-            },
-            totalCount: { $sum: '$count' }
-          }
-        }
-      ]).toArray();
-
-      return stats;
-    } catch (error) {
-      console.error('❌ Failed to get prepopulation stats:', error);
-      return null;
-    }
   }
 }
 
 // Main execution
 async function main() {
-  const prepopulator = new StoryPrepopulator();
+  const generator = new MissingStoryGenerator();
   
   try {
-    console.log('🎮 Orb Game Story Prepopulator');
-    console.log('================================');
+    console.log('🎮 Orb Game Missing Story Generator (Backend)');
+    console.log('============================================');
     
-    await prepopulator.initialize();
+    await generator.initialize();
     
-    // Run prepopulation
-    const results = await prepopulator.prepopulateAllStories();
+    // Run missing story generation
+    const results = await generator.generateMissingStories();
     
-    // Get and display statistics
-    const stats = await prepopulator.getPrepopulationStats();
-    if (stats) {
-      console.log('\n📈 Prepopulation Statistics:');
-      stats.forEach(category => {
-        console.log(`\n${category._id}:`);
-        console.log(`  Total stories: ${category.totalCount}`);
-        category.epochs.forEach(epoch => {
-          console.log(`    ${epoch.epoch} (${epoch.language}): ${epoch.count} ${epoch.storyType} stories`);
-        });
-      });
-    }
-    
-    console.log('\n🎉 Prepopulation complete!');
+    console.log('\n🎉 Missing story generation complete!');
     
   } catch (error) {
-    console.error('💥 Prepopulation failed:', error);
+    console.error('💥 Missing story generation failed:', error);
     process.exit(1);
   } finally {
-    await prepopulator.disconnect();
+    await generator.disconnect();
   }
 }
 
@@ -554,4 +459,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch(console.error);
 }
 
-export { StoryPrepopulator }; 
+export { MissingStoryGenerator }; 

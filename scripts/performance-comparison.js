@@ -126,7 +126,7 @@ async function testAIGenerationPerformance() {
   
   const categories = ['Technology', 'Science', 'Art'];
   const epochs = ['Modern', 'Ancient', 'Medieval'];
-  const models = ['o4-mini', 'grok-4', 'perplexity-sonar'];
+  const models = ['o4-mini'];
   
   let totalDuration = 0;
   let successCount = 0;

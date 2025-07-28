@@ -34,7 +34,6 @@ graph TB
     end
 
     subgraph "📚 Content Sources"
-        K[EpochalCategoryStoryMap.md] --> L[Topic-Based Stories]
         M[OrbGameInfluentialPeopleSeeds] --> N[Historical Figure Stories]
     end
 
@@ -132,7 +131,7 @@ export const PROMPT_REFERENCE_DATA = {
 **Script**: `scripts/prepopulate-all-stories.js`
 
 ```javascript
-async generateStoryWithO4Mini(category, epoch, storyTopic, historicalFigure, language) {
+async generateStoryWithO4Mini(category, epoch, historicalFigure, language) {
   let prompt;
   
   if (historicalFigure) {
@@ -141,7 +140,7 @@ async generateStoryWithO4Mini(category, epoch, storyTopic, historicalFigure, lan
               ${historicalFigure.context} Make it engaging, informative, and highlight their significant 
               contributions that shaped history.`;
   } else {
-    prompt = `Generate a fascinating, positive news story about ${storyTopic} in ${category.toLowerCase()} 
+    prompt = `Generate a fascinating, positive news story about remarkable achievements in ${category.toLowerCase()} 
               during ${epoch.toLowerCase()} times. Make it engaging, informative, and highlight remarkable 
               achievements or discoveries.`;
   }
@@ -282,10 +281,8 @@ definitive conclusions and concrete insights. Never end with questions or sugges
 
 ```mermaid
 graph LR
-    A[EpochalCategoryStoryMap.md] --> B[Topic-Based Stories]
     C[OrbGameInfluentialPeopleSeeds] --> D[Historical Figure Stories]
-    B --> E[O4-Mini Generation]
-    D --> E
+    D --> E[O4-Mini Generation]
     E --> F[TTS Audio Generation]
     F --> G[MongoDB Storage]
     G --> H[Instant Loading]
@@ -320,17 +317,17 @@ graph LR
 
 ### **Story Distribution**
 
-| Category | Topic Stories | Historical Figure Stories | Total |
-|----------|---------------|---------------------------|-------|
-| **Technology** | 15 | 10 | 25 |
-| **Science** | 15 | 10 | 25 |
-| **Art** | 15 | 10 | 25 |
-| **Nature** | 15 | 10 | 25 |
-| **Sports** | 15 | 10 | 25 |
-| **Music** | 15 | 10 | 25 |
-| **Space** | 15 | 10 | 25 |
-| **Innovation** | 15 | 10 | 25 |
-| **Total** | 120 | 80 | 200 |
+| Category | Historical Figure Stories | Total |
+|----------|---------------------------|-------|
+| **Technology** | 15 | 15 |
+| **Science** | 15 | 15 |
+| **Art** | 15 | 15 |
+| **Nature** | 15 | 15 |
+| **Sports** | 15 | 15 |
+| **Music** | 15 | 15 |
+| **Space** | 15 | 15 |
+| **Innovation** | 15 | 15 |
+| **Total** | 120 | 120 |
 
 ### **Epoch Distribution**
 

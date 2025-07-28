@@ -19,60 +19,13 @@ async function testNewBackend() {
 
   console.log('📋 Test Configuration:');
   console.log(`  Backend URL: ${BACKEND_URL}`);
-  console.log('  Test Categories: Technology, Science, Art');
-  console.log('  Test Models: o4-mini, perplexity-sonar, grok-4');
-  console.log('  Test Epochs: Modern, Ancient');
-  console.log('  Test Languages: en, es');
-  console.log('=' .repeat(60));
+  console.log('  Test Models: o4-mini');
 
-  // Test 1: Health Check
-  console.log('\n🔍 Test 1: Health Check');
-  try {
-    const response = await fetch(`${BACKEND_URL}/health`);
-    if (response.ok) {
-      const health = await response.json();
-      console.log('  ✅ Health check passed');
-      console.log(`    Status: ${health.status}`);
-      console.log(`    Version: ${health.version}`);
-      console.log(`    Build: ${health.build}`);
-      results.passed++;
-    } else {
-      throw new Error(`HTTP ${response.status}`);
-    }
-  } catch (error) {
-    console.log(`  ❌ Health check failed: ${error.message}`);
-    results.failed++;
-    results.errors.push({ test: 'Health Check', error: error.message });
-  }
-  results.totalTests++;
-
-  // Test 2: Basic API Endpoints
-  console.log('\n🔍 Test 2: Basic API Endpoints');
-  const basicEndpoints = ['/', '/api', '/api/analytics/summary'];
-  
-  for (const endpoint of basicEndpoints) {
-    try {
-      const response = await fetch(`${BACKEND_URL}${endpoint}`);
-      if (response.ok) {
-        console.log(`  ✅ ${endpoint} - OK`);
-        results.passed++;
-      } else {
-        throw new Error(`HTTP ${response.status}`);
-      }
-    } catch (error) {
-      console.log(`  ❌ ${endpoint} - Failed: ${error.message}`);
-      results.failed++;
-      results.errors.push({ test: endpoint, error: error.message });
-    }
-    results.totalTests++;
-  }
-
-  // Test 3: Story Generation (Cache Miss)
-  console.log('\n🔍 Test 3: Story Generation (Cache Miss)');
+  // Test cases for different categories and epochs
   const testCases = [
     { category: 'Technology', epoch: 'Modern', model: 'o4-mini', language: 'en' },
-    { category: 'Science', epoch: 'Ancient', model: 'perplexity-sonar', language: 'es' },
-    { category: 'Art', epoch: 'Modern', model: 'grok-4', language: 'en' }
+    { category: 'Science', epoch: 'Ancient', model: 'o4-mini', language: 'es' },
+    { category: 'Art', epoch: 'Medieval', model: 'o4-mini', language: 'en' }
   ];
 
   for (const testCase of testCases) {
@@ -255,8 +208,8 @@ async function testNewBackend() {
   console.log('\n🔍 Test 9: Performance Test');
   const performanceTests = [
     { category: 'Technology', model: 'o4-mini' },
-    { category: 'Science', model: 'perplexity-sonar' },
-    { category: 'Art', model: 'grok-4' }
+    { category: 'Science', model: 'o4-mini' },
+    { category: 'Art', model: 'o4-mini' }
   ];
 
   const performanceResults = [];

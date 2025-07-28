@@ -75,6 +75,15 @@ orb-game/
 4. Add prompts to `utils/promptReferenceData.js`
 5. Test with `scripts/test-ai-models.js`
 
+### Story Prepopulation System
+- **Script**: `scripts/prepopulate-all-stories.js` - Generates 240+ historical figure stories
+- **Key Vault Integration**: Automatically fetches credentials from `orb-game-kv-eastus2`
+- **Data Sources**: `EpochalCategoryStoryMap.md` and `OrbGameInfluentialPeopleSeeds`
+- **Execution**: `./scripts/run-prepopulation.sh` - Interactive script with confirmation
+- **Coverage**: 8 categories × 5 epochs × 2 languages × 3 figures = 240 stories
+- **TTS Integration**: Generates audio for each story using Azure OpenAI TTS
+- **MongoDB Storage**: Stores stories with TTL for automatic cleanup
+
 ## 🎯 Prompt Management System
 
 ### Centralized Prompt System
@@ -237,6 +246,13 @@ node backend-server.js
 4. Verify Azure resources
 5. Test production endpoints
 
+### Story Prepopulation Process
+1. Ensure Azure Key Vault credentials are set
+2. Run `./scripts/run-prepopulation.sh` for interactive confirmation
+3. Monitor progress (30-60 minutes for 240+ stories)
+4. Verify stories in MongoDB using `scripts/check-database-stories.js`
+5. Test story loading in the game interface
+
 ### Git Workflow
 - Use descriptive commit messages
 - Test changes before committing
@@ -298,6 +314,9 @@ node backend-server.js
 - Implement proper CORS policies
 - Store secrets in Azure Key Vault
 - Use HTTPS for all communications
+- **Key Vault Integration**: All scripts fetch credentials from `orb-game-kv-eastus2`
+- **Managed Identity**: Container apps use managed identity for Key Vault access
+- **RBAC Authentication**: Role-based access control for Key Vault secrets
 
 ### Testing
 - Write comprehensive test suites

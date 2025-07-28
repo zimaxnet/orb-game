@@ -4,6 +4,8 @@ import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
+import { DefaultAzureCredential } from '@azure/identity';
+import { SecretClient } from '@azure/keyvault-secrets';
 
 dotenv.config();
 
@@ -28,26 +30,50 @@ class StoryPrepopulator {
   async initialize() {
     console.log('🚀 Initializing Story Prepopulator...');
     
-    // Load Azure OpenAI credentials from environment
-    this.azureOpenAIApiKey = process.env.AZURE_OPENAI_API_KEY;
-    this.azureOpenAIEndpoint = process.env.AZURE_OPENAI_ENDPOINT;
-    this.azureOpenAIDeployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
-    
-    if (!this.azureOpenAIApiKey || !this.azureOpenAIEndpoint) {
-      throw new Error('❌ Azure OpenAI credentials not found in environment variables');
-    }
+    // Load Azure OpenAI credentials from Key Vault
+    await this.loadCredentialsFromKeyVault();
     
     return await this.connect();
   }
 
+  async loadCredentialsFromKeyVault() {
+    try {
+      console.log('🔐 Loading credentials from Azure Key Vault...');
+      
+      const credential = new DefaultAzureCredential();
+      const keyVaultUrl = 'https://orb-game-kv-eastus2.vault.azure.net/';
+      const secretClient = new SecretClient(keyVaultUrl, credential);
+      
+      // Fetch secrets from Key Vault
+      const [apiKeySecret, endpointSecret, mongoSecret] = await Promise.all([
+        secretClient.getSecret('AZURE-OPENAI-API-KEY'),
+        secretClient.getSecret('AZURE-OPENAI-ENDPOINT'),
+        secretClient.getSecret('MONGO-URI')
+      ]);
+      
+      this.azureOpenAIApiKey = apiKeySecret.value;
+      this.azureOpenAIEndpoint = endpointSecret.value;
+      this.mongoUri = mongoSecret.value;
+      this.azureOpenAIDeployment = 'o4-mini';
+      
+      console.log('✅ Credentials loaded from Key Vault successfully');
+      console.log(`   Endpoint: ${this.azureOpenAIEndpoint}`);
+      console.log(`   API Key: ${this.azureOpenAIApiKey.substring(0, 8)}...`);
+      console.log(`   MongoDB: ${this.mongoUri.substring(0, 20)}...`);
+      
+    } catch (error) {
+      console.error('❌ Failed to load credentials from Key Vault:', error.message);
+      throw new Error('❌ Azure Key Vault credentials not found');
+    }
+  }
+
   async connect() {
     try {
-      const mongoUri = process.env.MONGO_URI;
-      if (!mongoUri) {
-        throw new Error('❌ MONGO_URI not set');
+      if (!this.mongoUri) {
+        throw new Error('❌ MONGO_URI not loaded from Key Vault');
       }
 
-      this.client = new MongoClient(mongoUri);
+      this.client = new MongoClient(this.mongoUri);
       await this.client.connect();
       
       this.db = this.client.db('orbgame');

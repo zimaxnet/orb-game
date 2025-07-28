@@ -300,7 +300,7 @@ class PositiveNewsService {
         console.warn('Failed to load historical figures for fallback:', error.message);
       }
       
-      // Create historical figure focused prompt
+      // ALWAYS create historical figure focused prompt - no generic stories
       let enhancedPrompt;
       if (historicalFigures.length > 0) {
         const figureNames = historicalFigures.map(fig => fig.name).join(', ');
@@ -319,7 +319,19 @@ Tell the story of the chosen historical figure, including:
 
 Make it engaging and educational with concrete details about their life and work.`;
       } else {
-        enhancedPrompt = `Create a positive news story about a historical figure in ${category}. Focus on their specific achievements and how they shaped history.`;
+        // If no historical figures found, create a prompt for a generic historical figure in this category
+        enhancedPrompt = `Create a story about a specific historical figure in ${category}. 
+
+IMPORTANT: You MUST focus on a real historical figure and their specific achievements. Do NOT create a generic story.
+
+Tell the story of a historical figure in ${category}, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
       }
       
       const response = await fetch(`${process.env.AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
@@ -333,9 +345,7 @@ Make it engaging and educational with concrete details about their life and work
           messages: [
             {
               role: 'system',
-              content: historicalFigures.length > 0 
-                ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
-                : 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific historical achievements.'
+              content: 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
             },
             {
               role: 'user',
@@ -367,7 +377,7 @@ Make it engaging and educational with concrete details about their life and work
         console.warn(`Failed to parse fallback story for ${category}:`, parseError.message);
         // Create a basic historical figure fallback story
         storyData = {
-          headline: `Modern ${category} Historical Figure Story`,
+          headline: `Historical Figure in ${category}`,
           summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
           fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
           source: 'O4-Mini',
@@ -381,37 +391,29 @@ Make it engaging and educational with concrete details about their life and work
         summary: storyData.summary,
         fullText: storyData.fullText,
         source: storyData.source,
-        publishedAt: new Date().toISOString(),
-        isFresh: false, // Mark as fallback content
-        historicalFigure: storyData.historicalFigure || 'Historical Figure'
+        historicalFigure: storyData.historicalFigure || 'Historical Figure',
+        storyType: 'historical-figure'
       });
 
-      // Store the fallback story
-      const result = await this.stories.insertOne(fallbackStory);
-      fallbackStory._id = result.insertedId;
-      
+      await this.stories.insertOne(fallbackStory);
       console.log(`✅ Generated historical figure fallback story for ${category}: ${storyData.headline}`);
-      return fallbackStory;
-
-    } catch (error) {
-      console.error(`❌ Failed to generate fallback story for ${category}:`, error.message);
       
-      // Create a basic historical figure fallback story if all else fails
+      return fallbackStory;
+    } catch (error) {
+      console.error(`❌ Failed to generate historical figure fallback story for ${category}:`, error.message);
+      
+      // Create a basic historical figure story as last resort
       const basicStory = new PositiveNewsStory({
         category,
-        headline: `Modern ${category} Historical Figure Story`,
+        headline: `Historical Figure in ${category}`,
         summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
         fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
         source: 'O4-Mini',
-        publishedAt: new Date().toISOString(),
-        isFresh: false,
-        historicalFigure: 'Historical Figure'
+        historicalFigure: 'Historical Figure',
+        storyType: 'historical-figure'
       });
-
-      const result = await this.stories.insertOne(basicStory);
-      basicStory._id = result.insertedId;
       
-      console.log(`✅ Created basic historical figure fallback story for ${category}`);
+      await this.stories.insertOne(basicStory);
       return basicStory;
     }
   }
@@ -474,10 +476,47 @@ Make it engaging and educational with concrete details about their life and work
     try {
       console.log(`📚 Getting ${storyType} stories for ${category} in ${epoch} epoch (${language}) (requested: ${count}, includeTTS: ${includeTTS})`);
       
+      // For historical figures, use the story cache service instead of the positive news stories collection
+      if (storyType === 'historical-figure') {
+        console.log(`🎯 Using story cache service for historical figures`);
+        
+        // Import and use the story cache service
+        const { StoryCacheService } = await import('./story-cache-service.js');
+        const storyCacheService = new StoryCacheService();
+        await storyCacheService.initialize();
+        
+        // Get stories from the story cache service
+        const cachedStories = await storyCacheService.getStories(category, epoch, 'o4-mini', language);
+        
+        if (cachedStories && cachedStories.length > 0) {
+          console.log(`✅ Found ${cachedStories.length} historical figure stories in cache`);
+          const selectedStories = cachedStories.slice(0, count);
+          return selectedStories;
+        }
+        
+        console.log(`⚠️ No historical figure stories found in cache, generating new ones...`);
+        
+        // Generate new historical figure stories using the story cache service
+        const generateFunction = async () => {
+          // Import the story generation function from backend server
+          const { generateStoriesWithAzureOpenAI } = await import('./backend-server.js');
+          return await generateStoriesWithAzureOpenAI(category, epoch, count, null, language, storyType);
+        };
+        
+        const newStories = await storyCacheService.getStoriesWithFallback(category, epoch, 'o4-mini', language, generateFunction);
+        
+        if (newStories && newStories.length > 0) {
+          console.log(`✅ Generated ${newStories.length} new historical figure stories`);
+          return newStories.slice(0, count);
+        }
+      }
+      
+      // Fallback to the original positive news stories collection for non-historical figures
+      console.log(`📚 Using positive news stories collection for ${storyType} stories`);
+      
       // Build query with filters
       const query = { 
         category,
-        storyType: storyType,
         language: language
       };
       

@@ -94,6 +94,8 @@ class StoryCacheService {
         source: story.source,
         publishedAt: story.publishedAt,
         ttsAudio: story.ttsAudio, // Store audio data directly
+        storyType: story.storyType || 'historical-figure', // Store story type
+        historicalFigure: story.historicalFigure, // Store historical figure name
         createdAt: new Date(),
         lastAccessed: new Date(),
         accessCount: 0
@@ -149,7 +151,9 @@ class StoryCacheService {
         fullText: story.fullText,
         source: story.source,
         publishedAt: story.publishedAt,
-        ttsAudio: story.ttsAudio
+        ttsAudio: story.ttsAudio,
+        storyType: story.storyType || 'historical-figure',
+        historicalFigure: story.historicalFigure
       }));
 
       console.log(`📖 Retrieved ${stories.length} cached stories for ${cacheKey}`);

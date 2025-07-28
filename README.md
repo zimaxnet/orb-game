@@ -49,7 +49,7 @@ Each story features:
 
 ### **Backend (Node.js + Express)**
 - **Main Server**: `backend/backend-server.js` - Production API server
-- **Services**: Modular service architecture (MemoryService, StoryCacheService)
+- **Services**: Modular service architecture (HistoricalFiguresService, MemoryService, StoryCacheService)
 - **AI Integration**: O4-Mini model with Azure OpenAI
 - **Database**: Azure Cosmos DB for MongoDB with caching system
 - **Security**: Azure Key Vault for API key management
@@ -63,11 +63,13 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **New Historical Figures Service**: Completely replaced positive news service with dedicated historical figures service
 - **Historical Figures Only**: Game now focuses exclusively on historical figures - no generic content
 - **Enhanced Fallback Stories**: All fallback content now focuses on historical figures instead of generic positive news
 - **Improved Story Generation**: Backend forces AI to choose from specific historical figures in seed data
 - **Complete Coverage**: 120 historical figures across 8 categories × 5 epochs
 - **Educational Focus**: All content is educational and based on real historical achievements
+- **New API Endpoints**: Dedicated historical figures endpoints with backward compatibility
 
 ### **Previous Changes (December 2024)**
 - **Historical Figure Story System**: Fixed to properly load and display 239 pre-populated historical figure stories from MongoDB
@@ -91,6 +93,7 @@ Each story features:
 - Node.js 18+ and npm
 - Azure subscription (for production deployment)
 - Azure OpenAI service with o4-mini model
+- Azure Key Vault for secrets management
 
 ### **Local Development**
 
@@ -206,6 +209,14 @@ orb-game/
 - **Cost**: ~$0.01-0.05 per story
 - **Response Time**: ~0.1s average
 
+### **Historical Figures Service**
+- **Service**: `backend/historical-figures-service.js`
+- **Database Collection**: `historical_figures_stories`
+- **Seed Data**: `OrbGameInfluentialPeopleSeeds`
+- **Features**: Dedicated service for historical figure story generation
+- **API Endpoints**: New dedicated endpoints with backward compatibility
+- **Key Vault Integration**: Secure secrets management
+
 ### **AI Model Parameters**
 - **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`)
 - **TTS Models**: Use `Authorization: Bearer` header
@@ -287,6 +298,8 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 ### **Test Scripts**
 - **AI Models**: `scripts/test-ai-models.js`
 - **Backend**: `scripts/test-new-backend.js`
+- **Historical Figures Service**: `backend/test-historical-figures-service.js`
+- **Historical Figures API**: `scripts/test-historical-figures-api.js`
 - **Cache System**: `scripts/test-story-cache-comprehensive.js`
 - **Performance**: `scripts/performance-comparison.js`
 - **Memory**: `scripts/test-memory.sh`
@@ -294,6 +307,8 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 ### **Testing Guidelines**
 - Run comprehensive test suite before deployment
 - Verify o4-mini model is working: `node scripts/test-ai-models.js`
+- Test historical figures service: `node backend/test-historical-figures-service.js`
+- Test historical figures API: `node scripts/test-historical-figures-api.js`
 - Test story generation: `node scripts/test-fixed-story-generation.js`
 - Debug API issues: `node scripts/debug-api-response.js`
 - Check cache performance metrics
@@ -370,9 +385,10 @@ node backend-server.js
 1. Ensure Azure Key Vault credentials are set
 2. Check existing stories: `node scripts/check-existing-stories.js`
 3. Run missing stories generation: `node scripts/generate-missing-stories.js`
-4. Monitor progress and error statistics
-5. Verify stories in MongoDB using `scripts/check-database-stories.js`
-6. Test story loading in the game interface
+4. Test historical figures service: `node backend/test-historical-figures-service.js`
+5. Monitor progress and error statistics
+6. Verify stories in MongoDB using `scripts/check-database-stories.js`
+7. Test story loading in the game interface
 
 ### **Git Workflow**
 - Use descriptive commit messages

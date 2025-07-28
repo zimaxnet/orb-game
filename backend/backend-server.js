@@ -12,7 +12,7 @@ import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
 dotenv.config();
 
 import { AdvancedMemoryService } from './advanced-memory-service.js';
-import { PositiveNewsService } from './positive-news-service.js';
+import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
 
@@ -75,6 +75,9 @@ async function initializeSecrets() {
       }
     });
     
+    // Make secrets available globally for other services
+    global.secrets = secrets;
+    
     console.log('✅ Azure Key Vault secrets initialized successfully');
   } catch (error) {
     console.error('❌ Failed to initialize Azure Key Vault secrets:', error.message);
@@ -92,7 +95,7 @@ app.use(express.json({ limit: '10mb' }));
 // Initialize advanced memory service
 let memoryService;
 let azureOpenAIClient;
-let positiveNewsService;
+let historicalFiguresService;
 let storyCacheService;
 let modelReliabilityChecker;
 let azureOpenAIApiKey; // Global variable for API key
@@ -658,15 +661,15 @@ async function initializeServer() {
         console.warn('⚠️ Analytics cache loading failed:', analyticsError.message);
       }
       
-      // Initialize PositiveNewsService
+      // Initialize HistoricalFiguresService
       try {
-        console.log('🔧 Initializing PositiveNewsService...');
-        positiveNewsService = new PositiveNewsService(mongoUri);
-        await positiveNewsService.initialize();
-        console.log('✅ PositiveNewsService initialized successfully.');
-      } catch (newsError) {
-        console.warn('⚠️ PositiveNewsService initialization failed:', newsError.message);
-        positiveNewsService = null;
+        console.log('🔧 Initializing HistoricalFiguresService...');
+        historicalFiguresService = new HistoricalFiguresService(mongoUri);
+        await historicalFiguresService.initialize();
+        console.log('✅ HistoricalFiguresService initialized successfully.');
+      } catch (figuresError) {
+        console.warn('⚠️ HistoricalFiguresService initialization failed:', figuresError.message);
+        historicalFiguresService = null;
       }
 
       // Initialize StoryCacheService
@@ -690,7 +693,7 @@ async function initializeServer() {
       console.error('🔍 Error details:', error.stack);
       console.warn('⚠️ Memory features will be disabled, but core chat functionality will continue.');
       memoryService = null;
-      positiveNewsService = null;
+      historicalFiguresService = null;
       storyCacheService = null;
     }
   }
@@ -775,90 +778,122 @@ process.on('SIGINT', async () => {
   process.exit();
 });
 
-// New endpoint: Get a random positive news story (with TTS) by category
-app.get('/api/orb/positive-news/:category', async (req, res) => {
+// New endpoint: Get historical figure stories by category
+app.get('/api/orb/historical-figures/:category', async (req, res) => {
   const category = req.params.category;
-  const count = parseInt(req.query.count) || 1;  // Allow client to specify number of stories
+  const count = parseInt(req.query.count) || 1;
   const epoch = req.query.epoch || 'Modern';
-  const storyType = req.query.storyType || 'historical-figure'; // Default to historical figures
   const language = req.query.language || 'en';
+  const includeTTS = req.query.includeTTS === 'true';
   
-  console.log(`📚 Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language})`);
+  console.log(`📚 Fetching ${count} historical figure stories for ${category} in ${epoch} epoch (${language})`);
   
-  // If positive news service is not available, generate fallback content directly
-  if (!positiveNewsService) {
-    console.log(`📝 Positive news service not available, generating fallback for ${category}...`);
+  // If historical figures service is not available, generate fallback content directly
+  if (!historicalFiguresService) {
+    console.log(`📝 Historical figures service not available, generating fallback for ${category}...`);
     try {
       const fallbackStory = await generateDirectFallbackStory(category);
-      res.json([fallbackStory]);  // Return as array
+      res.json([fallbackStory]);
     } catch (error) {
       console.error('Failed to generate direct fallback story:', error);
-      res.status(500).json({ error: 'Failed to generate positive news content' });
+      res.status(500).json({ error: 'Failed to generate historical figure content' });
     }
     return;
   }
   
   try {
-    // Get stories from database with specific filters (exclude TTS audio to prevent crashes)
-    const stories = await positiveNewsService.getStoriesForCycling(category, count, epoch, storyType, language, false);
+    // Get stories from historical figures service
+    const stories = await historicalFiguresService.getStories(category, epoch, language, count, includeTTS);
     if (stories.length === 0) {
-      console.log(`⚠️ No ${storyType} stories found for ${category}, generating fallback...`);
-      const fallbackStory = await positiveNewsService.generateFallbackStory(category);
-      res.json([fallbackStory]);
+      console.log(`⚠️ No historical figure stories found for ${category}, generating fallback...`);
+      const fallbackStory = await historicalFiguresService.generateHistoricalFigureStory(category, epoch, language);
+      res.json(fallbackStory ? [fallbackStory] : []);
     } else {
-      console.log(`✅ Found ${stories.length} ${storyType} stories for ${category}`);
+      console.log(`✅ Found ${stories.length} historical figure stories for ${category}`);
       res.json(stories);
     }
   } catch (error) {
-    console.error('Positive news endpoint error:', error);
-    res.status(500).json({ error: 'Failed to fetch positive news' });
+    console.error('Historical figures endpoint error:', error);
+    res.status(500).json({ error: 'Failed to fetch historical figure stories' });
   }
 });
 
-// New endpoint: Generate fresh stories from AI models (now only o4-mini)
-app.post('/api/orb/generate-news/:category', async (req, res) => {
+// Backward compatibility endpoint: Map old positive-news endpoint to historical-figures
+app.get('/api/orb/positive-news/:category', async (req, res) => {
   const category = req.params.category;
-  const { epoch = 'Modern', model = 'o4-mini', count = 1, prompt, language = 'en', ensureCaching = true, storyType = 'historical-figure' } = req.body;
+  const count = parseInt(req.query.count) || 1;
+  const epoch = req.query.epoch || 'Modern';
+  const language = req.query.language || 'en';
+  const storyType = req.query.storyType || 'historical-figure';
   
-  console.log(`🤖 Generating fresh ${storyType} stories for ${category} using ${model} for ${epoch} epoch in ${language}...`);
+  console.log(`📚 Backward compatibility: Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language})`);
+  
+  // If historical figures service is not available, generate fallback content directly
+  if (!historicalFiguresService) {
+    console.log(`📝 Historical figures service not available, generating fallback for ${category}...`);
+    try {
+      const fallbackStory = await generateDirectFallbackStory(category);
+      res.json([fallbackStory]);
+    } catch (error) {
+      console.error('Failed to generate direct fallback story:', error);
+      res.status(500).json({ error: 'Failed to generate historical figure content' });
+    }
+    return;
+  }
+  
+  try {
+    // Get stories from historical figures service
+    const stories = await historicalFiguresService.getStories(category, epoch, language, count, false);
+    if (stories.length === 0) {
+      console.log(`⚠️ No historical figure stories found for ${category}, generating fallback...`);
+      const fallbackStory = await historicalFiguresService.generateHistoricalFigureStory(category, epoch, language);
+      res.json(fallbackStory ? [fallbackStory] : []);
+    } else {
+      console.log(`✅ Found ${stories.length} historical figure stories for ${category}`);
+      res.json(stories);
+    }
+  } catch (error) {
+    console.error('Historical figures endpoint error:', error);
+    res.status(500).json({ error: 'Failed to fetch historical figure stories' });
+  }
+});
+
+// New endpoint: Generate fresh historical figure stories
+app.post('/api/orb/generate-historical-figures/:category', async (req, res) => {
+  const category = req.params.category;
+  const { epoch = 'Modern', count = 1, language = 'en', includeTTS = true } = req.body;
+  
+  console.log(`🤖 Generating fresh historical figure stories for ${category} for ${epoch} epoch in ${language}...`);
   
   try {
     let stories = [];
     
-    // First, try to get from cache if available
-    if (storyCacheService && ensureCaching) {
-      const cachedStories = await storyCacheService.getStories(category, epoch, model, language, storyType);
-      if (cachedStories && cachedStories.length > 0) {
-        console.log(`🎯 Using cached ${storyType} stories for ${category}-${epoch}-${model}-${language}`);
-        return res.json(cachedStories);
+    // Use historical figures service to generate stories
+    if (historicalFiguresService) {
+      for (let i = 0; i < count; i++) {
+        const story = await historicalFiguresService.generateHistoricalFigureStory(category, epoch, language);
+        if (story) {
+          stories.push(story);
+        }
       }
-    }
-    
-    // Only use o4-mini for dynamic generation
-    stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language, storyType);
-    
-    if (stories.length === 0) {
-      console.log(`⚠️ No ${storyType} stories generated for ${category}, using fallback...`);
+    } else {
+      console.log(`📝 Historical figures service not available, generating fallback for ${category}...`);
       const fallbackStory = await generateDirectFallbackStory(category);
       stories = [fallbackStory];
     }
     
-    // Store in cache if caching is enabled and service is available
-    if (ensureCaching && storyCacheService) {
-      try {
-        await storyCacheService.storeStories(category, epoch, model, language, stories, storyType);
-        console.log(`💾 Cached ${stories.length} ${storyType} stories for ${category}-${epoch}-${model}-${language}`);
-      } catch (cacheError) {
-        console.warn(`⚠️ Failed to cache ${storyType} stories:`, cacheError.message);
-      }
+    if (stories.length === 0) {
+      console.log(`⚠️ No historical figure stories generated for ${category}, using fallback...`);
+      const fallbackStory = await generateDirectFallbackStory(category);
+      stories = [fallbackStory];
     }
     
-    console.log(`✅ Generated ${stories.length} ${storyType} stories for ${category}`);
+    console.log(`✅ Generated ${stories.length} historical figure stories for ${category}`);
     res.json(stories);
     
   } catch (error) {
-    console.error(`❌ Error generating ${storyType} stories for ${category}:`, error.message);
-    res.status(500).json({ error: 'Failed to generate stories' });
+    console.error(`❌ Error generating historical figure stories for ${category}:`, error.message);
+    res.status(500).json({ error: 'Failed to generate historical figure stories' });
   }
 });
 
@@ -888,20 +923,19 @@ app.post('/api/tts/generate', async (req, res) => {
   }
 });
 
-// New endpoint: Preload stories for all categories of an epoch
-app.post('/api/cache/preload/:epoch', async (req, res) => {
+// New endpoint: Preload historical figure stories for all categories of an epoch
+app.post('/api/historical-figures/preload/:epoch', async (req, res) => {
   const epoch = req.params.epoch;
-  const { categories = [], models = [], languages = ['en'], ensureCaching = true } = req.body;
+  const { categories = [], languages = ['en'] } = req.body;
   
-  console.log(`🔄 Preloading stories for ${epoch} epoch...`);
+  console.log(`🔄 Preloading historical figure stories for ${epoch} epoch...`);
   console.log(`📋 Categories: ${categories.join(', ')}`);
-  console.log(`🤖 Models: ${models.join(', ')}`);
   console.log(`🌍 Languages: ${languages.join(', ')}`);
   
   try {
     const results = {
       epoch: epoch,
-      totalCombinations: categories.length * models.length * languages.length,
+      totalCombinations: categories.length * languages.length,
       completed: 0,
       successful: 0,
       failed: 0,
@@ -912,59 +946,54 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
     const defaultCategories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const categoriesToProcess = categories.length > 0 ? categories : defaultCategories;
     
-    // Default models if none provided - only o4-mini
-    const defaultModels = ['o4-mini'];
-    const modelsToProcess = models.length > 0 ? models : defaultModels;
-    
     for (const category of categoriesToProcess) {
-      for (const model of modelsToProcess) {
-        for (const language of languages) {
-          try {
-            console.log(`📚 Preloading ${category}-${epoch}-${model}-${language}...`);
-            
-            let stories = [];
-            
-            // Only use o4-mini for story generation
-            stories = await generateStoriesWithAzureOpenAI(category, epoch, 3, null, language);
-            
-            if (stories.length === 0) {
-              console.log(`⚠️ No stories generated for ${category}, using fallback...`);
-              const fallbackStory = await generateDirectFallbackStory(category);
-              stories = [fallbackStory];
-            }
-            
-            // Store in cache if caching is enabled
-            if (ensureCaching && storyCacheService) {
-              const cacheResult = await storyCacheService.storeStories(category, epoch, model, language, stories);
-              if (cacheResult) {
-                console.log(`💾 Cached ${stories.length} stories for ${category}-${epoch}-${model}-${language}`);
+      for (const language of languages) {
+        try {
+          console.log(`📚 Preloading historical figure stories for ${category}-${epoch}-${language}...`);
+          
+          let stories = [];
+          
+          // Use historical figures service to generate stories
+          if (historicalFiguresService) {
+            for (let i = 0; i < 3; i++) {
+              const story = await historicalFiguresService.generateHistoricalFigureStory(category, epoch, language);
+              if (story) {
+                stories.push(story);
               }
             }
-            
-            results.successful++;
-            results.details.push({
-              category,
-              model,
-              language,
-              status: 'success',
-              storyCount: stories.length,
-              hasAudio: stories.some(story => story.ttsAudio)
-            });
-            
-          } catch (error) {
-            console.error(`❌ Failed to preload ${category}-${epoch}-${model}-${language}:`, error.message);
-            results.failed++;
-            results.details.push({
-              category,
-              model,
-              language,
-              status: 'error',
-              error: error.message
-            });
+          } else {
+            console.log(`⚠️ Historical figures service not available for ${category}, using fallback...`);
+            const fallbackStory = await generateDirectFallbackStory(category);
+            stories = [fallbackStory];
           }
           
-          results.completed++;
+          if (stories.length === 0) {
+            console.log(`⚠️ No historical figure stories generated for ${category}, using fallback...`);
+            const fallbackStory = await generateDirectFallbackStory(category);
+            stories = [fallbackStory];
+          }
+          
+          results.successful++;
+          results.details.push({
+            category,
+            language,
+            status: 'success',
+            storyCount: stories.length,
+            hasAudio: stories.some(story => story.ttsAudio)
+          });
+          
+        } catch (error) {
+          console.error(`❌ Failed to preload ${category}-${epoch}-${language}:`, error.message);
+          results.failed++;
+          results.details.push({
+            category,
+            language,
+            status: 'error',
+            error: error.message
+          });
         }
+        
+        results.completed++;
       }
     }
     
@@ -974,8 +1003,8 @@ app.post('/api/cache/preload/:epoch', async (req, res) => {
     res.json(results);
     
   } catch (error) {
-    console.error(`❌ Error preloading stories for ${epoch}:`, error.message);
-    res.status(500).json({ error: 'Failed to preload stories' });
+    console.error(`❌ Error preloading historical figure stories for ${epoch}:`, error.message);
+    res.status(500).json({ error: 'Failed to preload historical figure stories' });
   }
 });
 
@@ -1066,9 +1095,9 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
       console.warn('Failed to load historical figures:', error.message);
     }
     
-    // For historical figures, use direct prompt instead of prompt management system
+    // ALWAYS create historical figure focused prompt - no generic stories
     let enhancedPrompt;
-    if (storyType === 'historical-figure' && historicalFigures.length > 0) {
+    if (historicalFigures.length > 0) {
       const figureNames = historicalFigures.map(fig => fig.name).join(', ');
       enhancedPrompt = `Generate a story about ONE of these specific historical figures: ${figureNames}. 
 
@@ -1085,10 +1114,19 @@ Tell the story of the chosen historical figure, including:
 
 Make it engaging and educational with concrete details about their life and work.`;
     } else {
-      // Use sophisticated prompt system for non-historical figure stories
-      const promptManager = await import('../utils/promptManager.js');
-      const defaultPrompt = promptManager.default.getFrontendPrompt(category, epoch, language, 'o4-mini');
-      enhancedPrompt = customPrompt || defaultPrompt;
+      // If no historical figures found, create a prompt for a generic historical figure in this category
+      enhancedPrompt = `Create a story about a specific historical figure in ${category}. 
+
+IMPORTANT: You MUST focus on a real historical figure and their specific achievements. Do NOT create a generic story.
+
+Tell the story of a historical figure in ${category}, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world during ${epoch.toLowerCase()} times
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
     }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
@@ -1102,9 +1140,7 @@ Make it engaging and educational with concrete details about their life and work
         messages: [
           {
             role: 'system',
-            content: storyType === 'historical-figure' 
-              ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
-              : 'You are a helpful assistant that creates engaging, positive news stories. Always focus on uplifting and inspiring content.'
+            content: 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
           },
           {
             role: 'user',
@@ -1179,7 +1215,7 @@ async function generateDirectFallbackStory(category) {
       console.warn('Failed to load historical figures for fallback:', error.message);
     }
     
-    // Create historical figure focused prompt
+    // ALWAYS create historical figure focused prompt - no generic stories
     let enhancedPrompt;
     if (historicalFigures.length > 0) {
       const figureNames = historicalFigures.map(fig => fig.name).join(', ');
@@ -1198,9 +1234,19 @@ Tell the story of the chosen historical figure, including:
 
 Make it engaging and educational with concrete details about their life and work.`;
     } else {
-      // Use sophisticated prompt system for fallback stories
-      const promptManager = await import('../utils/promptManager.js');
-      enhancedPrompt = promptManager.default.getFrontendPrompt(category, 'Modern', 'en', 'o4-mini');
+      // If no historical figures found, create a prompt for a generic historical figure in this category
+      enhancedPrompt = `Create a story about a specific historical figure in ${category}. 
+
+IMPORTANT: You MUST focus on a real historical figure and their specific achievements. Do NOT create a generic story.
+
+Tell the story of a historical figure in ${category}, including:
+1. Their exact name
+2. Their specific achievements in ${category.toLowerCase()}
+3. How their innovations changed the world during modern times
+4. Their background and challenges they faced
+5. The lasting impact of their contributions
+
+Make it engaging and educational with concrete details about their life and work.`;
     }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
@@ -1214,9 +1260,7 @@ Make it engaging and educational with concrete details about their life and work
         messages: [
           {
             role: 'system',
-            content: historicalFigures.length > 0 
-              ? 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE of the provided historical figures and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions.'
-              : 'You are a helpful assistant that creates engaging, positive news stories about historical figures. Always focus on uplifting and inspiring content about specific historical achievements.'
+            content: 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
           },
           {
             role: 'user',
@@ -1244,7 +1288,7 @@ Make it engaging and educational with concrete details about their life and work
     } catch (parseError) {
       console.warn(`Failed to parse direct fallback story for ${category}:`, parseError.message);
       storyData = {
-        headline: `Modern ${category} Historical Figure Story`,
+        headline: `Historical Figure in ${category}`,
         summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
         fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
         source: 'O4-Mini',
@@ -1283,21 +1327,23 @@ Make it engaging and educational with concrete details about their life and work
       source: storyData.source,
       publishedAt: new Date().toISOString(),
       ttsAudio: ttsAudio,
-      historicalFigure: storyData.historicalFigure || 'Historical Figure'
+      historicalFigure: storyData.historicalFigure || 'Historical Figure',
+      storyType: 'historical-figure'
     };
 
   } catch (error) {
-    console.error(`Failed to generate direct fallback story for ${category}:`, error.message);
+    console.error(`Failed to generate historical figure fallback story for ${category}:`, error.message);
     
     // Return a basic historical figure fallback story if all else fails
     return {
-      headline: `Modern ${category} Historical Figure Story`,
+      headline: `Historical Figure in ${category}`,
       summary: `A remarkable historical figure in ${category.toLowerCase()} made groundbreaking contributions that shaped our world.`,
       fullText: `This influential figure in ${category.toLowerCase()} demonstrated incredible innovation and perseverance. Their achievements continue to inspire and influence modern developments in the field.`,
       source: 'O4-Mini',
       publishedAt: new Date().toISOString(),
       ttsAudio: null,
-      historicalFigure: 'Historical Figure'
+      historicalFigure: 'Historical Figure',
+      storyType: 'historical-figure'
     };
   }
 }
@@ -1371,5 +1417,85 @@ app.get('/api/models/reliability', async (req, res) => {
   } catch (error) {
     console.error('❌ Error fetching model reliability:', error);
     res.status(500).json({ error: 'Failed to fetch model reliability' });
+  }
+});
+
+// Get historical figures service stats
+app.get('/api/historical-figures/stats', async (req, res) => {
+  try {
+    if (!historicalFiguresService) {
+      return res.status(503).json({ error: 'Historical figures service not available' });
+    }
+
+    const stats = await historicalFiguresService.getStoryStats();
+    const categories = await historicalFiguresService.getAvailableCategories();
+    const epochs = await historicalFiguresService.getAvailableEpochs();
+    const languages = await historicalFiguresService.getAvailableLanguages();
+    
+    res.json({
+      success: true,
+      stats,
+      categories,
+      epochs,
+      languages,
+      totalStories: stats.reduce((sum, stat) => sum + stat.count, 0)
+    });
+  } catch (error) {
+    console.error('❌ Error fetching historical figures stats:', error);
+    res.status(500).json({ error: 'Failed to fetch historical figures stats' });
+  }
+});
+
+// Get available historical figures for a category and epoch
+app.get('/api/historical-figures/list/:category/:epoch', async (req, res) => {
+  const { category, epoch } = req.params;
+  
+  try {
+    if (!historicalFiguresService) {
+      return res.status(503).json({ error: 'Historical figures service not available' });
+    }
+
+    const figures = await historicalFiguresService.getHistoricalFiguresList(category, epoch);
+    
+    res.json({
+      success: true,
+      category,
+      epoch,
+      figures,
+      count: figures.length
+    });
+  } catch (error) {
+    console.error('❌ Error fetching historical figures list:', error);
+    res.status(500).json({ error: 'Failed to fetch historical figures list' });
+  }
+});
+
+// Get a random historical figure story
+app.get('/api/historical-figures/random/:category', async (req, res) => {
+  const category = req.params.category;
+  const epoch = req.query.epoch || 'Modern';
+  const language = req.query.language || 'en';
+  
+  try {
+    if (!historicalFiguresService) {
+      return res.status(503).json({ error: 'Historical figures service not available' });
+    }
+
+    const story = await historicalFiguresService.getRandomStory(category, epoch, language);
+    
+    if (story) {
+      res.json({
+        success: true,
+        story
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        error: 'No historical figure story found'
+      });
+    }
+  } catch (error) {
+    console.error('❌ Error fetching random historical figure story:', error);
+    res.status(500).json({ error: 'Failed to fetch random historical figure story' });
   }
 });

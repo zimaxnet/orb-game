@@ -13,7 +13,7 @@ RUN npm install --production
 # Copy server code (relative to root directory)
 COPY backend/backend-server.js .
 COPY backend/advanced-memory-service.js .
-COPY backend/positive-news-service.js .
+COPY backend/historical-figures-service.js .
 COPY backend/story-cache-service.js .
 COPY backend/model-reliability-checker.js .
 COPY utils/ ./utils/

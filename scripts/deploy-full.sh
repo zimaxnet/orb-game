@@ -84,7 +84,7 @@ fi
 
 # Build backend Docker image
 echo "🐳 Building backend Docker image..."
-docker build -f backend/backend-Dockerfile -t $REGISTRY_NAME.azurecr.io/orb-game-backend:latest ./backend
+docker build --platform linux/amd64 -f backend/backend-Dockerfile -t $REGISTRY_NAME.azurecr.io/orb-game-backend:latest .
 
 # Login to Azure Container Registry
 echo "🔐 Logging into Azure Container Registry..."

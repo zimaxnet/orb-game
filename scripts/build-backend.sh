@@ -32,7 +32,7 @@ echo -e "${YELLOW}📁 Building backend Docker image...${NC}"
 cd backend
 npm install --production
 
-docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG --platform linux/amd64 -f backend-Dockerfile .
+docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG --platform linux/amd64 -f backend-Dockerfile ..
 cd ..
 
 echo -e "${GREEN}🎉 Backend Build Complete!${NC}"

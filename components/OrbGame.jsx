@@ -470,47 +470,8 @@ function OrbGame() {
     setCurrentAISource(aiModelName);
     
     try {
-      // Try to get historical figure stories from database first (unless forceFresh is true)
-      if (!forceFresh) {
-        console.log(`📚 Loading historical figure stories from database for ${category.name} in ${language}...`);
-        try {
-          const dbResponse = await fetch(`${BACKEND_URL}/api/orb/positive-news/${category.name}?count=3&epoch=${currentEpoch}&language=${language}&storyType=historical-figure`);
-          
-          if (dbResponse.ok) {
-            const dbStories = await dbResponse.json();
-            
-            if (Array.isArray(dbStories) && dbStories.length > 0) {
-              console.log(`✅ Found ${dbStories.length} historical figure stories in database for ${category.name}`);
-              
-              // Stories from database don't include TTS audio to prevent crashes
-              console.log(`📚 Found ${dbStories.length} stories from database`);
-              
-              if (dbStories.length > 0) {
-                // Set the first story immediately
-                setNewsStories(dbStories);
-                setCurrentNewsIndex(0);
-                setCurrentNews(dbStories[0]);
-                setCurrentAISource('Database');
-                setIsLoading(false);
-                
-                // Preload additional stories in the background if we have less than 3
-                if (dbStories.length < 3) {
-                  preloadAdditionalStories(category, dbStories.length);
-                }
-                
-                return;
-              }
-            }
-          }
-        } catch (dbError) {
-          console.warn('Database fetch failed:', dbError.message);
-        }
-      } else {
-        console.log('🔄 Force fresh generation - skipping database cache');
-      }
-      
-      // If no historical figure stories found, try to generate new ones
-      console.log('📚 No historical figure stories found, generating new ones...');
+      // For historical figures, always use the story generation endpoint
+      console.log(`📚 Generating historical figure stories for ${category.name} in ${language}...`);
       try {
         const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
           method: 'POST',
@@ -529,7 +490,7 @@ function OrbGame() {
         if (generateResponse.ok) {
           const generatedStories = await generateResponse.json();
           if (Array.isArray(generatedStories) && generatedStories.length > 0) {
-            console.log(`✅ Generated ${generatedStories.length} new historical figure stories`);
+            console.log(`✅ Generated ${generatedStories.length} historical figure stories`);
             
             // Set the first story immediately
             setNewsStories(generatedStories);

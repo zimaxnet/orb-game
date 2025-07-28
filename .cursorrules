@@ -1,0 +1,309 @@
+# Orb Game - Cursor Rules
+
+## 🎮 Project Overview
+Orb Game is an advanced AI-powered interactive gaming platform that combines time travel, positive news discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with multiple AI model integrations, and comprehensive Azure cloud deployment.
+
+## 🏗️ Architecture Patterns
+
+### Frontend (React + Vite)
+- **Main Component**: `components/OrbGame.jsx` - 3D interactive gaming experience
+- **State Management**: React hooks with context providers (`contexts/LanguageContext.jsx`)
+- **3D Graphics**: Three.js with @react-three/fiber and @react-three/drei
+- **Build System**: Vite with React 19.x support
+- **Styling**: CSS modules with component-specific stylesheets
+
+### Backend (Node.js + Express)
+- **Main Server**: `backend/backend-server.js` - Production API server
+- **Services**: Modular service architecture (MemoryService, PositiveNewsService, StoryCacheService)
+- **AI Integration**: Multiple AI models (Grok 4, Perplexity Sonar, Gemini 1.5 Flash, O4-Mini)
+- **Database**: Azure Cosmos DB for MongoDB with caching system
+- **Security**: Azure Key Vault for API key management
+
+### Deployment (Azure)
+- **Frontend**: Azure Web App with GitHub Actions CI/CD
+- **Backend**: Azure Container Apps with auto-scaling
+- **Registry**: Azure Container Registry (`orbgameregistry`)
+- **Secrets**: Azure Key Vault with RBAC authentication
+
+## 🔧 Development Guidelines
+
+### File Structure
+```
+orb-game/
+├── components/          # React components
+├── contexts/           # React context providers
+├── utils/              # Utility functions (promptManager)
+├── api/                # API client functions
+├── backend/            # Node.js backend server
+├── scripts/            # Deployment and utility scripts
+├── public/             # Static assets
+└── docs/               # Documentation
+```
+
+### Naming Conventions
+- **Components**: PascalCase (e.g., `OrbGame.jsx`)
+- **Files**: kebab-case for scripts, camelCase for modules
+- **Variables**: camelCase
+- **Constants**: UPPER_SNAKE_CASE
+- **Functions**: camelCase
+- **Classes**: PascalCase
+
+### Code Style
+- **JavaScript**: ES6+ modules with import/export
+- **React**: Functional components with hooks
+- **CSS**: Component-specific stylesheets
+- **Backend**: Async/await with proper error handling
+- **Comments**: JSDoc style for functions and classes
+
+## 🤖 AI Model Integration
+
+### Supported AI Models
+1. **Grok 4** - Advanced reasoning and creative storytelling
+2. **Perplexity Sonar** - Real-time web search and synthesis
+3. **Gemini 1.5 Flash** - Fast and creative content generation
+4. **O4-Mini** - Efficient and reliable processing
+
+### AI Model Parameters
+- **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`), no `temperature` parameter
+- **TTS Models**: Use `Authorization: Bearer` header (not `api-key`)
+- **Token Limits**: 1000 tokens for complete JSON responses
+
+### Adding New AI Models
+1. Store API key in Azure Key Vault
+2. Add model function to `backend-server.js`
+3. Update frontend model selection in `OrbGame.jsx`
+4. Add prompts to `utils/promptReferenceData.js`
+5. Test with `scripts/test-ai-models.js`
+
+## 🎯 Prompt Management System
+
+### Centralized Prompt System
+- **Source**: `PROMPTS_REFERENCE.md` - Single source of truth
+- **Manager**: `utils/promptManager.js` - Dynamic prompt generation
+- **Data**: `utils/promptReferenceData.js` - Structured prompt data
+- **Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
+- **Epochs**: Ancient, Medieval, Industrial, Modern, Future
+- **Languages**: English and Spanish with cultural sensitivity
+
+### Prompt Structure
+```javascript
+// Model-specific prompts with category, epoch, language support
+const prompt = promptManager.getFrontendPrompt(category, epoch, language, model);
+```
+
+## 🌍 Internationalization
+
+### Language Support
+- **Primary**: English (`en`)
+- **Secondary**: Spanish (`es`)
+- **Context**: `contexts/LanguageContext.jsx`
+- **TTS Voices**: `alloy` (English), `jorge` (Spanish)
+- **Caching**: Language-specific story and audio caching
+
+### Translation Guidelines
+- Use `useLanguage()` hook for language context
+- Cache stories separately by language
+- Provide culturally appropriate content
+- Support language switching with story refresh
+
+## 🗄️ Database & Caching
+
+### MongoDB Integration
+- **Connection**: Azure Cosmos DB for MongoDB
+- **Collections**: Stories, memories, analytics
+- **Caching**: 88.2% performance improvement for cached requests
+- **TTL**: 30-day expiration for cached content
+
+### Cache Management
+```javascript
+// Check cache before generating new content
+const cachedStories = await storyCacheService.getStories(category, epoch, model, language);
+if (cachedStories.length > 0) {
+  return cachedStories;
+}
+```
+
+## 🚀 Deployment Patterns
+
+### Azure Resources
+- **Resource Group**: `orb-game-rg-eastus2`
+- **Frontend**: Azure Web App (`orb-game`) - Live at https://orbgame.us
+- **Backend**: Azure Container Apps (`orb-game-backend-eastus2`)
+- **Registry**: Azure Container Registry (`orbgameregistry`)
+- **Key Vault**: `orb-game-kv-eastus2`
+
+### Docker Platform Requirements
+- **Backend Images**: Must be built for `linux/amd64` platform
+- **Build Command**: `docker build --platform linux/amd64 -f backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .`
+- **Azure Container Apps**: Require amd64 images for proper deployment
+- **Local Development**: Use `--platform linux/amd64` flag for Docker builds
+
+### Deployment Scripts
+- **Full Deployment**: `scripts/deploy-full.sh`
+- **Frontend Only**: `scripts/deploy-azure.sh`
+- **Backend Only**: `scripts/setup-backend.sh`
+- **Environment Setup**: `scripts/set-azure-build-env.sh`
+
+### Environment Variables
+```bash
+# Required for backend
+MONGO_URI=your-azure-cosmos-db-connection-string
+AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
+AZURE_OPENAI_API_KEY=your-azure-openai-api-key
+AZURE_OPENAI_DEPLOYMENT=o4-mini
+AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
+PERPLEXITY_API_KEY=your-perplexity-api-key
+```
+
+## 🧪 Testing & Quality Assurance
+
+### Test Scripts
+- **AI Models**: `scripts/test-ai-models.js`
+- **Backend**: `scripts/test-new-backend.js`
+- **Cache System**: `scripts/test-story-cache-comprehensive.js`
+- **Performance**: `scripts/performance-comparison.js`
+- **Memory**: `scripts/test-memory.sh`
+
+### Testing Guidelines
+- Run comprehensive test suite before deployment
+- Verify all AI models are working
+- Check cache performance metrics
+- Validate multi-language support
+- Test Azure Key Vault integration
+
+## 🔒 Security & Authentication
+
+### Azure Key Vault Integration
+- **RBAC**: Role-Based Access Control (not access policies)
+- **Managed Identity**: Container app uses managed identity
+- **Secrets**: All API keys stored securely
+- **Permissions**: "Key Vault Secrets User" role required
+
+### Security Best Practices
+- Never commit API keys to source code
+- Use environment variables for configuration
+- Implement proper CORS headers
+- Validate all user inputs
+- Use HTTPS for all communications
+
+## 📊 Performance Optimization
+
+### Caching Strategy
+- **Database Caching**: MongoDB-based story and audio caching
+- **Performance**: 88.2% faster response times for cached requests
+- **Cost Savings**: 29.0% reduction in token usage
+- **Cache Hit Rate**: 50% in test scenarios
+
+### Optimization Guidelines
+- Preload stories for selected epochs
+- Cache TTS audio as base64 in database
+- Use efficient Three.js rendering
+- Implement proper error handling
+- Monitor Azure resource usage
+
+## 🎮 Gaming Features
+
+### Core Gameplay
+- **3D Environment**: Milky Way background with 5,000 animated stars
+- **Orb Interaction**: Drag orbs to center for story discovery
+- **Epoch Selection**: Time travel through different eras
+- **Category Exploration**: 8 different news categories
+- **Audio Integration**: Text-to-speech for immersive experience
+
+### User Experience
+- **Responsive Design**: Works on desktop and mobile
+- **Touch Controls**: Swipe gestures for mobile interaction
+- **Visual Feedback**: Animations and glow effects
+- **Accessibility**: Audio controls and keyboard navigation
+
+## 🔧 Development Workflow
+
+### Local Development
+```bash
+# Frontend
+npm install --legacy-peer-deps
+npm run dev
+
+# Backend
+cd backend
+npm install
+node backend-server.js
+```
+
+### Deployment Process
+1. Update Azure Key Vault secrets
+2. Build and test locally
+3. Run deployment scripts
+4. Verify Azure resources
+5. Test production endpoints
+
+### Git Workflow
+- Use descriptive commit messages
+- Test changes before committing
+- Update documentation for new features
+- Follow semantic versioning
+
+## 📚 Documentation Standards
+
+### Code Documentation
+- Use JSDoc comments for functions and classes
+- Document complex algorithms and business logic
+- Include examples for API endpoints
+- Maintain up-to-date README files
+
+### Architecture Documentation
+- Keep `PROJECT_STRUCTURE.md` updated
+- Document deployment procedures
+- Maintain AI model status documentation
+- Update prompt reference documentation
+
+## 🚨 Critical Notes
+
+### Important Reminders
+- **O4-Mini Model**: Use `max_completion_tokens`, not `max_tokens`
+- **Temperature Parameter**: Not supported for O4-Mini (use default 1)
+- **Authorization Header**: Use `Authorization: Bearer` for Azure OpenAI
+- **Database Migration**: All data migrated from `aimcs` to `orbgame`
+- **Registry Name**: Use `orbgame` registry, not `aimcsregistry`
+- **Docker Platform**: Always build with `--platform linux/amd64` for Azure Container Apps
+
+### Common Issues
+- Key Vault RBAC permissions for container app
+- CORS configuration for cross-origin requests
+- TTS audio generation for different languages
+- Cache invalidation and story freshness
+- Azure Container App scaling configuration
+- Docker platform mismatch (must use `linux/amd64` for Azure Container Apps)
+- Container App deployment failures due to wrong platform architecture
+
+## 🎯 Best Practices
+
+### Code Quality
+- Write self-documenting code
+- Use TypeScript-like JSDoc comments
+- Implement proper error boundaries
+- Follow React best practices
+- Use async/await consistently
+
+### Performance
+- Optimize Three.js rendering
+- Implement efficient caching strategies
+- Monitor Azure resource usage
+- Use lazy loading where appropriate
+- Minimize bundle size
+
+### Security
+- Validate all user inputs
+- Use secure authentication methods
+- Implement proper CORS policies
+- Store secrets in Azure Key Vault
+- Use HTTPS for all communications
+
+### Testing
+- Write comprehensive test suites
+- Test all AI model integrations
+- Validate multi-language support
+- Check performance metrics
+- Verify deployment procedures
+
+This cursor rules file provides comprehensive guidance for developing and maintaining the Orb Game platform, ensuring consistency, security, and performance across all aspects of the application. 

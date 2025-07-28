@@ -335,6 +335,8 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .play-button, .mute-button, .close-button, .nav-button {
@@ -822,10 +824,10 @@
   transform: none;
 }
 
-.news-model-selector {
+.ai-model-display {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   margin-bottom: 15px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.3);
@@ -833,38 +835,12 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.news-model-selector label {
+.ai-model-label {
   color: #ffffff;
   font-weight: 600;
   font-size: 14px;
   white-space: nowrap;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.news-model-selector select {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 8px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.news-model-selector select option {
-  background: #1a1a3a;
-  color: #ffffff;
-  padding: 8px;
-}
-
-.news-model-selector select:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .go-button {

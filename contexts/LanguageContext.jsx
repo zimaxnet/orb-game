@@ -51,9 +51,6 @@ export const LanguageProvider = ({ children }) => {
         'category.innovation': 'Innovation',
         
         // AI Models
-        'ai.model.grok-4': 'Grok 4',
-        'ai.model.perplexity-sonar': 'Perplexity Sonar',
-        'ai.model.gemini-1.5-flash': 'Gemini 1.5 Flash',
         'ai.model.o4-mini': 'O4-Mini',
         'ai.model.select': 'Select AI Model',
         
@@ -148,9 +145,6 @@ export const LanguageProvider = ({ children }) => {
         'category.innovation': 'Innovación',
         
         // AI Models
-        'ai.model.grok-4': 'Grok 4',
-        'ai.model.perplexity-sonar': 'Perplexity Sonar',
-        'ai.model.gemini-1.5-flash': 'Gemini 1.5 Flash',
         'ai.model.o4-mini': 'O4-Mini',
         'ai.model.select': 'Seleccionar Modelo IA',
         

@@ -5,8 +5,6 @@ dotenv.config();
 const BACKEND_URL = process.env.BACKEND_URL || 'https://orb-game-backend-eastus2.gentleglacier-6f66d2ea.eastus2.azurecontainerapps.io';
 
 const aiModels = [
-  { id: 'grok-4', name: 'Grok 4' },
-  { id: 'perplexity-sonar', name: 'Perplexity Sonar' },
   { id: 'o4-mini', name: 'O4-Mini' }
 ];
 

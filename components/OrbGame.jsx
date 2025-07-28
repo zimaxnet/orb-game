@@ -10,6 +10,81 @@ import promptManager from '../utils/promptManager';
 
 import './OrbGame.css';
 
+// Earth Orb Component
+function EarthOrb() {
+  const meshRef = useRef();
+  
+  useFrame(({ clock }) => {
+    if (meshRef.current) {
+      // Rotate Earth slowly
+      meshRef.current.rotation.y = clock.getElapsedTime() * 0.1;
+    }
+  });
+
+  // Create Earth texture programmatically
+  const createEarthTexture = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+
+    // Create gradient for ocean
+    const oceanGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+    oceanGradient.addColorStop(0, '#1e3a8a');
+    oceanGradient.addColorStop(0.5, '#3b82f6');
+    oceanGradient.addColorStop(1, '#1e3a8a');
+    
+    // Fill with ocean
+    ctx.fillStyle = oceanGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Add continents (simplified)
+    ctx.fillStyle = '#22c55e';
+    
+    // North America
+    ctx.fillRect(50, 80, 120, 60);
+    ctx.fillRect(50, 140, 80, 40);
+    
+    // South America
+    ctx.fillRect(120, 160, 60, 80);
+    
+    // Europe
+    ctx.fillRect(200, 70, 60, 40);
+    
+    // Africa
+    ctx.fillRect(200, 110, 80, 100);
+    
+    // Asia
+    ctx.fillRect(260, 60, 150, 80);
+    ctx.fillRect(260, 140, 120, 60);
+    
+    // Australia
+    ctx.fillRect(350, 180, 80, 40);
+    
+    // Add some cloud coverage
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.fillRect(100, 50, 40, 20);
+    ctx.fillRect(250, 90, 60, 15);
+    ctx.fillRect(300, 120, 50, 25);
+    ctx.fillRect(150, 150, 70, 20);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    return texture;
+  };
+
+  return (
+    <Sphere ref={meshRef} args={[1, 64, 64]} position={[0, 0, 0]}>
+      <meshStandardMaterial 
+        map={createEarthTexture()}
+        roughness={0.8}
+        metalness={0.1}
+      />
+    </Sphere>
+  );
+}
+
 // Milky Way Background Component
 function MilkyWayBackground() {
   const starsRef = useRef();
@@ -154,20 +229,9 @@ function OrbGame() {
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
   
-  // Add AI model selection state
-  const [selectedModel, setSelectedModel] = useState('grok-4');
-  const [reliableModels, setReliableModels] = useState([]);
-  const aiModels = [
-    { id: 'grok-4', name: 'Grok 4', description: 'Advanced reasoning and analysis' },
-    { id: 'perplexity-sonar', name: 'Perplexity Sonar', description: 'Real-time web search and synthesis' },
-    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', description: 'Fast and creative content generation' },
-    { id: 'o4-mini', name: 'o4-mini', description: 'Fast and efficient processing' }
-  ];
-
-  // Filter models to only show reliable ones
-  const availableModels = aiModels.filter(model => 
-    reliableModels.length === 0 || reliableModels.includes(model.id)
-  );
+  // AI model is fixed to o4-mini
+  const selectedModel = 'o4-mini';
+  const aiModelName = 'o4-mini';
   
   // Add preloaded stories state
   // Preloading state variables removed - preloading disabled
@@ -213,43 +277,24 @@ function OrbGame() {
     };
   }, [currentNews]);
   
-  // Check model reliability on component mount
+  // O4-Mini is the only model used
   useEffect(() => {
-    const checkModelReliability = async () => {
-      try {
-        console.log('🔍 Checking model reliability on game load...');
-        const response = await fetch(`${BACKEND_URL}/api/models/reliability`);
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setReliableModels(data.reliableModels);
-            console.log('✅ Reliable models loaded:', data.reliableModels);
-          }
-        }
-      } catch (error) {
-        console.error('❌ Error checking model reliability:', error);
-      }
-    };
-
-    checkModelReliability();
+    console.log('✅ Using O4-Mini for all story generation');
   }, []);
 
-  // Add escape key handler to exit stories
+  // Auto-hide instructions after 5 seconds
   useEffect(() => {
-    const handleEscapeKey = (event) => {
-      if (event.key === 'Escape' && currentNews) {
-        console.log('🔙 Escape key pressed - releasing orb from center');
-        releaseOrbFromCenter();
-      }
-    };
+    if (showHowToPlay) {
+      const timer = setTimeout(() => {
+        setShowHowToPlay(false);
+        console.log('⏰ Instructions auto-hidden after 5 seconds');
+      }, 5000);
 
-    document.addEventListener('keydown', handleEscapeKey);
-    
-    return () => {
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [currentNews]);
+      return () => clearTimeout(timer);
+    }
+  }, [showHowToPlay]);
+
+
   
   // Preloading disabled - removed automatic triggers
   
@@ -410,7 +455,7 @@ function OrbGame() {
   
   const loadStoryForOrb = async (category, forceFresh = false) => {
     setIsLoading(true);
-    setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
+            setCurrentAISource(aiModelName);
     
     try {
       // Try to get stories from database first (unless forceFresh is true)
@@ -609,7 +654,7 @@ function OrbGame() {
                       setNewsStories(freshStories);
                       setCurrentNewsIndex(0);
                       setCurrentNews(freshStories[0]);
-                      setCurrentAISource(availableModels.find(m => m.id === selectedModel)?.name || selectedModel);
+                      setCurrentAISource(aiModelName);
                     }
                   }
                 }
@@ -843,7 +888,7 @@ function OrbGame() {
         setNewsStories([learnMoreStory]);
         setCurrentNewsIndex(0);
         setCurrentNews(learnMoreStory);
-        setCurrentAISource(`${availableModels.find(m => m.id === selectedModel)?.name || selectedModel} - Learn More`);
+        setCurrentAISource(`${aiModelName} - Learn More`);
       }
     } catch (error) {
       console.error('Failed to learn more:', error);
@@ -947,10 +992,8 @@ function OrbGame() {
         {/* Milky Way Background */}
         <MilkyWayBackground />
         
-        {/* Central Orb */}
-        <Sphere args={[1, 64, 64]} position={[0, 0, 0]}>
-          <meshStandardMaterial color="#3366ff" />
-        </Sphere>
+        {/* Central Earth Orb */}
+        <EarthOrb />
         
 
         
@@ -1004,7 +1047,7 @@ function OrbGame() {
               <div className="progress-bar">
                 <div className="progress-fill"></div>
               </div>
-              <p className="progress-text">Connecting to {selectedModel}...</p>
+              <p className="progress-text">Connecting to {aiModelName}...</p>
             </div>
           </div>
         </div>
@@ -1013,9 +1056,6 @@ function OrbGame() {
       {currentNews && (
         <div className="news-panel" ref={storyPanelRef}>
           <div className="news-header">
-            <div className="escape-hint">
-              <span className="escape-text">{t('news.escape.hint').replace('Esc', '<kbd>Esc</kbd>')}</span>
-            </div>
             <div className="audio-controls">
               <button 
                 onClick={prevStory} 
@@ -1064,40 +1104,15 @@ function OrbGame() {
 
           </div>
           
-          {/* AI Model Selector in News Panel */}
-          <div className="news-model-selector">
-            <label>AI Model:</label>
-            <select value={selectedModel} onChange={(e) => {
-              setSelectedModel(e.target.value);
-              // Don't clear stories - keep panel visible until user manually closes
-            }}>
-              {availableModels.map(model => (
-                <option key={model.id} value={model.id}>
-                  {model.name}
-                </option>
-              ))}
-            </select>
+          {/* AI Model Display - Fixed to O4-Mini */}
+          <div className="ai-model-display">
+            <span className="ai-model-label">AI Model: {aiModelName}</span>
             <button 
-              onClick={async () => {
-                // Generate fresh stories with current model and ensure audio is cached
-                if (orbInCenter) {
-                  console.log(`🔄 Generating fresh stories with ${selectedModel} for ${orbInCenter.name}`);
-                  
-                  // Clear current stories to force fresh generation
-                  setNewsStories([]);
-                  setCurrentNews(null);
-                  setCurrentNewsIndex(0);
-                  
-                  // Load fresh stories with audio (force fresh generation)
-                  await loadStoryForOrb(orbInCenter, true);
-                  
-                  // Removed auto-play audio - user must click play button
-                }
-              }}
-              className="go-button"
+              onClick={learnMore}
               disabled={isLoading}
+              className="go-button"
             >
-              {isLoading ? '⏳' : t('news.go')}
+              {isLoading ? '⏳' : '🔍'} {language === 'es' ? 'Explorar Más' : 'Dig Deeper'}
             </button>
             {currentNews && (currentNews.aiModel === 'fallback' || currentNews.aiModel === 'error' || currentNews.source === 'Orb Game') && (
               <div className="fallback-notice">
@@ -1106,25 +1121,16 @@ function OrbGame() {
             )}
             {isLoading && (
               <div className="generating-notice">
-                <span className="generating-text">🔄 {t('news.generating.fresh')} {availableModels.find(m => m.id === selectedModel)?.name || selectedModel}...</span>
+                <span className="generating-text">🔄 {t('news.generating.fresh')} {aiModelName}...</span>
               </div>
             )}
           </div>
           <div className="news-content">
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>
-          <div className="news-actions">
-            <button 
-              onClick={learnMore}
-              disabled={isLoading}
-              className="learn-more-button"
-              title={language === 'es' ? 'Obtener más información sobre este tema' : 'Get more information about this topic'}
-            >
-              {isLoading ? '⏳' : '🔍'} {language === 'es' ? 'Aprender Más' : 'Learn More'}
-            </button>
-          </div>
+
           <div className="ai-model-section">
-            <span className="ai-model-text">AI Model: {currentAISource}</span>
+            <span className="ai-model-text">Historical Figure: {currentNews?.historicalFigure || 'Unknown Figure'}</span>
           </div>
           <div className="news-meta">
             <span className="zimax-ai-labs">

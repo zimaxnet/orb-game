@@ -1,0 +1,218 @@
+{
+  "Technology": {
+    "Ancient": [
+      {"name": "Archimedes", "context": "Inventor and mathematician, designed machines, principles of levers and buoyancy."},
+      {"name": "Imhotep", "context": "Egyptian architect and engineer, designer of the Pyramid of Djoser."},
+      {"name": "Hero of Alexandria", "context": "Devised the first steam engine and early mechanical devices."}
+    ],
+    "Medieval": [
+      {"name": "Al-Jazari", "context": "Islamic engineer, known for his book of mechanical devices and automata."},
+      {"name": "Johannes Gutenberg", "context": "Invented the movable-type printing press."},
+      {"name": "Li Shizhen", "context": "Chinese scholar, advanced mechanical clocks and hydro engineering."}
+    ],
+    "Industrial": [
+      {"name": "James Watt", "context": "Enhanced the steam engine, powering industry."},
+      {"name": "Charles Babbage", "context": "Designed the first mechanical computer."},
+      {"name": "Samuel Morse", "context": "Invented the telegraph for instant communication."}
+    ],
+    "Modern": [
+      {"name": "Tim Berners-Lee", "context": "Invented the World Wide Web."},
+      {"name": "Steve Jobs", "context": "Revolutionized personal computing and smartphones."},
+      {"name": "Hedy Lamarr", "context": "Co-invented key wireless tech enabling Wi-Fi and Bluetooth."}
+    ],
+    "Future": [
+      {"name": "Fei-Fei Li", "context": "AI visionary, advanced computer vision systems."},
+      {"name": "Elon Musk", "context": "Took robotics and space tech to new heights."},
+      {"name": "Demis Hassabis", "context": "Developed leading general AI systems with DeepMind."}
+    ]
+  },
+  "Science": {
+    "Ancient": [
+      {"name": "Hippocrates", "context": "Founder of medicine, championed clinical practice."},
+      {"name": "Euclid", "context": "Father of geometry, author of 'The Elements'."},
+      {"name": "Aristotle", "context": "Naturalist and philosopher, studied organisms and physics."}
+    ],
+    "Medieval": [
+      {"name": "Ibn al-Haytham", "context": "Revolutionized optics and scientific experimentation."},
+      {"name": "Roger Bacon", "context": "Proponent of empiricism and early scientific method."},
+      {"name": "Hildegard of Bingen", "context": "Polymath, wrote medical and nature treatises."}
+    ],
+    "Industrial": [
+      {"name": "Charles Darwin", "context": "Founded evolutionary theory."},
+      {"name": "Louis Pasteur", "context": "Germ theory and vaccination pioneer."},
+      {"name": "Dmitri Mendeleev", "context": "Created the periodic table."}
+    ],
+    "Modern": [
+      {"name": "Rosalind Franklin", "context": "Key to discovery of DNA's structure."},
+      {"name": "Albert Einstein", "context": "Transformed physics with relativity."},
+      {"name": "Jennifer Doudna", "context": "Pioneer of CRISPR gene editing."}
+    ],
+    "Future": [
+      {"name": "Youyou Tu", "context": "Advanced malaria treatment/genetics."},
+      {"name": "David Sinclair", "context": "Scientist exploring human longevity."},
+      {"name": "Fictional Quantum Pioneer", "context": "Breaks barrier to quantum computing supremacy."}
+    ]
+  },
+  "Art": {
+    "Ancient": [
+      {"name": "Phidias", "context": "Sculpted masterpieces of the Parthenon."},
+      {"name": "Polygnotus", "context": "Renowned Greek muralist."},
+      {"name": "Imhotep", "context": "Fused art and architecture in Egypt."}
+    ],
+    "Medieval": [
+      {"name": "Giotto di Bondone", "context": "Pre-Renaissance painter."},
+      {"name": "Hildegard of Bingen", "context": "Illuminated manuscripts, music."},
+      {"name": "Andrei Rublev", "context": "Mastered icon painting in Russia."}
+    ],
+    "Industrial": [
+      {"name": "Claude Monet", "context": "Leader of Impressionist painting."},
+      {"name": "William Blake", "context": "Artist and poet of industrial themes."},
+      {"name": "Gustave Courbet", "context": "Realist painter of modern life."}
+    ],
+    "Modern": [
+      {"name": "Frida Kahlo", "context": "Intimate, symbolic self-portraits."},
+      {"name": "Banksy", "context": "Famous street and political artist."},
+      {"name": "Yayoi Kusama", "context": "Creates immersive, avant-garde art."}
+    ],
+    "Future": [
+      {"name": "Refik Anadol", "context": "AI and data-driven art installations."},
+      {"name": "Sofia Crespo", "context": "Innovative neural network artist."},
+      {"name": "Fictional Holographic Artist", "context": "Transforms gallery art with AR."}
+    ]
+  },
+  "Nature": {
+    "Ancient": [
+      {"name": "Theophrastus", "context": "Founder of botany, classified plants."},
+      {"name": "Empedocles", "context": "Theorist of natural elements."},
+      {"name": "Huang Di", "context": "Authored foundational Chinese medicine texts."}
+    ],
+    "Medieval": [
+      {"name": "Albertus Magnus", "context": "Encyclopedia of natural science, early ecologist."},
+      {"name": "Avicenna", "context": "Botanical and medical scholar."},
+      {"name": "Saint Francis of Assisi", "context": "Advocate for animal welfare and nature."}
+    ],
+    "Industrial": [
+      {"name": "Charles Darwin", "context": "Galápagos discoveries, natural selection."},
+      {"name": "John James Audubon", "context": "Documented N. American wildlife in art."},
+      {"name": "Mary Anning", "context": "Pioneer fossil hunter and paleontologist."}
+    ],
+    "Modern": [
+      {"name": "Jane Goodall", "context": "Revolutionized primatology/conservation."},
+      {"name": "David Attenborough", "context": "Global nature educator/advocate."},
+      {"name": "Wangari Maathai", "context": "Founder of mass tree-planting Green Belt Movement."}
+    ],
+    "Future": [
+      {"name": "Fictional Climate Engineer", "context": "Uses biotech to repair ecosystems."},
+      {"name": "Mercedes Bustamante", "context": "Global land-restoration innovator."},
+      {"name": "Paul Stamets", "context": "Radical ecosystem restoration with fungi."}
+    ]
+  },
+  "Sports": {
+    "Ancient": [
+      {"name": "Milo of Croton", "context": "Legendary Olympic wrestler."},
+      {"name": "Leonidas of Rhodes", "context": "Unbeaten ancient sprint champion."},
+      {"name": "Gaius Appuleius Diocles", "context": "Rome’s greatest charioteer."}
+    ],
+    "Medieval": [
+      {"name": "William Marshal", "context": "Legendary knight/jouster."},
+      {"name": "Robin Hood", "context": "Mythic archer and folk sports hero."},
+      {"name": "Richard FitzAlan", "context": "Real tennis champion of the courts."}
+    ],
+    "Industrial": [
+      {"name": "W.G. Grace", "context": "Founder of modern cricket."},
+      {"name": "Pierre de Coubertin", "context": "Revived the modern Olympic games."},
+      {"name": "James Naismith", "context": "Inventor of basketball."}
+    ],
+    "Modern": [
+      {"name": "Serena Williams", "context": "Tennis Grand Slam record-breaker."},
+      {"name": "Pelé", "context": "Soccer’s global superstar."},
+      {"name": "Simone Biles", "context": "Trailblazing gymnast, record medalist."}
+    ],
+    "Future": [
+      {"name": "World E-Sports Champion", "context": "Digital gaming phenomenon."},
+      {"name": "First Cyborg Athlete", "context": "Blends tech and human achievement."},
+      {"name": "Zero-gravity Sports Inventor", "context": "Creates new games for space."}
+    ]
+  },
+  "Music": {
+    "Ancient": [
+      {"name": "Sappho", "context": "Greek poet-musician."},
+      {"name": "King David", "context": "Biblical harpist and songwriter."},
+      {"name": "Narada", "context": "Legendary Indian sage, musical lore."}
+    ],
+    "Medieval": [
+      {"name": "Guillaume de Machaut", "context": "Influential medieval composer and poet."},
+      {"name": "Hildegard von Bingen", "context": "Visionary composer and abbess."},
+      {"name": "Alfonso el Sabio", "context": "Patron of sacred and secular medieval music."}
+    ],
+    "Industrial": [
+      {"name": "Ludwig van Beethoven", "context": "Transitional classical-to-romantic composer."},
+      {"name": "Fanny Mendelssohn", "context": "Pioneering romantic composer/pianist."},
+      {"name": "Frédéric Chopin", "context": "Romantic piano innovator."}
+    ],
+    "Modern": [
+      {"name": "Louis Armstrong", "context": "Globally influential jazz trumpeter/singer."},
+      {"name": "The Beatles", "context": "Revolutionized modern popular music."},
+      {"name": "BTS", "context": "K-pop phenomenon, transcendent global force."}
+    ],
+    "Future": [
+      {"name": "Holly Herndon", "context": "AI-influenced composer and performer."},
+      {"name": "Yannick Nézet-Séguin", "context": "Immersive orchestral tech pioneer."},
+      {"name": "Universal Music AI", "context": "Fictional AI music collective."}
+    ]
+  },
+  "Space": {
+    "Ancient": [
+      {"name": "Ptolemy", "context": "Geocentric model of the cosmos."},
+      {"name": "Aryabhata", "context": "Advanced Indian astronomer/mathematician."},
+      {"name": "Hypatia", "context": "Famed female mathematician/astronomer."}
+    ],
+    "Medieval": [
+      {"name": "Al-Battani", "context": "Calculated solar year/planetary orbits."},
+      {"name": "Nasir al-Din al-Tusi", "context": "Built major medieval observatory."},
+      {"name": "Geoffrey Chaucer", "context": "Wrote on astronomy, astrolabe use."}
+    ],
+    "Industrial": [
+      {"name": "Galileo Galilei", "context": "Pioneered telescopic astronomy."},
+      {"name": "Edmond Halley", "context": "Calculated Halley's Comet intervals."},
+      {"name": "Caroline Herschel", "context": "Discovered multiple comets."}
+    ],
+    "Modern": [
+      {"name": "Yuri Gagarin", "context": "First human to reach space."},
+      {"name": "Katherine Johnson", "context": "Critical NASA mission mathematician."},
+      {"name": "Stephen Hawking", "context": "Explored black holes and universe origins."}
+    ],
+    "Future": [
+      {"name": "Mars Colony Leader", "context": "Leads humanity’s migration to Mars."},
+      {"name": "Exoplanet Signal Analyst", "context": "Discovers signs of alien life."},
+      {"name": "AI Probe Architect", "context": "Designs deep-space robotics."}
+    ]
+  },
+  "Innovation": {
+    "Ancient": [
+      {"name": "Zhang Heng", "context": "Invented the seismometer and astronomical clocks."},
+      {"name": "Ctesibius", "context": "Father of pneumatics/hydraulic engineering."},
+      {"name": "Aeneas Tacticus", "context": "Designed early communication systems."}
+    ],
+    "Medieval": [
+      {"name": "Al-Jazari", "context": "Mechanical & hydraulic invention pioneer."},
+      {"name": "Richard of Wallingford", "context": "Built astronomical mechanical clocks."},
+      {"name": "Leonardo Fibonacci", "context": "Popularized the modern numeral system."}
+    ],
+    "Industrial": [
+      {"name": "Thomas Edison", "context": "Inventor of light bulb and innovation systems."},
+      {"name": "Nikola Tesla", "context": "Pioneered AC power, wireless energy."},
+      {"name": "Alexander Graham Bell", "context": "Invented the telephone."}
+    ],
+    "Modern": [
+      {"name": "Grace Hopper", "context": "Developed COBOL programming language."},
+      {"name": "Shigeru Miyamoto", "context": "Pioneered iconic video game design."},
+      {"name": "Elon Musk", "context": "Pushed boundaries of clean energy, travel."}
+    ],
+    "Future": [
+      {"name": "Fusion Energy Scientist", "context": "Delivers first world’s working fusion reactor."},
+      {"name": "Translingual AI Architect", "context": "Invents universal instant translation."},
+      {"name": "Synthetic Biology Entrepreneur", "context": "Leads planetary-scale bio-innovation."}
+    ]
+  }
+}

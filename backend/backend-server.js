@@ -808,7 +808,7 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   }
 });
 
-// New endpoint: Generate fresh stories from AI models
+// New endpoint: Generate fresh stories from AI models (now only o4-mini)
 app.post('/api/orb/generate-news/:category', async (req, res) => {
   const category = req.params.category;
   const { epoch = 'Modern', model = 'o4-mini', count = 1, prompt, language = 'en', ensureCaching = true } = req.body;
@@ -827,19 +827,8 @@ app.post('/api/orb/generate-news/:category', async (req, res) => {
       }
     }
     
-    // Generate stories based on the selected model
-    switch (model) {
-      case 'grok-4':
-        stories = await generateStoriesWithGrok(category, epoch, count, prompt, language);
-        break;
-      case 'perplexity-sonar':
-        stories = await generateStoriesWithPerplexity(category, epoch, count, prompt, language);
-        break;
-      case 'o4-mini':
-      default:
-        stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language);
-        break;
-    }
+    // Only use o4-mini for dynamic generation
+    stories = await generateStoriesWithAzureOpenAI(category, epoch, count, prompt, language);
     
     if (stories.length === 0) {
       console.log(`⚠️ No stories generated for ${category}, using fallback...`);
@@ -1018,173 +1007,14 @@ app.delete('/api/cache/clear', async (req, res) => {
   }
 });
 
-// Helper functions to generate stories with different AI models
-async function generateStoriesWithGrok(category, epoch, count, customPrompt, language = 'en') {
-  try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
-    const prompt = customPrompt || defaultPrompt;
-    
-    const response = await fetch('https://api.x.ai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.GROK_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'grok-beta',
-        messages: [
-          {
-            role: 'user',
-            content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Grok 4" }]`
-          }
-        ],
-        max_completion_tokens: 800,
-        temperature: 0.7
-      })
-    });
+// Helper function to generate stories with Azure OpenAI (o4-mini only)
 
-    if (!response.ok) {
-      throw new Error(`Grok API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const content = data.choices[0].message.content;
-    
-    let stories;
-    try {
-      stories = JSON.parse(content);
-    } catch (parseError) {
-      console.warn('Grok JSON parse failed:', parseError.message);
-      return [];
-    }
-    
-    // Generate TTS for each story
-    const storiesWithTTS = await Promise.all(stories.map(async (story) => {
-      let ttsAudio = null;
-      try {
-        // Use Spanish voice for Spanish language
-        const voice = language === 'es' ? 'jorge' : 'alloy';
-        
-        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${azureOpenAIApiKey}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: AZURE_OPENAI_TTS_DEPLOYMENT,
-            input: story.summary,
-            voice: voice,
-            response_format: 'mp3'
-          })
-        });
-        if (ttsResponse.ok) {
-          const audioBuffer = await ttsResponse.arrayBuffer();
-          ttsAudio = Buffer.from(audioBuffer).toString('base64');
-        }
-      } catch (ttsError) {
-        console.warn('TTS generation failed for Grok story:', ttsError.message);
-      }
-      
-      return {
-        ...story,
-        publishedAt: new Date().toISOString(),
-        ttsAudio: ttsAudio
-      };
-    }));
-    
-    return storiesWithTTS;
-  } catch (error) {
-    console.error(`Grok story generation failed for ${category}:`, error.message);
-    return [];
-  }
-}
-
-async function generateStoriesWithPerplexity(category, epoch, count, customPrompt, language = 'en') {
-  try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
-    const prompt = customPrompt || defaultPrompt;
-    
-    const response = await fetch('https://api.perplexity.ai/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${perplexityApiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'sonar',
-        stream: false,
-        max_completion_tokens: 800,
-        temperature: 0.7,
-        messages: [
-          {
-            role: 'user',
-            content: `${prompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "Perplexity Sonar" }]`
-          }
-        ]
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`Perplexity API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const content = data.choices[0].message.content;
-    
-    let stories;
-    try {
-      stories = JSON.parse(content);
-    } catch (parseError) {
-      console.warn('Perplexity JSON parse failed:', parseError.message);
-      return [];
-    }
-    
-    // Generate TTS for each story
-    const storiesWithTTS = await Promise.all(stories.map(async (story) => {
-      let ttsAudio = null;
-      try {
-        // Use Spanish voice for Spanish language
-        const voice = language === 'es' ? 'jorge' : 'alloy';
-        
-        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${azureOpenAIApiKey}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: AZURE_OPENAI_TTS_DEPLOYMENT,
-            input: story.summary,
-            voice: voice,
-            response_format: 'mp3'
-          })
-        });
-        if (ttsResponse.ok) {
-          const audioBuffer = await ttsResponse.arrayBuffer();
-          ttsAudio = Buffer.from(audioBuffer).toString('base64');
-        }
-      } catch (ttsError) {
-        console.warn('TTS generation failed for Perplexity story:', ttsError.message);
-      }
-      
-      return {
-        ...story,
-        publishedAt: new Date().toISOString(),
-        ttsAudio: ttsAudio
-      };
-    }));
-    
-    return storiesWithTTS;
-  } catch (error) {
-    console.error(`Perplexity story generation failed for ${category}:`, error.message);
-    return [];
-  }
-}
-
+// Helper function to generate stories with Azure OpenAI (o4-mini only)
 async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en') {
   try {
-    const defaultPrompt = `Generate ${count} fascinating, positive ${category} story from ${epoch.toLowerCase()} times. The story should be engaging, informative, and highlight remarkable achievements or discoveries.`;
+    // Use sophisticated prompt system instead of hardcoded prompts
+    const promptManager = await import('../utils/promptManager.js');
+    const defaultPrompt = promptManager.default.getFrontendPrompt(category, epoch, language, 'o4-mini');
     const prompt = customPrompt || defaultPrompt;
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
@@ -1223,45 +1053,22 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
       console.warn('Azure OpenAI JSON parse failed:', parseError.message);
       return [];
     }
-    
-    // Generate TTS for each story
-    const storiesWithTTS = await Promise.all(stories.map(async (story) => {
-      let ttsAudio = null;
-      try {
-        // Use Spanish voice for Spanish language
-        const voice = language === 'es' ? 'jorge' : 'alloy';
-        
-        const ttsResponse = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_TTS_DEPLOYMENT}/audio/speech?api-version=2025-03-01-preview`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${azureOpenAIApiKey}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: AZURE_OPENAI_TTS_DEPLOYMENT,
-            input: story.summary,
-            voice: voice,
-            response_format: 'mp3'
-          })
-        });
-        if (ttsResponse.ok) {
-          const audioBuffer = await ttsResponse.arrayBuffer();
-          ttsAudio = Buffer.from(audioBuffer).toString('base64');
-        }
-      } catch (ttsError) {
-        console.warn('TTS generation failed for Azure OpenAI story:', ttsError.message);
-      }
-      
-      return {
-        ...story,
-        publishedAt: new Date().toISOString(),
-        ttsAudio: ttsAudio
-      };
-    }));
-    
-    return storiesWithTTS;
+
+    // Generate TTS audio for each story
+    const storiesWithAudio = await Promise.all(
+      stories.map(async (story) => {
+        const ttsAudio = await generateTTSAudio(story.fullText, language);
+        return {
+          ...story,
+          ttsAudio,
+          publishedAt: new Date().toISOString()
+        };
+      })
+    );
+
+    return storiesWithAudio;
   } catch (error) {
-    console.error(`Azure OpenAI story generation failed for ${category}:`, error.message);
+    console.error(`❌ Failed to generate stories for ${category}-${epoch}:`, error.message);
     return [];
   }
 }
@@ -1269,6 +1076,10 @@ async function generateStoriesWithAzureOpenAI(category, epoch, count, customProm
 // Helper function to generate fallback stories when service is not available
 async function generateDirectFallbackStory(category) {
   try {
+    // Use sophisticated prompt system for fallback stories
+    const promptManager = await import('../utils/promptManager.js');
+    const fallbackPrompt = promptManager.default.getFallbackStory(category, 'en');
+    
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview`, {
       method: 'POST',
       headers: {
@@ -1284,13 +1095,7 @@ async function generateDirectFallbackStory(category) {
           },
           {
             role: 'user',
-            content: `Create a positive news story about ${category}. Return the story in this exact JSON format:
-{
-  "headline": "Brief, engaging headline",
-  "summary": "One sentence summary of the story",
-  "fullText": "2-3 sentence detailed story with positive tone",
-  "source": "AI Generated"
-}`
+            content: `Create a positive news story about ${category} using this format: ${promptManager.default.getJSONResponseFormat('o4-mini')}`
           }
         ],
         max_completion_tokens: 500

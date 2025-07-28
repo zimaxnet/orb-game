@@ -5,12 +5,12 @@ FROM --platform=linux/amd64 node:20-alpine
 WORKDIR /app
 
 # Copy package files
-COPY package.json package.json
+COPY backend/package.json package.json
 
 # Install dependencies
 RUN npm install --production
 
-# Copy server code
+# Copy server code (relative to root directory)
 COPY backend/backend-server.js .
 COPY backend/advanced-memory-service.js .
 COPY backend/positive-news-service.js .

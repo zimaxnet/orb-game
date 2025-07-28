@@ -69,7 +69,7 @@ jobs:
           --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
           --file backend/backend-Dockerfile \
           --push \
-          backend
+          .
           
     - name: Verify image was pushed
       run: |

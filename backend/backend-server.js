@@ -1145,7 +1145,9 @@ Tell the story of the chosen historical figure, including:
 4. Their background and challenges they faced
 5. The lasting impact of their contributions
 
-Make it engaging and educational with concrete details about their life and work.`;
+Make it engaging and educational with concrete details about their life and work.
+
+${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`;
     } else {
       // If no historical figures found, create a prompt for a generic historical figure in this category
       enhancedPrompt = `Create a story about a specific historical figure in ${category}. 
@@ -1159,7 +1161,9 @@ Tell the story of a historical figure in ${category}, including:
 4. Their background and challenges they faced
 5. The lasting impact of their contributions
 
-Make it engaging and educational with concrete details about their life and work.`;
+Make it engaging and educational with concrete details about their life and work.
+
+${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`;
     }
     
     const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
@@ -1173,7 +1177,7 @@ Make it engaging and educational with concrete details about their life and work
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure\'s name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories.'
+            content: `You are a helpful assistant that creates engaging, positive news stories about specific historical figures. You MUST choose ONE historical figure and tell their story. Always include the historical figure's name in the headline and story. Focus on uplifting and inspiring content about their specific achievements and contributions. NEVER create generic stories. ${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Respond in English language.'}`
           },
           {
             role: 'user',

@@ -393,6 +393,60 @@ node backend-server.js
 - **Empty API Responses**: Check token limits and parameter names
 - **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
 
+## 🛠️ Deployment & Build Error Prevention
+
+### Package Management Best Practices
+- **Always run `npm install` after modifying package.json**
+- **Commit package-lock.json with every dependency change**
+- **Verify dependencies before deployment**: `npm list` to check installed packages
+- **Use exact versions** for critical dependencies to prevent CI/CD failures
+- **Test locally before pushing**: Run `npm run build` to catch dependency issues
+
+### Docker Build Context & File Paths
+- **Build Context**: GitHub Actions uses root directory (`.`) as build context
+- **Dockerfile Paths**: Use relative paths from root directory
+  - `backend/backend-server.js` (not `backend-server.js`)
+  - `utils/` (not `../utils/`)
+  - `OrbGameInfluentialPeopleSeeds` (not `../OrbGameInfluentialPeopleSeeds`)
+- **File Verification**: Always verify all COPY paths exist before committing
+- **Platform Requirements**: Always use `--platform linux/amd64` for Azure Container Apps
+
+### Common Build Failures & Solutions
+1. **Missing Files in Docker Build**:
+   - ❌ `COPY backend/backend***server.js` (incorrect with asterisks)
+   - ✅ `COPY backend/backend-server.js` (correct path)
+   - ❌ `COPY ../utils/` (wrong context)
+   - ✅ `COPY utils/` (correct from root context)
+
+2. **Package Lock Sync Issues**:
+   - ❌ Outdated package-lock.json
+   - ✅ Run `npm install` before committing
+   - ✅ Always commit package-lock.json with dependency changes
+   - ✅ Verify with `npm list` before pushing
+
+3. **Docker Build Context Errors**:
+   - ❌ Using `backend` as build context when files are in root
+   - ✅ Use `.` (root) as build context in GitHub Actions
+   - ✅ Update Dockerfile paths accordingly
+
+### Pre-Deployment Checklist
+- [ ] Run `npm install` to sync package-lock.json
+- [ ] Verify all Docker COPY paths exist
+- [ ] Test Docker build locally: `docker build --platform linux/amd64 -f backend/backend-Dockerfile -t test .`
+- [ ] Check package.json and package-lock.json are in sync
+- [ ] Verify all required files exist in repository
+- [ ] Test build process: `npm run build`
+- [ ] Commit all changes including package-lock.json
+- [ ] Push to trigger GitHub Actions
+
+### Error Prevention Guidelines
+- **Before Committing**: Always run `npm install` if package.json changed
+- **Before Pushing**: Test Docker build locally to catch file path issues
+- **File Paths**: Double-check all COPY statements in Dockerfile
+- **Dependencies**: Use exact versions and commit package-lock.json
+- **Build Context**: Ensure Dockerfile paths match GitHub Actions build context
+- **Platform**: Always specify `linux/amd64` for Azure Container Apps
+
 ## 🎯 Best Practices
 
 ### Code Quality

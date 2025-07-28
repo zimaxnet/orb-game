@@ -69,11 +69,10 @@ export const LanguageProvider = ({ children }) => {
         'news.next': 'Next',
         'news.go': 'Go',
         'news.close': 'Close',
+        'news.more': 'More',
         'news.source': 'Source',
         'news.ai.model': 'AI Model',
         'news.date': 'Date',
-        'news.fallback.detected': 'Fallback story detected - click "Go" for fresh AI stories',
-        'news.generating.fresh': 'Generating fresh stories with',
         'news.escape.hint': 'Press Esc to exit',
         
         // Audio Controls
@@ -163,11 +162,10 @@ export const LanguageProvider = ({ children }) => {
         'news.next': 'Siguiente',
         'news.go': 'Ir',
         'news.close': 'Cerrar',
+        'news.more': 'Más',
         'news.source': 'Fuente',
         'news.ai.model': 'Modelo IA',
         'news.date': 'Fecha',
-        'news.fallback.detected': 'Historia de respaldo detectada - haz clic en "Ir" para historias frescas de IA',
-        'news.generating.fresh': 'Generando historias frescas con',
         'news.escape.hint': 'Presiona Esc para salir',
         
         // Audio Controls

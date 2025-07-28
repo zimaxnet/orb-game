@@ -244,16 +244,23 @@ function OrbGame() {
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
     return newsStories.filter(story => 
-      story.language === language && 
+      story.category === selectedCategory && 
       story.epoch === currentEpoch &&
-      story.category === (orbInCenter?.name || '')
+      story.language === language
     );
   };
   
-  // Use centralized prompt manager for all prompts
+  // Get exciting prompt for historical character presentation
   const getExcitingPrompt = (category, epoch, model) => {
     const categoryName = typeof category === 'string' ? category : category.name;
-    return promptManager.getFrontendPrompt(categoryName, epoch, language, model);
+    const epochName = epoch.toLowerCase();
+    const categoryLower = categoryName.toLowerCase();
+    
+    if (language === 'es') {
+      return `Presentando al personaje histórico más influyente en ${categoryLower} durante la época ${epochName}. Comparte su historia de logros notables y contribuciones que cambiaron el mundo. Haz que sea emocionante, educativo e inspirador.`;
+    } else {
+      return `Presenting the most influential historical character in ${categoryLower} during the ${epochName} epoch. Share their story of remarkable achievements and contributions that changed the world. Make it exciting, educational, and inspiring.`;
+    }
   };
   
   // Handle click outside story panel
@@ -305,7 +312,7 @@ function OrbGame() {
     // If there's a current orb, refresh stories for the new language
     if (orbInCenter) {
       console.log(`🔄 Refreshing stories for ${orbInCenter.name} in ${language === 'en' ? 'Spanish' : 'English'}`);
-      loadStoryForOrb(orbInCenter, true); // Force fresh generation for new language
+      loadStoryForOrb(orbInCenter); // Load prepopulated stories for new language
     }
   };
 
@@ -475,229 +482,26 @@ function OrbGame() {
               console.log(`🎵 ${storiesWithTTS.length} stories have TTS audio`);
               
               if (storiesWithTTS.length > 0) {
-                // Check if database stories are fallback stories
-                const hasFallbackStories = storiesWithTTS.some(story => 
-                  story.aiModel === 'fallback' || 
-                  story.aiModel === 'error' || 
-                  story.source === 'Orb Game'
-                );
+                setNewsStories(storiesWithTTS);
+                setCurrentNewsIndex(0);
+                setCurrentNews(storiesWithTTS[0]);
+                setCurrentAISource('Database');
+                setIsLoading(false);
                 
-                if (hasFallbackStories) {
-                  console.log('🔄 Database contains fallback stories, getting fresh AI stories instead...');
-                  // Don't use fallback stories from database, continue to AI generation
-                } else {
-                  setNewsStories(storiesWithTTS);
-                  setCurrentNewsIndex(0);
-                  setCurrentNews(storiesWithTTS[0]);
-                  setCurrentAISource('Database');
-                  setIsLoading(false);
-                  
-                  return;
-                }
+                return;
               }
             }
           }
         } catch (dbError) {
-          console.warn('Database fetch failed, falling back to AI generation:', dbError.message);
+          console.warn('Database fetch failed:', dbError.message);
         }
       } else {
         console.log('🔄 Force fresh generation - skipping database cache');
       }
       
-      // Fallback: Generate fresh stories with retry logic
-      let attempts = 0;
-      const maxAttempts = 3;
-      let success = false;
-      
-      while (attempts < maxAttempts && !success) {
-        attempts++;
-        console.log(`Attempt ${attempts}/${maxAttempts} to load stories for ${category.name} in ${language === 'es' ? 'Spanish' : 'English'}`);
-        
-        try {
-          // Request single story from the backend
-          const response = await fetch(`${BACKEND_URL}/api/chat`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 1 detailed story.',
-              useWebSearch: 'auto',
-              language: language, // Include current language
-              count: 1 // Request 1 story
-            }),
-          });
-
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-          }
-
-          const data = await response.json();
-          
-          if (data.response && data.response.trim()) {
-            // Try to parse multiple stories from the response
-            let stories = [];
-            
-            // Check if response contains multiple stories (separated by --- or ###)
-            const storySeparators = ['---', '###', '***', '\n\n\n'];
-            let storyTexts = [data.response];
-            
-            for (const separator of storySeparators) {
-              if (data.response.includes(separator)) {
-                storyTexts = data.response.split(separator).filter(text => text.trim());
-                break;
-              }
-            }
-            
-            // Create story objects from the response
-            storyTexts.forEach((storyText, index) => {
-              if (storyText.trim()) {
-                const story = {
-                  headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
-                  summary: storyText.trim(),
-                  fullText: storyText.trim(),
-                  source: `${selectedModel} AI`,
-                  publishedAt: new Date().toISOString(),
-                  ttsAudio: data.audioData || null,
-                  category: category.name,
-                  aiModel: selectedModel,
-                  language: language, // Store the language used
-                  epoch: currentEpoch // Store the epoch used
-                };
-                stories.push(story);
-              }
-            });
-            
-            // If no multiple stories found, create single story
-            if (stories.length === 0) {
-              const story = {
-                headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
-                summary: data.response,
-                fullText: data.response,
-                source: `${selectedModel} AI`,
-                publishedAt: new Date().toISOString(),
-                ttsAudio: data.audioData || null,
-                category: category.name,
-                aiModel: selectedModel,
-                language: language,
-                epoch: currentEpoch
-              };
-              stories = [story];
-            }
-            
-            setNewsStories(stories);
-            setCurrentNewsIndex(0);
-            setCurrentNews(stories[0]);
-            success = true;
-            
-            // Check if any of the stories are fallback stories and regenerate if needed
-            const hasFallbackStories = stories.some(story => 
-              story.aiModel === 'fallback' || 
-              story.aiModel === 'error' || 
-              story.source === 'Orb Game'
-            );
-            
-            if (hasFallbackStories && stories.length < 3) {
-              console.log('🔄 Detected fallback stories, attempting to get fresh AI stories...');
-              // Try to get more fresh stories
-              try {
-                const freshResponse = await fetch(`${BACKEND_URL}/api/chat`, {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    message: getExcitingPrompt(category.name, currentEpoch, selectedModel) + ' Generate 1 detailed story.',
-                    useWebSearch: 'auto',
-                    language: language,
-                    count: 1
-                  }),
-                });
-                
-                if (freshResponse.ok) {
-                  const freshData = await freshResponse.json();
-                  
-                  if (freshData.response && freshData.response.trim()) {
-                    // Parse fresh stories
-                    const storySeparators = ['---', '###', '***', '\n\n\n'];
-                    let freshStoryTexts = [freshData.response];
-                    
-                    for (const separator of storySeparators) {
-                      if (freshData.response.includes(separator)) {
-                        freshStoryTexts = freshData.response.split(separator).filter(text => text.trim());
-                        break;
-                      }
-                    }
-                    
-                    // Create fresh story objects
-                    const freshStories = [];
-                    freshStoryTexts.forEach((storyText, index) => {
-                      if (storyText.trim()) {
-                        const freshStory = {
-                          headline: language === 'es' ? `${currentEpoch} ${category.name} Historia` : `${currentEpoch} ${category.name} Story`,
-                          summary: storyText.trim(),
-                          fullText: storyText.trim(),
-                          source: `${selectedModel} AI`,
-                          publishedAt: new Date().toISOString(),
-                          ttsAudio: freshData.audioData || null,
-                          category: category.name,
-                          aiModel: selectedModel,
-                          language: language,
-                          epoch: currentEpoch
-                        };
-                        freshStories.push(freshStory);
-                      }
-                    });
-                    
-                    if (freshStories.length > 0) {
-                      console.log(`✅ Generated ${freshStories.length} fresh AI stories`);
-                      setNewsStories(freshStories);
-                      setCurrentNewsIndex(0);
-                      setCurrentNews(freshStories[0]);
-                      setCurrentAISource(aiModelName);
-                    }
-                  }
-                }
-              } catch (freshError) {
-                console.warn('Failed to get fresh stories:', freshError);
-              }
-            }
-            
-            // Cache storage removed - preloading disabled
-          } else {
-            throw new Error('Empty response from AI');
-          }
-        } catch (error) {
-          console.error(`Attempt ${attempts} failed:`, error);
-          
-          if (attempts === maxAttempts) {
-            // Final fallback: Create a simple story
-            const fallbackStory = {
-              headline: language === 'es' ? `Noticias de ${category.name}` : `${category.name} News`,
-              summary: language === 'es' 
-                ? `¡Descubre noticias positivas increíbles sobre ${category.name.toLowerCase()}! Haz clic para explorar más historias.`
-                : `Discover amazing positive news about ${category.name.toLowerCase()}! Click to explore more stories.`,
-              fullText: language === 'es'
-                ? `Estamos preparando algunas historias emocionantes de ${category.name.toLowerCase()} para ti. Por favor, inténtalo de nuevo en un momento o selecciona una categoría diferente.`
-                : `We're preparing some exciting ${category.name.toLowerCase()} stories for you. Please try again in a moment or select a different category.`,
-              source: 'Orb Game',
-              publishedAt: new Date().toISOString(),
-              ttsAudio: null,
-              category: category.name,
-              aiModel: 'fallback',
-              language: language
-            };
-            
-            setNewsStories([fallbackStory]);
-            setCurrentNewsIndex(0);
-            setCurrentNews(fallbackStory);
-            setCurrentAISource('Fallback');
-          } else {
-            // Wait before retry
-            await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
-          }
-        }
-      }
+      // Only use prepopulated historical figure stories
+      console.log('📚 Using prepopulated historical figure stories only');
+      setIsLoading(false);
     } catch (error) {
       console.error('Failed to load stories:', error);
       
@@ -1104,26 +908,16 @@ function OrbGame() {
 
           </div>
           
-          {/* AI Model Display - Fixed to O4-Mini */}
+          {/* Category Display */}
           <div className="ai-model-display">
-            <span className="ai-model-label">AI Model: {aiModelName}</span>
+            <span className="ai-model-label">Category: {currentNews?.category || selectedCategory}</span>
             <button 
               onClick={learnMore}
               disabled={isLoading}
               className="go-button"
             >
-              {isLoading ? '⏳' : '🔍'} {language === 'es' ? 'Explorar Más' : 'Dig Deeper'}
+              {isLoading ? '⏳' : '🔍'} {t('news.more')}
             </button>
-            {currentNews && (currentNews.aiModel === 'fallback' || currentNews.aiModel === 'error' || currentNews.source === 'Orb Game') && (
-              <div className="fallback-notice">
-                <span className="fallback-text">⚠️ {t('news.fallback.detected')}</span>
-              </div>
-            )}
-            {isLoading && (
-              <div className="generating-notice">
-                <span className="generating-text">🔄 {t('news.generating.fresh')} {aiModelName}...</span>
-              </div>
-            )}
           </div>
           <div className="news-content">
             <p className="news-full-text">{currentNews.fullText}</p>

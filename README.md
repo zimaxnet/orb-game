@@ -10,18 +10,22 @@ An advanced AI-powered interactive gaming platform that combines time travel, hi
 - **5 Epochs**: Ancient, Medieval, Industrial, Modern, Future
 - **2 Languages**: English and Spanish with cultural sensitivity
 - **Educational Focus**: Learn about real people who shaped history
+- **Pre-populated Content**: All stories are pre-generated and stored in MongoDB
 
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
 - **Text-to-Speech**: Immersive audio narration with 'alloy' voice
 - **Historical Accuracy**: Stories based on documented achievements
 - **Personal Narratives**: First-person perspective from historical figures
+- **Historical Character Prompts**: "Presenting the most influential historical character in [category] during the [epoch] epoch"
 
 ### **🎮 Interactive 3D Experience**
 - **Milky Way Background**: 5,000 animated stars for immersive atmosphere
 - **Orbiting Satellites**: 8 interactive orbs representing different categories
 - **Drag & Drop**: Intuitive 3D interaction to discover stories
 - **Responsive Design**: Works on desktop and mobile devices
+- **Category Display**: Shows "Category: [Category]" instead of AI model
+- **More Button**: "More" button instead of "Dig Deeper" for additional content
 
 ### **📚 Story Content**
 Each story features:
@@ -30,6 +34,8 @@ Each story features:
 - **Context**: Historical period and cultural background
 - **Impact**: How their work shaped history
 - **Personal Journey**: Their discoveries and contributions
+- **Category Focus**: Stories specifically about the selected category
+- **Epoch Context**: Historical period-specific content
 
 ## 🏗️ **Architecture**
 
@@ -52,6 +58,18 @@ Each story features:
 - **Backend**: Azure Container Apps with auto-scaling
 - **Registry**: Azure Container Registry (`orbgameregistry`)
 - **Secrets**: Azure Key Vault with RBAC authentication
+
+## 🔄 **Recent Updates**
+
+### **Latest Changes (July 2024)**
+- **Historical Character Focus**: All stories now focus on "the most influential historical character" in each category and epoch
+- **UI Improvements**: 
+  - Changed story panel to show "Category: [Category]" instead of AI model
+  - Updated "Dig Deeper" button to "More" with proper translations
+  - Removed fallback story notices and fresh generation indicators
+- **Pre-populated Content**: System now exclusively uses pre-generated historical figure stories stored in MongoDB
+- **Simplified Architecture**: Removed dynamic story generation, focusing only on prepopulated content
+- **Enhanced Prompts**: Historical character prompts emphasize achievements and world-changing contributions
 
 ## 🚀 **Quick Start**
 

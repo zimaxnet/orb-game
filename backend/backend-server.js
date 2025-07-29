@@ -980,13 +980,13 @@ app.post('/api/historical-figures/preload/:epoch', async (req, res) => {
             }
           } else {
             console.log(`⚠️ Historical figures service not available for ${category}, using fallback...`);
-            const fallbackStory = await generateDirectFallbackStory(category);
+            const fallbackStory = await generateDirectFallbackStory(category, language);
             stories = [fallbackStory];
           }
           
           if (stories.length === 0) {
             console.log(`⚠️ No historical figure stories generated for ${category}, using fallback...`);
-            const fallbackStory = await generateDirectFallbackStory(category);
+            const fallbackStory = await generateDirectFallbackStory(category, language);
             stories = [fallbackStory];
           }
           

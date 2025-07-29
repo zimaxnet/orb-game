@@ -314,7 +314,7 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
         body: JSON.stringify({
           model: azureOpenAITTSDeployment,
           input: text,
-          voice: language === 'es' ? 'jorge' : 'alloy', // Use jorge for Spanish, alloy for English
+          voice: 'alloy', // Use alloy for both languages since 'jorge' is not supported
           response_format: 'mp3'
         })
       });

@@ -402,9 +402,14 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
             { $set: { lastUsed: updatedStory.lastUsed, useCount: updatedStory.useCount } }
           );
           
-          // Remove TTS fields for response
-          const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = updatedStory;
-          selectedStories.push(storyWithoutTTS);
+          // Handle TTS fields based on includeTTS parameter
+          if (!includeTTS) {
+            // Remove TTS fields for response
+            const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = updatedStory;
+            selectedStories.push(storyWithoutTTS);
+          } else {
+            selectedStories.push(updatedStory);
+          }
           
           console.log(`✅ Using existing story for ${selectedFigure.figure.name}`);
         } else {
@@ -412,7 +417,14 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
           console.log(`🆕 Generating new story for ${selectedFigure.figure.name}`);
           const newStory = await this.generateHistoricalFigureStory(category, epoch, language, selectedFigure.figure);
           if (newStory) {
-            selectedStories.push(newStory);
+            // Handle TTS fields based on includeTTS parameter
+            if (!includeTTS) {
+              // Remove TTS fields for response
+              const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = newStory;
+              selectedStories.push(storyWithoutTTS);
+            } else {
+              selectedStories.push(newStory);
+            }
           }
         }
       }

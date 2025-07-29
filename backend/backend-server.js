@@ -72,8 +72,15 @@ async function initializeSecrets() {
         const envName = name.replace(/-/g, '_');
         secrets[envName] = value;
         console.log(`✅ Loaded secret: ${name}`);
+      } else {
+        console.log(`❌ Failed to load secret: ${name}`);
       }
     });
+    
+    console.log('📊 Final secrets status:');
+    console.log(`  MONGO_URI: ${secrets['MONGO_URI'] ? '✅ Loaded' : '❌ Not loaded'}`);
+    console.log(`  AZURE_OPENAI_API_KEY: ${secrets['AZURE_OPENAI_API_KEY'] ? '✅ Loaded' : '❌ Not loaded'}`);
+    console.log(`  PERPLEXITY_API_KEY: ${secrets['PERPLEXITY_API_KEY'] ? '✅ Loaded' : '❌ Not loaded'}`);
     
     // Make secrets available globally for other services
     global.secrets = secrets;
@@ -631,11 +638,19 @@ async function initializeServer() {
   azureOpenAIApiKey = secrets['AZURE_OPENAI_API_KEY'] || process.env.AZURE_OPENAI_API_KEY;
   const perplexityApiKey = secrets['PERPLEXITY_API_KEY'] || process.env.PERPLEXITY_API_KEY;
 
+  console.log('🔍 Secrets loading status:');
+  console.log(`  MONGO_URI from secrets: ${secrets['MONGO_URI'] ? '✅ Available' : '❌ Not available'}`);
+  console.log(`  MONGO_URI from env: ${process.env.MONGO_URI ? '✅ Available' : '❌ Not available'}`);
+  console.log(`  Final MONGO_URI: ${mongoUri ? '✅ Available' : '❌ Not available'}`);
+  console.log(`  AZURE_OPENAI_API_KEY: ${azureOpenAIApiKey ? '✅ Available' : '❌ Not available'}`);
+  console.log(`  PERPLEXITY_API_KEY: ${perplexityApiKey ? '✅ Available' : '❌ Not available'}`);
+
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
     memoryService = null;
     positiveNewsService = null;
     storyCacheService = null;
+    historicalFiguresService = null;
   } else {
     try {
       console.log('🔧 Initializing AdvancedMemoryService...');

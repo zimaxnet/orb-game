@@ -1,26 +1,28 @@
 #!/usr/bin/env node
 
 /**
- * Test Key Vault Access Script
- * Tests if the backend can access Key Vault secrets
+ * Test Azure Key Vault Access
+ * 
+ * This script tests if the Azure Key Vault access is working properly.
  */
 
 import { DefaultAzureCredential } from '@azure/identity';
 import { SecretClient } from '@azure/keyvault-secrets';
 
-const KEY_VAULT_NAME = 'orb-game-kv-eastus2';
-const KEY_VAULT_URL = `https://${KEY_VAULT_NAME}.vault.azure.net/`;
-
 async function testKeyVaultAccess() {
-  console.log('🔐 Testing Key Vault Access...');
-  console.log(`Key Vault URL: ${KEY_VAULT_URL}`);
-  
+  console.log('🧪 Testing Azure Key Vault Access...\n');
+
   try {
+    console.log('🔐 Initializing Azure Key Vault client...');
+    
     // Use DefaultAzureCredential for managed identity
     const credential = new DefaultAzureCredential();
-    const secretClient = new SecretClient(KEY_VAULT_URL, credential);
+    const keyVaultName = process.env.KEY_VAULT_NAME || 'orb-game-kv-eastus2';
+    const keyVaultUrl = `https://${keyVaultName}.vault.azure.net/`;
     
-    console.log('✅ Key Vault client created successfully');
+    console.log(`📡 Key Vault URL: ${keyVaultUrl}`);
+    
+    const secretClient = new SecretClient(keyVaultUrl, credential);
     
     // Test fetching secrets
     const secretNames = [
@@ -29,26 +31,26 @@ async function testKeyVaultAccess() {
       'MONGO-URI'
     ];
     
+    console.log('\n🔍 Testing secret retrieval...');
+    
     for (const secretName of secretNames) {
       try {
-        console.log(`🔍 Testing secret: ${secretName}`);
+        console.log(`📝 Fetching secret: ${secretName}`);
         const secret = await secretClient.getSecret(secretName);
-        console.log(`✅ Secret ${secretName} retrieved successfully`);
-        console.log(`   Value preview: ${secret.value.substring(0, 8)}...`);
+        console.log(`✅ Successfully retrieved: ${secretName}`);
+        console.log(`   Value length: ${secret.value ? secret.value.length : 0} characters`);
       } catch (error) {
-        console.log(`❌ Failed to retrieve secret ${secretName}: ${error.message}`);
+        console.error(`❌ Failed to fetch ${secretName}:`, error.message);
       }
     }
     
-    console.log('🎉 Key Vault access test completed!');
+    console.log('\n✅ Key Vault access test completed');
     
   } catch (error) {
-    console.error('❌ Key Vault access failed:', error.message);
-    console.error('Error details:', error);
+    console.error('❌ Key Vault access test failed:', error.message);
+    console.error('Stack trace:', error.stack);
   }
 }
 
-testKeyVaultAccess().catch(error => {
-  console.error('💥 Test runner failed:', error.message);
-  process.exit(1);
-}); 
+// Run the test
+testKeyVaultAccess().catch(console.error); 

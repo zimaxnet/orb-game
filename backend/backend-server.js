@@ -45,6 +45,8 @@ async function initializeSecrets() {
     const keyVaultName = process.env.KEY_VAULT_NAME || 'orb-game-kv-eastus2';
     const keyVaultUrl = `https://${keyVaultName}.vault.azure.net/`;
     
+    console.log(`📡 Key Vault URL: ${keyVaultUrl}`);
+    
     secretClient = new SecretClient(keyVaultUrl, credential);
     
     // Fetch all required secrets
@@ -56,10 +58,13 @@ async function initializeSecrets() {
     
     const secretPromises = secretNames.map(async (secretName) => {
       try {
+        console.log(`🔍 Attempting to fetch secret: ${secretName}`);
         const secret = await secretClient.getSecret(secretName);
+        console.log(`✅ Successfully retrieved secret: ${secretName}`);
         return { name: secretName, value: secret.value };
       } catch (error) {
-        console.warn(`⚠️ Failed to fetch secret ${secretName}:`, error.message);
+        console.error(`❌ Failed to fetch secret ${secretName}:`, error.message);
+        console.error(`   Error details:`, error);
         return { name: secretName, value: null };
       }
     });
@@ -88,7 +93,12 @@ async function initializeSecrets() {
     console.log('✅ Azure Key Vault secrets initialized successfully');
   } catch (error) {
     console.error('❌ Failed to initialize Azure Key Vault secrets:', error.message);
+    console.error('🔍 Error details:', error.stack);
     console.warn('⚠️ Falling back to environment variables');
+    
+    // Initialize empty secrets object for fallback
+    secrets = {};
+    global.secrets = secrets;
   }
 }
 
@@ -644,6 +654,12 @@ async function initializeServer() {
   console.log(`  Final MONGO_URI: ${mongoUri ? '✅ Available' : '❌ Not available'}`);
   console.log(`  AZURE_OPENAI_API_KEY: ${azureOpenAIApiKey ? '✅ Available' : '❌ Not available'}`);
   console.log(`  PERPLEXITY_API_KEY: ${perplexityApiKey ? '✅ Available' : '❌ Not available'}`);
+
+  // Test MongoDB URI format if available
+  if (mongoUri) {
+    console.log(`🔍 MongoDB URI format check: ${mongoUri.startsWith('mongodb://') || mongoUri.startsWith('mongodb+srv://') ? '✅ Valid format' : '❌ Invalid format'}`);
+    console.log(`🔍 MongoDB URI preview: ${mongoUri.substring(0, 20)}...`);
+  }
 
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');

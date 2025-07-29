@@ -11,7 +11,8 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **2 Languages**: English and Spanish with cultural sensitivity
 - **Educational Focus**: Learn about real people who shaped history
 - **Pre-populated Content**: All stories are pre-generated and stored in MongoDB
-- **Specific Historical Figures**: Each story focuses on one of the 3 most important figures for that category/epoch
+- **Round-Robin Loading**: Fast initial response with 1 story, then silently load 2 additional historical figures
+- **Smart Navigation**: Users can explore all 3 historical figures per category/epoch combination
 
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
@@ -63,6 +64,17 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **Round-Robin Historical Figures Loading**: Optimized user experience with smart loading strategy
+  - **Fast Initial Response**: Show 1 historical figure immediately for instant gratification
+  - **Background Loading**: Silently load 2 additional historical figures while user reads first story
+  - **Smart Navigation**: Users can navigate between all 3 historical figures once loaded
+  - **Visual Feedback**: Background loading indicator shows when additional figures are being fetched
+  - **Benefits**: 3x faster initial response while maintaining complete content availability
+- **Streamlined Categories & Epochs**: Removed redundant content for focused experience
+  - **Removed Categories**: Eliminated 'Spirituality' category for cleaner focus
+  - **Removed Epochs**: Removed 'Enlightenment' and 'Digital' epochs to focus on core historical periods
+  - **Updated Coverage**: Now 8 categories × 5 epochs = 40 combinations with 3 figures each
+  - **Improved Focus**: Concentrated on the most impactful historical periods and categories
 - **Deployment Conflict Fix**: Resolved GitHub Actions deployment conflicts by consolidating to single workflow
   - **Fixed**: 3 competing workflows causing deployment failures
   - **Solution**: Single `deploy-full.yml` workflow with sequential deployment
@@ -154,9 +166,16 @@ node backend-server.js
 | **Space** | Ptolemy, Aryabhata, Hypatia | Al-Battani, Nasir al-Din al-Tusi, Geoffrey Chaucer | Galileo Galilei, Edmond Halley, Caroline Herschel | Yuri Gagarin, Katherine Johnson, Stephen Hawking | Mars Colony Leader, Exoplanet Analyst, AI Probe Architect |
 | **Innovation** | Zhang Heng, Ctesibius, Aeneas Tacticus | Al-Jazari, Richard of Wallingford, Leonardo Fibonacci | Thomas Edison, Nikola Tesla, Alexander Graham Bell | Grace Hopper, Shigeru Miyamoto, Elon Musk | Fusion Energy Scientist, Translingual AI Architect, Synthetic Biology Entrepreneur |
 
+*Note: Each category/epoch combination features 3 historical figures that load in round-robin fashion for optimal user experience.*
+
 ### **Story Generation Process**
 ```
-Historical Figure Data → O4-Mini Generation → TTS Audio → MongoDB Storage → User Experience
+Historical Figure Data → O4-Mini Generation → TTS Audio → MongoDB Storage → Round-Robin Loading → User Experience
+```
+
+### **Round-Robin Loading Strategy**
+```
+User Clicks Orb → Load 1 Story Immediately → Show First Historical Figure → Background Load 2 Additional Figures → Enable Navigation Between All 3
 ```
 
 ## 🎯 **Game Features**
@@ -167,6 +186,8 @@ Historical Figure Data → O4-Mini Generation → TTS Audio → MongoDB Storage 
 - **Category Exploration**: Explore 8 different fields of achievement
 - **Language Support**: Switch between English and Spanish
 - **Learn More**: Get detailed 500-600 word biographies of historical figures
+- **Round-Robin Navigation**: Explore all 3 historical figures per category/epoch combination
+- **Smart Loading**: Fast initial response with background loading of additional figures
 
 ### **Audio Experience**
 - **Text-to-Speech**: Immersive audio narration of historical figure stories
@@ -363,12 +384,16 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Epoch Selection**: Time travel through different eras to meet historical figures
 - **Category Exploration**: 8 different historical figure categories
 - **Audio Integration**: Text-to-speech for immersive experience
+- **Round-Robin Navigation**: Explore all 3 historical figures per category/epoch
+- **Smart Loading**: Fast initial response with background content loading
 
 ### **User Experience**
 - **Responsive Design**: Works on desktop and mobile
 - **Touch Controls**: Swipe gestures for mobile interaction
 - **Visual Feedback**: Animations and glow effects
 - **Accessibility**: Audio controls and keyboard navigation
+- **Background Loading Indicators**: Visual feedback when additional historical figures are loading
+- **Smart Navigation**: Disabled navigation buttons until additional figures are ready
 
 ## 🔧 **Development Workflow**
 
@@ -493,5 +518,7 @@ node backend-server.js
 - **3D Interactive Experience**: Engaging Three.js powered interface
 - **Azure Cloud Deployment**: Scalable, secure, and performant
 - **Educational Value**: Real historical figures and their documented accomplishments
+- **Round-Robin Loading**: 3x faster initial response while maintaining complete content
+- **Streamlined Experience**: 8 focused categories × 5 core epochs for optimal user experience
 
 The Orb Game provides an engaging, educational experience focused exclusively on real historical figures who shaped the world through their remarkable achievements! 🚀

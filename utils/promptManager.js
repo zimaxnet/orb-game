@@ -121,7 +121,7 @@ class PromptManager {
    * Get all prompts for a specific category and model
    */
   getCategoryPrompts(category, language = 'en', model = 'o4-mini') {
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const prompts = {};
     
     epochs.forEach(epoch => {
@@ -135,7 +135,7 @@ class PromptManager {
    * Get all prompts for a specific epoch and model
    */
   getEpochPrompts(epoch, language = 'en', model = 'o4-mini') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -149,8 +149,8 @@ class PromptManager {
    * Get all prompts for a specific language and model
    */
   getLanguagePrompts(language = 'en', model = 'o4-mini') {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const prompts = {};
     
     categories.forEach(category => {
@@ -190,11 +190,11 @@ class PromptManager {
   getPromptStats() {
     return {
       totalCached: this.cache.size,
-      categories: 9,
-      epochs: 7,
+      categories: 8,
+      epochs: 5,
       languages: 2,
       models: 4,
-      totalCombinations: 9 * 7 * 2 * 4
+      totalCombinations: 8 * 5 * 2 * 4
     };
   }
 
@@ -202,8 +202,8 @@ class PromptManager {
    * Validate that all prompts exist for all models
    */
   validatePrompts() {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
     const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
     const missing = [];
@@ -248,8 +248,8 @@ class PromptManager {
       prompts: {}
     };
 
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
     const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
 
@@ -273,8 +273,8 @@ class PromptManager {
    * Get random prompt for testing/demo purposes
    */
   getRandomPrompt() {
-    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation', 'Spirituality'];
-    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
     const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
 

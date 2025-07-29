@@ -193,8 +193,7 @@ function OrbGame() {
   
   const [categories] = useState([
     { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
-    { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' },
-    { name: 'Spirituality', color: '#ff9800' }
+    { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' }
   ]);
   // Remove score/streak state
   // const [score, setScore] = useState(0);
@@ -224,7 +223,7 @@ function OrbGame() {
 
   // Add epoch state
   const [currentEpoch, setCurrentEpoch] = useState('Modern');
-  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future', 'Enlightenment', 'Digital'];
+  const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
   
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
@@ -240,12 +239,12 @@ function OrbGame() {
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('Technology');
+    const [selectedCategory, setSelectedCategory] = useState('Technology');
   
   // Add preloaded stories state for next/prev navigation
   const [preloadedStories, setPreloadedStories] = useState([]);
   const [isPreloading, setIsPreloading] = useState(false);
-
+  
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
     return newsStories.filter(story => 
@@ -481,7 +480,7 @@ function OrbGame() {
           body: JSON.stringify({
             epoch: currentEpoch,
             model: 'o4-mini',
-            count: 3,
+            count: 1,
             language: language,
             includeTTS: false
           }),
@@ -492,16 +491,16 @@ function OrbGame() {
           if (Array.isArray(generatedStories) && generatedStories.length > 0) {
             console.log(`✅ Generated ${generatedStories.length} historical figure stories`);
             
-            // Set the first story immediately
+            // Set the first story immediately for fast user experience
             setNewsStories(generatedStories);
             setCurrentNewsIndex(0);
             setCurrentNews(generatedStories[0]);
             setCurrentAISource('o4-mini');
             setIsLoading(false);
             
-            // Preload additional stories in the background if we have less than 3
-            if (generatedStories.length < 3) {
-              preloadAdditionalStories(category, generatedStories.length);
+            // Silently load the other 2 historical figures in the background
+            if (generatedStories.length === 1) {
+              preloadAdditionalStories(category, 1);
             }
             
             return;
@@ -561,51 +560,52 @@ function OrbGame() {
     }
   };
 
-  // Preload additional historical figure stories in the background
-  const preloadAdditionalStories = async (category, existingCount) => {
-    if (isPreloading) return; // Prevent multiple preload requests
     
-    setIsPreloading(true);
-    console.log(`🔄 Preloading additional historical figure stories for ${category.name}...`);
-    
-    try {
-      // Calculate how many more stories we need
-      const neededCount = 3 - existingCount;
+    // Preload additional historical figure stories in the background for round-robin navigation
+    const preloadAdditionalStories = async (category, existingCount) => {
+      if (isPreloading) return; // Prevent multiple preload requests
       
-      if (neededCount > 0) {
-        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-news/${category.name}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            epoch: currentEpoch,
-            model: 'o4-mini',
-            count: neededCount,
-            language: language,
-            storyType: 'historical-figure'
-          }),
-        });
+      setIsPreloading(true);
+      console.log(`🔄 Silently preloading additional historical figure stories for ${category.name}...`);
+      
+      try {
+        // Calculate how many more stories we need to complete the set of 3
+        const neededCount = 3 - existingCount;
+        
+        if (neededCount > 0) {
+          const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-historical-figures/${category.name}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              epoch: currentEpoch,
+              model: 'o4-mini',
+              count: neededCount,
+              language: language,
+              includeTTS: false
+            }),
+          });
 
-        if (generateResponse.ok) {
-          const additionalStories = await generateResponse.json();
-          if (Array.isArray(additionalStories) && additionalStories.length > 0) {
-            console.log(`✅ Preloaded ${additionalStories.length} additional historical figure stories`);
-            
-            // Add the preloaded stories to the existing stories
-            setNewsStories(prevStories => [...prevStories, ...additionalStories]);
-            setPreloadedStories(additionalStories);
+          if (generateResponse.ok) {
+            const additionalStories = await generateResponse.json();
+            if (Array.isArray(additionalStories) && additionalStories.length > 0) {
+              console.log(`✅ Silently preloaded ${additionalStories.length} additional historical figure stories`);
+              
+              // Add the preloaded stories to the existing stories array
+              setNewsStories(prevStories => [...prevStories, ...additionalStories]);
+              setPreloadedStories(additionalStories);
+            }
           }
         }
+      } catch (error) {
+        console.warn('Failed to preload additional stories:', error.message);
+      } finally {
+        setIsPreloading(false);
       }
-    } catch (error) {
-      console.warn('Failed to preload additional stories:', error.message);
-    } finally {
-      setIsPreloading(false);
-    }
-  };
-  
-  const releaseOrbFromCenter = () => {
+    };
+    
+    const releaseOrbFromCenter = () => {
     setOrbInCenter(null);
     setCurrentNews(null);
     setNewsStories([]);
@@ -746,7 +746,9 @@ function OrbGame() {
       
       // Removed auto-play audio - user must click play button
     } else if (isPreloading) {
-      console.log('⏳ Waiting for preloaded stories to be ready...');
+      console.log('⏳ Waiting for additional historical figures to load...');
+    } else {
+      console.log('ℹ️ Only one historical figure available for this category/epoch');
     }
   };
 
@@ -759,7 +761,9 @@ function OrbGame() {
       
       // Removed auto-play audio - user must click play button
     } else if (isPreloading) {
-      console.log('⏳ Waiting for preloaded stories to be ready...');
+      console.log('⏳ Waiting for additional historical figures to load...');
+    } else {
+      console.log('ℹ️ Only one historical figure available for this category/epoch');
     }
   };
 
@@ -965,7 +969,7 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>{currentNews?.headline || (language === 'es' ? 'Recopilando tu historia...' : 'Gathering your story...')}</h4>
+            <h4>{currentNews?.headline || (language === 'es' ? `Recopilando la figura histórica más influyente de ${selectedCategory} ${currentEpoch}...` : `Gathering the most influential historical figure of ${selectedCategory} ${currentEpoch}...`)}</h4>
             <p>{language === 'es' ? 'Contexto diseñado por Zimax AI Labs usando' : 'Context engineered by Zimax AI Labs using'} <strong>{currentAISource}</strong> AI</p>
             <p className="loading-detail">{currentNews?.summary || (language === 'es' ? '¡Esto puede tomar unos segundos mientras encontramos la historia perfecta para ti!' : 'This may take a few seconds as we find the perfect story for you!')}</p>
             <div className="loading-progress">
@@ -986,7 +990,7 @@ function OrbGame() {
                 onClick={prevStory} 
                 disabled={getFilteredStories().length <= 1}
                 className={`nav-button prev-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
-                title={isPreloading ? 'Preloading stories...' : language === 'es' ? 'Historia anterior' : 'Previous story'}
+                title={isPreloading ? 'Loading additional historical figures...' : language === 'es' ? 'Figura histórica anterior' : 'Previous historical figure'}
               >
                 {isPreloading ? '⏳' : '←'}
               </button>
@@ -1002,7 +1006,7 @@ function OrbGame() {
                 onClick={nextStory} 
                 disabled={getFilteredStories().length <= 1}
                 className={`nav-button next-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
-                title={isPreloading ? 'Preloading stories...' : language === 'es' ? 'Siguiente historia' : 'Next story'}
+                title={isPreloading ? 'Loading additional historical figures...' : language === 'es' ? 'Siguiente figura histórica' : 'Next historical figure'}
               >
                 {isPreloading ? '⏳' : '→'}
               </button>
@@ -1040,6 +1044,15 @@ function OrbGame() {
               {isLoading ? '⏳' : '🔍'} {t('news.more')}
             </button>
           </div>
+          
+          {/* Background loading indicator */}
+          {isPreloading && (
+            <div className="background-loading-indicator">
+              <span className="loading-text">
+                {language === 'es' ? '🔄 Cargando figuras históricas adicionales...' : '🔄 Loading additional historical figures...'}
+              </span>
+            </div>
+          )}
           <div className="news-content">
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>

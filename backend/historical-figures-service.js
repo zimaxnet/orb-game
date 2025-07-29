@@ -143,21 +143,29 @@ class HistoricalFiguresService {
     return this.seedData[category][epoch] || [];
   }
 
-  async generateHistoricalFigureStory(category, epoch, language = 'en') {
+  async generateHistoricalFigureStory(category, epoch, language = 'en', specificFigure = null) {
     try {
       console.log(`🤖 Generating historical figure story for ${category}-${epoch}-${language}...`);
       
-      // Get historical figures for this category and epoch
-      const historicalFigures = await this.getHistoricalFigures(category, epoch);
+      let selectedFigure;
       
-      if (historicalFigures.length === 0) {
-        console.warn(`⚠️ No historical figures available for ${category}-${epoch}`);
-        return null;
-      }
+      if (specificFigure) {
+        // Use the specific figure provided
+        selectedFigure = specificFigure;
+        console.log(`🎯 Using specified historical figure: ${selectedFigure.name}`);
+      } else {
+        // Get historical figures for this category and epoch
+        const historicalFigures = await this.getHistoricalFigures(category, epoch);
+        
+        if (historicalFigures.length === 0) {
+          console.warn(`⚠️ No historical figures available for ${category}-${epoch}`);
+          return null;
+        }
 
-      // Select a random historical figure
-      const selectedFigure = historicalFigures[Math.floor(Math.random() * historicalFigures.length)];
-      console.log(`🎯 Selected historical figure: ${selectedFigure.name}`);
+        // Select a random historical figure (fallback for backward compatibility)
+        selectedFigure = historicalFigures[Math.floor(Math.random() * historicalFigures.length)];
+        console.log(`🎯 Selected historical figure: ${selectedFigure.name}`);
+      }
 
       // Create enhanced prompt for the specific historical figure
       const enhancedPrompt = `Generate a story about ${selectedFigure.name}, a historical figure in ${category.toLowerCase()}.
@@ -195,7 +203,9 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
         fullText: storyData.fullText,
         source: storyData.source,
         historicalFigure: selectedFigure.name,
-        storyType: 'historical-figure'
+        storyType: 'historical-figure',
+        lastUsed: new Date().toISOString(),
+        useCount: 1
       });
 
       // Generate TTS audio (but don't include in response to prevent JSON issues)
@@ -325,35 +335,90 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
     try {
       console.log(`📚 Getting historical figure stories for ${category}-${epoch}-${language} (requested: ${count})`);
       
-      // Build query
-      const query = { 
-        category,
-        epoch,
-        language,
-        storyType: 'historical-figure'
-      };
+      // Get all available historical figures for this category and epoch
+      const historicalFigures = await this.getHistoricalFigures(category, epoch);
       
-      // Get stories from database
-      let stories = await this.stories.find(query).limit(count * 2).toArray();
-      
-      // Always exclude TTS fields to prevent JSON response issues
-      stories = stories.map(story => {
-        const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
-        return storyWithoutTTS;
-      });
-      
-      console.log(`📚 Found ${stories.length} historical figure stories for ${category}-${epoch}-${language}`);
-      
-      if (stories.length > 0) {
-        const selectedStories = stories.slice(0, count);
-        console.log(`✅ Returning ${selectedStories.length} historical figure stories for ${category}`);
-        return selectedStories;
+      if (historicalFigures.length === 0) {
+        console.warn(`⚠️ No historical figures available for ${category}-${epoch}`);
+        return [];
       }
       
-      // Generate new story if none found
-      console.log(`⚠️ No stories found for ${category}-${epoch}-${language}, generating new story...`);
-      const newStory = await this.generateHistoricalFigureStory(category, epoch, language);
-      return newStory ? [newStory] : [];
+      console.log(`👥 Available historical figures: ${historicalFigures.map(f => f.name).join(', ')}`);
+      
+      // Get existing stories to see which figures have been used recently
+      const existingStories = await this.stories.find({ 
+        category, 
+        epoch, 
+        language, 
+        storyType: 'historical-figure' 
+      }).sort({ lastUsed: 1 }).toArray();
+      
+      // Create a map of historical figures and their last usage
+      const figureUsage = new Map();
+      historicalFigures.forEach(figure => {
+        figureUsage.set(figure.name, { figure, lastUsed: null, useCount: 0 });
+      });
+      
+      // Update usage from existing stories
+      existingStories.forEach(story => {
+        if (figureUsage.has(story.historicalFigure)) {
+          figureUsage.get(story.historicalFigure).lastUsed = story.lastUsed;
+          figureUsage.get(story.historicalFigure).useCount = story.useCount || 0;
+        }
+      });
+      
+      // Sort figures by last usage (null = never used, comes first)
+      const sortedFigures = Array.from(figureUsage.values())
+        .sort((a, b) => {
+          if (a.lastUsed === null && b.lastUsed === null) {
+            return a.useCount - b.useCount; // Use count as tiebreaker
+          }
+          if (a.lastUsed === null) return -1;
+          if (b.lastUsed === null) return 1;
+          return new Date(a.lastUsed) - new Date(b.lastUsed);
+        });
+      
+      console.log(`🔄 Round-robin order: ${sortedFigures.map(f => f.figure.name).join(' → ')}`);
+      
+      const selectedStories = [];
+      
+      // Select figures in round-robin order
+      for (let i = 0; i < count && i < sortedFigures.length; i++) {
+        const selectedFigure = sortedFigures[i];
+        console.log(`🎯 Selecting figure ${i + 1}/${count}: ${selectedFigure.figure.name}`);
+        
+        // Check if we have an existing story for this figure
+        const existingStory = existingStories.find(s => s.historicalFigure === selectedFigure.figure.name);
+        
+        if (existingStory) {
+          // Use existing story and update usage
+          const updatedStory = { ...existingStory };
+          updatedStory.lastUsed = new Date().toISOString();
+          updatedStory.useCount = (updatedStory.useCount || 0) + 1;
+          
+          // Update in database
+          await this.stories.updateOne(
+            { _id: existingStory._id },
+            { $set: { lastUsed: updatedStory.lastUsed, useCount: updatedStory.useCount } }
+          );
+          
+          // Remove TTS fields for response
+          const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = updatedStory;
+          selectedStories.push(storyWithoutTTS);
+          
+          console.log(`✅ Using existing story for ${selectedFigure.figure.name}`);
+        } else {
+          // Generate new story for this figure
+          console.log(`🆕 Generating new story for ${selectedFigure.figure.name}`);
+          const newStory = await this.generateHistoricalFigureStory(category, epoch, language, selectedFigure.figure);
+          if (newStory) {
+            selectedStories.push(newStory);
+          }
+        }
+      }
+      
+      console.log(`✅ Returning ${selectedStories.length} unique historical figure stories for ${category}`);
+      return selectedStories;
       
     } catch (error) {
       console.error('Failed to get historical figure stories:', error);

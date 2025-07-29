@@ -222,9 +222,16 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
       await this.stories.insertOne(story);
       console.log(`✅ Generated and stored historical figure story for ${selectedFigure.name}`);
       
-      // Remove TTS fields from response to prevent JSON issues
-      const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
-      return storyWithoutTTS;
+      // Return the story with TTS if it was generated successfully
+      if (story.ttsAudio) {
+        console.log(`✅ Returning story with TTS audio for ${selectedFigure.name}`);
+        return story;
+      } else {
+        // Remove TTS fields if no audio was generated
+        const { ttsAudio, ttsGeneratedAt, ...storyWithoutTTS } = story;
+        console.log(`⚠️ Returning story without TTS audio for ${selectedFigure.name}`);
+        return storyWithoutTTS;
+      }
     } catch (error) {
       console.error(`❌ Failed to generate historical figure story for ${category}-${epoch}-${language}:`, error.message);
       return null;

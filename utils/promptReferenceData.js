@@ -745,6 +745,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       }
     }
+  }
   },
 
   // Enhanced backend model-specific templates for substantive content

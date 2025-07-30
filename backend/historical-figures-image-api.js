@@ -323,14 +323,9 @@ class HistoricalFiguresImageAPI {
             }
 
             // Get stories from existing service
-            const storyService = req.app.locals.historicalFiguresService;
-            if (!storyService) {
-                return res.status(500).json({
-                    error: 'Historical figures service not available'
-                });
-            }
-
-            const stories = await storyService.getStories(category, epoch, language, count);
+            // Note: historicalFiguresService is a global variable in the backend server
+            // We need to access it through the request context
+            const stories = await this.getStoriesFromService(category, epoch, language, count, req);
 
             if (!stories || stories.length === 0) {
                 return res.status(404).json({
@@ -463,6 +458,26 @@ class HistoricalFiguresImageAPI {
                 error: 'Internal server error',
                 message: error.message
             });
+        }
+    }
+
+    /**
+     * Get stories from the historical figures service
+     */
+    async getStoriesFromService(category, epoch, language, count, req) {
+        try {
+            // Access the historical figures service through the global variable
+            // This is a workaround since the service is not in app.locals
+            const response = await fetch(`${req.protocol}://${req.get('host')}/api/orb/positive-news/${category}?count=${count}&epoch=${epoch}&language=${language}&storyType=historical-figure`);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch stories: ${response.status}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            console.error('Error getting stories from service:', error);
+            throw error;
         }
     }
 

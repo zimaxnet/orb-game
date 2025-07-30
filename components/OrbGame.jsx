@@ -284,12 +284,21 @@ function OrbGame() {
       }
     };
     
+    // Handle escape key to close story panel
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && currentNews) {
+        releaseOrbFromCenter();
+      }
+    };
+    
     if (currentNews) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
     }
     
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [currentNews]);
   
@@ -313,13 +322,14 @@ function OrbGame() {
   // Auto-cycle epochs for variety (every 2 minutes)
   useEffect(() => {
     const epochTimer = setInterval(() => {
-      if (!isLoading && !currentNews) { // Only auto-cycle when not busy
+      // Only auto-cycle when not busy AND no story is being viewed
+      if (!isLoading && !currentNews && !orbInCenter) {
         cycleEpoch();
       }
     }, 120000); // 2 minutes
 
     return () => clearInterval(epochTimer);
-  }, [epochIndex, isLoading, currentNews]);
+  }, [epochIndex, isLoading, currentNews, orbInCenter]);
 
 
   
@@ -436,6 +446,12 @@ function OrbGame() {
 
   // Round-robin epoch cycling function
   const cycleEpoch = () => {
+    // Don't cycle if user is viewing a story
+    if (currentNews || orbInCenter) {
+      console.log('🔄 Epoch cycling blocked - user is viewing a story');
+      return;
+    }
+    
     const nextIndex = (epochIndex + 1) % epochs.length;
     const nextEpoch = epochs[nextIndex];
     handleEpochChange(nextEpoch);
@@ -1000,7 +1016,7 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>{currentNews?.headline || (language === 'es' ? `Recopilando la figura histórica más influyente de ${selectedCategory} ${currentEpoch}...` : `Gathering the most influential historical figure of ${selectedCategory} ${currentEpoch}...`)}</h4>
+            <h4>{currentNews?.headline || (language === 'es' ? `Recopilando la figura histórica más influyente de ${orbInCenter?.name || selectedCategory} ${currentEpoch}...` : `Gathering the most influential historical figure of ${orbInCenter?.name || selectedCategory} ${currentEpoch}...`)}</h4>
             <p>{language === 'es' ? 'Contexto diseñado por Zimax AI Labs usando' : 'Context engineered by Zimax AI Labs using'} <strong>{currentAISource}</strong> AI</p>
             <p className="loading-detail">{currentNews?.summary || (language === 'es' ? '¡Esto puede tomar unos segundos mientras encontramos la historia perfecta para ti!' : 'This may take a few seconds as we find the perfect story for you!')}</p>
             <div className="loading-progress">
@@ -1076,9 +1092,9 @@ function OrbGame() {
             </button>
             <button 
               onClick={cycleEpoch}
-              disabled={isLoading}
+              disabled={isLoading || currentNews}
               className="epoch-cycle-button"
-              title={`Current epoch: ${currentEpoch}. Click to cycle to next epoch.`}
+              title={currentNews ? 'Cannot change epoch while viewing a story' : `Current epoch: ${currentEpoch}. Click to cycle to next epoch.`}
             >
               ⏰ {currentEpoch}
             </button>

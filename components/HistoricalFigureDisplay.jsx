@@ -21,33 +21,47 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     }, [portrait]);
 
     useEffect(() => {
-        // If images are not loaded yet, start polling for updates
+        // Re-enabled: Image polling to fetch images from database
         if (imageStatus === 'searching' && figureName) {
             const pollForImages = async () => {
                 try {
-                    const response = await fetch(`https://api.orbgame.us/api/orb/images/check-updated?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}`);
+                    console.log(`🔍 Polling for images: ${figureName} (${story.category}/${story.epoch})`);
+                    const response = await fetch(`https://api.orbgame.us/api/orb/images/best?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}&contentType=portraits`);
                     
                     if (response.ok) {
                         const data = await response.json();
-                        if (data.success && data.images) {
-                            setImages(data.images);
+                        if (data.success && data.image) {
+                            console.log(`✅ Found image for ${figureName}:`, data.image.url);
+                            setImages({
+                                portrait: data.image,
+                                gallery: [data.image]
+                            });
                             setImageStatus('loaded');
                             setImageLoading(false);
+                        } else {
+                            console.log(`❌ No image found for ${figureName}`);
+                            setImageStatus('no-figure');
                         }
+                    } else {
+                        console.log(`❌ Image API error for ${figureName}:`, response.status);
+                        setImageStatus('error');
                     }
                 } catch (error) {
                     console.error('Error polling for images:', error);
-                    // Don't fail the entire component, just set to no-figure
-                    setImageStatus('no-figure');
+                    setImageStatus('error');
                 }
             };
 
-            // Poll every 5 seconds for up to 2 minutes
-            const pollInterval = setInterval(pollForImages, 5000);
+            // Poll immediately, then every 2 seconds for up to 30 seconds
+            pollForImages();
+            const pollInterval = setInterval(pollForImages, 2000);
             const timeout = setTimeout(() => {
                 clearInterval(pollInterval);
-                setImageStatus('timeout');
-            }, 120000); // 2 minutes
+                if (imageStatus === 'searching') {
+                    console.log(`⏰ Image search timeout for ${figureName}`);
+                    setImageStatus('timeout');
+                }
+            }, 30000); // 30 seconds
 
             return () => {
                 clearInterval(pollInterval);

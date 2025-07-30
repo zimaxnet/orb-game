@@ -222,9 +222,10 @@ function OrbGame() {
   
 
 
-  // Add epoch state
-  const [currentEpoch, setCurrentEpoch] = useState('Modern');
+  // Add epoch state with round-robin
+  const [currentEpoch, setCurrentEpoch] = useState('Ancient'); // Start with Ancient instead of Modern
   const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+  const [epochIndex, setEpochIndex] = useState(0); // Track current epoch index for round-robin
   
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
@@ -308,6 +309,17 @@ function OrbGame() {
       return () => clearTimeout(timer);
     }
   }, [showHowToPlay]);
+
+  // Auto-cycle epochs for variety (every 2 minutes)
+  useEffect(() => {
+    const epochTimer = setInterval(() => {
+      if (!isLoading && !currentNews) { // Only auto-cycle when not busy
+        cycleEpoch();
+      }
+    }, 120000); // 2 minutes
+
+    return () => clearInterval(epochTimer);
+  }, [epochIndex, isLoading, currentNews]);
 
 
   
@@ -405,6 +417,10 @@ function OrbGame() {
   // Handle epoch change
   const handleEpochChange = (newEpoch) => {
     setCurrentEpoch(newEpoch);
+    // Update epoch index for round-robin
+    const newIndex = epochs.indexOf(newEpoch);
+    setEpochIndex(newIndex);
+    
     // Clear orb state and stories when switching epochs
     setOrbInCenter(null);
     setCurrentNews(null);
@@ -415,9 +431,16 @@ function OrbGame() {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
-    console.log(`🔄 Epoch changed to ${newEpoch} - orb state cleared`);
+    console.log(`🔄 Epoch changed to ${newEpoch} (index: ${newIndex}) - orb state cleared`);
   };
 
+  // Round-robin epoch cycling function
+  const cycleEpoch = () => {
+    const nextIndex = (epochIndex + 1) % epochs.length;
+    const nextEpoch = epochs[nextIndex];
+    handleEpochChange(nextEpoch);
+    console.log(`🔄 Round-robin: Cycling from ${currentEpoch} to ${nextEpoch}`);
+  };
 
 
   const handleSatelliteClick = async (category) => {
@@ -474,7 +497,7 @@ function OrbGame() {
     
     try {
       // For historical figures, always use the story generation endpoint
-      console.log(`📚 Generating historical figure stories for ${category.name} in ${language}...`);
+      console.log(`📚 Generating historical figure stories for ${category.name} in ${currentEpoch} epoch (${language})...`);
       try {
         const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-historical-figures/${category.name}`, {
           method: 'POST',
@@ -493,7 +516,7 @@ function OrbGame() {
         if (generateResponse.ok) {
           const generatedStories = await generateResponse.json();
           if (Array.isArray(generatedStories) && generatedStories.length > 0) {
-            console.log(`✅ Generated ${generatedStories.length} historical figure stories`);
+            console.log(`✅ Generated ${generatedStories.length} historical figure stories for ${category.name} in ${currentEpoch} epoch`);
             
             // Set the first story immediately for fast user experience
             setNewsStories(generatedStories);
@@ -1050,6 +1073,14 @@ function OrbGame() {
               className="go-button"
             >
               {isLoading ? '⏳' : '🔍'} {t('news.more')}
+            </button>
+            <button 
+              onClick={cycleEpoch}
+              disabled={isLoading}
+              className="epoch-cycle-button"
+              title={`Current epoch: ${currentEpoch}. Click to cycle to next epoch.`}
+            >
+              ⏰ {currentEpoch}
             </button>
           </div>
           

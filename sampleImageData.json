@@ -1,0 +1,82 @@
+{
+  "Archimedes": {
+    "Technology": {
+      "Ancient": [
+        {
+          "name": "Archimedes",
+          "portraits": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Archimedes_%28Idealportrait%29.jpg/300px-Archimedes_%28Idealportrait%29.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "Archimedes portrait"
+            }
+          },
+          "achievements": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Archimedes_screw.jpg/300px-Archimedes_screw.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "Archimedes screw"
+            }
+          },
+          "inventions": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Archimedes_screw.jpg/300px-Archimedes_screw.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "Archimedes inventions"
+            }
+          },
+          "artifacts": {}
+        }
+      ]
+    }
+  },
+  "Johannes Gutenberg": {
+    "Technology": {
+      "Medieval": [
+        {
+          "name": "Johannes Gutenberg",
+          "portraits": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Johannes_Gutenberg.jpg/300px-Johannes_Gutenberg.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "Johannes Gutenberg portrait"
+            }
+          },
+          "achievements": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gutenberg_Bible.jpg/300px-Gutenberg_Bible.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "Gutenberg Bible"
+            }
+          },
+          "inventions": {
+            "Wikimedia Commons": {
+              "urls": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Printing_press.jpg/300px-Printing_press.jpg"
+              ],
+              "licensing": "Public Domain",
+              "reliability": "High",
+              "searchTerm": "printing press"
+            }
+          },
+          "artifacts": {}
+        }
+      ]
+    }
+  }
+}

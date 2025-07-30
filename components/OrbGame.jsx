@@ -9,6 +9,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import promptManager from '../utils/promptManager';
 
 import './OrbGame.css';
+import HistoricalFigureDisplay from './HistoricalFigureDisplay';
 
 // Earth Orb Component
 function EarthOrb() {
@@ -1081,6 +1082,15 @@ function OrbGame() {
           <h4>{hoveredCategory.name}</h4>
           <p>Click to hear positive news about {hoveredCategory.name.toLowerCase()}!</p>
         </div>
+      )}
+
+      {/* Historical Figure Display */}
+      {showHistoricalFigure && currentNews && (
+        <HistoricalFigureDisplay
+          story={currentNews}
+          onClose={() => setShowHistoricalFigure(false)}
+          onLearnMore={learnMore}
+        />
       )}
     </div>
   );

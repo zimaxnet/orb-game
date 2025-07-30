@@ -16,6 +16,8 @@ COPY backend/advanced-memory-service.js .
 COPY backend/historical-figures-service.js .
 COPY backend/story-cache-service.js .
 COPY backend/model-reliability-checker.js .
+COPY backend/historical-figures-image-service.js .
+COPY backend/historical-figures-image-api.js .
 COPY utils/ ./utils/
 COPY OrbGameInfluentialPeopleSeeds .
 

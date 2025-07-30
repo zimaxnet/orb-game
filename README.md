@@ -13,6 +13,9 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **Pre-populated Content**: All stories are pre-generated and stored in MongoDB
 - **Round-Robin Loading**: Fast initial response with 1 story, then silently load 2 additional historical figures
 - **Smart Navigation**: Users can explore all 3 historical figures per category/epoch combination
+- **Image Integration**: Rich visual gallery with historical portraits, achievements, inventions, and artifacts
+- **Asynchronous Image Loading**: Stories load instantly while images populate in the background
+- **Permalink System**: Persistent links to source images with licensing and attribution
 
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
@@ -28,6 +31,9 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **Responsive Design**: Works on desktop and mobile devices
 - **Category Display**: Shows "Category: [Category]" instead of AI model
 - **Learn More Button**: Provides detailed 500-600 word biographies of historical figures
+- **Historical Figure Display**: Rich image gallery with portraits, achievements, and artifacts
+- **Image Gallery Navigation**: Smooth transitions between multiple images per historical figure
+- **Source Attribution**: Display of image sources, licensing, and permalinks
 
 ### **📚 Story Content**
 Each story features:
@@ -50,10 +56,11 @@ Each story features:
 
 ### **Backend (Node.js + Express)**
 - **Main Server**: `backend/backend-server.js` - Production API server
-- **Services**: Modular service architecture (HistoricalFiguresService, MemoryService, StoryCacheService)
+- **Services**: Modular service architecture (HistoricalFiguresService, MemoryService, StoryCacheService, HistoricalFiguresImageService)
 - **AI Integration**: O4-Mini model with Azure OpenAI
 - **Database**: Azure Cosmos DB for MongoDB with caching system
 - **Security**: Azure Key Vault for API key management
+- **Image Service**: HistoricalFiguresImageAPI with 12 endpoints for image management
 
 ### **Deployment (Azure)**
 - **Frontend**: Azure Web App with GitHub Actions CI/CD
@@ -64,6 +71,13 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **Historical Figures Image Integration**: Comprehensive image system for enhanced visual experience
+  - **Image Sourcing**: Multiple public domain sources (Wikimedia Commons, Library of Congress, NYPL, Internet Archive)
+  - **Asynchronous Loading**: Stories load instantly while images populate in background
+  - **Permalink System**: Persistent links to source images with licensing and attribution
+  - **Gallery Navigation**: Smooth transitions between portraits, achievements, inventions, and artifacts
+  - **Priority Scoring**: Intelligent image selection based on source reliability and quality
+  - **Access Tracking**: Monitor image usage with lastAccessed and accessCount metrics
 - **Round-Robin Historical Figures Loading**: Optimized user experience with smart loading strategy
   - **Fast Initial Response**: Show 1 historical figure immediately for instant gratification
   - **Background Loading**: Silently load 2 additional historical figures while user reads first story
@@ -188,6 +202,9 @@ User Clicks Orb → Load 1 Story Immediately → Show First Historical Figure �
 - **Learn More**: Get detailed 500-600 word biographies of historical figures
 - **Round-Robin Navigation**: Explore all 3 historical figures per category/epoch combination
 - **Smart Loading**: Fast initial response with background loading of additional figures
+- **Image Gallery**: Rich visual experience with historical portraits and artifacts
+- **Source Attribution**: View image sources, licensing, and permalinks
+- **Gallery Navigation**: Smooth transitions between multiple images per figure
 
 ### **Audio Experience**
 - **Text-to-Speech**: Immersive audio narration of historical figure stories
@@ -200,6 +217,9 @@ User Clicks Orb → Load 1 Story Immediately → Show First Historical Figure �
 - **Responsive Design**: Works on all device sizes
 - **Touch Controls**: Swipe gestures for mobile
 - **Visual Feedback**: Animations and glow effects
+- **Historical Figure Display**: Rich image gallery with glassmorphism design
+- **Image Status Indicators**: Loading, error, and timeout states for images
+- **Gallery Controls**: Navigation between multiple images per historical figure
 
 ## 🔧 **Development Guidelines**
 
@@ -247,6 +267,15 @@ orb-game/
 - **Features**: Dedicated service for historical figure story generation
 - **API Endpoints**: New dedicated endpoints with backward compatibility
 - **Key Vault Integration**: Secure secrets management
+
+### **Image Service**
+- **Service**: `backend/historical-figures-image-service.js`
+- **API**: `backend/historical-figures-image-api.js`
+- **Database Collection**: `historical_figures_images`
+- **Features**: Image storage, permalink generation, access tracking
+- **Image Sources**: Wikimedia Commons, Library of Congress, NYPL, Internet Archive
+- **Content Types**: Portraits, achievements, inventions, artifacts
+- **Priority System**: Intelligent image selection based on source reliability
 
 ### **AI Model Parameters**
 - **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`)
@@ -331,6 +360,7 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Backend**: `scripts/test-new-backend.js`
 - **Historical Figures Service**: `backend/test-historical-figures-service.js`
 - **Historical Figures API**: `scripts/test-historical-figures-api.js`
+- **Image Service**: `scripts/setup-image-service.mjs`
 - **Cache System**: `scripts/test-story-cache-comprehensive.js`
 - **Performance**: `scripts/performance-comparison.js`
 - **Memory**: `scripts/test-memory.sh`
@@ -386,6 +416,9 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Audio Integration**: Text-to-speech for immersive experience
 - **Round-Robin Navigation**: Explore all 3 historical figures per category/epoch
 - **Smart Loading**: Fast initial response with background content loading
+- **Image Gallery**: Rich visual experience with historical portraits and artifacts
+- **Asynchronous Image Loading**: Images populate in background while stories load instantly
+- **Gallery Navigation**: Smooth transitions between multiple images per historical figure
 
 ### **User Experience**
 - **Responsive Design**: Works on desktop and mobile
@@ -394,6 +427,9 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Accessibility**: Audio controls and keyboard navigation
 - **Background Loading Indicators**: Visual feedback when additional historical figures are loading
 - **Smart Navigation**: Disabled navigation buttons until additional figures are ready
+- **Image Status Indicators**: Loading, searching, error, and timeout states for images
+- **Source Attribution**: Display of image sources, licensing, and permalinks
+- **Gallery Controls**: Navigation between multiple images with smooth transitions
 
 ## 🔧 **Development Workflow**
 
@@ -520,5 +556,8 @@ node backend-server.js
 - **Educational Value**: Real historical figures and their documented accomplishments
 - **Round-Robin Loading**: 3x faster initial response while maintaining complete content
 - **Streamlined Experience**: 8 focused categories × 5 core epochs for optimal user experience
+- **Image Integration**: Rich visual gallery with historical portraits and artifacts
+- **Asynchronous Loading**: Instant story loading with background image population
+- **Permalink System**: Persistent links to source images with proper attribution
 
 The Orb Game provides an engaging, educational experience focused exclusively on real historical figures who shaped the world through their remarkable achievements! 🚀

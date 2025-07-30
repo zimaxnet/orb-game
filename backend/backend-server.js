@@ -15,6 +15,7 @@ import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
+import HistoricalFiguresImageAPI from './historical-figures-image-api.js';
 
 const app = express();
 
@@ -718,6 +719,18 @@ async function initializeServer() {
         console.warn('⚠️ StoryCacheService initialization failed:', cacheError.message);
         storyCacheService = null;
       }
+
+      // Initialize HistoricalFiguresImageAPI
+      try {
+        console.log('🔧 Initializing HistoricalFiguresImageAPI...');
+        const imageAPI = new HistoricalFiguresImageAPI();
+        await imageAPI.initialize();
+        app.locals.imageAPI = imageAPI;
+        console.log('✅ HistoricalFiguresImageAPI initialized successfully.');
+      } catch (imageError) {
+        console.warn('⚠️ HistoricalFiguresImageAPI initialization failed:', imageError.message);
+        app.locals.imageAPI = null;
+      }
       
     } catch (error) {
       console.error('❌ Failed to initialize memory services:', error.message);
@@ -1385,4 +1398,82 @@ app.get('/api/historical-figures/random/:category', async (req, res) => {
     console.error('❌ Error fetching random historical figure story:', error);
     res.status(500).json({ error: 'Failed to fetch random historical figure story' });
   }
+});
+
+// Image Service Routes
+app.get('/api/orb/images/best', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getBestImage(req, res);
+});
+
+app.get('/api/orb/images/gallery', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getFigureGallery(req, res);
+});
+
+app.get('/api/orb/images/by-type', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getImagesByType(req, res);
+});
+
+app.get('/api/orb/images/stats', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getImageStats(req, res);
+});
+
+app.get('/api/orb/images/permalink/:permalink', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getImageByPermalink(req, res);
+});
+
+app.get('/api/orb/images/most-accessed', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getMostAccessedImages(req, res);
+});
+
+app.post('/api/orb/images/import', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.importImageData(req, res);
+});
+
+app.post('/api/orb/images/cleanup', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.cleanupImages(req, res);
+});
+
+app.post('/api/orb/images/populate', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.populateImagesForStory(req, res);
+});
+
+app.get('/api/orb/images/check-updated', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.checkForUpdatedImages(req, res);
+});
+
+app.get('/api/orb/stories-with-images', (req, res) => {
+  if (!app.locals.imageAPI) {
+    return res.status(503).json({ error: 'Image service not available' });
+  }
+  app.locals.imageAPI.getStoryWithImages(req, res);
 });

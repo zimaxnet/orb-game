@@ -5,8 +5,8 @@ class HistoricalFiguresImageAPI {
         this.imageService = new HistoricalFiguresImageService();
     }
 
-    async initialize() {
-        await this.imageService.connect();
+    async initialize(mongoUri = null) {
+        await this.imageService.connect(mongoUri);
     }
 
     async cleanup() {

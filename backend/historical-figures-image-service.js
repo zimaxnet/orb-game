@@ -5,11 +5,19 @@ class HistoricalFiguresImageService {
         this.client = null;
         this.db = null;
         this.collection = null;
+        this.mongoUri = null;
     }
 
-    async connect() {
+    async connect(mongoUri = null) {
         try {
-            this.client = new MongoClient(process.env.MONGO_URI, {
+            // Use provided mongoUri or fall back to environment variable
+            this.mongoUri = mongoUri || process.env.MONGO_URI;
+            
+            if (!this.mongoUri) {
+                throw new Error('MongoDB URI not provided and MONGO_URI environment variable not set');
+            }
+            
+            this.client = new MongoClient(this.mongoUri, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
             });

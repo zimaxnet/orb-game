@@ -724,7 +724,7 @@ async function initializeServer() {
       try {
         console.log('🔧 Initializing HistoricalFiguresImageAPI...');
         const imageAPI = new HistoricalFiguresImageAPI();
-        await imageAPI.initialize();
+        await imageAPI.initialize(mongoUri);
         app.locals.imageAPI = imageAPI;
         console.log('✅ HistoricalFiguresImageAPI initialized successfully.');
       } catch (imageError) {

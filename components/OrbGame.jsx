@@ -246,6 +246,9 @@ function OrbGame() {
   const [preloadedStories, setPreloadedStories] = useState([]);
   const [isPreloading, setIsPreloading] = useState(false);
   
+  // Add historical figure display state
+  const [showHistoricalFigure, setShowHistoricalFigure] = useState(false);
+  
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
     return newsStories.filter(story => 
@@ -497,6 +500,7 @@ function OrbGame() {
             setCurrentNewsIndex(0);
             setCurrentNews(generatedStories[0]);
             setCurrentAISource('o4-mini');
+            setShowHistoricalFigure(true); // Show historical figure display
             setIsLoading(false);
             
             // Silently load the other 2 historical figures in the background
@@ -532,6 +536,7 @@ function OrbGame() {
       setCurrentNewsIndex(0);
       setCurrentNews(errorStory);
       setCurrentAISource('Error');
+      setShowHistoricalFigure(true); // Show historical figure display
     } catch (error) {
       console.error('Failed to load stories:', error);
       
@@ -556,6 +561,7 @@ function OrbGame() {
       setCurrentNewsIndex(0);
       setCurrentNews(errorStory);
       setCurrentAISource('Error');
+      setShowHistoricalFigure(true); // Show historical figure display
     } finally {
       setIsLoading(false);
     }
@@ -611,6 +617,7 @@ function OrbGame() {
     setCurrentNews(null);
     setNewsStories([]);
     setCurrentNewsIndex(0);
+    setShowHistoricalFigure(false); // Hide historical figure display
     setIsPlaying(false);
     if (audioRef.current) {
       audioRef.current.pause();
@@ -1058,6 +1065,15 @@ function OrbGame() {
             <p className="news-full-text">{currentNews.fullText}</p>
           </div>
 
+          {/* Integrated Historical Figure Display */}
+          {showHistoricalFigure && (
+            <HistoricalFigureDisplay
+              story={currentNews}
+              onClose={() => setShowHistoricalFigure(false)}
+              onLearnMore={learnMore}
+            />
+          )}
+
           <div className="ai-model-section">
             <span className="ai-model-text">Historical Figure: {currentNews?.historicalFigure || 'Unknown Figure'}</span>
           </div>
@@ -1084,14 +1100,7 @@ function OrbGame() {
         </div>
       )}
 
-      {/* Historical Figure Display */}
-      {showHistoricalFigure && currentNews && (
-        <HistoricalFigureDisplay
-          story={currentNews}
-          onClose={() => setShowHistoricalFigure(false)}
-          onLearnMore={learnMore}
-        />
-      )}
+      {/* Historical Figure Display - Now integrated into news panel */}
     </div>
   );
 }

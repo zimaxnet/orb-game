@@ -53,7 +53,6 @@ async function initializeSecrets() {
     // Fetch all required secrets
     const secretNames = [
       'AZURE-OPENAI-API-KEY',
-      'PERPLEXITY-API-KEY',
       'MONGO-URI'
     ];
     
@@ -86,7 +85,6 @@ async function initializeSecrets() {
     console.log('📊 Final secrets status:');
     console.log(`  MONGO_URI: ${secrets['MONGO_URI'] ? '✅ Loaded' : '❌ Not loaded'}`);
     console.log(`  AZURE_OPENAI_API_KEY: ${secrets['AZURE_OPENAI_API_KEY'] ? '✅ Loaded' : '❌ Not loaded'}`);
-    console.log(`  PERPLEXITY_API_KEY: ${secrets['PERPLEXITY_API_KEY'] ? '✅ Loaded' : '❌ Not loaded'}`);
     
     // Make secrets available globally for other services
     global.secrets = secrets;
@@ -469,43 +467,8 @@ Current conversation context: ${memoryContext}`;
 
     // Check if web search is needed
     const searchKeywords = ['latest', 'news', 'current', 'recent', 'today', 'now', 'update', 'trending'];
-    const needsSearch = searchKeywords.some(keyword => 
-      message.toLowerCase().includes(keyword)
-    );
-
-    let searchResults = '';
-    if (needsSearch) {
-      try {
-        const searchResponse = await fetch('https://api.perplexity.ai/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${perplexityApiKey}`,
-            'Content-Type': 'application/json'
-          },
-                  body: JSON.stringify({
-          model: 'sonar',
-          messages: [{
-            role: 'user',
-            content: `Search for current information about: ${message}`
-          }],
-          max_completion_tokens: 200
-        })
-        });
-
-        if (searchResponse.ok) {
-          const searchData = await searchResponse.json();
-          searchResults = searchData.choices[0].message.content;
-          totalWebSearches++;
-        }
-      } catch (searchError) {
-        console.warn('Web search failed:', searchError.message);
-      }
-    }
-
-    // Combine search results with user message
-    const fullMessage = searchResults 
-      ? `${message}\n\nCurrent information: ${searchResults}`
-      : message;
+    // Use the original message without web search
+    const fullMessage = message;
 
     // Get AI response using Azure OpenAI
     let aiResponse = '';
@@ -609,7 +572,7 @@ async function initializeSampleMemories() {
         category: "conversation"
       },
       {
-        content: "How does web search work? - I use Perplexity's API to find current information when you ask about recent events, news, or real-time data. It's like having a super-smart research assistant! 🔍",
+        content: "I'm Orb Game, your friendly AI assistant focused on historical figures and positive stories! I can help you explore fascinating people from history across different categories and time periods. 🎮",
         category: "conversation"
       },
       {
@@ -647,14 +610,14 @@ async function initializeServer() {
   // Get secrets with fallback to environment variables
   const mongoUri = secrets['MONGO_URI'] || process.env.MONGO_URI;
   azureOpenAIApiKey = secrets['AZURE_OPENAI_API_KEY'] || process.env.AZURE_OPENAI_API_KEY;
-  const perplexityApiKey = secrets['PERPLEXITY_API_KEY'] || process.env.PERPLEXITY_API_KEY;
+  
 
   console.log('🔍 Secrets loading status:');
   console.log(`  MONGO_URI from secrets: ${secrets['MONGO_URI'] ? '✅ Available' : '❌ Not available'}`);
   console.log(`  MONGO_URI from env: ${process.env.MONGO_URI ? '✅ Available' : '❌ Not available'}`);
   console.log(`  Final MONGO_URI: ${mongoUri ? '✅ Available' : '❌ Not available'}`);
   console.log(`  AZURE_OPENAI_API_KEY: ${azureOpenAIApiKey ? '✅ Available' : '❌ Not available'}`);
-  console.log(`  PERPLEXITY_API_KEY: ${perplexityApiKey ? '✅ Available' : '❌ Not available'}`);
+  
 
   // Test MongoDB URI format if available
   if (mongoUri) {

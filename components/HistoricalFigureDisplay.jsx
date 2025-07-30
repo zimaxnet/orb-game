@@ -37,6 +37,8 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     }
                 } catch (error) {
                     console.error('Error polling for images:', error);
+                    // Don't fail the entire component, just set to no-figure
+                    setImageStatus('no-figure');
                 }
             };
 
@@ -87,7 +89,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         switch (imageStatus) {
             case 'searching':
                 return (
-                    <div className="image-status searching">
+                    <div className="image-status-inline searching">
                         <div className="loading-spinner"></div>
                         <p>Searching for images...</p>
                         <small>This may take a few moments</small>
@@ -95,7 +97,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 );
             case 'timeout':
                 return (
-                    <div className="image-status timeout">
+                    <div className="image-status-inline timeout">
                         <div className="timeout-icon">⏰</div>
                         <p>Image search timed out</p>
                         <small>Images may be available later</small>
@@ -103,7 +105,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 );
             case 'no-figure':
                 return (
-                    <div className="image-status no-figure">
+                    <div className="image-status-inline no-figure">
                         <div className="no-figure-icon">❓</div>
                         <p>No historical figure detected</p>
                         <small>This story may not be about a specific person</small>
@@ -111,7 +113,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 );
             case 'error':
                 return (
-                    <div className="image-status error">
+                    <div className="image-status-inline error">
                         <div className="error-icon">⚠️</div>
                         <p>Error loading images</p>
                         <small>Please try again later</small>
@@ -127,7 +129,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         
         if (!currentImage) {
             return (
-                <div className="figure-placeholder">
+                <div className="figure-placeholder-inline">
                     <div className="placeholder-icon">👤</div>
                     <p>No image available</p>
                 </div>
@@ -135,16 +137,16 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         }
 
         return (
-            <div className="figure-image-container">
+            <div className="figure-image-container-inline">
                 {imageLoading && (
-                    <div className="image-loading">
+                    <div className="image-loading-inline">
                         <div className="loading-spinner"></div>
                         <p>Loading image...</p>
                     </div>
                 )}
                 
                 {imageError && (
-                    <div className="image-error">
+                    <div className="image-error-inline">
                         <div className="error-icon">⚠️</div>
                         <p>Failed to load image</p>
                     </div>
@@ -153,13 +155,13 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 <img
                     src={currentImage.url}
                     alt={`${figureName || 'Historical figure'}`}
-                    className={`figure-image ${imageLoading ? 'hidden' : ''} ${imageError ? 'hidden' : ''}`}
+                    className={`figure-image-inline ${imageLoading ? 'hidden' : ''} ${imageError ? 'hidden' : ''}`}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
                 />
 
                 {gallery.length > 1 && showGallery && (
-                    <div className="gallery-controls">
+                    <div className="gallery-controls-inline">
                         <button 
                             className="gallery-nav prev" 
                             onClick={prevImage}
@@ -182,7 +184,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
 
                 {gallery.length > 1 && (
                     <button 
-                        className="gallery-toggle"
+                        className="gallery-toggle-inline"
                         onClick={() => setShowGallery(!showGallery)}
                     >
                         {showGallery ? 'Show Portrait' : 'Show Gallery'}
@@ -198,7 +200,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         if (!currentImage) return null;
 
         return (
-            <div className="image-info">
+            <div className="image-info-inline">
                 <div className="image-source">
                     <span className="source-label">Source:</span>
                     <span className="source-name">{currentImage.source}</span>
@@ -224,7 +226,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     };
 
     return (
-        <div className="historical-figure-display">
+        <div className="historical-figure-display-inline">
             <div className="figure-header">
                 <h2 className="figure-name">{figureName || 'Historical Figure'}</h2>
                 <button className="close-button" onClick={onClose} aria-label="Close">
@@ -232,8 +234,14 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 </button>
             </div>
 
-            <div className="figure-content">
-                <div className="figure-image-section">
+            <div className="figure-content-inline">
+                <div className="figure-story-section">
+                    <h3 className="story-headline">{story.headline}</h3>
+                    <div className="story-content">
+                        {story.content}
+                    </div>
+                    
+                    {/* Images displayed inline with text */}
                     {imageStatus === 'loaded' ? (
                         <>
                             {renderImage()}
@@ -242,13 +250,6 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     ) : (
                         renderImageStatus()
                     )}
-                </div>
-
-                <div className="figure-story-section">
-                    <h3 className="story-headline">{story.headline}</h3>
-                    <div className="story-content">
-                        {story.content}
-                    </div>
                     
                     {story.learnMore && (
                         <button 

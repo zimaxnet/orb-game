@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BACKEND_URL } from '../api/orbApi';
 import './HistoricalFigureDisplay.css';
 
 const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
@@ -26,7 +25,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         if (imageStatus === 'searching' && figureName) {
             const pollForImages = async () => {
                 try {
-                    const response = await fetch(`${BACKEND_URL}/api/orb/images/check-updated?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}`);
+                    const response = await fetch(`https://api.orbgame.us/api/orb/images/check-updated?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}`);
                     
                     if (response.ok) {
                         const data = await response.json();

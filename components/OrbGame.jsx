@@ -9,7 +9,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import promptManager from '../utils/promptManager';
 
 import './OrbGame.css';
-import HistoricalFigureDisplay from './HistoricalFigureDisplay';
+// import HistoricalFigureDisplay from './HistoricalFigureDisplay';
 
 // Earth Orb Component
 function EarthOrb() {
@@ -1084,14 +1084,14 @@ function OrbGame() {
         </div>
       )}
 
-      {/* Historical Figure Display */}
-      {showHistoricalFigure && currentNews && (
+      {/* Historical Figure Display - Temporarily disabled due to image service issues */}
+      {/* {showHistoricalFigure && currentNews && (
         <HistoricalFigureDisplay
           story={currentNews}
           onClose={() => setShowHistoricalFigure(false)}
           onLearnMore={learnMore}
         />
-      )}
+      )} */}
     </div>
   );
 }

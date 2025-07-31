@@ -1109,7 +1109,24 @@ function OrbGame() {
             </div>
           )}
           <div className="news-content">
-            <p className="news-full-text">{currentNews.fullText}</p>
+            <h3>{currentNews.headline}</h3>
+            <p>{currentNews.summary}</p>
+            {currentNews.fullText && (
+              <div className="full-story">
+                <p>{currentNews.fullText}</p>
+              </div>
+            )}
+            {currentNews.historicalFigure && (
+              <div className="historical-figure-info">
+                <strong>{currentNews.historicalFigure}</strong>
+                {currentNews.headline && currentNews.headline !== currentNews.historicalFigure && (
+                  <span className="achievement"> - {currentNews.headline}</span>
+                )}
+              </div>
+            )}
+            {currentNews.source && (
+              <p className="source">Source: {currentNews.source}</p>
+            )}
           </div>
 
           {/* Integrated Historical Figure Display */}

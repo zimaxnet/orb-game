@@ -93,7 +93,8 @@ class StoryCacheService {
         fullText: story.fullText,
         source: story.source,
         publishedAt: story.publishedAt,
-        ttsAudio: story.ttsAudio, // Store audio data directly
+        // Don't store TTS audio to avoid RequestEntityTooLarge error
+        // ttsAudio: story.ttsAudio, 
         storyType: story.storyType || 'historical-figure', // Store story type
         historicalFigure: story.historicalFigure, // Store historical figure name
         createdAt: new Date(),
@@ -151,7 +152,8 @@ class StoryCacheService {
         fullText: story.fullText,
         source: story.source,
         publishedAt: story.publishedAt,
-        ttsAudio: story.ttsAudio,
+        // Generate TTS audio on-demand instead of storing it
+        ttsAudio: null, // Will be generated when needed
         storyType: story.storyType || 'historical-figure',
         historicalFigure: story.historicalFigure
       }));

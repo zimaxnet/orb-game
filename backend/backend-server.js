@@ -16,6 +16,7 @@ import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
 import HistoricalFiguresImageAPI from './historical-figures-image-api.js';
+import AudioStorageService from './audio-storage-service.js';
 
 const app = express();
 
@@ -109,12 +110,17 @@ const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || '
 app.use(express.json({ limit: '10mb' }));
 
 // Initialize advanced memory service
-let memoryService;
 let azureOpenAIClient;
 let historicalFiguresService;
-let storyCacheService;
 let modelReliabilityChecker;
 let azureOpenAIApiKey; // Global variable for API key
+
+// Initialize services
+let positiveNewsService;
+let historicalFiguresImageAPI;
+let audioStorageService;
+let memoryService;
+let storyCacheService;
 
 // Basic API endpoints (available immediately)
 app.get('/health', (req, res) => {
@@ -694,6 +700,17 @@ async function initializeServer() {
         console.warn('⚠️ HistoricalFiguresImageAPI initialization failed:', imageError.message);
         app.locals.imageAPI = null;
       }
+
+      // Initialize AudioStorageService
+      try {
+        console.log('🔧 Initializing AudioStorageService...');
+        audioStorageService = new AudioStorageService();
+        await audioStorageService.initialize();
+        console.log('✅ AudioStorageService initialized successfully.');
+      } catch (audioError) {
+        console.warn('⚠️ AudioStorageService initialization failed:', audioError.message);
+        audioStorageService = null;
+      }
       
     } catch (error) {
       console.error('❌ Failed to initialize memory services:', error.message);
@@ -913,6 +930,100 @@ app.post('/api/tts/generate', async (req, res) => {
   } catch (error) {
     console.error('TTS generation error:', error);
     res.status(500).json({ error: 'TTS generation failed' });
+  }
+});
+
+// Generate TTS audio on-demand endpoint
+app.post('/api/tts/generate', async (req, res) => {
+  try {
+    const { storyId, text, language = 'en', voice = 'alloy' } = req.body;
+    
+    if (!storyId || !text) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'storyId and text are required' 
+      });
+    }
+
+    if (!audioStorageService) {
+      return res.status(503).json({ 
+        success: false, 
+        error: 'Audio storage service not available' 
+      });
+    }
+
+    // Check if audio already exists
+    const existingAudio = await audioStorageService.getAudio(storyId, language, voice);
+    if (existingAudio) {
+      console.log(`✅ Audio already exists for story ${storyId} (${language})`);
+      return res.json({
+        success: true,
+        audioData: existingAudio,
+        cached: true
+      });
+    }
+
+    // Generate new TTS audio
+    console.log(`🎵 Generating TTS audio for story ${storyId} (${language})`);
+    const audioData = await generateTTSAudio(text, language);
+    
+    if (!audioData) {
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Failed to generate TTS audio' 
+      });
+    }
+
+    // Store audio separately
+    await audioStorageService.storeAudio(storyId, language, audioData, voice);
+    
+    console.log(`✅ TTS audio generated and stored for story ${storyId} (${language})`);
+    res.json({
+      success: true,
+      audioData,
+      cached: false
+    });
+  } catch (error) {
+    console.error('❌ TTS generation error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to generate TTS audio' 
+    });
+  }
+});
+
+// Get TTS audio endpoint
+app.get('/api/tts/audio/:storyId', async (req, res) => {
+  try {
+    const { storyId } = req.params;
+    const { language = 'en', voice = 'alloy' } = req.query;
+    
+    if (!audioStorageService) {
+      return res.status(503).json({ 
+        success: false, 
+        error: 'Audio storage service not available' 
+      });
+    }
+
+    const audioData = await audioStorageService.getAudio(storyId, language, voice);
+    
+    if (!audioData) {
+      return res.status(404).json({ 
+        success: false, 
+        error: 'Audio not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      audioData
+    });
+  } catch (error) {
+    console.error('❌ TTS audio retrieval error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to retrieve TTS audio' 
+    });
   }
 });
 
@@ -1186,15 +1297,11 @@ ${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Re
     // Generate TTS audio for each story
     const storiesWithAudio = await Promise.all(
       stories.map(async (story) => {
-        let ttsAudio = null;
-        try {
-          ttsAudio = await generateTTSAudio(story.fullText, language);
-        } catch (error) {
-          console.warn('Failed to generate TTS audio:', error.message);
-        }
+        // Don't generate TTS audio during story generation to avoid storage issues
+        // TTS audio will be generated on-demand when needed
         return {
           ...story,
-          ttsAudio,
+          ttsAudio: null, // Will be generated on-demand
           publishedAt: new Date().toISOString(),
           storyType: storyType,
           category: category,

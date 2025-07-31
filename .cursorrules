@@ -69,6 +69,29 @@ orb-game/
 - **Token Limits**: 2000 tokens for complete JSON responses
 - **TTS Voices**: Use `alloy` voice for both English and Spanish (avoid `jorge` - not supported)
 
+### Azure OpenAI Configuration
+- **Endpoint**: `https://aimcs-foundry.cognitiveservices.azure.com/`
+- **API Version**: `2024-12-01-preview` (required for o4-mini model)
+- **Model**: `o4-mini`
+- **Deployment**: `o4-mini`
+- **Parameter**: Use `max_completion_tokens` instead of `max_tokens`
+- **Example Python Configuration**:
+  ```python
+  from openai import AzureOpenAI
+  
+  client = AzureOpenAI(
+      api_version="2024-12-01-preview",
+      azure_endpoint="https://aimcs-foundry.cognitiveservices.azure.com/",
+      api_key="your-api-key",
+  )
+  
+  response = client.chat.completions.create(
+      messages=[{"role": "user", "content": "Hello"}],
+      max_completion_tokens=1000,
+      model="o4-mini"
+  )
+  ```
+
 ### Adding New AI Models
 1. Store API key in Azure Key Vault
 2. Add model function to `backend-server.js`
@@ -223,7 +246,7 @@ curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=M
 ```bash
 # Required for backend
 MONGO_URI=your-azure-cosmos-db-connection-string
-AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
+AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key
 AZURE_OPENAI_DEPLOYMENT=o4-mini
 AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
@@ -379,6 +402,8 @@ node backend-server.js
 - **Database Migration**: All data migrated from `aimcs` to `orbgame`
 - **Registry Name**: Use `orbgame` registry, not `aimcsregistry`
 - **Docker Platform**: Always build with `--platform linux/amd64` for Azure Container Apps
+- **Azure OpenAI Endpoint**: Use `https://aimcs-foundry.cognitiveservices.azure.com/`
+- **API Version**: Use `2024-12-01-preview` for o4-mini model
 
 ### Common Issues
 - Key Vault RBAC permissions for container app

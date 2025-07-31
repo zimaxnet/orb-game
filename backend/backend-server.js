@@ -103,7 +103,7 @@ async function initializeSecrets() {
 }
 
 // Environment variables with fallback to Key Vault secrets
-const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT || 'https://aimcs-foundry.cognitiveservices.azure.com/';
+const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT || 'https://eastus2.api.cognitive.microsoft.com/';
 const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
 const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || 'gpt-4o-mini-tts';
 
@@ -473,6 +473,7 @@ Current conversation context: ${memoryContext}`;
 
     // Check if web search is needed
     const searchKeywords = ['latest', 'news', 'current', 'recent', 'today', 'now', 'update', 'trending'];
+    const needsSearch = searchKeywords.some(keyword => message.toLowerCase().includes(keyword));
     // Use the original message without web search
     const fullMessage = message;
 

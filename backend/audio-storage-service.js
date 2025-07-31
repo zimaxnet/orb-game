@@ -9,7 +9,8 @@ class AudioStorageService {
 
   async initialize() {
     try {
-      const mongoUri = process.env.MONGO_URI;
+      // Use global secrets if available, otherwise fall back to environment variable
+      const mongoUri = global.secrets?.MONGO_URI || process.env.MONGO_URI;
       if (!mongoUri) {
         throw new Error('MongoDB URI not provided and MONGO_URI environment variable not set');
       }

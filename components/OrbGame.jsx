@@ -431,17 +431,22 @@ function OrbGame() {
     const newIndex = epochs.indexOf(newEpoch);
     setEpochIndex(newIndex);
     
-    // Clear orb state and stories when switching epochs
-    setOrbInCenter(null);
-    setCurrentNews(null);
-    setNewsStories([]);
-    setCurrentNewsIndex(0);
-    setIsPlaying(false);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+    // Only clear orb state and stories if no story is currently being viewed
+    if (!currentNews) {
+      setOrbInCenter(null);
+      setCurrentNews(null);
+      setNewsStories([]);
+      setCurrentNewsIndex(0);
+      setIsPlaying(false);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      console.log(`🔄 Epoch changed to ${newEpoch} (index: ${newIndex}) - orb state cleared`);
+    } else {
+      // If a story is being viewed, just update the epoch without clearing the story panel
+      console.log(`🔄 Epoch changed to ${newEpoch} (index: ${newIndex}) - story panel preserved`);
     }
-    console.log(`🔄 Epoch changed to ${newEpoch} (index: ${newIndex}) - orb state cleared`);
   };
 
   // Round-robin epoch cycling function
@@ -512,46 +517,34 @@ function OrbGame() {
     setCurrentAISource(aiModelName);
     
     try {
-      // For historical figures, always use the story generation endpoint
-      console.log(`📚 Generating historical figure stories for ${category.name} in ${currentEpoch} epoch (${language})...`);
+      // For historical figures, use the image-enhanced endpoint
+      console.log(`📚 Fetching historical figure stories with images for ${category.name} in ${currentEpoch} epoch (${language})...`);
       try {
-        const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-historical-figures/${category.name}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            epoch: currentEpoch,
-            model: 'o4-mini',
-            count: 1,
-            language: language,
-            includeTTS: false
-          }),
-        });
+        const storiesResponse = await fetch(`${BACKEND_URL}/api/orb/stories-with-images?category=${category.name}&epoch=${currentEpoch}&language=${language}&count=1`);
 
-        if (generateResponse.ok) {
-          const generatedStories = await generateResponse.json();
-          if (Array.isArray(generatedStories) && generatedStories.length > 0) {
-            console.log(`✅ Generated ${generatedStories.length} historical figure stories for ${category.name} in ${currentEpoch} epoch`);
+        if (storiesResponse.ok) {
+          const data = await storiesResponse.json();
+          if (data.success && data.stories && data.stories.length > 0) {
+            console.log(`✅ Fetched ${data.stories.length} historical figure stories with images for ${category.name} in ${currentEpoch} epoch`);
             
             // Set the first story immediately for fast user experience
-            setNewsStories(generatedStories);
+            setNewsStories(data.stories);
             setCurrentNewsIndex(0);
-            setCurrentNews(generatedStories[0]);
+            setCurrentNews(data.stories[0]);
             setCurrentAISource('o4-mini');
             setShowHistoricalFigure(true); // Show historical figure display
             setIsLoading(false);
             
             // Silently load the other 2 historical figures in the background
-            if (generatedStories.length === 1) {
+            if (data.stories.length === 1) {
               preloadAdditionalStories(category, 1);
             }
             
             return;
           }
         }
-      } catch (generateError) {
-        console.warn('Story generation failed:', generateError.message);
+      } catch (storiesError) {
+        console.warn('Stories with images fetch failed:', storiesError.message);
       }
       
       // Ultimate fallback
@@ -1090,14 +1083,6 @@ function OrbGame() {
             >
               {isLoading ? '⏳' : '🔍'} {t('news.more')}
             </button>
-            <button 
-              onClick={cycleEpoch}
-              disabled={isLoading || currentNews}
-              className="epoch-cycle-button"
-              title={currentNews ? 'Cannot change epoch while viewing a story' : `Current epoch: ${currentEpoch}. Click to cycle to next epoch.`}
-            >
-              ⏰ {currentEpoch}
-            </button>
           </div>
           
           {/* Background loading indicator */}
@@ -1108,33 +1093,32 @@ function OrbGame() {
               </span>
             </div>
           )}
+          {/* Story content with integrated images */}
           {currentNews && (
-            <div className="story-content">
-              <h3>{currentNews.headline}</h3>
-              <p>{currentNews.summary}</p>
-              {currentNews.fullText && (
-                <div className="full-story">
-                  <p>{currentNews.fullText}</p>
-                </div>
-              )}
-              {currentNews.source && (
-                <p className="source">Source: {currentNews.source}</p>
+            <div className="story-content-with-images">
+              <div className="story-text">
+                <h3>{currentNews.headline}</h3>
+                <p>{currentNews.summary}</p>
+                {currentNews.fullText && (
+                  <div className="full-story">
+                    <p>{currentNews.fullText}</p>
+                  </div>
+                )}
+                {currentNews.source && (
+                  <p className="source">Source: {currentNews.source}</p>
+                )}
+              </div>
+              
+              {/* Integrated Historical Figure Display */}
+              {showHistoricalFigure && (
+                <HistoricalFigureDisplay
+                  story={currentNews}
+                  onClose={() => setShowHistoricalFigure(false)}
+                  onLearnMore={learnMore}
+                />
               )}
             </div>
           )}
-
-          {/* Integrated Historical Figure Display */}
-          {showHistoricalFigure && (
-            <HistoricalFigureDisplay
-              story={currentNews}
-              onClose={() => setShowHistoricalFigure(false)}
-              onLearnMore={learnMore}
-            />
-          )}
-
-          <div className="ai-model-section">
-            <span className="ai-model-text">Historical Figure: {currentNews?.historicalFigure || 'Unknown Figure'}</span>
-          </div>
           <div className="news-meta">
             <span className="zimax-ai-labs">
               <a href="#" onClick={(e) => {

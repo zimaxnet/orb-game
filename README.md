@@ -16,6 +16,7 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **Image Integration**: Rich visual gallery with historical portraits, achievements, inventions, and artifacts
 - **Asynchronous Image Loading**: Stories load instantly while images populate in the background
 - **Permalink System**: Persistent links to source images with licensing and attribution
+- **Enhanced Historical Figure Display**: Normal-sized text, brief content preview, "More" button, and scrollable content
 
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
@@ -49,6 +50,7 @@ Each story features:
 
 ### **Frontend (React + Vite)**
 - **Main Component**: `components/OrbGame.jsx` - 3D interactive gaming experience
+- **Historical Figure Display**: `components/HistoricalFigureDisplay.jsx` - Enhanced display with normal text, brief preview, and scrollable content
 - **State Management**: React hooks with context providers (`contexts/LanguageContext.jsx`)
 - **3D Graphics**: Three.js with @react-three/fiber and @react-three/drei
 - **Build System**: Vite with React 19.x support
@@ -70,7 +72,18 @@ Each story features:
 
 ## 🔄 **Recent Updates**
 
-### **Latest Changes (January 2025)**
+### **Latest Changes (July 2025)**
+- **Enhanced Historical Figure Display**: Improved user experience with better text presentation
+  - **Normal-sized text**: Figure names and headlines now use normal font weight instead of bold for better readability
+  - **Brief content preview**: Initially shows only the first 2-3 sentences with one picture for faster loading
+  - **"More" button**: Green gradient button that expands to show the full story with proper scrolling
+  - **Scrollable content area**: Text scrolls within white box boundaries with custom scrollbar styling
+  - **Progressive disclosure**: Better UX with staged content reveal instead of overwhelming users with full text immediately
+  - **Responsive design**: All new features work perfectly on mobile and desktop devices
+  - **Contained scrolling**: Maximum height limits (300px desktop, 250px tablet, 200px mobile) with proper overflow handling
+  - **Custom scrollbar**: Styled scrollbar for better visual integration with the cosmic theme
+  - **State management**: `showFullStory` state controls content display and button visibility
+  - **Content extraction**: `getBriefContent()` function intelligently extracts first few sentences for preview
 - **Systematic Image Gathering System**: Revolutionary image system with comprehensive coverage
   - **Complete Coverage**: 120 historical figures with 363 high-quality images
   - **100% Success Rate**: Every figure now has rich visual galleries
@@ -444,6 +457,14 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Image Status Indicators**: Loading, searching, error, and timeout states for images
 - **Source Attribution**: Display of image sources, licensing, and permalinks
 - **Gallery Controls**: Navigation between multiple images with smooth transitions
+- **Enhanced Historical Figure Display**: Improved text presentation and content management
+  - **Normal-sized text**: Figure names and headlines use normal font weight for better readability
+  - **Brief content preview**: Initially shows first 2-3 sentences with one picture for faster loading
+  - **"More" button**: Green gradient button that expands to show full story with proper scrolling
+  - **Scrollable content area**: Text scrolls within white box boundaries with custom scrollbar styling
+  - **Progressive disclosure**: Better UX with staged content reveal instead of overwhelming users
+  - **Contained scrolling**: Maximum height limits with proper overflow handling for all device sizes
+  - **Custom scrollbar**: Styled scrollbar for better visual integration with cosmic theme
 
 ## 🔧 **Development Workflow**
 

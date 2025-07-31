@@ -8,10 +8,20 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const [showGallery, setShowGallery] = useState(false);
     const [imageStatus, setImageStatus] = useState(story.imageStatus || 'unknown');
     const [images, setImages] = useState(story.images);
-    const [figureName, setFigureName] = useState(story.figureName);
+    const [figureName, setFigureName] = useState(story.historicalFigure || story.figureName);
+    const [showFullStory, setShowFullStory] = useState(false);
 
     const portrait = images?.portrait;
     const gallery = images?.gallery || [];
+
+    // Extract brief content (first 2-3 sentences) for initial display
+    const getBriefContent = (content) => {
+        if (!content) return '';
+        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        return sentences.slice(0, 2).join('. ') + '.';
+    };
+
+    const briefContent = getBriefContent(story.content);
 
     useEffect(() => {
         if (portrait) {
@@ -242,7 +252,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     return (
         <div className="historical-figure-display-inline">
             <div className="figure-header">
-                <h2 className="figure-name">{figureName || 'Historical Figure'}</h2>
+                <h2 className="figure-name-normal">{figureName || 'Historical Figure'}</h2>
                 <button className="close-button" onClick={onClose} aria-label="Close">
                     ×
                 </button>
@@ -250,9 +260,9 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
 
             <div className="figure-content-inline">
                 <div className="figure-story-section">
-                    <h3 className="story-headline">{story.headline}</h3>
-                    <div className="story-content">
-                        {story.content}
+                    <h3 className="story-headline-normal">{story.headline}</h3>
+                    <div className="story-content-scrollable">
+                        {showFullStory ? story.content : briefContent}
                     </div>
                     
                     {/* Images displayed inline with text */}
@@ -265,14 +275,25 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                         renderImageStatus()
                     )}
                     
-                    {story.learnMore && (
-                        <button 
-                            className="learn-more-button"
-                            onClick={() => onLearnMore(story)}
-                        >
-                            Learn More
-                        </button>
-                    )}
+                    <div className="story-actions">
+                        {!showFullStory && (
+                            <button 
+                                className="more-button"
+                                onClick={() => setShowFullStory(true)}
+                            >
+                                More
+                            </button>
+                        )}
+                        
+                        {showFullStory && story.learnMore && (
+                            <button 
+                                className="learn-more-button"
+                                onClick={() => onLearnMore(story)}
+                            >
+                                Learn More
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
 

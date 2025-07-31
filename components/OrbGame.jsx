@@ -1016,7 +1016,7 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>{currentNews?.headline || (language === 'es' ? `Recopilando la figura histórica más influyente de ${orbInCenter?.name || selectedCategory} ${currentEpoch}...` : `Gathering the most influential historical figure of ${orbInCenter?.name || selectedCategory} ${currentEpoch}...`)}</h4>
+            <h4>{currentNews?.headline || (language === 'es' ? `Recopilando la figura histórica más influyente de ${currentEpoch} ${orbInCenter?.name || selectedCategory}...` : `Gathering the most influential historical figure of ${currentEpoch} ${orbInCenter?.name || selectedCategory}...`)}</h4>
             <p>{language === 'es' ? 'Contexto diseñado por Zimax AI Labs usando' : 'Context engineered by Zimax AI Labs using'} <strong>{currentAISource}</strong> AI</p>
             <p className="loading-detail">{currentNews?.summary || (language === 'es' ? '¡Prepárate para aprender sobre las figuras históricas más importantes!' : 'Get ready to learn about the most important historical figures!')}</p>
             <div className="loading-progress">

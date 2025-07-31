@@ -843,8 +843,9 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   const epoch = req.query.epoch || 'Modern';
   const language = req.query.language || 'en';
   const storyType = req.query.storyType || 'historical-figure';
+  const includeTTS = req.query.includeTTS !== 'false'; // Default to true unless explicitly set to false
   
-  console.log(`📚 Backward compatibility: Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language})`);
+  console.log(`📚 Backward compatibility: Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language}) with TTS: ${includeTTS}`);
   
   // If historical figures service is not available, fail
   if (!historicalFiguresService) {
@@ -854,13 +855,13 @@ app.get('/api/orb/positive-news/:category', async (req, res) => {
   }
   
   try {
-    // Get stories from historical figures service
-    const stories = await historicalFiguresService.getStories(category, epoch, language, count, false);
+    // Get stories from historical figures service with TTS included by default
+    const stories = await historicalFiguresService.getStories(category, epoch, language, count, includeTTS);
     if (stories.length === 0) {
       console.log(`❌ No historical figure stories found for ${category}-${epoch}-${language}`);
       res.status(404).json({ error: `No historical figure stories available for ${category} in ${epoch} epoch (${language})` });
     } else {
-      console.log(`✅ Found ${stories.length} historical figure stories for ${category}`);
+      console.log(`✅ Found ${stories.length} historical figure stories for ${category} with TTS: ${includeTTS}`);
       res.json(stories);
     }
   } catch (error) {

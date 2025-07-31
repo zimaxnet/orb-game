@@ -330,6 +330,29 @@ npm install
 node backend-server.js
 ```
 
+### GitHub Actions & Package Management Workflow
+- **CRITICAL WORKFLOW**: When modifying dependencies, follow this exact sequence:
+  1. Edit package.json with new dependencies
+  2. Run `npm install` to update package-lock.json
+  3. Verify with `npm list` that all packages are installed
+  4. Test build locally: `npm run build`
+  5. Commit BOTH package.json AND package-lock.json together
+  6. Push to trigger GitHub Actions
+
+- **GitHub Actions Package Sync Issues**:
+  - **Error**: "Missing: @types/react@19.1.9 from lock file"
+  - **Cause**: package.json and package-lock.json are out of sync
+  - **Prevention**: Always run `npm install` after package.json changes
+  - **Verification**: Use `npm list` to check installed packages
+  - **Solution**: Run `npm install` locally, commit both files, push
+
+- **Package Management Best Practices**:
+  - **Never commit package.json without package-lock.json**
+  - **Always run `npm install` after dependency changes**
+  - **Use exact versions** for critical dependencies
+  - **Test locally before pushing** to catch sync issues
+  - **Verify with `npm ci` locally** to simulate GitHub Actions environment
+
 ### Deployment Process
 
 #### Automated Deployment (Recommended)
@@ -369,6 +392,7 @@ node backend-server.js
 - Test changes before committing
 - Update documentation for new features
 - Follow semantic versioning
+- **CRITICAL**: Always commit package.json and package-lock.json together
 
 ### Deployment Verification & Monitoring
 - **Health Checks**: Verify both frontend and backend are responding
@@ -376,20 +400,7 @@ node backend-server.js
 - **Error Tracking**: Monitor application logs for errors and issues
 - **Automated Testing**: Run comprehensive test suite before deployment
 - **Rollback Procedures**: Keep previous versions available for quick rollback
-
-## 📚 Documentation Standards
-
-### Code Documentation
-- Use JSDoc comments for functions and classes
-- Document complex algorithms and business logic
-- Include examples for API endpoints
-- Maintain up-to-date README files
-
-### Architecture Documentation
-- Keep `PROJECT_STRUCTURE.md` updated
-- Document deployment procedures
-- Maintain AI model status documentation
-- Update prompt reference documentation
+- **Package Sync Verification**: Ensure package.json and package-lock.json are in sync before deployment 
 
 ## 🚨 Critical Notes
 
@@ -405,6 +416,59 @@ node backend-server.js
 - **Azure OpenAI Endpoint**: Use `https://aimcs-foundry.cognitiveservices.azure.com/`
 - **API Version**: Use `2024-12-01-preview` for o4-mini model
 
+### Package Management & GitHub Actions Sync Issues
+- **CRITICAL**: Always run `npm install` after modifying package.json
+- **CRITICAL**: Always commit both package.json AND package-lock.json together
+- **CRITICAL**: Never commit package.json without running npm install first
+- **Common Error**: "Missing: @types/react@19.1.9 from lock file" - indicates package.json and package-lock.json are out of sync
+- **Solution**: Run `npm install` locally, then commit both files together
+- **Verification**: Use `npm list` to check installed packages match package.json
+- **Prevention**: Test build locally with `npm run build` before pushing
+- **GitHub Actions**: Uses `npm ci` which requires exact package-lock.json match
+
+### Troubleshooting Package Sync Issues
+
+#### GitHub Actions Failure: "Missing dependencies from lock file"
+**Error Message**: `Missing: @types/react@19.1.9 from lock file`
+
+**Root Cause**: package.json and package-lock.json are out of sync
+
+**Immediate Fix**:
+```bash
+# 1. Run npm install to sync package-lock.json
+npm install
+
+# 2. Verify packages are installed correctly
+npm list
+
+# 3. Test build locally
+npm run build
+
+# 4. Commit both files together
+git add package.json package-lock.json
+git commit -m "fix: sync package.json and package-lock.json"
+git push
+```
+
+**Prevention Checklist**:
+- [ ] Always run `npm install` after package.json changes
+- [ ] Verify with `npm list` that all packages are installed
+- [ ] Test build locally before committing
+- [ ] Commit both package.json AND package-lock.json together
+- [ ] Never commit package.json without running npm install first
+
+**Verification Commands**:
+```bash
+# Check if packages are in sync
+npm list
+
+# Test build process
+npm run build
+
+# Simulate GitHub Actions environment
+npm ci
+```
+
 ### Common Issues
 - Key Vault RBAC permissions for container app
 - CORS configuration for cross-origin requests
@@ -417,99 +481,4 @@ node backend-server.js
 - **TTS Voice Issues**: Use `alloy` voice (avoid `jorge` - not supported)
 - **Empty API Responses**: Check token limits and parameter names
 - **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
-
-## 🛠️ Deployment & Build Error Prevention
-
-### Package Management Best Practices
-- **Always run `npm install` after modifying package.json**
-- **Commit package-lock.json with every dependency change**
-- **Verify dependencies before deployment**: `npm list` to check installed packages
-- **Use exact versions** for critical dependencies to prevent CI/CD failures
-- **Test locally before pushing**: Run `npm run build` to catch dependency issues
-
-### Docker Build Context & File Paths
-- **Build Context**: GitHub Actions uses root directory (`.`) as build context
-- **Dockerfile Paths**: Use relative paths from root directory
-  - `backend/backend-server.js` (not `backend-server.js`)
-  - `utils/` (not `../utils/`)
-  - `OrbGameInfluentialPeopleSeeds` (not `../OrbGameInfluentialPeopleSeeds`)
-- **File Verification**: Always verify all COPY paths exist before committing
-- **Platform Requirements**: Always use `--platform linux/amd64` for Azure Container Apps
-
-### Common Build Failures & Solutions
-1. **Missing Files in Docker Build**:
-   - ❌ `COPY backend/backend***server.js` (incorrect with asterisks)
-   - ✅ `COPY backend/backend-server.js` (correct path)
-   - ❌ `COPY ../utils/` (wrong context)
-   - ✅ `COPY utils/` (correct from root context)
-
-2. **Package Lock Sync Issues**:
-   - ❌ Outdated package-lock.json
-   - ✅ Run `npm install` before committing
-   - ✅ Always commit package-lock.json with dependency changes
-   - ✅ Verify with `npm list` before pushing
-
-3. **Docker Build Context Errors**:
-   - ❌ Using `backend` as build context when files are in root
-   - ✅ Use `.` (root) as build context in GitHub Actions
-   - ✅ Update Dockerfile paths accordingly
-
-### Pre-Deployment Checklist
-- [ ] Run `npm install` to sync package-lock.json
-- [ ] Verify all Docker COPY paths exist
-- [ ] Test Docker build locally: `docker build --platform linux/amd64 -f backend/backend-Dockerfile -t test .`
-- [ ] Check package.json and package-lock.json are in sync
-- [ ] Verify all required files exist in repository
-- [ ] Test build process: `npm run build`
-- [ ] Commit all changes including package-lock.json
-- [ ] Push to trigger GitHub Actions
-
-### Error Prevention Guidelines
-- **Before Committing**: Always run `npm install` if package.json changed
-- **Before Pushing**: Test Docker build locally to catch file path issues
-- **File Paths**: Double-check all COPY statements in Dockerfile
-- **Dependencies**: Use exact versions and commit package-lock.json
-- **Build Context**: Ensure Dockerfile paths match GitHub Actions build context
-- **Platform**: Always specify `linux/amd64` for Azure Container Apps
-
-## 🎯 Best Practices
-
-### Code Quality
-- Write self-documenting code
-- Use TypeScript-like JSDoc comments
-- Implement proper error boundaries
-- Follow React best practices
-- Use async/await consistently
-
-### Performance
-- Optimize Three.js rendering
-- Implement efficient caching strategies
-- Monitor Azure resource usage
-- Use lazy loading where appropriate
-- Minimize bundle size
-
-### Security
-- Validate all user inputs
-- Use secure authentication methods
-- Implement proper CORS policies
-- Store secrets in Azure Key Vault
-- Use HTTPS for all communications
-- **Key Vault Integration**: All scripts fetch credentials from `orb-game-kv-eastus2`
-- **Managed Identity**: Container apps use managed identity for Key Vault access
-- **RBAC Authentication**: Role-based access control for Key Vault secrets
-
-### Error Handling
-- **JSON Error Recovery**: Implement JSON fix attempts for malformed responses
-- **Empty Content Detection**: Check for empty API responses before parsing
-- **Comprehensive Error Tracking**: Track JSON parse, TTS, API, MongoDB, and network errors
-- **Token Limit Management**: Use appropriate token limits for different model types
-- **API Parameter Validation**: Ensure correct parameter names for each model
-
-### Testing
-- Write comprehensive test suites
-- Test all AI model integrations
-- Validate multi-language support
-- Check performance metrics
-- Verify deployment procedures
-
-This cursor rules file provides comprehensive guidance for developing and maintaining the Orb Game platform, ensuring consistency, security, and performance across all aspects of the application. 
+- **Package Lock Sync**: Missing dependencies in package-lock.json cause GitHub Actions failures 

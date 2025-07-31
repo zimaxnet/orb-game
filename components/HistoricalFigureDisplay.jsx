@@ -6,8 +6,8 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const [imageLoading, setImageLoading] = useState(true);
     const [imageError, setImageError] = useState(false);
     const [showGallery, setShowGallery] = useState(false);
-    const [imageStatus, setImageStatus] = useState(story.imageStatus || 'unknown');
-    const [images, setImages] = useState(story.images);
+    const [imageStatus, setImageStatus] = useState('searching'); // Initialize as searching
+    const [images, setImages] = useState(story.images || {});
     const [figureName, setFigureName] = useState(story.historicalFigure || story.figureName);
     const [showFullStory, setShowFullStory] = useState(false);
 
@@ -31,8 +31,11 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     }, [portrait]);
 
     useEffect(() => {
-        // Re-enabled: Image polling to fetch images from database
-        if (imageStatus === 'searching' && figureName) {
+        // Always try to load images for historical figures
+        if (figureName) {
+            console.log(`🔍 Starting image search for: ${figureName} (${story.category}/${story.epoch})`);
+            setImageStatus('searching');
+            
             const pollForImages = async () => {
                 try {
                     console.log(`🔍 Polling for images: ${figureName} (${story.category}/${story.epoch})`);
@@ -77,8 +80,11 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 clearInterval(pollInterval);
                 clearTimeout(timeout);
             };
+        } else {
+            // No figure name, set status to no-figure
+            setImageStatus('no-figure');
         }
-    }, [imageStatus, figureName, story.category, story.epoch]);
+    }, [figureName, story.category, story.epoch]);
 
     const handleImageLoad = () => {
         setImageLoading(false);

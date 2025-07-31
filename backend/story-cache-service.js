@@ -18,40 +18,69 @@ class StoryCacheService {
 
   async connect() {
     try {
-      const mongoUri = process.env.MONGO_URI;
+      // Use secrets from Key Vault if available, fallback to environment variables
+      const mongoUri = global.secrets?.MONGO_URI || process.env.MONGO_URI;
       if (!mongoUri) {
         console.warn('⚠️ MONGO_URI not set. Story caching will be disabled.');
         return false;
       }
 
-      this.client = new MongoClient(mongoUri);
+      console.log('🔍 Testing MongoDB connection for story caching...');
+      
+      // Use the same connection approach as AdvancedMemoryService
+      this.client = new MongoClient(mongoUri, {
+        serverSelectionTimeoutMS: 10000, // 10 second timeout
+        connectTimeoutMS: 15000, // 15 second timeout
+        socketTimeoutMS: 45000, // 45 second timeout
+        maxPoolSize: 10,
+        minPoolSize: 1,
+        maxIdleTimeMS: 30000,
+        retryWrites: true,
+        retryReads: true,
+        w: 'majority'
+      });
+      
       await this.client.connect();
+      
+      // Test the connection by running a simple command
+      await this.client.db('admin').command({ ping: 1 });
       
       this.db = this.client.db('orbgame');
       this.storiesCollection = this.db.collection('stories');
       this.audioCollection = this.db.collection('audio');
       
-      // Create indexes for efficient queries
-      await this.storiesCollection.createIndex({ 
-        category: 1, 
-        epoch: 1, 
-        model: 1, 
-        language: 1 
-      });
+      // Test collection access
+      await this.storiesCollection.countDocuments();
+      await this.audioCollection.countDocuments();
       
-      await this.storiesCollection.createIndex({ 
-        createdAt: 1 
-      }, { expireAfterSeconds: 30 * 24 * 60 * 60 }); // 30 days TTL
-      
-      await this.audioCollection.createIndex({ 
-        storyId: 1 
-      });
+      // Create indexes for efficient queries (only if they don't exist)
+      try {
+        await this.storiesCollection.createIndex({ 
+          category: 1, 
+          epoch: 1, 
+          model: 1, 
+          language: 1 
+        });
+        
+        await this.storiesCollection.createIndex({ 
+          createdAt: 1 
+        }, { expireAfterSeconds: 30 * 24 * 60 * 60 }); // 30 days TTL
+        
+        await this.audioCollection.createIndex({ 
+          storyId: 1 
+        });
+      } catch (indexError) {
+        console.warn('⚠️ Index creation failed (may already exist):', indexError.message);
+      }
       
       this.isConnected = true;
       console.log('✅ Story cache service connected to MongoDB');
       return true;
     } catch (error) {
-      console.error('❌ Failed to connect to MongoDB for story caching:', error);
+      console.warn('⚠️ StoryCacheService failed to connect, caching will be disabled.');
+      console.warn('   Error details:', error.message);
+      console.warn('   Error code:', error.code);
+      console.warn('   Error name:', error.name);
       this.isConnected = false;
       return false;
     }
@@ -59,9 +88,13 @@ class StoryCacheService {
 
   async disconnect() {
     if (this.client) {
-      await this.client.close();
-      this.isConnected = false;
-      console.log('✅ Story cache service disconnected from MongoDB');
+      try {
+        await this.client.close();
+        this.isConnected = false;
+        console.log('✅ Story cache service disconnected from MongoDB');
+      } catch (error) {
+        console.warn('⚠️ Error disconnecting story cache service:', error.message);
+      }
     }
   }
 
@@ -98,20 +131,27 @@ class StoryCacheService {
         storyType: story.storyType || 'historical-figure', // Store story type
         historicalFigure: story.historicalFigure, // Store historical figure name
         createdAt: new Date(),
-        lastAccessed: new Date(),
-        accessCount: 0
+        updatedAt: new Date()
       }));
 
-      // Remove existing stories for this combination
-      await this.storiesCollection.deleteMany({ cacheKey });
+      // Use upsert to avoid duplicates
+      const result = await this.storiesCollection.bulkWrite(
+        storiesToStore.map(story => ({
+          updateOne: {
+            filter: { 
+              cacheKey: story.cacheKey, 
+              storyIndex: story.storyIndex 
+            },
+            update: { $set: story },
+            upsert: true
+          }
+        }))
+      );
 
-      // Insert new stories
-      const result = await this.storiesCollection.insertMany(storiesToStore);
-      
-      console.log(`✅ Stored ${stories.length} stories for ${category}-${epoch}-${model}-${language}`);
+      console.log(`✅ Stored ${stories.length} stories for ${category}/${epoch}/${model}/${language}`);
       return true;
     } catch (error) {
-      console.error('❌ Failed to store stories:', error);
+      console.error('❌ Error storing stories in cache:', error);
       return false;
     }
   }
@@ -119,7 +159,7 @@ class StoryCacheService {
   // Retrieve stories from MongoDB
   async getStories(category, epoch, model, language) {
     if (!this.isConnected) {
-      console.warn('⚠️ Story cache not connected, returning null');
+      console.warn('⚠️ Story cache not connected, cannot retrieve stories');
       return null;
     }
 
@@ -136,32 +176,21 @@ class StoryCacheService {
         return null;
       }
 
-      // Update access statistics
-      await this.storiesCollection.updateMany(
-        { cacheKey },
-        { 
-          $inc: { accessCount: 1 },
-          $set: { lastAccessed: new Date() }
-        }
-      );
-
-      // Convert back to original format
+      // Convert back to the expected format
       const formattedStories = stories.map(story => ({
         headline: story.headline,
         summary: story.summary,
         fullText: story.fullText,
         source: story.source,
         publishedAt: story.publishedAt,
-        // Generate TTS audio on-demand instead of storing it
-        ttsAudio: null, // Will be generated when needed
-        storyType: story.storyType || 'historical-figure',
+        storyType: story.storyType,
         historicalFigure: story.historicalFigure
       }));
 
-      console.log(`📖 Retrieved ${stories.length} cached stories for ${cacheKey}`);
+      console.log(`✅ Retrieved ${formattedStories.length} cached stories for ${cacheKey}`);
       return formattedStories;
     } catch (error) {
-      console.error('❌ Failed to retrieve stories:', error);
+      console.error('❌ Error retrieving stories from cache:', error);
       return null;
     }
   }
@@ -177,7 +206,7 @@ class StoryCacheService {
       const count = await this.storiesCollection.countDocuments({ cacheKey });
       return count > 0;
     } catch (error) {
-      console.error('❌ Failed to check story existence:', error);
+      console.error('❌ Error checking cache for stories:', error);
       return false;
     }
   }
@@ -190,51 +219,36 @@ class StoryCacheService {
 
     try {
       const totalStories = await this.storiesCollection.countDocuments();
-      const totalCategories = await this.storiesCollection.distinct('category');
-      const totalEpochs = await this.storiesCollection.distinct('epoch');
-      const totalModels = await this.storiesCollection.distinct('model');
-      const totalLanguages = await this.storiesCollection.distinct('language');
-
-      // Get most accessed stories
-      const mostAccessed = await this.storiesCollection
-        .find({})
-        .sort({ accessCount: -1 })
-        .limit(10)
-        .toArray();
-
-      // Get recent stories
-      const recentStories = await this.storiesCollection
-        .find({})
-        .sort({ createdAt: -1 })
-        .limit(10)
-        .toArray();
+      const totalAudio = await this.audioCollection.countDocuments();
+      
+      const categoryStats = await this.storiesCollection.aggregate([
+        {
+          $group: {
+            _id: '$category',
+            count: { $sum: 1 },
+            epochs: { $addToSet: '$epoch' },
+            models: { $addToSet: '$model' },
+            languages: { $addToSet: '$language' }
+          }
+        },
+        { $sort: { count: -1 } }
+      ]).toArray();
 
       return {
         totalStories,
-        totalCategories: totalCategories.length,
-        totalEpochs: totalEpochs.length,
-        totalModels: totalModels.length,
-        totalLanguages: totalLanguages.length,
-        mostAccessed: mostAccessed.map(story => ({
-          cacheKey: story.cacheKey,
-          accessCount: story.accessCount,
-          lastAccessed: story.lastAccessed
-        })),
-        recentStories: recentStories.map(story => ({
-          cacheKey: story.cacheKey,
-          createdAt: story.createdAt
-        }))
+        totalAudio,
+        categories: categoryStats
       };
     } catch (error) {
-      console.error('❌ Failed to get cache stats:', error);
+      console.error('❌ Error getting cache stats:', error);
       return null;
     }
   }
 
-  // Clear old stories (older than specified days)
+  // Clear old stories
   async clearOldStories(daysOld = 30) {
     if (!this.isConnected) {
-      return false;
+      return 0;
     }
 
     try {
@@ -248,74 +262,69 @@ class StoryCacheService {
       console.log(`🗑️ Cleared ${result.deletedCount} old stories (older than ${daysOld} days)`);
       return result.deletedCount;
     } catch (error) {
-      console.error('❌ Failed to clear old stories:', error);
-      return false;
+      console.error('❌ Error clearing old stories:', error);
+      return 0;
     }
   }
 
-  // Preload stories for all combinations
+  // Preload stories for an epoch
   async preloadStoriesForEpoch(epoch, categories, models, languages) {
     if (!this.isConnected) {
       console.warn('⚠️ Story cache not connected, skipping preload');
       return false;
     }
 
-    console.log(`🔄 Starting preload for epoch: ${epoch}`);
-    
-    const totalCombinations = categories.length * models.length * languages.length;
-    let completedCombinations = 0;
-
-    for (const category of categories) {
-      for (const model of models) {
-        for (const language of languages) {
-          try {
-            // Check if stories already exist
-            const hasStories = await this.hasStories(category, epoch, model, language);
+    try {
+      console.log(`🔄 Preloading stories for epoch: ${epoch}`);
+      
+      for (const category of categories) {
+        for (const model of models) {
+          for (const language of languages) {
+            const cacheKey = this.generateCacheKey(category, epoch, model, language);
+            const existing = await this.hasStories(category, epoch, model, language);
             
-            if (!hasStories) {
-              console.log(`📚 Preloading ${category}-${epoch}-${model}-${language}...`);
-              // This would trigger story generation in the main service
-              // For now, we'll just log the need for preloading
+            if (!existing) {
+              console.log(`📝 No cached stories for ${cacheKey}, will generate on demand`);
             } else {
-              console.log(`✅ Already cached: ${category}-${epoch}-${model}-${language}`);
+              console.log(`✅ Found cached stories for ${cacheKey}`);
             }
-            
-            completedCombinations++;
-            const progress = Math.round((completedCombinations / totalCombinations) * 100);
-            console.log(`📊 Preload progress: ${progress}%`);
-            
-          } catch (error) {
-            console.error(`❌ Failed to preload ${category}-${epoch}-${model}-${language}:`, error);
           }
         }
       }
+      
+      return true;
+    } catch (error) {
+      console.error('❌ Error preloading stories:', error);
+      return false;
     }
-
-    console.log(`✅ Preload complete for epoch: ${epoch}`);
-    return true;
   }
 
   // Get stories with fallback to generation
   async getStoriesWithFallback(category, epoch, model, language, generateFunction) {
-    // First try to get from cache
-    let stories = await this.getStories(category, epoch, model, language);
-    
-    if (stories && stories.length > 0) {
-      console.log(`🎯 Using cached stories for ${category}-${epoch}-${model}-${language}`);
-      return stories;
-    }
+    try {
+      // First try to get from cache
+      const cachedStories = await this.getStories(category, epoch, model, language);
+      
+      if (cachedStories && cachedStories.length > 0) {
+        console.log(`✅ Using cached stories for ${category}/${epoch}/${model}/${language}`);
+        return cachedStories;
+      }
 
-    // If not in cache, generate new stories
-    console.log(`🔄 Generating fresh stories for ${category}-${epoch}-${model}-${language}`);
-    stories = await generateFunction(category, epoch, model, language);
-    
-    if (stories && stories.length > 0) {
-      // Store the generated stories in cache
-      await this.storeStories(category, epoch, model, language, stories);
-      console.log(`💾 Stored generated stories in cache`);
-    }
+      // If not in cache, generate new stories
+      console.log(`🔄 Generating new stories for ${category}/${epoch}/${model}/${language}`);
+      const newStories = await generateFunction(category, epoch, 3, null, language);
+      
+      if (newStories && newStories.length > 0) {
+        // Store in cache for future use
+        await this.storeStories(category, epoch, model, language, newStories);
+        return newStories;
+      }
 
-    return stories;
+      return null;
+    } catch (error) {
+      console.error('❌ Error in getStoriesWithFallback:', error);
+      return null;
+    }
   }
 }
 

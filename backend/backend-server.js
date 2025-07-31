@@ -181,11 +181,53 @@ let analyticsCache = {
 };
 
 async function loadAnalyticsCache() {
-  if (!memoryService || !memoryService.users) {
-    console.warn('⚠️ Memory service or users collection not available for analytics cache loading.');
+  if (!memoryService) {
+    console.warn('⚠️ Memory service not available for analytics cache loading.');
+    // Set default analytics cache
+    analyticsCache = {
+      ...analyticsCache,
+      totalChats: 0,
+      totalWebSearches: 0,
+      mostPopular: 'N/A',
+      topWords: [],
+      lastUpdated: new Date().toISOString(),
+      uptime: Date.now() - startTime
+    };
     return;
   }
+  
   try {
+    // Check if the users collection exists
+    if (!memoryService.users) {
+      console.log('ℹ️ Users collection not available, using default analytics cache.');
+      analyticsCache = {
+        ...analyticsCache,
+        totalChats: 0,
+        totalWebSearches: 0,
+        mostPopular: 'N/A',
+        topWords: [],
+        lastUpdated: new Date().toISOString(),
+        uptime: Date.now() - startTime
+      };
+      return;
+    }
+
+    // Check if the users collection has data
+    const userCount = await memoryService.users.countDocuments();
+    if (userCount === 0) {
+      console.log('ℹ️ No users found in database, using default analytics cache.');
+      analyticsCache = {
+        ...analyticsCache,
+        totalChats: 0,
+        totalWebSearches: 0,
+        mostPopular: 'N/A',
+        topWords: [],
+        lastUpdated: new Date().toISOString(),
+        uptime: Date.now() - startTime
+      };
+      return;
+    }
+
     const memoryStats = await memoryService.users.aggregate([
       { $unwind: "$memories" },
       { $count: "totalMemories" }
@@ -217,7 +259,17 @@ async function loadAnalyticsCache() {
     };
     console.log('✅ Analytics cache loaded successfully.');
   } catch (err) {
-    console.warn('⚠️ Failed to load analytics cache:', err.message);
+    console.warn('⚠️ Analytics cache loading failed:', err.message);
+    // Set default values if analytics loading fails
+    analyticsCache = {
+      ...analyticsCache,
+      totalChats: 0,
+      totalWebSearches: 0,
+      mostPopular: 'N/A',
+      topWords: [],
+      lastUpdated: new Date().toISOString(),
+      uptime: Date.now() - startTime
+    };
   }
 }
 

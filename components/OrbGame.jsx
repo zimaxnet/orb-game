@@ -1085,30 +1085,9 @@ function OrbGame() {
             </button>
           </div>
           
-          {/* Background loading indicator */}
-          {isPreloading && (
-            <div className="background-loading-indicator">
-              <span className="loading-text">
-                {language === 'es' ? '🔄 Cargando figuras históricas adicionales...' : '🔄 Loading additional historical figures...'}
-              </span>
-            </div>
-          )}
           {/* Story content with integrated images */}
           {currentNews && (
             <div className="story-content-with-images">
-              <div className="story-text">
-                <h3>{currentNews.headline}</h3>
-                <p>{currentNews.summary}</p>
-                {currentNews.fullText && (
-                  <div className="full-story">
-                    <p>{currentNews.fullText}</p>
-                  </div>
-                )}
-                {currentNews.source && (
-                  <p className="source">Source: {currentNews.source}</p>
-                )}
-              </div>
-              
               {/* Integrated Historical Figure Display */}
               {showHistoricalFigure && (
                 <HistoricalFigureDisplay

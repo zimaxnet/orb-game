@@ -17,9 +17,11 @@ class HistoricalFiguresImageService {
                 throw new Error('MongoDB URI not provided and MONGO_URI environment variable not set');
             }
             
+            // Remove deprecated options and use modern MongoDB connection
             this.client = new MongoClient(this.mongoUri, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
+                // Remove deprecated options
+                // useNewUrlParser: true,
+                // useUnifiedTopology: true,
             });
             await this.client.connect();
             this.db = this.client.db('orbgame');
@@ -177,7 +179,7 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Get images for a specific figure and content type
+     * Get images for a specific figure and content type (ONLY from MongoDB)
      */
     async getFigureImages(figureName, category, epoch, contentType = 'portraits') {
         try {
@@ -219,7 +221,7 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Get best image for a figure (highest priority)
+     * Get best image for a figure (highest priority) - ONLY from MongoDB
      */
     async getBestImage(figureName, category, epoch, contentType = 'portraits') {
         try {
@@ -238,7 +240,7 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Get multiple images for a figure (for gallery view)
+     * Get multiple images for a figure (for gallery view) - ONLY from MongoDB
      */
     async getFigureGallery(figureName, category, epoch, limit = 5) {
         try {
@@ -263,9 +265,9 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Asynchronously populate images for a story after it's loaded
+     * Check if preloaded images exist for a story (NO external search)
      */
-    async populateImagesForStory(story, category, epoch) {
+    async checkPreloadedImagesForStory(story, category, epoch) {
         try {
             const figureName = this.extractFigureName(story);
             
@@ -274,11 +276,11 @@ class HistoricalFiguresImageService {
                 return null;
             }
 
-            // Check if we already have images for this figure
+            // Check if we have preloaded images for this figure
             const existingImages = await this.getFigureImages(figureName, category, epoch, 'portraits');
             
             if (existingImages && existingImages.length > 0) {
-                console.log(`Found existing images for ${figureName}`);
+                console.log(`Found preloaded images for ${figureName}`);
                 return {
                     figureName,
                     images: {
@@ -288,13 +290,11 @@ class HistoricalFiguresImageService {
                 };
             }
 
-            // If no images exist, trigger background image search
-            console.log(`No images found for ${figureName}, triggering background search...`);
-            this.triggerBackgroundImageSearch(figureName, category, epoch);
-            
+            // No preloaded images found - return null (no external search)
+            console.log(`No preloaded images found for ${figureName}`);
             return null;
         } catch (error) {
-            console.error('Error populating images for story:', error);
+            console.error('Error checking preloaded images for story:', error);
             return null;
         }
     }
@@ -338,34 +338,6 @@ class HistoricalFiguresImageService {
             console.error('Error extracting figure name:', error);
             return null;
         }
-    }
-
-    /**
-     * Trigger background image search (non-blocking)
-     */
-    async triggerBackgroundImageSearch(figureName, category, epoch) {
-        try {
-            // This would typically call the Python script or external image search service
-            console.log(`Background image search triggered for ${figureName} (${category}/${epoch})`);
-            
-            // For now, we'll simulate this by checking if we have sample data
-            const sampleData = await this.checkForSampleData(figureName, category, epoch);
-            if (sampleData) {
-                await this.storeFigureImages(sampleData);
-                console.log(`Sample images stored for ${figureName}`);
-            }
-        } catch (error) {
-            console.error('Error in background image search:', error);
-        }
-    }
-
-    /**
-     * Check for sample data for a figure
-     */
-    async checkForSampleData(figureName, category, epoch) {
-        // This would check if we have sample data available
-        // For now, return null to indicate no sample data
-        return null;
     }
 
     /**

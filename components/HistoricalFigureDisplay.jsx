@@ -3,10 +3,10 @@ import './HistoricalFigureDisplay.css';
 
 const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [imageLoading, setImageLoading] = useState(true);
+    const [imageLoading, setImageLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [showGallery, setShowGallery] = useState(false);
-    const [imageStatus, setImageStatus] = useState('searching'); // Initialize as searching
+    const [imageStatus, setImageStatus] = useState('checking');
     const [images, setImages] = useState(story.images || {});
     const [figureName, setFigureName] = useState(story.historicalFigure || story.figureName);
     const [showFullStory, setShowFullStory] = useState(false);
@@ -14,37 +14,66 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const portrait = images?.portrait;
     const gallery = images?.gallery || [];
 
-    // Extract brief content (first 2-3 sentences) for initial display
-    const getBriefContent = (content) => {
-        if (!content) return '';
-        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
-        return sentences.slice(0, 2).join('. ') + '.';
+    // Get story content from the correct fields
+    const getStoryContent = () => {
+        // Try different possible content fields
+        if (story.fullText) return story.fullText;
+        if (story.content) return story.content;
+        if (story.summary) return story.summary;
+        if (story.text) return story.text;
+        if (story.story) return story.story;
+        return story.headline || 'No story content available.';
     };
 
-    const briefContent = getBriefContent(story.content);
+    const storyContent = getStoryContent();
 
-    useEffect(() => {
-        if (portrait) {
-            setImageLoading(true);
-            setImageError(false);
+    // Extract brief achievements (first 1-2 sentences) for initial display
+    const getBriefAchievements = (content) => {
+        if (!content) return '';
+        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        return sentences.slice(0, 1).join('. ') + '.';
+    };
+
+    // Extract full story content (remaining text after brief achievements)
+    const getFullStoryContent = (content) => {
+        if (!content) return '';
+        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        return sentences.slice(1).join('. ') + '.';
+    };
+
+    const briefAchievements = getBriefAchievements(storyContent);
+    const fullStoryContent = getFullStoryContent(storyContent);
+    
+    // Get the historical figure name from the headline or story data
+    const getFigureName = () => {
+        if (story.historicalFigure) return story.historicalFigure;
+        if (story.figureName) return story.figureName;
+        if (story.headline) {
+            // Extract name from headline (e.g., "Archimedes: Innovator of Levers and Buoyancy")
+            const colonIndex = story.headline.indexOf(':');
+            if (colonIndex > 0) {
+                return story.headline.substring(0, colonIndex);
+            }
+            return story.headline;
         }
-    }, [portrait]);
+        return 'Historical Figure';
+    };
 
     useEffect(() => {
-        // Always try to load images for historical figures
+        // Only check for preloaded images in MongoDB - no external loading
         if (figureName) {
-            console.log(`🔍 Starting image search for: ${figureName} (${story.category}/${story.epoch})`);
-            setImageStatus('searching');
+            console.log(`🔍 Checking preloaded images for: ${figureName} (${story.category}/${story.epoch})`);
+            setImageStatus('checking');
             
-            const pollForImages = async () => {
+            const checkPreloadedImages = async () => {
                 try {
-                    console.log(`🔍 Polling for images: ${figureName} (${story.category}/${story.epoch})`);
+                    console.log(`🔍 Checking MongoDB for preloaded images: ${figureName} (${story.category}/${story.epoch})`);
                     const response = await fetch(`https://api.orbgame.us/api/orb/images/best?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}&contentType=portraits`);
                     
                     if (response.ok) {
                         const data = await response.json();
                         if (data.success && data.image) {
-                            console.log(`✅ Found image for ${figureName}:`, data.image.url);
+                            console.log(`✅ Found preloaded image for ${figureName}:`, data.image.url);
                             setImages({
                                 portrait: data.image,
                                 gallery: [data.image]
@@ -52,37 +81,24 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                             setImageStatus('loaded');
                             setImageLoading(false);
                         } else {
-                            console.log(`❌ No image found for ${figureName}`);
-                            setImageStatus('no-figure');
+                            console.log(`❌ No preloaded images found for ${figureName}`);
+                            setImageStatus('no-images');
                         }
                     } else {
                         console.log(`❌ Image API error for ${figureName}:`, response.status);
-                        setImageStatus('error');
+                        setImageStatus('no-images');
                     }
                 } catch (error) {
-                    console.error('Error polling for images:', error);
-                    setImageStatus('error');
+                    console.error('Error checking preloaded images:', error);
+                    setImageStatus('no-images');
                 }
             };
 
-            // Poll immediately, then every 2 seconds for up to 30 seconds
-            pollForImages();
-            const pollInterval = setInterval(pollForImages, 2000);
-            const timeout = setTimeout(() => {
-                clearInterval(pollInterval);
-                if (imageStatus === 'searching') {
-                    console.log(`⏰ Image search timeout for ${figureName}`);
-                    setImageStatus('timeout');
-                }
-            }, 30000); // 30 seconds
-
-            return () => {
-                clearInterval(pollInterval);
-                clearTimeout(timeout);
-            };
+            // Check immediately for preloaded images
+            checkPreloadedImages();
         } else {
-            // No figure name, set status to no-figure
-            setImageStatus('no-figure');
+            // No figure name, set status to no-images
+            setImageStatus('no-images');
         }
     }, [figureName, story.category, story.epoch]);
 
@@ -115,55 +131,11 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         return portrait;
     };
 
-    const renderImageStatus = () => {
-        switch (imageStatus) {
-            case 'searching':
-                return (
-                    <div className="image-status-inline searching">
-                        <div className="loading-spinner"></div>
-                        <p>Searching for images...</p>
-                        <small>This may take a few moments</small>
-                    </div>
-                );
-            case 'timeout':
-                return (
-                    <div className="image-status-inline timeout">
-                        <div className="timeout-icon">⏰</div>
-                        <p>Image search timed out</p>
-                        <small>Images may be available later</small>
-                    </div>
-                );
-            case 'no-figure':
-                return (
-                    <div className="image-status-inline no-figure">
-                        <div className="no-figure-icon">❓</div>
-                        <p>No historical figure detected</p>
-                        <small>This story may not be about a specific person</small>
-                    </div>
-                );
-            case 'error':
-                return (
-                    <div className="image-status-inline error">
-                        <div className="error-icon">⚠️</div>
-                        <p>Error loading images</p>
-                        <small>Please try again later</small>
-                    </div>
-                );
-            default:
-                return null;
-        }
-    };
-
     const renderImage = () => {
         const currentImage = getCurrentImage();
         
         if (!currentImage) {
-            return (
-                <div className="figure-placeholder-inline">
-                    <div className="placeholder-icon">👤</div>
-                    <p>No image available</p>
-                </div>
-            );
+            return null; // Don't render anything if no image
         }
 
         return (
@@ -171,14 +143,12 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 {imageLoading && (
                     <div className="image-loading-inline">
                         <div className="loading-spinner"></div>
-                        <p>Loading image...</p>
                     </div>
                 )}
                 
                 {imageError && (
                     <div className="image-error-inline">
                         <div className="error-icon">⚠️</div>
-                        <p>Failed to load image</p>
                     </div>
                 )}
 
@@ -265,29 +235,19 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
             </div>
 
             <div className="figure-content-inline">
+                {/* Story Content Section - Displayed FIRST and ALWAYS */}
                 <div className="figure-story-section">
-                    <h3 className="story-headline-normal">{story.headline}</h3>
                     <div className="story-content-scrollable">
-                        {showFullStory ? story.content : briefContent}
+                        {showFullStory ? fullStoryContent : briefAchievements}
                     </div>
                     
-                    {/* Images displayed inline with text */}
-                    {imageStatus === 'loaded' ? (
-                        <>
-                            {renderImage()}
-                            {renderImageInfo()}
-                        </>
-                    ) : (
-                        renderImageStatus()
-                    )}
-                    
                     <div className="story-actions">
-                        {!showFullStory && (
+                        {!showFullStory && fullStoryContent && (
                             <button 
                                 className="more-button"
                                 onClick={() => setShowFullStory(true)}
                             >
-                                More
+                                Read Full Story
                             </button>
                         )}
                         
@@ -301,6 +261,28 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                         )}
                     </div>
                 </div>
+
+                {/* Historical Figure Name and Brief Accomplishment */}
+                <div className="figure-header-section">
+                    <h2 className="figure-name">{getFigureName()}</h2>
+                    <p className="figure-accomplishment">{briefAchievements}</p>
+                </div>
+
+                {/* Images Section - Only display if preloaded images exist */}
+                {imageStatus === 'loaded' && (
+                    <div className="figure-images-section">
+                        {renderImage()}
+                        {renderImageInfo()}
+                    </div>
+                )}
+
+                {/* No Image Placeholder - Show when no images are available */}
+                {imageStatus === 'no-images' && (
+                    <div className="no-image-placeholder">
+                        <div className="placeholder-icon">🖼️</div>
+                        <p className="placeholder-text">No image available for this historical figure</p>
+                    </div>
+                )}
             </div>
 
             {gallery.length > 1 && imageStatus === 'loaded' && (

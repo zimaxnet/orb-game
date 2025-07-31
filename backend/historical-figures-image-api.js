@@ -488,30 +488,46 @@ class HistoricalFiguresImageAPI {
         try {
             // Try to extract from headline first
             if (story.headline) {
-                // Look for common patterns in headlines
+                // Look for common patterns in headlines - improved to capture full names
                 const patterns = [
-                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // First words starting with capital
-                    /(?:about|story of|tale of)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:and|&)\s+his/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:and|&)\s+her/i
+                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/, // Full names with "of" (required)
+                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+the\s+[A-Z][a-z]+)/, // Names with "the" (required)
+                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // Basic name pattern (fallback)
+                    /(?:about|story of|tale of)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/i,
+                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)\s+(?:and|&)\s+his/i,
+                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)\s+(?:and|&)\s+her/i,
                 ];
 
                 for (const pattern of patterns) {
                     const match = story.headline.match(pattern);
                     if (match && match[1]) {
-                        return match[1].trim();
+                        const extractedName = match[1].trim();
+                        // Validate that we have a reasonable name (at least 2 characters)
+                        if (extractedName.length >= 2) {
+                            return extractedName;
+                        }
                     }
                 }
             }
 
             // Try to extract from content
             if (story.content) {
-                // Look for names in the first few sentences
+                // Look for names in the first few sentences - improved patterns
                 const firstSentence = story.content.split('.')[0];
-                const namePattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/;
-                const match = firstSentence.match(namePattern);
-                if (match && match[1]) {
-                    return match[1].trim();
+                const namePatterns = [
+                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/, // Full names with "of" (required)
+                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // Basic name pattern (fallback)
+                ];
+                
+                for (const pattern of namePatterns) {
+                    const match = firstSentence.match(pattern);
+                    if (match && match[1]) {
+                        const extractedName = match[1].trim();
+                        // Validate that we have a reasonable name (at least 2 characters)
+                        if (extractedName.length >= 2) {
+                            return extractedName;
+                        }
+                    }
                 }
             }
 

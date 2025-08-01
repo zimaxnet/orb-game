@@ -45,47 +45,17 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     };
 
     useEffect(() => {
-        // Only check for preloaded images in MongoDB - no external loading
-        if (figureName) {
-            console.log(`🔍 Checking preloaded images for: ${figureName} (${story.category}/${story.epoch})`);
-            setImageStatus('checking');
-            
-            const checkPreloadedImages = async () => {
-                try {
-                    console.log(`🔍 Checking MongoDB for preloaded images: ${figureName} (${story.category}/${story.epoch})`);
-                    const response = await fetch(`https://api.orbgame.us/api/orb/images/best?figureName=${encodeURIComponent(figureName)}&category=${encodeURIComponent(story.category)}&epoch=${encodeURIComponent(story.epoch)}&contentType=portraits`);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.success && data.image) {
-                            console.log(`✅ Found preloaded image for ${figureName}:`, data.image.url);
-                            setImages({
-                                portrait: data.image,
-                                gallery: [data.image]
-                            });
-                            setImageStatus('loaded');
-                            setImageLoading(false);
-                        } else {
-                            console.log(`❌ No preloaded images found for ${figureName}`);
-                            setImageStatus('no-images');
-                        }
-                    } else {
-                        console.log(`❌ Image API error for ${figureName}:`, response.status);
-                        setImageStatus('no-images');
-                    }
-                } catch (error) {
-                    console.error('Error checking preloaded images:', error);
-                    setImageStatus('no-images');
-                }
-            };
-
-            // Check immediately for preloaded images
-            checkPreloadedImages();
+        // Use images that are already included in the story data
+        if (story.images && (story.images.portrait || story.images.gallery)) {
+            console.log(`✅ Using images from story data for: ${figureName}`);
+            setImages(story.images);
+            setImageStatus('loaded');
+            setImageLoading(false);
         } else {
-            // No figure name, set status to no-images
+            console.log(`❌ No images found in story data for: ${figureName}`);
             setImageStatus('no-images');
         }
-    }, [figureName, story.category, story.epoch]);
+    }, [story.images, figureName]);
 
     const handleImageLoad = () => {
         setImageLoading(false);

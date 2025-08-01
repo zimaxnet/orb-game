@@ -720,10 +720,12 @@ async function initializeServer() {
         console.log('🔧 Initializing HistoricalFiguresService...');
         historicalFiguresService = new HistoricalFiguresService(mongoUri);
         await historicalFiguresService.initialize();
+        app.locals.historicalFiguresService = historicalFiguresService;
         console.log('✅ HistoricalFiguresService initialized successfully.');
       } catch (figuresError) {
         console.warn('⚠️ HistoricalFiguresService initialization failed:', figuresError.message);
         historicalFiguresService = null;
+        app.locals.historicalFiguresService = null;
       }
 
       // Initialize StoryCacheService
@@ -855,15 +857,16 @@ process.on('SIGINT', async () => {
   process.exit();
 });
 
-// New endpoint: Get historical figure stories by category
+// New endpoint: Get historical figure stories by category with images and audio
 app.get('/api/orb/historical-figures/:category', async (req, res) => {
   const category = req.params.category;
   const count = parseInt(req.query.count) || 1;
   const epoch = req.query.epoch || 'Modern';
   const language = req.query.language || 'en';
-  const includeTTS = req.query.includeTTS === 'true';
+  const includeTTS = req.query.includeTTS !== 'false'; // Default to true unless explicitly set to false
+  const includeImages = req.query.includeImages !== 'false'; // Default to true unless explicitly set to false
   
-  console.log(`📚 Fetching ${count} historical figure stories for ${category} in ${epoch} epoch (${language})`);
+  console.log(`📚 Fetching ${count} historical figure stories for ${category} in ${epoch} epoch (${language}) with TTS: ${includeTTS}, Images: ${includeImages}`);
   
   // If historical figures service is not available, fail
   if (!historicalFiguresService) {
@@ -878,10 +881,36 @@ app.get('/api/orb/historical-figures/:category', async (req, res) => {
     if (stories.length === 0) {
       console.log(`❌ No historical figure stories found for ${category}-${epoch}-${language}`);
       res.status(404).json({ error: `No historical figure stories available for ${category} in ${epoch} epoch (${language})` });
-    } else {
-      console.log(`✅ Found ${stories.length} historical figure stories for ${category}`);
-      res.json(stories);
+      return;
     }
+    
+    // Add images to stories if requested
+    if (includeImages && app.locals.imageAPI) {
+      console.log(`🖼️ Adding images to ${stories.length} stories...`);
+      
+      for (let i = 0; i < stories.length; i++) {
+        const story = stories[i];
+        const figureName = story.historicalFigure || story.figureName;
+        
+        if (figureName) {
+          try {
+            // Get images for this figure
+            const images = await app.locals.imageAPI.imageService.getFigureImages(figureName, category, epoch);
+            if (images) {
+              story.images = images;
+              console.log(`✅ Added images for ${figureName}`);
+            } else {
+              console.log(`⚠️ No images found for ${figureName}`);
+            }
+          } catch (imageError) {
+            console.warn(`⚠️ Failed to get images for ${figureName}:`, imageError.message);
+          }
+        }
+      }
+    }
+    
+    console.log(`✅ Found ${stories.length} historical figure stories for ${category} with images: ${includeImages}, TTS: ${includeTTS}`);
+    res.json({ stories });
   } catch (error) {
     console.error('Historical figures endpoint error:', error);
     res.status(500).json({ error: 'Failed to fetch historical figure stories' });

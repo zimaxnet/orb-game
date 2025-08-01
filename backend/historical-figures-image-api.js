@@ -26,6 +26,8 @@ class HistoricalFiguresImageAPI {
                 });
             }
 
+            console.log(`🔍 Getting best image for ${figureName} (${category}/${epoch})`);
+
             const image = await this.imageService.getBestImage(
                 figureName,
                 category,
@@ -34,10 +36,13 @@ class HistoricalFiguresImageAPI {
             );
 
             if (!image) {
+                console.log(`❌ No image found for ${figureName}`);
                 return res.status(404).json({
                     error: 'No image found for the specified parameters'
                 });
             }
+
+            console.log(`✅ Returning image for ${figureName}: ${image.url}`);
 
             res.json({
                 success: true,
@@ -49,7 +54,7 @@ class HistoricalFiguresImageAPI {
             });
 
         } catch (error) {
-            console.error('Error getting best image:', error);
+            console.error('❌ Error getting best image:', error);
             res.status(500).json({
                 error: 'Internal server error',
                 message: error.message
@@ -70,6 +75,8 @@ class HistoricalFiguresImageAPI {
                 });
             }
 
+            console.log(`🔍 Getting gallery for ${figureName} (${category}/${epoch})`);
+
             const images = await this.imageService.getFigureGallery(
                 figureName,
                 category,
@@ -78,11 +85,14 @@ class HistoricalFiguresImageAPI {
             );
 
             if (!images || images.length === 0) {
+                console.log(`❌ No gallery images found for ${figureName}`);
                 return res.status(404).json({
                     error: 'No images found for the specified parameters'
                 });
             }
 
+            console.log(`✅ Returning ${images.length} gallery images for ${figureName}`);
+
             res.json({
                 success: true,
                 images,
@@ -93,112 +103,7 @@ class HistoricalFiguresImageAPI {
             });
 
         } catch (error) {
-            console.error('Error getting figure gallery:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Get images by content type for a figure
-     */
-    async getImagesByType(req, res) {
-        try {
-            const { figureName, category, epoch, contentType } = req.query;
-
-            if (!figureName || !category || !epoch || !contentType) {
-                return res.status(400).json({
-                    error: 'Missing required parameters: figureName, category, epoch, contentType'
-                });
-            }
-
-            const images = await this.imageService.getFigureImages(
-                figureName,
-                category,
-                epoch,
-                contentType
-            );
-
-            if (!images || images.length === 0) {
-                return res.status(404).json({
-                    error: 'No images found for the specified parameters'
-                });
-            }
-
-            res.json({
-                success: true,
-                images,
-                figureName,
-                category,
-                epoch,
-                contentType,
-                count: images.length
-            });
-
-        } catch (error) {
-            console.error('Error getting images by type:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Get image by permalink
-     */
-    async getImageByPermalink(req, res) {
-        try {
-            const { permalink } = req.params;
-
-            if (!permalink) {
-                return res.status(400).json({
-                    error: 'Missing required parameter: permalink'
-                });
-            }
-
-            const image = await this.imageService.getImageByPermalink(permalink);
-
-            if (!image) {
-                return res.status(404).json({
-                    error: 'No image found for the specified permalink'
-                });
-            }
-
-            res.json({
-                success: true,
-                image,
-                permalink
-            });
-
-        } catch (error) {
-            console.error('Error getting image by permalink:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Get most accessed images
-     */
-    async getMostAccessedImages(req, res) {
-        try {
-            const { limit = 10 } = req.query;
-
-            const images = await this.imageService.getMostAccessedImages(parseInt(limit));
-
-            res.json({
-                success: true,
-                images,
-                count: images.length
-            });
-
-        } catch (error) {
-            console.error('Error getting most accessed images:', error);
+            console.error('❌ Error getting figure gallery:', error);
             res.status(500).json({
                 error: 'Internal server error',
                 message: error.message
@@ -211,7 +116,11 @@ class HistoricalFiguresImageAPI {
      */
     async getImageStats(req, res) {
         try {
+            console.log('🔍 Getting image statistics');
+            
             const stats = await this.imageService.getImageStats();
+            
+            console.log(`✅ Image stats: ${stats.totalFigures} figures, ${stats.totalImages} images`);
 
             res.json({
                 success: true,
@@ -219,7 +128,7 @@ class HistoricalFiguresImageAPI {
             });
 
         } catch (error) {
-            console.error('Error getting image stats:', error);
+            console.error('❌ Error getting image stats:', error);
             res.status(500).json({
                 error: 'Internal server error',
                 message: error.message
@@ -228,89 +137,7 @@ class HistoricalFiguresImageAPI {
     }
 
     /**
-     * Import image data from JSON file
-     */
-    async importImageData(req, res) {
-        try {
-            const { filePath } = req.body;
-
-            if (!filePath) {
-                return res.status(400).json({
-                    error: 'Missing required parameter: filePath'
-                });
-            }
-
-            const result = await this.imageService.importImageData(filePath);
-
-            res.json({
-                success: true,
-                message: 'Image data import completed',
-                result
-            });
-
-        } catch (error) {
-            console.error('Error importing image data:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Clean up image data
-     */
-    async cleanupImages(req, res) {
-        try {
-            const deletedCount = await this.imageService.cleanupImages();
-
-            res.json({
-                success: true,
-                message: 'Image cleanup completed',
-                deletedCount
-            });
-
-        } catch (error) {
-            console.error('Error cleaning up images:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Populate images for a story asynchronously
-     */
-    async populateImagesForStory(req, res) {
-        try {
-            const { story, category, epoch } = req.body;
-
-            if (!story || !category || !epoch) {
-                return res.status(400).json({
-                    error: 'Missing required parameters: story, category, epoch'
-                });
-            }
-
-            const imageData = await this.imageService.populateImagesForStory(story, category, epoch);
-
-            res.json({
-                success: true,
-                imageData,
-                message: imageData ? 'Images found and populated' : 'No images found, background search triggered'
-            });
-
-        } catch (error) {
-            console.error('Error populating images for story:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Enhanced story endpoint that includes images (asynchronous loading)
+     * Get stories with images integrated
      */
     async getStoryWithImages(req, res) {
         try {
@@ -322,9 +149,9 @@ class HistoricalFiguresImageAPI {
                 });
             }
 
+            console.log(`🔍 Getting stories with images for ${category}/${epoch}`);
+
             // Get stories from existing service
-            // Note: historicalFiguresService is a global variable in the backend server
-            // We need to access it through the request context
             const stories = await this.getStoriesFromService(category, epoch, language, count, req);
 
             if (!stories || stories.length === 0) {
@@ -333,7 +160,7 @@ class HistoricalFiguresImageAPI {
                 });
             }
 
-            // Return stories immediately, then populate images asynchronously
+            // Enhance stories with images
             const enhancedStories = await Promise.all(
                 stories.map(async (story) => {
                     try {
@@ -341,7 +168,9 @@ class HistoricalFiguresImageAPI {
                         const figureName = this.extractFigureName(story);
                         
                         if (figureName) {
-                            // Check for existing images first
+                            console.log(`🔍 Looking for images for ${figureName}`);
+                            
+                            // Check for existing images
                             const existingImages = await this.imageService.getFigureImages(
                                 figureName,
                                 category,
@@ -350,7 +179,8 @@ class HistoricalFiguresImageAPI {
                             );
 
                             if (existingImages && existingImages.length > 0) {
-                                // Images exist, include them immediately
+                                console.log(`✅ Found images for ${figureName}`);
+                                
                                 const gallery = await this.imageService.getFigureGallery(
                                     figureName,
                                     category,
@@ -368,25 +198,43 @@ class HistoricalFiguresImageAPI {
                                     imageStatus: 'loaded'
                                 };
                             } else {
-                                // No images exist, trigger background search
-                                this.imageService.triggerBackgroundImageSearch(figureName, category, epoch);
+                                console.log(`🔄 No images found for ${figureName}, using fallback`);
+                                
+                                // Use category fallback
+                                const fallbackImages = this.imageService.getFallbackImages(category);
                                 
                                 return {
                                     ...story,
                                     figureName,
-                                    images: null,
-                                    imageStatus: 'searching'
+                                    images: {
+                                        portrait: {
+                                            url: fallbackImages.portrait,
+                                            source: 'Fallback',
+                                            reliability: 'Medium',
+                                            priority: 50,
+                                            createdAt: new Date()
+                                        },
+                                        gallery: fallbackImages.gallery.map((url, index) => ({
+                                            url,
+                                            source: 'Fallback',
+                                            reliability: 'Medium',
+                                            priority: 40 - index,
+                                            createdAt: new Date()
+                                        }))
+                                    },
+                                    imageStatus: 'fallback'
                                 };
                             }
                         }
 
+                        console.log(`❌ No figure name extracted from story`);
                         return {
                             ...story,
                             images: null,
                             imageStatus: 'no-figure'
                         };
                     } catch (error) {
-                        console.error(`Error enhancing story with images:`, error);
+                        console.error(`❌ Error enhancing story with images:`, error);
                         return {
                             ...story,
                             images: null,
@@ -395,6 +243,8 @@ class HistoricalFiguresImageAPI {
                     }
                 })
             );
+
+            console.log(`✅ Returning ${enhancedStories.length} enhanced stories`);
 
             res.json({
                 success: true,
@@ -406,54 +256,7 @@ class HistoricalFiguresImageAPI {
             });
 
         } catch (error) {
-            console.error('Error getting story with images:', error);
-            res.status(500).json({
-                error: 'Internal server error',
-                message: error.message
-            });
-        }
-    }
-
-    /**
-     * Check for updated images for a story
-     */
-    async checkForUpdatedImages(req, res) {
-        try {
-            const { figureName, category, epoch } = req.query;
-
-            if (!figureName || !category || !epoch) {
-                return res.status(400).json({
-                    error: 'Missing required parameters: figureName, category, epoch'
-                });
-            }
-
-            const images = await this.imageService.getFigureImages(figureName, category, epoch, 'portraits');
-
-            if (images && images.length > 0) {
-                const gallery = await this.imageService.getFigureGallery(figureName, category, epoch, 3);
-                
-                res.json({
-                    success: true,
-                    images: {
-                        portrait: images[0],
-                        gallery
-                    },
-                    figureName,
-                    category,
-                    epoch
-                });
-            } else {
-                res.json({
-                    success: false,
-                    message: 'No images available yet',
-                    figureName,
-                    category,
-                    epoch
-                });
-            }
-
-        } catch (error) {
-            console.error('Error checking for updated images:', error);
+            console.error('❌ Error getting story with images:', error);
             res.status(500).json({
                 error: 'Internal server error',
                 message: error.message
@@ -466,17 +269,16 @@ class HistoricalFiguresImageAPI {
      */
     async getStoriesFromService(category, epoch, language, count, req) {
         try {
-            // Access the historical figures service through the global variable
-            // This is a workaround since the service is not in app.locals
-            const response = await fetch(`${req.protocol}://${req.get('host')}/api/orb/positive-news/${category}?count=${count}&epoch=${epoch}&language=${language}&storyType=historical-figure`);
-            
-            if (!response.ok) {
-                throw new Error(`Failed to fetch stories: ${response.status}`);
+            // Access the historical figures service directly from the backend server
+            if (!req.app.locals.historicalFiguresService) {
+                throw new Error('Historical figures service not available');
             }
             
-            return await response.json();
+            // Get a single story and return it as an array
+            const story = await req.app.locals.historicalFiguresService.getRandomStory(category, epoch, language);
+            return story ? [story] : [];
         } catch (error) {
-            console.error('Error getting stories from service:', error);
+            console.error('❌ Error getting stories from service:', error);
             throw error;
         }
     }
@@ -485,57 +287,37 @@ class HistoricalFiguresImageAPI {
      * Extract figure name from story content
      */
     extractFigureName(story) {
-        try {
-            // Try to extract from headline first
-            if (story.headline) {
-                // Look for common patterns in headlines - improved to capture full names
-                const patterns = [
-                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/, // Full names with "of" (required)
-                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+the\s+[A-Z][a-z]+)/, // Names with "the" (required)
-                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // Basic name pattern (fallback)
-                    /(?:about|story of|tale of)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)\s+(?:and|&)\s+his/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)\s+(?:and|&)\s+her/i,
-                ];
-
-                for (const pattern of patterns) {
-                    const match = story.headline.match(pattern);
-                    if (match && match[1]) {
-                        const extractedName = match[1].trim();
-                        // Validate that we have a reasonable name (at least 2 characters)
-                        if (extractedName.length >= 2) {
-                            return extractedName;
-                        }
-                    }
-                }
-            }
-
-            // Try to extract from content
-            if (story.content) {
-                // Look for names in the first few sentences - improved patterns
-                const firstSentence = story.content.split('.')[0];
-                const namePatterns = [
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+of\s+[A-Z][a-z]+)/, // Full names with "of" (required)
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // Basic name pattern (fallback)
-                ];
-                
-                for (const pattern of namePatterns) {
-                    const match = firstSentence.match(pattern);
-                    if (match && match[1]) {
-                        const extractedName = match[1].trim();
-                        // Validate that we have a reasonable name (at least 2 characters)
-                        if (extractedName.length >= 2) {
-                            return extractedName;
-                        }
-                    }
-                }
-            }
-
-            return null;
-        } catch (error) {
-            console.error('Error extracting figure name:', error);
-            return null;
+        if (!story) return null;
+        
+        // Try to extract from historicalFigure field
+        if (story.historicalFigure) {
+            return story.historicalFigure;
         }
+        
+        // Try to extract from figureName field
+        if (story.figureName) {
+            return story.figureName;
+        }
+        
+        // Try to extract from title or content
+        const text = (story.title || story.content || '').toLowerCase();
+        
+        // Common historical figure patterns
+        const patterns = [
+            /(archimedes|einstein|newton|curie|da vinci|leonardo|marie|isaac|albert)/i,
+            /(hippocrates|euclid|aristotle|pythagoras|plato|socrates)/i,
+            /(galileo|copernicus|kepler|tesla|edison|bell)/i,
+            /(darwin|pasteur|mendel|franklin|goodall|carson)/i
+        ];
+        
+        for (const pattern of patterns) {
+            const match = text.match(pattern);
+            if (match) {
+                return match[1];
+            }
+        }
+        
+        return null;
     }
 }
 

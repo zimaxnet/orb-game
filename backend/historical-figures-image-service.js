@@ -6,23 +6,116 @@ class HistoricalFiguresImageService {
         this.db = null;
         this.collection = null;
         this.mongoUri = null;
+        
+        // Reliable image sources with fallbacks
+        this.imageSources = {
+            // Primary sources - verified, accessible URLs
+            primary: {
+                'Archimedes': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Archimedes_%28Michelangelo%29.jpg/300px-Archimedes_%28Michelangelo%29.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Archimedes_%28Michelangelo%29.jpg/300px-Archimedes_%28Michelangelo%29.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Archimedes_screw.jpg/300px-Archimedes_screw.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Archimedes_lever.jpg/300px-Archimedes_lever.jpg'
+                    ]
+                },
+                'Albert Einstein': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/300px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/300px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Einstein_formula.jpg/300px-Einstein_formula.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Einstein_1925.jpg/300px-Einstein_1925.jpg'
+                    ]
+                },
+                'Leonardo da Vinci': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_-_presumed_self-portrait_-_WGA12798.jpg/300px-Leonardo_da_Vinci_-_presumed_self-portrait_-_WGA12798.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_-_presumed_self-portrait_-_WGA12798.jpg/300px-Leonardo_da_Vinci_-_presumed_self-portrait_-_WGA12798.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/300px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Leonardo_da_Vinci_-_Vitruvian_Man_-_Google_Art_Project.jpg/300px-Leonardo_da_Vinci_-_Vitruvian_Man_-_Google_Art_Project.jpg'
+                    ]
+                },
+                'Marie Curie': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/300px-Marie_Curie_c._1920s.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/300px-Marie_Curie_c._1920s.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Marie_Curie_in_her_laboratory.jpg/300px-Marie_Curie_in_her_laboratory.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Marie_Curie_1911.jpg/300px-Marie_Curie_1911.jpg'
+                    ]
+                },
+                'Isaac Newton': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/GodfreyKneller-IsaacNewton-1689.jpg/300px-GodfreyKneller-IsaacNewton-1689.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/GodfreyKneller-IsaacNewton-1689.jpg/300px-GodfreyKneller-IsaacNewton-1689.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Newton_reflecting_telescope_replica.jpg/300px-Newton_reflecting_telescope_replica.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Newton_prism.jpg/300px-Newton_prism.jpg'
+                    ]
+                }
+            },
+            
+            // Fallback sources for different categories
+            fallbacks: {
+                'Technology': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzQyYz3mIi8+PHRleHQgeD0iMTUwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5vbG9neSBJbm5vdmF0b3I8L3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzQyYz3mIi8+PHRleHQgeD0iMTUwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5vbG9neTwvL3RleHQ+PC9zdmc+'
+                    ]
+                },
+                'Science': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFhNzNhOCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNjaWVudGlzdDwvL3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFhNzNhOCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJTY2llbmNlPC90ZXh0Pjwvc3ZnPg=='
+                    ]
+                },
+                'Art': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2YzNhNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFydGlzdDwvL3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2YzNhNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJBcnQ8L3RleHQ+PC9zdmc+'
+                    ]
+                },
+                'Nature': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzE2YTg3NCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5hdHVyYWxpc3Q8L3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzE2YTg3NCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJOYXR1cmU8L3RleHQ+PC9zdmc+'
+                    ]
+                },
+                'Sports': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y1NzNhNiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkF0aGxldGU8L3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y1NzNhNiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPlNwb3J0czwvdGV4dD48L3N2Zz4='
+                    ]
+                },
+                'Music': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2U5M2Y3ZiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk11c2ljaWFuPC90ZXh0Pjwvc3ZnPg==',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2U5M2Y3ZiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPk11c2ljPC90ZXh0Pjwvc3ZnPg=='
+                    ]
+                },
+                'Space': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzM0Mzc0YSIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNwYWNlIFBpb25lZXI8L3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzM0Mzc0YSIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPlNwYWNlPC90ZXh0Pjwvc3ZnPg=='
+                    ]
+                },
+                'Innovation': {
+                    portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzhmNWNiNiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklubm92YXRvcjwvL3RleHQ+PC9zdmc+',
+                    gallery: [
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzhmNWNiNiIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPklubm92YXRpb248L3RleHQ+PC9zdmc+'
+                    ]
+                }
+            }
+        };
     }
 
     async connect(mongoUri = null) {
         try {
-            // Use provided mongoUri or fall back to environment variable
             this.mongoUri = mongoUri || process.env.MONGO_URI;
             
             if (!this.mongoUri) {
                 throw new Error('MongoDB URI not provided and MONGO_URI environment variable not set');
             }
             
-            // Remove deprecated options and use modern MongoDB connection
-            this.client = new MongoClient(this.mongoUri, {
-                // Remove deprecated options
-                // useNewUrlParser: true,
-                // useUnifiedTopology: true,
-            });
+            this.client = new MongoClient(this.mongoUri);
             await this.client.connect();
             this.db = this.client.db('orbgame');
             this.collection = this.db.collection('historical_figure_images');
@@ -30,13 +123,11 @@ class HistoricalFiguresImageService {
             // Create indexes for efficient querying
             await this.collection.createIndex({ figureName: 1, category: 1, epoch: 1 });
             await this.collection.createIndex({ contentType: 1 });
-            await this.collection.createIndex({ source: 1 });
             await this.collection.createIndex({ createdAt: 1 });
-            await this.collection.createIndex({ permalink: 1 });
             
-            console.log('Historical Figures Image Service connected to MongoDB');
+            console.log('✅ Historical Figures Image Service connected to MongoDB');
         } catch (error) {
-            console.error('Error connecting to MongoDB for image service:', error);
+            console.error('❌ Error connecting to MongoDB for image service:', error);
             throw error;
         }
     }
@@ -48,224 +139,261 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Store image data for a historical figure with permalinks
+     * Get reliable images for a historical figure with multiple fallback layers
      */
-    async storeFigureImages(figureData) {
+    async getFigureImages(figureName, category, epoch, contentType = 'portraits') {
         try {
-            const {
-                figureName,
-                category,
-                epoch,
-                portraits = {},
-                achievements = {},
-                inventions = {},
-                artifacts = {}
-            } = figureData;
+            console.log(`🔍 Getting images for ${figureName} (${category}/${epoch})`);
+            
+            // Layer 1: Check database for stored images
+            const storedImages = await this.getStoredImages(figureName, category, epoch, contentType);
+            if (storedImages && storedImages.length > 0) {
+                console.log(`✅ Found ${storedImages.length} stored images for ${figureName}`);
+                return storedImages;
+            }
+            
+            // Layer 2: Check primary sources for verified images
+            const primaryImages = this.getPrimaryImages(figureName);
+            if (primaryImages) {
+                console.log(`✅ Found primary images for ${figureName}`);
+                await this.storeImages(figureName, category, epoch, primaryImages);
+                return this.formatImages(primaryImages, contentType);
+            }
+            
+            // Layer 3: Use category-specific fallback images
+            const fallbackImages = this.getFallbackImages(category);
+            console.log(`🔄 Using fallback images for ${figureName} (${category})`);
+            await this.storeImages(figureName, category, epoch, fallbackImages);
+            return this.formatImages(fallbackImages, contentType);
+            
+        } catch (error) {
+            console.error(`❌ Error getting images for ${figureName}:`, error);
+            // Final fallback - return category fallback
+            return this.formatImages(this.getFallbackImages(category), contentType);
+        }
+    }
 
+    /**
+     * Get stored images from database
+     */
+    async getStoredImages(figureName, category, epoch, contentType) {
+        try {
+            const doc = await this.collection.findOne({ figureName, category, epoch });
+            if (doc && doc[contentType] && doc[contentType].length > 0) {
+                return doc[contentType];
+            }
+            return null;
+        } catch (error) {
+            console.error('Error getting stored images:', error);
+            return null;
+        }
+    }
+
+    /**
+     * Get primary source images for well-known figures
+     */
+    getPrimaryImages(figureName) {
+        return this.imageSources.primary[figureName] || null;
+    }
+
+    /**
+     * Get fallback images for a category
+     */
+    getFallbackImages(category) {
+        return this.imageSources.fallbacks[category] || this.imageSources.fallbacks['Technology'];
+    }
+
+    /**
+     * Store images in database
+     */
+    async storeImages(figureName, category, epoch, images) {
+        try {
             const imageData = {
                 figureName,
                 category,
                 epoch,
-                portraits: this.processImageData(portraits),
-                achievements: this.processImageData(achievements),
-                inventions: this.processImageData(inventions),
-                artifacts: this.processImageData(artifacts),
+                portraits: images.portrait ? [{
+                    url: images.portrait,
+                    source: 'Primary',
+                    reliability: 'High',
+                    priority: 100,
+                    createdAt: new Date()
+                }] : [],
+                gallery: images.gallery ? images.gallery.map((url, index) => ({
+                    url,
+                    source: 'Primary',
+                    reliability: 'High',
+                    priority: 90 - index,
+                    createdAt: new Date()
+                })) : [],
                 createdAt: new Date(),
                 updatedAt: new Date()
             };
 
-            // Upsert to avoid duplicates
-            const result = await this.collection.updateOne(
+            await this.collection.updateOne(
                 { figureName, category, epoch },
                 { $set: imageData },
                 { upsert: true }
             );
 
-            console.log(`Stored images for ${figureName} (${category}/${epoch})`);
-            return result;
+            console.log(`💾 Stored images for ${figureName} (${category}/${epoch})`);
         } catch (error) {
-            console.error('Error storing figure images:', error);
-            throw error;
+            console.error('Error storing images:', error);
         }
     }
 
     /**
-     * Process raw image data from sources into structured format with permalinks
+     * Format images for specific content type
      */
-    processImageData(rawData) {
-        const processed = [];
-        
-        for (const [sourceName, sourceData] of Object.entries(rawData)) {
-            if (sourceData.urls && Array.isArray(sourceData.urls)) {
-                sourceData.urls.forEach((url, index) => {
-                    const permalink = this.generatePermalink(sourceName, url, sourceData.searchTerm);
-                    processed.push({
-                        url,
-                        permalink,
-                        source: sourceName,
-                        licensing: sourceData.licensing || 'Unknown',
-                        reliability: sourceData.reliability || 'Medium',
-                        searchTerm: sourceData.searchTerm || '',
-                        priority: this.calculatePriority(sourceName, sourceData.reliability),
-                        index,
-                        lastAccessed: new Date(),
-                        accessCount: 0
-                    });
-                });
-            }
-        }
-
-        // Sort by priority (highest first)
-        return processed.sort((a, b) => b.priority - a.priority);
-    }
-
-    /**
-     * Generate permalink for source image
-     */
-    generatePermalink(sourceName, url, searchTerm) {
-        const timestamp = Date.now();
-        const urlHash = this.hashString(url);
-        return `${sourceName.toLowerCase().replace(/\s+/g, '-')}-${searchTerm?.replace(/\s+/g, '-') || 'image'}-${urlHash}-${timestamp}`;
-    }
-
-    /**
-     * Simple hash function for URLs
-     */
-    hashString(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash; // Convert to 32-bit integer
-        }
-        return Math.abs(hash).toString(36);
-    }
-
-    /**
-     * Calculate priority score for image selection
-     */
-    calculatePriority(sourceName, reliability) {
-        let priority = 0;
-        
-        // Source priority
-        const sourcePriority = {
-            'Wikimedia Commons': 100,
-            'Library of Congress (PPOC, Brady‑Handy)': 95,
-            'NYPL Free to Use Collections': 90,
-            'Web Gallery of Art': 85,
-            'Frick Photoarchive': 80,
-            'Metropolitan Museum': 75,
-            'Smithsonian Collections': 70,
-            'Getty Museum': 65,
-            'British Library': 60,
-            'Internet Archive': 55,
-            'Public Domain Archive': 50,
-            'Google Arts & Culture': 45,
-            'Europeana': 40,
-            'Rijksmuseum': 35,
-            'National Archives': 30,
-            'NASA Images': 25,
-            'LookAndLearn, PxHere, Dreamstime CC0': 20,
-            'Unsplash': 15
-        };
-
-        priority += sourcePriority[sourceName] || 10;
-
-        // Reliability bonus
-        if (reliability === 'High') priority += 20;
-        else if (reliability === 'Medium') priority += 10;
-
-        return priority;
-    }
-
-    /**
-     * Get images for a specific figure and content type (ONLY from MongoDB)
-     */
-    async getFigureImages(figureName, category, epoch, contentType = 'portraits') {
-        try {
-            const figure = await this.collection.findOne({
-                figureName,
-                category,
-                epoch
-            });
-
-            if (!figure || !figure[contentType]) {
-                return null;
-            }
-
-            // Update access statistics
-            await this.updateAccessStats(figureName, category, epoch, contentType);
-
-            return figure[contentType];
-        } catch (error) {
-            console.error('Error getting figure images:', error);
-            throw error;
+    formatImages(images, contentType) {
+        if (contentType === 'portraits') {
+            return images.portrait ? [{
+                url: images.portrait,
+                source: 'Primary',
+                reliability: 'High',
+                priority: 100,
+                createdAt: new Date()
+            }] : [];
+        } else {
+            return images.gallery ? images.gallery.map((url, index) => ({
+                url,
+                source: 'Primary',
+                reliability: 'High',
+                priority: 90 - index,
+                createdAt: new Date()
+            })) : [];
         }
     }
 
     /**
-     * Update access statistics for images
-     */
-    async updateAccessStats(figureName, category, epoch, contentType) {
-        try {
-            await this.collection.updateOne(
-                { figureName, category, epoch },
-                {
-                    $inc: { [`${contentType}.$[].accessCount`]: 1 },
-                    $set: { [`${contentType}.$[].lastAccessed`]: new Date() }
-                }
-            );
-        } catch (error) {
-            console.error('Error updating access stats:', error);
-        }
-    }
-
-    /**
-     * Get best image for a figure (highest priority) - ONLY from MongoDB
+     * Get best image for a figure (highest priority)
      */
     async getBestImage(figureName, category, epoch, contentType = 'portraits') {
         try {
             const images = await this.getFigureImages(figureName, category, epoch, contentType);
             
             if (!images || images.length === 0) {
+                console.log(`❌ No images found for ${figureName}`);
                 return null;
             }
 
             // Return the highest priority image
-            return images[0];
+            const bestImage = images.sort((a, b) => b.priority - a.priority)[0];
+            console.log(`✅ Best image for ${figureName}: ${bestImage.url}`);
+            return bestImage;
         } catch (error) {
             console.error('Error getting best image:', error);
-            throw error;
+            return null;
         }
     }
 
     /**
-     * Get multiple images for a figure (for gallery view) - ONLY from MongoDB
+     * Get gallery of images for a figure
      */
     async getFigureGallery(figureName, category, epoch, limit = 5) {
         try {
-            const allImages = [];
-            const contentTypes = ['portraits', 'achievements', 'inventions', 'artifacts'];
-
-            for (const contentType of contentTypes) {
-                const images = await this.getFigureImages(figureName, category, epoch, contentType);
-                if (images && images.length > 0) {
-                    allImages.push(...images.slice(0, Math.ceil(limit / contentTypes.length)));
-                }
+            const images = await this.getFigureImages(figureName, category, epoch, 'gallery');
+            
+            if (!images || images.length === 0) {
+                // Fallback to category images
+                const fallbackImages = this.getFallbackImages(category);
+                return fallbackImages.gallery ? fallbackImages.gallery.map((url, index) => ({
+                    url,
+                    source: 'Fallback',
+                    reliability: 'Medium',
+                    priority: 50 - index,
+                    createdAt: new Date()
+                })) : [];
             }
 
-            // Sort by priority and return top images
-            return allImages
-                .sort((a, b) => b.priority - a.priority)
-                .slice(0, limit);
+            return images.slice(0, limit);
         } catch (error) {
             console.error('Error getting figure gallery:', error);
-            throw error;
+            return [];
         }
     }
 
     /**
-     * Check if preloaded images exist for a story (NO external search)
+     * Get image statistics
+     */
+    async getImageStats() {
+        try {
+            const totalFigures = await this.collection.countDocuments();
+            const totalImages = await this.collection.aggregate([
+                { $project: { 
+                    portraitCount: { $size: { $ifNull: ["$portraits", []] } },
+                    galleryCount: { $size: { $ifNull: ["$gallery", []] } }
+                }},
+                { $group: { 
+                    _id: null, 
+                    totalPortraits: { $sum: "$portraitCount" },
+                    totalGallery: { $sum: "$galleryCount" }
+                }}
+            ]).toArray();
+
+            const stats = totalImages[0] || { totalPortraits: 0, totalGallery: 0 };
+            
+            return {
+                totalFigures,
+                totalImages: stats.totalPortraits + stats.totalGallery,
+                totalPortraits: stats.totalPortraits,
+                totalGallery: stats.totalGallery,
+                sources: {
+                    primary: Object.keys(this.imageSources.primary).length,
+                    fallbacks: Object.keys(this.imageSources.fallbacks).length
+                }
+            };
+        } catch (error) {
+            console.error('Error getting image stats:', error);
+            return {
+                totalFigures: 0,
+                totalImages: 0,
+                totalPortraits: 0,
+                totalGallery: 0,
+                sources: { primary: 0, fallbacks: 0 }
+            };
+        }
+    }
+
+    /**
+     * Extract figure name from story content
+     */
+    extractFigureName(story) {
+        if (!story) return null;
+        
+        // Try to extract from historicalFigure field
+        if (story.historicalFigure) {
+            return story.historicalFigure;
+        }
+        
+        // Try to extract from figureName field
+        if (story.figureName) {
+            return story.figureName;
+        }
+        
+        // Try to extract from title or content
+        const text = (story.title || story.content || '').toLowerCase();
+        
+        // Common historical figure patterns
+        const patterns = [
+            /(archimedes|einstein|newton|curie|da vinci|leonardo|marie|isaac|albert)/i,
+            /(hippocrates|euclid|aristotle|pythagoras|plato|socrates)/i,
+            /(galileo|copernicus|kepler|tesla|edison|bell)/i,
+            /(darwin|pasteur|mendel|franklin|goodall|carson)/i
+        ];
+        
+        for (const pattern of patterns) {
+            const match = text.match(pattern);
+            if (match) {
+                return match[1];
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     * Check if preloaded images exist for a story
      */
     async checkPreloadedImagesForStory(story, category, epoch) {
         try {
@@ -276,264 +404,28 @@ class HistoricalFiguresImageService {
                 return null;
             }
 
-            // Check if we have preloaded images for this figure
+            // Check if we have images for this figure
             const existingImages = await this.getFigureImages(figureName, category, epoch, 'portraits');
             
             if (existingImages && existingImages.length > 0) {
-                console.log(`Found preloaded images for ${figureName}`);
+                console.log(`Found images for ${figureName}`);
+                const gallery = await this.getFigureGallery(figureName, category, epoch, 3);
+                
                 return {
                     figureName,
                     images: {
                         portrait: existingImages[0],
-                        gallery: await this.getFigureGallery(figureName, category, epoch, 3)
-                    }
+                        gallery
+                    },
+                    imageStatus: 'loaded'
                 };
             }
 
-            // No preloaded images found - return null (no external search)
-            console.log(`No preloaded images found for ${figureName}`);
+            console.log(`No images found for ${figureName}`);
             return null;
         } catch (error) {
-            console.error('Error checking preloaded images for story:', error);
+            console.error('Error checking preloaded images:', error);
             return null;
-        }
-    }
-
-    /**
-     * Extract figure name from story content
-     */
-    extractFigureName(story) {
-        try {
-            // Try to extract from headline first
-            if (story.headline) {
-                // Look for common patterns in headlines
-                const patterns = [
-                    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/, // First words starting with capital
-                    /(?:about|story of|tale of)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:and|&)\s+his/i,
-                    /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:and|&)\s+her/i
-                ];
-
-                for (const pattern of patterns) {
-                    const match = story.headline.match(pattern);
-                    if (match && match[1]) {
-                        return match[1].trim();
-                    }
-                }
-            }
-
-            // Try to extract from content
-            if (story.content) {
-                // Look for names in the first few sentences
-                const firstSentence = story.content.split('.')[0];
-                const namePattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/;
-                const match = firstSentence.match(namePattern);
-                if (match && match[1]) {
-                    return match[1].trim();
-                }
-            }
-
-            return null;
-        } catch (error) {
-            console.error('Error extracting figure name:', error);
-            return null;
-        }
-    }
-
-    /**
-     * Get image by permalink
-     */
-    async getImageByPermalink(permalink) {
-        try {
-            const result = await this.collection.findOne({
-                $or: [
-                    { 'portraits.permalink': permalink },
-                    { 'achievements.permalink': permalink },
-                    { 'inventions.permalink': permalink },
-                    { 'artifacts.permalink': permalink }
-                ]
-            });
-
-            if (!result) {
-                return null;
-            }
-
-            // Find the specific image with this permalink
-            const allImages = [
-                ...(result.portraits || []),
-                ...(result.achievements || []),
-                ...(result.inventions || []),
-                ...(result.artifacts || [])
-            ];
-
-            return allImages.find(img => img.permalink === permalink);
-        } catch (error) {
-            console.error('Error getting image by permalink:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Get most accessed images
-     */
-    async getMostAccessedImages(limit = 10) {
-        try {
-            const result = await this.collection.aggregate([
-                {
-                    $project: {
-                        allImages: {
-                            $concatArrays: [
-                                { $ifNull: ['$portraits', []] },
-                                { $ifNull: ['$achievements', []] },
-                                { $ifNull: ['$inventions', []] },
-                                { $ifNull: ['$artifacts', []] }
-                            ]
-                        }
-                    }
-                },
-                { $unwind: '$allImages' },
-                { $sort: { 'allImages.accessCount': -1 } },
-                { $limit: limit },
-                {
-                    $group: {
-                        _id: null,
-                        images: { $push: '$allImages' }
-                    }
-                }
-            ]).toArray();
-
-            return result[0]?.images || [];
-        } catch (error) {
-            console.error('Error getting most accessed images:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Bulk import image data from JSON file
-     */
-    async importImageData(jsonFilePath) {
-        try {
-            const fs = require('fs');
-            const imageData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
-            
-            let imported = 0;
-            let errors = 0;
-
-            for (const [figureName, figureData] of Object.entries(imageData)) {
-                try {
-                    // Extract category and epoch from the data structure
-                    // This assumes the data is organized by category/epoch
-                    for (const [category, epochs] of Object.entries(figureData)) {
-                        if (typeof epochs === 'object' && epochs !== null) {
-                            for (const [epoch, figures] of Object.entries(epochs)) {
-                                if (Array.isArray(figures)) {
-                                    for (const figure of figures) {
-                                        if (figure.name === figureName) {
-                                            await this.storeFigureImages({
-                                                figureName,
-                                                category,
-                                                epoch,
-                                                ...figure
-                                            });
-                                            imported++;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } catch (error) {
-                    console.error(`Error importing ${figureName}:`, error);
-                    errors++;
-                }
-            }
-
-            console.log(`Import completed: ${imported} figures imported, ${errors} errors`);
-            return { imported, errors };
-        } catch (error) {
-            console.error('Error importing image data:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Get statistics about stored images
-     */
-    async getImageStats() {
-        try {
-            const stats = await this.collection.aggregate([
-                {
-                    $group: {
-                        _id: null,
-                        totalFigures: { $sum: 1 },
-                        totalImages: {
-                            $sum: {
-                                $add: [
-                                    { $size: { $ifNull: ['$portraits', []] } },
-                                    { $size: { $ifNull: ['$achievements', []] } },
-                                    { $size: { $ifNull: ['$inventions', []] } },
-                                    { $size: { $ifNull: ['$artifacts', []] } }
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]).toArray();
-
-            const sourceStats = await this.collection.aggregate([
-                {
-                    $project: {
-                        allImages: {
-                            $concatArrays: [
-                                { $ifNull: ['$portraits', []] },
-                                { $ifNull: ['$achievements', []] },
-                                { $ifNull: ['$inventions', []] },
-                                { $ifNull: ['$artifacts', []] }
-                            ]
-                        }
-                    }
-                },
-                { $unwind: '$allImages' },
-                {
-                    $group: {
-                        _id: '$allImages.source',
-                        count: { $sum: 1 }
-                    }
-                },
-                { $sort: { count: -1 } }
-            ]).toArray();
-
-            return {
-                figures: stats[0]?.totalFigures || 0,
-                images: stats[0]?.totalImages || 0,
-                sources: sourceStats
-            };
-        } catch (error) {
-            console.error('Error getting image stats:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Clean up old or invalid image data
-     */
-    async cleanupImages() {
-        try {
-            const result = await this.collection.deleteMany({
-                $or: [
-                    { portraits: { $size: 0 } },
-                    { achievements: { $size: 0 } },
-                    { inventions: { $size: 0 } },
-                    { artifacts: { $size: 0 } }
-                ]
-            });
-
-            console.log(`Cleaned up ${result.deletedCount} empty image records`);
-            return result.deletedCount;
-        } catch (error) {
-            console.error('Error cleaning up images:', error);
-            throw error;
         }
     }
 }

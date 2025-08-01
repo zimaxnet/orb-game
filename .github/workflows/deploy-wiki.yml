@@ -1,0 +1,121 @@
+name: Deploy Wiki Documentation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/deploy-wiki.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/deploy-wiki.yml'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install MkDocs and dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install mkdocs-material
+        pip install mkdocs-git-revision-date-localized-plugin
+        pip install pymdown-extensions
+
+    - name: Build documentation
+      run: mkdocs build
+
+    - name: Deploy to GitHub Pages (only on main branch)
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+        cname: wiki.orbgame.us
+
+    - name: Deploy to Azure Static Web Apps (only on main branch)
+      if: github.ref == 'refs/heads/main'
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        action: "upload"
+        app_location: "/site"
+        skip_app_build: true
+
+    - name: Create deployment summary
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "## 📚 Wiki Documentation Deployed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ **Build Status**: Successful" >> $GITHUB_STEP_SUMMARY
+        echo "🌐 **Live URL**: https://wiki.orbgame.us" >> $GITHUB_STEP_SUMMARY
+        echo "📁 **Source**: docs/ folder" >> $GITHUB_STEP_SUMMARY
+        echo "🔧 **Builder**: MkDocs Material" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Recent Changes:" >> $GITHUB_STEP_SUMMARY
+        git log --oneline -5 -- docs/ >> $GITHUB_STEP_SUMMARY
+
+  preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install MkDocs and dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install mkdocs-material
+        pip install mkdocs-git-revision-date-localized-plugin
+        pip install pymdown-extensions
+
+    - name: Build documentation
+      run: mkdocs build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: wiki-preview
+        path: site/
+
+    - name: Comment PR with preview info
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 📚 Wiki Documentation Preview
+
+          ✅ **Build Status**: Successful
+          📁 **Preview**: Build artifacts uploaded
+          🔍 **Review**: Check the uploaded site/ folder for changes
+
+          ### Changed Files:
+          ${context.payload.commits.map(c => `- ${c.message}`).join('\n')}
+
+          ---
+          *This is a preview build. The live wiki will be updated when this PR is merged.*`
+          }) 

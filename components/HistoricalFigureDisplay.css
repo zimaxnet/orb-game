@@ -224,6 +224,16 @@
     background: linear-gradient(135deg, rgba(244, 67, 54, 0.8), rgba(229, 57, 53, 0.8));
 }
 
+.image-error-inline .story-content {
+    background: transparent !important;
+    color: #333 !important;
+    border: none !important;
+    padding: 15px !important;
+    margin-top: 15px !important;
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
 /* Inline gallery controls */
 .gallery-controls-inline {
     position: absolute;
@@ -352,9 +362,9 @@
     background: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: #333;
-    font-size: 1.2rem;
-    width: 30px;
-    height: 30px;
+    font-size: 0.9rem;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -435,6 +445,16 @@
 
 .image-error {
     background: linear-gradient(135deg, rgba(244, 67, 54, 0.8), rgba(229, 57, 53, 0.8));
+}
+
+.image-error .story-content {
+    background: transparent !important;
+    color: #333 !important;
+    border: none !important;
+    padding: 15px !important;
+    margin-top: 15px !important;
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .loading-spinner {
@@ -748,9 +768,9 @@
     }
     
     .close-button-small {
-        width: 28px;
-        height: 28px;
-        font-size: 1rem;
+        width: 22px;
+        height: 22px;
+        font-size: 0.8rem;
     }
     
     .figure-image-container {
@@ -921,4 +941,24 @@
     color: #e74c3c;
     margin-bottom: 15px;
     font-weight: 500;
+}
+
+/* Clean story content display - no red background */
+.story-content {
+    color: #333;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 15px;
+    background: transparent;
+    border: none;
+    padding: 0;
 } 

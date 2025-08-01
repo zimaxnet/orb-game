@@ -1,0 +1,2112 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Advanced AI-powered interactive gaming platform">
+      
+      
+        <meta name="author" content="Zimax AI Labs">
+      
+      
+        <link rel="canonical" href="https://wiki.orbgame.us/developer/cursor-rules/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Cursor Rules - Orb Game Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cursor-rules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Orb Game Documentation" class="md-header__button md-logo" aria-label="Orb Game Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Orb Game Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cursor Rules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zimaxnet/orb-game" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zimaxnet/orb-game
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/introduction/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gameplay/how-to-play/" class="md-tabs__link">
+          
+  
+  
+  Gameplay
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+  Developer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-integration/models/" class="md-tabs__link">
+          
+  
+  
+  AI Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../database/mongodb/" class="md-tabs__link">
+          
+  
+  
+  Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment/azure-resources/" class="md-tabs__link">
+          
+  
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../performance/metrics/" class="md-tabs__link">
+          
+  
+  
+  Performance
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Orb Game Documentation" class="md-nav__button md-logo" aria-label="Orb Game Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Orb Game Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zimaxnet/orb-game" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zimaxnet/orb-game
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gameplay
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gameplay
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gameplay/how-to-play/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Play
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gameplay/categories-epochs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Categories & Epochs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gameplay/historical-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical Figures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gameplay/audio-accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio & Accessibility
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Developer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Integration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-integration/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-integration/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-integration/story-generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-integration/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TTS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/cache-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cache System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/story-prepopulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story Prepopulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Azure Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Performance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Performance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caching
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/cost-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cost Optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cursor-rules">Cursor Rules<a class="headerlink" href="#cursor-rules" title="Permanent link">&para;</a></h1>
+<p>This document contains the development rules and guidelines for the Orb Game project.</p>
+<h1 id="orb-game-cursor-rules">Orb Game - Cursor Rules<a class="headerlink" href="#orb-game-cursor-rules" title="Permanent link">&para;</a></h1>
+<h2 id="project-overview">🎮 Project Overview<a class="headerlink" href="#project-overview" title="Permanent link">&para;</a></h2>
+<p>Orb Game is an advanced AI-powered interactive gaming platform that combines time travel, positive news discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with multiple AI model integrations, and comprehensive Azure cloud deployment.</p>
+<h2 id="architecture-patterns">🏗️ Architecture Patterns<a class="headerlink" href="#architecture-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="frontend-react-vite">Frontend (React + Vite)<a class="headerlink" href="#frontend-react-vite" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Main Component</strong>: <code>components/OrbGame.jsx</code> - 3D interactive gaming experience</li>
+<li><strong>State Management</strong>: React hooks with context providers (<code>contexts/LanguageContext.jsx</code>)</li>
+<li><strong>3D Graphics</strong>: Three.js with @react-three/fiber and @react-three/drei</li>
+<li><strong>Build System</strong>: Vite with React 19.x support</li>
+<li><strong>Styling</strong>: CSS modules with component-specific stylesheets</li>
+</ul>
+<h3 id="backend-nodejs-express">Backend (Node.js + Express)<a class="headerlink" href="#backend-nodejs-express" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Main Server</strong>: <code>backend/backend-server.js</code> - Production API server</li>
+<li><strong>Services</strong>: Modular service architecture (MemoryService, PositiveNewsService, StoryCacheService)</li>
+<li><strong>AI Integration</strong>: Multiple AI models (Grok 4, Perplexity Sonar, Gemini 1.5 Flash, O4-Mini)</li>
+<li><strong>Database</strong>: Azure Cosmos DB for MongoDB with caching system</li>
+<li><strong>Security</strong>: Azure Key Vault for API key management</li>
+</ul>
+<h3 id="deployment-azure">Deployment (Azure)<a class="headerlink" href="#deployment-azure" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Frontend</strong>: Azure Web App with GitHub Actions CI/CD</li>
+<li><strong>Backend</strong>: Azure Container Apps with auto-scaling</li>
+<li><strong>Registry</strong>: Azure Container Registry (<code>orbgameregistry</code>)</li>
+<li><strong>Secrets</strong>: Azure Key Vault with RBAC authentication</li>
+</ul>
+<h2 id="development-guidelines">🔧 Development Guidelines<a class="headerlink" href="#development-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>orb-game/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── components/          # React components
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── contexts/           # React context providers
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── utils/              # Utility functions (promptManager)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── api/                # API client functions
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── backend/            # Node.js backend server
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── scripts/            # Deployment and utility scripts
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── public/             # Static assets
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└── docs/               # Documentation
+</span></code></pre></div>
+<h3 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Components</strong>: PascalCase (e.g., <code>OrbGame.jsx</code>)</li>
+<li><strong>Files</strong>: kebab-case for scripts, camelCase for modules</li>
+<li><strong>Variables</strong>: camelCase</li>
+<li><strong>Constants</strong>: UPPER_SNAKE_CASE</li>
+<li><strong>Functions</strong>: camelCase</li>
+<li><strong>Classes</strong>: PascalCase</li>
+</ul>
+<h3 id="code-style">Code Style<a class="headerlink" href="#code-style" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JavaScript</strong>: ES6+ modules with import/export</li>
+<li><strong>React</strong>: Functional components with hooks</li>
+<li><strong>CSS</strong>: Component-specific stylesheets</li>
+<li><strong>Backend</strong>: Async/await with proper error handling</li>
+<li><strong>Comments</strong>: JSDoc style for functions and classes</li>
+</ul>
+<h2 id="ai-model-integration">🤖 AI Model Integration<a class="headerlink" href="#ai-model-integration" title="Permanent link">&para;</a></h2>
+<h3 id="supported-ai-models">Supported AI Models<a class="headerlink" href="#supported-ai-models" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Grok 4</strong> - Advanced reasoning and creative storytelling</li>
+<li><strong>Perplexity Sonar</strong> - Real-time web search and synthesis</li>
+<li><strong>Gemini 1.5 Flash</strong> - Fast and creative content generation</li>
+<li><strong>O4-Mini</strong> - Efficient and reliable processing</li>
+</ol>
+<h3 id="ai-model-parameters">AI Model Parameters<a class="headerlink" href="#ai-model-parameters" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>O4-Mini</strong>: Use <code>max_completion_tokens</code> (not <code>max_tokens</code>), no <code>temperature</code> parameter</li>
+<li><strong>TTS Models</strong>: Use <code>Authorization: Bearer</code> header (not <code>api-key</code>)</li>
+<li><strong>Token Limits</strong>: 2000 tokens for complete JSON responses</li>
+<li><strong>TTS Voices</strong>: Use <code>alloy</code> voice for both English and Spanish (avoid <code>jorge</code> - not supported)</li>
+</ul>
+<h3 id="azure-openai-configuration">Azure OpenAI Configuration<a class="headerlink" href="#azure-openai-configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Endpoint</strong>: <code>https://aimcs-foundry.cognitiveservices.azure.com/</code></li>
+<li><strong>API Version</strong>: <code>2024-12-01-preview</code> (required for o4-mini model)</li>
+<li><strong>Model</strong>: <code>o4-mini</code></li>
+<li><strong>Deployment</strong>: <code>o4-mini</code></li>
+<li><strong>Parameter</strong>: Use <code>max_completion_tokens</code> instead of <code>max_tokens</code></li>
+<li><strong>Example Python Configuration</strong>:
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureOpenAI</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">AzureOpenAI</span><span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;2024-12-01-preview&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">azure_endpoint</span><span class="o">=</span><span class="s2">&quot;https://aimcs-foundry.cognitiveservices.azure.com/&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello&quot;</span><span class="p">}],</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">max_completion_tokens</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;o4-mini&quot;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h3 id="adding-new-ai-models">Adding New AI Models<a class="headerlink" href="#adding-new-ai-models" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Store API key in Azure Key Vault</li>
+<li>Add model function to <code>backend-server.js</code></li>
+<li>Update frontend model selection in <code>OrbGame.jsx</code></li>
+<li>Add prompts to <code>utils/promptReferenceData.js</code></li>
+<li>Test with <code>scripts/test-ai-models.js</code></li>
+</ol>
+<h3 id="story-prepopulation-system">Story Prepopulation System<a class="headerlink" href="#story-prepopulation-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Script</strong>: <code>scripts/prepopulate-all-stories.js</code> - Generates 240+ historical figure stories</li>
+<li><strong>Missing Stories Script</strong>: <code>scripts/generate-missing-stories.js</code> - Generates only missing stories (token efficient)</li>
+<li><strong>Key Vault Integration</strong>: Automatically fetches credentials from <code>orb-game-kv-eastus2</code></li>
+<li><strong>Data Sources</strong>: <code>EpochalCategoryStoryMap.md</code> and <code>OrbGameInfluentialPeopleSeeds</code></li>
+<li><strong>Execution</strong>: <code>./scripts/run-prepopulation.sh</code> - Interactive script with confirmation</li>
+<li><strong>Coverage</strong>: 8 categories × 5 epochs × 2 languages × 3 figures = 240 stories</li>
+<li><strong>TTS Integration</strong>: Generates audio for each story using Azure OpenAI TTS (<code>alloy</code> voice)</li>
+<li><strong>MongoDB Storage</strong>: Stores stories with TTL for automatic cleanup</li>
+<li><strong>Error Tracking</strong>: Comprehensive error statistics for JSON parse, TTS, API, MongoDB, and network errors</li>
+</ul>
+<h2 id="prompt-management-system">🎯 Prompt Management System<a class="headerlink" href="#prompt-management-system" title="Permanent link">&para;</a></h2>
+<h3 id="centralized-prompt-system">Centralized Prompt System<a class="headerlink" href="#centralized-prompt-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Source</strong>: <code>PROMPTS_REFERENCE.md</code> - Single source of truth</li>
+<li><strong>Manager</strong>: <code>utils/promptManager.js</code> - Dynamic prompt generation</li>
+<li><strong>Data</strong>: <code>utils/promptReferenceData.js</code> - Structured prompt data</li>
+<li><strong>Categories</strong>: Technology, Science, Art, Nature, Sports, Music, Space, Innovation</li>
+<li><strong>Epochs</strong>: Ancient, Medieval, Industrial, Modern, Future</li>
+<li><strong>Languages</strong>: English and Spanish with cultural sensitivity</li>
+</ul>
+<h3 id="prompt-structure">Prompt Structure<a class="headerlink" href="#prompt-structure" title="Permanent link">&para;</a></h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Model-specific prompts with category, epoch, language support</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">promptManager</span><span class="p">.</span><span class="nx">getFrontendPrompt</span><span class="p">(</span><span class="nx">category</span><span class="p">,</span><span class="w"> </span><span class="nx">epoch</span><span class="p">,</span><span class="w"> </span><span class="nx">language</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">);</span>
+</span></code></pre></div>
+<h2 id="internationalization">🌍 Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">&para;</a></h2>
+<h3 id="language-support">Language Support<a class="headerlink" href="#language-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Primary</strong>: English (<code>en</code>)</li>
+<li><strong>Secondary</strong>: Spanish (<code>es</code>)</li>
+<li><strong>Context</strong>: <code>contexts/LanguageContext.jsx</code></li>
+<li><strong>TTS Voices</strong>: <code>alloy</code> (English), <code>jorge</code> (Spanish)</li>
+<li><strong>Caching</strong>: Language-specific story and audio caching</li>
+</ul>
+<h3 id="translation-guidelines">Translation Guidelines<a class="headerlink" href="#translation-guidelines" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use <code>useLanguage()</code> hook for language context</li>
+<li>Cache stories separately by language</li>
+<li>Provide culturally appropriate content</li>
+<li>Support language switching with story refresh</li>
+</ul>
+<h2 id="database-caching">🗄️ Database &amp; Caching<a class="headerlink" href="#database-caching" title="Permanent link">&para;</a></h2>
+<h3 id="mongodb-integration">MongoDB Integration<a class="headerlink" href="#mongodb-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Connection</strong>: Azure Cosmos DB for MongoDB (<code>orb-game-mongodb-eastus2</code>)</li>
+<li><strong>Collections</strong>: Stories, memories, analytics</li>
+<li><strong>Throughput</strong>: 2000 RU/s per collection (stories, positive_news_stories, audio, users, connection_test)</li>
+<li><strong>Performance</strong>: 5x throughput increase from 400 RU/s baseline</li>
+<li><strong>Caching</strong>: 88.2% performance improvement for cached requests</li>
+<li><strong>TTL</strong>: 30-day expiration for cached content</li>
+<li><strong>Cost</strong>: ~$0.008/hour per collection at 2000 RU/s</li>
+</ul>
+<h3 id="cache-management">Cache Management<a class="headerlink" href="#cache-management" title="Permanent link">&para;</a></h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Check cache before generating new content</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cachedStories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">storyCacheService</span><span class="p">.</span><span class="nx">getStories</span><span class="p">(</span><span class="nx">category</span><span class="p">,</span><span class="w"> </span><span class="nx">epoch</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">,</span><span class="w"> </span><span class="nx">language</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cachedStories</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">cachedStories</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="deployment-patterns">🚀 Deployment Patterns<a class="headerlink" href="#deployment-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="azure-resources">Azure Resources<a class="headerlink" href="#azure-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Resource Group</strong>: <code>orb-game-rg-eastus2</code></li>
+<li><strong>Frontend</strong>: Azure Web App (<code>orb-game</code>) - Live at <a href="https://orbgame.us">https://orbgame.us</a></li>
+<li><strong>Backend</strong>: Azure Container Apps (<code>orb-game-backend-eastus2</code>)</li>
+<li><strong>Registry</strong>: Azure Container Registry (<code>orbgameregistry</code>)</li>
+<li><strong>Key Vault</strong>: <code>orb-game-kv-eastus2</code></li>
+</ul>
+<h3 id="deployment-automation">Deployment Automation<a class="headerlink" href="#deployment-automation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitHub Actions</strong>: Automatic deployment on push to main branch</li>
+<li>Frontend: <code>.github/workflows/deploy-frontend.yml</code> - Auto-deploys on any push</li>
+<li>Backend: <code>.github/workflows/deploy-backend.yml</code> - Deploys on backend changes</li>
+<li>Full Deployment: <code>.github/workflows/deploy-full.yml</code> - Complete CI/CD pipeline</li>
+<li><strong>Local Deployment</strong>: Manual deployment scripts for development</li>
+<li>Frontend: <code>scripts/deploy-azure.sh</code> - Build and deploy frontend</li>
+<li>Backend: <code>scripts/build-backend.sh</code> - Build and push backend container</li>
+<li>Full: <code>scripts/deploy-full.sh</code> - Complete local deployment</li>
+</ul>
+<h3 id="efficient-rebuild-redeployment-procedures">Efficient Rebuild &amp; Redeployment Procedures<a class="headerlink" href="#efficient-rebuild-redeployment-procedures" title="Permanent link">&para;</a></h3>
+<h4 id="quick-local-deployment-development">Quick Local Deployment (Development)<a class="headerlink" href="#quick-local-deployment-development" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Frontend only (fastest)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">cd</span><span class="w"> </span>dist<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>../deploy.zip<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>az<span class="w"> </span>webapp<span class="w"> </span>deploy<span class="w"> </span>--resource-group<span class="w"> </span>orb-game-rg-eastus2<span class="w"> </span>--name<span class="w"> </span>orb-game<span class="w"> </span>--src-path<span class="w"> </span>deploy.zip<span class="w"> </span>--type<span class="w"> </span>zip
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Backend only</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>docker<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>-f<span class="w"> </span>backend/backend-Dockerfile<span class="w"> </span>-t<span class="w"> </span>orbgameregistry.azurecr.io/orb-game-backend:latest<span class="w"> </span>.
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>az<span class="w"> </span>acr<span class="w"> </span>login<span class="w"> </span>--name<span class="w"> </span>orbgameregistry
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>docker<span class="w"> </span>push<span class="w"> </span>orbgameregistry.azurecr.io/orb-game-backend:latest
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>az<span class="w"> </span>containerapp<span class="w"> </span>update<span class="w"> </span>--name<span class="w"> </span>orb-game-backend-eastus2<span class="w"> </span>--resource-group<span class="w"> </span>orb-game-rg-eastus2<span class="w"> </span>--image<span class="w"> </span>orbgameregistry.azurecr.io/orb-game-backend:latest
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># Full deployment (both frontend and backend)</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>./scripts/deploy-full.sh
+</span></code></pre></div>
+<h4 id="github-actions-deployment-production">GitHub Actions Deployment (Production)<a class="headerlink" href="#github-actions-deployment-production" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Automatic</strong>: Push to main branch triggers automatic deployment</li>
+<li><strong>Frontend</strong>: Deploys on any file change</li>
+<li><strong>Backend</strong>: Deploys only on backend-related changes (backend/, scripts/, .github/workflows/deploy-backend.yml)</li>
+<li><strong>Manual</strong>: Use GitHub Actions "workflow_dispatch" for manual deployment</li>
+</ul>
+<h4 id="deployment-verification">Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Test frontend deployment</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;https://orbgame.us&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Test backend deployment</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;https://api.orbgame.us/api/orb/positive-news/Technology?count=1&amp;epoch=Modern&amp;language=en&amp;storyType=historical-figure&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Check deployment status</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>az<span class="w"> </span>webapp<span class="w"> </span>show<span class="w"> </span>--name<span class="w"> </span>orb-game<span class="w"> </span>--resource-group<span class="w"> </span>orb-game-rg-eastus2<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;state&quot;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>az<span class="w"> </span>containerapp<span class="w"> </span>show<span class="w"> </span>--name<span class="w"> </span>orb-game-backend-eastus2<span class="w"> </span>--resource-group<span class="w"> </span>orb-game-rg-eastus2<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;properties.provisioningState&quot;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Verify historical figure stories are working</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;https://api.orbgame.us/api/orb/positive-news/Technology?count=1&amp;epoch=Modern&amp;language=en&amp;storyType=historical-figure&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[0].headline&#39;</span>
+</span></code></pre></div>
+<h3 id="docker-platform-requirements">Docker Platform Requirements<a class="headerlink" href="#docker-platform-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Backend Images</strong>: Must be built for <code>linux/amd64</code> platform</li>
+<li><strong>Build Command</strong>: <code>docker build --platform linux/amd64 -f backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .</code></li>
+<li><strong>Azure Container Apps</strong>: Require amd64 images for proper deployment</li>
+<li><strong>Local Development</strong>: Use <code>--platform linux/amd64</code> flag for Docker builds</li>
+</ul>
+<h3 id="deployment-scripts">Deployment Scripts<a class="headerlink" href="#deployment-scripts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Full Deployment</strong>: <code>scripts/deploy-full.sh</code></li>
+<li><strong>Frontend Only</strong>: <code>scripts/deploy-azure.sh</code></li>
+<li><strong>Backend Only</strong>: <code>scripts/setup-backend.sh</code></li>
+<li><strong>Environment Setup</strong>: <code>scripts/set-azure-build-env.sh</code></li>
+<li><strong>Quick Deploy</strong>: <code>scripts/deploy-manual.sh</code> - Fast manual deployment</li>
+</ul>
+<h3 id="current-deployment-status-december-2024">Current Deployment Status (December 2024)<a class="headerlink" href="#current-deployment-status-december-2024" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Frontend</strong>: ✅ Live at <a href="https://orbgame.us">https://orbgame.us</a> (Azure Web App)</li>
+<li><strong>Backend</strong>: ✅ Live at <a href="https://api.orbgame.us">https://api.orbgame.us</a> (Azure Container Apps)</li>
+<li><strong>Database</strong>: ✅ Azure Cosmos DB for MongoDB with 239+ historical figure stories</li>
+<li><strong>GitHub Actions</strong>: ✅ Automatic deployment on push to main branch</li>
+<li><strong>Historical Figures</strong>: ✅ Working with proper storyType parameter support</li>
+<li><strong>Learn More Feature</strong>: ✅ Enhanced to provide detailed historical figure information</li>
+</ul>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Required for backend</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">MONGO_URI</span><span class="o">=</span>your-azure-cosmos-db-connection-string
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">AZURE_OPENAI_ENDPOINT</span><span class="o">=</span>https://aimcs-foundry.cognitiveservices.azure.com/
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">AZURE_OPENAI_API_KEY</span><span class="o">=</span>your-azure-openai-api-key
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">AZURE_OPENAI_DEPLOYMENT</span><span class="o">=</span>o4-mini
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">AZURE_OPENAI_TTS_DEPLOYMENT</span><span class="o">=</span>gpt-4o-mini-tts
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">PERPLEXITY_API_KEY</span><span class="o">=</span>your-perplexity-api-key
+</span></code></pre></div>
+<h2 id="testing-quality-assurance">🧪 Testing &amp; Quality Assurance<a class="headerlink" href="#testing-quality-assurance" title="Permanent link">&para;</a></h2>
+<h3 id="test-scripts">Test Scripts<a class="headerlink" href="#test-scripts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>AI Models</strong>: <code>scripts/test-ai-models.js</code></li>
+<li><strong>Backend</strong>: <code>scripts/test-new-backend.js</code></li>
+<li><strong>Cache System</strong>: <code>scripts/test-story-cache-comprehensive.js</code></li>
+<li><strong>Performance</strong>: <code>scripts/performance-comparison.js</code></li>
+<li><strong>Memory</strong>: <code>scripts/test-memory.sh</code></li>
+</ul>
+<h3 id="testing-guidelines">Testing Guidelines<a class="headerlink" href="#testing-guidelines" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Run comprehensive test suite before deployment</li>
+<li>Verify all AI models are working: <code>node scripts/test-ai-models.js</code></li>
+<li>Test story generation: <code>node scripts/test-fixed-story-generation.js</code></li>
+<li>Debug API issues: <code>node scripts/debug-api-response.js</code></li>
+<li>Check cache performance metrics</li>
+<li>Validate multi-language support</li>
+<li>Test Azure Key Vault integration</li>
+</ul>
+<h2 id="security-authentication">🔒 Security &amp; Authentication<a class="headerlink" href="#security-authentication" title="Permanent link">&para;</a></h2>
+<h3 id="azure-key-vault-integration">Azure Key Vault Integration<a class="headerlink" href="#azure-key-vault-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RBAC</strong>: Role-Based Access Control (not access policies)</li>
+<li><strong>Managed Identity</strong>: Container app uses managed identity</li>
+<li><strong>Secrets</strong>: All API keys stored securely</li>
+<li><strong>Permissions</strong>: "Key Vault Secrets User" role required</li>
+</ul>
+<h3 id="security-best-practices">Security Best Practices<a class="headerlink" href="#security-best-practices" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Never commit API keys to source code</li>
+<li>Use environment variables for configuration</li>
+<li>Implement proper CORS headers</li>
+<li>Validate all user inputs</li>
+<li>Use HTTPS for all communications</li>
+</ul>
+<h2 id="performance-optimization">📊 Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="caching-strategy">Caching Strategy<a class="headerlink" href="#caching-strategy" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Database Caching</strong>: MongoDB-based story and audio caching</li>
+<li><strong>Performance</strong>: 88.2% faster response times for cached requests</li>
+<li><strong>Cost Savings</strong>: 29.0% reduction in token usage</li>
+<li><strong>Cache Hit Rate</strong>: 50% in test scenarios</li>
+</ul>
+<h3 id="optimization-guidelines">Optimization Guidelines<a class="headerlink" href="#optimization-guidelines" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Preload stories for selected epochs</li>
+<li>Cache TTS audio as base64 in database</li>
+<li>Use efficient Three.js rendering</li>
+<li>Implement proper error handling</li>
+<li>Monitor Azure resource usage</li>
+</ul>
+<h2 id="gaming-features">🎮 Gaming Features<a class="headerlink" href="#gaming-features" title="Permanent link">&para;</a></h2>
+<h3 id="core-gameplay">Core Gameplay<a class="headerlink" href="#core-gameplay" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>3D Environment</strong>: Milky Way background with 5,000 animated stars</li>
+<li><strong>Orb Interaction</strong>: Drag orbs to center for story discovery</li>
+<li><strong>Epoch Selection</strong>: Time travel through different eras</li>
+<li><strong>Category Exploration</strong>: 8 different news categories</li>
+<li><strong>Audio Integration</strong>: Text-to-speech for immersive experience</li>
+</ul>
+<h3 id="user-experience">User Experience<a class="headerlink" href="#user-experience" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Responsive Design</strong>: Works on desktop and mobile</li>
+<li><strong>Touch Controls</strong>: Swipe gestures for mobile interaction</li>
+<li><strong>Visual Feedback</strong>: Animations and glow effects</li>
+<li><strong>Accessibility</strong>: Audio controls and keyboard navigation</li>
+</ul>
+<h2 id="development-workflow">🔧 Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Frontend</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>npm<span class="w"> </span>install<span class="w"> </span>--legacy-peer-deps
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>npm<span class="w"> </span>run<span class="w"> </span>dev
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># Backend</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">cd</span><span class="w"> </span>backend
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>npm<span class="w"> </span>install
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>node<span class="w"> </span>backend-server.js
+</span></code></pre></div>
+<h3 id="github-actions-package-management-workflow">GitHub Actions &amp; Package Management Workflow<a class="headerlink" href="#github-actions-package-management-workflow" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CRITICAL WORKFLOW</strong>: When modifying dependencies, follow this exact sequence:</li>
+<li>Edit package.json with new dependencies</li>
+<li>Run <code>npm install</code> to update package-lock.json</li>
+<li>Verify with <code>npm list</code> that all packages are installed</li>
+<li>Test build locally: <code>npm run build</code></li>
+<li>Commit BOTH package.json AND package-lock.json together</li>
+<li>
+<p>Push to trigger GitHub Actions</p>
+</li>
+<li>
+<p><strong>GitHub Actions Package Sync Issues</strong>:</p>
+</li>
+<li><strong>Error</strong>: "Missing: @types/react@19.1.9 from lock file"</li>
+<li><strong>Cause</strong>: package.json and package-lock.json are out of sync</li>
+<li><strong>Prevention</strong>: Always run <code>npm install</code> after package.json changes</li>
+<li><strong>Verification</strong>: Use <code>npm list</code> to check installed packages</li>
+<li>
+<p><strong>Solution</strong>: Run <code>npm install</code> locally, commit both files, push</p>
+</li>
+<li>
+<p><strong>Package Management Best Practices</strong>:</p>
+</li>
+<li><strong>Never commit package.json without package-lock.json</strong></li>
+<li><strong>Always run <code>npm install</code> after dependency changes</strong></li>
+<li><strong>Use exact versions</strong> for critical dependencies</li>
+<li><strong>Test locally before pushing</strong> to catch sync issues</li>
+<li><strong>Verify with <code>npm ci</code> locally</strong> to simulate GitHub Actions environment</li>
+</ul>
+<h3 id="deployment-process">Deployment Process<a class="headerlink" href="#deployment-process" title="Permanent link">&para;</a></h3>
+<h4 id="automated-deployment-recommended">Automated Deployment (Recommended)<a class="headerlink" href="#automated-deployment-recommended" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>GitHub Actions</strong>: Push to main branch automatically triggers deployment</li>
+<li>Frontend: Any file change triggers frontend deployment</li>
+<li>Backend: Only backend-related changes trigger backend deployment</li>
+<li>Full: Complete CI/CD pipeline with testing and verification</li>
+</ol>
+<h4 id="manual-deployment-development">Manual Deployment (Development)<a class="headerlink" href="#manual-deployment-development" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Update Azure Key Vault secrets if needed</li>
+<li>Build and test locally: <code>npm run build &amp;&amp; npm test</code></li>
+<li>Run deployment scripts:</li>
+<li>Frontend only: <code>./scripts/deploy-azure.sh</code></li>
+<li>Backend only: <code>./scripts/build-backend.sh</code></li>
+<li>Full deployment: <code>./scripts/deploy-full.sh</code></li>
+<li>Verify Azure resources and test production endpoints</li>
+<li>Monitor deployment logs and health checks</li>
+</ol>
+<h4 id="seamless-automation-features">Seamless Automation Features<a class="headerlink" href="#seamless-automation-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Automatic Testing</strong>: GitHub Actions run tests before deployment</li>
+<li><strong>Health Checks</strong>: Automatic verification of deployed services</li>
+<li><strong>Rollback Capability</strong>: Previous versions can be restored if needed</li>
+<li><strong>Environment Parity</strong>: Local, staging, and production environments are consistent</li>
+<li><strong>Secret Management</strong>: Azure Key Vault integration for secure credential management</li>
+</ul>
+<h3 id="story-prepopulation-process">Story Prepopulation Process<a class="headerlink" href="#story-prepopulation-process" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ensure Azure Key Vault credentials are set</li>
+<li>Check existing stories: <code>node scripts/check-existing-stories.js</code></li>
+<li>Run missing stories generation: <code>node scripts/generate-missing-stories.js</code> (token efficient)</li>
+<li>Or run full prepopulation: <code>./scripts/run-prepopulation.sh</code> for interactive confirmation</li>
+<li>Monitor progress and error statistics</li>
+<li>Verify stories in MongoDB using <code>scripts/check-database-stories.js</code></li>
+<li>Test story loading in the game interface</li>
+</ol>
+<h3 id="git-workflow">Git Workflow<a class="headerlink" href="#git-workflow" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use descriptive commit messages</li>
+<li>Test changes before committing</li>
+<li>Update documentation for new features</li>
+<li>Follow semantic versioning</li>
+<li><strong>CRITICAL</strong>: Always commit package.json and package-lock.json together</li>
+</ul>
+<h3 id="deployment-verification-monitoring">Deployment Verification &amp; Monitoring<a class="headerlink" href="#deployment-verification-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Health Checks</strong>: Verify both frontend and backend are responding</li>
+<li><strong>Performance Monitoring</strong>: Monitor Azure resource usage and response times</li>
+<li><strong>Error Tracking</strong>: Monitor application logs for errors and issues</li>
+<li><strong>Automated Testing</strong>: Run comprehensive test suite before deployment</li>
+<li><strong>Rollback Procedures</strong>: Keep previous versions available for quick rollback</li>
+<li><strong>Package Sync Verification</strong>: Ensure package.json and package-lock.json are in sync before deployment </li>
+</ul>
+<h2 id="critical-notes">🚨 Critical Notes<a class="headerlink" href="#critical-notes" title="Permanent link">&para;</a></h2>
+<h3 id="important-reminders">Important Reminders<a class="headerlink" href="#important-reminders" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>O4-Mini Model</strong>: Use <code>max_completion_tokens</code>, not <code>max_tokens</code></li>
+<li><strong>Temperature Parameter</strong>: Not supported for O4-Mini (use default 1)</li>
+<li><strong>Authorization Header</strong>: Use <code>Authorization: Bearer</code> for Azure OpenAI</li>
+<li><strong>TTS Voice</strong>: Use <code>alloy</code> for both English and Spanish (avoid <code>jorge</code>)</li>
+<li><strong>Token Limits</strong>: Use 2000 tokens for complete story generation</li>
+<li><strong>Database Migration</strong>: All data migrated from <code>aimcs</code> to <code>orbgame</code></li>
+<li><strong>Registry Name</strong>: Use <code>orbgame</code> registry, not <code>aimcsregistry</code></li>
+<li><strong>Docker Platform</strong>: Always build with <code>--platform linux/amd64</code> for Azure Container Apps</li>
+<li><strong>Azure OpenAI Endpoint</strong>: Use <code>https://aimcs-foundry.cognitiveservices.azure.com/</code></li>
+<li><strong>API Version</strong>: Use <code>2024-12-01-preview</code> for o4-mini model</li>
+</ul>
+<h3 id="package-management-github-actions-sync-issues">Package Management &amp; GitHub Actions Sync Issues<a class="headerlink" href="#package-management-github-actions-sync-issues" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CRITICAL</strong>: Always run <code>npm install</code> after modifying package.json</li>
+<li><strong>CRITICAL</strong>: Always commit both package.json AND package-lock.json together</li>
+<li><strong>CRITICAL</strong>: Never commit package.json without running npm install first</li>
+<li><strong>Common Error</strong>: "Missing: @types/react@19.1.9 from lock file" - indicates package.json and package-lock.json are out of sync</li>
+<li><strong>Solution</strong>: Run <code>npm install</code> locally, then commit both files together</li>
+<li><strong>Verification</strong>: Use <code>npm list</code> to check installed packages match package.json</li>
+<li><strong>Prevention</strong>: Test build locally with <code>npm run build</code> before pushing</li>
+<li><strong>GitHub Actions</strong>: Uses <code>npm ci</code> which requires exact package-lock.json match</li>
+</ul>
+<h3 id="troubleshooting-package-sync-issues">Troubleshooting Package Sync Issues<a class="headerlink" href="#troubleshooting-package-sync-issues" title="Permanent link">&para;</a></h3>
+<h4 id="github-actions-failure-missing-dependencies-from-lock-file">GitHub Actions Failure: "Missing dependencies from lock file"<a class="headerlink" href="#github-actions-failure-missing-dependencies-from-lock-file" title="Permanent link">&para;</a></h4>
+<p><strong>Error Message</strong>: <code>Missing: @types/react@19.1.9 from lock file</code></p>
+<p><strong>Root Cause</strong>: package.json and package-lock.json are out of sync</p>
+<p><strong>Immediate Fix</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 1. Run npm install to sync package-lock.json</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>npm<span class="w"> </span>install
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 2. Verify packages are installed correctly</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>npm<span class="w"> </span>list
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># 3. Test build locally</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># 4. Commit both files together</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>git<span class="w"> </span>add<span class="w"> </span>package.json<span class="w"> </span>package-lock.json
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: sync package.json and package-lock.json&quot;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>git<span class="w"> </span>push
+</span></code></pre></div></p>
+<p><strong>Prevention Checklist</strong>:
+- [ ] Always run <code>npm install</code> after package.json changes
+- [ ] Verify with <code>npm list</code> that all packages are installed
+- [ ] Test build locally before committing
+- [ ] Commit both package.json AND package-lock.json together
+- [ ] Never commit package.json without running npm install first</p>
+<p><strong>Verification Commands</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check if packages are in sync</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>npm<span class="w"> </span>list
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Test build process</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Simulate GitHub Actions environment</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>npm<span class="w"> </span>ci
+</span></code></pre></div></p>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Key Vault RBAC permissions for container app</li>
+<li>CORS configuration for cross-origin requests</li>
+<li>TTS audio generation for different languages</li>
+<li>Cache invalidation and story freshness</li>
+<li>Azure Container App scaling configuration</li>
+<li>Docker platform mismatch (must use <code>linux/amd64</code> for Azure Container Apps)</li>
+<li>Container App deployment failures due to wrong platform architecture</li>
+<li><strong>API Parameter Issues</strong>: Use <code>max_completion_tokens</code> not <code>max_tokens</code> for o4-mini</li>
+<li><strong>TTS Voice Issues</strong>: Use <code>alloy</code> voice (avoid <code>jorge</code> - not supported)</li>
+<li><strong>Empty API Responses</strong>: Check token limits and parameter names</li>
+<li><strong>JSON Parse Errors</strong>: Implement JSON fix attempts and empty content checks</li>
+<li><strong>Package Lock Sync</strong>: Missing dependencies in package-lock.json cause GitHub Actions failures </li>
+</ul>
+<h2 id="github-pages-wiki-system">📚 GitHub Pages Wiki System<a class="headerlink" href="#github-pages-wiki-system" title="Permanent link">&para;</a></h2>
+<h3 id="complete-setup-maintenance">Complete Setup &amp; Maintenance<a class="headerlink" href="#complete-setup-maintenance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Main Guide</strong>: <code>GITHUB_PAGES_COMPLETE_SETUP.md</code> - Comprehensive setup and maintenance guide</li>
+<li><strong>Status</strong>: Currently returning 404 - GitHub Pages needs manual configuration</li>
+<li><strong>Live URL</strong>: <a href="https://wiki.orbgame.us">https://wiki.orbgame.us</a> (after configuration)</li>
+<li><strong>DNS</strong>: Configured (wiki.orbgame.us → zimaxnet.github.io)</li>
+<li><strong>Content</strong>: 3.4MB of documentation ready</li>
+</ul>
+<h3 id="core-setup-files">Core Setup Files<a class="headerlink" href="#core-setup-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Complete Setup Guide</strong>: <code>GITHUB_PAGES_COMPLETE_SETUP.md</code> - All setup information in one place</li>
+<li><strong>Status Verification</strong>: <code>scripts/verify-wiki-status.sh</code> - Comprehensive status checking</li>
+<li><strong>Quick Updates</strong>: <code>scripts/quick-wiki-update.sh</code> - Manual wiki updates</li>
+<li><strong>README Sync</strong>: <code>scripts/sync-readme-to-wiki.sh</code> - Sync README/.cursorrules to wiki</li>
+<li><strong>Configuration Guide</strong>: <code>scripts/configure-github-pages-step-by-step.sh</code> - Step-by-step setup</li>
+</ul>
+<h3 id="github-pages-configuration-required">GitHub Pages Configuration Required<a class="headerlink" href="#github-pages-configuration-required" title="Permanent link">&para;</a></h3>
+<p><strong>Go to</strong>: <a href="https://github.com/zimaxnet/orb-game/settings/pages">https://github.com/zimaxnet/orb-game/settings/pages</a>
+<strong>Configure</strong>:
+- Source: Deploy from a branch
+- Branch: <code>gh-pages</code>
+- Folder: <code>/ (root)</code>
+- Custom domain: <code>wiki.orbgame.us</code>
+- Enforce HTTPS: ✓</p>
+<h3 id="update-process-after-configuration">Update Process (After Configuration)<a class="headerlink" href="#update-process-after-configuration" title="Permanent link">&para;</a></h3>
+<p><strong>Automatic Updates</strong>:
+1. Edit files in <code>docs/</code> directory
+2. Commit and push to main branch
+3. GitHub Actions automatically builds and deploys
+4. Wiki updates within 5-10 minutes</p>
+<p><strong>Manual Updates</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Quick wiki update</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>./scripts/quick-wiki-update.sh
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Sync from README/.cursorrules</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>./scripts/sync-readme-to-wiki.sh
+</span></code></pre></div></p>
+<p><strong>Sync README/.cursorrules to Wiki</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Extract important content from README and .cursorrules</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>./scripts/sync-readme-to-wiki.sh
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Creates:</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># - docs/getting-started/project-overview.md</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># - docs/developer/deployment-patterns.md</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># - docs/developer/development-guidelines.md</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># - docs/developer/critical-notes.md</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># - docs/developer/cursor-rules.md</span>
+</span></code></pre></div></p>
+<h3 id="monitoring-maintenance">Monitoring &amp; Maintenance<a class="headerlink" href="#monitoring-maintenance" title="Permanent link">&para;</a></h3>
+<p><strong>Regular Checks</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Test wiki accessibility</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>https://wiki.orbgame.us
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Check deployment status</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>gh-pages<span class="w"> </span>-3
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Run comprehensive verification</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>./scripts/verify-wiki-status.sh
+</span></code></pre></div></p>
+<p><strong>Update Workflow</strong>:
+1. Update README.md with new features/bug fixes
+2. Update .cursorrules with new development rules
+3. Run sync script: <code>./scripts/sync-readme-to-wiki.sh</code>
+4. Commit and push to trigger auto-deployment
+5. Verify updates at <a href="https://wiki.orbgame.us">https://wiki.orbgame.us</a></p>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<p><strong>If GitHub Pages Shows 404</strong>:
+1. Check GitHub Pages is configured correctly
+2. Verify gh-pages branch exists and has content
+3. Wait 5-10 minutes for processing
+4. Check GitHub Actions for build errors</p>
+<p><strong>If Updates Don't Work</strong>:
+1. Ensure GitHub Pages is configured
+2. Check GitHub Actions workflow is running
+3. Verify changes are in <code>docs/</code> directory
+4. Wait for deployment completion</p>
+<p><strong>If DNS Issues</strong>:
+1. Verify Azure DNS CNAME record exists
+2. Wait for DNS propagation (up to 48 hours)
+3. Check custom domain in GitHub Pages settings</p>
+<h3 id="success-checklist">Success Checklist<a class="headerlink" href="#success-checklist" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GitHub Pages configured in repository settings</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Custom domain <code>wiki.orbgame.us</code> added</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> "Enforce HTTPS" enabled</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> gh-pages branch exists with content</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GitHub Actions workflow is running</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Site accessible at <a href="http://wiki.orbgame.us">http://wiki.orbgame.us</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Site accessible at <a href="https://wiki.orbgame.us">https://wiki.orbgame.us</a> (after SSL)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Documentation loads correctly</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Navigation and search work</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Automatic updates working</li>
+</ul>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitHub Pages Settings</strong>: <a href="https://github.com/zimaxnet/orb-game/settings/pages">https://github.com/zimaxnet/orb-game/settings/pages</a></li>
+<li><strong>GitHub Actions</strong>: <a href="https://github.com/zimaxnet/orb-game/actions">https://github.com/zimaxnet/orb-game/actions</a></li>
+<li><strong>Live Wiki</strong>: <a href="https://wiki.orbgame.us">https://wiki.orbgame.us</a></li>
+<li><strong>Repository</strong>: <a href="https://github.com/zimaxnet/orb-game">https://github.com/zimaxnet/orb-game</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 1, 2025 18:16:14 UTC">August 1, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 1, 2025 18:16:14 UTC">August 1, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/zimaxnet/orb-game" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/zimaxnet" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

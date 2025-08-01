@@ -116,7 +116,6 @@ let modelReliabilityChecker;
 let azureOpenAIApiKey; // Global variable for API key
 
 // Initialize services
-let positiveNewsService;
 let historicalFiguresImageAPI;
 let audioStorageService;
 let memoryService;
@@ -687,7 +686,6 @@ async function initializeServer() {
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
     memoryService = null;
-    positiveNewsService = null;
     storyCacheService = null;
     historicalFiguresService = null;
   } else {
@@ -917,39 +915,7 @@ app.get('/api/orb/historical-figures/:category', async (req, res) => {
   }
 });
 
-// Backward compatibility endpoint: Map old positive-news endpoint to historical-figures
-app.get('/api/orb/positive-news/:category', async (req, res) => {
-  const category = req.params.category;
-  const count = parseInt(req.query.count) || 1;
-  const epoch = req.query.epoch || 'Modern';
-  const language = req.query.language || 'en';
-  const storyType = req.query.storyType || 'historical-figure';
-  const includeTTS = req.query.includeTTS !== 'false'; // Default to true unless explicitly set to false
-  
-  console.log(`📚 Backward compatibility: Fetching ${count} ${storyType} stories for ${category} in ${epoch} epoch (${language}) with TTS: ${includeTTS}`);
-  
-  // If historical figures service is not available, fail
-  if (!historicalFiguresService) {
-    console.log(`❌ Historical figures service not available for ${category}`);
-    res.status(503).json({ error: 'Historical figures service not available. Cannot generate stories without historical figures.' });
-    return;
-  }
-  
-  try {
-    // Get stories from historical figures service with TTS included by default
-    const stories = await historicalFiguresService.getStories(category, epoch, language, count, includeTTS);
-    if (stories.length === 0) {
-      console.log(`❌ No historical figure stories found for ${category}-${epoch}-${language}`);
-      res.status(404).json({ error: `No historical figure stories available for ${category} in ${epoch} epoch (${language})` });
-    } else {
-      console.log(`✅ Found ${stories.length} historical figure stories for ${category} with TTS: ${includeTTS}`);
-      res.json(stories);
-    }
-  } catch (error) {
-    console.error('Historical figures endpoint error:', error);
-    res.status(500).json({ error: 'Failed to fetch historical figure stories' });
-  }
-});
+
 
 // New endpoint: Generate fresh historical figure stories
 app.post('/api/orb/generate-historical-figures/:category', async (req, res) => {

@@ -9,40 +9,25 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const [imageStatus, setImageStatus] = useState('checking');
     const [images, setImages] = useState(story.images || {});
     const [figureName, setFigureName] = useState(story.historicalFigure || story.figureName);
-    const [showFullStory, setShowFullStory] = useState(false);
 
     const portrait = images?.portrait;
     const gallery = images?.gallery || [];
 
-    // Get story content from the correct fields
-    const getStoryContent = () => {
-        // Try different possible content fields
-        if (story.fullText) return story.fullText;
-        if (story.content) return story.content;
+    // Get brief achievement text (first sentence only)
+    const getBriefAchievement = () => {
         if (story.summary) return story.summary;
-        if (story.text) return story.text;
-        if (story.story) return story.story;
-        return story.headline || 'No story content available.';
+        if (story.headline) {
+            // Extract achievement from headline (e.g., "Archimedes: Innovator of Levers and Buoyancy")
+            const colonIndex = story.headline.indexOf(':');
+            if (colonIndex > 0) {
+                return story.headline.substring(colonIndex + 1).trim();
+            }
+            return story.headline;
+        }
+        return '';
     };
 
-    const storyContent = getStoryContent();
-
-    // Extract brief achievements (first 1-2 sentences) for initial display
-    const getBriefAchievements = (content) => {
-        if (!content) return '';
-        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
-        return sentences.slice(0, 1).join('. ') + '.';
-    };
-
-    // Extract full story content (remaining text after brief achievements)
-    const getFullStoryContent = (content) => {
-        if (!content) return '';
-        const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
-        return sentences.slice(1).join('. ') + '.';
-    };
-
-    const briefAchievements = getBriefAchievements(storyContent);
-    const fullStoryContent = getFullStoryContent(storyContent);
+    const briefAchievement = getBriefAchievement();
     
     // Get the historical figure name from the headline or story data
     const getFigureName = () => {
@@ -235,37 +220,12 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
             </div>
 
             <div className="figure-content-inline">
-                {/* Story Content Section - Displayed FIRST and ALWAYS */}
-                <div className="figure-story-section">
-                    <div className="story-content-scrollable">
-                        {showFullStory ? fullStoryContent : briefAchievements}
-                    </div>
-                    
-                    <div className="story-actions">
-                        {!showFullStory && fullStoryContent && (
-                            <button 
-                                className="more-button"
-                                onClick={() => setShowFullStory(true)}
-                            >
-                                Read Full Story
-                            </button>
-                        )}
-                        
-                        {showFullStory && story.learnMore && (
-                            <button 
-                                className="learn-more-button"
-                                onClick={() => onLearnMore(story)}
-                            >
-                                Learn More
-                            </button>
-                        )}
-                    </div>
-                </div>
-
                 {/* Historical Figure Name and Brief Accomplishment */}
                 <div className="figure-header-section">
                     <h2 className="figure-name">{getFigureName()}</h2>
-                    <p className="figure-accomplishment">{briefAchievements}</p>
+                    {briefAchievement && (
+                        <p className="figure-accomplishment">{briefAchievement}</p>
+                    )}
                 </div>
 
                 {/* Images Section - Only display if preloaded images exist */}

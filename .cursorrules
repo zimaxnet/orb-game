@@ -482,3 +482,113 @@ npm ci
 - **Empty API Responses**: Check token limits and parameter names
 - **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
 - **Package Lock Sync**: Missing dependencies in package-lock.json cause GitHub Actions failures 
+
+## 📚 GitHub Pages Wiki System
+
+### Complete Setup & Maintenance
+- **Main Guide**: `GITHUB_PAGES_COMPLETE_SETUP.md` - Comprehensive setup and maintenance guide
+- **Status**: Currently returning 404 - GitHub Pages needs manual configuration
+- **Live URL**: https://wiki.orbgame.us (after configuration)
+- **DNS**: Configured (wiki.orbgame.us → zimaxnet.github.io)
+- **Content**: 3.4MB of documentation ready
+
+### Core Setup Files
+- **Complete Setup Guide**: `GITHUB_PAGES_COMPLETE_SETUP.md` - All setup information in one place
+- **Status Verification**: `scripts/verify-wiki-status.sh` - Comprehensive status checking
+- **Quick Updates**: `scripts/quick-wiki-update.sh` - Manual wiki updates
+- **README Sync**: `scripts/sync-readme-to-wiki.sh` - Sync README/.cursorrules to wiki
+- **Configuration Guide**: `scripts/configure-github-pages-step-by-step.sh` - Step-by-step setup
+
+### GitHub Pages Configuration Required
+**Go to**: https://github.com/zimaxnet/orb-game/settings/pages
+**Configure**:
+- Source: Deploy from a branch
+- Branch: `gh-pages`
+- Folder: `/ (root)`
+- Custom domain: `wiki.orbgame.us`
+- Enforce HTTPS: ✓
+
+### Update Process (After Configuration)
+**Automatic Updates**:
+1. Edit files in `docs/` directory
+2. Commit and push to main branch
+3. GitHub Actions automatically builds and deploys
+4. Wiki updates within 5-10 minutes
+
+**Manual Updates**:
+```bash
+# Quick wiki update
+./scripts/quick-wiki-update.sh
+
+# Sync from README/.cursorrules
+./scripts/sync-readme-to-wiki.sh
+```
+
+**Sync README/.cursorrules to Wiki**:
+```bash
+# Extract important content from README and .cursorrules
+./scripts/sync-readme-to-wiki.sh
+
+# Creates:
+# - docs/getting-started/project-overview.md
+# - docs/developer/deployment-patterns.md
+# - docs/developer/development-guidelines.md
+# - docs/developer/critical-notes.md
+# - docs/developer/cursor-rules.md
+```
+
+### Monitoring & Maintenance
+**Regular Checks**:
+```bash
+# Test wiki accessibility
+curl -I https://wiki.orbgame.us
+
+# Check deployment status
+git log --oneline gh-pages -3
+
+# Run comprehensive verification
+./scripts/verify-wiki-status.sh
+```
+
+**Update Workflow**:
+1. Update README.md with new features/bug fixes
+2. Update .cursorrules with new development rules
+3. Run sync script: `./scripts/sync-readme-to-wiki.sh`
+4. Commit and push to trigger auto-deployment
+5. Verify updates at https://wiki.orbgame.us
+
+### Troubleshooting
+**If GitHub Pages Shows 404**:
+1. Check GitHub Pages is configured correctly
+2. Verify gh-pages branch exists and has content
+3. Wait 5-10 minutes for processing
+4. Check GitHub Actions for build errors
+
+**If Updates Don't Work**:
+1. Ensure GitHub Pages is configured
+2. Check GitHub Actions workflow is running
+3. Verify changes are in `docs/` directory
+4. Wait for deployment completion
+
+**If DNS Issues**:
+1. Verify Azure DNS CNAME record exists
+2. Wait for DNS propagation (up to 48 hours)
+3. Check custom domain in GitHub Pages settings
+
+### Success Checklist
+- [ ] GitHub Pages configured in repository settings
+- [ ] Custom domain `wiki.orbgame.us` added
+- [ ] "Enforce HTTPS" enabled
+- [ ] gh-pages branch exists with content
+- [ ] GitHub Actions workflow is running
+- [ ] Site accessible at http://wiki.orbgame.us
+- [ ] Site accessible at https://wiki.orbgame.us (after SSL)
+- [ ] Documentation loads correctly
+- [ ] Navigation and search work
+- [ ] Automatic updates working
+
+### Quick Links
+- **GitHub Pages Settings**: https://github.com/zimaxnet/orb-game/settings/pages
+- **GitHub Actions**: https://github.com/zimaxnet/orb-game/actions
+- **Live Wiki**: https://wiki.orbgame.us
+- **Repository**: https://github.com/zimaxnet/orb-game

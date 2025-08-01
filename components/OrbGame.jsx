@@ -243,10 +243,6 @@ function OrbGame() {
   const [isDragging, setIsDragging] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('Technology');
   
-  // Add preloaded stories state for next/prev navigation
-  const [preloadedStories, setPreloadedStories] = useState([]);
-  const [isPreloading, setIsPreloading] = useState(false);
-  
   // Add historical figure display state
   const [showHistoricalFigure, setShowHistoricalFigure] = useState(false);
   
@@ -517,28 +513,23 @@ function OrbGame() {
     setCurrentAISource(aiModelName);
     
     try {
-      // For historical figures, use the image-enhanced endpoint
-      console.log(`📚 Fetching historical figure stories with images for ${category.name} in ${currentEpoch} epoch (${language})...`);
+      // For historical figures, use the image-enhanced endpoint - only load ONE story
+      console.log(`📚 Fetching single historical figure story with images for ${category.name} in ${currentEpoch} epoch (${language})...`);
       try {
         const storiesResponse = await fetch(`${BACKEND_URL}/api/orb/stories-with-images?category=${category.name}&epoch=${currentEpoch}&language=${language}&count=1`);
 
         if (storiesResponse.ok) {
           const data = await storiesResponse.json();
           if (data.success && data.stories && data.stories.length > 0) {
-            console.log(`✅ Fetched ${data.stories.length} historical figure stories with images for ${category.name} in ${currentEpoch} epoch`);
+            console.log(`✅ Fetched single historical figure story with images for ${category.name} in ${currentEpoch} epoch`);
             
-            // Set the first story immediately for fast user experience
-            setNewsStories(data.stories);
+            // Set only the first story - no multiple figures
+            setNewsStories([data.stories[0]]);
             setCurrentNewsIndex(0);
             setCurrentNews(data.stories[0]);
             setCurrentAISource('o4-mini');
             setShowHistoricalFigure(true); // Show historical figure display
             setIsLoading(false);
-            
-            // Silently load the other 2 historical figures in the background
-            if (data.stories.length === 1) {
-              preloadAdditionalStories(category, 1);
-            }
             
             return;
           }
@@ -599,52 +590,9 @@ function OrbGame() {
     }
   };
 
+  // Remove preloadAdditionalStories function - no longer needed
     
-    // Preload additional historical figure stories in the background for round-robin navigation
-    const preloadAdditionalStories = async (category, existingCount) => {
-      if (isPreloading) return; // Prevent multiple preload requests
-      
-      setIsPreloading(true);
-      console.log(`🔄 Silently preloading additional historical figure stories for ${category.name}...`);
-      
-      try {
-        // Calculate how many more stories we need to complete the set of 3
-        const neededCount = 3 - existingCount;
-        
-        if (neededCount > 0) {
-          const generateResponse = await fetch(`${BACKEND_URL}/api/orb/generate-historical-figures/${category.name}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              epoch: currentEpoch,
-              model: 'o4-mini',
-              count: neededCount,
-              language: language,
-              includeTTS: false
-            }),
-          });
-
-          if (generateResponse.ok) {
-            const additionalStories = await generateResponse.json();
-            if (Array.isArray(additionalStories) && additionalStories.length > 0) {
-              console.log(`✅ Silently preloaded ${additionalStories.length} additional historical figure stories`);
-              
-              // Add the preloaded stories to the existing stories array
-              setNewsStories(prevStories => [...prevStories, ...additionalStories]);
-              setPreloadedStories(additionalStories);
-            }
-          }
-        }
-      } catch (error) {
-        console.warn('Failed to preload additional stories:', error.message);
-      } finally {
-        setIsPreloading(false);
-      }
-    };
-    
-    const releaseOrbFromCenter = () => {
+  const releaseOrbFromCenter = () => {
     setOrbInCenter(null);
     setCurrentNews(null);
     setNewsStories([]);
@@ -777,35 +725,7 @@ function OrbGame() {
 
 
 
-  const nextStory = () => {
-    const filteredStories = getFilteredStories();
-    if (filteredStories.length > 1) {
-      const nextIndex = (currentNewsIndex + 1) % filteredStories.length;
-      setCurrentNewsIndex(nextIndex);
-      setCurrentNews(filteredStories[nextIndex]);
-      
-      // Removed auto-play audio - user must click play button
-    } else if (isPreloading) {
-      console.log('⏳ Waiting for additional historical figures to load...');
-    } else {
-      console.log('ℹ️ Only one historical figure available for this category/epoch');
-    }
-  };
-
-  const prevStory = () => {
-    const filteredStories = getFilteredStories();
-    if (filteredStories.length > 1) {
-      const prevIndex = (currentNewsIndex - 1 + filteredStories.length) % filteredStories.length;
-      setCurrentNewsIndex(prevIndex);
-      setCurrentNews(filteredStories[prevIndex]);
-      
-      // Removed auto-play audio - user must click play button
-    } else if (isPreloading) {
-      console.log('⏳ Waiting for additional historical figures to load...');
-    } else {
-      console.log('ℹ️ Only one historical figure available for this category/epoch');
-    }
-  };
+  // Remove nextStory and prevStory functions - no longer needed since we only show one figure per try
 
   const learnMore = async () => {
     if (!currentNews || !orbInCenter) return;
@@ -1027,28 +947,12 @@ function OrbGame() {
           <div className="news-header">
             <div className="audio-controls">
               <button 
-                onClick={prevStory} 
-                disabled={getFilteredStories().length <= 1}
-                className={`nav-button prev-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
-                title={isPreloading ? 'Loading additional historical figures...' : language === 'es' ? 'Figura histórica anterior' : 'Previous historical figure'}
-              >
-                {isPreloading ? '⏳' : '←'}
-              </button>
-              <button 
                 onClick={playAudio}
                 disabled={!currentNews.ttsAudio || isMuted || isAudioLoading}
                 className={`play-button ${isPlaying ? 'playing' : ''} ${isAudioLoading ? 'loading' : ''}`}
                 title={audioError ? 'Audio error - try again' : isAudioLoading ? 'Loading audio...' : isPlaying ? 'Pause audio' : 'Play audio'}
               >
                 {isAudioLoading ? '⏳' : isPlaying ? '⏸️' : '▶️'}
-              </button>
-              <button 
-                onClick={nextStory} 
-                disabled={getFilteredStories().length <= 1}
-                className={`nav-button next-button ${getFilteredStories().length <= 1 ? 'disabled' : ''} ${isPreloading ? 'preloading' : ''}`}
-                title={isPreloading ? 'Loading additional historical figures...' : language === 'es' ? 'Siguiente figura histórica' : 'Next historical figure'}
-              >
-                {isPreloading ? '⏳' : '→'}
               </button>
               <button 
                 onClick={toggleMute}

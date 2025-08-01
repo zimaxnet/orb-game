@@ -1,0 +1,75 @@
+# 🎮 Orb Game Wiki DNS Configuration
+# Domain: orbgame.us
+# Subdomain: wiki.orbgame.us
+# Target: GitHub Pages (zimaxnet.github.io)
+
+## Required DNS Records
+
+### 1. CNAME Record (Recommended)
+Type: CNAME
+Name: wiki
+Value: zimaxnet.github.io
+TTL: 3600
+Description: Points wiki.orbgame.us to GitHub Pages
+
+### 2. A Records (Alternative/Redundant)
+Type: A
+Name: wiki
+Value: 185.199.108.153
+TTL: 3600
+
+Type: A
+Name: wiki
+Value: 185.199.109.153
+TTL: 3600
+
+Type: A
+Name: wiki
+Value: 185.199.110.153
+TTL: 3600
+
+Type: A
+Name: wiki
+Value: 185.199.111.153
+TTL: 3600
+
+## GitHub Pages Configuration
+
+### Repository Settings
+URL: https://github.com/zimaxnet/orb-game/settings/pages
+
+### Configuration Steps
+1. Source: Deploy from a branch
+2. Branch: gh-pages
+3. Folder: / (root)
+4. Custom domain: wiki.orbgame.us
+5. Enforce HTTPS: ✓
+
+## Verification Commands
+
+### DNS Resolution
+nslookup wiki.orbgame.us
+
+### Website Access
+curl -I https://wiki.orbgame.us
+
+### SSL Certificate
+openssl s_client -connect wiki.orbgame.us:443 -servername wiki.orbgame.us
+
+## Troubleshooting
+
+### If DNS doesn't resolve:
+1. Check DNS provider settings
+2. Verify CNAME record is correct
+3. Wait for propagation (up to 48 hours)
+4. Check GitHub Pages is enabled
+
+### If HTTPS doesn't work:
+1. Ensure "Enforce HTTPS" is enabled in GitHub
+2. Wait for SSL certificate generation (up to 24 hours)
+3. Check DNS propagation
+
+### If site doesn't load:
+1. Verify GitHub Actions deployment succeeded
+2. Check gh-pages branch exists
+3. Verify custom domain is configured in GitHub

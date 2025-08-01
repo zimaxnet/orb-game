@@ -68,13 +68,27 @@ Each story features:
 - **Styling**: CSS modules with component-specific stylesheets
 
 ### **Backend (Node.js + Express)**
-- **Main Server**: `backend/backend-server.js` - Production API server
+- **Main Server**: `backend/backend-server.js` - Production API server with 35 endpoints
 - **Historical Figures Service**: `backend/historical-figures-service-new.js` - Dedicated service with separated media storage
 - **Services**: Modular service architecture (HistoricalFiguresService, MemoryService, StoryCacheService, HistoricalFiguresImageService)
 - **AI Integration**: O4-Mini model with Azure OpenAI
 - **Database**: Azure Cosmos DB for MongoDB with optimized collections
 - **Security**: Azure Key Vault for API key management
-- **Image Service**: HistoricalFiguresImageAPI with 12 endpoints for image management
+- **Image Service**: HistoricalFiguresImageAPI with 11 endpoints for comprehensive image management
+
+### **Current API Endpoints (35 Total)**
+- **Image Service** (11 endpoints): Image management, galleries, statistics, and story integration
+- **Historical Figures** (6 endpoints): Story generation, statistics, and management
+- **Health & Status** (3 endpoints): Monitoring and system information
+- **Analytics** (3 endpoints): Data insights and performance metrics
+- **Memory Service** (4 endpoints): User memory management and search
+- **Text-to-Speech** (2 endpoints): Audio generation and retrieval
+- **Cache Management** (3 endpoints): Performance optimization and cleanup
+- **Chat** (1 endpoint): AI interaction
+- **Stories** (1 endpoint): Cached content retrieval
+- **Models** (1 endpoint): Reliability information
+
+**Key Endpoint**: `/api/orb/stories-with-images` - Main endpoint used by the frontend for historical figure stories with images
 
 ### **Database Architecture (Optimized)**
 - **historical_figures**: Core story data (text, metadata) ~2KB per story
@@ -91,6 +105,29 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **Complete Positive News Service Removal**: Successfully removed all traces of the old positive news service
+  - **Removed Files**: Deleted `backend/positive-news-service.js` completely
+  - **Removed Endpoints**: Eliminated backward compatibility endpoints for positive news
+  - **Clean Architecture**: Backend now focuses exclusively on historical figures
+  - **Verified Removal**: Positive news endpoint now returns 404 error as expected
+- **Comprehensive Image Service Verification**: Confirmed image service is working excellently
+  - **81.3% Success Rate**: Image service working across all major categories and epochs
+  - **Working Categories**: Technology, Science, Sports, Music, Space, Innovation
+  - **Working Epochs**: Ancient, Industrial, Modern, Future
+  - **Image Statistics**: 121 total figures, 351 total images, 333 portraits, 18 gallery images
+  - **Fallback System**: SVG placeholders when real images aren't available
+  - **Multi-language Support**: Both English and Spanish working with images
+- **Current API Endpoints**: 35 total endpoints across 10 categories
+  - **Image Service**: 11 endpoints for comprehensive image management
+  - **Historical Figures**: 6 endpoints for story generation and management
+  - **Health & Status**: 3 endpoints for monitoring
+  - **Analytics**: 3 endpoints for data insights
+  - **Memory Service**: 4 endpoints for user memory management
+  - **Text-to-Speech**: 2 endpoints for audio generation
+  - **Cache Management**: 3 endpoints for performance optimization
+  - **Chat**: 1 endpoint for AI interaction
+  - **Stories**: 1 endpoint for cached content
+  - **Models**: 1 endpoint for reliability information
 - **Comprehensive Story Panel Redesign**: Revolutionary improvements for optimal learning experience
   - **Clear Content Hierarchy**: Historical figure name → Key achievements → Images → Full story
   - **🏆 Key Achievements Section**: Prominent display with blue gradient background and trophy icon

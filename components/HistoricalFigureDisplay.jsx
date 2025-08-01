@@ -48,6 +48,8 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         // Use images that are already included in the story data
         if (story.images && (story.images.portrait || story.images.gallery)) {
             console.log(`✅ Using images from story data for: ${figureName}`);
+            console.log(`🖼️  Portrait URL type: ${story.images.portrait?.url?.startsWith('data:') ? 'SVG Data URL' : 'HTTP URL'}`);
+            console.log(`🖼️  Portrait URL: ${story.images.portrait?.url?.substring(0, 50)}...`);
             setImages(story.images);
             setImageStatus('loaded');
             setImageLoading(false);
@@ -90,7 +92,15 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         const currentImage = getCurrentImage();
         
         if (!currentImage) {
-            return null; // Don't render anything if no image
+            // Show story text when no image is available
+            return (
+                <div className="figure-story-fallback">
+                    <div className="story-content">
+                        <h3 className="story-title">About {getFigureName()}</h3>
+                        <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
+                    </div>
+                </div>
+            );
         }
 
         return (
@@ -104,6 +114,12 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 {imageError && (
                     <div className="image-error-inline">
                         <div className="error-icon">⚠️</div>
+                        <div className="error-message">Image unavailable</div>
+                        {/* Show story text when image fails to load */}
+                        <div className="story-content-fallback">
+                            <h3 className="story-title">About {getFigureName()}</h3>
+                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
+                        </div>
                     </div>
                 )}
 
@@ -113,6 +129,12 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     className={`figure-image-inline ${imageLoading ? 'hidden' : ''} ${imageError ? 'hidden' : ''}`}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
+                    style={{ 
+                        maxWidth: '100%', 
+                        height: 'auto',
+                        objectFit: 'cover',
+                        borderRadius: '8px'
+                    }}
                 />
 
                 {gallery.length > 1 && showGallery && (

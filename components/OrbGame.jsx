@@ -518,10 +518,18 @@ function OrbGame() {
       try {
         const storiesResponse = await fetch(`${BACKEND_URL}/api/orb/stories-with-images?category=${category.name}&epoch=${currentEpoch}&language=${language}&count=1`);
 
+        console.log(`🔍 Response status: ${storiesResponse.status}`);
+        console.log(`🔍 Response ok: ${storiesResponse.ok}`);
+
         if (storiesResponse.ok) {
           const data = await storiesResponse.json();
+          console.log(`🔍 Response data:`, data);
+          console.log(`🔍 Data success: ${data.success}`);
+          console.log(`🔍 Data stories: ${data.stories ? data.stories.length : 'undefined'}`);
+          
           if (data.success && data.stories && data.stories.length > 0) {
             console.log(`✅ Fetched single historical figure story with images for ${category.name} in ${currentEpoch} epoch`);
+            console.log(`📖 Story headline: ${data.stories[0].headline}`);
             
             // Set only the first story - no multiple figures
             setNewsStories([data.stories[0]]);
@@ -532,10 +540,15 @@ function OrbGame() {
             setIsLoading(false);
             
             return;
+          } else {
+            console.log(`❌ Invalid response format:`, data);
           }
+        } else {
+          console.log(`❌ HTTP error: ${storiesResponse.status} ${storiesResponse.statusText}`);
         }
       } catch (storiesError) {
         console.warn('Stories with images fetch failed:', storiesError.message);
+        console.warn('Error details:', storiesError);
       }
       
       // Ultimate fallback

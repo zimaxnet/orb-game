@@ -15,7 +15,7 @@ import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
-import HistoricalFiguresImageAPI from './historical-figures-image-api.js';
+import SimpleImageService from './historical-figures-image-service-new.js';
 import AudioStorageService from './audio-storage-service.js';
 
 const app = express();
@@ -116,7 +116,7 @@ let modelReliabilityChecker;
 let azureOpenAIApiKey; // Global variable for API key
 
 // Initialize services
-let historicalFiguresImageAPI;
+let simpleImageService;
 let audioStorageService;
 let memoryService;
 let storyCacheService;
@@ -742,16 +742,17 @@ async function initializeServer() {
         storyCacheService = null;
       }
 
-      // Initialize HistoricalFiguresImageAPI
+      // Initialize SimpleImageService
       try {
-        console.log('🔧 Initializing HistoricalFiguresImageAPI...');
-        const imageAPI = new HistoricalFiguresImageAPI();
-        await imageAPI.initialize(mongoUri);
-        app.locals.imageAPI = imageAPI;
-        console.log('✅ HistoricalFiguresImageAPI initialized successfully.');
+        console.log('🔧 Initializing SimpleImageService...');
+        const imageService = new SimpleImageService();
+        await imageService.connect(mongoUri);
+        simpleImageService = imageService;
+        app.locals.imageService = imageService;
+        console.log('✅ SimpleImageService initialized successfully.');
       } catch (imageError) {
-        console.warn('⚠️ HistoricalFiguresImageAPI initialization failed:', imageError.message);
-        app.locals.imageAPI = null;
+        console.warn('⚠️ SimpleImageService initialization failed:', imageError.message);
+        app.locals.imageService = null;
       }
 
       // Initialize AudioStorageService
@@ -883,26 +884,23 @@ app.get('/api/orb/historical-figures/:category', async (req, res) => {
     }
     
     // Add images to stories if requested
-    if (includeImages && app.locals.imageAPI) {
+    if (includeImages && app.locals.imageService) {
       console.log(`🖼️ Adding images to ${stories.length} stories...`);
       
       for (let i = 0; i < stories.length; i++) {
         const story = stories[i];
-        const figureName = story.historicalFigure || story.figureName;
         
-        if (figureName) {
-          try {
-            // Get images for this figure
-            const images = await app.locals.imageAPI.imageService.getFigureImages(figureName, category, epoch);
-            if (images) {
-              story.images = images;
-              console.log(`✅ Added images for ${figureName}`);
-            } else {
-              console.log(`⚠️ No images found for ${figureName}`);
-            }
-          } catch (imageError) {
-            console.warn(`⚠️ Failed to get images for ${figureName}:`, imageError.message);
+        try {
+          // Get images for this story using the new simple image service
+          const images = await app.locals.imageService.getImagesForStory(story, category, epoch);
+          if (images) {
+            story.images = images;
+            console.log(`✅ Added images for story`);
+          } else {
+            console.log(`⚠️ No images found for story`);
           }
+        } catch (imageError) {
+          console.warn(`⚠️ Failed to get images for story:`, imageError.message);
         }
       }
     }
@@ -1519,80 +1517,39 @@ app.get('/api/historical-figures/random/:category', async (req, res) => {
   }
 });
 
-// Image Service Routes
-app.get('/api/orb/images/best', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
+// Simple Image Service Routes
+app.get('/api/orb/images/stats', async (req, res) => {
+  try {
+    if (!app.locals.imageService) {
+      return res.status(503).json({ error: 'Image service not available' });
+    }
+    
+    const stats = await app.locals.imageService.getImageStats();
+    res.json(stats);
+  } catch (error) {
+    console.error('❌ Error getting image stats:', error);
+    res.status(500).json({ error: 'Failed to get image stats' });
   }
-  app.locals.imageAPI.getBestImage(req, res);
 });
 
-app.get('/api/orb/images/gallery', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
+app.get('/api/orb/images/for-story', async (req, res) => {
+  try {
+    if (!app.locals.imageService) {
+      return res.status(503).json({ error: 'Image service not available' });
+    }
+    
+    const { story, category, epoch } = req.query;
+    
+    if (!story) {
+      return res.status(400).json({ error: 'Story data is required' });
+    }
+    
+    const storyData = JSON.parse(story);
+    const images = await app.locals.imageService.getImagesForStory(storyData, category, epoch);
+    
+    res.json({ images });
+  } catch (error) {
+    console.error('❌ Error getting images for story:', error);
+    res.status(500).json({ error: 'Failed to get images for story' });
   }
-  app.locals.imageAPI.getFigureGallery(req, res);
-});
-
-app.get('/api/orb/images/by-type', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.getImagesByType(req, res);
-});
-
-app.get('/api/orb/images/stats', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.getImageStats(req, res);
-});
-
-app.get('/api/orb/images/permalink/:permalink', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.getImageByPermalink(req, res);
-});
-
-app.get('/api/orb/images/most-accessed', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.getMostAccessedImages(req, res);
-});
-
-app.post('/api/orb/images/import', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.importImageData(req, res);
-});
-
-app.post('/api/orb/images/cleanup', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.cleanupImages(req, res);
-});
-
-app.post('/api/orb/images/populate', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.populateImagesForStory(req, res);
-});
-
-app.get('/api/orb/images/check-updated', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.checkForUpdatedImages(req, res);
-});
-
-app.get('/api/orb/stories-with-images', (req, res) => {
-  if (!app.locals.imageAPI) {
-    return res.status(503).json({ error: 'Image service not available' });
-  }
-  app.locals.imageAPI.getStoryWithImages(req, res);
 });

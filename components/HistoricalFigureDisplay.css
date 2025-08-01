@@ -357,6 +357,29 @@
     transform: scale(1.1);
 }
 
+/* Tiny close button for inline display */
+.close-button-tiny {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.close-button-tiny:hover {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
 /* Smaller close button for inline display */
 .close-button-small {
     background: rgba(0, 0, 0, 0.1);
@@ -765,6 +788,12 @@
         width: 40px;
         height: 40px;
         font-size: 1.5rem;
+    }
+    
+    .close-button-tiny {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
     }
     
     .close-button-small {

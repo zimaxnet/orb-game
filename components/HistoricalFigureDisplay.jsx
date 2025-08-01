@@ -204,7 +204,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         <div className="historical-figure-display-inline">
             <div className="figure-header">
                 <h2 className="figure-name-normal">{getFigureName()}</h2>
-                <button className="close-button-small" onClick={onClose} aria-label="Close">
+                <button className="close-button-tiny" onClick={onClose} aria-label="Close">
                     ×
                 </button>
             </div>

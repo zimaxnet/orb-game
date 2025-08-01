@@ -414,7 +414,7 @@ function OrbGame() {
         console.log('ℹ️ No cached modern story available');
       }
     } catch (error) {
-      console.error('❌ Error fetching cached modern story:', error);
+      console.error('Error fetching cached story:', error);
     }
   };
   
@@ -423,9 +423,14 @@ function OrbGame() {
   // Handle epoch change
   const handleEpochChange = (newEpoch) => {
     setCurrentEpoch(newEpoch);
-    // Update epoch index for round-robin
+    // Update epoch index for round-robin - ensure proper synchronization
     const newIndex = epochs.indexOf(newEpoch);
-    setEpochIndex(newIndex);
+    if (newIndex !== -1) {
+      setEpochIndex(newIndex);
+      console.log(`🔄 Epoch changed to ${newEpoch} (index: ${newIndex})`);
+    } else {
+      console.warn(`⚠️ Invalid epoch: ${newEpoch}, keeping current index: ${epochIndex}`);
+    }
     
     // Only clear orb state and stories if no story is currently being viewed
     if (!currentNews) {
@@ -445,7 +450,7 @@ function OrbGame() {
     }
   };
 
-  // Round-robin epoch cycling function
+  // Round-robin epoch cycling function - improved logic
   const cycleEpoch = () => {
     // Don't cycle if user is viewing a story
     if (currentNews || orbInCenter) {
@@ -453,10 +458,19 @@ function OrbGame() {
       return;
     }
     
-    const nextIndex = (epochIndex + 1) % epochs.length;
+    // Ensure epoch index is synchronized with current epoch
+    const currentIndex = epochs.indexOf(currentEpoch);
+    if (currentIndex === -1) {
+      console.warn(`⚠️ Current epoch ${currentEpoch} not found in epochs array, resetting to index 0`);
+      setEpochIndex(0);
+      setCurrentEpoch(epochs[0]);
+      return;
+    }
+    
+    const nextIndex = (currentIndex + 1) % epochs.length;
     const nextEpoch = epochs[nextIndex];
     handleEpochChange(nextEpoch);
-    console.log(`🔄 Round-robin: Cycling from ${currentEpoch} to ${nextEpoch}`);
+    console.log(`🔄 Round-robin: Cycling from ${currentEpoch} (${currentIndex}) to ${nextEpoch} (${nextIndex})`);
   };
 
 

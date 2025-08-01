@@ -92,9 +92,9 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         const currentImage = getCurrentImage();
         
         if (!currentImage) {
-            // Show story text when no image is available
+            // Show story text directly when no image is available - no red box
             return (
-                <div className="figure-story-fallback">
+                <div className="figure-story-content">
                     <div className="story-content">
                         <h3 className="story-title">About {getFigureName()}</h3>
                         <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
@@ -115,8 +115,8 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     <div className="image-error-inline">
                         <div className="error-icon">⚠️</div>
                         <div className="error-message">Image unavailable</div>
-                        {/* Show story text when image fails to load */}
-                        <div className="story-content-fallback">
+                        {/* Show story text directly when image fails to load - no red box */}
+                        <div className="story-content">
                             <h3 className="story-title">About {getFigureName()}</h3>
                             <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
                         </div>
@@ -206,7 +206,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         <div className="historical-figure-display-inline">
             <div className="figure-header">
                 <h2 className="figure-name-normal">{figureName || 'Historical Figure'}</h2>
-                <button className="close-button" onClick={onClose} aria-label="Close">
+                <button className="close-button-small" onClick={onClose} aria-label="Close">
                     ×
                 </button>
             </div>
@@ -230,9 +230,11 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
 
                 {/* No Image Placeholder - Show when no images are available */}
                 {imageStatus === 'no-images' && (
-                    <div className="no-image-placeholder">
-                        <div className="placeholder-icon">🖼️</div>
-                        <p className="placeholder-text">No image available for this historical figure</p>
+                    <div className="figure-story-content">
+                        <div className="story-content">
+                            <h3 className="story-title">About {getFigureName()}</h3>
+                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
+                        </div>
                     </div>
                 )}
             </div>

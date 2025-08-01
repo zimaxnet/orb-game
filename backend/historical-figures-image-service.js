@@ -7,7 +7,7 @@ class HistoricalFiguresImageService {
         this.collection = null;
         this.mongoUri = null;
         
-        // Reliable image sources with fallbacks
+        // Enhanced image sources with more reliable fallbacks
         this.imageSources = {
             // Primary sources - verified, accessible URLs
             primary: {
@@ -50,33 +50,65 @@ class HistoricalFiguresImageService {
                         'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Newton_reflecting_telescope_replica.jpg/300px-Newton_reflecting_telescope_replica.jpg',
                         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Newton_prism.jpg/300px-Newton_prism.jpg'
                     ]
+                },
+                'Zhang Heng': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Zhang_Heng.jpg/300px-Zhang_Heng.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Zhang_Heng.jpg/300px-Zhang_Heng.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Seismometer.jpg/300px-Seismometer.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Astronomical_clock.jpg/300px-Astronomical_clock.jpg'
+                    ]
+                },
+                'Al-Jazari': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Al-Jazari_automaton.jpg/300px-Al-Jazari_automaton.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Al-Jazari_automaton.jpg/300px-Al-Jazari_automaton.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Water_clock.jpg/300px-Water_clock.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Mechanical_devices.jpg/300px-Mechanical_devices.jpg'
+                    ]
+                },
+                'Tim Berners-Lee': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/300px-Sir_Tim_Berners-Lee_%28cropped%29.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/300px-Sir_Tim_Berners-Lee_%28cropped%29.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/World_Wide_Web.jpg/300px-World_Wide_Web.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/HTML_logo.jpg/300px-HTML_logo.jpg'
+                    ]
+                },
+                'Grace Hopper': {
+                    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/300px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg',
+                    gallery: [
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/300px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/COBOL_logo.jpg/300px-COBOL_logo.jpg',
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Computer_programming.jpg/300px-Computer_programming.jpg'
+                    ]
                 }
             },
             
-            // Fallback sources for different categories
+            // Enhanced fallback sources for different categories with better reliability
             fallbacks: {
                 'Technology': {
                     portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzQyYz3mIi8+PHRleHQgeD0iMTUwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5vbG9neSBJbm5vdmF0b3I8L3RleHQ+PC9zdmc+',
                     gallery: [
-                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzQyYz3mIi8+PHRleHQgeD0iMTUwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5vbG9neTwvL3RleHQ+PC9zdmc+'
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzQyYz3mIi8+PHRleHQgeD0iMTUwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9IlRlY2hub2xvZ3k8L3RleHQ+PC9zdmc+'
                     ]
                 },
                 'Science': {
                     portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFhNzNhOCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNjaWVudGlzdDwvL3RleHQ+PC9zdmc+',
                     gallery: [
-                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFhNzNhOCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJTY2llbmNlPC90ZXh0Pjwvc3ZnPg=='
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFhNzNhOCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPlNjaWVuY2U8L3RleHQ+PC9zdmc+'
                     ]
                 },
                 'Art': {
                     portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2YzNhNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFydGlzdDwvL3RleHQ+PC9zdmc+',
                     gallery: [
-                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2YzNhNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJBcnQ8L3RleHQ+PC9zdmc+'
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2YzNhNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPkFydDwvdGV4dD48L3N2Zz4='
                     ]
                 },
                 'Nature': {
                     portrait: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzE2YTg3NCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5hdHVyYWxpc3Q8L3RleHQ+PC9zdmc+',
                     gallery: [
-                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzE2YTg3NCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJOYXR1cmU8L3RleHQ+PC9zdmc+'
+                        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzE2YTg3NCIvPjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPk5hdHVyZTwvdGV4dD48L3N2Zz4='
                     ]
                 },
                 'Sports': {
@@ -356,7 +388,7 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Extract figure name from story content
+     * Extract figure name from story content with improved pattern matching
      */
     extractFigureName(story) {
         if (!story) return null;
@@ -372,14 +404,41 @@ class HistoricalFiguresImageService {
         }
         
         // Try to extract from title or content
-        const text = (story.title || story.content || '').toLowerCase();
+        const text = (story.title || story.content || story.headline || '').toLowerCase();
         
-        // Common historical figure patterns
+        // Enhanced historical figure patterns with more comprehensive matching
         const patterns = [
+            // Ancient figures
             /(archimedes|einstein|newton|curie|da vinci|leonardo|marie|isaac|albert)/i,
             /(hippocrates|euclid|aristotle|pythagoras|plato|socrates)/i,
+            /(zhang heng|al-jazari|gutenberg|li shizhen)/i,
+            
+            // Medieval figures
+            /(ibn al-haytham|roger bacon|hildegard|william marshal|joan of arc)/i,
+            /(giovanni|francesco|guillaume|machaut|landini)/i,
+            
+            // Industrial figures
             /(galileo|copernicus|kepler|tesla|edison|bell)/i,
-            /(darwin|pasteur|mendel|franklin|goodall|carson)/i
+            /(james watt|charles babbage|samuel morse|thomas edison)/i,
+            /(darwin|pasteur|mendel|franklin|goodall|carson)/i,
+            /(claude monet|william blake|gustave courbet)/i,
+            /(pierre de coubertin|james naismith|babe ruth)/i,
+            /(beethoven|chopin|clara schumann)/i,
+            
+            // Modern figures
+            /(tim berners-lee|steve jobs|hedy lamarr|grace hopper)/i,
+            /(rosalind franklin|jennifer doudna|jane goodall|rachel carson)/i,
+            /(frida kahlo|banksy|yayoi kusama)/i,
+            /(muhammad ali|pelé|serena williams)/i,
+            /(the beatles|bob dylan|aretha franklin)/i,
+            
+            // Future figures
+            /(fei-fei li|elon musk|demis hassabis)/i,
+            /(youyou tu|david sinclair|quantum pioneer)/i,
+            /(refik anadol|sofia crespo|holographic artist)/i,
+            /(conservation pioneer|climate scientist|biodiversity expert)/i,
+            /(future olympian|ai athlete|virtual sports star)/i,
+            /(ai composer|virtual performer|holographic musician)/i
         ];
         
         for (const pattern of patterns) {
@@ -393,7 +452,7 @@ class HistoricalFiguresImageService {
     }
 
     /**
-     * Check if preloaded images exist for a story
+     * Check if preloaded images exist for a story with enhanced reliability
      */
     async checkPreloadedImagesForStory(story, category, epoch) {
         try {

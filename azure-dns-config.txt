@@ -1,0 +1,98 @@
+# 🎮 Orb Game Wiki Azure DNS Configuration
+# Domain: orbgame.us
+# Subdomain: wiki.orbgame.us
+# Target: GitHub Pages (zimaxnet.github.io)
+
+## Azure DNS Zone Information
+Resource Group: dns-rg
+Zone Name: orbgame.us
+Subscription: 490a597e-95d5-454c-bd0c-3e7b349f1e87
+
+## Required DNS Record
+
+### CNAME Record
+Type: CNAME
+Name: wiki
+Value: zimaxnet.github.io
+TTL: 3600
+Description: Points wiki.orbgame.us to GitHub Pages
+
+## Azure Portal Configuration
+
+### Portal URL
+https://portal.azure.com/#@zimax.net/resource/subscriptions/490a597e-95d5-454c-bd0c-3e7b349f1e87/resourceGroups/dns-rg/providers/Microsoft.Network/dnszones/orbgame.us/resourceOverviewId
+
+### Steps in Azure Portal
+1. Navigate to the DNS zone orbgame.us
+2. Click "Record set" or "Add record set"
+3. Select "CNAME" as the record type
+4. Enter "wiki" as the name
+5. Enter "zimaxnet.github.io" as the alias
+6. Set TTL to 3600
+7. Click "OK" to save
+
+## Azure CLI Commands
+
+### Add CNAME Record
+az network dns record-set cname create \
+  --resource-group dns-rg \
+  --zone-name orbgame.us \
+  --name wiki \
+  --ttl 3600
+
+### Set CNAME Target
+az network dns record-set cname set-record \
+  --resource-group dns-rg \
+  --zone-name orbgame.us \
+  --record-set-name wiki \
+  --cname zimaxnet.github.io
+
+### List All Records
+az network dns record-set list \
+  --resource-group dns-rg \
+  --zone-name orbgame.us \
+  --output table
+
+### Show Wiki CNAME Record
+az network dns record-set cname show \
+  --resource-group dns-rg \
+  --zone-name orbgame.us \
+  --name wiki \
+  --output table
+
+## Verification Commands
+
+### DNS Resolution
+nslookup wiki.orbgame.us
+
+### Website Access
+curl -I https://wiki.orbgame.us
+
+### SSL Certificate
+openssl s_client -connect wiki.orbgame.us:443 -servername wiki.orbgame.us
+
+## Troubleshooting
+
+### If Azure CLI is not installed:
+# macOS
+brew install azure-cli
+
+# Linux
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Windows
+# Download from: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows
+
+### If not logged into Azure:
+az login
+
+### If DNS doesn't resolve:
+1. Check Azure DNS zone configuration
+2. Verify CNAME record is added correctly
+3. Wait for DNS propagation (5-30 minutes)
+4. Check GitHub Pages is enabled
+
+### If HTTPS doesn't work:
+1. Ensure "Enforce HTTPS" is enabled in GitHub
+2. Wait for SSL certificate generation (up to 24 hours)
+3. Check DNS propagation is complete

@@ -4,8 +4,8 @@
     border-radius: 15px;
     padding: 20px;
     margin: 20px;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: none; /* Remove height restriction to allow content to flow */
+    overflow-y: visible; /* Allow content to extend beyond container */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #333;
@@ -19,15 +19,19 @@
 
 /* Story Content Section - Clean display when no images */
 .figure-story-content {
-    background: rgba(255, 255, 255, 0.05);
+    background: transparent; /* Remove any background */
     border-radius: 12px;
     padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: none; /* Remove border */
     margin: 20px 0;
 }
 
 .figure-story-content .story-content {
     color: #333;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .figure-story-content .story-text {
@@ -48,8 +52,8 @@
     margin-bottom: 20px;
     text-align: justify;
     color: #333;
-    max-height: 250px;
-    overflow-y: auto;
+    max-height: none; /* Remove height restriction */
+    overflow-y: visible; /* Allow content to flow */
     padding-right: 10px;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
@@ -178,7 +182,7 @@
     display: none;
 }
 
-/* Inline image loading and error states (minimal, no text) */
+/* Inline image loading and error states (minimal, no red background) */
 .image-loading-inline,
 .image-error-inline {
     position: absolute;
@@ -201,7 +205,8 @@
 }
 
 .image-error-inline {
-    background: linear-gradient(135deg, rgba(244, 67, 54, 0.8), rgba(229, 57, 53, 0.8));
+    background: transparent; /* Remove red background */
+    display: none; /* Hide error state completely */
 }
 
 .image-error-inline .story-content {
@@ -211,7 +216,7 @@
     padding: 15px !important;
     margin-top: 15px !important;
     border-radius: 8px !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: transparent !important; /* Remove any background */
 }
 
 /* Inline gallery controls */
@@ -255,8 +260,8 @@
     border-radius: 15px;
     padding: 20px;
     margin: 20px;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: none; /* Remove height restriction */
+    overflow-y: visible; /* Allow content to flow */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #333;
@@ -447,7 +452,8 @@
 }
 
 .image-error {
-    background: linear-gradient(135deg, rgba(244, 67, 54, 0.8), rgba(229, 57, 53, 0.8));
+    background: transparent; /* Remove red background */
+    display: none; /* Hide error state completely */
 }
 
 .image-error .story-content {
@@ -457,7 +463,7 @@
     padding: 15px !important;
     margin-top: 15px !important;
     border-radius: 8px !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: transparent !important; /* Remove any background */
 }
 
 .loading-spinner {
@@ -797,7 +803,7 @@
     
     .story-content-scrollable {
         font-size: 1rem;
-        max-height: 250px;
+        max-height: none; /* Remove height restriction on mobile */
     }
     
     .more-button {
@@ -874,7 +880,7 @@
     
     .story-content-scrollable {
         font-size: 0.95rem;
-        max-height: 200px;
+        max-height: none; /* Remove height restriction on small screens */
     }
     
     .learn-more-button {

@@ -14,74 +14,52 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const processImages = (storyImages) => {
         if (!storyImages) return [];
         
-        // New format: images is an array
         if (Array.isArray(storyImages)) {
-            return storyImages;
+            // New format: array of images
+            return storyImages.filter(img => img && img.url);
+        } else if (storyImages.portrait || storyImages.gallery) {
+            // Old format: object with portrait and gallery
+            const processed = [];
+            if (storyImages.portrait && storyImages.portrait.url) {
+                processed.push(storyImages.portrait);
+            }
+            if (storyImages.gallery && Array.isArray(storyImages.gallery)) {
+                processed.push(...storyImages.gallery.filter(img => img && img.url));
+            }
+            return processed;
         }
-        
-        // Old format: images is an object with portrait and gallery
-        const processedImages = [];
-        if (storyImages.portrait) {
-            processedImages.push(storyImages.portrait);
-        }
-        if (storyImages.gallery && Array.isArray(storyImages.gallery)) {
-            processedImages.push(...storyImages.gallery);
-        }
-        return processedImages;
+        return [];
     };
 
-    const processedImages = processImages(story.images);
-    const portrait = processedImages[0]; // First image as portrait
-    const gallery = processedImages.slice(1); // Rest as gallery
-
-    // Get brief achievement text (first sentence only)
     const getBriefAchievement = () => {
+        if (story.accomplishment) return story.accomplishment;
         if (story.summary) return story.summary;
-        if (story.headline) {
-            // Extract achievement from headline (e.g., "Archimedes: Innovator of Levers and Buoyancy")
-            const colonIndex = story.headline.indexOf(':');
-            if (colonIndex > 0) {
-                return story.headline.substring(colonIndex + 1).trim();
-            }
-            return story.headline;
+        if (story.fullText) {
+            // Extract first sentence or first 100 characters
+            const firstSentence = story.fullText.split('.')[0];
+            return firstSentence.length > 100 ? story.fullText.substring(0, 100) + '...' : firstSentence;
         }
-        return '';
+        return null;
     };
 
-    const briefAchievement = getBriefAchievement();
-    
-    // Get the historical figure name from the headline or story data
     const getFigureName = () => {
-        if (story.historicalFigure) return story.historicalFigure;
-        if (story.figureName) return story.figureName;
-        if (story.headline) {
-            // Extract name from headline (e.g., "Archimedes: Innovator of Levers and Buoyancy")
-            const colonIndex = story.headline.indexOf(':');
-            if (colonIndex > 0) {
-                return story.headline.substring(0, colonIndex);
-            }
-            return story.headline;
-        }
-        return 'Historical Figure';
+        return figureName || story.historicalFigure || story.figureName || 'Historical Figure';
     };
 
     useEffect(() => {
-        // Check if we have valid images in the story data
-        const hasValidImages = processedImages.length > 0 && processedImages.some(img => img && img.url);
-
-        if (hasValidImages) {
-            console.log(`✅ Using images from story data for: ${figureName}`);
-            console.log(`🖼️  Total images: ${processedImages.length}`);
-            console.log(`🖼️  Portrait: ${portrait ? 'Available' : 'Not available'}`);
-            console.log(`🖼️  Gallery: ${gallery.length} images`);
-            setImages(processedImages);
-            setImageStatus('loaded');
+        const processedImages = processImages(story.images);
+        setImages(processedImages);
+        
+        if (processedImages.length === 0) {
+            setImageStatus('no-images');
+            setImageError(false);
             setImageLoading(false);
         } else {
-            console.log(`❌ No valid images found in story data for: ${figureName}`);
-            setImageStatus('no-images');
+            setImageStatus('loaded');
+            setImageError(false);
+            setImageLoading(false);
         }
-    }, [story.images, figureName, processedImages, portrait, gallery]);
+    }, [story.images]);
 
     const handleImageLoad = () => {
         setImageLoading(false);
@@ -91,103 +69,63 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const handleImageError = () => {
         setImageLoading(false);
         setImageError(true);
+        // When image fails, treat as no images available
+        setImageStatus('no-images');
     };
 
     const nextImage = () => {
-        if (gallery.length > 0) {
-            setCurrentImageIndex((prev) => (prev + 1) % gallery.length);
+        if (processedImages.length > 1) {
+            setCurrentImageIndex((prev) => (prev + 1) % processedImages.length);
         }
     };
 
     const prevImage = () => {
-        if (gallery.length > 0) {
-            setCurrentImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
+        if (processedImages.length > 1) {
+            setCurrentImageIndex((prev) => (prev - 1 + processedImages.length) % processedImages.length);
         }
     };
 
     const getCurrentImage = () => {
-        if (gallery.length > 0 && showGallery) {
-            return gallery[currentImageIndex];
-        }
-        return portrait;
+        return processedImages[currentImageIndex] || null;
     };
 
     const renderImage = () => {
         const currentImage = getCurrentImage();
-        
-        if (!currentImage || !currentImage.url) {
-            // Show story text directly when no image is available - clean display
-            return (
-                <div className="figure-story-content">
-                    <div className="story-content">
-                        <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
-                    </div>
-                </div>
-            );
-        }
+        if (!currentImage) return null;
 
         return (
             <div className="figure-image-container-inline">
+                <img
+                    src={currentImage.url}
+                    alt={`${figureName} - Portrait`}
+                    className={`figure-image-inline ${imageLoading ? 'hidden' : ''}`}
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                />
                 {imageLoading && (
                     <div className="image-loading-inline">
                         <div className="loading-spinner"></div>
+                        <p>Loading image...</p>
                     </div>
                 )}
-                
                 {imageError && (
                     <div className="image-error-inline">
                         <div className="error-icon">⚠️</div>
-                        <div className="error-message">Image unavailable</div>
-                        {/* Show story text directly when image fails to load - clean display */}
-                        <div className="story-content">
-                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
-                        </div>
+                        <p>Image unavailable</p>
                     </div>
                 )}
-
-                <img
-                    src={currentImage.url}
-                    alt={`${figureName || 'Historical figure'}`}
-                    className={`figure-image-inline ${imageLoading ? 'hidden' : ''} ${imageError ? 'hidden' : ''}`}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                    style={{ 
-                        maxWidth: '100%', 
-                        height: 'auto',
-                        objectFit: 'cover',
-                        borderRadius: '8px'
-                    }}
-                />
-
-                {gallery.length > 1 && showGallery && (
-                    <div className="gallery-controls-inline">
-                        <button 
-                            className="gallery-nav prev" 
-                            onClick={prevImage}
-                            aria-label="Previous image"
-                        >
+                {processedImages.length > 1 && (
+                    <>
+                        <button className="gallery-nav" onClick={prevImage} aria-label="Previous image">
                             ‹
                         </button>
-                        <span className="gallery-counter">
-                            {currentImageIndex + 1} / {gallery.length}
-                        </span>
-                        <button 
-                            className="gallery-nav next" 
-                            onClick={nextImage}
-                            aria-label="Next image"
-                        >
+                        <button className="gallery-nav" onClick={nextImage} aria-label="Next image">
                             ›
                         </button>
-                    </div>
-                )}
-
-                {gallery.length > 1 && (
-                    <button 
-                        className="gallery-toggle-inline"
-                        onClick={() => setShowGallery(!showGallery)}
-                    >
-                        {showGallery ? 'Show Portrait' : 'Show Gallery'}
-                    </button>
+                        <div className="gallery-counter">
+                            {currentImageIndex + 1} / {processedImages.length}
+                        </div>
+                    </>
                 )}
             </div>
         );
@@ -195,8 +133,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
 
     const renderImageInfo = () => {
         const currentImage = getCurrentImage();
-        
-        if (!currentImage || !currentImage.url) return null;
+        if (!currentImage) return null;
 
         return (
             <div className="image-info-inline">
@@ -232,6 +169,9 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
         );
     };
 
+    const processedImages = processImages(story.images);
+    const briefAchievement = getBriefAchievement();
+
     return (
         <div className="historical-figure-display-inline">
             <div className="figure-header">
@@ -249,37 +189,27 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     </div>
                 )}
 
-                {/* Images Section - Only display if valid images exist */}
-                {imageStatus === 'loaded' && processedImages.length > 0 && (
+                {/* Images Section - Only display if valid images exist and are not in error state */}
+                {imageStatus === 'loaded' && processedImages.length > 0 && !imageError && (
                     <div className="figure-images-section">
                         {renderImage()}
                         {renderImageInfo()}
                     </div>
                 )}
 
-                {/* Story Content - Show when no images are available or when image fails */}
-                {(imageStatus === 'no-images' || imageError) && (
-                    <div className="figure-story-content">
-                        <div className="story-content">
-                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
-                        </div>
+                {/* Story Content - Always show, but with different styling based on image availability */}
+                <div className="figure-story-content">
+                    <div className="story-content">
+                        <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
                     </div>
-                )}
-
-                {/* Always show story content when images are available but not loading/error */}
-                {imageStatus === 'loaded' && !imageLoading && !imageError && processedImages.length > 0 && (
-                    <div className="figure-story-content">
-                        <div className="story-content">
-                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
-                        </div>
-                    </div>
-                )}
+                </div>
             </div>
 
-            {gallery.length > 1 && imageStatus === 'loaded' && !imageError && (
+            {/* Gallery thumbnails - Only show if multiple images and no errors */}
+            {processedImages.length > 1 && imageStatus === 'loaded' && !imageError && (
                 <div className="gallery-thumbnails">
                     <div className="thumbnail-container">
-                        {gallery.map((image, index) => (
+                        {processedImages.map((image, index) => (
                             <button
                                 key={index}
                                 className={`thumbnail ${index === currentImageIndex && showGallery ? 'active' : ''}`}

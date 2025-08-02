@@ -7,11 +7,32 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const [imageError, setImageError] = useState(false);
     const [showGallery, setShowGallery] = useState(false);
     const [imageStatus, setImageStatus] = useState('checking');
-    const [images, setImages] = useState(story.images || {});
+    const [images, setImages] = useState([]);
     const [figureName, setFigureName] = useState(story.historicalFigure || story.figureName);
 
-    const portrait = images?.portrait;
-    const gallery = images?.gallery || [];
+    // Handle both old format (object with portrait/gallery) and new format (array)
+    const processImages = (storyImages) => {
+        if (!storyImages) return [];
+        
+        // New format: images is an array
+        if (Array.isArray(storyImages)) {
+            return storyImages;
+        }
+        
+        // Old format: images is an object with portrait and gallery
+        const processedImages = [];
+        if (storyImages.portrait) {
+            processedImages.push(storyImages.portrait);
+        }
+        if (storyImages.gallery && Array.isArray(storyImages.gallery)) {
+            processedImages.push(...storyImages.gallery);
+        }
+        return processedImages;
+    };
+
+    const processedImages = processImages(story.images);
+    const portrait = processedImages[0]; // First image as portrait
+    const gallery = processedImages.slice(1); // Rest as gallery
 
     // Get brief achievement text (first sentence only)
     const getBriefAchievement = () => {
@@ -45,19 +66,22 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     };
 
     useEffect(() => {
-        // Use images that are already included in the story data
-        if (story.images && (story.images.portrait || story.images.gallery)) {
+        // Check if we have valid images in the story data
+        const hasValidImages = processedImages.length > 0 && processedImages.some(img => img && img.url);
+
+        if (hasValidImages) {
             console.log(`✅ Using images from story data for: ${figureName}`);
-            console.log(`🖼️  Portrait URL type: ${story.images.portrait?.url?.startsWith('data:') ? 'SVG Data URL' : 'HTTP URL'}`);
-            console.log(`🖼️  Portrait URL: ${story.images.portrait?.url?.substring(0, 50)}...`);
-            setImages(story.images);
+            console.log(`🖼️  Total images: ${processedImages.length}`);
+            console.log(`🖼️  Portrait: ${portrait ? 'Available' : 'Not available'}`);
+            console.log(`🖼️  Gallery: ${gallery.length} images`);
+            setImages(processedImages);
             setImageStatus('loaded');
             setImageLoading(false);
         } else {
-            console.log(`❌ No images found in story data for: ${figureName}`);
+            console.log(`❌ No valid images found in story data for: ${figureName}`);
             setImageStatus('no-images');
         }
-    }, [story.images, figureName]);
+    }, [story.images, figureName, processedImages, portrait, gallery]);
 
     const handleImageLoad = () => {
         setImageLoading(false);
@@ -91,7 +115,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const renderImage = () => {
         const currentImage = getCurrentImage();
         
-        if (!currentImage) {
+        if (!currentImage || !currentImage.url) {
             // Show story text directly when no image is available - clean display
             return (
                 <div className="figure-story-content">
@@ -172,7 +196,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
     const renderImageInfo = () => {
         const currentImage = getCurrentImage();
         
-        if (!currentImage) return null;
+        if (!currentImage || !currentImage.url) return null;
 
         return (
             <div className="image-info-inline">
@@ -180,10 +204,18 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     <span className="source-label">Source:</span>
                     <span className="source-name">{currentImage.source}</span>
                 </div>
-                <div className="image-licensing">
-                    <span className="licensing-label">License:</span>
-                    <span className="licensing-type">{currentImage.licensing}</span>
-                </div>
+                {currentImage.reliability && (
+                    <div className="image-reliability">
+                        <span className="reliability-label">Reliability:</span>
+                        <span className="reliability-value">{currentImage.reliability}</span>
+                    </div>
+                )}
+                {currentImage.priority && (
+                    <div className="image-priority">
+                        <span className="priority-label">Priority:</span>
+                        <span className="priority-value">{currentImage.priority}</span>
+                    </div>
+                )}
                 {currentImage.permalink && (
                     <div className="image-permalink">
                         <span className="permalink-label">Permalink:</span>
@@ -217,16 +249,25 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                     </div>
                 )}
 
-                {/* Images Section - Only display if preloaded images exist */}
-                {imageStatus === 'loaded' && (
+                {/* Images Section - Only display if valid images exist */}
+                {imageStatus === 'loaded' && processedImages.length > 0 && (
                     <div className="figure-images-section">
                         {renderImage()}
                         {renderImageInfo()}
                     </div>
                 )}
 
-                {/* No Image Placeholder - Show when no images are available */}
-                {imageStatus === 'no-images' && (
+                {/* Story Content - Show when no images are available or when image fails */}
+                {(imageStatus === 'no-images' || imageError) && (
+                    <div className="figure-story-content">
+                        <div className="story-content">
+                            <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
+                        </div>
+                    </div>
+                )}
+
+                {/* Always show story content when images are available but not loading/error */}
+                {imageStatus === 'loaded' && !imageLoading && !imageError && processedImages.length > 0 && (
                     <div className="figure-story-content">
                         <div className="story-content">
                             <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
@@ -235,7 +276,7 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 )}
             </div>
 
-            {gallery.length > 1 && imageStatus === 'loaded' && (
+            {gallery.length > 1 && imageStatus === 'loaded' && !imageError && (
                 <div className="gallery-thumbnails">
                     <div className="thumbnail-container">
                         {gallery.map((image, index) => (

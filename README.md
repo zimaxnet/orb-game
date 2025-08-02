@@ -29,6 +29,17 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **Audio Integration**: TTS reads story content with proper content separation
 - **Gallery Navigation**: Smooth transitions between multiple images per historical figure
 
+### **🖼️ Image Display System - Revolutionary Visual Experience**
+- **Clean Image Display**: Images are displayed when available, clean text when no images
+- **No Placeholder Elements**: When no images are available, shows story text directly without clutter
+- **Proper Fallback Logic**: Handles both array format (new) and object format (old) image structures
+- **Error Handling**: Graceful fallback to text display if images fail to load
+- **Responsive Design**: Images scale properly on all device sizes
+- **Loading States**: Clear indicators for image loading and error states
+- **Source Attribution**: Display of image sources, licensing, and permalinks
+- **Gallery Navigation**: Smooth transitions between multiple images per historical figure
+- **Asynchronous Loading**: Images populate in background while stories load instantly
+
 ### **🤖 AI Integration**
 - **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
 - **Text-to-Speech**: Immersive audio narration with 'alloy' voice
@@ -61,7 +72,7 @@ Each story features:
 
 ### **Frontend (React + Vite)**
 - **Main Component**: `components/OrbGame.jsx` - 3D interactive gaming experience
-- **Historical Figure Display**: `components/HistoricalFigureDisplay.jsx` - Enhanced display with clear content hierarchy
+- **Historical Figure Display**: `components/HistoricalFigureDisplay.jsx` - Enhanced display with clear content hierarchy and image integration
 - **State Management**: React hooks with context providers (`contexts/LanguageContext.jsx`)
 - **3D Graphics**: Three.js with @react-three/fiber and @react-three/drei
 - **Build System**: Vite with React 19.x support
@@ -105,6 +116,16 @@ Each story features:
 ## 🔄 **Recent Updates**
 
 ### **Latest Changes (January 2025)**
+- **🖼️ Image Display System**: Revolutionary improvements for clean image handling
+  - **Clean Image Display**: Images are displayed when available, clean text when no images
+  - **No Placeholder Elements**: When no images are available, shows story text directly without clutter
+  - **Proper Fallback Logic**: Handles both array format (new) and object format (old) image structures
+  - **Error Handling**: Graceful fallback to text display if images fail to load
+  - **Responsive Design**: Images scale properly on all device sizes
+  - **Loading States**: Clear indicators for image loading and error states
+  - **Source Attribution**: Display of image sources, licensing, and permalinks
+  - **Gallery Navigation**: Smooth transitions between multiple images per historical figure
+  - **Asynchronous Loading**: Images populate in background while stories load instantly
 - **Complete Positive News Service Removal**: Successfully removed all traces of the old positive news service
   - **Removed Files**: Deleted `backend/positive-news-service.js` completely
   - **Removed Endpoints**: Eliminated backward compatibility endpoints for positive news
@@ -320,6 +341,17 @@ User Clicks Orb → Load 1 Story Immediately → Show First Historical Figure �
 - **Gallery Navigation**: Smooth transitions between multiple images per historical figure
 - **Source Attribution**: Proper licensing and source information display
 - **Loading States**: Clear status indicators for image loading and error handling
+
+### **🖼️ Image Display System Features**
+- **Clean Image Display**: Images are displayed when available, clean text when no images
+- **No Placeholder Elements**: When no images are available, shows story text directly without clutter
+- **Proper Fallback Logic**: Handles both array format (new) and object format (old) image structures
+- **Error Handling**: Graceful fallback to text display if images fail to load
+- **Responsive Design**: Images scale properly on all device sizes
+- **Loading States**: Clear indicators for image loading and error states
+- **Source Attribution**: Display of image sources, licensing, and permalinks
+- **Gallery Navigation**: Smooth transitions between multiple images per historical figure
+- **Asynchronous Loading**: Images populate in background while stories load instantly
 
 ### **Audio Experience**
 - **Text-to-Speech**: Immersive audio narration of historical figure stories
@@ -557,6 +589,17 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 - **Source Attribution**: Proper licensing and source information display
 - **Loading States**: Clear status indicators for image loading and error handling
 
+### **🖼️ Image Display System Features**
+- **Clean Image Display**: Images are displayed when available, clean text when no images
+- **No Placeholder Elements**: When no images are available, shows story text directly without clutter
+- **Proper Fallback Logic**: Handles both array format (new) and object format (old) image structures
+- **Error Handling**: Graceful fallback to text display if images fail to load
+- **Responsive Design**: Images scale properly on all device sizes
+- **Loading States**: Clear indicators for image loading and error states
+- **Source Attribution**: Display of image sources, licensing, and permalinks
+- **Gallery Navigation**: Smooth transitions between multiple images per historical figure
+- **Asynchronous Loading**: Images populate in background while stories load instantly
+
 ### **User Experience**
 - **Responsive Design**: Works on desktop and mobile
 - **Touch Controls**: Swipe gestures for mobile interaction
@@ -710,5 +753,6 @@ node backend-server.js
 - **Quality Control**: Licensing compliance and historical accuracy verification
 - **Enhanced Story Panel**: Perfect learning experience with clear content hierarchy and educational flow
 - **Image Type Breakdown**: 361 portraits, 361 achievements, 241 inventions, 120 artifacts (9.0 images per figure average)
+- **🖼️ Image Display System**: Clean image display when available, clean text when no images, no placeholder elements
 
 The Orb Game provides an engaging, educational experience focused exclusively on real historical figures who shaped the world through their remarkable achievements! 🚀

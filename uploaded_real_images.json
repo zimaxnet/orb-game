@@ -1,0 +1,753 @@
+{
+  "upload_stats": {
+    "total_images": 102,
+    "successful_uploads": 71,
+    "failed_uploads": 31,
+    "skipped_images": 0,
+    "errors": [
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/James%20Watt%20by%20Henry%20Howard.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Demis%20Hassabis%2C%202024%20Nobel%20Prize%20Laureate%20in%20Chemistry%205%20%28cropped%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Euklid2.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Roger-bacon-statue.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Pasteur%20%281822%20-%201895%29%2C%20microbiologist%20and%20chemist%20Wellcome%20V0026980.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/William%20Blake%20by%20Thomas%20Phillips.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20Courbet%2C%20photograph%20Atelier%20Nadar%2C%20c.%201860s.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Frida%20Kahlo%2C%20by%20Guillermo%20Kahlo%20%28cropped%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Yayoi%20Kusama%20wax%20model%20at%20Louis%20Vitton.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Teofrasto%20Orto%20botanico%20head.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Empedocles.%20Line%20engraving%2C%201580.%20Wellcome%20V0001766.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/John%20James%20Audubon%201826.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Mary%20Anning%20painting.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Johanna%20lohr%20jane-goodall.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Paul%20Stamets%20with%20Agarikon.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Joseph-Beno%C3%AEt%20Suv%C3%A9e%20-%20Milo%20van%20Croton%20%281763%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Pierre%20de%20Coubertin.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Dr.%20James%20Naismith.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Bust%20Sappho%20Musei%20Capitolini%20MC1164.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Koning%20David.Aert%20de%20Gelder.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Possibly%20Narada%2C%20the%20inventor%20of%20the%20Vina..jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Karlheinz%20Oswald%20Hildegard%20von%20Bingen%2C%20Eibingen.JPG",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Beethoven.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Frederic%20Chopin%20photo.jpeg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Armstrong%20restored.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Yannick%20N%C3%A9zet%20S%C3%A9guin.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/2064%20aryabhata-crp.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/1829%20Melchior%20Gommar%20Tieleman%2C%20%C3%96lgem%C3%A4lde%20Caroline%20Herschel%20Hannover.tif",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Katherine%20Johnson%201983.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Zhang%20Heng.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Thomas%20Edison2.jpg"
+    ]
+  },
+  "uploaded_images": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Archimedes_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Imhotep_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hero_of_Alexandria_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Jazari_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Johannes_Gutenberg_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Babbage_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Samuel_Morse_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Tim_Berners-Lee_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Steve_Jobs_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Hedy_Lamarr_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fei-Fei_Li_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Elon_Musk_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hippocrates_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Aristotle_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Ibn_al-Haytham_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Hildegard_of_Bingen_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Darwin_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Dmitri_Mendeleev_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Rosalind_Franklin_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Albert_Einstein_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Jennifer_Doudna_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Youyou_Tu_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Phidias_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Polygnotus_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Imhotep_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Giotto_di_Bondone_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Hildegard_of_Bingen_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Andrei_Rublev_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Claude_Monet_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Banksy_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Refik_Anadol_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Sofia_Crespo_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Albertus_Magnus_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Avicenna_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Saint_Francis_of_Assisi_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Darwin_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "David_Attenborough_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Wangari_Maathai_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Mercedes_Bustamante_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Gaius_Appuleius_Diocles_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "William_Marshal_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Robin_Hood_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "W.G._Grace_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Serena_Williams_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Pel\u00e9_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Simone_Biles_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Guillaume_de_Machaut_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Alfonso_el_Sabio_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Fanny_Mendelssohn_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "The_Beatles_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "BTS_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Holly_Herndon_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Ptolemy_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hypatia_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Battani_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Nasir_al-Din_al-Tusi_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Geoffrey_Chaucer_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Galileo_Galilei_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Edmond_Halley_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Yuri_Gagarin_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Stephen_Hawking_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Ctesibius_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Aeneas_Tacticus_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Jazari_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Richard_of_Wallingford_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Leonardo_Fibonacci_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikipedia",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Nikola_Tesla_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Alexander_Graham_Bell_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Grace_Hopper_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Shigeru_Miyamoto_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Elon_Musk_portraits_0.jpg",
+      "publicUrl": null,
+      "source": "Wikidata",
+      "licensing": "Public Domain"
+    }
+  ]
+}

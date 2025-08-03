@@ -15,7 +15,7 @@ import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
-import SimpleImageService from './historical-figures-image-service-new.js';
+import BlobStorageImageService from './historical-figures-image-service-blob.js';
 import AudioStorageService from './audio-storage-service.js';
 
 const app = express();
@@ -742,18 +742,18 @@ async function initializeServer() {
         storyCacheService = null;
       }
 
-      // Initialize SimpleImageService
-      try {
-        console.log('🔧 Initializing SimpleImageService...');
-        const imageService = new SimpleImageService();
-        await imageService.connect(mongoUri);
-        simpleImageService = imageService;
-        app.locals.imageService = imageService;
-        console.log('✅ SimpleImageService initialized successfully.');
-      } catch (imageError) {
-        console.warn('⚠️ SimpleImageService initialization failed:', imageError.message);
-        app.locals.imageService = null;
-      }
+      // Initialize BlobStorageImageService
+try {
+  console.log('🔧 Initializing BlobStorageImageService...');
+  const imageService = new BlobStorageImageService();
+  await imageService.connect(mongoUri);
+  simpleImageService = imageService;
+  app.locals.imageService = imageService;
+  console.log('✅ BlobStorageImageService initialized successfully.');
+} catch (imageError) {
+  console.warn('⚠️ BlobStorageImageService initialization failed:', imageError.message);
+  app.locals.imageService = null;
+}
 
       // Initialize AudioStorageService
       try {

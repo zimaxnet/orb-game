@@ -1,0 +1,3912 @@
+{
+  "Archimedes": {
+    "category": "Technology",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BtXiqDTBwSJH9T4Bok2acwPWPYEDq5QrYzo9oKNyAXM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jZR%2B/cL9Ezpy9IDrfhEg98Wogg4BnAVsNd49GR4hZxE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MD9V0qs%2B%2BsfFKePK%2BL2Jdblj6sy59IPKJqOdJYzeDTg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=TnZc3MOIBQLZDeQojQsVo446FZh29ZV%2B99IgLjXU8TQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Imhotep": {
+    "category": "Art",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BvyVM8Rz2ahl07csLUAooIvXuMgOazSNCOZQ88pRUCY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=duedMjxZtKyRJaGIiKs40tiedCEGwXKaOlqFlahnQ7A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=WapcSMFf%2BxlS8bm4ylv7mB736hPpr/IXRLYNWImQ58g%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3CM6qRa5j4YGQMrjflBsuXlJlbj2Iq%2BU1N67QgWPpio%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hero of Alexandria": {
+    "category": "Technology",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero of Alexandria_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Kr6qcnykp4jP7DXAM5TfETIIrm3z3LdDUjYSwNgMjeM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero of Alexandria_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=G%2B9eEYpG%2B5gMzVwWcv3OsYsn5fSi9LTJ%2BCyaUUD4uxw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero of Alexandria_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LIyOrfstNsRoSRZ1ZVjHRxh%2BvAJVuP7397TvBkL1xzg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero of Alexandria_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=QK8rLqw5EEadXHCD13cFwRiGXHv4iP5Si0c%2B87FJ9R0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Al-Jazari": {
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Jazari_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=6dL0GIWv4KGe0vKlpl2Wv%2BdkCT4/HkUUA8TqI1AqooA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Jazari_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=fwPr7RQqVFd6mMqvlLRVKDds57gtXUkWtZvS58D3Ol4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Jazari_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hk4qS1pmvitQbj9N7vIcSexRFY6des3xd4sES4E6ZlU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Jazari_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BHM4ZCUkuNZax%2BhXy08YVGNErNJhV6c7baZHGKgDQvA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Johannes Gutenberg": {
+    "category": "Technology",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes Gutenberg_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=X3gHk2jLp%2BEVgVRQUMLbfKCGSKjYlGHGZCtsrsfoIKw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes Gutenberg_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eMC7zH/Jx6EzWj9zaUV1Yg7Ow6vNHh6c3fEUMOT/5xs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes Gutenberg_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=99pbWKaFSpjIAlw04fJfeMbph%2BqyxN1MPR8ywOhzg14%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes Gutenberg_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kfLOPe4D1LXaJJxD5gOKNKgjBfMtoDQW/EAmgDU7k%2Bc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Li Shizhen": {
+    "category": "Technology",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li Shizhen_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=320z146Fxv16EElsS35rMqc4/2nyQlEw1ESfjh4/dEY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li Shizhen_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kaSKef/kEY4bKEW9yEl%2B8WgtXlJVYIyb8Zj41x7KUPk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li Shizhen_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=/lnKR1C1IVZ3JGZD3gBag8cBlUqbge50pFEExgKXvAY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li Shizhen_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=dBY5BMBohIChLJKu3xgIKoC8e5nvbmnrNsLfGIvo0KY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "James Watt": {
+    "category": "Technology",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Watt_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=OnjkjboMa4EvIpHbc1NZUrTPRtiSL7U68ulldB6wSh0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Watt_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=HzT2QqxKN4ka7eTREbEvDZ0TRGkPdeHb8knJfOZHtQ8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Watt_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=X3k0EzTHolOYe9XOesAERKcwkPbuJC83gmoEFZG8OyI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Watt_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Rkss%2BiXOpWfYlDO3RmxTsyKOg0BWNzIlQuyD19d63YY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Charles Babbage": {
+    "category": "Technology",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Babbage_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=f9hHNLsWtDvr7oS%2B0XIlUmK2dobEn7GR8RQpmWJasMg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Babbage_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=KiUzmdLjH1u/wbzXGyS1PbQwqlp4Pcyrq5S2wZZ%2Bv08%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Babbage_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=6vUgskfVH1jdTKzKnOkPLPnrge/tlsj1km5fNWEFRu0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Babbage_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kvPd3YA02MIRxXJDv1WMYN5cQflEPgleISssRsua6HM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Samuel Morse": {
+    "category": "Technology",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel Morse_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZTPKsdzdl7OOKPlY7HX0ivDZpSLh23R3MdK9Vo9WcfE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel Morse_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=txlZETnxIFKr%2BF4aYlpc1Ofb7dRtmw40I28mUHaodQQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel Morse_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2Bm3X4TS0BLstI4jFISFDnJwqGIKHOIBNjZdYXb9k%2Bf8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel Morse_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GTuQ%2BE3eXD46aH96OhJXAIe%2BsC%2BdJGYZMdY45DSr2N4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Tim Berners-Lee": {
+    "category": "Technology",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim Berners-Lee_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=cZipOiTPDNVrtge4fH4HegAtv1tB1DY5JB6pXneV%2B9U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim Berners-Lee_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9F0HpHO8a/NSYOY16wLQ7GjtSCwLlHOpsis8txTJyXM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim Berners-Lee_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=8IoAWpODQdVSASVmePrHqeEHfWx1h3t5CQ/XNOOL5xU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim Berners-Lee_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lMgctkGMiW3MsnZwOFsX81mk1yWh/p3kxRqJtEIqbC8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Steve Jobs": {
+    "category": "Technology",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve Jobs_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wfF9S%2BdsM0EuNYKRysmSoMGhBSXk/iQarYS35Dp4TLA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve Jobs_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Ql3WavwnTV1wMEvZDZd7BsSbA0vPU65gRfNVc51lIps%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve Jobs_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=x5URdL8YOAHGd10EVL77ZV2jMoZT2X8ewkGo3oxkfv4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve Jobs_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=FNkHn9hyOgzbt%2Boh/ZzWeQ%2BWAAzYnzjB8P8mhfyTM7Y%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hedy Lamarr": {
+    "category": "Technology",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy Lamarr_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5OwpUwfgh6fhu3WpmS7BZjKz0Y5Vk8J61oPMDwiSGlg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy Lamarr_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=o8JBqYIxX1n72mxK0Uwove5XrCmDVa5Lctw1Ve7g1NI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy Lamarr_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=O2P1ViTRad4vv0EEBY1gfNQTYNsnQ5jEv/WrKFozDr8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy Lamarr_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=bWCWygAMvIFL6sfx7Sca0UbVojdiVSlZO0zJ/9g5kNs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fei-Fei Li": {
+    "category": "Technology",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fei-Fei Li_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=8VnWHHBaxhIFL8xLgue2eNUV3Vx1uxBSBjACf9qFqZk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fei-Fei Li_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EH3v7S8rvQPLHm54/MoDU8N2PG6xBLBMnlCz3TCU7d8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fei-Fei Li_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=PbVYBJGiF%2BvRD8OEDlwgFIk%2BghjUkQylpSJanj7p4mU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fei-Fei Li_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=H6jfphdCqBjBaYh%2BWq2o2/PaSoQao%2Bha8RkH2zTfb9A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Elon Musk": {
+    "category": "Innovation",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon Musk_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=A0FuFEphIPtjRyHN9L6qCSChVULFGBxGEZxqKpTCJh4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon Musk_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hrOs1wOevBK9xwJRUIDB3ihu5KpSsnQODzPrReOOrXc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon Musk_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jgW%2BSZqlELHA9ZLfgpKFOij9SjJrrzZ9rUEuOs8D/1s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon Musk_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0G2xXkq79nNGFUj1r0TyKoP30bNjqYnZRqA6t%2B3nH%2BE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Demis Hassabis": {
+    "category": "Technology",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Demis Hassabis_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=uwT/0VCqqBc3VUlaKA4dDBz9mb3ty3flVhNEmsH6huI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Demis Hassabis_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=NyGBboJgD7aSQKQQEV%2BmKxtVExEoIGvK9XY937HmN2w%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Demis Hassabis_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CHM1JKSCfhEHUYDwedf43aBj%2BXR9AChdlQvUoj%2BLkxE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Demis Hassabis_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hCiNp23JHoJCekQILAx9mggmSiA7XM8DtqKHDipQks4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hippocrates": {
+    "category": "Science",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Cd90uld0O97QQ9sx5%2BoMvPm6l8g5nzapUXO2x1jUUiw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VbfLyjKXGYbqRfId7VzLnct1r1wzPQJj6/FxP/Arxxc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=F9jzoRzd4jLCvagokYo7PfOHM1d1L2pxbg3NxXqI0v0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CNoTWzT/6ve/f3U14pmZ0197i2zpFOEl4vium0rcZ2s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Euclid": {
+    "category": "Science",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=cDNbiSCIYRpP4ychF8FdjY9UPJsWMSHFfMaK6vZhIKs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jfKnBQzolCCQUgbwkfcb6ngdOIeIOYQZE00rEzVPuDY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZCBDvCKsSxyzeqkXFsEHI1YqBvV2d2tu2ruZdHqIDN0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7duiAQpwCSooP3raQ1Z9iueAYTCDkH9nqDVjf3biYBI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Aristotle": {
+    "category": "Science",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=dmd/4pHxWmyZ9h8XsFYO/tdmYFzylrRPqVH%2BAvzR2EY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=NHpXuV85fdYdHHRM/ITVaVDnFiY%2B671aBLu8%2BYAzORU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=o7gKg5Ttue7M3LYb%2BmJFkG7Uj3Pe0w/2uSCVfk57kL0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=n0G4wWFVlQBsdGh0C3m8WDujicZrwRzefHdnN6kRw%2B0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Ibn al-Haytham": {
+    "category": "Science",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn al-Haytham_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VKMl6bD39NRTwU8UVxJNCIuSAMiOWKLcqk9l5R88JM8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn al-Haytham_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=acLxgyvn6/A0cdYV81S3uqTZqko/uhQPHpvlMwHMMUQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn al-Haytham_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=l%2BL81p5K75rmhQQiGgcd098Es1AsGryj1HTQ25ai7Fo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn al-Haytham_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2B%2B0y%2B%2BCoguN6Cyc7jHGbv/kHLLfMwi/tmDiz9t0N1lM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Roger Bacon": {
+    "category": "Science",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger Bacon_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZshG%2B0940yI6jJL9thUHg5SST6AnZOThiOQlkdMJxp4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger Bacon_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=glTkfIos%2BEziXAbJ7bEYhPBgJlTi9ms34667B3H/1BI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger Bacon_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=x/P27WmRhknvfsjzYVXFDbnofvT3PmdrmMxK4XJTDgo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger Bacon_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BNbQhaOuTem5mvo1nsubRuF8wV%2BY6wrN13G9Q%2BQpxVU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hildegard of Bingen": {
+    "category": "Art",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard of Bingen_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=PCp7Q/XPAjf0y8U05haakp/S1XYhk66XTq53q5Nf9iY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard of Bingen_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=XvKRGI5qhkvCe0aB5XnhbESoj91%2BtTeNpHvUkw1gvRw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard of Bingen_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=J%2BrzbU8/uAX9JXUGLAoOfhOKQmOQncmXd9r4C3syXbg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard of Bingen_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jSlMGEXAyoi64m81z5BfK3mDYiabfIXGzPWETZg8xI0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Charles Darwin": {
+    "category": "Nature",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Darwin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=PnsRPYOAs9kC1yVlguuJJUK%2ByWjZyfbkISXGVZKN10Q%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Darwin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=P9sHskE04hPtH6DTm2YkohXBeJl1ekbXd72meX4q%2BqA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Darwin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=fl6js4NC/rKHuVlnZI3jA/95Ml3KqR%2Bx/%2B5YEO5iKYY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles Darwin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7KLfLSA%2B2nc1IbQJBGLVCklCekRQO5dw5kjGQ8mgqlA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Louis Pasteur": {
+    "category": "Science",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Pasteur_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=zOoIy5uUVqyCKfSMzk7VINhN9FQm3L0sgxi6HwUwW5Q%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Pasteur_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=XMtDkxQhg4hlbXz3hofJc0zmEU5EDpAamyuavsap8Fo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Pasteur_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=6yTsNfFCvwHvxr4DV/FfBgYHWGESWLhw/q4TTGNazO4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Pasteur_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=go73ca1twtfOQOki%2BL5xiPerpLIWNIruhNlSDBEgdGg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Dmitri Mendeleev": {
+    "category": "Science",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri Mendeleev_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9GuvbHqsAcmwBKlv2YfuSL1Uva%2BfOC8ENuVFxS7es%2BE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri Mendeleev_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=vxwsVQfo3ZMYnk/K8QE22QP2Gw2pTCcbElLjuu10JcI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri Mendeleev_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=aINcqcWU7zKWD/Gt2tp3qDfiWkvHk7qV7HZj%2BOETaDI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri Mendeleev_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=T2/2Pu6KQHwGTREEr3/a5cZMqAgLhQH78zR7h791YxU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Rosalind Franklin": {
+    "category": "Science",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind Franklin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Kw5/v1jLIBpHGB1KFhH5KGGbxyub62nTu71Fhxsxt9o%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind Franklin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GYUczTlYLtGRPOrMGy5lHtFi8g2O4W4rAyMo//Ejdcw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind Franklin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=j/9vIb6WsV66Pj8lfqM4EWJIUcVqK0z0LNZ6czYwFs8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind Franklin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7wSNgk63yekcsqPGs/2/U9XR9P5WeHfgezqzdS15N3s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Albert Einstein": {
+    "category": "Science",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert Einstein_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7Fh53kUvbDP0k2PYhBEo6Ie0xqP8BwwWt419zphSS8w%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert Einstein_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EWvk8WP8E2HVMlhioAfzaI4zWjy1DX7Qz7rWDAUxvuc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert Einstein_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=We3zvooCwsl%2B%2B6XeyWLjFueQ9kvY/XQFLxHnupJ1kBo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert Einstein_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ojKv8PIqqo3S1q17ShQ3yZ0stBf5%2BBdm2MScJEtdMPQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Jennifer Doudna": {
+    "category": "Science",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer Doudna_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=um0FgWS0a2%2Bg2MWbRSxPT2UOejXSrF4fKRn4wmVHnbw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer Doudna_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=IwWpYxzuanCNyUlWQ0bF%2Bpm%2BKXrZ2oVK5LmR02F1kTg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer Doudna_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Qs53dV0OFrCCgEplAvfUJ2tb41b2Shoy7TP1EJ8kQ1c%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer Doudna_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EJApPd1E969T149vvTzJmcz19tWucgwFPL4b3jQ29iA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Youyou Tu": {
+    "category": "Science",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou Tu_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=dHT9mH8YwS0oVYx9KSXHZTk/k79YkvwDh464ywmb0Lc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou Tu_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VUOKjxK0Trv/1inMDnlkpwIu3NEk4y/dLpMF5L86CKw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou Tu_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=c6e0cXrt3H%2BitZe%2BQ51yBeaLxfdwKlcvnvH/pjdSiYc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou Tu_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VIFF9kY2U9vTLH4yGMVD9FsLJD3HBVCG2Z0BjHOL6d8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "David Sinclair": {
+    "category": "Science",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Sinclair_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=85VTui89EfaqUSOCkPoaaXdnKEItmUxzo3nESDm8CrI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Sinclair_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MzwgOPZ/nE5K45dD0ScxNYLM8GJ0MKZ2Vw/X%2BvDTcaw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Sinclair_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BtFBcO44vu5khvLpYKs9Q/EOWZQ3S6rlY4rAMe8oUkI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Sinclair_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=IaS3XQFyOToyS2lXOSQF0oqJBn8U/pXuhxk/RU5oBmI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fictional Quantum Pioneer": {
+    "category": "Science",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Quantum Pioneer_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=NTQPc5m2eU9TWxBEQCduEzI250MskMXUS2kfbgmkmt0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Quantum Pioneer_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1ZQPoUAb3M9d4yB3fJPPmKFSuJs/I3tAj8V%2BtlTFdio%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Quantum Pioneer_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=rVDKtW5LA/C7QYe977pdT8pmasVlUda/BStcXkVN4Qk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Quantum Pioneer_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EiNQf%2BSoIiepqmmR%2BlvKnfp5wacHMCKD2ZPAL%2Bk5L4A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Phidias": {
+    "category": "Art",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=bwde4Wbxyk0gkyPrsxAFtE7MGKO3G1OIt0MC6GB1kuo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=P8QJgHw8CI46Sw%2BzhTuajkFZCbD2b9sZJd1joDGYzaw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=epBhEGqGz/xE7c%2BsWyAtmjSTMoTAlkioyPKAEXrU3FE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=aJiHvBrYKZlVnwfRq9LO6zlPocVz6wV3OVD7LLntamI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Polygnotus": {
+    "category": "Art",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Polygnotus_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9Y6JOCd0rD7E7r7wmzBq4/B28csyVdfMi/fnQ52fJ2w%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Polygnotus_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Uk2vhO2Dtd1DJyT9uFmIlUMsDuiYuoG0dilm/i43BQ0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Polygnotus_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eWmLom2kYDyMK5y/CfukNpalzOaip21VEIQ3UTILUNo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Polygnotus_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Et1PwW2h0t8enqzEmAHqEvzC8QKIKAgLJsDrx6tPcuU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Giotto di Bondone": {
+    "category": "Art",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Giotto di Bondone_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=zMBpyJDXN%2B4VWAWZNv/wVbRfUvquy8%2BxUWEQBTpegPc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Giotto di Bondone_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=TXClsSWLFfYePFFeZuOBp8EByBhy3cYtYZ4CWyaj58A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Giotto di Bondone_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=8MYFZNrNCNkJPh24l/8mij5QAF2HtCp4BeAAGiQz3iQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Giotto di Bondone_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=i1mGS2G3CsyjF6lFFUbiE6E6v/Ct99Bm18jeqKRBw7U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Andrei Rublev": {
+    "category": "Art",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei Rublev_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7u1rFnvet5TH/BlHfAXObi9e9%2B7%2BTo2TWtxiUzbZpCM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei Rublev_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hVwPZgqa/iaTydJks14uijDVgq4Rz/vJmvIb/Vn8NMg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei Rublev_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=FugmaJ1BCa0w4z/T2oz%2BvZYR9XT7YT7xj0h0JMgLHXg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei Rublev_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Vr72fSprseNRbOxBT90x%2B4RVNacQdEx6U%2BVXZVdpSGI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Claude Monet": {
+    "category": "Art",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude Monet_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=uoC/8n%2BXgQWj0igG7j5cKlHC1XUimQJBrOpBuukLwts%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude Monet_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=sEALyszQwx36SV%2BKAPqq0kfKHSB41lY3AwalTLCzCR8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude Monet_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hga2xlPy4AASTutiO95pBbM0N8MxRZtu%2BPZrZ2emaHw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude Monet_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jspcPTLdzePhODj33cmvn2v8un5l1ueUWOiDeGZtfsM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "William Blake": {
+    "category": "Art",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Blake_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hR/dJCwAo39TuJp7ML52ve4KE6sigVJJoQl5yiacZ6A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Blake_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1nwaU73yyNLMVQVgVzhz6WcKxI6YhPoJdabJ4eNg9qg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Blake_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Gm3WpIvJ/NlbDUpA4WT7DdZlvq1/DZcIyYiLsBOIwRg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Blake_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LfnTXZAe1Ym7UNnG2Vhy4XjuqjgxiYMrkOAFNxL3gbg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Gustave Courbet": {
+    "category": "Art",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gustave Courbet_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kv0lmowh9tOcEr9EE5M8Dec4LRRl%2BPuw/I5tmnec3yw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gustave Courbet_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ySP4Jga39E3G3lmx3nAtCqY1%2BAj6/QSMUICXl/r5fXE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gustave Courbet_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=A9f5/aw%2BW7Bern%2BzKwjZgCywVlWsLGnb00CyUPuELDk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gustave Courbet_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=nZ/%2BzCwzq/3tPQazMo1QCTOsk42clcGezyyYdk/WgIw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Frida Kahlo": {
+    "category": "Art",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida Kahlo_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=JMe0gNM1Xwo22RVnvNxdMo/BqgBMJzetaNGiT5vQQRk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida Kahlo_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=krHZulOT3Dm4QTnDIQwSSUrdnazOWNSIkyjH0aapD18%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida Kahlo_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BVZuVZgEGdc6v%2BNbQY4TPiE1UhH2r7LJ2B%2Bljlqklg8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida Kahlo_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=6BXs7lY0kKMJRucijJDQHY6RLezw4pi3ZkiGrZG%2BQSU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Banksy": {
+    "category": "Art",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=8RhATIv0/I4Uvq9jRHnLEmUsRWhpe1GHyJAyVBV11mI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GnZmy9idDJ7xsb702BLJctoJgL4lf7Wpv2tV2e%2B2pVg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=C0YXEI5D6B%2B7F7H/ymNDDPM0x8cR0Jb0xL/e/RB2gds%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=G1g54IA%2BFUFfWUQcJgd2/05kNvEW07VaQQN0yZCAaLk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Yayoi Kusama": {
+    "category": "Art",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi Kusama_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3GmUna934Nlwy7xq5sits2oeNVc%2ByMTc7%2BuHmrWowpg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi Kusama_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Y5R8jmoMGdjZdmKvOkkDbL1I8wOEb/aCRH2uYrtqDcI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi Kusama_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=xQjEkOssBRsLR2uMp/pQa%2BGHfSfaQznAmxiMF/Cy2eI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi Kusama_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=HIDIWXMZ7VfLwz11dpT0TlTX88Y9YSUBJ1Pp7PHwU/I%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Refik Anadol": {
+    "category": "Art",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Refik Anadol_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=d/zkhrLjxDWcQh6ll4HWGpqv/ExFNysEzvmwofS%2BqPg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Refik Anadol_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=aLsq2N5GJmEbuVYmffoYhMDmo6B2WUGjN9XuIVMT9zs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Refik Anadol_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eKCrtUW5BJxGnrEr6IyTVKWgrBwQonkw3BmUyFQW31k%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Refik Anadol_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=IilJ/SiVQZzmzKK1j//rkaeqwotpzqKrQ8WdPCPllk4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Sofia Crespo": {
+    "category": "Art",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sofia Crespo_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=L%2BJunfURi2uWEG5PDhVf3CgSyxhfTjfe51Nj0Tfyl5A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sofia Crespo_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CopOgMFHBrgXiVf1SesXWFTpWGwZtN6punQOMxf5YRg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sofia Crespo_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ED8qaxPxEiHuswso9E04ceAFJ8LZ1Swfn7m5VLq1Hxw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sofia Crespo_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=J%2ByhxYpbKmEgJuxkUKGIgOL7u74AtS0m2MesT65Vp3Q%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fictional Holographic Artist": {
+    "category": "Art",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Holographic Artist_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=oKGZSkHrf2qclTqE9gymj0O0ZcVikCQOdRT87SYWRJo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Holographic Artist_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=fCWJI5Nxw8DJNTcXyqhWoViWMKL7RQwysk9VnGmgX40%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Holographic Artist_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2aDNm86ekIOn2nu2%2B5YEZ9w2Cy9m3h3anEMsJcss7zM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Holographic Artist_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=HDYEzFoVMilTWEBFfCNKrn8U09XgheUfbRJhXk4bczQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Theophrastus": {
+    "category": "Nature",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=z9Pc/GQ5ntUverh%2B9G%2Bm273TrPcSAb4HP54GAHw%2BKtI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=nN8UP1SgNfWVPs2Nhh8Dj%2BBzbCj9Ssa2QPuH72wflYs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=L5TvwIA28CkN8Ldr3jR8iNo8hwOhxOPbM92YvWSek3Q%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=OMbiqL8uYJQx9ASm3ADpB8odkBKb5lJW/PE2VvjJkJ0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Empedocles": {
+    "category": "Nature",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Empedocles_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2ohee3fWTl6Ovi8Xm0279GgnEYbG/WDW8fEA20aqdf0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Empedocles_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=u3yUpTXXodQal9u6XfbkYIrtYFx/jiWz5k3zVpNkksY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Empedocles_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ccKKHBFgejGHwXKEmxkv9VOVjRcXOBUZZMXn8z%2B1YZA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Empedocles_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MTTJoEDQJfqbcT6e2fa/%2Bv/ttWu3x6Z/bDBhF5dZCDU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Huang Di": {
+    "category": "Nature",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang Di_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=SKBRMuwE/JnOvtAUH1PRUDMm256PCn/RCOe/MZ4927Y%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang Di_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Rc8c5wwNw9Vgx/FpZs0pPRRXjxl2LKth7RgJ1/87bRo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang Di_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7RRYD0RBOZdWOzZqrnQ4qjX3i4p9FCizwhWQlFW2NgQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang Di_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5FWWzKwZqOmHAiQpyiIvl%2ByrTpYE6qD4q/iD4airaLg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Albertus Magnus": {
+    "category": "Nature",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus Magnus_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mxnLwSfTG4B0x2400tkXifjF4bwNxdqfxAQOtv7NiJM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus Magnus_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ejoyCK45A1CC49PC4ew6RUEeIBAxzydrYOzqSL0%2B9a0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus Magnus_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=RkuuytdDX0IUPWhCzg%2BjqFohaIzxQvgXbyJKX12hVf0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus Magnus_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=B80z4sZofmDnKOL4s2t1PYmHT9%2BeIROGsFm38uOdm28%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Avicenna": {
+    "category": "Nature",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Avicenna_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=P%2BMEm51zZgh%2BWLh5W%2BZ70RsvGjzqV50HmlLDYXAu7I0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Avicenna_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=g7KT2PamapxRQg/LGeyAIdqLzd662m1nDej4AB98Hug%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Avicenna_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=okMfvJqwxUR9t3gnAIC7EJzBRM1yiW2Ngh32BQlasmE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Avicenna_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hAHGd69AtFWuGBjGFUEyyKXHYhskFzSk/8vZFBsBMSQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Saint Francis of Assisi": {
+    "category": "Nature",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint Francis of Assisi_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=tu%2BBW6qLSlk3DuiMhbG7p2/WndPcAcMRsxT4w7TBBXo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint Francis of Assisi_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lXD0byBBwWv2KCNR51PSYN5JopZn23cDQeQleXkHjHQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint Francis of Assisi_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=vtBVpm1NYiC6sJSiQm30hR8VrxiVeHHTUnTcxAePNn4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint Francis of Assisi_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=pU6Str053v4RF8GWnbfgWYYnsfTf3N4T57siIte4VXE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "John James Audubon": {
+    "category": "Nature",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/John James Audubon_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=cJWjoE85%2B0REgMo4QIC45CL6OLTcoavomCSpnhsz7Fw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/John James Audubon_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=K/EIAjMlfQnyWL3F8KkE5caqhi4RFfqyDvSCkiazLFQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/John James Audubon_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=H1nDfdJ1%2Bfc2Miroun7G8lP79yaLDAZV50ay7vqARSk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/John James Audubon_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1CREsWWQl0EqIKf%2B1mJSjNXu24IlPshDB57vuD45lUo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Mary Anning": {
+    "category": "Nature",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary Anning_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=S05f8/fbdcCphRZ2iwmz5w6EEJgmdzGPkPxIMQxN3iY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary Anning_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lQkyO7n%2BWixyUfZThCiLhrm34uaQKE/nMpoFtEEEcyM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary Anning_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=YjV8RraQ9tfk%2BZkEkhWwfmhS4pzaPnFuULXgf1Pp0ks%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary Anning_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=nc2ZIpiwMRbKfmYuKh7Mg0/X%2BmiFq1LBf3ZbSkoNgG0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Jane Goodall": {
+    "category": "Nature",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane Goodall_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=WRbP%2B8QFgHkiMwMFDCcA53GRmNrDfvV%2BUlBKyh7Poxc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane Goodall_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9SO6budOfujKDSESAGNQgnVMQC8AHk9Ceqr5HWgBqwo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane Goodall_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lF16e6%2BzyTUEhCBFO6bmA3Wmp09detP1I8E7PwGq4V8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane Goodall_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Pej9ZO3GEdr/PaxAa7/AzT2wnvH/gxiCKDNjn2YkQPw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "David Attenborough": {
+    "category": "Nature",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Attenborough_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hYNGxpczw87WA%2BxDftX1sGSEIo5boELJ4HQ8eRdZfhk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Attenborough_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=RtJFFeuQZzsg1nwYMsVxMMpVB5lPYDSq9mtGUQPalHA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Attenborough_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=t1m3VSaBesUH/dpHvGb/8VlkcAqJ6nuxL04yNgvlH3Y%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/David Attenborough_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=W0i8wBTw7RuGaZXOTPxEL18Q8JULfm5sMvOupo45vTg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Wangari Maathai": {
+    "category": "Nature",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari Maathai_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=zIfi088d3j4DDqHh5VYRbXyyPb1zWdMMYV8XBkLJikE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari Maathai_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ReaJoyoSqoaEEcbdCArS6leKk%2Bc%2BUYCV4iOpIiy7vew%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari Maathai_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZANhSKWDUXqLxEG%2BB5qk7LrnFXhrXcdBflO1QHJ9Dkw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari Maathai_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7qYAXeSJUk/IuOLAwG0uV0WnHnkhRe/Lj6rCCr/i/hc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fictional Climate Engineer": {
+    "category": "Nature",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Climate Engineer_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Rejibkx7bzkkEb%2BxBME8KrKSgHH7KfzRkPk8g9bPQmM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Climate Engineer_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=iBsuoTBmgnDadvBUbVYVNxM1njRyyQ/jJddVC/nvSvk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Climate Engineer_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=N/5d/YXP4ObyWarIfwbm%2BPwcoT8coG57bb0k%2BuoHRqw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fictional Climate Engineer_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=fOdvS6ZWufHBo7sSFVj8SV7%2B8AdNB12fiq%2BqPjsgoAM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Mercedes Bustamante": {
+    "category": "Nature",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes Bustamante_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lHxvt6diB4tfYhE%2BFpqTnfa/8QK/nqSeeKp%2BMJUoUZ8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes Bustamante_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=dTlFF/0r3wnc0U0ye4V0H2I/RUs9MrC0plGfhmR33/8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes Bustamante_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=XDmRn/QW5YHii%2B3RtWNSjoJ1aG9vYWxbL6M1hQFtwus%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes Bustamante_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=St12IAlrZ4Igds3YJA47Eta9GMgMTCxhKZErLCDDjSw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Paul Stamets": {
+    "category": "Nature",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul Stamets_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=tZMdeBAOMPOFBmI39r5lVsu2K1iZxUzHFD94tOvx4Nk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul Stamets_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wS6ycMfkpHgG6U3IZNkUbmeWfeDuvTifMP5zRDy5Acc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul Stamets_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=U1uaFYVFW1u%2Bg4J2AJdC9JLbjGC0Z16IzBj9c2pxTs8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul Stamets_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mR5GvVh5f%2BtFUiUTXRojvUJ4rOP8fz6Z%2BSRvjcS5Tlw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Milo of Croton": {
+    "category": "Sports",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo of Croton_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5EZiypxJdFQ%2BlBd9mmobGDs74Tk0PUhlM/IcWc/ODbA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo of Croton_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=F8sa/VzJNV%2BY4q6qMR2d9AVmoQ8iWu6/crblsuDrlqs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo of Croton_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=/H0MHeP0qE38k5XrgX%2BWkGFWY1dlhGEnmVDHLRZI7F4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo of Croton_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1dxm3WiuqMO4snYV6zJ3mlyDHIKkckuRdgI%2B24nMS0Q%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Leonidas of Rhodes": {
+    "category": "Sports",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonidas of Rhodes_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=JxSv8yX0x3YjFkRmEKHmom7SUbgZR%2BD/PPdgCcjhlcY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonidas of Rhodes_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GRR/a4ZdIqlZs3YYzYgOQCXyQzQHuaV35Rj9Rmlp1bQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonidas of Rhodes_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=T7stJPhxxnjPMic0IcgvKRmIkNThh5BQA4Y/mMQsB08%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonidas of Rhodes_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VWr5LiKoGbZ5lgU9Ple/qyWJxpWK6w7e93FSmJ129yw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Gaius Appuleius Diocles": {
+    "category": "Sports",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gaius Appuleius Diocles_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ngRzGT6W9vlsoORjyHrTQyljVe4gON3M2jygrFX6Svw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gaius Appuleius Diocles_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wC/lUqzB3gIAg4fIGRCpJi7JOUg00DB5nNkJOC3dbMk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gaius Appuleius Diocles_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=S6KBLdbzjOaxmEniKDE1gE7pb73D25/pQXdX0%2B85dyM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Gaius Appuleius Diocles_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=AMUCPjYKbUqYaeWk82MyGSBrhwBAKoWAyP68G6YFGQ4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "William Marshal": {
+    "category": "Sports",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Marshal_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LA4u1vO8ir4a9C98cf/CD5t3UGDHGPYRtSnWJ6TcMWY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Marshal_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=zSVkjzq3nqCEGUXwaQve0FrayZ46gJLxv%2BDrFX1uic8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Marshal_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=A3CwRuPUbI%2BqnTfHWTOD6iiMSeFqt%2BKaR15DFa5vsV4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/William Marshal_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LhQcszj6kMt7cU%2BTHKcDNVec4p1inBDUmlzeikzXuqk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Robin Hood": {
+    "category": "Sports",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin Hood_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=YgyISjF1v%2Boe2t%2BMXizzj1Vt3jxdjgin714VT2P/a%2Bs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin Hood_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VjbhdiwbY0bsidKJ1MU3U2Hiz/XTpyhBrhLd%2B9WV4Ao%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin Hood_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4AAYd642hZzCfqzb7CeiV6x6CTQeLPed7Eb%2BR3/6KFU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin Hood_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=RoK5LfyiSDIH7OFAV5Zx9/V9HQNwVketDXvZIY1cqsw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Richard FitzAlan": {
+    "category": "Sports",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard FitzAlan_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=sUBEy%2BKSqLlaY5aAGCFQZ2bJmWuDRwyrFmKC9KHduaw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard FitzAlan_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0UGSeZ6F%2BYEwZj/HS4gyG86k0wgWCausR7l/EK8WIZo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard FitzAlan_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4uhphlYF1iIpGdNrhM%2Bj10vQwa90p%2BEBg3P4Ge2zW/k%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard FitzAlan_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=hQPQpvKUvSGHoz2rjkON0OhGujlIGHV1acez/hB56yo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "W.G. Grace": {
+    "category": "Sports",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/W.G. Grace_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=6Z7fBtg%2BgaxX0yiHNY07buVrDug/hF9/aI8063MUEPM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/W.G. Grace_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=nEosWJNfnZRP3feEpw6v0YDoeudbkzlof%2BldjCZr/Cw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/W.G. Grace_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wLnuFdecIm7c/gxAAuEfgvyspiXPAKQXC5FxYy8E0gM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/W.G. Grace_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=tt675dWhhRSA28HvyeVIMefLbfre%2BeZ0bqOECOmhknA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Pierre de Coubertin": {
+    "category": "Sports",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre de Coubertin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=UMa0H4n8k1vARHO%2Bojtac61MsnjX72A6ne5UTHP5sWE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre de Coubertin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=gNz%2BI2oeztpViwqpU97SsNHlE956LU%2BpkF0YrIB4cEM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre de Coubertin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MmfjEP9x64VjzJYKa%2B5SYqJ4NNkILzOvRa0TicYvT4M%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre de Coubertin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=O1/csbJs83PUJ7cIHxLs0U7Rp5sEFIObOl4oYZ3vGJ4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "James Naismith": {
+    "category": "Sports",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Naismith_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lkA4EYpaSsO%2B5LkQtpElmEMjkY7XnVQA204PBKwDe6Y%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Naismith_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=rCpsLvC%2BnockuaCsmNfbPGQcL32AxPd5HFhvh81pCUI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Naismith_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Cvdt%2B36X6TRr9kfUrLrvE%2B1E3SRpY8/JDnDIxT3k%2BVk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/James Naismith_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kvxwJb3huRihtFvQXxgxYgpYtONmZrma5HCYNCeZN3c%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Serena Williams": {
+    "category": "Sports",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena Williams_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=UUD5LRKDbIdQeT/gEmVcCkV9J2%2BRc2mDUIv12stucuk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena Williams_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=HdT8EcU7iCSi4Bl0Fb%2BmA4GEcOKgwTiDKB7FNvBpItE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena Williams_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Fxxf3dEu8eYVnI/bxUbaZiWUskTGlaZJn3mxMmjaUMg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena Williams_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=PoQ5Gahc0w3RI/p/CcJJfidEhB8hZ70by5LCFenyVFY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Pelé": {
+    "category": "Sports",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pelé_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BFphULFIVqnCYafdAOVh8MH9iOB8xE64P10Tbhy2Ww0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pelé_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=E7S8K22KkkRzHoPAhZnL9VYZ36vXqahTj3cdqxXU96g%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pelé_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=p9Jiy5tOv0Iqz4lcgVQ7940RmOKOm0MklVg7sFBEDcQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pelé_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=15zigpZIqDE48uM6wAmkyd2hs2kMoYXlm%2B2KKO%2BI2Js%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Simone Biles": {
+    "category": "Sports",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone Biles_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=t/L%2BdA0pXJonKVzDHP4uHCOm4DJUGzS4%2BMHs76gUjSY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone Biles_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=C78On4lRjtg2shKjlOdXTTB/wrWDL0mijj7oKAbo/80%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone Biles_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=p%2BXC8kKA1R3J73A1DhYdc8sHEa8utsBG6QHQmb5Qc40%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone Biles_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=JHyoyx7pMNkL3f0cl%2Bqts9%2BxX2eVEmuHy2czT07jGuU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "World E-Sports Champion": {
+    "category": "Sports",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/World E-Sports Champion_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1BszNfKuO4LyOjKZruU2LfH%2B4Wn%2Bnb103wYzWt%2Bhpvk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/World E-Sports Champion_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=844X1ZEolkHrW/oP8kmNtWUA9U74LjieEfERPkICws0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/World E-Sports Champion_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=OV6k9giOXfj9h1dj62zekSN/UD6OPd1ICAjUT7xGjJs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/World E-Sports Champion_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MpboPDTuLcVg975G6K5YxK46YCWowrBSXUNXitPTCG0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "First Cyborg Athlete": {
+    "category": "Sports",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/First Cyborg Athlete_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=rELFefofFLWwp44KrUasF7NqpVGS%2Btj1zIzVRXge3sI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/First Cyborg Athlete_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=23FTDb5iirQt5f6yZFq%2B%2B/D9abYxgbiMp6XoDZipkz8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/First Cyborg Athlete_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CfDclLaYFUt7TRId1ygUEmpmh9iIllPenaHOyrJMJdc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/First Cyborg Athlete_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=xIE8SIjd4vC0tMZIwAutvmNgpqhdL7Z2YUEaCMO/SzQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Zero-gravity Sports Inventor": {
+    "category": "Sports",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zero-gravity Sports Inventor_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GCWBb4B9dNtFKtkEdkLX3ihfLO7dbSxpFnfDDWVDtCY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zero-gravity Sports Inventor_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=R5GRuFRne8B7XZGPamuM8x5gKUP2nhF9WeYh8erI1yY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zero-gravity Sports Inventor_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9qdGm0ERr6aA8tXRxSW7pHMpcmMI3%2B%2BUQhH0rf0KBKw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zero-gravity Sports Inventor_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4JlsZVxtiMbZ%2BRdGkawP/Z6KEP5o1P9Q%2BIuCTV3XiX0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Sappho": {
+    "category": "Music",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=AR3aSRi6Td8QpPzZo57PyzLc8Axi/rX25T5CYuPZvCU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=r95WVaIQmMW0TuzfopVbIWliwqLnFSuGEVMlUDeEx5I%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=qfP%2BTmaSzSKnqNBwNTt28CymZPdIUuzqBXAhDwpI/yY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=B2pXOfXfpWx/Zskyg9XzO4h1yGZxUD2OKCJoWcH44Ik%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "King David": {
+    "category": "Music",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/King David_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=KvAdYJu8DJTUXxMHYJav71B3o7XRedjeKXEVK1wVSu0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/King David_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=sauzKcF5kkDr6w1lo77erfIYoPSMJBv/GZn/6c8scGE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/King David_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=FTEEMcJ98SVWYUAKiBc%2BwCKloBUFCwz1FdpOy3j6TL4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/King David_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kKsUYgNEEIR4CYVW4mELbBy4U995m7d1i9poMHzz0EA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Narada": {
+    "category": "Music",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2pZNaPpmM1NFxw896hyQwlLaS2uJzjNkZkPhdkdWC7M%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9fHMdB8wp5pEEn8G7ZgcK3WiKgDJcRpkp3WdARlNytY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2MiK%2B1DDtqpFmSD%2BVo3wBQxkZFpOiZK9Jp5tLVhwxkQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=uY9cNtW8mYKJUYwqaaFGULxWhaEndNqfLf5WvJPbMDQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Guillaume de Machaut": {
+    "category": "Music",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume de Machaut_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=emKTvIPKLqBrO/lZi3%2BpzhJXX51SJthTqIH1tX45%2BcY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume de Machaut_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Jo9kZjuq6o9M3M44AKTcsTtjXJkL/yXW2T1iyUwTnwQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume de Machaut_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=xK0T1k8RR9C8TKaiJ/ytdZUrw6DwS1XKNt73pM/vIRo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume de Machaut_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9oZhmUMliPrSpdv0jCS7A/V4CY7YmMbxw4Nn6UPBahE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hildegard von Bingen": {
+    "category": "Music",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard von Bingen_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=DeY3dl0XEbPIYXe/GfgWWzE/yA7H1DpYc8oHnaTnbcw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard von Bingen_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5hm%2BwCl6M58%2BputapGZ4rZQOr7wMhFqUfPoaMB9qcNk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard von Bingen_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=TOOlr4PpUyaJutVRfuVATAUznJ10bvyeuygDGKR0PYc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard von Bingen_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=pD%2B5ceAT8FzIsHGaM1%2BPej6K84X7VjyKgpOfHnKBILw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Alfonso el Sabio": {
+    "category": "Music",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso el Sabio_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=D07BxaANZ2LnweVVPQ4b5LFB/1ET7gMOHbMJ/pcDNlQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso el Sabio_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CLeCb4kaaVwlp9wZ3WWrR/oAbwDj%2B3w/sSpDq0Wh9Gw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso el Sabio_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1Hk/GC2RprjTA1PZ2X3ziIOY1BG4HD7LBi7i/mfJ6Kk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso el Sabio_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4/r8%2B2t/1zFTSbl2hmFs6aSoqlh2pfXuxfn0bpfPNko%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Ludwig van Beethoven": {
+    "category": "Music",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig van Beethoven_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Kuuj0rMB0kzfWrMmd25TmgUadxgNRWIdr3BAF7yI0EU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig van Beethoven_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9oZy7dkJoxvk6PfgRbODHgpGIj3cybrJTTAS094UR1U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig van Beethoven_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mDjoE%2B%2BdDZxOLB/ltL7yfN4wS8BRuFFhOqMGt7wy2d4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig van Beethoven_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Cntc7cHBBimPOuAmftnJwp8WwQxHbFggJKgMUTdfRoI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fanny Mendelssohn": {
+    "category": "Music",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny Mendelssohn_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=FnkcCziIE9/adhGuovm%2BrqkrMtrfiZv0A0yI6OnqoKY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny Mendelssohn_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=vLASulUZu6JVRyTjAYX53cG5j5nieQekAQGBbj7Z2u8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny Mendelssohn_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EBgOgb4ESKnPxVzsBJ3cnWe0qLoUmRKmCmRpKNLaODA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny Mendelssohn_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ao0AydbMpMUzwL/yxHt9nNNvsGWjviiC8/oD7%2B2vup4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Frédéric Chopin": {
+    "category": "Music",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frédéric Chopin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=NAkTEZyMiTDE3sGfJdA4r7OVuBHgpcktFEBt6dGLQvc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frédéric Chopin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kXI/rTFsEZOGIZSomvKbMK/cFNFvR4jwgCAi9iRq%2BsQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frédéric Chopin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=NFBhACnmI0az/0XGUOlC%2BbEzd0tgn/DH3AAJ3OR8tsY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frédéric Chopin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=vlH17/mnrTwgM%2BlttRP3AdRYfoSx7%2B9ePj0zMnCrWHg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Louis Armstrong": {
+    "category": "Music",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Armstrong_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7rm8OvJPbNMzXxbQMKy35BmW9ysufpd2DYT3FYh1AW0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Armstrong_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BIcWrNRefEDHybTF2K4gWFmfpx%2BkidGezO4EyBdXKTo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Armstrong_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2GPqOyA%2B76SYXc8dSt%2Bf14UesVzOngAIs6DENbVqfmk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis Armstrong_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=k9XVLhc4n6RIkmY6ZsI0FWeHEqNSgpRMmj5YXlo6QIA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "The Beatles": {
+    "category": "Music",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/The Beatles_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=udjojG/ZK341ftPFPzXNrkcZGFhBeb13Qd%2BcCV4D27c%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/The Beatles_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Pk0Ble0RJG2xbbS5S7wCuhDkJIQRobqQKh6M0AL/bKQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/The Beatles_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9zDOujru3vN0mURnvjwwzkuePPCw2WUiHU2oh9uTdtw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/The Beatles_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=JH%2B2daV%2BPiHUDaMtp8%2BwBHftkm8Thv9WTISor296wt8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "BTS": {
+    "category": "Music",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=jWSs0oci3tL%2BQVWxveS8BXM3uv4G%2BpW09tM0kWvibNc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=K%2Bc14SPLDhHmPmwy3sJ1cSfV1IgEDt4bpdp0GqQIUA0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=uCt3Xcg7AfTcpu/WStJTZB2NRdbavI7uwvTP9KSbmJg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=8djlquxr0lrerslDtuZ8/zF3JzNCqVm%2BiULi/aNJBc0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Holly Herndon": {
+    "category": "Music",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly Herndon_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Sj1BjGnNadKsoR7ug6r127PFfA/umqyB5f8XcBfhu8E%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly Herndon_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4sl3s5GPQkOUWWHjApjaAux7F0uQs3%2Bc9DhsnVoJA6s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly Herndon_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=JVfFhmdsGVAupqiflXh1UFiFkwxStvwQ/hhS6aOx%2B9k%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly Herndon_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=q4lF9KHQP3J2MoiT/DQgEewqSax2nUjUkSstQbImzVM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Yannick Nézet-Séguin": {
+    "category": "Music",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yannick Nézet-Séguin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=DnF8ERtSghz/WSdzFhRidz%2BKw6SvAvkpW5Bx1/Jsi3M%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yannick Nézet-Séguin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=DprodnL/nRtHsHEqcDAGuV3XmWB4Rb7WPOiUIqu5i1k%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yannick Nézet-Séguin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2Bt1FSnY84wgLtVjPCkBcketklCVOUmuDgd0yibltzDI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yannick Nézet-Séguin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Dw5q0pZD1aFkscy4hlGPv5RXuB%2BeLSCzcyLk0oDwcwA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Universal Music AI": {
+    "category": "Music",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Universal Music AI_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0zpx6y9Vw/loilD7efm3Cb2rIgVzf9/gkRgcmpL4Z4c%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Universal Music AI_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2Tgag/m1Ea%2BuaE5rWp0ehaX6%2Bz6ueamJ%2BfITrIyPpKg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Universal Music AI_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eigum5SlLlpMemjbNyW3uZnTMmC0ZuDpuzrsQbAZgGo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Universal Music AI_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eLSojF0aV9a5C6nHmDjm/on5T9SO/JilD6O/J%2BclAiM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Ptolemy": {
+    "category": "Space",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=aCcFjGQHKCdP1SmuBwndlyWrTi7myIV2stQb7xZuwkQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0Mo6H4iPXULfUU4DnntrHJQt35UOWp89MJJ4hZJaCMw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=u6kQzeK6/f8AC4pbbGLXZ3mFf6k8SqwmaA073fI1zEk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VBmrWrFDLqtuSG3k9kPiqzQzm3hYwdndeqLwqc%2BrNYc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Aryabhata": {
+    "category": "Space",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=GTVuyL%2B0Kkr%2BBBBIG8VBuvWCYPtTqYYSRlT74KvNdWA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5kDN4JBpFeP2V3XsxFOUPJwOpIKHEHgcCzyJfyi%2BLR4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=WDhei6O0P4VSFRvm1HFHO0njvCp/6mhbXJRgcm4BSQo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ehIOJdzxm/D2AgWDjlfmglKZ7Onhm6r7T6TUzUDYAzs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Hypatia": {
+    "category": "Space",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2bu1Y4UMIvyStkuS7ar98hqTKGUJ8ShvopTsmnwKLmg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=qk3jNTRXTu8S3CQ1kTl5q84xywHhGk%2BUAOSJdQn5B5A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VIjgAkUK3sM8NgLglTCXi9ZzUVmtpDZT%2BwUvuBqdnPE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=x37CnBg3%2BQEdmZyi6mJ5LRuLmDBEFFKVVWmS1Z0nSw0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Al-Battani": {
+    "category": "Space",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Battani_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=a0Drkps2pHSmUN2HeiBAdFr2ea/Uwo9RfiV%2BK36Z%2BSc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Battani_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=kkbq8uQJmYGNLbQpJKYcqBvHokVlUTPhQVSgzHpinoc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Battani_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3kORmnZUfLWb9yynN0R1e50tyV35BPXCK5ecwQpEFDU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al-Battani_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=SLXcVaRKo4cALzaMRflqK%2Bzbtfogcd82CvcEgQYh/fw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Nasir al-Din al-Tusi": {
+    "category": "Space",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nasir al-Din al-Tusi_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=SfmG1OrMNRjgvA05l7tHO2xgnJCfew4vrnIeGOLCcco%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nasir al-Din al-Tusi_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=eJOm2cp4rl/mcu3btf2egj4SzPSU6dFCgOUQtGkz9tA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nasir al-Din al-Tusi_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MOzrta6ngNfrEXZZw6VsD/V4gyNA0eU1mkFRxmOf%2BZ0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nasir al-Din al-Tusi_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=us08rSbSmjmE34SZPpMqJPZZ%2B9dWmzboLqo3jzIvimw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Geoffrey Chaucer": {
+    "category": "Space",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey Chaucer_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZaBgqWCO1Kk1Eo6yq%2ByVtEEH%2BUMBCgHqg7sXdlWj3/s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey Chaucer_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Pmqpx7Ojug%2BOd7vd9u4iM9JzXw64SRYz5pEp8pz0fz4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey Chaucer_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=5xtm1XAx6wx2aBjG3ACdkhhIUzqTZewEl2%2B5%2B8xflYc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey Chaucer_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=neZBEioqNfi2KYgVla5n8ZfZx15Hcgyr9qmdEpEB7%2Bc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Galileo Galilei": {
+    "category": "Space",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo Galilei_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=gu5z2GEwlXfZRN6VHQB6FlVLHAgqRHVt1f7JqeMF42M%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo Galilei_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Fsm%2BPB0iRE5So%2B512gg3O60TwmbSsMqem45buDp02mY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo Galilei_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=M7kQP257QNlkla4N71RDrlPm6zCUuiWc6Pm62DDvctk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo Galilei_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=x/pViC5fZ6wg4OwzP4CDECJ9XNbr%2BbHfsedw3WzzroI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Edmond Halley": {
+    "category": "Space",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond Halley_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=OQkZQGwg/dJmqK25KBpY8RzSw%2BaffiZxFfmhLj48NeI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond Halley_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=xXjn%2BJuz7AXODcdDLzvftIZ7K5z07PVCD%2BcdEB0BLW4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond Halley_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Lah7hBGOaGATD1DVbF0/FuHq33nXeu/wuJbJN5JICW8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond Halley_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2svmn0MEPPUqBq6p7K4KBJvNk6Rmn1g4YCprEMm3B4U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Caroline Herschel": {
+    "category": "Space",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Caroline Herschel_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=CmFAe8cdAPROR58jrCvtTNyB190plvanyLeTdBdzRjc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Caroline Herschel_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9wDO0xnmilyuxPIVajq/WI9GTtjf5EheziRCwGxkGWs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Caroline Herschel_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=En17Q8pcPm3KxhwrZpB8mWIjzjpFtgQVOf5N0oRmRaA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Caroline Herschel_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mZGzQSTKsQTAiqaTdzPtkSz1gPn91zvq0J5bx9Tznuo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Yuri Gagarin": {
+    "category": "Space",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yuri Gagarin_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0wsKu7MpKYcsWzCW3qNa0Z4xBhjmreKmFNZJCL1AWRo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yuri Gagarin_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=oWZNrV65C8fKzU/b0uV8FtL2jwFhMRkTezec5sEgMwk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yuri Gagarin_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=T/PeBzqCKRYJrmDHPHbDlfOI5RfKdbRhr8TPkS7zrVA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yuri Gagarin_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Sz/WEYXXuefap5Q7MI6vK7qkTB7KdR/Rypsxl31TpFI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Katherine Johnson": {
+    "category": "Space",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine Johnson_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=cmKGelXFCER/S%2BxY9JYKl0GJfCjke3ljVgTms%2Bofw3I%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine Johnson_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=V1L4TMN5LCEgqRbbv/Dms1gvSfRR8z01pU9Lq8LWKyg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine Johnson_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wUrc8ugow2It/AcJYedPe5zGpAMQkLk%2BdvP9xsSFmdo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine Johnson_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=YXAFBlNl9bGWJETaQgahbruREHqI8IqzmJw0hSJ8j0U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Stephen Hawking": {
+    "category": "Space",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen Hawking_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=gZwxbr30Q98o2HRc8mQYnKwHhAfXAk%2BDlVtDEvpauQs%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen Hawking_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=EbVaJiwwxwYQ0OVgvMedeCswgJSRMXFpfhKuW50sKV8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen Hawking_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LR82Bjp%2BIPYzuNX6ZUAsG340odNlSGwVzWYCFvu%2BaSk%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen Hawking_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=7kYdn14HL%2BIaKtO8V4bJN2SO9KOUlVSZwp/5PQMPatA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Mars Colony Leader": {
+    "category": "Space",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mars Colony Leader_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=/pWMOswPSAz0eSC1GpbaE%2B8b8lpkPr7C31ECSuFXyUc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mars Colony Leader_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BorWTy0gUgu2e1s/hu0JYbdZfRN73SvaQqBwrN3dlT4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mars Colony Leader_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=oSBYXJTtORAOIXUFFkmzn4o/YyhiAiUyQ2%2BvC4lvNZc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mars Colony Leader_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BAEgIUNdsfnxhEjxzcZW%2B%2B3x2QbYg3XSZOvpXhjH6n8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Exoplanet Signal Analyst": {
+    "category": "Space",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Exoplanet Signal Analyst_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=pkFQfscLj5NVr44pjDATtSbDgLFzXXA0O9b5D0/MYkw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Exoplanet Signal Analyst_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=MLCe3pP58eGmYPKWPn3KUJAx9BRdCWhHPngOZfpwiCo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Exoplanet Signal Analyst_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=2z6Nh6jbmL9qWcMGNkzmIA7Y5Ml5otXKyHuq1thuBGw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Exoplanet Signal Analyst_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=A4UeLDvHi4HYYxXSuF8fDKgk3m9tJ79DhNYntPw1XEQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "AI Probe Architect": {
+    "category": "Space",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/AI Probe Architect_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1Soh%2BLvHjHS8t4zqNNXIe34m1H5rYoYgSLz5X5k%2BnR4%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/AI Probe Architect_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Lihjf1y1E6/gjnZ%2BbqOUlLTMyT/JSy5G3lpes8tPyZc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/AI Probe Architect_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LKPFA7AvApgjtSueCxZaQxsWszOptdvBIB/LuaUQWpY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/AI Probe Architect_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=BjV2nR3n5ljmpcT4HqTLECIe86jISQrDz7iIko8Er%2Bc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Zhang Heng": {
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zhang Heng_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=V%2BMR2Ymt3Ep1frGFsy2lyl8zjk2hbeUtgSBA%2BhdBttQ%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zhang Heng_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=yJn1k8IwOkUyAFb0xM4nIsMn%2BZmGF0pTq3ZirOF6Nbc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zhang Heng_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=yIJWuC08w1BOIKbaKlDGe0K8UtTgpOe%2Bjl0QoheLO/o%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Zhang Heng_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Gjs0fMS%2BWZsQaUYPg%2BNpnVSDk6U3A4%2BnSeEFZ9ZxUeg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Ctesibius": {
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ctesibius_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0tI9M4GWdwEP8TOrLQkikhDIugSMgRLbiNhV0yNjl80%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ctesibius_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ylpHPYhA0Rk3HxMT9fhaugYJ6FNCjhtaStlMvYML3Dg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ctesibius_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=RsGlc5r8bbeTYvN6X2gVfbLOSuQ06ybPwKSk2xORCyI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ctesibius_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ZSRO%2B%2B3SpKamsmsr6UM7z19CIdG76/v9TlZPvj70jgY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Aeneas Tacticus": {
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas Tacticus_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=F0xkaCTB0D51rtKzS9Hxm4VQYw6QXWHFanPkt%2BdaylU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas Tacticus_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=wlYKamRTwvb92S5m3GHKlYV2UCal8vlZHGN4WDKkv48%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas Tacticus_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=QXSLs%2BmyarZ/RczK56IFAK6ioDNT5U75yrAuichNDQw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas Tacticus_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=c3AuDHpr1ZdjgsE9/bX9gyfBg2LhuA6cVGnndantBTI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Richard of Wallingford": {
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard of Wallingford_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=snqrAShSqE3THYtOruh2Z8T4ZRzojkd5ILaJ59e4IpU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard of Wallingford_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=ysajNE0z5JFabf9MDcSbp3kEJVvUiA2mpoHhgGJ5r6s%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard of Wallingford_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=c79Rckxm/HlzoNKsQX93SEaoDsHj0iFELfZHHxJ8fVc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard of Wallingford_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lPI3TWsaeDj6FUoj1M9FXSUu%2BS2Z5AmWz%2BH0A%2B8xOoE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Leonardo Fibonacci": {
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonardo Fibonacci_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3M4lj612kv5tF//0pMz9IpJ2e58bRFOYxeCX%2BagTZfY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonardo Fibonacci_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=LHWpeynTBsyKxv6LaGr9WeXReBGNy0p4T6m8jNltj9E%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonardo Fibonacci_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=cgaZUP5FS/zeF/sdH2TlkvSCF68daKB5wrkvFFoz3/w%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Leonardo Fibonacci_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3VRmDlSFAuiWnm98mS%2BFe0PY4ofK9V6cBcG06VuRtww%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Thomas Edison": {
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas Edison_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=lmfYYMj8cgwS/rRKIgv0SuVlTEwotk1lQ1z%2Bq/%2BQTqo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas Edison_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mdO1Qxh1sQco8Ai/QL4bVp/cA/5KF1obBWLaQfCsxpg%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas Edison_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=OGw0K7b0VsJmUzigB2XBSqvHSk6j1kAaCGii9JxC1%2BE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas Edison_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Ke/1x/R%2B6sf7hL12cyjQaqwSIyMnnpBZQCOSZtxsl4A%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Nikola Tesla": {
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nikola Tesla_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=mp//U4xpy9ea%2BZzb1EJyBm9MD1ETUG0oaQFyKMzwq2c%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nikola Tesla_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=V/caUaZ/YWHjYZCWpGgaQqauQHsLq%2BGEN6p9jfFiE%2B0%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nikola Tesla_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=0fSxAYbWqq9722/%2B/f1/XGcN2iDmYj%2Bs0WsP0YO1KtA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nikola Tesla_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=1S9OXD336LoWecHWof%2BA6cozKKHjgF6ZmOy8tQpINMw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Alexander Graham Bell": {
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander Graham Bell_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=afVV95rE97N/r/3OeWSQ0dOJnP23QFQedyhNZ/EKtAY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander Graham Bell_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3BT7Inu3wVJVzIZ4lFkBxQv5xvY7mTswNhVP5YTcJUA%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander Graham Bell_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=4JBRxtZyiaGvFcVPwDsbk9BLz9AI8u02qUZb0YfZt8U%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander Graham Bell_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=sIdiJbqA4xEZxev/XDZdP4bp11vmX5FvMIBJ49KGmhE%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Grace Hopper": {
+    "category": "Innovation",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace Hopper_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=IcW0hv1o2Y6z%2B%2Bbo7%2B4xqe1JOSgnWBkWpEbWhAccJ0I%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace Hopper_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Bix7ij1oCN8yVyEYl740Prrz6UpmylL9CP8XhLCJDGw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace Hopper_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=gJN6cCw2FnDMm%2BdogTZb%2BqzP2q/zRNnEussZJIVMsOY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace Hopper_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=qKs2exuToEkmJ5JHugXdycs8%2BQw0SXxsyWLfmIeAuhc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Shigeru Miyamoto": {
+    "category": "Innovation",
+    "epoch": "Modern",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Shigeru Miyamoto_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=9e7kb0rHyFqSgz9sFB0jxLvWw4HsMn69WBgbj1I8n8Y%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Shigeru Miyamoto_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=%2BH2rbLurR6TWmrfQ0S3m36vtdO0DkiG5fuppViGBWJY%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Shigeru Miyamoto_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Jb1L6ZRf131uJ7649rjsdhC9lRxH5t4bmuQboLK9qyc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Shigeru Miyamoto_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=pCQrXMMampvmgg2857JDR5cIPh24c7dNjrR7bVTjDOo%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Fusion Energy Scientist": {
+    "category": "Innovation",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fusion Energy Scientist_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Zge1ZZJZguPfL2MczzvYZPlGZ0q8X%2BJEvZxFmdHdJaw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fusion Energy Scientist_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=u8BORVOUlXyNsohVGtw6OnnuEW4y6AzNJQ6%2BZ1ZdOzU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fusion Energy Scientist_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=VFkvX3Ql2lh%2B7Qj4cwRbL48C3ekqkV8UiE1Y/iQheDc%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fusion Energy Scientist_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=/xXeDeSNcD1Z%2Bj1bhaxuScq09ueJ1yap2hx4c%2BeRpR8%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Translingual AI Architect": {
+    "category": "Innovation",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Translingual AI Architect_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=QktMP506KhvZNwpIw9C/n7C7wUmjjoh1h4HLz00/ihU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Translingual AI Architect_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=3/NeFGw2kA3GjUh7/1QkySMheUVXp94CHVar/yYRyNw%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Translingual AI Architect_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=fbCWEnN3HIAhMO8gvWopwBn1Xq1uZ1O%2BG6nrTk5Il5I%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Translingual AI Architect_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=Oc5IMLpa8aas5lwc07OsfbXRgY0Fw/y2tv%2BnQbk7ihI%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  },
+  "Synthetic Biology Entrepreneur": {
+    "category": "Innovation",
+    "epoch": "Future",
+    "images": {
+      "portraits": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Synthetic Biology Entrepreneur_portraits.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=j50ovBbbX37QpLBcP%2BVPIgpeubW%2B5eymwxFoSDea0/g%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "achievements": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Synthetic Biology Entrepreneur_achievements.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=tp69/gy2Z1CL4TArE7PWLAsu%2BOAHYkTJ3DLJL9iY4dU%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "inventions": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Synthetic Biology Entrepreneur_inventions.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=SRByEZWIFyCEywsM9SqnMvmSVRZ%2B9aoImEiQc3S8b98%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ],
+      "artifacts": [
+        {
+          "url": "https://orbgameimages.blob.core.windows.net/historical-figures/Synthetic Biology Entrepreneur_artifacts.jpg?se=2026-08-03T01%3A12%3A12Z&sp=r&sv=2025-07-05&sr=b&sig=rg6gwOhW9/d9T1vJ3UWNkeUnSnM6KgahGA8rXZJlJbM%3D",
+          "source": "Azure Blob Storage",
+          "type": "placeholder"
+        }
+      ]
+    }
+  }
+}

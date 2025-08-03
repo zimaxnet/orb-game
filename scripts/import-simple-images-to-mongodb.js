@@ -58,37 +58,36 @@ async function importSimpleImagesToMongoDB() {
         console.log('📖 Reading simple migration data...');
         const migrationData = JSON.parse(fs.readFileSync('mongodb_images_migration_simple.json', 'utf8'));
         
-        console.log(`📊 Importing ${migrationData.length} figure documents...`);
+        console.log(`📊 Importing ${Object.keys(migrationData).length} figure documents...`);
         
         let successCount = 0;
         let errorCount = 0;
         
-        // Import data
-        for (const doc of migrationData) {
+        // Import data - migrationData is an object with figure names as keys
+        for (const [figureName, figureData] of Object.entries(migrationData)) {
             try {
-                // Convert string dates to Date objects
-                doc.createdAt = new Date();
-                doc.updatedAt = new Date();
-                
-                for (const portrait of doc.portraits) {
-                    portrait.createdAt = new Date();
-                }
-                
-                for (const galleryItem of doc.gallery) {
-                    galleryItem.createdAt = new Date();
-                }
+                // Create document structure
+                const doc = {
+                    figureName: figureName,
+                    category: figureData.category,
+                    epoch: figureData.epoch,
+                    images: figureData.images || [],
+                    gallery: figureData.gallery || [],
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                };
                 
                 await collection.updateOne(
-                    { figureName: doc.figureName, category: doc.category, epoch: doc.epoch },
+                    { figureName: figureName, category: figureData.category, epoch: figureData.epoch },
                     { $set: doc },
                     { upsert: true }
                 );
                 
                 successCount++;
-                console.log(`✅ Imported ${doc.figureName} (${doc.category}/${doc.epoch})`);
+                console.log(`✅ Imported ${figureName} (${figureData.category}/${figureData.epoch})`);
             } catch (error) {
                 errorCount++;
-                console.error(`❌ Failed to import ${doc.figureName}:`, error.message);
+                console.error(`❌ Failed to import ${figureName}:`, error.message);
             }
         }
         

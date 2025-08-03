@@ -192,6 +192,17 @@ function MilkyWayBackground() {
 function OrbGame() {
   const { language, toggleLanguage, t } = useLanguage();
   
+  // Randomization functions
+  const getRandomEpoch = () => {
+    const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+    return epochs[Math.floor(Math.random() * epochs.length)];
+  };
+  
+  const getRandomCategory = () => {
+    const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    return categories[Math.floor(Math.random() * categories.length)];
+  };
+  
   const [categories] = useState([
     { name: 'Technology', color: '#00ff88' },  { name: 'Science', color: '#3366ff' },
     { name: 'Art', color: '#ff6b6' },   { name: 'Nature', color: '#4ecdc4' },   { name: 'Sports', color: '#ffa726' },    { name: 'Music', color: '#ab47bc' },    { name: 'Space', color: '#7c4dff' },    { name: 'Innovation', color: '#26c6da' }
@@ -222,10 +233,13 @@ function OrbGame() {
   
 
 
-  // Add epoch state with round-robin
-  const [currentEpoch, setCurrentEpoch] = useState('Ancient'); // Start with Ancient instead of Modern
+  // Add epoch state with randomization
+  const [currentEpoch, setCurrentEpoch] = useState(getRandomEpoch()); // Random epoch instead of Ancient
   const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
-  const [epochIndex, setEpochIndex] = useState(0); // Track current epoch index for round-robin
+  const [epochIndex, setEpochIndex] = useState(() => {
+    const randomEpoch = getRandomEpoch();
+    return epochs.indexOf(randomEpoch);
+  }); // Track current epoch index for round-robin
   
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
@@ -241,10 +255,17 @@ function OrbGame() {
   const [draggedOrb, setDraggedOrb] = useState(null);
   const [orbInCenter, setOrbInCenter] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState('Technology');
+  const [selectedCategory, setSelectedCategory] = useState(getRandomCategory()); // Random category instead of Technology
   
   // Add historical figure display state
   const [showHistoricalFigure, setShowHistoricalFigure] = useState(false);
+  
+  // Add missing state variables for story management
+  const [stories, setStories] = useState([]);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [storiesLoaded, setStoriesLoaded] = useState(false);
+  const [showStoryPanel, setShowStoryPanel] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState(null);
   
   // Filter stories by current language and epoch
   const getFilteredStories = () => {
@@ -383,21 +404,25 @@ function OrbGame() {
   const handleHowToPlayClick = async () => {
     setShowHowToPlay(false);
     
-    // Fetch cached modern epoch story after user acknowledges instructions
+    // Generate random epoch and category for initial story
+    const randomEpoch = getRandomEpoch();
+    const randomCategory = getRandomCategory();
+    
+    // Fetch cached story for random epoch after user acknowledges instructions
     try {
-      console.log('🔍 Fetching cached modern epoch story...');
-      const response = await fetch(`${BACKEND_URL}/api/stories/modern-cached`);
+      console.log(`🔍 Fetching cached ${randomEpoch.toLowerCase()} epoch story...`);
+      const response = await fetch(`${BACKEND_URL}/api/stories/${randomEpoch.toLowerCase()}-cached`);
       
       if (response.ok) {
         const data = await response.json();
         if (data.success && data.story) {
-          console.log('✅ Loaded cached modern epoch story:', data.story.headline);
+          console.log(`✅ Loaded cached ${randomEpoch} epoch story:`, data.story.headline);
           
-          // Set the cached story as the current story for Technology category
+          // Set the cached story as the current story for random category
           setStories([data.story]);
           setCurrentStoryIndex(0);
-          setSelectedCategory('Technology');
-          setCurrentEpoch('Modern');
+          setSelectedCategory(randomCategory);
+          setCurrentEpoch(randomEpoch);
           setSelectedModel(data.story.source || 'Cached');
           setStoriesLoaded(true);
           setShowStoryPanel(true);
@@ -411,7 +436,7 @@ function OrbGame() {
           }
         }
       } else {
-        console.log('ℹ️ No cached modern story available');
+        console.log(`ℹ️ No cached ${randomEpoch.toLowerCase()} story available`);
       }
     } catch (error) {
       console.error('Error fetching cached story:', error);

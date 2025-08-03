@@ -1,0 +1,85 @@
+{
+  "generated_at": "2025-08-02T13:38:22.535449",
+  "overall_stats": {
+    "total_figures": 126,
+    "total_images": 91,
+    "average_images_per_figure": 0.7222222222222222,
+    "recent_updates": 91
+  },
+  "category_coverage": [
+    {
+      "_id": "Technology",
+      "figures": 20,
+      "images": 12
+    },
+    {
+      "_id": "Art",
+      "figures": 16,
+      "images": 13
+    },
+    {
+      "_id": "Science",
+      "figures": 15,
+      "images": 12
+    },
+    {
+      "_id": "Nature",
+      "figures": 15,
+      "images": 12
+    },
+    {
+      "_id": "Sports",
+      "figures": 15,
+      "images": 8
+    },
+    {
+      "_id": "Music",
+      "figures": 15,
+      "images": 13
+    },
+    {
+      "_id": "Space",
+      "figures": 15,
+      "images": 12
+    },
+    {
+      "_id": "Innovation",
+      "figures": 15,
+      "images": 9
+    }
+  ],
+  "epoch_coverage": [
+    {
+      "_id": "Ancient",
+      "figures": 29,
+      "images": 21
+    },
+    {
+      "_id": "Medieval",
+      "figures": 25,
+      "images": 17
+    },
+    {
+      "_id": "Industrial",
+      "figures": 24,
+      "images": 22
+    },
+    {
+      "_id": "Modern",
+      "figures": 24,
+      "images": 22
+    },
+    {
+      "_id": "Future",
+      "figures": 24,
+      "images": 9
+    }
+  ],
+  "type_coverage": {
+    "portrait": 91
+  },
+  "recommendations": [
+    "Need more images to reach target coverage",
+    "Categories needing more images: ['Sports', 'Innovation']"
+  ]
+}

@@ -1,0 +1,124 @@
+site_name: Orb Game Documentation
+site_description: Advanced AI-powered interactive gaming platform
+site_author: Zimax AI Labs
+site_url: https://wiki.orbgame.us
+
+repo_name: zimaxnet/orb-game
+repo_url: https://github.com/zimaxnet/orb-game
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Introduction: getting-started/introduction.md
+    - Quick Start: getting-started/quick-start.md
+    - Installation: getting-started/installation.md
+  - Gameplay:
+    - How to Play: gameplay/how-to-play.md
+    - Categories & Epochs: gameplay/categories-epochs.md
+    - Historical Figures: gameplay/historical-figures.md
+    - Audio & Accessibility: gameplay/audio-accessibility.md
+  - Developer:
+    - Architecture: developer/architecture.md
+    - API Reference: developer/api-reference.md
+    - Deployment: developer/deployment.md
+    - Contributing: developer/contributing.md
+  - AI Integration:
+    - Models: ai-integration/models.md
+    - Prompts: ai-integration/prompts.md
+    - Story Generation: ai-integration/story-generation.md
+    - TTS: ai-integration/tts.md
+  - Database:
+    - MongoDB: database/mongodb.md
+    - Cache System: database/cache-system.md
+    - Story Prepopulation: database/story-prepopulation.md
+  - Deployment:
+    - Azure Resources: deployment/azure-resources.md
+    - GitHub Actions: deployment/github-actions.md
+    - Monitoring: deployment/monitoring.md
+  - Performance:
+    - Metrics: performance/metrics.md
+    - Caching: performance/caching.md
+    - Cost Optimization: performance/cost-optimization.md
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zimaxnet/orb-game
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/zimaxnet
+  version:
+    provider: mike

@@ -1,0 +1,50 @@
+{
+  "name": "orb-game-backend",
+  "version": "1.0.0",
+  "description": "Orb Game Backend API",
+  "main": "backend/backend-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/backend-server.js",
+    "dev": "nodemon backend/backend-server.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.10.2",
+    "@azure/keyvault-secrets": "^4.10.0",
+    "@azure/openai": "^1.0.0-beta.10",
+    "@react-three/drei": "^10.5.1",
+    "@react-three/fiber": "^9.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.45.0",
+    "mongodb": "^4.17.2",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^24.14.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.7.0",
+    "three": "^0.178.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "nodemon": "^3.0.2",
+    "vite": "^7.0.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "api",
+    "azure"
+  ],
+  "author": "Orb Game Team",
+  "license": "MIT"
+}

@@ -1,0 +1,587 @@
+{
+  "Technology": {
+    "Ancient": [
+      {
+        "name": "Archimedes",
+        "achievement": "Inventor and mathematician, designed machines, principles of levers and buoyancy"
+      },
+      {
+        "name": "Imhotep",
+        "achievement": "Egyptian architect and engineer, designer of the Pyramid of Djoser"
+      },
+      {
+        "name": "Hero of Alexandria",
+        "achievement": "Devised the first steam engine and early mechanical devices"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Al-Jazari",
+        "achievement": "Islamic engineer, known for his book of mechanical devices and automata"
+      },
+      {
+        "name": "Johannes Gutenberg",
+        "achievement": "Invented the movable-type printing press"
+      },
+      {
+        "name": "Li Shizhen",
+        "achievement": "Chinese scholar, advanced mechanical clocks and hydro engineering"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "James Watt",
+        "achievement": "Enhanced the steam engine, powering industry"
+      },
+      {
+        "name": "Charles Babbage",
+        "achievement": "Designed the first mechanical computer"
+      },
+      {
+        "name": "Samuel Morse",
+        "achievement": "Invented the telegraph for instant communication"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Tim Berners-Lee",
+        "achievement": "Invented the World Wide Web"
+      },
+      {
+        "name": "Steve Jobs",
+        "achievement": "Revolutionized personal computing and smartphones"
+      },
+      {
+        "name": "Hedy Lamarr",
+        "achievement": "Co-invented key wireless tech enabling Wi-Fi and Bluetooth"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Fei-Fei Li",
+        "achievement": "AI visionary, advanced computer vision systems"
+      },
+      {
+        "name": "Elon Musk",
+        "achievement": "Took robotics and space tech to new heights"
+      },
+      {
+        "name": "Demis Hassabis",
+        "achievement": "Developed leading general AI systems with DeepMind"
+      }
+    ]
+  },
+  "Science": {
+    "Ancient": [
+      {
+        "name": "Hippocrates",
+        "achievement": "Founder of medicine, championed clinical practice"
+      },
+      {
+        "name": "Euclid",
+        "achievement": "Father of geometry, author of 'The Elements'"
+      },
+      {
+        "name": "Aristotle",
+        "achievement": "Naturalist and philosopher, studied organisms and physics"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Ibn al-Haytham",
+        "achievement": "Revolutionized optics and scientific experimentation"
+      },
+      {
+        "name": "Roger Bacon",
+        "achievement": "Proponent of empiricism and early scientific method"
+      },
+      {
+        "name": "Hildegard of Bingen",
+        "achievement": "Polymath, wrote medical and nature treatises"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Charles Darwin",
+        "achievement": "Founded evolutionary theory"
+      },
+      {
+        "name": "Louis Pasteur",
+        "achievement": "Germ theory and vaccination pioneer"
+      },
+      {
+        "name": "Dmitri Mendeleev",
+        "achievement": "Created the periodic table"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Rosalind Franklin",
+        "achievement": "Key to discovery of DNA's structure"
+      },
+      {
+        "name": "Albert Einstein",
+        "achievement": "Transformed physics with relativity"
+      },
+      {
+        "name": "Jennifer Doudna",
+        "achievement": "Pioneer of CRISPR gene editing"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Youyou Tu",
+        "achievement": "Advanced malaria treatment/genetics"
+      },
+      {
+        "name": "David Sinclair",
+        "achievement": "Scientist exploring human longevity"
+      },
+      {
+        "name": "Fictional Quantum Pioneer",
+        "achievement": "Breaks barrier to quantum computing supremacy"
+      }
+    ]
+  },
+  "Art": {
+    "Ancient": [
+      {
+        "name": "Phidias",
+        "achievement": "Sculpted masterpieces of the Parthenon"
+      },
+      {
+        "name": "Polygnotus",
+        "achievement": "Renowned Greek muralist"
+      },
+      {
+        "name": "Imhotep",
+        "achievement": "Fused art and architecture in Egypt"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Giotto di Bondone",
+        "achievement": "Pre-Renaissance painter"
+      },
+      {
+        "name": "Hildegard of Bingen",
+        "achievement": "Illuminated manuscripts, music"
+      },
+      {
+        "name": "Andrei Rublev",
+        "achievement": "Mastered icon painting in Russia"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Claude Monet",
+        "achievement": "Leader of Impressionist painting"
+      },
+      {
+        "name": "William Blake",
+        "achievement": "Artist and poet of industrial themes"
+      },
+      {
+        "name": "Gustave Courbet",
+        "achievement": "Realist painter of modern life"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Frida Kahlo",
+        "achievement": "Intimate, symbolic self-portraits"
+      },
+      {
+        "name": "Banksy",
+        "achievement": "Famous street and political artist"
+      },
+      {
+        "name": "Yayoi Kusama",
+        "achievement": "Creates immersive, avant-garde art"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Refik Anadol",
+        "achievement": "AI and data-driven art installations"
+      },
+      {
+        "name": "Sofia Crespo",
+        "achievement": "Innovative neural network artist"
+      },
+      {
+        "name": "Fictional Holographic Artist",
+        "achievement": "Transforms gallery art with AR"
+      }
+    ]
+  },
+  "Nature": {
+    "Ancient": [
+      {
+        "name": "Theophrastus",
+        "achievement": "Founder of botany, classified plants"
+      },
+      {
+        "name": "Empedocles",
+        "achievement": "Theorist of natural elements"
+      },
+      {
+        "name": "Huang Di",
+        "achievement": "Authored foundational Chinese medicine texts"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Albertus Magnus",
+        "achievement": "Encyclopedia of natural science, early ecologist"
+      },
+      {
+        "name": "Avicenna",
+        "achievement": "Botanical and medical scholar"
+      },
+      {
+        "name": "Saint Francis of Assisi",
+        "achievement": "Advocate for animal welfare and nature"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Charles Darwin",
+        "achievement": "Galápagos discoveries, natural selection"
+      },
+      {
+        "name": "John James Audubon",
+        "achievement": "Documented N. American wildlife in art"
+      },
+      {
+        "name": "Mary Anning",
+        "achievement": "Pioneer fossil hunter and paleontologist"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Jane Goodall",
+        "achievement": "Revolutionized primatology/conservation"
+      },
+      {
+        "name": "David Attenborough",
+        "achievement": "Global nature educator/advocate"
+      },
+      {
+        "name": "Wangari Maathai",
+        "achievement": "Founder of mass tree-planting Green Belt Movement"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Fictional Climate Engineer",
+        "achievement": "Uses biotech to repair ecosystems"
+      },
+      {
+        "name": "Mercedes Bustamante",
+        "achievement": "Global land-restoration innovator"
+      },
+      {
+        "name": "Paul Stamets",
+        "achievement": "Radical ecosystem restoration with fungi"
+      }
+    ]
+  },
+  "Sports": {
+    "Ancient": [
+      {
+        "name": "Milo of Croton",
+        "achievement": "Legendary Olympic wrestler"
+      },
+      {
+        "name": "Leonidas of Rhodes",
+        "achievement": "Unbeaten ancient sprint champion"
+      },
+      {
+        "name": "Gaius Appuleius Diocles",
+        "achievement": "Rome's greatest charioteer"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "William Marshal",
+        "achievement": "Legendary knight/jouster"
+      },
+      {
+        "name": "Robin Hood",
+        "achievement": "Mythic archer and folk sports hero"
+      },
+      {
+        "name": "Richard FitzAlan",
+        "achievement": "Real tennis champion of the courts"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "W.G. Grace",
+        "achievement": "Founder of modern cricket"
+      },
+      {
+        "name": "Pierre de Coubertin",
+        "achievement": "Revived the modern Olympic games"
+      },
+      {
+        "name": "James Naismith",
+        "achievement": "Inventor of basketball"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Serena Williams",
+        "achievement": "Tennis Grand Slam record-breaker"
+      },
+      {
+        "name": "Pelé",
+        "achievement": "Soccer's global superstar"
+      },
+      {
+        "name": "Simone Biles",
+        "achievement": "Trailblazing gymnast, record medalist"
+      }
+    ],
+    "Future": [
+      {
+        "name": "World E-Sports Champion",
+        "achievement": "Digital gaming phenomenon"
+      },
+      {
+        "name": "First Cyborg Athlete",
+        "achievement": "Blends tech and human achievement"
+      },
+      {
+        "name": "Zero-gravity Sports Inventor",
+        "achievement": "Creates new games for space"
+      }
+    ]
+  },
+  "Music": {
+    "Ancient": [
+      {
+        "name": "Sappho",
+        "achievement": "Greek poet-musician"
+      },
+      {
+        "name": "King David",
+        "achievement": "Biblical harpist and songwriter"
+      },
+      {
+        "name": "Narada",
+        "achievement": "Legendary Indian sage, musical lore"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Guillaume de Machaut",
+        "achievement": "Influential medieval composer and poet"
+      },
+      {
+        "name": "Hildegard von Bingen",
+        "achievement": "Visionary composer and abbess"
+      },
+      {
+        "name": "Alfonso el Sabio",
+        "achievement": "Patron of sacred and secular medieval music"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Ludwig van Beethoven",
+        "achievement": "Transitional classical-to-romantic composer"
+      },
+      {
+        "name": "Fanny Mendelssohn",
+        "achievement": "Pioneering romantic composer/pianist"
+      },
+      {
+        "name": "Frédéric Chopin",
+        "achievement": "Romantic piano innovator"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Louis Armstrong",
+        "achievement": "Globally influential jazz trumpeter/singer"
+      },
+      {
+        "name": "The Beatles",
+        "achievement": "Revolutionized modern popular music"
+      },
+      {
+        "name": "BTS",
+        "achievement": "K-pop phenomenon, transcendent global force"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Holly Herndon",
+        "achievement": "AI-influenced composer and performer"
+      },
+      {
+        "name": "Yannick Nézet-Séguin",
+        "achievement": "Immersive orchestral tech pioneer"
+      },
+      {
+        "name": "Universal Music AI",
+        "achievement": "Fictional AI music collective"
+      }
+    ]
+  },
+  "Space": {
+    "Ancient": [
+      {
+        "name": "Ptolemy",
+        "achievement": "Geocentric model of the cosmos"
+      },
+      {
+        "name": "Aryabhata",
+        "achievement": "Advanced Indian astronomer/mathematician"
+      },
+      {
+        "name": "Hypatia",
+        "achievement": "Famed female mathematician/astronomer"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Al-Battani",
+        "achievement": "Calculated solar year/planetary orbits"
+      },
+      {
+        "name": "Nasir al-Din al-Tusi",
+        "achievement": "Built major medieval observatory"
+      },
+      {
+        "name": "Geoffrey Chaucer",
+        "achievement": "Wrote on astronomy, astrolabe use"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Galileo Galilei",
+        "achievement": "Pioneered telescopic astronomy"
+      },
+      {
+        "name": "Edmond Halley",
+        "achievement": "Calculated Halley's Comet intervals"
+      },
+      {
+        "name": "Caroline Herschel",
+        "achievement": "Discovered multiple comets"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Yuri Gagarin",
+        "achievement": "First human to reach space"
+      },
+      {
+        "name": "Katherine Johnson",
+        "achievement": "Critical NASA mission mathematician"
+      },
+      {
+        "name": "Stephen Hawking",
+        "achievement": "Explored black holes and universe origins"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Mars Colony Leader",
+        "achievement": "Leads humanity's migration to Mars"
+      },
+      {
+        "name": "Exoplanet Signal Analyst",
+        "achievement": "Discovers signs of alien life"
+      },
+      {
+        "name": "AI Probe Architect",
+        "achievement": "Designs deep-space robotics"
+      }
+    ]
+  },
+  "Innovation": {
+    "Ancient": [
+      {
+        "name": "Zhang Heng",
+        "achievement": "Invented the seismometer and astronomical clocks"
+      },
+      {
+        "name": "Ctesibius",
+        "achievement": "Father of pneumatics/hydraulic engineering"
+      },
+      {
+        "name": "Aeneas Tacticus",
+        "achievement": "Designed early communication systems"
+      }
+    ],
+    "Medieval": [
+      {
+        "name": "Al-Jazari",
+        "achievement": "Mechanical & hydraulic invention pioneer"
+      },
+      {
+        "name": "Richard of Wallingford",
+        "achievement": "Built astronomical mechanical clocks"
+      },
+      {
+        "name": "Leonardo Fibonacci",
+        "achievement": "Popularized the modern numeral system"
+      }
+    ],
+    "Industrial": [
+      {
+        "name": "Thomas Edison",
+        "achievement": "Inventor of light bulb and innovation systems"
+      },
+      {
+        "name": "Nikola Tesla",
+        "achievement": "Pioneered AC power, wireless energy"
+      },
+      {
+        "name": "Alexander Graham Bell",
+        "achievement": "Invented the telephone"
+      }
+    ],
+    "Modern": [
+      {
+        "name": "Grace Hopper",
+        "achievement": "Developed COBOL programming language"
+      },
+      {
+        "name": "Shigeru Miyamoto",
+        "achievement": "Pioneered iconic video game design"
+      },
+      {
+        "name": "Elon Musk",
+        "achievement": "Pushed boundaries of clean energy, travel"
+      }
+    ],
+    "Future": [
+      {
+        "name": "Fusion Energy Scientist",
+        "achievement": "Delivers first world's working fusion reactor"
+      },
+      {
+        "name": "Translingual AI Architect",
+        "achievement": "Invents universal instant translation"
+      },
+      {
+        "name": "Synthetic Biology Entrepreneur",
+        "achievement": "Leads planetary-scale bio-innovation"
+      }
+    ]
+  },
+  "metadata": {
+    "total_figures": 120,
+    "categories": 8,
+    "epochs": 5,
+    "figures_per_category": 15,
+    "figures_per_epoch": 24,
+    "languages_supported": ["English", "Spanish"],
+    "description": "Complete list of historical figures and their achievements for the Orb Game educational platform"
+  }
+} 

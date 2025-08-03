@@ -1,0 +1,278 @@
+{
+    "imageSources": {
+        "primarySources": [
+            {
+                "name": "Wikimedia Commons",
+                "url": "https://commons.wikimedia.org/wiki/Special:Search?search={}&go=Go",
+                "licensing": "Public Domain / Creative Commons",
+                "bestUse": "Portraits, invention diagrams, artifacts",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Library of Congress (PPOC, Brady‑Handy)",
+                "url": "https://www.loc.gov/photos/?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Historical portraits (19th century US)",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "NYPL Free to Use Collections",
+                "url": "https://digitalcollections.nypl.org/search/index?utf8=✓&keywords={}",
+                "licensing": "Public Domain",
+                "bestUse": "Photos, prints, documents, artifacts",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Internet Archive",
+                "url": "https://archive.org/search.php?query={}",
+                "licensing": "Public Domain / Creative Commons",
+                "bestUse": "Illustrations, museum catalogs, scans",
+                "reliability": "Medium",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Public Domain Archive",
+                "url": "https://picryl.com/search?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Curated historical images",
+                "reliability": "Medium",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Web Gallery of Art",
+                "url": "https://www.wga.hu/",
+                "licensing": "Public Domain (work dependent)",
+                "bestUse": "Historic paintings / classical art",
+                "reliability": "High",
+                "searchFormat": "manual"
+            },
+            {
+                "name": "Frick Photoarchive",
+                "url": "https://photoarchive.frick.org/",
+                "licensing": "Public Domain (art reproductions)",
+                "bestUse": "Artworks pre-1900",
+                "reliability": "High",
+                "searchFormat": "manual"
+            }
+        ],
+        "secondarySources": [
+            {
+                "name": "LookAndLearn, PxHere, Dreamstime CC0",
+                "url": "https://pxhere.com/en/search?q={}",
+                "licensing": "CC0 Public Domain",
+                "bestUse": "Stock illustrations and photos",
+                "reliability": "Medium",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Google Arts & Culture",
+                "url": "https://artsandculture.google.com/search?q={}",
+                "licensing": "Mixed (check individual items)",
+                "bestUse": "Museum collections, artworks",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "British Library",
+                "url": "https://www.bl.uk/catalogues-and-collections/digital-collections?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Historical documents, illustrations",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Smithsonian Collections",
+                "url": "https://collections.si.edu/search/results.htm?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Artifacts, historical objects",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "National Archives",
+                "url": "https://catalog.archives.gov/search?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Historical documents, government records",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Europeana",
+                "url": "https://www.europeana.eu/en/search?page=1&query={}",
+                "licensing": "Mixed (check individual items)",
+                "bestUse": "European cultural heritage",
+                "reliability": "Medium",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Metropolitan Museum",
+                "url": "https://www.metmuseum.org/art/collection/search#!?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Artworks, artifacts",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Rijksmuseum",
+                "url": "https://www.rijksmuseum.nl/en/search?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Dutch art and history",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Getty Museum",
+                "url": "https://www.getty.edu/art/collection/search?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Artworks, photographs",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "NASA Images",
+                "url": "https://images.nasa.gov/search-results?q={}",
+                "licensing": "Public Domain",
+                "bestUse": "Space exploration, scientific imagery",
+                "reliability": "High",
+                "searchFormat": "direct"
+            },
+            {
+                "name": "Unsplash",
+                "url": "https://unsplash.com/s/photos/{}",
+                "licensing": "Free to use",
+                "bestUse": "Modern photography, stock images",
+                "reliability": "Medium",
+                "searchFormat": "direct"
+            }
+        ]
+    },
+    "searchStrategies": {
+        "portraits": {
+            "primarySources": ["Wikimedia Commons", "Library of Congress", "NYPL Free to Use Collections"],
+            "searchTerms": ["portrait", "painting", "bust", "statue", "engraving"],
+            "licensing": "Public Domain"
+        },
+        "achievements": {
+            "primarySources": ["Wikimedia Commons", "Internet Archive", "Smithsonian Collections"],
+            "searchTerms": ["invention", "discovery", "work", "achievement", "contribution"],
+            "licensing": "Public Domain / Creative Commons"
+        },
+        "inventions": {
+            "primarySources": ["Wikimedia Commons", "Internet Archive", "Metropolitan Museum"],
+            "searchTerms": ["invention", "device", "machine", "tool", "apparatus"],
+            "licensing": "Public Domain / Creative Commons"
+        },
+        "artifacts": {
+            "primarySources": ["Smithsonian Collections", "Metropolitan Museum", "Rijksmuseum"],
+            "searchTerms": ["artifact", "object", "relic", "item", "piece"],
+            "licensing": "Public Domain"
+        }
+    },
+    "Technology": {
+        "Ancient": [
+            {
+                "name": "Archimedes",
+                "availability": {
+                    "portraits": "Possible",
+                    "achievements": "Possible",
+                    "inventions": "Possible",
+                    "artifacts": "Somewhat Difficult"
+                },
+                "licensing": {
+                    "portraits": "Public Domain",
+                    "achievements": "Public Domain",
+                    "inventions": "Creative Commons",
+                    "artifacts": "Commercial"
+                },
+                "sources": {
+                    "portraits": ["Wikimedia Commons", "Web Gallery of Art"],
+                    "achievements": ["Historical archives, Wikipedia", "Internet Archive"],
+                    "inventions": ["Educational resources, museums", "Wikimedia Commons"],
+                    "artifacts": ["Metropolitan Museum", "Smithsonian Collections"]
+                },
+                "searchTerms": {
+                    "portraits": ["Archimedes portrait", "Archimedes bust", "Archimedes statue"],
+                    "achievements": ["Archimedes principle", "Archimedes screw", "Archimedes mathematics"],
+                    "inventions": ["Archimedes screw", "Archimedes lever", "Archimedes pulley"],
+                    "artifacts": ["Archimedes artifacts", "ancient Greek tools", "classical mechanics"]
+                }
+            }
+        ],
+        "Medieval": [
+            {
+                "name": "Johannes Gutenberg",
+                "availability": {
+                    "portraits": "Possible",
+                    "achievements": "Possible",
+                    "inventions": "Possible",
+                    "artifacts": "Somewhat Difficult"
+                },
+                "licensing": {
+                    "portraits": "Public Domain",
+                    "achievements": "Public Domain",
+                    "inventions": "Creative Commons",
+                    "artifacts": "Commercial"
+                },
+                "sources": {
+                    "portraits": ["Wikimedia Commons", "Library of Congress"],
+                    "achievements": ["Historical archives, Wikipedia", "Internet Archive"],
+                    "inventions": ["Educational resources, museums", "Wikimedia Commons"],
+                    "artifacts": ["Metropolitan Museum", "Smithsonian Collections"]
+                },
+                "searchTerms": {
+                    "portraits": ["Johannes Gutenberg portrait", "Gutenberg bust", "Gutenberg statue"],
+                    "achievements": ["printing press", "movable type", "Gutenberg Bible"],
+                    "inventions": ["printing press", "movable type", "printing technology"],
+                    "artifacts": ["Gutenberg Bible", "printing press model", "medieval printing"]
+                }
+            }
+        ],
+        "Industrial": [],
+        "Modern": [],
+        "Future": []
+    },
+    "Science": {
+        "Ancient": [
+            {
+                "name": "Hippocrates",
+                "availability": {
+                    "portraits": "Possible",
+                    "achievements": "Possible",
+                    "inventions": "Super Hard",
+                    "artifacts": "Super Hard"
+                },
+                "licensing": {
+                    "portraits": "Public Domain",
+                    "achievements": "Creative Commons",
+                    "inventions": "Commercial",
+                    "artifacts": "Commercial"
+                },
+                "sources": {
+                    "portraits": ["Wikimedia Commons", "Web Gallery of Art"],
+                    "achievements": ["Medical historical texts", "Internet Archive"],
+                    "inventions": ["Academic journals, medical texts", "Wikimedia Commons"],
+                    "artifacts": ["Museum collections", "Metropolitan Museum"]
+                },
+                "searchTerms": {
+                    "portraits": ["Hippocrates portrait", "Hippocrates bust", "Hippocrates statue"],
+                    "achievements": ["Hippocratic oath", "Hippocrates medicine", "ancient medicine"],
+                    "inventions": ["Hippocratic medicine", "ancient medical tools", "classical medicine"],
+                    "artifacts": ["ancient medical instruments", "Hippocratic artifacts", "classical medical tools"]
+                }
+            }
+        ],
+        "Medieval": [],
+        "Industrial": [],
+        "Modern": [],
+        "Future": []
+    },
+    "Art": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []},
+    "Nature": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []},
+    "Sports": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []},
+    "Music": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []},
+    "Space": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []},
+    "Innovation": {"Ancient": [],"Medieval": [],"Industrial": [],"Modern": [],"Future": []}
+}

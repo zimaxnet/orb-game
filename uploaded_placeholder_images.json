@@ -1,0 +1,4804 @@
+{
+  "placeholder_images": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Archimedes_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Archimedes_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Archimedes_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Archimedes_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Imhotep_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Imhotep_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Imhotep_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Imhotep_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hero_of_Alexandria_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Hero_of_Alexandria_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Hero_of_Alexandria_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Hero_of_Alexandria_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Jazari_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Al-Jazari_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Al-Jazari_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Al-Jazari_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Johannes_Gutenberg_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Johannes_Gutenberg_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Johannes_Gutenberg_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Johannes_Gutenberg_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Li_Shizhen_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Li_Shizhen_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Li_Shizhen_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Li_Shizhen_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "James_Watt_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "James_Watt_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "James_Watt_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "James_Watt_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Babbage_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Charles_Babbage_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Charles_Babbage_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Charles_Babbage_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Samuel_Morse_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Samuel_Morse_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Samuel_Morse_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Samuel_Morse_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Tim_Berners-Lee_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Tim_Berners-Lee_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Tim_Berners-Lee_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Tim_Berners-Lee_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Steve_Jobs_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Steve_Jobs_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Steve_Jobs_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Steve_Jobs_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Hedy_Lamarr_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Hedy_Lamarr_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Hedy_Lamarr_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Hedy_Lamarr_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fei-Fei_Li_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Fei-Fei_Li_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Fei-Fei_Li_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Fei-Fei_Li_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Elon_Musk_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Elon_Musk_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Elon_Musk_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Elon_Musk_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Demis_Hassabis_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Demis_Hassabis_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Demis_Hassabis_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Demis_Hassabis_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hippocrates_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Hippocrates_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Hippocrates_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Hippocrates_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Euclid_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Euclid_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Euclid_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Euclid_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Aristotle_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Aristotle_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Aristotle_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Aristotle_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Ibn_al-Haytham_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Ibn_al-Haytham_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Ibn_al-Haytham_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Ibn_al-Haytham_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Roger_Bacon_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Roger_Bacon_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Roger_Bacon_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Roger_Bacon_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Hildegard_of_Bingen_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Hildegard_of_Bingen_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Hildegard_of_Bingen_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Hildegard_of_Bingen_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Darwin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Charles_Darwin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Charles_Darwin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Charles_Darwin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Louis_Pasteur_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Louis_Pasteur_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Louis_Pasteur_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Louis_Pasteur_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Dmitri_Mendeleev_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Dmitri_Mendeleev_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Dmitri_Mendeleev_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Dmitri_Mendeleev_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Rosalind_Franklin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Rosalind_Franklin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Rosalind_Franklin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Rosalind_Franklin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Albert_Einstein_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Albert_Einstein_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Albert_Einstein_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Albert_Einstein_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Jennifer_Doudna_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Jennifer_Doudna_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Jennifer_Doudna_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Jennifer_Doudna_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Youyou_Tu_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Youyou_Tu_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Youyou_Tu_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Youyou_Tu_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "David_Sinclair_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "David_Sinclair_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "David_Sinclair_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "David_Sinclair_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fictional_Quantum_Pioneer_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Fictional_Quantum_Pioneer_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Fictional_Quantum_Pioneer_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Fictional_Quantum_Pioneer_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Phidias_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Phidias_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Phidias_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Phidias_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Polygnotus_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Polygnotus_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Polygnotus_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Polygnotus_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Imhotep_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Imhotep_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Imhotep_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Imhotep_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Giotto_di_Bondone_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Giotto_di_Bondone_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Giotto_di_Bondone_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Giotto_di_Bondone_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Hildegard_of_Bingen_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Hildegard_of_Bingen_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Hildegard_of_Bingen_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Hildegard_of_Bingen_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Andrei_Rublev_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Andrei_Rublev_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Andrei_Rublev_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Andrei_Rublev_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Claude_Monet_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Claude_Monet_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Claude_Monet_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Claude_Monet_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "William_Blake_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "William_Blake_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "William_Blake_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "William_Blake_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Gustave_Courbet_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Gustave_Courbet_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Gustave_Courbet_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Gustave_Courbet_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Frida_Kahlo_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Frida_Kahlo_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Frida_Kahlo_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Frida_Kahlo_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Banksy_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Banksy_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Banksy_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Banksy_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Yayoi_Kusama_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Yayoi_Kusama_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Yayoi_Kusama_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Yayoi_Kusama_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Refik_Anadol_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Refik_Anadol_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Refik_Anadol_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Refik_Anadol_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Sofia_Crespo_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Sofia_Crespo_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Sofia_Crespo_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Sofia_Crespo_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fictional_Holographic_Artist_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Fictional_Holographic_Artist_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Fictional_Holographic_Artist_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Fictional_Holographic_Artist_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Theophrastus_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Theophrastus_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Theophrastus_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Theophrastus_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Empedocles_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Empedocles_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Empedocles_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Empedocles_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Huang_Di_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Huang_Di_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Huang_Di_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Huang_Di_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Albertus_Magnus_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Albertus_Magnus_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Albertus_Magnus_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Albertus_Magnus_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Avicenna_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Avicenna_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Avicenna_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Avicenna_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Saint_Francis_of_Assisi_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Saint_Francis_of_Assisi_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Saint_Francis_of_Assisi_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Saint_Francis_of_Assisi_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Charles_Darwin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Charles_Darwin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Charles_Darwin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Charles_Darwin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "John_James_Audubon_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "John_James_Audubon_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "John_James_Audubon_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "John_James_Audubon_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Mary_Anning_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Mary_Anning_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Mary_Anning_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Mary_Anning_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Jane_Goodall_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Jane_Goodall_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Jane_Goodall_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Jane_Goodall_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "David_Attenborough_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "David_Attenborough_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "David_Attenborough_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "David_Attenborough_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Wangari_Maathai_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Wangari_Maathai_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Wangari_Maathai_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Wangari_Maathai_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fictional_Climate_Engineer_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Fictional_Climate_Engineer_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Fictional_Climate_Engineer_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Fictional_Climate_Engineer_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Mercedes_Bustamante_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Mercedes_Bustamante_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Mercedes_Bustamante_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Mercedes_Bustamante_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Paul_Stamets_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Paul_Stamets_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Paul_Stamets_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Paul_Stamets_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Milo_of_Croton_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Milo_of_Croton_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Milo_of_Croton_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Milo_of_Croton_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Leonidas_of_Rhodes_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Leonidas_of_Rhodes_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Leonidas_of_Rhodes_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Leonidas_of_Rhodes_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Gaius_Appuleius_Diocles_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Gaius_Appuleius_Diocles_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Gaius_Appuleius_Diocles_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Gaius_Appuleius_Diocles_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "William_Marshal_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "William_Marshal_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "William_Marshal_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "William_Marshal_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Robin_Hood_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Robin_Hood_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Robin_Hood_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Robin_Hood_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Richard_FitzAlan_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Richard_FitzAlan_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Richard_FitzAlan_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Richard_FitzAlan_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "W.G._Grace_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "W.G._Grace_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "W.G._Grace_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "W.G._Grace_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Pierre_de_Coubertin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Pierre_de_Coubertin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Pierre_de_Coubertin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Pierre_de_Coubertin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "James_Naismith_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "James_Naismith_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "James_Naismith_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "James_Naismith_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Serena_Williams_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Serena_Williams_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Serena_Williams_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Serena_Williams_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Pel\u00e9_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Pel\u00e9_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Pel\u00e9_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Pel\u00e9_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Simone_Biles_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Simone_Biles_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Simone_Biles_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Simone_Biles_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "World_E-Sports_Champion_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "World_E-Sports_Champion_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "World_E-Sports_Champion_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "World_E-Sports_Champion_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "First_Cyborg_Athlete_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "First_Cyborg_Athlete_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "First_Cyborg_Athlete_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "First_Cyborg_Athlete_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Zero-gravity_Sports_Inventor_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Zero-gravity_Sports_Inventor_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Zero-gravity_Sports_Inventor_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Zero-gravity_Sports_Inventor_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Sappho_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Sappho_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Sappho_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Sappho_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "King_David_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "King_David_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "King_David_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "King_David_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Narada_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Narada_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Narada_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Narada_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Guillaume_de_Machaut_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Guillaume_de_Machaut_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Guillaume_de_Machaut_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Guillaume_de_Machaut_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Hildegard_von_Bingen_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Hildegard_von_Bingen_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Hildegard_von_Bingen_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Hildegard_von_Bingen_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Alfonso_el_Sabio_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Alfonso_el_Sabio_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Alfonso_el_Sabio_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Alfonso_el_Sabio_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Ludwig_van_Beethoven_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Ludwig_van_Beethoven_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Ludwig_van_Beethoven_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Ludwig_van_Beethoven_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Fanny_Mendelssohn_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Fanny_Mendelssohn_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Fanny_Mendelssohn_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Fanny_Mendelssohn_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Fr\u00e9d\u00e9ric_Chopin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Fr\u00e9d\u00e9ric_Chopin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Fr\u00e9d\u00e9ric_Chopin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Fr\u00e9d\u00e9ric_Chopin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Louis_Armstrong_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Louis_Armstrong_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Louis_Armstrong_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Louis_Armstrong_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "The_Beatles_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "The_Beatles_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "The_Beatles_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "The_Beatles_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "BTS_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "BTS_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "BTS_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "BTS_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Holly_Herndon_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Holly_Herndon_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Holly_Herndon_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Holly_Herndon_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Yannick_N\u00e9zet-S\u00e9guin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Yannick_N\u00e9zet-S\u00e9guin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Yannick_N\u00e9zet-S\u00e9guin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Yannick_N\u00e9zet-S\u00e9guin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Universal_Music_AI_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Universal_Music_AI_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Universal_Music_AI_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Universal_Music_AI_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Ptolemy_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Ptolemy_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Ptolemy_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Ptolemy_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Aryabhata_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Aryabhata_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Aryabhata_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Aryabhata_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Hypatia_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Hypatia_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Hypatia_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Hypatia_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Battani_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Al-Battani_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Al-Battani_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Al-Battani_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Nasir_al-Din_al-Tusi_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Nasir_al-Din_al-Tusi_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Nasir_al-Din_al-Tusi_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Nasir_al-Din_al-Tusi_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Geoffrey_Chaucer_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Geoffrey_Chaucer_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Geoffrey_Chaucer_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Geoffrey_Chaucer_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Galileo_Galilei_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Galileo_Galilei_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Galileo_Galilei_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Galileo_Galilei_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Edmond_Halley_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Edmond_Halley_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Edmond_Halley_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Edmond_Halley_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Caroline_Herschel_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Caroline_Herschel_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Caroline_Herschel_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Caroline_Herschel_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Yuri_Gagarin_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Yuri_Gagarin_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Yuri_Gagarin_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Yuri_Gagarin_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Katherine_Johnson_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Katherine_Johnson_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Katherine_Johnson_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Katherine_Johnson_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Stephen_Hawking_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Stephen_Hawking_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Stephen_Hawking_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Stephen_Hawking_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Mars_Colony_Leader_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Mars_Colony_Leader_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Mars_Colony_Leader_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Mars_Colony_Leader_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Exoplanet_Signal_Analyst_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Exoplanet_Signal_Analyst_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Exoplanet_Signal_Analyst_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Exoplanet_Signal_Analyst_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "AI_Probe_Architect_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "AI_Probe_Architect_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "AI_Probe_Architect_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "AI_Probe_Architect_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Zhang_Heng_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Zhang_Heng_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Zhang_Heng_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Zhang_Heng_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Ctesibius_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Ctesibius_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Ctesibius_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Ctesibius_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "portraits",
+      "blobName": "Aeneas_Tacticus_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "achievements",
+      "blobName": "Aeneas_Tacticus_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "inventions",
+      "blobName": "Aeneas_Tacticus_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "imageType": "artifacts",
+      "blobName": "Aeneas_Tacticus_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Al-Jazari_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Al-Jazari_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Al-Jazari_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Al-Jazari_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Richard_of_Wallingford_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Richard_of_Wallingford_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Richard_of_Wallingford_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Richard_of_Wallingford_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "portraits",
+      "blobName": "Leonardo_Fibonacci_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "achievements",
+      "blobName": "Leonardo_Fibonacci_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "inventions",
+      "blobName": "Leonardo_Fibonacci_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "imageType": "artifacts",
+      "blobName": "Leonardo_Fibonacci_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Thomas_Edison_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Thomas_Edison_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Thomas_Edison_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Thomas_Edison_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Nikola_Tesla_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Nikola_Tesla_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Nikola_Tesla_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Nikola_Tesla_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "portraits",
+      "blobName": "Alexander_Graham_Bell_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "achievements",
+      "blobName": "Alexander_Graham_Bell_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "inventions",
+      "blobName": "Alexander_Graham_Bell_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "imageType": "artifacts",
+      "blobName": "Alexander_Graham_Bell_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Grace_Hopper_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Grace_Hopper_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Grace_Hopper_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Grace_Hopper_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Shigeru_Miyamoto_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Shigeru_Miyamoto_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Shigeru_Miyamoto_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Shigeru_Miyamoto_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "portraits",
+      "blobName": "Elon_Musk_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "achievements",
+      "blobName": "Elon_Musk_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "inventions",
+      "blobName": "Elon_Musk_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "imageType": "artifacts",
+      "blobName": "Elon_Musk_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Fusion_Energy_Scientist_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Fusion_Energy_Scientist_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Fusion_Energy_Scientist_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Fusion_Energy_Scientist_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Translingual_AI_Architect_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Translingual_AI_Architect_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Translingual_AI_Architect_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Translingual_AI_Architect_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "portraits",
+      "blobName": "Synthetic_Biology_Entrepreneur_portraits.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "achievements",
+      "blobName": "Synthetic_Biology_Entrepreneur_achievements.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "inventions",
+      "blobName": "Synthetic_Biology_Entrepreneur_inventions.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "imageType": "artifacts",
+      "blobName": "Synthetic_Biology_Entrepreneur_artifacts.jpg",
+      "publicUrl": null,
+      "source": "Placeholder",
+      "licensing": "Generated"
+    }
+  ]
+}

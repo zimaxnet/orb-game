@@ -1,0 +1,188 @@
+name: Deploy Backend to Azure Container Apps (DISABLED - Use deploy-full.yml instead)
+
+on:
+  # DISABLED: This workflow conflicts with deploy-full.yml
+  # push:
+  #   branches: [ main ]
+  #   paths: [ 'backend-*', 'scripts/**', '.github/workflows/deploy-backend.yml' ]
+  workflow_dispatch:
+
+env:
+  RESOURCE_GROUP: orbgame-rg-eastus2
+  CONTAINER_APP_NAME: orb-game-backend-eastus2
+  CONTAINER_REGISTRY: orbgameregistry
+  LOCATION: eastus2
+  IMAGE_NAME: orbgame-backend
+
+jobs:
+  deploy:
+    if: false  # Always skip this job
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Login to Azure Container Registry
+      run: |
+        az acr login --name ${{ env.CONTAINER_REGISTRY }}
+        
+    - name: Wait for any active provisioning to complete
+      run: |
+        echo "Checking for active provisioning operations..."
+        retries=12
+        for i in $(seq 1 $retries); do
+          STATUS=$(az containerapp show \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "properties.provisioningState" \
+            --output tsv 2>/dev/null || echo "Failed")
+          
+          if [ "$STATUS" = "Succeeded" ]; then
+            echo "✅ Container App is ready for update."
+            break
+          elif [ "$STATUS" = "Failed" ]; then
+            echo "❌ Container App provisioning failed. Proceeding anyway..."
+            break
+          else
+            echo "⏳ Provisioning in progress... retrying in 10s (attempt $i/$retries)"
+            sleep 10
+          fi
+        done
+        
+        if [ "$STATUS" != "Succeeded" ] && [ "$STATUS" != "Failed" ]; then
+          echo "⚠️ Provisioning still in progress after $retries retries. Proceeding with deployment..."
+        fi
+        
+    - name: Build and push container image
+      run: |
+        # Build for AMD64 platform (required for Azure)
+        docker buildx build \
+          --platform linux/amd64 \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --tag ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:latest \
+          --file backend/backend-Dockerfile \
+          --push \
+          .
+          
+    - name: Verify image was pushed
+      run: |
+        az acr repository show-tags \
+          --name ${{ env.CONTAINER_REGISTRY }} \
+          --repository ${{ env.IMAGE_NAME }} \
+          --orderby time_desc \
+          --top 5
+          
+    - name: Get current container app revision
+      id: get-current-revision
+      run: |
+        CURRENT_REVISION=$(az containerapp revision list \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --query "[?properties.active].name" \
+          --output tsv | head -1)
+        echo "current_revision=$CURRENT_REVISION" >> $GITHUB_OUTPUT
+        echo "Current active revision: $CURRENT_REVISION"
+        
+    - name: Deploy to Azure Container Apps
+      run: |
+        # Update the container app with new image and environment variables
+        az containerapp update \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --image ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --set-env-vars \
+            AZURE_OPENAI_ENDPOINT="https://aimcs-foundry.cognitiveservices.azure.com/" \
+            AZURE_OPENAI_API_KEY="${{ secrets.AZURE_OPENAI_API_KEY }}" \
+            AZURE_OPENAI_DEPLOYMENT="${{ secrets.AZURE_OPENAI_DEPLOYMENT }}" \
+            AZURE_OPENAI_TTS_DEPLOYMENT="${{ secrets.AZURE_OPENAI_TTS_DEPLOYMENT }}" \
+            PERPLEXITY_API_KEY="${{ secrets.PERPLEXITY_API_KEY }}" \
+            MONGO_URI="${{ secrets.MONGO_URI }}"
+            
+    - name: Wait for deployment to complete
+      run: |
+        echo "Waiting for deployment to complete..."
+        sleep 60
+        
+        # Check if new revision is active
+        NEW_REVISION=$(az containerapp revision list \
+          --name ${{ env.CONTAINER_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --query "[?properties.active].name" \
+          --output tsv | head -1)
+          
+        echo "New active revision: $NEW_REVISION"
+        echo "Previous revision: ${{ steps.get-current-revision.outputs.current_revision }}"
+        
+        if [ "$NEW_REVISION" = "${{ steps.get-current-revision.outputs.current_revision }}" ]; then
+          echo "⏳ New revision is not active yet. Waiting more..."
+          sleep 60
+          
+          # Check again
+          NEW_REVISION=$(az containerapp revision list \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "[?properties.active].name" \
+            --output tsv | head -1)
+          echo "Final active revision: $NEW_REVISION"
+        fi
+        
+    - name: Verify deployment health
+      run: |
+        # Test the backend health endpoint
+        for i in {1..10}; do
+          echo "Attempt $i: Testing backend health..."
+          if curl -f https://api.orbgame.us/health; then
+            echo "✅ Backend is healthy!"
+            break
+          else
+            echo "❌ Backend not responding, waiting..."
+            sleep 30
+          fi
+        done
+        
+        # Final health check
+        curl -f https://api.orbgame.us/health || exit 1
+        
+    - name: Test API functionality
+      run: |
+        # Test the main chat endpoint
+        curl -f https://api.orbgame.us/api/chat \
+          -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Hello"}' || exit 1
+          
+    - name: Rollback on failure
+      if: failure()
+      run: |
+        echo "❌ Deployment failed, rolling back to previous revision..."
+        PREV_REVISION="${{ steps.get-current-revision.outputs.current_revision }}"
+        
+        if [ -n "$PREV_REVISION" ]; then
+          echo "Rolling back to revision: $PREV_REVISION"
+          az containerapp revision activate \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --revision "$PREV_REVISION" || echo "Rollback failed, but continuing..."
+        else
+          echo "No previous revision found for rollback"
+        fi
+          
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "✅ Backend deployment successful!"
+          echo "New image: ${{ env.CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        else
+          echo "❌ Backend deployment failed!"
+          exit 1
+        fi 

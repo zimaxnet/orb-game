@@ -1,0 +1,42 @@
+{
+  "upload_stats": {
+    "total_images": 102,
+    "successful_uploads": 0,
+    "failed_uploads": 102,
+    "skipped_images": 0,
+    "errors": [
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/James%20Watt%20by%20Henry%20Howard.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Demis%20Hassabis%2C%202024%20Nobel%20Prize%20Laureate%20in%20Chemistry%205%20%28cropped%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Euklid2.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Roger-bacon-statue.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Pasteur%20%281822%20-%201895%29%2C%20microbiologist%20and%20chemist%20Wellcome%20V0026980.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/William%20Blake%20by%20Thomas%20Phillips.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20Courbet%2C%20photograph%20Atelier%20Nadar%2C%20c.%201860s.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Frida%20Kahlo%2C%20by%20Guillermo%20Kahlo%20%28cropped%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Yayoi%20Kusama%20wax%20model%20at%20Louis%20Vitton.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Teofrasto%20Orto%20botanico%20head.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Empedocles.%20Line%20engraving%2C%201580.%20Wellcome%20V0001766.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/John%20James%20Audubon%201826.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Mary%20Anning%20painting.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Johanna%20lohr%20jane-goodall.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Paul%20Stamets%20with%20Agarikon.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Joseph-Beno%C3%AEt%20Suv%C3%A9e%20-%20Milo%20van%20Croton%20%281763%29.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Pierre%20de%20Coubertin.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Dr.%20James%20Naismith.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Bust%20Sappho%20Musei%20Capitolini%20MC1164.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Koning%20David.Aert%20de%20Gelder.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Possibly%20Narada%2C%20the%20inventor%20of%20the%20Vina..jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Karlheinz%20Oswald%20Hildegard%20von%20Bingen%2C%20Eibingen.JPG",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Beethoven.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Frederic%20Chopin%20photo.jpeg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Armstrong%20restored.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Yannick%20N%C3%A9zet%20S%C3%A9guin.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/2064%20aryabhata-crp.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/1829%20Melchior%20Gommar%20Tieleman%2C%20%C3%96lgem%C3%A4lde%20Caroline%20Herschel%20Hannover.tif",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Katherine%20Johnson%201983.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Zhang%20Heng.jpg",
+      "Failed to download: http://commons.wikimedia.org/wiki/Special:FilePath/Thomas%20Edison2.jpg"
+    ]
+  },
+  "uploaded_images": []
+}

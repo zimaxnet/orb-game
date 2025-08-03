@@ -1,0 +1,594 @@
+# Orb Game - Cursor Rules
+
+## 🎮 Project Overview
+Orb Game is an advanced AI-powered interactive gaming platform that combines time travel, positive news discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with multiple AI model integrations, and comprehensive Azure cloud deployment.
+
+## 🏗️ Architecture Patterns
+
+### Frontend (React + Vite)
+- **Main Component**: `components/OrbGame.jsx` - 3D interactive gaming experience
+- **State Management**: React hooks with context providers (`contexts/LanguageContext.jsx`)
+- **3D Graphics**: Three.js with @react-three/fiber and @react-three/drei
+- **Build System**: Vite with React 19.x support
+- **Styling**: CSS modules with component-specific stylesheets
+
+### Backend (Node.js + Express)
+- **Main Server**: `backend/backend-server.js` - Production API server
+- **Services**: Modular service architecture (MemoryService, PositiveNewsService, StoryCacheService)
+- **AI Integration**: Multiple AI models (Grok 4, Perplexity Sonar, Gemini 1.5 Flash, O4-Mini)
+- **Database**: Azure Cosmos DB for MongoDB with caching system
+- **Security**: Azure Key Vault for API key management
+
+### Deployment (Azure)
+- **Frontend**: Azure Web App with GitHub Actions CI/CD
+- **Backend**: Azure Container Apps with auto-scaling
+- **Registry**: Azure Container Registry (`orbgameregistry`)
+- **Secrets**: Azure Key Vault with RBAC authentication
+
+## 🔧 Development Guidelines
+
+### File Structure
+```
+orb-game/
+├── components/          # React components
+├── contexts/           # React context providers
+├── utils/              # Utility functions (promptManager)
+├── api/                # API client functions
+├── backend/            # Node.js backend server
+├── scripts/            # Deployment and utility scripts
+├── public/             # Static assets
+└── docs/               # Documentation
+```
+
+### Naming Conventions
+- **Components**: PascalCase (e.g., `OrbGame.jsx`)
+- **Files**: kebab-case for scripts, camelCase for modules
+- **Variables**: camelCase
+- **Constants**: UPPER_SNAKE_CASE
+- **Functions**: camelCase
+- **Classes**: PascalCase
+
+### Code Style
+- **JavaScript**: ES6+ modules with import/export
+- **React**: Functional components with hooks
+- **CSS**: Component-specific stylesheets
+- **Backend**: Async/await with proper error handling
+- **Comments**: JSDoc style for functions and classes
+
+## 🤖 AI Model Integration
+
+### Supported AI Models
+1. **Grok 4** - Advanced reasoning and creative storytelling
+2. **Perplexity Sonar** - Real-time web search and synthesis
+3. **Gemini 1.5 Flash** - Fast and creative content generation
+4. **O4-Mini** - Efficient and reliable processing
+
+### AI Model Parameters
+- **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`), no `temperature` parameter
+- **TTS Models**: Use `Authorization: Bearer` header (not `api-key`)
+- **Token Limits**: 2000 tokens for complete JSON responses
+- **TTS Voices**: Use `alloy` voice for both English and Spanish (avoid `jorge` - not supported)
+
+### Azure OpenAI Configuration
+- **Endpoint**: `https://aimcs-foundry.cognitiveservices.azure.com/`
+- **API Version**: `2024-12-01-preview` (required for o4-mini model)
+- **Model**: `o4-mini`
+- **Deployment**: `o4-mini`
+- **Parameter**: Use `max_completion_tokens` instead of `max_tokens`
+- **Example Python Configuration**:
+  ```python
+  from openai import AzureOpenAI
+  
+  client = AzureOpenAI(
+      api_version="2024-12-01-preview",
+      azure_endpoint="https://aimcs-foundry.cognitiveservices.azure.com/",
+      api_key="your-api-key",
+  )
+  
+  response = client.chat.completions.create(
+      messages=[{"role": "user", "content": "Hello"}],
+      max_completion_tokens=1000,
+      model="o4-mini"
+  )
+  ```
+
+### Adding New AI Models
+1. Store API key in Azure Key Vault
+2. Add model function to `backend-server.js`
+3. Update frontend model selection in `OrbGame.jsx`
+4. Add prompts to `utils/promptReferenceData.js`
+5. Test with `scripts/test-ai-models.js`
+
+### Story Prepopulation System
+- **Script**: `scripts/prepopulate-all-stories.js` - Generates 240+ historical figure stories
+- **Missing Stories Script**: `scripts/generate-missing-stories.js` - Generates only missing stories (token efficient)
+- **Key Vault Integration**: Automatically fetches credentials from `orb-game-kv-eastus2`
+- **Data Sources**: `EpochalCategoryStoryMap.md` and `OrbGameInfluentialPeopleSeeds`
+- **Execution**: `./scripts/run-prepopulation.sh` - Interactive script with confirmation
+- **Coverage**: 8 categories × 5 epochs × 2 languages × 3 figures = 240 stories
+- **TTS Integration**: Generates audio for each story using Azure OpenAI TTS (`alloy` voice)
+- **MongoDB Storage**: Stores stories with TTL for automatic cleanup
+- **Error Tracking**: Comprehensive error statistics for JSON parse, TTS, API, MongoDB, and network errors
+
+## 🎯 Prompt Management System
+
+### Centralized Prompt System
+- **Source**: `PROMPTS_REFERENCE.md` - Single source of truth
+- **Manager**: `utils/promptManager.js` - Dynamic prompt generation
+- **Data**: `utils/promptReferenceData.js` - Structured prompt data
+- **Categories**: Technology, Science, Art, Nature, Sports, Music, Space, Innovation
+- **Epochs**: Ancient, Medieval, Industrial, Modern, Future
+- **Languages**: English and Spanish with cultural sensitivity
+
+### Prompt Structure
+```javascript
+// Model-specific prompts with category, epoch, language support
+const prompt = promptManager.getFrontendPrompt(category, epoch, language, model);
+```
+
+## 🌍 Internationalization
+
+### Language Support
+- **Primary**: English (`en`)
+- **Secondary**: Spanish (`es`)
+- **Context**: `contexts/LanguageContext.jsx`
+- **TTS Voices**: `alloy` (English), `jorge` (Spanish)
+- **Caching**: Language-specific story and audio caching
+
+### Translation Guidelines
+- Use `useLanguage()` hook for language context
+- Cache stories separately by language
+- Provide culturally appropriate content
+- Support language switching with story refresh
+
+## 🗄️ Database & Caching
+
+### MongoDB Integration
+- **Connection**: Azure Cosmos DB for MongoDB (`orb-game-mongodb-eastus2`)
+- **Collections**: Stories, memories, analytics
+- **Throughput**: 2000 RU/s per collection (stories, positive_news_stories, audio, users, connection_test)
+- **Performance**: 5x throughput increase from 400 RU/s baseline
+- **Caching**: 88.2% performance improvement for cached requests
+- **TTL**: 30-day expiration for cached content
+- **Cost**: ~$0.008/hour per collection at 2000 RU/s
+
+### Cache Management
+```javascript
+// Check cache before generating new content
+const cachedStories = await storyCacheService.getStories(category, epoch, model, language);
+if (cachedStories.length > 0) {
+  return cachedStories;
+}
+```
+
+## 🚀 Deployment Patterns
+
+### Azure Resources
+- **Resource Group**: `orb-game-rg-eastus2`
+- **Frontend**: Azure Web App (`orb-game`) - Live at https://orbgame.us
+- **Backend**: Azure Container Apps (`orb-game-backend-eastus2`)
+- **Registry**: Azure Container Registry (`orbgameregistry`)
+- **Key Vault**: `orb-game-kv-eastus2`
+
+### Deployment Automation
+- **GitHub Actions**: Automatic deployment on push to main branch
+  - Frontend: `.github/workflows/deploy-frontend.yml` - Auto-deploys on any push
+  - Backend: `.github/workflows/deploy-backend.yml` - Deploys on backend changes
+  - Full Deployment: `.github/workflows/deploy-full.yml` - Complete CI/CD pipeline
+- **Local Deployment**: Manual deployment scripts for development
+  - Frontend: `scripts/deploy-azure.sh` - Build and deploy frontend
+  - Backend: `scripts/build-backend.sh` - Build and push backend container
+  - Full: `scripts/deploy-full.sh` - Complete local deployment
+
+### Efficient Rebuild & Redeployment Procedures
+
+#### Quick Local Deployment (Development)
+```bash
+# Frontend only (fastest)
+npm run build
+cd dist && zip -r ../deploy.zip . && cd ..
+az webapp deploy --resource-group orb-game-rg-eastus2 --name orb-game --src-path deploy.zip --type zip
+
+# Backend only
+docker build --platform linux/amd64 -f backend/backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .
+az acr login --name orbgameregistry
+docker push orbgameregistry.azurecr.io/orb-game-backend:latest
+az containerapp update --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --image orbgameregistry.azurecr.io/orb-game-backend:latest
+
+# Full deployment (both frontend and backend)
+./scripts/deploy-full.sh
+```
+
+#### GitHub Actions Deployment (Production)
+- **Automatic**: Push to main branch triggers automatic deployment
+- **Frontend**: Deploys on any file change
+- **Backend**: Deploys only on backend-related changes (backend/, scripts/, .github/workflows/deploy-backend.yml)
+- **Manual**: Use GitHub Actions "workflow_dispatch" for manual deployment
+
+#### Deployment Verification
+```bash
+# Test frontend deployment
+curl -s "https://orbgame.us" | head -5
+
+# Test backend deployment
+curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | head -5
+
+# Check deployment status
+az webapp show --name orb-game --resource-group orb-game-rg-eastus2 --query "state"
+az containerapp show --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --query "properties.provisioningState"
+
+# Verify historical figure stories are working
+curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | jq '.[0].headline'
+```
+
+### Docker Platform Requirements
+- **Backend Images**: Must be built for `linux/amd64` platform
+- **Build Command**: `docker build --platform linux/amd64 -f backend-Dockerfile -t orbgameregistry.azurecr.io/orb-game-backend:latest .`
+- **Azure Container Apps**: Require amd64 images for proper deployment
+- **Local Development**: Use `--platform linux/amd64` flag for Docker builds
+
+### Deployment Scripts
+- **Full Deployment**: `scripts/deploy-full.sh`
+- **Frontend Only**: `scripts/deploy-azure.sh`
+- **Backend Only**: `scripts/setup-backend.sh`
+- **Environment Setup**: `scripts/set-azure-build-env.sh`
+- **Quick Deploy**: `scripts/deploy-manual.sh` - Fast manual deployment
+
+### Current Deployment Status (December 2024)
+- **Frontend**: ✅ Live at https://orbgame.us (Azure Web App)
+- **Backend**: ✅ Live at https://api.orbgame.us (Azure Container Apps)
+- **Database**: ✅ Azure Cosmos DB for MongoDB with 239+ historical figure stories
+- **GitHub Actions**: ✅ Automatic deployment on push to main branch
+- **Historical Figures**: ✅ Working with proper storyType parameter support
+- **Learn More Feature**: ✅ Enhanced to provide detailed historical figure information
+
+### Environment Variables
+```bash
+# Required for backend
+MONGO_URI=your-azure-cosmos-db-connection-string
+AZURE_OPENAI_ENDPOINT=https://aimcs-foundry.cognitiveservices.azure.com/
+AZURE_OPENAI_API_KEY=your-azure-openai-api-key
+AZURE_OPENAI_DEPLOYMENT=o4-mini
+AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
+PERPLEXITY_API_KEY=your-perplexity-api-key
+```
+
+## 🧪 Testing & Quality Assurance
+
+### Test Scripts
+- **AI Models**: `scripts/test-ai-models.js`
+- **Backend**: `scripts/test-new-backend.js`
+- **Cache System**: `scripts/test-story-cache-comprehensive.js`
+- **Performance**: `scripts/performance-comparison.js`
+- **Memory**: `scripts/test-memory.sh`
+
+### Testing Guidelines
+- Run comprehensive test suite before deployment
+- Verify all AI models are working: `node scripts/test-ai-models.js`
+- Test story generation: `node scripts/test-fixed-story-generation.js`
+- Debug API issues: `node scripts/debug-api-response.js`
+- Check cache performance metrics
+- Validate multi-language support
+- Test Azure Key Vault integration
+
+## 🔒 Security & Authentication
+
+### Azure Key Vault Integration
+- **RBAC**: Role-Based Access Control (not access policies)
+- **Managed Identity**: Container app uses managed identity
+- **Secrets**: All API keys stored securely
+- **Permissions**: "Key Vault Secrets User" role required
+
+### Security Best Practices
+- Never commit API keys to source code
+- Use environment variables for configuration
+- Implement proper CORS headers
+- Validate all user inputs
+- Use HTTPS for all communications
+
+## 📊 Performance Optimization
+
+### Caching Strategy
+- **Database Caching**: MongoDB-based story and audio caching
+- **Performance**: 88.2% faster response times for cached requests
+- **Cost Savings**: 29.0% reduction in token usage
+- **Cache Hit Rate**: 50% in test scenarios
+
+### Optimization Guidelines
+- Preload stories for selected epochs
+- Cache TTS audio as base64 in database
+- Use efficient Three.js rendering
+- Implement proper error handling
+- Monitor Azure resource usage
+
+## 🎮 Gaming Features
+
+### Core Gameplay
+- **3D Environment**: Milky Way background with 5,000 animated stars
+- **Orb Interaction**: Drag orbs to center for story discovery
+- **Epoch Selection**: Time travel through different eras
+- **Category Exploration**: 8 different news categories
+- **Audio Integration**: Text-to-speech for immersive experience
+
+### User Experience
+- **Responsive Design**: Works on desktop and mobile
+- **Touch Controls**: Swipe gestures for mobile interaction
+- **Visual Feedback**: Animations and glow effects
+- **Accessibility**: Audio controls and keyboard navigation
+
+## 🔧 Development Workflow
+
+### Local Development
+```bash
+# Frontend
+npm install --legacy-peer-deps
+npm run dev
+
+# Backend
+cd backend
+npm install
+node backend-server.js
+```
+
+### GitHub Actions & Package Management Workflow
+- **CRITICAL WORKFLOW**: When modifying dependencies, follow this exact sequence:
+  1. Edit package.json with new dependencies
+  2. Run `npm install` to update package-lock.json
+  3. Verify with `npm list` that all packages are installed
+  4. Test build locally: `npm run build`
+  5. Commit BOTH package.json AND package-lock.json together
+  6. Push to trigger GitHub Actions
+
+- **GitHub Actions Package Sync Issues**:
+  - **Error**: "Missing: @types/react@19.1.9 from lock file"
+  - **Cause**: package.json and package-lock.json are out of sync
+  - **Prevention**: Always run `npm install` after package.json changes
+  - **Verification**: Use `npm list` to check installed packages
+  - **Solution**: Run `npm install` locally, commit both files, push
+
+- **Package Management Best Practices**:
+  - **Never commit package.json without package-lock.json**
+  - **Always run `npm install` after dependency changes**
+  - **Use exact versions** for critical dependencies
+  - **Test locally before pushing** to catch sync issues
+  - **Verify with `npm ci` locally** to simulate GitHub Actions environment
+
+### Deployment Process
+
+#### Automated Deployment (Recommended)
+1. **GitHub Actions**: Push to main branch automatically triggers deployment
+   - Frontend: Any file change triggers frontend deployment
+   - Backend: Only backend-related changes trigger backend deployment
+   - Full: Complete CI/CD pipeline with testing and verification
+
+#### Manual Deployment (Development)
+1. Update Azure Key Vault secrets if needed
+2. Build and test locally: `npm run build && npm test`
+3. Run deployment scripts:
+   - Frontend only: `./scripts/deploy-azure.sh`
+   - Backend only: `./scripts/build-backend.sh`
+   - Full deployment: `./scripts/deploy-full.sh`
+4. Verify Azure resources and test production endpoints
+5. Monitor deployment logs and health checks
+
+#### Seamless Automation Features
+- **Automatic Testing**: GitHub Actions run tests before deployment
+- **Health Checks**: Automatic verification of deployed services
+- **Rollback Capability**: Previous versions can be restored if needed
+- **Environment Parity**: Local, staging, and production environments are consistent
+- **Secret Management**: Azure Key Vault integration for secure credential management
+
+### Story Prepopulation Process
+1. Ensure Azure Key Vault credentials are set
+2. Check existing stories: `node scripts/check-existing-stories.js`
+3. Run missing stories generation: `node scripts/generate-missing-stories.js` (token efficient)
+4. Or run full prepopulation: `./scripts/run-prepopulation.sh` for interactive confirmation
+5. Monitor progress and error statistics
+6. Verify stories in MongoDB using `scripts/check-database-stories.js`
+7. Test story loading in the game interface
+
+### Git Workflow
+- Use descriptive commit messages
+- Test changes before committing
+- Update documentation for new features
+- Follow semantic versioning
+- **CRITICAL**: Always commit package.json and package-lock.json together
+
+### Deployment Verification & Monitoring
+- **Health Checks**: Verify both frontend and backend are responding
+- **Performance Monitoring**: Monitor Azure resource usage and response times
+- **Error Tracking**: Monitor application logs for errors and issues
+- **Automated Testing**: Run comprehensive test suite before deployment
+- **Rollback Procedures**: Keep previous versions available for quick rollback
+- **Package Sync Verification**: Ensure package.json and package-lock.json are in sync before deployment 
+
+## 🚨 Critical Notes
+
+### Important Reminders
+- **O4-Mini Model**: Use `max_completion_tokens`, not `max_tokens`
+- **Temperature Parameter**: Not supported for O4-Mini (use default 1)
+- **Authorization Header**: Use `Authorization: Bearer` for Azure OpenAI
+- **TTS Voice**: Use `alloy` for both English and Spanish (avoid `jorge`)
+- **Token Limits**: Use 2000 tokens for complete story generation
+- **Database Migration**: All data migrated from `aimcs` to `orbgame`
+- **Registry Name**: Use `orbgame` registry, not `aimcsregistry`
+- **Docker Platform**: Always build with `--platform linux/amd64` for Azure Container Apps
+- **Azure OpenAI Endpoint**: Use `https://aimcs-foundry.cognitiveservices.azure.com/`
+- **API Version**: Use `2024-12-01-preview` for o4-mini model
+
+### Package Management & GitHub Actions Sync Issues
+- **CRITICAL**: Always run `npm install` after modifying package.json
+- **CRITICAL**: Always commit both package.json AND package-lock.json together
+- **CRITICAL**: Never commit package.json without running npm install first
+- **Common Error**: "Missing: @types/react@19.1.9 from lock file" - indicates package.json and package-lock.json are out of sync
+- **Solution**: Run `npm install` locally, then commit both files together
+- **Verification**: Use `npm list` to check installed packages match package.json
+- **Prevention**: Test build locally with `npm run build` before pushing
+- **GitHub Actions**: Uses `npm ci` which requires exact package-lock.json match
+
+### Troubleshooting Package Sync Issues
+
+#### GitHub Actions Failure: "Missing dependencies from lock file"
+**Error Message**: `Missing: @types/react@19.1.9 from lock file`
+
+**Root Cause**: package.json and package-lock.json are out of sync
+
+**Immediate Fix**:
+```bash
+# 1. Run npm install to sync package-lock.json
+npm install
+
+# 2. Verify packages are installed correctly
+npm list
+
+# 3. Test build locally
+npm run build
+
+# 4. Commit both files together
+git add package.json package-lock.json
+git commit -m "fix: sync package.json and package-lock.json"
+git push
+```
+
+**Prevention Checklist**:
+- [ ] Always run `npm install` after package.json changes
+- [ ] Verify with `npm list` that all packages are installed
+- [ ] Test build locally before committing
+- [ ] Commit both package.json AND package-lock.json together
+- [ ] Never commit package.json without running npm install first
+
+**Verification Commands**:
+```bash
+# Check if packages are in sync
+npm list
+
+# Test build process
+npm run build
+
+# Simulate GitHub Actions environment
+npm ci
+```
+
+### Common Issues
+- Key Vault RBAC permissions for container app
+- CORS configuration for cross-origin requests
+- TTS audio generation for different languages
+- Cache invalidation and story freshness
+- Azure Container App scaling configuration
+- Docker platform mismatch (must use `linux/amd64` for Azure Container Apps)
+- Container App deployment failures due to wrong platform architecture
+- **API Parameter Issues**: Use `max_completion_tokens` not `max_tokens` for o4-mini
+- **TTS Voice Issues**: Use `alloy` voice (avoid `jorge` - not supported)
+- **Empty API Responses**: Check token limits and parameter names
+- **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
+- **Package Lock Sync**: Missing dependencies in package-lock.json cause GitHub Actions failures 
+
+## 📚 GitHub Pages Wiki System
+
+### Complete Setup & Maintenance
+- **Main Guide**: `GITHUB_PAGES_COMPLETE_SETUP.md` - Comprehensive setup and maintenance guide
+- **Status**: Currently returning 404 - GitHub Pages needs manual configuration
+- **Live URL**: https://wiki.orbgame.us (after configuration)
+- **DNS**: Configured (wiki.orbgame.us → zimaxnet.github.io)
+- **Content**: 3.4MB of documentation ready
+
+### Core Setup Files
+- **Complete Setup Guide**: `GITHUB_PAGES_COMPLETE_SETUP.md` - All setup information in one place
+- **Status Verification**: `scripts/verify-wiki-status.sh` - Comprehensive status checking
+- **Quick Updates**: `scripts/quick-wiki-update.sh` - Manual wiki updates
+- **README Sync**: `scripts/sync-readme-to-wiki.sh` - Sync README/.cursorrules to wiki
+- **Configuration Guide**: `scripts/configure-github-pages-step-by-step.sh` - Step-by-step setup
+
+### GitHub Pages Configuration Required
+**Go to**: https://github.com/zimaxnet/orb-game/settings/pages
+**Configure**:
+- Source: Deploy from a branch
+- Branch: `gh-pages`
+- Folder: `/ (root)`
+- Custom domain: `wiki.orbgame.us`
+- Enforce HTTPS: ✓
+
+### Update Process (After Configuration)
+**Automatic Updates**:
+1. Edit files in `docs/` directory
+2. Commit and push to main branch
+3. GitHub Actions automatically builds and deploys
+4. Wiki updates within 5-10 minutes
+
+**Manual Updates**:
+```bash
+# Quick wiki update
+./scripts/quick-wiki-update.sh
+
+# Sync from README/.cursorrules
+./scripts/sync-readme-to-wiki.sh
+```
+
+**Sync README/.cursorrules to Wiki**:
+```bash
+# Extract important content from README and .cursorrules
+./scripts/sync-readme-to-wiki.sh
+
+# Creates:
+# - docs/getting-started/project-overview.md
+# - docs/developer/deployment-patterns.md
+# - docs/developer/development-guidelines.md
+# - docs/developer/critical-notes.md
+# - docs/developer/cursor-rules.md
+```
+
+### Monitoring & Maintenance
+**Regular Checks**:
+```bash
+# Test wiki accessibility
+curl -I https://wiki.orbgame.us
+
+# Check deployment status
+git log --oneline gh-pages -3
+
+# Run comprehensive verification
+./scripts/verify-wiki-status.sh
+```
+
+**Update Workflow**:
+1. Update README.md with new features/bug fixes
+2. Update .cursorrules with new development rules
+3. Run sync script: `./scripts/sync-readme-to-wiki.sh`
+4. Commit and push to trigger auto-deployment
+5. Verify updates at https://wiki.orbgame.us
+
+### Troubleshooting
+**If GitHub Pages Shows 404**:
+1. Check GitHub Pages is configured correctly
+2. Verify gh-pages branch exists and has content
+3. Wait 5-10 minutes for processing
+4. Check GitHub Actions for build errors
+
+**If Updates Don't Work**:
+1. Ensure GitHub Pages is configured
+2. Check GitHub Actions workflow is running
+3. Verify changes are in `docs/` directory
+4. Wait for deployment completion
+
+**If DNS Issues**:
+1. Verify Azure DNS CNAME record exists
+2. Wait for DNS propagation (up to 48 hours)
+3. Check custom domain in GitHub Pages settings
+
+### Success Checklist
+- [ ] GitHub Pages configured in repository settings
+- [ ] Custom domain `wiki.orbgame.us` added
+- [ ] "Enforce HTTPS" enabled
+- [ ] gh-pages branch exists with content
+- [ ] GitHub Actions workflow is running
+- [ ] Site accessible at http://wiki.orbgame.us
+- [ ] Site accessible at https://wiki.orbgame.us (after SSL)
+- [ ] Documentation loads correctly
+- [ ] Navigation and search work
+- [ ] Automatic updates working
+
+### Quick Links
+- **GitHub Pages Settings**: https://github.com/zimaxnet/orb-game/settings/pages
+- **GitHub Actions**: https://github.com/zimaxnet/orb-game/actions
+- **Live Wiki**: https://wiki.orbgame.us
+- **Repository**: https://github.com/zimaxnet/orb-game

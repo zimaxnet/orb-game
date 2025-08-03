@@ -1,0 +1,51 @@
+[
+  {
+    "figure_name": "Archimedes",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "total_found": 1,
+    "total_downloaded": 0,
+    "images": []
+  },
+  {
+    "figure_name": "Imhotep",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "total_found": 1,
+    "total_downloaded": 0,
+    "images": []
+  },
+  {
+    "figure_name": "Hero of Alexandria",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "total_found": 1,
+    "total_downloaded": 1,
+    "images": [
+      {
+        "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hero%20of%20Alexandria.png",
+        "source": "Wikidata",
+        "type": "portrait",
+        "license": "public domain",
+        "title": "Hero of Alexandria portrait",
+        "local_path": "test_downloaded_images/test_Hero_of_Alexandria_portrait_0.jpg"
+      }
+    ]
+  },
+  {
+    "figure_name": "Al-Jazari",
+    "category": "Technology",
+    "epoch": "Medieval",
+    "total_found": 0,
+    "total_downloaded": 0,
+    "images": []
+  },
+  {
+    "figure_name": "Johannes Gutenberg",
+    "category": "Technology",
+    "epoch": "Medieval",
+    "total_found": 1,
+    "total_downloaded": 0,
+    "images": []
+  }
+]

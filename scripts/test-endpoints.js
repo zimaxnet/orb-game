@@ -45,10 +45,8 @@ const TIMEOUT_MS = Number.isFinite(Number(process.argv[3])) && Number(process.ar
 const endpoints = [
   { name: 'Health', method: 'GET', path: '/health' },
   { name: 'Root', method: 'GET', path: '/' },
-  { name: 'API Info', method: 'GET', path: '/api' },
   { name: 'Analytics Summary', method: 'GET', path: '/api/analytics/summary' },
   { name: 'Analytics Detailed', method: 'GET', path: '/api/analytics/detailed' },
-  { name: 'Search Decisions', method: 'GET', path: '/api/analytics/search-decisions' },
   { name: 'Memory Profile', method: 'GET', path: '/api/memory/profile' },
   { name: 'Memory Stats', method: 'GET', path: '/api/memory/stats' },
   { name: 'Memory Export', method: 'GET', path: '/api/memory/export' },
@@ -64,7 +62,10 @@ const endpoints = [
     path: '/api/chat',
     data: { message: 'Hello! What can you do?', userId: 'endpoint-test-user' }
   },
-  { name: 'Positive News (Technology)', method: 'GET', path: '/api/orb/positive-news/Technology' }
+  { name: 'Historical Figures (Technology)', method: 'GET', path: '/api/orb/historical-figures/Technology' },
+  { name: 'Cache Stats', method: 'GET', path: '/api/cache/stats' },
+  { name: 'Historical Figures Stats', method: 'GET', path: '/api/historical-figures/stats' },
+  { name: 'Image Stats', method: 'GET', path: '/api/orb/images/stats' }
 ];
 
 let passed = 0;

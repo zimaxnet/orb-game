@@ -1,0 +1,4049 @@
+{
+  "metadata": {
+    "total_figures": 120,
+    "processed": 120,
+    "successful": 94,
+    "failed": 26,
+    "start_time": "2025-08-02T19:39:12.547915",
+    "end_time": "2025-08-02T19:50:24.890237",
+    "processing_time": 672.342322
+  },
+  "figures": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg/250px-A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_achievements_6e5edf68.jpg",
+            "blob_name": "Archimedes_achievements_6e5edf68.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg/250px-A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_inventions_6e5edf68.jpg",
+            "blob_name": "Archimedes_inventions_6e5edf68.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Clymenia.JPG/250px-Clymenia.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Archimedes_artifacts_79080eea.jpg",
+            "blob_name": "Archimedes_artifacts_79080eea.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 3,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Imhotep-Louvre.JPG/250px-Imhotep-Louvre.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_portraits_491c0889.jpg",
+            "blob_name": "Imhotep_portraits_491c0889.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Queen_of_Pepy_II.jpg/250px-Queen_of_Pepy_II.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_artifacts_dfd2e934.jpg",
+            "blob_name": "Imhotep_artifacts_dfd2e934.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 2,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Heron_Alexandrie.jpg/330px-Heron_Alexandrie.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero_of_Alexandria_portraits_5cc101e0.jpg",
+            "blob_name": "Hero_of_Alexandria_portraits_5cc101e0.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg/250px-Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero_of_Alexandria_achievements_7ff854f8.jpg",
+            "blob_name": "Hero_of_Alexandria_achievements_7ff854f8.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg/250px-Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hero_of_Alexandria_inventions_7ff854f8.jpg",
+            "blob_name": "Hero_of_Alexandria_inventions_7ff854f8.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_portraits_cc51b6e4.jpg",
+            "blob_name": "Al_Jazari_portraits_cc51b6e4.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Al-Jazari_-_The_Scribe_Candle_Clock.jpg/250px-Al-Jazari_-_The_Scribe_Candle_Clock.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_inventions_789d38a8.jpg",
+            "blob_name": "Al_Jazari_inventions_789d38a8.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_inventions_cc51b6e4.jpg",
+            "blob_name": "Al_Jazari_inventions_cc51b6e4.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG/250px-Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes_Gutenberg_portraits_117eed4f.jpg",
+            "blob_name": "Johannes_Gutenberg_portraits_117eed4f.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/250px-Gutenberg.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes_Gutenberg_inventions_f2150c79.jpg",
+            "blob_name": "Johannes_Gutenberg_inventions_f2150c79.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/250px-Gutenberg.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes_Gutenberg_inventions_f2150c79.jpg",
+            "blob_name": "Johannes_Gutenberg_inventions_f2150c79.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG/250px-Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Johannes_Gutenberg_artifacts_117eed4f.jpg",
+            "blob_name": "Johannes_Gutenberg_artifacts_117eed4f.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg/250px-Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li_Shizhen_portraits_ae453339.jpg",
+            "blob_name": "Li_Shizhen_portraits_ae453339.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg/250px-Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Li_Shizhen_inventions_ae453339.jpg",
+            "blob_name": "Li_Shizhen_inventions_ae453339.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 3,
+        "successful_uploads": 2,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/James-watt-1736-1819-engineer-inventor-of-the-stea.jpg/250px-James-watt-1736-1819-engineer-inventor-of-the-stea.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Watt_portraits_b043fd63.jpg",
+            "blob_name": "James_Watt_portraits_b043fd63.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Maquina_vapor_Watt_ETSIIM.jpg/330px-Maquina_vapor_Watt_ETSIIM.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Watt_achievements_6c12bfea.jpg",
+            "blob_name": "James_Watt_achievements_6c12bfea.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Old_bess_steam_engine_1777.jpg/250px-Old_bess_steam_engine_1777.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Watt_inventions_0bcb9454.jpg",
+            "blob_name": "James_Watt_inventions_0bcb9454.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Clermont_replica.jpg/330px-Clermont_replica.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Watt_artifacts_5051c11f.jpg",
+            "blob_name": "James_Watt_artifacts_5051c11f.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/250px-Charles_Babbage_-_1860.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Babbage_achievements_79dd506a.jpg",
+            "blob_name": "Charles_Babbage_achievements_79dd506a.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Babbage%27s_brain_in_a_jar_%283186913%29.jpg/250px-Babbage%27s_brain_in_a_jar_%283186913%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Babbage_artifacts_0fbd6289.jpg",
+            "blob_name": "Charles_Babbage_artifacts_0fbd6289.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/250px-Charles_Babbage_-_1860.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Babbage_artifacts_79dd506a.jpg",
+            "blob_name": "Charles_Babbage_artifacts_79dd506a.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Brooklyn_Museum_-_Portrait_of_John_Adams_-_Samuel_Finley_Breese_Morse_-_overall.jpg/250px-Brooklyn_Museum_-_Portrait_of_John_Adams_-_Samuel_Finley_Breese_Morse_-_overall.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_portraits_198770e1.jpg",
+            "blob_name": "Samuel_Morse_portraits_198770e1.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Brooklyn_Museum_-_Jonas_Platt_-_Samuel_Finley_Breese_Morse_-_overall.jpg/250px-Brooklyn_Museum_-_Jonas_Platt_-_Samuel_Finley_Breese_Morse_-_overall.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_portraits_4602b617.jpg",
+            "blob_name": "Samuel_Morse_portraits_4602b617.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://rotel.pressbooks.pub/app/uploads/sites/60/2024/07/ELEGRAPH-SENDING-KEY-RECEIVER.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_achievements_fb2bbc9a.png",
+            "blob_name": "Samuel_Morse_achievements_fb2bbc9a.png"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_inventions_0c1794e8.jpg",
+            "blob_name": "Samuel_Morse_inventions_0c1794e8.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_inventions_0c1794e8.jpg",
+            "blob_name": "Samuel_Morse_inventions_0c1794e8.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://rotel.pressbooks.pub/app/uploads/sites/60/2024/07/ELEGRAPH-SENDING-KEY-RECEIVER.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_artifacts_fb2bbc9a.png",
+            "blob_name": "Samuel_Morse_artifacts_fb2bbc9a.png"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Samuel_Morse_artifacts_0c1794e8.jpg",
+            "blob_name": "Samuel_Morse_artifacts_0c1794e8.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/250px-Sir_Tim_Berners-Lee_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim_Berners_Lee_portraits_1f5b30bf.jpg",
+            "blob_name": "Tim_Berners_Lee_portraits_1f5b30bf.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim_Berners_Lee_achievements_538ab62a.jpg",
+            "blob_name": "Tim_Berners_Lee_achievements_538ab62a.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim_Berners_Lee_inventions_538ab62a.jpg",
+            "blob_name": "Tim_Berners_Lee_inventions_538ab62a.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim_Berners_Lee_inventions_538ab62a.jpg",
+            "blob_name": "Tim_Berners_Lee_inventions_538ab62a.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Tim_Berners_Lee_artifacts_538ab62a.jpg",
+            "blob_name": "Tim_Berners_Lee_artifacts_538ab62a.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 5,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg/250px-Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_portraits_8215961f.jpg",
+            "blob_name": "Steve_Jobs_portraits_8215961f.jpg"
+          },
+          {
+            "original_url": "https://c0.wallpaperflare.com/preview/851/487/816/steve-jobs-mac-computer-apple-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_portraits_4cf554e2.jpg",
+            "blob_name": "Steve_Jobs_portraits_4cf554e2.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "http://archive.government.ru/media/2013/5/2/56143/p320x180.jpeg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_achievements_410b9425.jpeg",
+            "blob_name": "Steve_Jobs_achievements_410b9425.jpeg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg/250px-Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_achievements_e64f5604.jpg",
+            "blob_name": "Steve_Jobs_achievements_e64f5604.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "http://archive.government.ru/media/2013/5/2/56143/p320x180.jpeg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_inventions_410b9425.jpeg",
+            "blob_name": "Steve_Jobs_inventions_410b9425.jpeg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Steve_Jobs_Theater_-_external.jpg/330px-Steve_Jobs_Theater_-_external.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_inventions_dc338e74.jpg",
+            "blob_name": "Steve_Jobs_inventions_dc338e74.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg/250px-Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Steve_Jobs_artifacts_8215961f.jpg",
+            "blob_name": "Steve_Jobs_artifacts_8215961f.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy_Lamarr_portraits_a63c0300.jpg",
+            "blob_name": "Hedy_Lamarr_portraits_a63c0300.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://p3.hippopx.com/preview/603/454/man-umbrella-sunflowers-time-adult-relationship-male-weather-people-nature-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy_Lamarr_achievements_666cdeda.jpg",
+            "blob_name": "Hedy_Lamarr_achievements_666cdeda.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Hedy_Lamarr_in_Come_Live_With_Me_trailer.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy_Lamarr_inventions_a39b410d.jpg",
+            "blob_name": "Hedy_Lamarr_inventions_a39b410d.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy_Lamarr_inventions_a63c0300.jpg",
+            "blob_name": "Hedy_Lamarr_inventions_a63c0300.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Hedy_Lamarr_in_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_in_The_Heavenly_Body_1944.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hedy_Lamarr_artifacts_3717fa13.jpg",
+            "blob_name": "Hedy_Lamarr_artifacts_3717fa13.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 5,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/HAI_Roundtable_on_AI_and_the_Economy.jpg/330px-HAI_Roundtable_on_AI_and_the_Economy.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fei_Fei_Li_portraits_753ba319.jpg",
+            "blob_name": "Fei_Fei_Li_portraits_753ba319.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 1,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/250px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_portraits_f63a6c8c.jpg",
+            "blob_name": "Elon_Musk_portraits_f63a6c8c.jpg"
+          },
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_portraits_bdf360a4.jpg",
+            "blob_name": "Elon_Musk_portraits_bdf360a4.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Obama%27s_New_Space_Frontier_%284525849781%29.png/250px-Obama%27s_New_Space_Frontier_%284525849781%29.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_achievements_e1f7d82b.png",
+            "blob_name": "Elon_Musk_achievements_e1f7d82b.png"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Elon_Musk_Accelerates_the_Boring_%2845716125474%29.jpg/330px-Elon_Musk_Accelerates_the_Boring_%2845716125474%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_achievements_a6b44f2f.jpg",
+            "blob_name": "Elon_Musk_achievements_a6b44f2f.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Elon_Musk.jpg/330px-Elon_Musk.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_inventions_990d81a7.jpg",
+            "blob_name": "Elon_Musk_inventions_990d81a7.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg/330px-Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_artifacts_f9d8a840.jpg",
+            "blob_name": "Elon_Musk_artifacts_f9d8a840.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Elon_Musk_in_Mission_Control_at_SpaceX.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_artifacts_458dbfb6.jpg",
+            "blob_name": "Elon_Musk_artifacts_458dbfb6.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_%28cropped%29.jpg/250px-Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Demis_Hassabis_portraits_276ce10f.jpg",
+            "blob_name": "Demis_Hassabis_portraits_276ce10f.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 1,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Engraving%3B_bust_of_Hippocrates%3B_by_Paul_Wellcome_L0019959.jpg/250px-Engraving%3B_bust_of_Hippocrates%3B_by_Paul_Wellcome_L0019959.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_portraits_da345e8a.jpg",
+            "blob_name": "Hippocrates_portraits_da345e8a.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://georgewbush-whitehouse.archives.gov/news/releases/2008/04/images/20080423-3_p042308cg-0198-250h.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_achievements_909ddba4.jpg",
+            "blob_name": "Hippocrates_achievements_909ddba4.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://publicdomainvectors.org/photos/Hippocrates.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_inventions_2c1e21f3.png",
+            "blob_name": "Hippocrates_inventions_2c1e21f3.png"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Plane_tree_of_Hippocrates.jpg/330px-Plane_tree_of_Hippocrates.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_inventions_799e8619.jpg",
+            "blob_name": "Hippocrates_inventions_799e8619.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Greeks25-2.svg/250px-Greeks25-2.svg.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hippocrates_artifacts_0c564502.png",
+            "blob_name": "Hippocrates_artifacts_0c564502.png"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Euclid_Wellcome_L0019815.jpg/250px-Portrait_of_Euclid_Wellcome_L0019815.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_portraits_de60ed81.jpg",
+            "blob_name": "Euclid_portraits_de60ed81.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Sanzio_01_Euclid.jpg/250px-Sanzio_01_Euclid.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_portraits_7c95cac5.jpg",
+            "blob_name": "Euclid_portraits_7c95cac5.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Euclid%27s_Elements%2C_1482.jpg/330px-Euclid%27s_Elements%2C_1482.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_achievements_d6c01e40.jpg",
+            "blob_name": "Euclid_achievements_d6c01e40.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/The_fireside_university_of_modern_invention%2C_discovery%2C_industry_and_art_for_home_circle_study_and_entertainment_%281902%29_%2814776194671%29.jpg/330px-The_fireside_university_of_modern_invention%2C_discovery%2C_industry_and_art_for_home_circle_study_and_entertainment_%281902%29_%2814776194671%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Euclid_inventions_d1fd6996.jpg",
+            "blob_name": "Euclid_inventions_d1fd6996.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_portraits_55874cb0.jpg",
+            "blob_name": "Aristotle_portraits_55874cb0.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_achievements_55874cb0.jpg",
+            "blob_name": "Aristotle_achievements_55874cb0.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Newton%27s_reflecting_telescope.jpg/250px-Newton%27s_reflecting_telescope.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_inventions_61381e77.jpg",
+            "blob_name": "Aristotle_inventions_61381e77.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Alexander_and_Aristotle.jpg/330px-Alexander_and_Aristotle.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_inventions_e214132c.jpg",
+            "blob_name": "Aristotle_inventions_e214132c.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://c2.peakpx.com/wallpaper/842/816/861/angkor-wat-wall-art-ancient-stone-wallpaper-thumb.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aristotle_artifacts_35cd199b.jpg",
+            "blob_name": "Aristotle_artifacts_35cd199b.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ahmed_Salim_and_Omar_Sharif.jpg/330px-Ahmed_Salim_and_Omar_Sharif.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn_al_Haytham_portraits_2d12af86.jpg",
+            "blob_name": "Ibn_al_Haytham_portraits_2d12af86.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn_al_Haytham_portraits_8ea795b0.jpg",
+            "blob_name": "Ibn_al_Haytham_portraits_8ea795b0.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn_al_Haytham_achievements_8ea795b0.jpg",
+            "blob_name": "Ibn_al_Haytham_achievements_8ea795b0.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ahmed_Salim_and_Omar_Sharif.jpg/330px-Ahmed_Salim_and_Omar_Sharif.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn_al_Haytham_inventions_2d12af86.jpg",
+            "blob_name": "Ibn_al_Haytham_inventions_2d12af86.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ibn_al_Haytham_inventions_8ea795b0.jpg",
+            "blob_name": "Ibn_al_Haytham_inventions_8ea795b0.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 5,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Roger_Bacon-2.jpg/120px-Roger_Bacon-2.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger_Bacon_portraits_9370bf8c.jpg",
+            "blob_name": "Roger_Bacon_portraits_9370bf8c.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Roger-bacon-statue.jpg/250px-Roger-bacon-statue.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Roger_Bacon_artifacts_c3f9f978.jpg",
+            "blob_name": "Roger_Bacon_artifacts_c3f9f978.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 2,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_portraits_134e8ab9.jpg",
+            "blob_name": "Hildegard_of_Bingen_portraits_134e8ab9.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_portraits_57ab1ea8.jpg",
+            "blob_name": "Hildegard_of_Bingen_portraits_57ab1ea8.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_achievements_57ab1ea8.jpg",
+            "blob_name": "Hildegard_of_Bingen_achievements_57ab1ea8.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_artifacts_134e8ab9.jpg",
+            "blob_name": "Hildegard_of_Bingen_artifacts_134e8ab9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 4,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Charles_Darwin_portrait.jpg/250px-Charles_Darwin_portrait.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_portraits_fbf9123e.jpg",
+            "blob_name": "Charles_Darwin_portraits_fbf9123e.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/895/605/304/photo-beethoven-composer-germany-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_achievements_91ae2360.jpg",
+            "blob_name": "Charles_Darwin_achievements_91ae2360.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Darwin%27s_single_microscope_Wellcome_L0031773.jpg/250px-Darwin%27s_single_microscope_Wellcome_L0031773.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_inventions_5adee096.jpg",
+            "blob_name": "Charles_Darwin_inventions_5adee096.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Charles_Darwin_200_year_exhibition_Brazil3.jpg/330px-Charles_Darwin_200_year_exhibition_Brazil3.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_artifacts_f2138e95.jpg",
+            "blob_name": "Charles_Darwin_artifacts_f2138e95.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Harriet.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_artifacts_6e7ebf7e.jpg",
+            "blob_name": "Charles_Darwin_artifacts_6e7ebf7e.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg/250px-Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Pasteur_portraits_cf31feb8.jpg",
+            "blob_name": "Louis_Pasteur_portraits_cf31feb8.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Albert_Edelfelt_-_Louis_Pasteur_-_1885.jpg/250px-Albert_Edelfelt_-_Louis_Pasteur_-_1885.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Pasteur_portraits_2e34e09a.jpg",
+            "blob_name": "Louis_Pasteur_portraits_2e34e09a.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Louis_Pasteur_experiment.jpg/250px-Louis_Pasteur_experiment.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Pasteur_achievements_7650b63d.jpg",
+            "blob_name": "Louis_Pasteur_achievements_7650b63d.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Louis_Pasteur_experiment.jpg/250px-Louis_Pasteur_experiment.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Pasteur_inventions_7650b63d.jpg",
+            "blob_name": "Louis_Pasteur_inventions_7650b63d.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg/250px-Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Pasteur_inventions_cf31feb8.jpg",
+            "blob_name": "Louis_Pasteur_inventions_cf31feb8.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 5,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Dmitri_Mendeleev_1890s.jpg/250px-Dmitri_Mendeleev_1890s.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri_Mendeleev_portraits_7aeb73ee.jpg",
+            "blob_name": "Dmitri_Mendeleev_portraits_7aeb73ee.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/MendeleevIP.jpg/250px-MendeleevIP.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri_Mendeleev_portraits_889297ee.jpg",
+            "blob_name": "Dmitri_Mendeleev_portraits_889297ee.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%EB%93%9C%EB%AF%B8%ED%8A%B8%EB%A6%AC_%EB%A9%98%EB%8D%B8%EB%A0%88%EC%98%88%ED%94%84.jpg/250px-%EB%93%9C%EB%AF%B8%ED%8A%B8%EB%A6%AC_%EB%A9%98%EB%8D%B8%EB%A0%88%EC%98%88%ED%94%84.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri_Mendeleev_achievements_29fe9c97.jpg",
+            "blob_name": "Dmitri_Mendeleev_achievements_29fe9c97.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/The_Soviet_Union_1969_CPA_3762_sheet_of_1_%28Mendeleev_and_Periodic_Law%29_cancelled_large_resolution_top.jpg/330px-The_Soviet_Union_1969_CPA_3762_sheet_of_1_%28Mendeleev_and_Periodic_Law%29_cancelled_large_resolution_top.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri_Mendeleev_inventions_14077fa8.jpg",
+            "blob_name": "Dmitri_Mendeleev_inventions_14077fa8.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Dmitri_Mendeleev_1890s.jpg/250px-Dmitri_Mendeleev_1890s.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Dmitri_Mendeleev_artifacts_7aeb73ee.jpg",
+            "blob_name": "Dmitri_Mendeleev_artifacts_7aeb73ee.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 5,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Portrait_of_Marie_Curie.jpg/250px-Portrait_of_Marie_Curie.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind_Franklin_portraits_4748401c.jpg",
+            "blob_name": "Rosalind_Franklin_portraits_4748401c.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind_Franklin_achievements_971c2865.jpg",
+            "blob_name": "Rosalind_Franklin_achievements_971c2865.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind_Franklin_inventions_971c2865.jpg",
+            "blob_name": "Rosalind_Franklin_inventions_971c2865.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Rosalind_Franklin_artifacts_971c2865.jpg",
+            "blob_name": "Rosalind_Franklin_artifacts_971c2865.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 4,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert_Einstein_portraits_1388791e.jpg",
+            "blob_name": "Albert_Einstein_portraits_1388791e.jpg"
+          },
+          {
+            "original_url": "https://i1.pickpik.com/photos/481/357/96/einstein-albert-classroom-blackboard-thumb.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert_Einstein_portraits_d17d4ef0.jpg",
+            "blob_name": "Albert_Einstein_portraits_d17d4ef0.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert_Einstein_inventions_1388791e.jpg",
+            "blob_name": "Albert_Einstein_inventions_1388791e.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Johnny_Werbrouck_Einstein_De_Haan_17-09-2024_14-58-03.jpg/250px-Johnny_Werbrouck_Einstein_De_Haan_17-09-2024_14-58-03.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert_Einstein_artifacts_4119d16a.jpg",
+            "blob_name": "Albert_Einstein_artifacts_4119d16a.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albert_Einstein_artifacts_1388791e.jpg",
+            "blob_name": "Albert_Einstein_artifacts_1388791e.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg/250px-Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer_Doudna_portraits_36706738.jpg",
+            "blob_name": "Jennifer_Doudna_portraits_36706738.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Professor_Jennifer_Doudna_ForMemRS_%28cropped%29.jpg/250px-Professor_Jennifer_Doudna_ForMemRS_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer_Doudna_achievements_587a8ef7.jpg",
+            "blob_name": "Jennifer_Doudna_achievements_587a8ef7.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Jennifer_Doudna_-_26658740020.jpg/250px-Jennifer_Doudna_-_26658740020.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer_Doudna_inventions_5e9207c9.jpg",
+            "blob_name": "Jennifer_Doudna_inventions_5e9207c9.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Jennifer_Doudna_-_26658740020.jpg/250px-Jennifer_Doudna_-_26658740020.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jennifer_Doudna_artifacts_5e9207c9.jpg",
+            "blob_name": "Jennifer_Doudna_artifacts_5e9207c9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 4,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Tu_Youyou_5012-1-2015.jpg/250px-Tu_Youyou_5012-1-2015.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou_Tu_portraits_9bea34e4.jpg",
+            "blob_name": "Youyou_Tu_portraits_9bea34e4.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tu_Youyou_5012-2015.jpg/250px-Tu_Youyou_5012-2015.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou_Tu_inventions_05d37ba5.jpg",
+            "blob_name": "Youyou_Tu_inventions_05d37ba5.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tu_Youyou_5012-2015.jpg/250px-Tu_Youyou_5012-2015.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Youyou_Tu_artifacts_05d37ba5.jpg",
+            "blob_name": "Youyou_Tu_artifacts_05d37ba5.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 3,
+        "successful_uploads": 3,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 3,
+        "successful_uploads": 0,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_portraits_f3a78a63.jpg",
+            "blob_name": "Phidias_portraits_f3a78a63.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_achievements_f3a78a63.jpg",
+            "blob_name": "Phidias_achievements_f3a78a63.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Zeven_wereldwonderen_en_belangrijke_uitvindingen%2C_RP-P-OB-204.366.jpg/330px-Zeven_wereldwonderen_en_belangrijke_uitvindingen%2C_RP-P-OB-204.366.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_inventions_0914dd52.jpg",
+            "blob_name": "Phidias_inventions_0914dd52.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Phidias_artifacts_f3a78a63.jpg",
+            "blob_name": "Phidias_artifacts_f3a78a63.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 0,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Imhotep-Louvre.JPG/250px-Imhotep-Louvre.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_portraits_491c0889.jpg",
+            "blob_name": "Imhotep_portraits_491c0889.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Queen_of_Pepy_II.jpg/250px-Queen_of_Pepy_II.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Imhotep_artifacts_dfd2e934.jpg",
+            "blob_name": "Imhotep_artifacts_dfd2e934.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 2,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 0,
+        "failed_uploads": 8,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_portraits_134e8ab9.jpg",
+            "blob_name": "Hildegard_of_Bingen_portraits_134e8ab9.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_portraits_57ab1ea8.jpg",
+            "blob_name": "Hildegard_of_Bingen_portraits_57ab1ea8.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_achievements_57ab1ea8.jpg",
+            "blob_name": "Hildegard_of_Bingen_achievements_57ab1ea8.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_of_Bingen_artifacts_134e8ab9.jpg",
+            "blob_name": "Hildegard_of_Bingen_artifacts_134e8ab9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 4,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Andrei_Rublev_%28miniature%2C_16_c%29_detail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei_Rublev_portraits_e01217d8.jpg",
+            "blob_name": "Andrei_Rublev_portraits_e01217d8.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Andrei_Rublev_%28miniature%2C_16_c%29_detail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Andrei_Rublev_inventions_e01217d8.jpg",
+            "blob_name": "Andrei_Rublev_inventions_e01217d8.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 2,
+        "failed_uploads": 6,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Carolus-Duran_-_Portrait_de_Claude_Monet_-_Mus%C3%A9e_Marmottan_Monet.jpg/250px-Carolus-Duran_-_Portrait_de_Claude_Monet_-_Mus%C3%A9e_Marmottan_Monet.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_portraits_e66d9089.jpg",
+            "blob_name": "Claude_Monet_portraits_e66d9089.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/330px-Monet_-_Impression%2C_Sunrise.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_portraits_d514b37f.jpg",
+            "blob_name": "Claude_Monet_portraits_d514b37f.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Water-Lilies-and-Japanese-Bridge-%281897-1899%29-Monet.jpg/250px-Water-Lilies-and-Japanese-Bridge-%281897-1899%29-Monet.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_achievements_ee0b911d.jpg",
+            "blob_name": "Claude_Monet_achievements_ee0b911d.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/330px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_inventions_e2cb890b.jpg",
+            "blob_name": "Claude_Monet_inventions_e2cb890b.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Bridge_Over_a_Pond_of_Water_Lilies%2C_Claude_Monet_1899.jpg/250px-Bridge_Over_a_Pond_of_Water_Lilies%2C_Claude_Monet_1899.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_artifacts_3a5c0227.jpg",
+            "blob_name": "Claude_Monet_artifacts_3a5c0227.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/330px-Monet_-_Impression%2C_Sunrise.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Claude_Monet_artifacts_d514b37f.jpg",
+            "blob_name": "Claude_Monet_artifacts_d514b37f.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg/250px-William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/William_Blake_portraits_e371afad.jpg",
+            "blob_name": "William_Blake_portraits_e371afad.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Oberon%2C_Titania_and_Puck_with_Fairies_Dancing._William_Blake._c.1786.jpg/330px-Oberon%2C_Titania_and_Puck_with_Fairies_Dancing._William_Blake._c.1786.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/William_Blake_achievements_9000037d.jpg",
+            "blob_name": "William_Blake_achievements_9000037d.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/William_Blake_008.jpg/330px-William_Blake_008.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/William_Blake_inventions_313c1606.jpg",
+            "blob_name": "William_Blake_inventions_313c1606.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 0,
+        "failed_uploads": 6,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_portraits_9b07d05f.jpg",
+            "blob_name": "Frida_Kahlo_portraits_9b07d05f.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_portraits_9b07d05f.jpg",
+            "blob_name": "Frida_Kahlo_portraits_9b07d05f.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://p3.hippopx.com/preview/361/127/plants-deco-exhibition-oilseed-rape-art-nature-beautiful-flowers-flora-flower-wallpaper-layout-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_achievements_1fdeb9cc.jpg",
+            "blob_name": "Frida_Kahlo_achievements_1fdeb9cc.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_achievements_9b07d05f.jpg",
+            "blob_name": "Frida_Kahlo_achievements_9b07d05f.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Diego_Rivera_with_a_xoloitzcuintle_dog_in_the_Blue_House%2C_Coyoacan_-_Google_Art_Project.jpg/250px-Diego_Rivera_with_a_xoloitzcuintle_dog_in_the_Blue_House%2C_Coyoacan_-_Google_Art_Project.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_inventions_d7c17b44.jpg",
+            "blob_name": "Frida_Kahlo_inventions_d7c17b44.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Frida_Kahlo_artifacts_9b07d05f.jpg",
+            "blob_name": "Frida_Kahlo_artifacts_9b07d05f.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg/250px-Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_portraits_35d7d253.jpg",
+            "blob_name": "Banksy_portraits_35d7d253.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/734/616/910/neon-sign-signage-live-music-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_achievements_fe32d6b9.jpg",
+            "blob_name": "Banksy_achievements_fe32d6b9.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Shop_Until_You_Drop_by_Banksy.JPG/250px-Shop_Until_You_Drop_by_Banksy.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_achievements_d7c0158c.jpg",
+            "blob_name": "Banksy_achievements_d7c0158c.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/473/744/998/black-and-white-photos-inventor-light-bulb-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_inventions_6b2033d0.jpg",
+            "blob_name": "Banksy_inventions_6b2033d0.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://c0.wallpaperflare.com/preview/538/579/644/bleu-de-chanel-eau-de-parfum-bottle-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_artifacts_3eba2f2c.jpg",
+            "blob_name": "Banksy_artifacts_3eba2f2c.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg/250px-Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Banksy_artifacts_35d7d253.jpg",
+            "blob_name": "Banksy_artifacts_35d7d253.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://farm9.staticflickr.com/8062/8234697714_fb8eef96d7_n.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi_Kusama_portraits_2b9a6ca2.jpg",
+            "blob_name": "Yayoi_Kusama_portraits_2b9a6ca2.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://c0.wallpaperflare.com/preview/527/124/852/blue-red-and-pink-abstract-artwork-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi_Kusama_achievements_7573b687.jpg",
+            "blob_name": "Yayoi_Kusama_achievements_7573b687.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Yayoi_Kusama_-_Ascension_of_Polkadots_on_the_Trees.JPG/250px-Yayoi_Kusama_-_Ascension_of_Polkadots_on_the_Trees.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi_Kusama_inventions_b79d37f7.jpg",
+            "blob_name": "Yayoi_Kusama_inventions_b79d37f7.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://itsartlaw.org/wp-content/uploads/2023/09/Screen-Shot-2023-09-23-at-7.59.45-PM-300x197.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yayoi_Kusama_artifacts_4360b02f.png",
+            "blob_name": "Yayoi_Kusama_artifacts_4360b02f.png"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 4,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 1,
+        "successful_uploads": 0,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 0,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_inventions_55874cb0.jpg",
+            "blob_name": "Theophrastus_inventions_55874cb0.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Aureolus_Theophrastus_Bombastus_von_Hohenheim_%28Paracelsus%29._Wellcome_V0004455.jpg/250px-Aureolus_Theophrastus_Bombastus_von_Hohenheim_%28Paracelsus%29._Wellcome_V0004455.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Theophrastus_artifacts_afca15f4.jpg",
+            "blob_name": "Theophrastus_artifacts_afca15f4.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 2,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/AGMA_Clepsydre.jpg/250px-AGMA_Clepsydre.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Empedocles_inventions_dcdaf69f.jpg",
+            "blob_name": "Empedocles_inventions_dcdaf69f.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 1,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/172/281/299/people-sculpture-statue-portrait-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang_Di_portraits_8d710e22.jpg",
+            "blob_name": "Huang_Di_portraits_8d710e22.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg/330px-Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang_Di_inventions_08a394e7.jpg",
+            "blob_name": "Huang_Di_inventions_08a394e7.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg/330px-Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Huang_Di_artifacts_08a394e7.jpg",
+            "blob_name": "Huang_Di_artifacts_08a394e7.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/AlbertusMagnus.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus_Magnus_portraits_a8cff104.jpg",
+            "blob_name": "Albertus_Magnus_portraits_a8cff104.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Tommaso_da_modena%2C_ritratti_di_domenicani_%28vescovo%29_1352_150cm%2C_treviso%2C_ex_convento_di_san_niccol%C3%B2%2C_sala_del_capitolo.jpg/250px-Tommaso_da_modena%2C_ritratti_di_domenicani_%28vescovo%29_1352_150cm%2C_treviso%2C_ex_convento_di_san_niccol%C3%B2%2C_sala_del_capitolo.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Albertus_Magnus_achievements_b73388bf.jpg",
+            "blob_name": "Albertus_Magnus_achievements_b73388bf.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 2,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Avicenna_lithograph_-_cropped.png/250px-Avicenna_lithograph_-_cropped.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Avicenna_portraits_2470f5c8.png",
+            "blob_name": "Avicenna_portraits_2470f5c8.png"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 1,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg/330px-Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint_Francis_of_Assisi_portraits_2e0bb9a9.jpg",
+            "blob_name": "Saint_Francis_of_Assisi_portraits_2e0bb9a9.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/691/837/213/leonardo-da-vinci-inventor-intelligence-art-and-craft-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint_Francis_of_Assisi_inventions_fc18b495.jpg",
+            "blob_name": "Saint_Francis_of_Assisi_inventions_fc18b495.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg/330px-Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Saint_Francis_of_Assisi_artifacts_2e0bb9a9.jpg",
+            "blob_name": "Saint_Francis_of_Assisi_artifacts_2e0bb9a9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Charles_Darwin_portrait.jpg/250px-Charles_Darwin_portrait.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_portraits_fbf9123e.jpg",
+            "blob_name": "Charles_Darwin_portraits_fbf9123e.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/781/224/981/596898a313784-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_achievements_bcca7030.jpg",
+            "blob_name": "Charles_Darwin_achievements_bcca7030.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/330px-Leaf_1_web.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_achievements_4a2f9e34.jpg",
+            "blob_name": "Charles_Darwin_achievements_4a2f9e34.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Darwin%27s_single_microscope_Wellcome_L0031773.jpg/250px-Darwin%27s_single_microscope_Wellcome_L0031773.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_inventions_5adee096.jpg",
+            "blob_name": "Charles_Darwin_inventions_5adee096.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Charles_Darwin_200_year_exhibition_Brazil3.jpg/330px-Charles_Darwin_200_year_exhibition_Brazil3.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_artifacts_f2138e95.jpg",
+            "blob_name": "Charles_Darwin_artifacts_f2138e95.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Harriet.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Charles_Darwin_artifacts_6e7ebf7e.jpg",
+            "blob_name": "Charles_Darwin_artifacts_6e7ebf7e.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cody-Buffalo_Bill_Center_of_the_West_11-09-2014_17-51-32.JPG/330px-Cody-Buffalo_Bill_Center_of_the_West_11-09-2014_17-51-32.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/John_James_Audubon_artifacts_0c00531b.jpg",
+            "blob_name": "John_James_Audubon_artifacts_0c00531b.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 1,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary_Anning_portraits_3456571d.jpg",
+            "blob_name": "Mary_Anning_portraits_3456571d.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary_Anning_portraits_3456571d.jpg",
+            "blob_name": "Mary_Anning_portraits_3456571d.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Cr%C3%A2ne_d%E2%80%99Ichthyosaure_d%C3%A9couvert_par_Mary_Anning.jpg/330px-Cr%C3%A2ne_d%E2%80%99Ichthyosaure_d%C3%A9couvert_par_Mary_Anning.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary_Anning_artifacts_3028759d.jpg",
+            "blob_name": "Mary_Anning_artifacts_3028759d.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mary_Anning_artifacts_3456571d.jpg",
+            "blob_name": "Mary_Anning_artifacts_3456571d.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 4,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Jane_Goodall_at_SXSW_London_2025.jpg/250px-Jane_Goodall_at_SXSW_London_2025.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane_Goodall_portraits_5937c3e4.jpg",
+            "blob_name": "Jane_Goodall_portraits_5937c3e4.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://landsat.gsfc.nasa.gov/wp-content/uploads/2024/01/jakobshavn-oli-20220904-th-300x235.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Jane_Goodall_achievements_eb08ff7d.jpg",
+            "blob_name": "Jane_Goodall_achievements_eb08ff7d.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 2,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/David_Attenborough_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/David_Attenborough_portraits_38a93a78.jpg",
+            "blob_name": "David_Attenborough_portraits_38a93a78.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/John_James_Audubon_1826.jpg/250px-John_James_Audubon_1826.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/David_Attenborough_portraits_ba805edb.jpg",
+            "blob_name": "David_Attenborough_portraits_ba805edb.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/David_Attenborough_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/David_Attenborough_artifacts_38a93a78.jpg",
+            "blob_name": "David_Attenborough_artifacts_38a93a78.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari_Maathai_portraits_c1d2a073.jpg",
+            "blob_name": "Wangari_Maathai_portraits_c1d2a073.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari_Maathai_inventions_c1d2a073.jpg",
+            "blob_name": "Wangari_Maathai_inventions_c1d2a073.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Wangari_Maathai_artifacts_c1d2a073.jpg",
+            "blob_name": "Wangari_Maathai_artifacts_c1d2a073.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes_Bustamante_portraits_b4ed16a5.jpg",
+            "blob_name": "Mercedes_Bustamante_portraits_b4ed16a5.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes_Bustamante_portraits_b4ed16a5.jpg",
+            "blob_name": "Mercedes_Bustamante_portraits_b4ed16a5.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Mercedes_Bustamante_inventions_b4ed16a5.jpg",
+            "blob_name": "Mercedes_Bustamante_inventions_b4ed16a5.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 3,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Anthony_Rapp_SDCC_2017.jpg/250px-Anthony_Rapp_SDCC_2017.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul_Stamets_portraits_67292061.jpg",
+            "blob_name": "Paul_Stamets_portraits_67292061.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Anthony_Rapp_SDCC_2017.jpg/250px-Anthony_Rapp_SDCC_2017.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Paul_Stamets_inventions_67292061.jpg",
+            "blob_name": "Paul_Stamets_inventions_67292061.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 2,
+        "successful_uploads": 2,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Milo_van_Croton_%281763%29.jpg/250px-Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Milo_van_Croton_%281763%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_portraits_aab5aee7.jpg",
+            "blob_name": "Milo_of_Croton_portraits_aab5aee7.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/en/3/34/Sports_and_games.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_achievements_07f54795.png",
+            "blob_name": "Milo_of_Croton_achievements_07f54795.png"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Zelfportret_%281771%29.jpg/250px-Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Zelfportret_%281771%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_inventions_e58183af.jpg",
+            "blob_name": "Milo_of_Croton_inventions_e58183af.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_inventions_4904be91.jpg",
+            "blob_name": "Milo_of_Croton_inventions_4904be91.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_artifacts_4904be91.jpg",
+            "blob_name": "Milo_of_Croton_artifacts_4904be91.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Milo_of_Croton_artifacts_4904be91.jpg",
+            "blob_name": "Milo_of_Croton_artifacts_4904be91.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 6,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/William_Marshal%2C_II_Earl_of_Pembroke.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/William_Marshal_portraits_fec294c6.jpg",
+            "blob_name": "William_Marshal_portraits_fec294c6.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/William_Marshal%2C_II_Earl_of_Pembroke.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/William_Marshal_artifacts_fec294c6.jpg",
+            "blob_name": "William_Marshal_artifacts_fec294c6.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 2,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ethel_Walker_%281861%E2%80%931951%29_-_Dame_Ethel_Walker_%28Self-portrait%29_-_NPG_5301_-_National_Portrait_Gallery.jpg/250px-Ethel_Walker_%281861%E2%80%931951%29_-_Dame_Ethel_Walker_%28Self-portrait%29_-_NPG_5301_-_National_Portrait_Gallery.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin_Hood_portraits_0bfa618c.jpg",
+            "blob_name": "Robin_Hood_portraits_0bfa618c.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Robin_Hood_and_Maid_Marian.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin_Hood_portraits_8b3d21e0.jpg",
+            "blob_name": "Robin_Hood_portraits_8b3d21e0.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://p1.pikrepo.com/preview/1002/548/55/darts-entertainment-competition-the-purpose-of-the-game-dart-royalty-free-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin_Hood_achievements_8c3453c3.jpg",
+            "blob_name": "Robin_Hood_achievements_8c3453c3.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/October_2020-_Charles_%22Pretty_Boy%22_Floyd%27s_Death_Mask.jpg/330px-October_2020-_Charles_%22Pretty_Boy%22_Floyd%27s_Death_Mask.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin_Hood_artifacts_be4ac7c5.jpg",
+            "blob_name": "Robin_Hood_artifacts_be4ac7c5.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Robin_Hood_and_Little_John.jpg/250px-Robin_Hood_and_Little_John.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Robin_Hood_artifacts_e0df34d0.jpg",
+            "blob_name": "Robin_Hood_artifacts_e0df34d0.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 5,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Henry_Fitzalan%2C_12th_Earl_of_Arundel_from_NPG.jpg/250px-Henry_Fitzalan%2C_12th_Earl_of_Arundel_from_NPG.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_FitzAlan_portraits_932516dd.jpg",
+            "blob_name": "Richard_FitzAlan_portraits_932516dd.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_FitzAlan_portraits_7e609bed.jpg",
+            "blob_name": "Richard_FitzAlan_portraits_7e609bed.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_FitzAlan_inventions_7e609bed.jpg",
+            "blob_name": "Richard_FitzAlan_inventions_7e609bed.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/ArundelTomb1.JPG/330px-ArundelTomb1.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_FitzAlan_artifacts_338c7fb5.jpg",
+            "blob_name": "Richard_FitzAlan_artifacts_338c7fb5.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_FitzAlan_artifacts_7e609bed.jpg",
+            "blob_name": "Richard_FitzAlan_artifacts_7e609bed.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 5,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cricket%2C_WG_Grace%2C_1891-_Arthur_Shrewsbury.jpg/250px-Cricket%2C_WG_Grace%2C_1891-_Arthur_Shrewsbury.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/WG_Grace_portraits_99cbdeef.jpg",
+            "blob_name": "WG_Grace_portraits_99cbdeef.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Cricket%2C_WG_Grace%2C_1891-_Drawings_of_bats.jpg/330px-Cricket%2C_WG_Grace%2C_1891-_Drawings_of_bats.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/WG_Grace_inventions_096620ee.jpg",
+            "blob_name": "WG_Grace_inventions_096620ee.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 2,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre_de_Coubertin_portraits_c3380b03.jpg",
+            "blob_name": "Pierre_de_Coubertin_portraits_c3380b03.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre_de_Coubertin_portraits_c3380b03.jpg",
+            "blob_name": "Pierre_de_Coubertin_portraits_c3380b03.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre_de_Coubertin_achievements_c3380b03.jpg",
+            "blob_name": "Pierre_de_Coubertin_achievements_c3380b03.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pierre_de_Coubertin_artifacts_c3380b03.jpg",
+            "blob_name": "Pierre_de_Coubertin_artifacts_c3380b03.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 4,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Naismith_portraits_50044536.jpg",
+            "blob_name": "James_Naismith_portraits_50044536.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Naismith_achievements_50044536.jpg",
+            "blob_name": "James_Naismith_achievements_50044536.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Naismith_inventions_50044536.jpg",
+            "blob_name": "James_Naismith_inventions_50044536.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Naismith_inventions_50044536.jpg",
+            "blob_name": "James_Naismith_inventions_50044536.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/James_Naismith_artifacts_50044536.jpg",
+            "blob_name": "James_Naismith_artifacts_50044536.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Serena_Williams_at_2013_US_Open.jpg/250px-Serena_Williams_at_2013_US_Open.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena_Williams_portraits_36cb2048.jpg",
+            "blob_name": "Serena_Williams_portraits_36cb2048.jpg"
+          },
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/601/785/157/tennis-professional-woman-serena-williams-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena_Williams_portraits_6169ff39.jpg",
+            "blob_name": "Serena_Williams_portraits_6169ff39.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Victoria_Azarenka%2C_Serena_Williams_and_Maria_Sharapova_with_medals_2012.jpg/250px-Victoria_Azarenka%2C_Serena_Williams_and_Maria_Sharapova_with_medals_2012.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Serena_Williams_achievements_22f8df23.jpg",
+            "blob_name": "Serena_Williams_achievements_22f8df23.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Panini_pele_photo_only.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pel\u00e9_portraits_94f6a0d1.jpg",
+            "blob_name": "Pel\u00e9_portraits_94f6a0d1.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Brasileiros_%282%29.JPG/250px-Brasileiros_%282%29.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pel\u00e9_inventions_599f3c0a.jpg",
+            "blob_name": "Pel\u00e9_inventions_599f3c0a.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Pel%C3%A9_vs_swedish_defenders_1958.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pel\u00e9_inventions_f7eeea4f.jpg",
+            "blob_name": "Pel\u00e9_inventions_f7eeea4f.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Carlos_Alberto_comforts_Pel%C3%A9_at_his_final_game_1977.jpg/250px-Carlos_Alberto_comforts_Pel%C3%A9_at_his_final_game_1977.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Pel\u00e9_artifacts_6aa47410.jpg",
+            "blob_name": "Pel\u00e9_artifacts_6aa47410.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 4,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone_Biles_portraits_af499079.jpg",
+            "blob_name": "Simone_Biles_portraits_af499079.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone_Biles_achievements_af499079.jpg",
+            "blob_name": "Simone_Biles_achievements_af499079.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone_Biles_inventions_af499079.jpg",
+            "blob_name": "Simone_Biles_inventions_af499079.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Simone_Biles_artifacts_af499079.jpg",
+            "blob_name": "Simone_Biles_artifacts_af499079.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 4,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Orlai_Sappho.jpg/250px-Orlai_Sappho.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_portraits_ebd4fa1e.jpg",
+            "blob_name": "Sappho_portraits_ebd4fa1e.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Niobid_Painter_-_Red-Figure_Amphora_with_Musical_Scene_-_Walters_482712_-_Side_A.jpg/250px-Niobid_Painter_-_Red-Figure_Amphora_with_Musical_Scene_-_Walters_482712_-_Side_A.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_achievements_3ec8b18d.jpg",
+            "blob_name": "Sappho_achievements_3ec8b18d.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Charles_Gleyre_La_Danse_des_bacchantes.jpg/330px-Charles_Gleyre_La_Danse_des_bacchantes.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_inventions_b5891fb5.jpg",
+            "blob_name": "Sappho_inventions_b5891fb5.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Alkaios_Sappho_BM_GR1842.7-28.1132.jpg/250px-Alkaios_Sappho_BM_GR1842.7-28.1132.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Sappho_artifacts_e61ed26e.jpg",
+            "blob_name": "Sappho_artifacts_e61ed26e.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg/250px-Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_portraits_f07ea621.jpg",
+            "blob_name": "King_David_portraits_f07ea621.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sweet_stories_of_God%3B_in_the_language_of_childhood_and_the_beautiful_delineations_of_sacred_art_%281899%29_%2814751566596%29.jpg/250px-Sweet_stories_of_God%3B_in_the_language_of_childhood_and_the_beautiful_delineations_of_sacred_art_%281899%29_%2814751566596%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_portraits_1f34a858.jpg",
+            "blob_name": "King_David_portraits_1f34a858.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://dod.hawaii.gov/wp-content/uploads/2024/12/2011-DOD-Annual-Report-21.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_achievements_722400bd.jpg",
+            "blob_name": "King_David_achievements_722400bd.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Jesse_-_David_-_Solomon.jpg/330px-Jesse_-_David_-_Solomon.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_inventions_eb96934f.jpg",
+            "blob_name": "King_David_inventions_eb96934f.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/King_david_hotel_bombing1.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_inventions_c72b8a02.jpg",
+            "blob_name": "King_David_inventions_c72b8a02.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/King_david_Leah_Michlson_1.jpg/250px-King_david_Leah_Michlson_1.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_artifacts_2060a61e.jpg",
+            "blob_name": "King_David_artifacts_2060a61e.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg/250px-Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/King_David_artifacts_f07ea621.jpg",
+            "blob_name": "King_David_artifacts_f07ea621.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Portrait_Of_Most_Venerable_Narada_Maha_Thera_%281898-1983%29.jpg/250px-Portrait_Of_Most_Venerable_Narada_Maha_Thera_%281898-1983%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_portraits_9343244f.jpg",
+            "blob_name": "Narada_portraits_9343244f.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Possibly_Narada%2C_the_inventor_of_the_Vina..jpg/250px-Possibly_Narada%2C_the_inventor_of_the_Vina..jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_inventions_c33b14ab.jpg",
+            "blob_name": "Narada_inventions_c33b14ab.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://www.nps.gov/mora/learn/management/images/artifacts.png?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Narada_artifacts_88696296.png",
+            "blob_name": "Narada_artifacts_88696296.png"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume_de_Machaut_portraits_9e7297f0.jpg",
+            "blob_name": "Guillaume_de_Machaut_portraits_9e7297f0.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume_de_Machaut_inventions_9e7297f0.jpg",
+            "blob_name": "Guillaume_de_Machaut_inventions_9e7297f0.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Guillaume_de_Machaut_artifacts_9e7297f0.jpg",
+            "blob_name": "Guillaume_de_Machaut_artifacts_9e7297f0.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_von_Bingen_portraits_134e8ab9.jpg",
+            "blob_name": "Hildegard_von_Bingen_portraits_134e8ab9.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_von_Bingen_portraits_57ab1ea8.jpg",
+            "blob_name": "Hildegard_von_Bingen_portraits_57ab1ea8.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_von_Bingen_achievements_57ab1ea8.jpg",
+            "blob_name": "Hildegard_von_Bingen_achievements_57ab1ea8.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://p1.hippopx.com/preview/961/787/667/rust-metal-rusted-rusty-background-structure-royalty-free-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_von_Bingen_inventions_277deee3.jpg",
+            "blob_name": "Hildegard_von_Bingen_inventions_277deee3.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hildegard_von_Bingen_artifacts_134e8ab9.jpg",
+            "blob_name": "Hildegard_von_Bingen_artifacts_134e8ab9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 5,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso_el_Sabio_portraits_b04a94f9.jpg",
+            "blob_name": "Alfonso_el_Sabio_portraits_b04a94f9.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso_el_Sabio_inventions_b04a94f9.jpg",
+            "blob_name": "Alfonso_el_Sabio_inventions_b04a94f9.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alfonso_el_Sabio_artifacts_b04a94f9.jpg",
+            "blob_name": "Alfonso_el_Sabio_artifacts_b04a94f9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ludwig_Van_Beethoven_LCCN2003663902.jpg/250px-Ludwig_Van_Beethoven_LCCN2003663902.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig_van_Beethoven_portraits_e32940dd.jpg",
+            "blob_name": "Ludwig_van_Beethoven_portraits_e32940dd.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig_van_Beethoven_portraits_082bf6e4.jpg",
+            "blob_name": "Ludwig_van_Beethoven_portraits_082bf6e4.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig_van_Beethoven_achievements_082bf6e4.jpg",
+            "blob_name": "Ludwig_van_Beethoven_achievements_082bf6e4.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig_van_Beethoven_inventions_082bf6e4.jpg",
+            "blob_name": "Ludwig_van_Beethoven_inventions_082bf6e4.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ludwig_van_Beethoven_artifacts_082bf6e4.jpg",
+            "blob_name": "Ludwig_van_Beethoven_artifacts_082bf6e4.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny_Mendelssohn_portraits_df3363af.jpg",
+            "blob_name": "Fanny_Mendelssohn_portraits_df3363af.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny_Mendelssohn_portraits_df3363af.jpg",
+            "blob_name": "Fanny_Mendelssohn_portraits_df3363af.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fanny_Mendelssohn_artifacts_df3363af.jpg",
+            "blob_name": "Fanny_Mendelssohn_artifacts_df3363af.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Frederic_Chopin_photo.jpeg/250px-Frederic_Chopin_photo.jpeg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fr\u00e9d\u00e9ric_Chopin_portraits_588ba207.jpeg",
+            "blob_name": "Fr\u00e9d\u00e9ric_Chopin_portraits_588ba207.jpeg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fryderyk_Chopin.jpg/250px-Fryderyk_Chopin.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fr\u00e9d\u00e9ric_Chopin_achievements_1925e806.jpg",
+            "blob_name": "Fr\u00e9d\u00e9ric_Chopin_achievements_1925e806.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Pomnik_Fryderyka_Chopina_w_%C5%81azienkach_%281_of_1%29.jpg/250px-Pomnik_Fryderyka_Chopina_w_%C5%81azienkach_%281_of_1%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fr\u00e9d\u00e9ric_Chopin_artifacts_9c59353f.jpg",
+            "blob_name": "Fr\u00e9d\u00e9ric_Chopin_artifacts_9c59353f.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Chopin%2C_by_Wodzinska.JPG/250px-Chopin%2C_by_Wodzinska.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Fr\u00e9d\u00e9ric_Chopin_artifacts_29bcf7b4.jpg",
+            "blob_name": "Fr\u00e9d\u00e9ric_Chopin_artifacts_29bcf7b4.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 4,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Louis_Armstrong2.jpg/250px-Louis_Armstrong2.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_portraits_aca085dc.jpg",
+            "blob_name": "Louis_Armstrong_portraits_aca085dc.jpg"
+          },
+          {
+            "original_url": "https://p1.pikrepo.com/preview/87/424/14/graffiti-street-art-face-creepy-royalty-free-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_portraits_fa824e50.jpg",
+            "blob_name": "Louis_Armstrong_portraits_fa824e50.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Louis_Armstrong_restored.jpg/330px-Louis_Armstrong_restored.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_achievements_fdce4e24.jpg",
+            "blob_name": "Louis_Armstrong_achievements_fdce4e24.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://p1.hippopx.com/preview/101/806/352/idea-thought-business-eureka-invention-solution-royalty-free-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_inventions_c9ef710b.jpg",
+            "blob_name": "Louis_Armstrong_inventions_c9ef710b.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://p1.pikrepo.com/preview/719/388/887/day-of-the-dead-mexico-skull-crafts-mexican-tradition-royalty-free-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_artifacts_5ce6b1f0.jpg",
+            "blob_name": "Louis_Armstrong_artifacts_5ce6b1f0.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Louis_Armstrong_NYWTS_4.jpg/250px-Louis_Armstrong_NYWTS_4.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Louis_Armstrong_artifacts_6af66451.jpg",
+            "blob_name": "Louis_Armstrong_artifacts_6af66451.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/The_Beatles_members_at_New_York_City_in_1964.jpg/250px-The_Beatles_members_at_New_York_City_in_1964.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/The_Beatles_portraits_391c37f7.jpg",
+            "blob_name": "The_Beatles_portraits_391c37f7.jpg"
+          },
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/264/624/892/colors-portrait-macro-canon-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/The_Beatles_portraits_9b98e60f.jpg",
+            "blob_name": "The_Beatles_portraits_9b98e60f.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "http://archive.government.ru/media/2009/1/3/11023/doc_photo2.jpeg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/The_Beatles_achievements_650ddd5a.jpeg",
+            "blob_name": "The_Beatles_achievements_650ddd5a.jpeg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/DarkSideOfTheMoon1973.jpg/330px-DarkSideOfTheMoon1973.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/The_Beatles_inventions_a99313da.jpg",
+            "blob_name": "The_Beatles_inventions_a99313da.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/The_Beatles_The_End_final_lyrics_plaque.jpg/250px-The_Beatles_The_End_final_lyrics_plaque.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/The_Beatles_inventions_7c98dc57.jpg",
+            "blob_name": "The_Beatles_inventions_7c98dc57.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 5,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_portraits_bdf360a4.jpg",
+            "blob_name": "BTS_portraits_bdf360a4.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/574/120/860/woman-smile-happy-joy-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_achievements_5482cac4.jpg",
+            "blob_name": "BTS_achievements_5482cac4.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://myhotelsbangkok.com/data/images/300x300w/3643/364372/364372987.JPEG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/BTS_artifacts_99f56bf1.jpg",
+            "blob_name": "BTS_artifacts_99f56bf1.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 3,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://itsartlaw.org/wp-content/uploads/sb-instagram-feed-images/520166465_18514659583017515_2393436755100772255_nthumb.webp",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly_Herndon_inventions_f6f75741.webp",
+            "blob_name": "Holly_Herndon_inventions_f6f75741.webp"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://itsartlaw.org/wp-content/uploads/sb-instagram-feed-images/520166465_18514659583017515_2393436755100772255_nthumb.webp",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Holly_Herndon_artifacts_f6f75741.webp",
+            "blob_name": "Holly_Herndon_artifacts_f6f75741.webp"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 2,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 0,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg/250px-Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_portraits_2f65da4f.jpg",
+            "blob_name": "Ptolemy_portraits_2f65da4f.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg/250px-Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_achievements_2f65da4f.jpg",
+            "blob_name": "Ptolemy_achievements_2f65da4f.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Egyptian_-_Head_of_Ptolemy_II_-_Walters_22109.jpg/250px-Egyptian_-_Head_of_Ptolemy_II_-_Walters_22109.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_inventions_be00d18e.jpg",
+            "blob_name": "Ptolemy_inventions_be00d18e.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/250px-Rosetta_Stone.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_artifacts_365c09ce.jpg",
+            "blob_name": "Ptolemy_artifacts_365c09ce.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Claudius_Ptolemy-_The_World.jpg/330px-Claudius_Ptolemy-_The_World.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Ptolemy_artifacts_7beeab5a.jpg",
+            "blob_name": "Ptolemy_artifacts_7beeab5a.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 5,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_portraits_431dab6c.jpg",
+            "blob_name": "Aryabhata_portraits_431dab6c.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_inventions_431dab6c.jpg",
+            "blob_name": "Aryabhata_inventions_431dab6c.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aryabhata_artifacts_431dab6c.jpg",
+            "blob_name": "Aryabhata_artifacts_431dab6c.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Hypatia_at_the_Haymarket_theatre_-_The_Graphic_-_21_January_1893.jpg/250px-Hypatia_at_the_Haymarket_theatre_-_The_Graphic_-_21_January_1893.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_portraits_4c056ab1.jpg",
+            "blob_name": "Hypatia_portraits_4c056ab1.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Astrolabio_%2816787706916%29.jpg/250px-Astrolabio_%2816787706916%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_inventions_fe8d08e1.jpg",
+            "blob_name": "Hypatia_inventions_fe8d08e1.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Astrolabio_%2816787706916%29.jpg/250px-Astrolabio_%2816787706916%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Hypatia_inventions_fe8d08e1.jpg",
+            "blob_name": "Hypatia_inventions_fe8d08e1.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 3,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Battani_portraits_225e00d3.jpg",
+            "blob_name": "Al_Battani_portraits_225e00d3.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Battani_achievements_225e00d3.jpg",
+            "blob_name": "Al_Battani_achievements_225e00d3.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Battani_inventions_225e00d3.jpg",
+            "blob_name": "Al_Battani_inventions_225e00d3.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 3,
+        "successful_uploads": 0,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Canterbury_Holland_Chaucer_statue.jpg/250px-Canterbury_Holland_Chaucer_statue.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey_Chaucer_achievements_3bf0caf3.jpg",
+            "blob_name": "Geoffrey_Chaucer_achievements_3bf0caf3.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Canterbury_Holland_Chaucer_statue.jpg/250px-Canterbury_Holland_Chaucer_statue.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey_Chaucer_inventions_3bf0caf3.jpg",
+            "blob_name": "Geoffrey_Chaucer_inventions_3bf0caf3.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Chaucer1721.jpg/250px-Chaucer1721.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Geoffrey_Chaucer_artifacts_943fd664.jpg",
+            "blob_name": "Geoffrey_Chaucer_artifacts_943fd664.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg/250px-Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo_Galilei_portraits_79289be6.jpg",
+            "blob_name": "Galileo_Galilei_portraits_79289be6.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Galileo_Galilei_2.jpg/250px-Galileo_Galilei_2.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo_Galilei_portraits_0e45574f.jpg",
+            "blob_name": "Galileo_Galilei_portraits_0e45574f.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg/250px-Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Galileo_Galilei_artifacts_79289be6.jpg",
+            "blob_name": "Galileo_Galilei_artifacts_79289be6.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond_Halley_portraits_d2920c7b.jpg",
+            "blob_name": "Edmond_Halley_portraits_d2920c7b.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond_Halley_achievements_d2920c7b.jpg",
+            "blob_name": "Edmond_Halley_achievements_d2920c7b.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond_Halley_inventions_d2920c7b.jpg",
+            "blob_name": "Edmond_Halley_inventions_d2920c7b.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Edmond_Halley_artifacts_d2920c7b.jpg",
+            "blob_name": "Edmond_Halley_artifacts_d2920c7b.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 4,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg/250px-David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Caroline_Herschel_portraits_6503d900.jpg",
+            "blob_name": "Caroline_Herschel_portraits_6503d900.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 1,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Yuri_Gagarin_%281961%29_-_Restoration.jpg/250px-Yuri_Gagarin_%281961%29_-_Restoration.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Yuri_Gagarin_artifacts_327b49a9.jpg",
+            "blob_name": "Yuri_Gagarin_artifacts_327b49a9.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 1,
+        "failed_uploads": 7,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/250px-Katherine_Johnson_at_NASA%2C_in_1966.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine_Johnson_achievements_52d05ecc.jpg",
+            "blob_name": "Katherine_Johnson_achievements_52d05ecc.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Katherine_Johnson_medal.jpeg/250px-Katherine_Johnson_medal.jpeg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine_Johnson_inventions_6244d7b9.jpeg",
+            "blob_name": "Katherine_Johnson_inventions_6244d7b9.jpeg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/250px-Katherine_Johnson_at_NASA%2C_in_1966.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Katherine_Johnson_artifacts_52d05ecc.jpg",
+            "blob_name": "Katherine_Johnson_artifacts_52d05ecc.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 3,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Stephen_Hawking.StarChild.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen_Hawking_portraits_1e5160dc.jpg",
+            "blob_name": "Stephen_Hawking_portraits_1e5160dc.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Relative_time_%282886233692%29_%28Stephen_Hawking_cropped%29.jpg/250px-Relative_time_%282886233692%29_%28Stephen_Hawking_cropped%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Stephen_Hawking_inventions_b6406c62.jpg",
+            "blob_name": "Stephen_Hawking_inventions_b6406c62.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 6,
+        "successful_uploads": 2,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 0,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 0,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hydraulic_telegraph%2C_4th_century_BC_%28reconstruction%29.jpg/250px-Hydraulic_telegraph%2C_4th_century_BC_%28reconstruction%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas_Tacticus_portraits_7211982c.jpg",
+            "blob_name": "Aeneas_Tacticus_portraits_7211982c.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/250px-Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas_Tacticus_portraits_51bb0521.jpg",
+            "blob_name": "Aeneas_Tacticus_portraits_51bb0521.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/250px-Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Aeneas_Tacticus_artifacts_51bb0521.jpg",
+            "blob_name": "Aeneas_Tacticus_artifacts_51bb0521.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 3,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_portraits_cc51b6e4.jpg",
+            "blob_name": "Al_Jazari_portraits_cc51b6e4.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Al-Jazari_-_The_Scribe_Candle_Clock.jpg/250px-Al-Jazari_-_The_Scribe_Candle_Clock.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_inventions_789d38a8.jpg",
+            "blob_name": "Al_Jazari_inventions_789d38a8.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Al_Jazari_inventions_cc51b6e4.jpg",
+            "blob_name": "Al_Jazari_inventions_cc51b6e4.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 5,
+        "successful_uploads": 3,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_of_Wallingford_portraits_c7ad3342.jpg",
+            "blob_name": "Richard_of_Wallingford_portraits_c7ad3342.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_of_Wallingford_portraits_c7ad3342.jpg",
+            "blob_name": "Richard_of_Wallingford_portraits_c7ad3342.jpg"
+          }
+        ],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Czech-2013-Prague-Astronomical_clock_face.jpg/330px-Czech-2013-Prague-Astronomical_clock_face.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_of_Wallingford_inventions_a0edc143.jpg",
+            "blob_name": "Richard_of_Wallingford_inventions_a0edc143.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Richard_of_Wallingford_artifacts_c7ad3342.jpg",
+            "blob_name": "Richard_of_Wallingford_artifacts_c7ad3342.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 4,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 0,
+        "failed_uploads": 4,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Thomas_Edison2.jpg/250px-Thomas_Edison2.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_portraits_4f7dd665.jpg",
+            "blob_name": "Thomas_Edison_portraits_4f7dd665.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://www.nps.gov/articles/images/Post-John-Keegan-President-Edison-Innovation-Foundation-photo-uncredited-NPS_1.jpg?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_achievements_93dc0c66.jpg",
+            "blob_name": "Thomas_Edison_achievements_93dc0c66.jpg"
+          },
+          {
+            "original_url": "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_achievements_4a9e638d.jpg",
+            "blob_name": "Thomas_Edison_achievements_4a9e638d.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_inventions_4a9e638d.jpg",
+            "blob_name": "Thomas_Edison_inventions_4a9e638d.jpg"
+          },
+          {
+            "original_url": "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_inventions_4a9e638d.jpg",
+            "blob_name": "Thomas_Edison_inventions_4a9e638d.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Thomas_Edison_cabinet_card_by_Victor_Daireaux%2C_c1880s.JPG/250px-Thomas_Edison_cabinet_card_by_Victor_Daireaux%2C_c1880s.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_artifacts_e508e20f.jpg",
+            "blob_name": "Thomas_Edison_artifacts_e508e20f.jpg"
+          },
+          {
+            "original_url": "https://www.nps.gov/edis/learn/kidsyouth/images/lithograph-of-1890s-lab.jpg?maxwidth=650&autorotate=false",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Thomas_Edison_artifacts_1c57ad8e.jpg",
+            "blob_name": "Thomas_Edison_artifacts_1c57ad8e.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/MNT_Brodic.JPG/250px-MNT_Brodic.JPG",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Nikola_Tesla_artifacts_feb3b172.jpg",
+            "blob_name": "Nikola_Tesla_artifacts_feb3b172.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 1,
+        "failed_uploads": 6,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_portraits_b6124f6d.jpg",
+            "blob_name": "Alexander_Graham_Bell_portraits_b6124f6d.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://georgewbush-whitehouse.archives.gov/news/releases/2008/09/images/20080929-4_d-0196-8-250h.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_achievements_fbb3fd95.jpg",
+            "blob_name": "Alexander_Graham_Bell_achievements_fbb3fd95.jpg"
+          },
+          {
+            "original_url": "https://georgewbush-whitehouse.archives.gov/news/releases/2008/09/images/20080929-4_d-0196-8-250h.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_achievements_fbb3fd95.jpg",
+            "blob_name": "Alexander_Graham_Bell_achievements_fbb3fd95.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_inventions_b6124f6d.jpg",
+            "blob_name": "Alexander_Graham_Bell_inventions_b6124f6d.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_inventions_b6124f6d.jpg",
+            "blob_name": "Alexander_Graham_Bell_inventions_b6124f6d.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Alexander_Graham_Bell_artifacts_b6124f6d.jpg",
+            "blob_name": "Alexander_Graham_Bell_artifacts_b6124f6d.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 6,
+        "failed_uploads": 2,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Portrait_of_Marie_Curie.jpg/250px-Portrait_of_Marie_Curie.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace_Hopper_portraits_4748401c.jpg",
+            "blob_name": "Grace_Hopper_portraits_4748401c.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Grace_Hopper_achievements_b5e88376.jpg",
+            "blob_name": "Grace_Hopper_achievements_b5e88376.jpg"
+          }
+        ],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 7,
+        "successful_uploads": 2,
+        "failed_uploads": 5,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Shigeru_Miyamoto_GDC_2007.jpg/250px-Shigeru_Miyamoto_GDC_2007.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Shigeru_Miyamoto_inventions_22b61c81.jpg",
+            "blob_name": "Shigeru_Miyamoto_inventions_22b61c81.jpg"
+          }
+        ],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 4,
+        "successful_uploads": 1,
+        "failed_uploads": 3,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/250px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_portraits_f63a6c8c.jpg",
+            "blob_name": "Elon_Musk_portraits_f63a6c8c.jpg"
+          },
+          {
+            "original_url": "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_portraits_bdf360a4.jpg",
+            "blob_name": "Elon_Musk_portraits_bdf360a4.jpg"
+          }
+        ],
+        "achievements": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Obama%27s_New_Space_Frontier_%284525849781%29.png/250px-Obama%27s_New_Space_Frontier_%284525849781%29.png",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_achievements_e1f7d82b.png",
+            "blob_name": "Elon_Musk_achievements_e1f7d82b.png"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Elon_Musk_2019.jpg/250px-Elon_Musk_2019.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_achievements_d755474c.jpg",
+            "blob_name": "Elon_Musk_achievements_d755474c.jpg"
+          }
+        ],
+        "inventions": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Elon_Musk.jpg/330px-Elon_Musk.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_inventions_990d81a7.jpg",
+            "blob_name": "Elon_Musk_inventions_990d81a7.jpg"
+          }
+        ],
+        "artifacts": [
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg/330px-Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_artifacts_f9d8a840.jpg",
+            "blob_name": "Elon_Musk_artifacts_f9d8a840.jpg"
+          },
+          {
+            "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Elon_Musk_in_Mission_Control_at_SpaceX.jpg",
+            "blob_url": "https://orbgameimages.blob.core.windows.net/historical-figures/Elon_Musk_artifacts_458dbfb6.jpg",
+            "blob_name": "Elon_Musk_artifacts_458dbfb6.jpg"
+          }
+        ]
+      },
+      "upload_stats": {
+        "total_found": 8,
+        "successful_uploads": 7,
+        "failed_uploads": 1,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "upload_stats": {
+        "total_found": 0,
+        "successful_uploads": 0,
+        "failed_uploads": 0,
+        "skipped_uploads": 0
+      }
+    }
+  ],
+  "summary_stats": {
+    "total_images_found": 628,
+    "successful_uploads": 344,
+    "failed_uploads": 284,
+    "skipped_uploads": 0
+  }
+}

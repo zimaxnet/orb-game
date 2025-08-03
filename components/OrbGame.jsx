@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-import { getPositiveNews } from '../api/orbApi';
+import { getHistoricalFigures } from '../api/orbApi';
 import { BACKEND_URL } from '../api/orbApi';
 import { useLanguage } from '../contexts/LanguageContext';
 import promptManager from '../utils/promptManager';
@@ -408,38 +408,35 @@ function OrbGame() {
     const randomEpoch = getRandomEpoch();
     const randomCategory = getRandomCategory();
     
-    // Fetch cached story for random epoch after user acknowledges instructions
+    // Fetch historical figure story for random epoch after user acknowledges instructions
     try {
-      console.log(`🔍 Fetching cached ${randomEpoch.toLowerCase()} epoch story...`);
-      const response = await fetch(`${BACKEND_URL}/api/stories/${randomEpoch.toLowerCase()}-cached`);
+      console.log(`🔍 Fetching historical figure story for ${randomCategory} in ${randomEpoch} epoch...`);
+      const stories = await getHistoricalFigures(randomCategory, randomEpoch, language, 1);
       
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success && data.story) {
-          console.log(`✅ Loaded cached ${randomEpoch} epoch story:`, data.story.headline);
-          
-          // Set the cached story as the current story for random category
-          setStories([data.story]);
-          setCurrentStoryIndex(0);
-          setSelectedCategory(randomCategory);
-          setCurrentEpoch(randomEpoch);
-          setSelectedModel(data.story.source || 'Cached');
-          setStoriesLoaded(true);
-          setShowStoryPanel(true);
-          
-          // Play audio if available
-          if (data.story.ttsAudio) {
-            setCurrentAudio(data.story.ttsAudio);
-            if (!isMuted) {
-              playAudio();
-            }
+      if (stories && stories.length > 0) {
+        console.log(`✅ Loaded historical figure story for ${randomCategory} in ${randomEpoch} epoch:`, stories[0].headline);
+        
+        // Set the story as the current story for random category
+        setStories([stories[0]]);
+        setCurrentStoryIndex(0);
+        setSelectedCategory(randomCategory);
+        setCurrentEpoch(randomEpoch);
+        setSelectedModel(stories[0].source || 'Historical Figures');
+        setStoriesLoaded(true);
+        setShowStoryPanel(true);
+        
+        // Play audio if available
+        if (stories[0].ttsAudio) {
+          setCurrentAudio(stories[0].ttsAudio);
+          if (!isMuted) {
+            playAudio();
           }
         }
       } else {
-        console.log(`ℹ️ No cached ${randomEpoch.toLowerCase()} story available`);
+        console.log(`ℹ️ No historical figure story available for ${randomCategory} in ${randomEpoch} epoch`);
       }
     } catch (error) {
-      console.error('Error fetching cached story:', error);
+      console.error('Error fetching historical figure story:', error);
     }
   };
   
@@ -552,41 +549,36 @@ function OrbGame() {
     setCurrentAISource(aiModelName);
     
     try {
-      // For historical figures, use the image-enhanced endpoint - only load ONE story
-      console.log(`📚 Fetching single historical figure story with images for ${category.name} in ${currentEpoch} epoch (${language})...`);
+      // For historical figures, use the historical figures endpoint - only load ONE story
+      console.log(`📚 Fetching single historical figure story for ${category.name} in ${currentEpoch} epoch (${language})...`);
       try {
-        const storiesResponse = await fetch(`${BACKEND_URL}/api/orb/stories-with-images?category=${category.name}&epoch=${currentEpoch}&language=${language}&count=1`);
+        const stories = await getHistoricalFigures(category.name, currentEpoch, language, 1);
 
-        console.log(`🔍 Response status: ${storiesResponse.status}`);
-        console.log(`🔍 Response ok: ${storiesResponse.ok}`);
-
-        if (storiesResponse.ok) {
-          const data = await storiesResponse.json();
-          console.log(`🔍 Response data:`, data);
-          console.log(`🔍 Data success: ${data.success}`);
-          console.log(`🔍 Data stories: ${data.stories ? data.stories.length : 'undefined'}`);
+        console.log(`🔍 Stories received:`, stories);
+        console.log(`🔍 Stories length: ${stories ? stories.length : 'undefined'}`);
+        
+        if (stories && stories.length > 0) {
+          console.log(`✅ Fetched single historical figure story for ${category.name} in ${currentEpoch} epoch`);
+          console.log(`📖 Story headline: ${stories[0].headline}`);
+          console.log(`📖 Story summary: ${stories[0].summary}`);
+          console.log(`📖 Story fullText: ${stories[0].fullText}`);
+          console.log(`🎵 Story TTS Audio: ${stories[0].ttsAudio ? 'Available' : 'Not available'}`);
+          console.log(`🖼️ Story Images: ${stories[0].images ? 'Available' : 'Not available'}`);
           
-          if (data.success && data.stories && data.stories.length > 0) {
-            console.log(`✅ Fetched single historical figure story with images for ${category.name} in ${currentEpoch} epoch`);
-            console.log(`📖 Story headline: ${data.stories[0].headline}`);
-            
-            // Set only the first story - no multiple figures
-            setNewsStories([data.stories[0]]);
-            setCurrentNewsIndex(0);
-            setCurrentNews(data.stories[0]);
-            setCurrentAISource('o4-mini');
-            setShowHistoricalFigure(true); // Show historical figure display
-            setIsLoading(false);
-            
-            return;
-          } else {
-            console.log(`❌ Invalid response format:`, data);
-          }
+          // Set only the first story - no multiple figures
+          setNewsStories([stories[0]]);
+          setCurrentNewsIndex(0);
+          setCurrentNews(stories[0]);
+          setCurrentAISource('o4-mini');
+          setShowHistoricalFigure(true); // Show historical figure display
+          setIsLoading(false);
+          
+          return;
         } else {
-          console.log(`❌ HTTP error: ${storiesResponse.status} ${storiesResponse.statusText}`);
+          console.log(`❌ No stories received:`, stories);
         }
       } catch (storiesError) {
-        console.warn('Stories with images fetch failed:', storiesError.message);
+        console.warn('Historical figures fetch failed:', storiesError.message);
         console.warn('Error details:', storiesError);
       }
       
@@ -613,7 +605,7 @@ function OrbGame() {
       setCurrentAISource('Error');
       setShowHistoricalFigure(true); // Show historical figure display
     } catch (error) {
-      console.error('Failed to load stories:', error);
+      console.error('Failed to load historical figure stories:', error);
       
       // Ultimate fallback
       const errorStory = {
@@ -622,8 +614,8 @@ function OrbGame() {
           ? `Estamos experimentando algunas dificultades técnicas. Por favor, inténtalo de nuevo o selecciona una categoría diferente.`
           : `We're experiencing some technical difficulties. Please try again or select a different category.`,
         fullText: language === 'es'
-          ? `Nuestra IA está tomando un momento para recopilar las últimas noticias positivas de ${category.name.toLowerCase()}. Por favor, inténtalo de nuevo en un momento.`
-          : `Our AI is taking a moment to gather the latest positive ${category.name.toLowerCase()} news. Please try again in a moment.`,
+          ? `Nuestra IA está tomando un momento para recopilar historias de figuras históricas de ${category.name.toLowerCase()}. Por favor, inténtalo de nuevo en un momento.`
+          : `Our AI is taking a moment to gather historical figure stories from ${category.name.toLowerCase()}. Please try again in a moment.`,
         source: 'Orb Game',
         publishedAt: new Date().toISOString(),
         ttsAudio: null,
@@ -696,16 +688,16 @@ function OrbGame() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            text: currentNews.fullText,
+            text: currentNews.fullText || currentNews.summary || currentNews.headline,
             language: language
           }),
         });
         
         if (ttsResponse.ok) {
           const ttsData = await ttsResponse.json();
-          if (ttsData.audio) {
+          if (ttsData.audioData) {
             // Update the current news with the generated TTS audio
-            const updatedNews = { ...currentNews, ttsAudio: ttsData.audio };
+            const updatedNews = { ...currentNews, ttsAudio: ttsData.audioData };
             setCurrentNews(updatedNews);
             
             // Update the story in the stories array
@@ -732,9 +724,20 @@ function OrbGame() {
         return;
       }
       
-      // Use the current news (which may now have TTS audio)
-      const newsToPlay = currentNews.ttsAudio ? currentNews : currentNews;
-      audioRef.current.src = `data:audio/mp3;base64,${newsToPlay.ttsAudio}`;
+      // Check if we have TTS audio to play
+      if (!currentNews.ttsAudio) {
+        console.error('No TTS audio available');
+        setAudioError('No audio available');
+        setIsAudioLoading(false);
+        return;
+      }
+      
+      // Create audio blob from base64 data
+      const audioBlob = new Blob([Uint8Array.from(atob(currentNews.ttsAudio), c => c.charCodeAt(0))], { type: 'audio/mp3' });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      // Set the audio source
+      audioRef.current.src = audioUrl;
       
       // Add event listeners for better audio handling
       audioRef.current.onloadstart = () => {
@@ -749,6 +752,8 @@ function OrbGame() {
       audioRef.current.onended = () => {
         setIsPlaying(false);
         setIsAudioLoading(false);
+        // Clean up the blob URL
+        URL.revokeObjectURL(audioUrl);
       };
       
       audioRef.current.onerror = (error) => {
@@ -756,6 +761,8 @@ function OrbGame() {
         setAudioError('Failed to play audio');
         setIsAudioLoading(false);
         setIsPlaying(false);
+        // Clean up the blob URL
+        URL.revokeObjectURL(audioUrl);
       };
       
       // Start playing with better error handling
@@ -766,6 +773,8 @@ function OrbGame() {
           setAudioError('Failed to start audio playback');
           setIsAudioLoading(false);
           setIsPlaying(false);
+          // Clean up the blob URL
+          URL.revokeObjectURL(audioUrl);
         });
       }
     } catch (error) {
@@ -854,6 +863,9 @@ function OrbGame() {
   
   return (
     <div className="orb-game-container">
+      {/* Hidden audio element for TTS playback */}
+      <audio ref={audioRef} style={{ display: 'none' }} />
+      
       {/* Language Toggle */}
       <div className="language-toggle">
         <button 
@@ -1026,7 +1038,6 @@ function OrbGame() {
                 ✕
               </button>
             </div>
-
           </div>
           
           {/* Category Display */}
@@ -1041,19 +1052,95 @@ function OrbGame() {
             </button>
           </div>
           
-          {/* Story content with integrated images */}
+          {/* Story content with integrated images and scrolling */}
           {currentNews && (
             <div className="story-content-with-images">
-              {/* Integrated Historical Figure Display */}
-              {showHistoricalFigure && (
-                <HistoricalFigureDisplay
-                  story={currentNews}
-                  onClose={() => setShowHistoricalFigure(false)}
-                  onLearnMore={learnMore}
-                />
+              {/* Story Headline */}
+              <div className="story-headline">
+                <h2>{currentNews.headline}</h2>
+              </div>
+              
+              {/* Story Summary */}
+              {currentNews.summary && (
+                <div className="story-summary">
+                  <p>{currentNews.summary}</p>
+                </div>
               )}
+              
+              {/* Historical Figure Images */}
+              {currentNews.images && currentNews.images.length > 0 && (
+                <div className="story-images">
+                  <h3>Historical Figure Images</h3>
+                  <div className="image-gallery">
+                    {currentNews.images.map((image, index) => (
+                      <div key={index} className="story-image-container">
+                        <img 
+                          src={image.url} 
+                          alt={image.alt || `Historical figure image ${index + 1}`}
+                          className="story-image"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            console.warn(`Failed to load image: ${image.url}`);
+                          }}
+                        />
+                        {image.caption && (
+                          <p className="image-caption">{image.caption}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {/* Integrated Historical Figure Display with scrolling */}
+              {showHistoricalFigure && (
+                <div className="historical-figure-container">
+                  <HistoricalFigureDisplay
+                    story={currentNews}
+                    onClose={() => setShowHistoricalFigure(false)}
+                    onLearnMore={learnMore}
+                  />
+                </div>
+              )}
+              
+              {/* Full Story Text - Always show with scrolling */}
+              {currentNews.fullText && (
+                <div className="story-full-text">
+                  <div className="story-text-content">
+                    <h3>Complete Story</h3>
+                    <div className="story-text-paragraphs">
+                      {currentNews.fullText.split('\n').map((paragraph, index) => (
+                        paragraph.trim() && (
+                          <p key={index} className="story-paragraph">
+                            {paragraph.trim()}
+                          </p>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Story Metadata */}
+              <div className="story-metadata">
+                <div className="metadata-item">
+                  <strong>Category:</strong> {currentNews.category}
+                </div>
+                <div className="metadata-item">
+                  <strong>Epoch:</strong> {currentEpoch}
+                </div>
+                <div className="metadata-item">
+                  <strong>Language:</strong> {language === 'es' ? 'Spanish' : 'English'}
+                </div>
+                {currentNews.aiModel && (
+                  <div className="metadata-item">
+                    <strong>AI Model:</strong> {currentNews.aiModel}
+                  </div>
+                )}
+              </div>
             </div>
           )}
+          
           <div className="news-meta">
             <span className="zimax-ai-labs">
               <a href="#" onClick={(e) => {

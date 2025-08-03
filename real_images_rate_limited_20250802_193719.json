@@ -1,0 +1,2965 @@
+{
+  "metadata": {
+    "total_figures": 120,
+    "processed": 120,
+    "successful": 105,
+    "failed": 15,
+    "start_time": "2025-08-02T19:18:50.437737",
+    "api_key_configured": true,
+    "end_time": "2025-08-02T19:37:19.770516",
+    "processing_time": 1109.332779
+  },
+  "figures": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg/250px-A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg/250px-A_reconstruction_of_Archimedes%27_steam_cannon%2C_in_Kotsanas_Museum_of_Ancient_Greek_Archaeology.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Clymenia.JPG/250px-Clymenia.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/f/fa/Trammel_of_Archimedes_Small_White.gif"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Imhotep-Louvre.JPG/250px-Imhotep-Louvre.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg/330px-%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Angela_Davis_%282018%29.jpg/330px-Angela_Davis_%282018%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imhotep-Louvre.jpg/250px-Imhotep-Louvre.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Queen_of_Pepy_II.jpg/250px-Queen_of_Pepy_II.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imhotep-Louvre.jpg/250px-Imhotep-Louvre.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Heron_Alexandrie.jpg/330px-Heron_Alexandrie.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Fotothek_df_tg_0005752_Physik_%5E_Mechanik_%5E_Pneumatik_%5E_Druck.jpg/250px-Fotothek_df_tg_0005752_Physik_%5E_Mechanik_%5E_Pneumatik_%5E_Druck.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg/250px-Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg/250px-Ancient_Greek_tripod_crane%2C_Museum_of_ancient_Greek_technology.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hero_of_Alexandria%2C_Belopoiika%2C_Paris%2C_Suppl._graec._607.jpg/250px-Hero_of_Alexandria%2C_Belopoiika%2C_Paris%2C_Suppl._graec._607.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Hero_of_Alexandria_Wellcome_M0004255.jpg/250px-Hero_of_Alexandria_Wellcome_M0004255.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg/250px-Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Al-Jazari_-_The_Scribe_Candle_Clock.jpg/250px-Al-Jazari_-_The_Scribe_Candle_Clock.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg/250px-Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG/250px-Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Gensfleisch_family_coat_of_arms.png/250px-Gensfleisch_family_coat_of_arms.png"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Uni-Mainz-Forum-Januar_2006.jpg/330px-Uni-Mainz-Forum-Januar_2006.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/250px-Gutenberg.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/250px-Gutenberg.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Signatur_W.SCHNEGG_auf_Bronzeplastiken_Johannes_Gutenberg_und_junger_Schrift-_und_Maschinensetzer_%28Walter_Schnegg_1970%29_09_%28cropped%29.jpg/330px-Signatur_W.SCHNEGG_auf_Bronzeplastiken_Johannes_Gutenberg_und_junger_Schrift-_und_Maschinensetzer_%28Walter_Schnegg_1970%29_09_%28cropped%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG/250px-Anonymous_portrait_of_Johannes_Gutenberg_dated_1440%2C_Gutenberg_Museum.JPG"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg/250px-Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg/250px-Ji33%2C_4-4%2C_Li_Shizhen%2C_1955.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/2/2c/Qichun-LiShizhenBust.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 3,
+        "failed_searches": 5
+      }
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/James-watt-1736-1819-engineer-inventor-of-the-stea.jpg/250px-James-watt-1736-1819-engineer-inventor-of-the-stea.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/9/91/James_Watt_%28Gem%C3%A4lde%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Maquina_vapor_Watt_ETSIIM.jpg/330px-Maquina_vapor_Watt_ETSIIM.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Old_bess_steam_engine_1777.jpg/250px-Old_bess_steam_engine_1777.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/James_Watt_Memorial_Building_-_geograph.org.uk_-_322317.jpg/250px-James_Watt_Memorial_Building_-_geograph.org.uk_-_322317.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Clermont_replica.jpg/330px-Clermont_replica.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/1/1e/James_g_watt.png"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Charles_Babbage_1860.jpg/250px-Charles_Babbage_1860.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Charles_Babbage_by_Samuel_Laurence.jpg/250px-Charles_Babbage_by_Samuel_Laurence.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/250px-Charles_Babbage_-_1860.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Babbages_Analytical_Engine%2C_1834-1871._%289660574685%29.jpg/330px-Babbages_Analytical_Engine%2C_1834-1871._%289660574685%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/British_%28English%29_School_-_Charles_Babbage_%281792%E2%80%931871%29_-_814168_-_National_Trust.jpg/250px-British_%28English%29_School_-_Charles_Babbage_%281792%E2%80%931871%29_-_814168_-_National_Trust.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Babbage%27s_brain_in_a_jar_%283186913%29.jpg/250px-Babbage%27s_brain_in_a_jar_%283186913%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/250px-Charles_Babbage_-_1860.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Brooklyn_Museum_-_Portrait_of_John_Adams_-_Samuel_Finley_Breese_Morse_-_overall.jpg/250px-Brooklyn_Museum_-_Portrait_of_John_Adams_-_Samuel_Finley_Breese_Morse_-_overall.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Brooklyn_Museum_-_Jonas_Platt_-_Samuel_Finley_Breese_Morse_-_overall.jpg/250px-Brooklyn_Museum_-_Jonas_Platt_-_Samuel_Finley_Breese_Morse_-_overall.jpg"
+        ],
+        "achievements": [
+          "https://rotel.pressbooks.pub/app/uploads/sites/60/2024/07/ELEGRAPH-SENDING-KEY-RECEIVER.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Samuel_M._Felton_MIT-Technology-Review-1923-11.jpg/250px-Samuel_M._Felton_MIT-Technology-Review-1923-11.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg"
+        ],
+        "artifacts": [
+          "https://rotel.pressbooks.pub/app/uploads/sites/60/2024/07/ELEGRAPH-SENDING-KEY-RECEIVER.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Samuel_Morse_1840.jpg/250px-Samuel_Morse_1840.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/250px-Sir_Tim_Berners-Lee_%28cropped%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Tim_Berners-Lee-_Mosaic_by_Sue_Edkins_at_Sheen_Lane_Centre.jpg/330px-Tim_Berners-Lee-_Mosaic_by_Sue_Edkins_at_Sheen_Lane_Centre.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/330px-First_Web_Server.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg/250px-Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg",
+          "https://c0.wallpaperflare.com/preview/851/487/816/steve-jobs-mac-computer-apple-thumbnail.jpg"
+        ],
+        "achievements": [
+          "http://archive.government.ru/media/2013/5/2/56143/p320x180.jpeg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg/250px-Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg"
+        ],
+        "inventions": [
+          "http://archive.government.ru/media/2013/5/2/56143/p320x180.jpeg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Steve_Jobs_Theater_-_external.jpg/330px-Steve_Jobs_Theater_-_external.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Pixar_Computer_-_computer_history_museum_2013-04-11_23-46.jpg/250px-Pixar_Computer_-_computer_history_museum_2013-04-11_23-46.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg/250px-Steve_Jobs_in_1972_Pegasus_%28retouched%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Hedy_Lamarr_In_Dishonored_Lady_9.jpg/250px-Hedy_Lamarr_In_Dishonored_Lady_9.jpg"
+        ],
+        "achievements": [
+          "https://p3.hippopx.com/preview/603/454/man-umbrella-sunflowers-time-adult-relationship-male-weather-people-nature-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Grave_Hedy_Lamarr%2C_Vienna%2C_2016.jpg/250px-Grave_Hedy_Lamarr%2C_Vienna%2C_2016.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/1/1b/Hedy_Lamarr_in_Come_Live_With_Me_trailer.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Hedy_Lamarr_in_The_Heavenly_Body_1944.jpg/250px-Hedy_Lamarr_in_The_Heavenly_Body_1944.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/HAI_Roundtable_on_AI_and_the_Economy.jpg/330px-HAI_Roundtable_on_AI_and_the_Economy.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Webcam000c1.jpg/330px-Webcam000c1.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Webcam000c1.jpg/330px-Webcam000c1.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Webcam000c1.jpg/330px-Webcam000c1.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/250px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+          "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Obama%27s_New_Space_Frontier_%284525849781%29.png/250px-Obama%27s_New_Space_Frontier_%284525849781%29.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Elon_Musk_Accelerates_the_Boring_%2845716125474%29.jpg/330px-Elon_Musk_Accelerates_the_Boring_%2845716125474%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Elon_Musk.jpg/330px-Elon_Musk.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Elon_Musk%2C_Tesla_Factory%2C_Fremont_%28CA%2C_USA%29_%288765031426%29.jpg/330px-Elon_Musk%2C_Tesla_Factory%2C_Fremont_%28CA%2C_USA%29_%288765031426%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg/330px-Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/5/5d/Elon_Musk_in_Mission_Control_at_SpaceX.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_%28cropped%29.jpg/250px-Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_%28cropped%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Daron_Acemoglu%2C_Simon_Johnson%2C_James_A._Robinson%2C_David_Baker%2C_Demis_Hassabis%2C_John_Jumper%2C_and_Geoffrey_Hinton_at_2024_Nobel_Week_3.jpg/330px-Daron_Acemoglu%2C_Simon_Johnson%2C_James_A._Robinson%2C_David_Baker%2C_Demis_Hassabis%2C_John_Jumper%2C_and_Geoffrey_Hinton_at_2024_Nobel_Week_3.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Demis_Hassabis_at_the_2024_Nobel_Lectures_3.jpg/330px-Demis_Hassabis_at_the_2024_Nobel_Lectures_3.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Demis_Hassabis_at_the_2024_Nobel_Lectures_3.jpg/330px-Demis_Hassabis_at_the_2024_Nobel_Lectures_3.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Engraving%3B_bust_of_Hippocrates%3B_by_Paul_Wellcome_L0019959.jpg/250px-Engraving%3B_bust_of_Hippocrates%3B_by_Paul_Wellcome_L0019959.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Hippocrate_refusant_les_pr%C3%A9sents_d%27Artaxerx%C3%A8s_%28original%29.JPG/330px-Hippocrate_refusant_les_pr%C3%A9sents_d%27Artaxerx%C3%A8s_%28original%29.JPG"
+        ],
+        "achievements": [
+          "https://georgewbush-whitehouse.archives.gov/news/releases/2008/04/images/20080423-3_p042308cg-0198-250h.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Dutch_p18_19.jpg/330px-Dutch_p18_19.jpg"
+        ],
+        "inventions": [
+          "https://publicdomainvectors.org/photos/Hippocrates.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Plane_tree_of_Hippocrates.jpg/330px-Plane_tree_of_Hippocrates.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Greeks25-2.svg/250px-Greeks25-2.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Hippocrates%2C_Aphorismi%2C_manuscript%2C_s.l._Wellcome_L0030310.jpg/330px-Hippocrates%2C_Aphorismi%2C_manuscript%2C_s.l._Wellcome_L0030310.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Euclid_Wellcome_L0019815.jpg/250px-Portrait_of_Euclid_Wellcome_L0019815.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Sanzio_01_Euclid.jpg/250px-Sanzio_01_Euclid.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Euclid%27s_Elements%2C_1482.jpg/330px-Euclid%27s_Elements%2C_1482.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Euclid_begins_its_dark_Universe_survey_ESA25479326.jpg/330px-Euclid_begins_its_dark_Universe_survey_ESA25479326.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/The_fireside_university_of_modern_invention%2C_discovery%2C_industry_and_art_for_home_circle_study_and_entertainment_%281902%29_%2814776194671%29.jpg/330px-The_fireside_university_of_modern_invention%2C_discovery%2C_industry_and_art_for_home_circle_study_and_entertainment_%281902%29_%2814776194671%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Pendleton_Apartments%2C_Euclid_Avenue%2C_Inman_Park%2C_Atlanta_GA.jpg/250px-Pendleton_Apartments%2C_Euclid_Avenue%2C_Inman_Park%2C_Atlanta_GA.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Domenico_Marol%C3%AC_-_Euclid_of_Megara.jpg/330px-Domenico_Marol%C3%AC_-_Euclid_of_Megara.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/9/99/Rafaello_Aristotle_Plato_School_of_Athens.jpg"
+        ],
+        "achievements": [
+          "http://static.kremlin.ru/media/events/photos/small/VbPzJVD8ATpXBiX60AupgAgK7tdzl2UY.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Newton%27s_reflecting_telescope.jpg/250px-Newton%27s_reflecting_telescope.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Alexander_and_Aristotle.jpg/330px-Alexander_and_Aristotle.jpg"
+        ],
+        "artifacts": [
+          "https://c2.peakpx.com/wallpaper/842/816/861/angkor-wat-wall-art-ancient-stone-wallpaper-thumb.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Aristotle_transparent.png/250px-Aristotle_transparent.png"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ahmed_Salim_and_Omar_Sharif.jpg/330px-Ahmed_Salim_and_Omar_Sharif.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ahmed_Salim_and_Omar_Sharif.jpg/330px-Ahmed_Salim_and_Omar_Sharif.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/250px-Crab_Nebula.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Ibn_al-Haytham%2C_Sayr_mulhimah_min_al-Sharq_wa-al-Gharb.png/250px-Ibn_al-Haytham%2C_Sayr_mulhimah_min_al-Sharq_wa-al-Gharb.png"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Roger_Bacon-2.jpg/120px-Roger_Bacon-2.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Roger_Bacon_in_his_observatory_at_Merton_College%2C_Oxford._Oi_Wellcome_V0018155.jpg/250px-Roger_Bacon_in_his_observatory_at_Merton_College%2C_Oxford._Oi_Wellcome_V0018155.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Roger-bacon-statue_cropped.jpg/250px-Roger-bacon-statue_cropped.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Science_Pillar%2C_St._Anne%27s_Cathedral%2C_Belfast_-_Roger_Bacon_2018-07-27.jpg/330px-Science_Pillar%2C_St._Anne%27s_Cathedral%2C_Belfast_-_Roger_Bacon_2018-07-27.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Roger-bacon-statue.jpg/250px-Roger-bacon-statue.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG/250px-Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Charles_Darwin_portrait.jpg/250px-Charles_Darwin_portrait.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Charles_Darwin_painting_by_Walter_William_Ouless%2C_1875.jpg/250px-Charles_Darwin_painting_by_Walter_William_Ouless%2C_1875.jpg"
+        ],
+        "achievements": [
+          "https://c1.wallpaperflare.com/preview/895/605/304/photo-beethoven-composer-germany-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Charles_Darwin_by_Maull_and_Polyblank%2C_1855-1.jpg/250px-Charles_Darwin_by_Maull_and_Polyblank%2C_1855-1.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Darwin%27s_single_microscope_Wellcome_L0031773.jpg/250px-Darwin%27s_single_microscope_Wellcome_L0031773.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Charles_Darwin_statue%2C_Natural_History_Museum%2C_London_-_DSCF0388.JPG/250px-Charles_Darwin_statue%2C_Natural_History_Museum%2C_London_-_DSCF0388.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Charles_Darwin_200_year_exhibition_Brazil3.jpg/330px-Charles_Darwin_200_year_exhibition_Brazil3.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/8/89/Harriet.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg/250px-Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Albert_Edelfelt_-_Louis_Pasteur_-_1885.jpg/250px-Albert_Edelfelt_-_Louis_Pasteur_-_1885.jpg"
+        ],
+        "achievements": [
+          "http://static.kremlin.ru/media/events/photos/small/98Lc9KjE41VYSXdBv7yw4Ax4GW9PV9sV.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Louis_Pasteur_experiment.jpg/250px-Louis_Pasteur_experiment.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Louis_Pasteur_experiment.jpg/250px-Louis_Pasteur_experiment.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg/250px-Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Pasteur_by_Lafon_1883.jpg/250px-Pasteur_by_Lafon_1883.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Dmitri_Mendeleev_1890s.jpg/250px-Dmitri_Mendeleev_1890s.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/MendeleevIP.jpg/250px-MendeleevIP.jpg"
+        ],
+        "achievements": [
+          "http://static.government.ru/media/photos/288x162/K6ftxQ7HEZKikAmT4I3VlplqZIRRCdLv.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%EB%93%9C%EB%AF%B8%ED%8A%B8%EB%A6%AC_%EB%A9%98%EB%8D%B8%EB%A0%88%EC%98%88%ED%94%84.jpg/250px-%EB%93%9C%EB%AF%B8%ED%8A%B8%EB%A6%AC_%EB%A9%98%EB%8D%B8%EB%A0%88%EC%98%88%ED%94%84.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/The_Soviet_Union_1969_CPA_3762_sheet_of_1_%28Mendeleev_and_Periodic_Law%29_cancelled_large_resolution_top.jpg/330px-The_Soviet_Union_1969_CPA_3762_sheet_of_1_%28Mendeleev_and_Periodic_Law%29_cancelled_large_resolution_top.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Periodic_table_monument.jpg/330px-Periodic_table_monument.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Dmitri_Mendeleev_1890s.jpg/250px-Dmitri_Mendeleev_1890s.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Portrait_of_Marie_Curie.jpg/250px-Portrait_of_Marie_Curie.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Rosalind_Franklin_in_watercolour.png/250px-Rosalind_Franklin_in_watercolour.png"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Rosalind_Franklin.jpg/250px-Rosalind_Franklin.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg",
+          "https://i1.pickpik.com/photos/481/357/96/einstein-albert-classroom-blackboard-thumb.jpg"
+        ],
+        "achievements": [
+          "http://static.kremlin.ru/media/events/photos/small/bfBck1WtoY7OGoxN2aIBrWySYgjW9OPK.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Albert_Einstein_with_engineers_and_scientists_-_RCA_radio_station_-_Hagley_Archives_-_restoration1.jpg/330px-Albert_Einstein_with_engineers_and_scientists_-_RCA_radio_station_-_Hagley_Archives_-_restoration1.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Albert-einstein-house.JPG/330px-Albert-einstein-house.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Johnny_Werbrouck_Einstein_De_Haan_17-09-2024_14-58-03.jpg/250px-Johnny_Werbrouck_Einstein_De_Haan_17-09-2024_14-58-03.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/250px-Albert_Einstein_1947.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg/250px-Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Professor_Jennifer_Doudna_ForMemRS_%28cropped%29.jpg/250px-Professor_Jennifer_Doudna_ForMemRS_%28cropped%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Jennifer_Doudna_-_26658740020.jpg/250px-Jennifer_Doudna_-_26658740020.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Jennifer_Doudna_-_26658740020.jpg/250px-Jennifer_Doudna_-_26658740020.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Tu_Youyou_5012-1-2015.jpg/250px-Tu_Youyou_5012-1-2015.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tu_Youyou_5012-2015.jpg/250px-Tu_Youyou_5012-2015.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tu_Youyou_5012-2015.jpg/250px-Tu_Youyou_5012-2015.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 3,
+        "failed_searches": 5
+      }
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/David_Sinclair.jpg/250px-David_Sinclair.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Gon%C3%A7alo_Byrne_Pousada_de_Cascais_3978.jpg/330px-Gon%C3%A7alo_Byrne_Pousada_de_Cascais_3978.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/92/Desvio_faf.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 3,
+        "failed_searches": 5
+      }
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Phidias_Ny_Carlsberg_Glyptotek_IN1288.jpg/250px-Phidias_Ny_Carlsberg_Glyptotek_IN1288.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Zeven_wereldwonderen_en_belangrijke_uitvindingen%2C_RP-P-OB-204.366.jpg/330px-Zeven_wereldwonderen_en_belangrijke_uitvindingen%2C_RP-P-OB-204.366.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Phidias_cup.jpg/250px-Phidias_cup.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Phidias_cup.jpg/250px-Phidias_cup.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg/330px-1868_Lawrence_Alma-Tadema_-_Phidias_Showing_the_Frieze_of_the_Parthenon_to_his_Friends.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Jennifer_Geerlings-Simons.jpg/250px-Jennifer_Geerlings-Simons.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pelike_Polygnotos_Louvre_G375.jpg/250px-Pelike_Polygnotos_Louvre_G375.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pelike_Polygnotos_Louvre_G375.jpg/250px-Pelike_Polygnotos_Louvre_G375.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wikimedia_Hackathon_2025_Istanbul_3D_printed_logo.jpg/330px-Wikimedia_Hackathon_2025_Istanbul_3D_printed_logo.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wikimedia_Hackathon_2025_Istanbul_3D_printed_logo.jpg/330px-Wikimedia_Hackathon_2025_Istanbul_3D_printed_logo.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Imhotep-Louvre.JPG/250px-Imhotep-Louvre.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg/330px-%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imhotep-Louvre.jpg/250px-Imhotep-Louvre.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imhotep-Louvre.jpg/250px-Imhotep-Louvre.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Queen_of_Pepy_II.jpg/250px-Queen_of_Pepy_II.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imhotep-Louvre.jpg/250px-Imhotep-Louvre.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Giotto_-_Tableau_repr%C3%A9sentant_cinq_ma%C3%AEtres_de_la_Renaissance_florentine_%28d%C3%A9but_XVIe_si%C3%A8cle_%3F%29.JPG/250px-Giotto_-_Tableau_repr%C3%A9sentant_cinq_ma%C3%AEtres_de_la_Renaissance_florentine_%28d%C3%A9but_XVIe_si%C3%A8cle_%3F%29.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Giotto_di_Bondone_-_No._21_Scenes_from_the_Life_of_Christ_-_5._Massacre_of_the_Innocents_-_.jpg/250px-Giotto_di_Bondone_-_No._21_Scenes_from_the_Life_of_Christ_-_5._Massacre_of_the_Innocents_-_.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/The.Calling.of.the.First.Apostles.jpg/330px-The.Calling.of.the.First.Apostles.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Giotto_di_Bondone_-_No._31_Scenes_from_the_Life_of_Christ_-_15._The_Arrest_of_Christ_%28Kiss_of_Judas%29_-_WGA09216.jpg/250px-Giotto_di_Bondone_-_No._31_Scenes_from_the_Life_of_Christ_-_15._The_Arrest_of_Christ_%28Kiss_of_Judas%29_-_WGA09216.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Images_used_on_D%C3%A9couvertes_Gallimard_book_covers.jpg/250px-Images_used_on_D%C3%A9couvertes_Gallimard_book_covers.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Giotto_di_Bondone_-_No._21_Scenes_from_the_Life_of_Christ_-_5._Massacre_of_the_Innocents_-_.jpg/250px-Giotto_di_Bondone_-_No._21_Scenes_from_the_Life_of_Christ_-_5._Massacre_of_the_Innocents_-_.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Giotto_di_Bondone_-_Ognissanti_Madonna_%28detail%29_-_WGA09335.jpg/250px-Giotto_di_Bondone_-_Ognissanti_Madonna_%28detail%29_-_WGA09335.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Giotto_di_Bondone_-_No._31_Scenes_from_the_Life_of_Christ_-_15._The_Arrest_of_Christ_%28Kiss_of_Judas%29_-_WGA09216.jpg/250px-Giotto_di_Bondone_-_No._31_Scenes_from_the_Life_of_Christ_-_15._The_Arrest_of_Christ_%28Kiss_of_Judas%29_-_WGA09216.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG/250px-Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Andrei_Rublev_%28miniature%2C_16_c%29.jpg/250px-Andrei_Rublev_%28miniature%2C_16_c%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/2/2b/Andrei_Rublev_%28miniature%2C_16_c%29_detail.jpg"
+        ],
+        "achievements": [
+          "http://static.kremlin.ru/media/events/photos/small/4Cyn3fjd1ZptAsijbtAmdIAtrQC8e8AK.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Andrei_Rublev_-_St_Paul._From_Deisus_Tier_-_Google_Art_Project.jpg/120px-Andrei_Rublev_-_St_Paul._From_Deisus_Tier_-_Google_Art_Project.jpg"
+        ],
+        "inventions": [
+          "http://static.kremlin.ru/media/events/photos/small/yPuqDko4G4vO8LC1cLFGw63X6Mt6Snw1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/2/2b/Andrei_Rublev_%28miniature%2C_16_c%29_detail.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Andrej_Rubljov_Vladimir_Matthew.jpg/250px-Andrej_Rubljov_Vladimir_Matthew.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Nativity_%2815th_c.%2C_Annunciation_Cathedral_in_Moscow%29.jpg/250px-Nativity_%2815th_c.%2C_Annunciation_Cathedral_in_Moscow%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Carolus-Duran_-_Portrait_de_Claude_Monet_-_Mus%C3%A9e_Marmottan_Monet.jpg/250px-Carolus-Duran_-_Portrait_de_Claude_Monet_-_Mus%C3%A9e_Marmottan_Monet.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/330px-Monet_-_Impression%2C_Sunrise.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Water-Lilies-and-Japanese-Bridge-%281897-1899%29-Monet.jpg/250px-Water-Lilies-and-Japanese-Bridge-%281897-1899%29-Monet.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Monet%2C_Claude_-_Water_Lilies_%28Nymph%C3%A9as%29_-_Google_Art_Project.jpg/250px-Monet%2C_Claude_-_Water_Lilies_%28Nymph%C3%A9as%29_-_Google_Art_Project.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Manet_and_the_French_impressionists-_Pissarro-Claude_Monet-Sisley-Renoir-Berthe_Morisot-C%C3%A9zanne-Guillaumin_%281910%29_%2814596918267%29.jpg/250px-Manet_and_the_French_impressionists-_Pissarro-Claude_Monet-Sisley-Renoir-Berthe_Morisot-C%C3%A9zanne-Guillaumin_%281910%29_%2814596918267%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/330px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Bridge_Over_a_Pond_of_Water_Lilies%2C_Claude_Monet_1899.jpg/250px-Bridge_Over_a_Pond_of_Water_Lilies%2C_Claude_Monet_1899.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/330px-Monet_-_Impression%2C_Sunrise.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/7/71/William_Blake_by_Thomas_Phillips_-_cropped_and_downsized.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg/250px-William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Oberon%2C_Titania_and_Puck_with_Fairies_Dancing._William_Blake._c.1786.jpg/330px-Oberon%2C_Titania_and_Puck_with_Fairies_Dancing._William_Blake._c.1786.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Henry_Fuseli%E2%80%99s_Julia_Appearing_to_Pompey_in_a_Dream.jpg/330px-Henry_Fuseli%E2%80%99s_Julia_Appearing_to_Pompey_in_a_Dream.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/William_Blake_008.jpg/330px-William_Blake_008.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/a/ac/Eve_Tempted_by_the_Serpent_William_Blake.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Blake_Job_Evil_Dreams_Detail_bb421_1_13-12_ps_300.jpg/330px-Blake_Job_Evil_Dreams_Detail_bb421_1_13-12_ps_300.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Gustave_Courbet_-_Le_D%C3%A9sesp%C3%A9r%C3%A9_%281843%29.jpg/330px-Gustave_Courbet_-_Le_D%C3%A9sesp%C3%A9r%C3%A9_%281843%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Gustave_Courbet_-_Le_D%C3%A9sesp%C3%A9r%C3%A9_%281843%29.jpg/330px-Gustave_Courbet_-_Le_D%C3%A9sesp%C3%A9r%C3%A9_%281843%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Gustave_Courbet_-_Self-Portrait_%28Man_with_Leather_Belt%29_-_WGA05486.jpg/250px-Gustave_Courbet_-_Self-Portrait_%28Man_with_Leather_Belt%29_-_WGA05486.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Gillot_-_The_Stone_Breaker_%28after_1849%29.jpg/250px-Gillot_-_The_Stone_Breaker_%28after_1849%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Selfportrait_by_Gustave_Courbet_1850-1853.png/250px-Selfportrait_by_Gustave_Courbet_1850-1853.png"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg/330px-Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg"
+        ],
+        "achievements": [
+          "https://p3.hippopx.com/preview/361/127/plants-deco-exhibition-oilseed-rape-art-nature-beautiful-flowers-flora-flower-wallpaper-layout-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Diego_Rivera_with_a_xoloitzcuintle_dog_in_the_Blue_House%2C_Coyoacan_-_Google_Art_Project.jpg/250px-Diego_Rivera_with_a_xoloitzcuintle_dog_in_the_Blue_House%2C_Coyoacan_-_Google_Art_Project.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/OutsideCasaAzul.JPG/330px-OutsideCasaAzul.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Votive_offering_dedicated_to_the_Virgin_of_Talpa_-_Google_Art_Project.jpg/250px-Votive_offering_dedicated_to_the_Virgin_of_Talpa_-_Google_Art_Project.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Frida_Kahlo_by_Magda_Pach.jpg/250px-Frida_Kahlo_by_Magda_Pach.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Jeffrey_Owen_Katz.png/250px-Jeffrey_Owen_Katz.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg/250px-Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg"
+        ],
+        "achievements": [
+          "https://c1.wallpaperflare.com/preview/734/616/910/neon-sign-signage-live-music-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Shop_Until_You_Drop_by_Banksy.JPG/250px-Shop_Until_You_Drop_by_Banksy.JPG"
+        ],
+        "inventions": [
+          "https://c1.wallpaperflare.com/preview/473/744/998/black-and-white-photos-inventor-light-bulb-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Banksy_-_Rat_Photographer.jpg/330px-Banksy_-_Rat_Photographer.jpg"
+        ],
+        "artifacts": [
+          "https://c0.wallpaperflare.com/preview/538/579/644/bleu-de-chanel-eau-de-parfum-bottle-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg/250px-Banksy_Hitchhiker_to_Anywhere_Archway_2005.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://farm9.staticflickr.com/8062/8234697714_fb8eef96d7_n.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kusama_Yayoi_The_Spirits_of_the_Pumpkins_Descended_into_the_Heavens.jpg/330px-Kusama_Yayoi_The_Spirits_of_the_Pumpkins_Descended_into_the_Heavens.jpg"
+        ],
+        "achievements": [
+          "https://c0.wallpaperflare.com/preview/527/124/852/blue-red-and-pink-abstract-artwork-thumbnail.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Yayoi_Kusama_-_Ascension_of_Polkadots_on_the_Trees.JPG/250px-Yayoi_Kusama_-_Ascension_of_Polkadots_on_the_Trees.JPG"
+        ],
+        "artifacts": [
+          "https://itsartlaw.org/wp-content/uploads/2023/09/Screen-Shot-2023-09-23-at-7.59.45-PM-300x197.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kusama_Yayoi_The_Spirits_of_the_Pumpkins_Descended_into_the_Heavens.jpg/330px-Kusama_Yayoi_The_Spirits_of_the_Pumpkins_Descended_into_the_Heavens.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/LAS_Art_Foundation_-_Refik_Anadol-_Latent_Being_-_2.jpg/330px-LAS_Art_Foundation_-_Refik_Anadol-_Latent_Being_-_2.jpg"
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 1,
+        "failed_searches": 7
+      }
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sofia_Crespo_-_Art_Basel_2025.jpg/250px-Sofia_Crespo_-_Art_Basel_2025.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sofia_Crespo_-_Art_Basel_2025.jpg/250px-Sofia_Crespo_-_Art_Basel_2025.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sofia_Crespo_-_Art_Basel_2025.jpg/250px-Sofia_Crespo_-_Art_Basel_2025.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sofia_Crespo_-_Art_Basel_2025.jpg/250px-Sofia_Crespo_-_Art_Basel_2025.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sofia_Crespo_-_Art_Basel_2025.jpg/250px-Sofia_Crespo_-_Art_Basel_2025.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Quinten_Massys_%281466-1530%29_%28after%29_-_Paracelsus_%28Theophrastus_Bombastus_von_Hohenheim%29_%281493%E2%80%931541%29_-_996322_-_National_Trust.jpg/250px-Quinten_Massys_%281466-1530%29_%28after%29_-_Paracelsus_%28Theophrastus_Bombastus_von_Hohenheim%29_%281493%E2%80%931541%29_-_996322_-_National_Trust.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Aristotle_Theophrastus_Strato_Lebiedzki_Rahl.jpg/250px-Aristotle_Theophrastus_Strato_Lebiedzki_Rahl.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Quinten_Massys_%281466-1530%29_%28after%29_-_Paracelsus_%28Theophrastus_Bombastus_von_Hohenheim%29_%281493%E2%80%931541%29_-_996322_-_National_Trust.jpg/250px-Quinten_Massys_%281466-1530%29_%28after%29_-_Paracelsus_%28Theophrastus_Bombastus_von_Hohenheim%29_%281493%E2%80%931541%29_-_996322_-_National_Trust.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aristoteles_Louvre.jpg/250px-Aristoteles_Louvre.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Aureolus_Theophrastus_Bombastus_von_Hohenheim_%28Paracelsus%29._Wellcome_V0004455.jpg/250px-Aureolus_Theophrastus_Bombastus_von_Hohenheim_%28Paracelsus%29._Wellcome_V0004455.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Empedocles._Line_engraving_by_D._Cunego%2C_1785%2C_after_Raphael_Wellcome_V0001765.jpg/250px-Empedocles._Line_engraving_by_D._Cunego%2C_1785%2C_after_Raphael_Wellcome_V0001765.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/The_Death_of_Empedocles_by_Salvator_Rosa.jpg/250px-The_Death_of_Empedocles_by_Salvator_Rosa.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/The_Death_of_Empedocles_by_Salvator_Rosa.jpg/250px-The_Death_of_Empedocles_by_Salvator_Rosa.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/AGMA_Clepsydre.jpg/250px-AGMA_Clepsydre.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Luca_Signorelli_-_Empedocles_-_WGA21238.jpg/250px-Luca_Signorelli_-_Empedocles_-_WGA21238.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Luca_Signorelli_-_Empedocles_-_WGA21238.jpg/250px-Luca_Signorelli_-_Empedocles_-_WGA21238.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://c1.wallpaperflare.com/preview/172/281/299/people-sculpture-statue-portrait-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/%E6%B8%85%E4%B8%96%E7%A5%96%E6%9C%9D%E5%86%A0%E6%9C%8D%E5%83%8F%E8%BD%B4.jpg/250px-%E6%B8%85%E4%B8%96%E7%A5%96%E6%9C%9D%E5%86%A0%E6%9C%8D%E5%83%8F%E8%BD%B4.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Huangdi_Temple_Dragon.jpg/330px-Huangdi_Temple_Dragon.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg/330px-Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Terracotta_warriors_at_the_Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg/330px-Terracotta_warriors_at_the_Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg/330px-Tomb_of_the_First_Emperor_Qin_Shi_Huang_Di%2C_Xi%27an%2C_China_-_panoramio.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Albertus_Magnus_Suharyadi.jpg/250px-Albertus_Magnus_Suharyadi.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/d/d0/AlbertusMagnus.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Tommaso_da_modena%2C_ritratti_di_domenicani_%28vescovo%29_1352_150cm%2C_treviso%2C_ex_convento_di_san_niccol%C3%B2%2C_sala_del_capitolo.jpg/250px-Tommaso_da_modena%2C_ritratti_di_domenicani_%28vescovo%29_1352_150cm%2C_treviso%2C_ex_convento_di_san_niccol%C3%B2%2C_sala_del_capitolo.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Albertus_Magnus-Denkmal.jpg/250px-Albertus_Magnus-Denkmal.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Albertus_Magnus_Suharyadi.jpg/250px-Albertus_Magnus_Suharyadi.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Avicenna_lithograph_-_cropped.png/250px-Avicenna_lithograph_-_cropped.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/A_man_of_learning_%28Avicenna%3F%29._Oil_painting_by_a_Ne_Wellcome_V0017691.jpg/250px-A_man_of_learning_%28Avicenna%3F%29._Oil_painting_by_a_Ne_Wellcome_V0017691.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ibn_Sina%2C_Bukhara.jpg/250px-Ibn_Sina%2C_Bukhara.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Tomb_of_Avicenna%2C_Hamdan.jpg/250px-Tomb_of_Avicenna%2C_Hamdan.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Australian_medicine_man_with_magic_healing_crystal._Wellcome_L0003745.jpg/250px-Australian_medicine_man_with_magic_healing_crystal._Wellcome_L0003745.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Avicenna_canon_1597.jpg/250px-Avicenna_canon_1597.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Follower_of_Rubens_-_Saint_Francis_of_Assisi_in_ecstasy.jpg/250px-Follower_of_Rubens_-_Saint_Francis_of_Assisi_in_ecstasy.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg/330px-Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Alessandro_Allori_%281535-1607%29_-_The_Madonna_and_Child_with_Saint_Catherine_of_Alexandria_and_Saint_Francis_of_Assisi_-_1165943_-_National_Trust.jpg/250px-Alessandro_Allori_%281535-1607%29_-_The_Madonna_and_Child_with_Saint_Catherine_of_Alexandria_and_Saint_Francis_of_Assisi_-_1165943_-_National_Trust.jpg"
+        ],
+        "inventions": [
+          "https://c1.wallpaperflare.com/preview/691/837/213/leonardo-da-vinci-inventor-intelligence-art-and-craft-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Church_of_Saint_Francis_of_Assisi%2C_Aleppo.jpg/330px-Church_of_Saint_Francis_of_Assisi%2C_Aleppo.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/San_Ignacio_de_Loyola%2C_Sevilla_%281610%29.jpg/250px-San_Ignacio_de_Loyola%2C_Sevilla_%281610%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg/330px-Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_%28c.1595%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Charles_Darwin_portrait.jpg/250px-Charles_Darwin_portrait.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Charles_Darwin_painting_by_Walter_William_Ouless%2C_1875.jpg/250px-Charles_Darwin_painting_by_Walter_William_Ouless%2C_1875.jpg"
+        ],
+        "achievements": [
+          "https://c1.wallpaperflare.com/preview/781/224/981/596898a313784-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/330px-Leaf_1_web.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Darwin%27s_single_microscope_Wellcome_L0031773.jpg/250px-Darwin%27s_single_microscope_Wellcome_L0031773.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Charles_Darwin_statue%2C_Natural_History_Museum%2C_London_-_DSCF0388.JPG/250px-Charles_Darwin_statue%2C_Natural_History_Museum%2C_London_-_DSCF0388.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Charles_Darwin_200_year_exhibition_Brazil3.jpg/330px-Charles_Darwin_200_year_exhibition_Brazil3.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/8/89/Harriet.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/John_James_Audubon_painting.jpg/250px-John_James_Audubon_painting.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Brooklyn_Museum_-_American_Flamingo_-_John_J._Audubon.jpg/250px-Brooklyn_Museum_-_American_Flamingo_-_John_J._Audubon.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Robert_Havell_after_John_James_Audubon%2C_Blue_Jay%2C_1831%2C_NGA_32243.jpg/250px-Robert_Havell_after_John_James_Audubon%2C_Blue_Jay%2C_1831%2C_NGA_32243.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/John_James_Audubon_-_Washington_Sea_Eagle_-_Google_Art_Project.jpg/250px-John_James_Audubon_-_Washington_Sea_Eagle_-_Google_Art_Project.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cody-Buffalo_Bill_Center_of_the_West_11-09-2014_17-51-32.JPG/330px-Cody-Buffalo_Bill_Center_of_the_West_11-09-2014_17-51-32.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Brooklyn_Museum_-_American_Flamingo_-_John_J._Audubon.jpg/250px-Brooklyn_Museum_-_American_Flamingo_-_John_J._Audubon.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rhomaleosaurus_%26_Mary_Anning_plaque_NHM.jpg/330px-Rhomaleosaurus_%26_Mary_Anning_plaque_NHM.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Mary_Anning_statue_%28cropped%29.jpg/250px-Mary_Anning_statue_%28cropped%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Cr%C3%A2ne_d%E2%80%99Ichthyosaure_d%C3%A9couvert_par_Mary_Anning.jpg/330px-Cr%C3%A2ne_d%E2%80%99Ichthyosaure_d%C3%A9couvert_par_Mary_Anning.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mary_Anning_by_B._J._Donne.jpg/250px-Mary_Anning_by_B._J._Donne.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Jane_Goodall_at_SXSW_London_2025.jpg/250px-Jane_Goodall_at_SXSW_London_2025.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Jane_Goodall._Erresuma_Batua.jpg/330px-Jane_Goodall._Erresuma_Batua.jpg"
+        ],
+        "achievements": [
+          "https://2009-2017.state.gov/img/14/58915/Mathiesen_150_1.jpg",
+          "https://landsat.gsfc.nasa.gov/wp-content/uploads/2024/01/jakobshavn-oli-20220904-th-300x235.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Jane_Goodall_at_Mizzou_Arena_%28facing_left%29.jpg/330px-Jane_Goodall_at_Mizzou_Arena_%28facing_left%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chimps_in_Gombe.jpg/330px-Chimps_in_Gombe.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/4/47/David_Attenborough_%28cropped%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/John_James_Audubon_1826.jpg/250px-John_James_Audubon_1826.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Richard_and_Cherry_Kearton_taking_a_photograph_of_a_birds_nest_%288386801860%29.jpg/250px-Richard_and_Cherry_Kearton_taking_a_photograph_of_a_birds_nest_%288386801860%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Launch_of_RRS_Sir_David_Attenborough_01.jpg/330px-Launch_of_RRS_Sir_David_Attenborough_01.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/4/47/David_Attenborough_%28cropped%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burgos_-_Murales_pacifistas_del_Colegio_Santa_Mar%C3%ADa_la_Nueva_y_San_Jos%C3%A9_Artesano_05.jpg/250px-Burgos_-_Murales_pacifistas_del_Colegio_Santa_Mar%C3%ADa_la_Nueva_y_San_Jos%C3%A9_Artesano_05.jpg"
+        ],
+        "achievements": [
+          "https://2009-2017.state.gov/img/09/33689/DSC_250_1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Fruit_d%27un_abre_r%C3%A9serve_naturelle_de_Dahliafleur_Bingerville_-_Green_Card.jpg/330px-Fruit_d%27un_abre_r%C3%A9serve_naturelle_de_Dahliafleur_Bingerville_-_Green_Card.jpg"
+        ],
+        "inventions": [
+          "https://2009-2017.state.gov/img/10/35569/clintoncgd1062010a_250_1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wangari_Maathai_in_Nairobi.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Mercedes_Bustamante_%28cropped%29.jpg/250px-Mercedes_Bustamante_%28cropped%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mercedes_Bustamante.jpg/330px-Mercedes_Bustamante.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Anthony_Rapp_SDCC_2017.jpg/250px-Anthony_Rapp_SDCC_2017.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Anthony_Rapp_SDCC_2017.jpg/250px-Anthony_Rapp_SDCC_2017.jpg"
+        ],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 2,
+        "failed_searches": 6
+      }
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Milo_van_Croton_%281763%29.jpg/250px-Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Milo_van_Croton_%281763%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Charles_Meynier_-_Milo_of_Croton_Attacked_by_a_Lion%2C_1795.jpg/250px-Charles_Meynier_-_Milo_of_Croton_Attacked_by_a_Lion%2C_1795.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/en/3/34/Sports_and_games.png"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Zelfportret_%281771%29.jpg/250px-Joseph-Beno%C3%AEt_Suv%C3%A9e_-_Zelfportret_%281771%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg/250px-Calvet%2Csculptures010_DESPREZ_Louis_Milon_de_Crotone_1834b.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/e/ef/William_Marshal%2C_II_Earl_of_Pembroke.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Paolo_Uccello_045.jpg/250px-Paolo_Uccello_045.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/William_Marshal_Second_Earl_of_Pembroke.jpg/250px-William_Marshal_Second_Earl_of_Pembroke.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/William_Marshal%2C_1st_Earl_of_Pembroke.jpg/330px-William_Marshal%2C_1st_Earl_of_Pembroke.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/e/ef/William_Marshal%2C_II_Earl_of_Pembroke.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ethel_Walker_%281861%E2%80%931951%29_-_Dame_Ethel_Walker_%28Self-portrait%29_-_NPG_5301_-_National_Portrait_Gallery.jpg/250px-Ethel_Walker_%281861%E2%80%931951%29_-_Dame_Ethel_Walker_%28Self-portrait%29_-_NPG_5301_-_National_Portrait_Gallery.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/6/61/Robin_Hood_and_Maid_Marian.JPG"
+        ],
+        "achievements": [
+          "https://p1.pikrepo.com/preview/1002/548/55/darts-entertainment-competition-the-purpose-of-the-game-dart-royalty-free-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Wibbandune_Sports_Ground.jpg/330px-Wibbandune_Sports_Ground.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Robin_Hood_-_geograph.org.uk_-_4166787.jpg/330px-Robin_Hood_-_geograph.org.uk_-_4166787.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/October_2020-_Charles_%22Pretty_Boy%22_Floyd%27s_Death_Mask.jpg/330px-October_2020-_Charles_%22Pretty_Boy%22_Floyd%27s_Death_Mask.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Robin_Hood_and_Little_John.jpg/250px-Robin_Hood_and_Little_John.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Henry_Fitzalan%2C_12th_Earl_of_Arundel_from_NPG.jpg/250px-Henry_Fitzalan%2C_12th_Earl_of_Arundel_from_NPG.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/ArundelTomb1.JPG/330px-ArundelTomb1.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg/330px-A_Chronicle_of_England_-_Page_328_-_Arundel%2C_Gloucester%2C_Nottingham%2C_Derby%2C_and_Warwick%2C_Before_the_King.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cricket%2C_WG_Grace%2C_1891-_Arthur_Shrewsbury.jpg/250px-Cricket%2C_WG_Grace%2C_1891-_Arthur_Shrewsbury.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg/250px-Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg/250px-Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Cricket%2C_WG_Grace%2C_1891-_Drawings_of_bats.jpg/330px-Cricket%2C_WG_Grace%2C_1891-_Drawings_of_bats.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg/250px-Cricket%2C_WG_Grace%2C_1891-_A_Young_Cricketer_%28Gainsborough%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/W._G._Grace%2C_cricketer%2C_by_Herbert_Rose_Barraud.jpg/250px-W._G._Grace%2C_cricketer%2C_by_Herbert_Rose_Barraud.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Star-of-Romania-Order-Collar.jpg/250px-Star-of-Romania-Order-Collar.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Baden-Baden-Augustaplatz-Pierre_de_Coubertin-04-gje.jpg/250px-Baden-Baden-Augustaplatz-Pierre_de_Coubertin-04-gje.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/250px-Baron_Pierre_de_Coubertin.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/James_Naismith.jpg/250px-James_Naismith.jpg"
+        ],
+        "achievements": [
+          "https://media.defense.gov/2015/Mar/21/2001026889/150/150/0/150317-A-CD688-020.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/James_Naismith.jpg/250px-James_Naismith.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/8/8d/James_Naismith_with_a_basketball.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Serena_Williams_at_2013_US_Open.jpg/250px-Serena_Williams_at_2013_US_Open.jpg",
+          "https://c1.wallpaperflare.com/preview/601/785/157/tennis-professional-woman-serena-williams-thumbnail.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Victoria_Azarenka%2C_Serena_Williams_and_Maria_Sharapova_with_medals_2012.jpg/250px-Victoria_Azarenka%2C_Serena_Williams_and_Maria_Sharapova_with_medals_2012.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Serena_Williams_%2819117668004%29_%28cropped%29.jpg/250px-Serena_Williams_%2819117668004%29_%28cropped%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Serena_Williams_%2819117668004%29_%28cropped%29.jpg/250px-Serena_Williams_%2819117668004%29_%28cropped%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Serena_Williams_%2819117668004%29_%28cropped%29.jpg/250px-Serena_Williams_%2819117668004%29_%28cropped%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Pel\u00e9",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/b/b8/Panini_pele_photo_only.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Velde_Still_life_with_roemer_and_lemon.JPG/250px-Velde_Still_life_with_roemer_and_lemon.JPG"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Djalma_Santos%2C_Pel%C3%A9_and_Gilmar_1958.jpg/330px-Djalma_Santos%2C_Pel%C3%A9_and_Gilmar_1958.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Brasileiros_%282%29.JPG/250px-Brasileiros_%282%29.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/2/2e/Pel%C3%A9_vs_swedish_defenders_1958.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Carlos_Alberto_comforts_Pel%C3%A9_at_his_final_game_1977.jpg/250px-Carlos_Alberto_comforts_Pel%C3%A9_at_his_final_game_1977.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/250px-Simone_Biles_National_Team_2024.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Orlai_Sappho.jpg/250px-Orlai_Sappho.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg/250px-Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Niobid_Painter_-_Red-Figure_Amphora_with_Musical_Scene_-_Walters_482712_-_Side_A.jpg/250px-Niobid_Painter_-_Red-Figure_Amphora_with_Musical_Scene_-_Walters_482712_-_Side_A.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Charles_Gleyre_La_Danse_des_bacchantes.jpg/330px-Charles_Gleyre_La_Danse_des_bacchantes.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg/250px-Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Alkaios_Sappho_BM_GR1842.7-28.1132.jpg/250px-Alkaios_Sappho_BM_GR1842.7-28.1132.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg/250px-Brygos_Painter_ARV_385_228_Alkaios_and_Sappho_-_Dionysos_and_maenad_%2807%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg/250px-Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sweet_stories_of_God%3B_in_the_language_of_childhood_and_the_beautiful_delineations_of_sacred_art_%281899%29_%2814751566596%29.jpg/250px-Sweet_stories_of_God%3B_in_the_language_of_childhood_and_the_beautiful_delineations_of_sacred_art_%281899%29_%2814751566596%29.jpg"
+        ],
+        "achievements": [
+          "https://dod.hawaii.gov/wp-content/uploads/2024/12/2011-DOD-Annual-Report-21.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/David%27s_Joy_Over_Forgiveness_%28Bible_Card%29.jpg/250px-David%27s_Joy_Over_Forgiveness_%28Bible_Card%29.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Jesse_-_David_-_Solomon.jpg/330px-Jesse_-_David_-_Solomon.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/8/83/King_david_hotel_bombing1.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/King_david_Leah_Michlson_1.jpg/250px-King_david_Leah_Michlson_1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg/250px-Study_of_King_David%2C_by_Julia_Margaret_Cameron.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Portrait_Of_Most_Venerable_Narada_Maha_Thera_%281898-1983%29.jpg/250px-Portrait_Of_Most_Venerable_Narada_Maha_Thera_%281898-1983%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Narada_and_king_Discuss_with_elder.jpg/330px-Narada_and_king_Discuss_with_elder.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Purandara_Dasa_Pitamaha_of_Carnatic_music_Indian_classical.jpg/250px-Purandara_Dasa_Pitamaha_of_Carnatic_music_Indian_classical.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Possibly_Narada%2C_the_inventor_of_the_Vina..jpg/250px-Possibly_Narada%2C_the_inventor_of_the_Vina..jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Narada_Muni.jpg/330px-Narada_Muni.jpg"
+        ],
+        "artifacts": [
+          "https://www.nps.gov/mora/learn/management/images/artifacts.png?maxwidth=650&autorotate=false",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Narada_Muni.jpg/330px-Narada_Muni.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f55.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f55.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Anonymous_vielle-player_from_the_Codex_Manesse.PNG/120px-Anonymous_vielle-player_from_the_Codex_Manesse.PNG"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg/250px-%C5%92uvres_po%C3%A9tiques_de_Guillaume_de_Machaut_-_BNF_Fr1586_f1.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/6/69/Hildegard_of_bingen_and_nuns.jpg"
+        ],
+        "inventions": [
+          "https://p1.hippopx.com/preview/961/787/667/rust-metal-rusted-rusty-background-structure-royalty-free-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG/250px-Karlheinz_Oswald_Hildegard_von_Bingen%2C_Eibingen.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg/250px-Hildegard_von_Bingen._Line_engraving_by_W._Marshall._Wellcome_V0002761.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Alfonso_X_el_Sabio_tomando_posesi%C3%B3n_del_mar_despu%C3%A9s_de_la_conquista_de_C%C3%A1diz._Mat%C3%ADas_Moreno._1866.jpg/330px-Alfonso_X_el_Sabio_tomando_posesi%C3%B3n_del_mar_despu%C3%A9s_de_la_conquista_de_C%C3%A1diz._Mat%C3%ADas_Moreno._1866.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Vielle.jpg/250px-Vielle.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg/250px-Alfonso_X_el_Sabio_%28Jos%C3%A9_Alcoverro%29_01.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ludwig_Van_Beethoven_LCCN2003663902.jpg/250px-Ludwig_Van_Beethoven_LCCN2003663902.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ludwig_van_Beethoven_in_his_Study.jpg/250px-Ludwig_van_Beethoven_in_his_Study.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ludwig_van_Beethoven_in_his_Study.jpg/250px-Ludwig_van_Beethoven_in_his_Study.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/GuentherZ_2010-07-10_0101_Wien03_Ungargasse5_Gedenktafel_Ludwig_van_Beethoven.jpg/250px-GuentherZ_2010-07-10_0101_Wien03_Ungargasse5_Gedenktafel_Ludwig_van_Beethoven.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/250px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Fannymendelssohn-improved.jpg/250px-Fannymendelssohn-improved.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Fannymendelssohn-improved.jpg/250px-Fannymendelssohn-improved.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/WilhelmFannyHensel.jpg/250px-WilhelmFannyHensel.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Fr\u00e9d\u00e9ric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Frederic_Chopin_photo.jpeg/250px-Frederic_Chopin_photo.jpeg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Fr%C3%A9d%C3%A9ric_Chopin_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_1717.jpg/250px-Fr%C3%A9d%C3%A9ric_Chopin_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_1717.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fryderyk_Chopin.jpg/250px-Fryderyk_Chopin.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Images_used_on_D%C3%A9couvertes_Gallimard_book_covers.jpg/250px-Images_used_on_D%C3%A9couvertes_Gallimard_book_covers.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Frederic_Chopin_by_George_Sand_in_pencil%2C_1841.jpg/250px-Frederic_Chopin_by_George_Sand_in_pencil%2C_1841.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Pomnik_Fryderyka_Chopina_w_%C5%81azienkach_%281_of_1%29.jpg/250px-Pomnik_Fryderyka_Chopina_w_%C5%81azienkach_%281_of_1%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Chopin%2C_by_Wodzinska.JPG/250px-Chopin%2C_by_Wodzinska.JPG"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Louis_Armstrong2.jpg/250px-Louis_Armstrong2.jpg",
+          "https://p1.pikrepo.com/preview/87/424/14/graffiti-street-art-face-creepy-royalty-free-thumbnail.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Louis_Armstrong_%281955%29.jpg/330px-Louis_Armstrong_%281955%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Louis_Armstrong_restored.jpg/330px-Louis_Armstrong_restored.jpg"
+        ],
+        "inventions": [
+          "https://p1.hippopx.com/preview/101/806/352/idea-thought-business-eureka-invention-solution-royalty-free-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Charles_Buddy_Bolden_statue_in_Louis_Armstrong_Park_in_New_Orleans.JPG/330px-Charles_Buddy_Bolden_statue_in_Louis_Armstrong_Park_in_New_Orleans.JPG"
+        ],
+        "artifacts": [
+          "https://p1.pikrepo.com/preview/719/388/887/day-of-the-dead-mexico-skull-crafts-mexican-tradition-royalty-free-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Louis_Armstrong_NYWTS_4.jpg/250px-Louis_Armstrong_NYWTS_4.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/The_Beatles_members_at_New_York_City_in_1964.jpg/250px-The_Beatles_members_at_New_York_City_in_1964.jpg",
+          "https://c1.wallpaperflare.com/preview/264/624/892/colors-portrait-macro-canon-thumbnail.jpg"
+        ],
+        "achievements": [
+          "http://archive.government.ru/media/2009/1/3/11023/doc_photo2.jpeg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/The_Beatles_Statues.jpg/330px-The_Beatles_Statues.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/DarkSideOfTheMoon1973.jpg/330px-DarkSideOfTheMoon1973.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/The_Beatles_The_End_final_lyrics_plaque.jpg/250px-The_Beatles_The_End_final_lyrics_plaque.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DIG13766-014_-_%22Ladies_and_Gentlemen..._the_Beatles%21%22_exhibit_at_LBJ_Presidential_Library%2C_Austin%2C_TX%2C_2015-06-23_16.13.36.jpg/330px-DIG13766-014_-_%22Ladies_and_Gentlemen..._the_Beatles%21%22_exhibit_at_LBJ_Presidential_Library%2C_Austin%2C_TX%2C_2015-06-23_16.13.36.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/The_Beatles_Statues.jpg/330px-The_Beatles_Statues.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/6/6c/Suga_in_the_Oval_Office_of_the_White_House%2C_May_31%2C_2022_%28cropped%29.jpg",
+          "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg"
+        ],
+        "achievements": [
+          "https://c1.wallpaperflare.com/preview/574/120/860/woman-smile-happy-joy-thumbnail.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BTS_performing_%22Spring_Day%22_during_the_BTS_Live_Trilogy_Episode_III_The_Wings_Tour_in_Anaheim%2C_2_April_2017_04.jpg/330px-BTS_performing_%22Spring_Day%22_during_the_BTS_Live_Trilogy_Episode_III_The_Wings_Tour_in_Anaheim%2C_2_April_2017_04.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Life_of_Michael_Angelo%2C_1912_-_Pieta.jpg/250px-Life_of_Michael_Angelo%2C_1912_-_Pieta.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BTS_EMU-A2_arriving_at_Ha_Yaek_Lat_Phrao_Station.jpg/330px-BTS_EMU-A2_arriving_at_Ha_Yaek_Lat_Phrao_Station.jpg"
+        ],
+        "artifacts": [
+          "https://myhotelsbangkok.com/data/images/300x300w/3643/364372/364372987.JPEG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BTS_performing_%22Spring_Day%22_during_the_BTS_Live_Trilogy_Episode_III_The_Wings_Tour_in_Anaheim%2C_2_April_2017_04.jpg/330px-BTS_performing_%22Spring_Day%22_during_the_BTS_Live_Trilogy_Episode_III_The_Wings_Tour_in_Anaheim%2C_2_April_2017_04.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Holly_Herndon.jpg/330px-Holly_Herndon.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Holly_Herndon_2024_%28cropped%29.jpg/250px-Holly_Herndon_2024_%28cropped%29.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://itsartlaw.org/wp-content/uploads/sb-instagram-feed-images/520166465_18514659583017515_2393436755100772255_nthumb.webp"
+        ],
+        "artifacts": [
+          "https://itsartlaw.org/wp-content/uploads/sb-instagram-feed-images/520166465_18514659583017515_2393436755100772255_nthumb.webp"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Yannick N\u00e9zet-S\u00e9guin",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Yannick_N%C3%A9zet_S%C3%A9guin.jpg/250px-Yannick_N%C3%A9zet_S%C3%A9guin.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Yannick_N%C3%A9zet-S%C3%A9guin_2011.jpg/330px-Yannick_N%C3%A9zet-S%C3%A9guin_2011.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Yannick_N%C3%A9zet_S%C3%A9guin.jpg/250px-Yannick_N%C3%A9zet_S%C3%A9guin.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yannick_N%C3%A9zet-S%C3%A9guin.jpg/250px-Yannick_N%C3%A9zet-S%C3%A9guin.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg/250px-Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ptolemy_Cosmographia_1467_-_world_map.jpg/330px-Ptolemy_Cosmographia_1467_-_world_map.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg/250px-Ring_with_engraved_portrait_of_Ptolemy_VI_Philometor_%283rd%E2%80%932nd_century_BCE%29_-_2009.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/BML_Le_Lointain_partie_1_03_R%C3%A9s_23561_carte_de_Ptol%C3%A9m%C3%A9e.jpg/330px-BML_Le_Lointain_partie_1_03_R%C3%A9s_23561_carte_de_Ptol%C3%A9m%C3%A9e.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Egyptian_-_Head_of_Ptolemy_II_-_Walters_22109.jpg/250px-Egyptian_-_Head_of_Ptolemy_II_-_Walters_22109.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/250px-Rosetta_Stone.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Claudius_Ptolemy-_The_World.jpg/330px-Claudius_Ptolemy-_The_World.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Indian_People_-_Mosaic.jpg/330px-Indian_People_-_Mosaic.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg"
+        ],
+        "achievements": [
+          "http://static.kremlin.ru/media/events/photos/small/K3CsghAFNRwm5QfL8DpTEGBSucbBBl8R.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2064_aryabhata-crp.jpg/250px-2064_aryabhata-crp.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hypatia_Sanzio.png/250px-Hypatia_Sanzio.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Hypatia_at_the_Haymarket_theatre_-_The_Graphic_-_21_January_1893.jpg/250px-Hypatia_at_the_Haymarket_theatre_-_The_Graphic_-_21_January_1893.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Sanzio_01_Hypatia.jpg/250px-Sanzio_01_Hypatia.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Astrolabio_%2816787706916%29.jpg/250px-Astrolabio_%2816787706916%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Astrolabio_%2816787706916%29.jpg/250px-Astrolabio_%2816787706916%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Greeks25-3.svg/250px-Greeks25-3.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Euclid_Vat_ms_no_190_I_prop_47.jpg/330px-Euclid_Vat_ms_no_190_I_prop_47.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/9f/Al-Battani.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khalili_Collection_Islamic_Art_sci_0430_back.jpg/250px-Khalili_Collection_Islamic_Art_sci_0430_back.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/9/9f/Al-Battani.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/9f/Al-Battani.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ceramique_elephant.JPG/250px-Ceramique_elephant.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ceramique_elephant.JPG/250px-Ceramique_elephant.JPG"
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ceramique_elephant.JPG/250px-Ceramique_elephant.JPG"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 3,
+        "failed_searches": 5
+      }
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/f/fd/Chaucer_Hoccleve_cleanwhite.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Unidentified_Artist_-_Geoffrey_Chaucer_%281340%5E-1400%29_-_H208_-_Harvard_Art_Museums.jpg/250px-Unidentified_Artist_-_Geoffrey_Chaucer_%281340%5E-1400%29_-_H208_-_Harvard_Art_Museums.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Canterbury_Holland_Chaucer_statue.jpg/250px-Canterbury_Holland_Chaucer_statue.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Canterbury_Holland_Chaucer_statue.jpg/250px-Canterbury_Holland_Chaucer_statue.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Chaucer1721.jpg/250px-Chaucer1721.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg/250px-Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Galileo_Galilei_2.jpg/250px-Galileo_Galilei_2.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Galileo-Galilei-Stra%C3%9Fe-Via_Galileo_Galilei.jpg/330px-Galileo-Galilei-Stra%C3%9Fe-Via_Galileo_Galilei.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Cannocchiale_galileiano_Museo_scienza_e_tecnologia_Milano_05.jpg/330px-Cannocchiale_galileiano_Museo_scienza_e_tecnologia_Milano_05.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Galileo_galilei_tomb_Santa_Croce_Florence.jpg/250px-Galileo_galilei_tomb_Santa_Croce_Florence.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg/250px-Justus_Sustermans_-_Portrait_of_Galileo_Galilei_%28Uffizi%29.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Edmond_Halley%2C_De_Bergh_Carmel_%28FL6882390_2476033%29.jpg/330px-Edmond_Halley%2C_De_Bergh_Carmel_%28FL6882390_2476033%29.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Edmond_Halley_072.jpg/250px-Edmond_Halley_072.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg/250px-ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg/250px-David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/C.-Herschel-Platz_Friedrichshain_AMA_fec_%287%29.JPG/330px-C.-Herschel-Platz_Friedrichshain_AMA_fec_%287%29.JPG"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Ngc7380_20160815.jpg/250px-Ngc7380_20160815.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg/250px-ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg/250px-ETH-BIB-Herschel%2C_Caroline_%281750-1848%29-Portrait-Portr_11026-092-SF.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Yuri_Gagarin_%281961%29_-_Restoration_%28cropped%29.jpg/250px-Yuri_Gagarin_%281961%29_-_Restoration_%28cropped%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD_%D0%93%D1%80%D0%B0%D1%84%D1%84%D0%B8%D1%82%D0%B8_VizuIMG_3692.JPG/250px-%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD_%D0%93%D1%80%D0%B0%D1%84%D1%84%D0%B8%D1%82%D0%B8_VizuIMG_3692.JPG"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/U.S.S.R._PAVILION_AT_EXPO_86%2C_VANCOUVER%2C_B.C..jpg/250px-U.S.S.R._PAVILION_AT_EXPO_86%2C_VANCOUVER%2C_B.C..jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Gagarin.jpg/250px-Gagarin.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Romania_1961_MI_1963_stamp_%28Yuri_Gagarin_in_space_capsule_and_globe_with_orbit%29.jpg/330px-Romania_1961_MI_1963_stamp_%28Yuri_Gagarin_in_space_capsule_and_globe_with_orbit%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Armenia%2C_Gagarin._Yuri_Gagarin%27s_monument_01.jpg/330px-Armenia%2C_Gagarin._Yuri_Gagarin%27s_monument_01.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/109_Estaci%C3%B3_de_metro_Kosmonavtlar_%28Taixkent%29%2C_Iuri_Gagarin.jpg/330px-109_Estaci%C3%B3_de_metro_Kosmonavtlar_%28Taixkent%29%2C_Iuri_Gagarin.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Yuri_Gagarin_%281961%29_-_Restoration.jpg/250px-Yuri_Gagarin_%281961%29_-_Restoration.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/NASA_human_computers_-_Katherine_Coleman_Goble_Johnson.jpg/250px-NASA_human_computers_-_Katherine_Coleman_Goble_Johnson.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mural_de_Katherine_Johnson%2C_CEIP_Juan_Manuel_Montoya._Carretera_de_la_Punta_al_Mar%2C_81._Valencia.jpg/330px-Mural_de_Katherine_Johnson%2C_CEIP_Juan_Manuel_Montoya._Carretera_de_la_Punta_al_Mar%2C_81._Valencia.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Katherine_Johnson_Group_Achievement_Award_%28NHQ201612010014%29.jpg/330px-Katherine_Johnson_Group_Achievement_Award_%28NHQ201612010014%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/250px-Katherine_Johnson_at_NASA%2C_in_1966.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Katherine_Johnson_medal.jpeg/250px-Katherine_Johnson_medal.jpeg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/250px-Katherine_Johnson_at_NASA%2C_in_1966.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/e/eb/Stephen_Hawking.StarChild.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/2022_Warszawa_Pawia-Esperanto%2C_mural_Stephen_Hawking%2C_1.jpg/330px-2022_Warszawa_Pawia-Esperanto%2C_mural_Stephen_Hawking%2C_1.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Physicist_Stephen_Hawking_in_Zero_Gravity_NASA.jpg/330px-Physicist_Stephen_Hawking_in_Zero_Gravity_NASA.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Relative_time_%282886233692%29_%28Stephen_Hawking_cropped%29.jpg/250px-Relative_time_%282886233692%29_%28Stephen_Hawking_cropped%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Corpus_Clock_2.jpg/250px-Corpus_Clock_2.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Physicist_Stephen_Hawking_in_Zero_Gravity_NASA.jpg/330px-Physicist_Stephen_Hawking_in_Zero_Gravity_NASA.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 6,
+        "failed_searches": 2
+      }
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Ji33%2C_4-3%2C_Yi_Xing%2C_1955.jpg/250px-Ji33%2C_4-3%2C_Yi_Xing%2C_1955.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Senkaji_Cho_O_%E8%88%A9%E7%81%AB%E5%85%92%E5%BC%B5%E6%A8%AA%28The_Boatman_Zhang_Heng%29_%28BM_2008%2C3037.10221%29.jpg/250px-Senkaji_Cho_O_%E8%88%A9%E7%81%AB%E5%85%92%E5%BC%B5%E6%A8%AA%28The_Boatman_Zhang_Heng%29_%28BM_2008%2C3037.10221%29.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sismografo_chang_heng.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sismografo_chang_heng.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/A_reconstruction_of_the_counterweight-adjustable_mirror_of_Ctesibius%2C_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/120px-A_reconstruction_of_the_counterweight-adjustable_mirror_of_Ctesibius%2C_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/2_Horl_Ct%C3%A9sibios_1.jpg/250px-2_Horl_Ct%C3%A9sibios_1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Hydraulis_organ_of_Ctesibius.jpg/250px-Hydraulis_organ_of_Ctesibius.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Hydraulis_organ_of_Ctesibius.jpg/250px-Hydraulis_organ_of_Ctesibius.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hydraulic_telegraph%2C_4th_century_BC_%28reconstruction%29.jpg/250px-Hydraulic_telegraph%2C_4th_century_BC_%28reconstruction%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/250px-Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Aeneas_cipher_disc%2C_5th_century_BC%2C_Greece_%28reconstruction%29.jpg/330px-Aeneas_cipher_disc%2C_5th_century_BC%2C_Greece_%28reconstruction%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/250px-Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg/250px-Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Al-Jazari_-_The_Scribe_Candle_Clock.jpg/250px-Al-Jazari_-_The_Scribe_Candle_Clock.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ismail_al_jazari.jpg/250px-Ismail_al_jazari.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg/250px-Al-Jazari%27s_%22Book_of_Knowledge_of_Ingenious_Mechanical_Devices%22-_The_Castle_Water_Clock_-_Google_Art_Project.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 5,
+        "failed_searches": 3
+      }
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Czech-2013-Prague-Astronomical_clock_face.jpg/330px-Czech-2013-Prague-Astronomical_clock_face.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Richard_of_Wallingford.jpg/250px-Richard_of_Wallingford.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/b/b5/Fibonacci.jpeg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Fibonacci2.jpg/250px-Fibonacci2.jpg"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leonardo_Fibonacci_Estatua.JPG/250px-Leonardo_Fibonacci_Estatua.JPG"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leonardo_Fibonacci_Estatua.JPG/250px-Leonardo_Fibonacci_Estatua.JPG"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Thomas_Edison2.jpg/250px-Thomas_Edison2.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Thomas_Edison_standing_next_to_WOR_radio_microphone._%28e5736903f5a741d6a114a582d6b59a03%29.jpg/250px-Thomas_Edison_standing_next_to_WOR_radio_microphone._%28e5736903f5a741d6a114a582d6b59a03%29.jpg"
+        ],
+        "achievements": [
+          "https://www.nps.gov/articles/images/Post-John-Keegan-President-Edison-Innovation-Foundation-photo-uncredited-NPS_1.jpg?maxwidth=650&autorotate=false",
+          "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false"
+        ],
+        "inventions": [
+          "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false",
+          "https://www.nps.gov/edis/learn/kidsyouth/images/standard-phonograph.jpg?maxwidth=650&autorotate=false"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Thomas_Edison_cabinet_card_by_Victor_Daireaux%2C_c1880s.JPG/250px-Thomas_Edison_cabinet_card_by_Victor_Daireaux%2C_c1880s.JPG",
+          "https://www.nps.gov/edis/learn/kidsyouth/images/lithograph-of-1890s-lab.jpg?maxwidth=650&autorotate=false"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/d/d4/Nikola_Tesla_%281856-1943%29_early_portrait.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Belgique_-_Louvain-la-Neuve_-_Parking_des_Sciences_-_Nikola_Tesla.jpg/330px-Belgique_-_Louvain-la-Neuve_-_Parking_des_Sciences_-_Nikola_Tesla.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nikola_Tesla%27s_personal_exhibit_at_the_1893_Chicago_World%27s_Columbian_Exposition_Fair.png/330px-Nikola_Tesla%27s_personal_exhibit_at_the_1893_Chicago_World%27s_Columbian_Exposition_Fair.png"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tesla_lab_coil1.jpg/250px-Tesla_lab_coil1.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Nikola_Tesla_Smiljan_03.jpg/330px-Nikola_Tesla_Smiljan_03.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/MNT_Brodic.JPG/250px-MNT_Brodic.JPG",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Nikola_Tesla%2C_with_his_equipment_Wellcome_M0014782.jpg/330px-Nikola_Tesla%2C_with_his_equipment_Wellcome_M0014782.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/John_Wycliffe_Lowes_Forster_-_Alexander_Graham_Bell_-_NPG.85.74_-_National_Portrait_Gallery.jpg/250px-John_Wycliffe_Lowes_Forster_-_Alexander_Graham_Bell_-_NPG.85.74_-_National_Portrait_Gallery.jpg"
+        ],
+        "achievements": [
+          "https://georgewbush-whitehouse.archives.gov/news/releases/2008/09/images/20080929-4_d-0196-8-250h.jpg",
+          "https://georgewbush-whitehouse.archives.gov/news/releases/2008/09/images/20080929-4_d-0196-8-250h.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/9c/Alexander_Graham_Bell_Experimental_Telephone.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Alexander_Graham_Bell.jpg/250px-Alexander_Graham_Bell.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Grace_Hopper.jpg/250px-Grace_Hopper.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Portrait_of_Marie_Curie.jpg/250px-Portrait_of_Marie_Curie.jpg"
+        ],
+        "achievements": [
+          "https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ",
+          "https://www.history.navy.mil/content/history/nhhc/browse-by-topic/people/namesakes/james-williams/_jcr_content/body/media_asset_982712760/image.img.jpg/1583335061812.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/e/e5/Grace_M_Hopper_grave.png"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Old_Divinity_School%2C_Yale_University%2C_New_Haven%2C_Conn.jpg/330px-Old_Divinity_School%2C_Yale_University%2C_New_Haven%2C_Conn.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/ANCExplorer_Grace_Hopper_grave.jpg/250px-ANCExplorer_Grace_Hopper_grave.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 7,
+        "failed_searches": 1
+      }
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Shigeru_Miyamoto_at_GDC_2007_%28cropped%29.png/250px-Shigeru_Miyamoto_at_GDC_2007_%28cropped%29.png"
+        ],
+        "achievements": [],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Shigeru_Miyamoto_GDC_2007.jpg/250px-Shigeru_Miyamoto_GDC_2007.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Takashi_Tezuka%2C_Shigeru_Miyamoto_and_K%C5%8Dji_Kond%C5%8D.jpg/330px-Takashi_Tezuka%2C_Shigeru_Miyamoto_and_K%C5%8Dji_Kond%C5%8D.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/d/d4/Shigeru_Miyamoto_e3-2006.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 4,
+        "failed_searches": 4
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/250px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+          "https://c1.wallpaperflare.com/preview/578/282/466/painting-grant-wood-man-woman-thumbnail.jpg"
+        ],
+        "achievements": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Obama%27s_New_Space_Frontier_%284525849781%29.png/250px-Obama%27s_New_Space_Frontier_%284525849781%29.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Elon_Musk_2019.jpg/250px-Elon_Musk_2019.jpg"
+        ],
+        "inventions": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Elon_Musk.jpg/330px-Elon_Musk.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Elon_Musk%2C_Tesla_Factory%2C_Fremont_%28CA%2C_USA%29_%288765031426%29.jpg/330px-Elon_Musk%2C_Tesla_Factory%2C_Fremont_%28CA%2C_USA%29_%288765031426%29.jpg"
+        ],
+        "artifacts": [
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg/330px-Elon_Musk_overlooking_the_remains_of_F9R_%2836411051713%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/5/5d/Elon_Musk_in_Mission_Control_at_SpaceX.jpg"
+        ]
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 8,
+        "failed_searches": 0
+      }
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      },
+      "search_stats": {
+        "total_queries": 8,
+        "successful_searches": 0,
+        "failed_searches": 8
+      }
+    }
+  ],
+  "summary_stats": {
+    "total_images_found": 628,
+    "total_queries": 960,
+    "successful_searches": 628,
+    "failed_searches": 332,
+    "daily_queries_used": 956
+  }
+}

@@ -1,25 +1,28 @@
 export const BACKEND_URL = 'https://api.orbgame.us';
 
-export async function getPositiveNews(category, epoch = 'Modern', language = 'en', count = 1) {
+export async function getHistoricalFigures(category, epoch = 'Modern', language = 'en', count = 1) {
   try {
-    // Use the image-enhanced endpoint for historical figure stories
-    const response = await fetch(`${BACKEND_URL}/api/orb/stories-with-images?category=${category}&epoch=${epoch}&language=${language}&count=${count}`);
-    if (!response.ok) throw new Error('Failed to fetch positive news');
+    // Use the historical figures endpoint
+    const response = await fetch(`${BACKEND_URL}/api/orb/historical-figures/${category}?epoch=${epoch}&language=${language}&count=${count}`);
+    if (!response.ok) throw new Error('Failed to fetch historical figures');
     const data = await response.json();
     
-    // Return the stories array from the response
-    if (data.success && data.stories) {
+    // Handle the new response format: { stories: [...] }
+    if (data && data.stories && Array.isArray(data.stories)) {
       return data.stories;
+    } else if (data && Array.isArray(data)) {
+      // Fallback for direct array response
+      return data;
     } else {
       throw new Error('Invalid response format');
     }
   } catch (error) {
-    console.error('Error fetching positive news:', error);
+    console.error('Error fetching historical figures:', error);
     // Fallback data if API fails
     return [{
-      headline: 'Positive News',
-      summary: 'Stay tuned for more positive stories!',
-      fullText: 'We\'re working on bringing you the latest positive news.',
+      headline: 'Historical Figure Story',
+      summary: 'Stay tuned for more historical stories!',
+      fullText: 'We\'re working on bringing you the latest historical figure stories.',
       source: 'Orb Game',
       publishedAt: new Date().toISOString(),
       ttsAudio: null,

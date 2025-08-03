@@ -15,7 +15,7 @@ import { AdvancedMemoryService } from './advanced-memory-service.js';
 import { HistoricalFiguresService } from './historical-figures-service.js';
 import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
-import BlobStorageImageService from './historical-figures-image-service-blob.js';
+import BlobStorageImageService from './historical-figures-image-service-blob-real.js';
 import AudioStorageService from './audio-storage-service.js';
 
 const app = express();
@@ -136,16 +136,29 @@ app.get('/', (req, res) => {
     message: 'Orb Game Backend API',
     version: '1.0.1',
     status: 'running',
-    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
-    build: '2025-07-13-21:55'
-  });
-});
-
-app.get('/api', (req, res) => {
-  res.json({
-    message: 'Orb Game Backend API',
-    version: '1.0.1',
-    endpoints: ['/api/chat', '/api/analytics/summary', '/api/memory/profile', '/health'],
+    endpoints: [
+      '/health',
+      '/api/chat', 
+      '/api/analytics/summary',
+      '/api/analytics/detailed',
+      '/api/memory/profile',
+      '/api/memory/stats',
+      '/api/memory/export',
+      '/api/memory/search',
+      '/api/orb/historical-figures/:category',
+      '/api/orb/generate-historical-figures/:category',
+      '/api/tts/generate',
+      '/api/tts/audio/:storyId',
+      '/api/cache/stats',
+      '/api/cache/check/:category/:epoch/:model/:language',
+      '/api/cache/clear',
+      '/api/historical-figures/stats',
+      '/api/historical-figures/list/:category/:epoch',
+      '/api/historical-figures/random/:category',
+      '/api/historical-figures/preload/:epoch',
+      '/api/orb/images/stats',
+      '/api/orb/images/for-story'
+    ],
     build: '2025-07-13-21:55'
   });
 });
@@ -829,12 +842,12 @@ try {
   // Enhanced chat endpoint is now defined outside the async function
 
   // Web search decisions endpoint
-  app.get('/api/analytics/search-decisions', (req, res) => {
-    res.json({
-      totalSearches: totalWebSearches,
-      searchRate: totalChats > 0 ? (totalWebSearches / totalChats * 100).toFixed(1) + '%' : '0%'
-    });
-  });
+  // app.get('/api/analytics/search-decisions', (req, res) => { // REMOVED
+  //   res.json({ // REMOVED
+  //     totalSearches: totalWebSearches, // REMOVED
+  //     searchRate: totalChats > 0 ? (totalWebSearches / totalChats * 100).toFixed(1) + '%' : '0%' // REMOVED
+  //   }); // REMOVED
+  // }); // REMOVED
 
 }
 
@@ -1389,53 +1402,219 @@ function isMemoryServiceReady() {
 }
 
 // Get cached modern epoch story endpoint
-app.get('/api/stories/modern-cached', async (req, res) => {
-  try {
-    if (!modelReliabilityChecker) {
-      return res.status(503).json({ error: 'Model reliability checker not available' });
-    }
+// app.get('/api/stories/modern-cached', async (req, res) => { // REMOVED
+//   try { // REMOVED
+//     if (!modelReliabilityChecker) { // REMOVED
+//       return res.status(503).json({ error: 'Model reliability checker not available' }); // REMOVED
+//     } // REMOVED
 
-    const cachedStory = modelReliabilityChecker.getCachedModernStory();
+//     const cachedStory = modelReliabilityChecker.getCachedModernStory(); // REMOVED
     
-    if (cachedStory) {
-      res.json({
-        success: true,
-        story: cachedStory,
-        source: 'modern-cache',
-        category: 'Technology',
-        epoch: 'Modern'
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        error: 'No cached modern story available'
-      });
-    }
-  } catch (error) {
-    console.error('❌ Error fetching cached modern story:', error);
-    res.status(500).json({ error: 'Failed to fetch cached modern story' });
-  }
-});
+//     if (cachedStory) { // REMOVED
+//       res.json({ // REMOVED
+//         success: true, // REMOVED
+//         story: cachedStory, // REMOVED
+//         source: 'modern-cache', // REMOVED
+//         category: 'Technology', // REMOVED
+//         epoch: 'Modern' // REMOVED
+//       }); // REMOVED
+//     } else { // REMOVED
+//       res.status(404).json({ // REMOVED
+//         success: false, // REMOVED
+//         error: 'No cached modern story available' // REMOVED
+//       }); // REMOVED
+//     } // REMOVED
+//   } catch (error) { // REMOVED
+//     console.error('❌ Error fetching cached modern story:', error); // REMOVED
+//     res.status(500).json({ error: 'Failed to fetch cached modern story' }); // REMOVED
+//   } // REMOVED
+// }); // REMOVED
 
 // Get model reliability status endpoint
-app.get('/api/models/reliability', async (req, res) => {
-  try {
-    if (!modelReliabilityChecker) {
-      return res.status(503).json({ error: 'Model reliability checker not available' });
-    }
+// app.get('/api/models/reliability', async (req, res) => { // REMOVED
+//   try { // REMOVED
+//     if (!modelReliabilityChecker) { // REMOVED
+//       return res.status(503).json({ error: 'Model reliability checker not available' }); // REMOVED
+//     } // REMOVED
 
-    const reliableModels = modelReliabilityChecker.getReliableModels();
+//     const reliableModels = modelReliabilityChecker.getReliableModels(); // REMOVED
     
-    res.json({
-      success: true,
-      reliableModels,
-      count: reliableModels.length
+//     res.json({ // REMOVED
+//       success: true, // REMOVED
+//       reliableModels, // REMOVED
+//       count: reliableModels.length // REMOVED
+//     }); // REMOVED
+//   } catch (error) { // REMOVED
+//     console.error('❌ Error fetching model reliability:', error); // REMOVED
+//     res.status(500).json({ error: 'Failed to fetch model reliability' }); // REMOVED
+//   } // REMOVED
+// }); // REMOVED
+
+// Stories with Images API endpoint
+// app.get('/api/orb/stories-with-images', async (req, res) => { // REMOVED
+//   try { // REMOVED
+//     const { category, epoch = 'Modern', language = 'en', count = 1 } = req.query; // REMOVED
+    
+//     console.log(`📰 Stories with Images request: ${category}, ${epoch}, ${language}, count=${count}`); // REMOVED
+    
+//     if (!historicalFiguresService) { // REMOVED
+//       console.error('❌ Historical Figures Service not initialized'); // REMOVED
+//       return res.status(500).json({ error: 'Historical Figures Service not available' }); // REMOVED
+//     } // REMOVED
+    
+//     const stories = await historicalFiguresService.getStories( // REMOVED
+//       category,  // REMOVED
+//       epoch,  // REMOVED
+//       language,  // REMOVED
+//       parseInt(count),  // REMOVED
+//       false // includeTTS // REMOVED
+//     ); // REMOVED
+    
+//     // Add image information to each story // REMOVED
+//     const storiesWithImages = stories.map(story => { // REMOVED
+//       const figureName = story.historicalFigure || story.headline.split(':')[0]; // REMOVED
+//       return { // REMOVED
+//         ...story, // REMOVED
+//         imageStatus: 'available', // REMOVED
+//         figureName: figureName // REMOVED
+//       }); // REMOVED
+//     }); // REMOVED
+    
+//     console.log(`✅ Returning ${storiesWithImages.length} stories with images for ${category}`); // REMOVED
+//     res.json({ // REMOVED
+//       success: true, // REMOVED
+//       stories: storiesWithImages, // REMOVED
+//       category, // REMOVED
+//       epoch, // REMOVED
+//       language, // REMOVED
+//       count: storiesWithImages.length // REMOVED
+//     }); // REMOVED
+    
+//   } catch (error) { // REMOVED
+//     console.error('❌ Error in stories with images endpoint:', error.message); // REMOVED
+//     res.status(500).json({  // REMOVED
+//       success: false, // REMOVED
+//       error: 'Failed to fetch stories with images', // REMOVED
+//       stories: [] // REMOVED
+//     }); // REMOVED
+//   } // REMOVED
+// }); // REMOVED
+
+// Historical Figures API endpoint
+app.get('/api/orb/historical-figures/:category', async (req, res) => {
+  try {
+    const { category } = req.params;
+    const { count = 3, epoch = 'Modern', language = 'en' } = req.query;
+    
+    console.log(`📰 Historical Figures request: ${category}, ${epoch}, ${language}, count=${count}`);
+    
+    if (!historicalFiguresService) {
+      console.error('❌ Historical Figures Service not initialized');
+      return res.status(500).json({ error: 'Historical Figures Service not available' });
+    }
+    
+    const stories = await historicalFiguresService.getStories(
+      category, 
+      epoch, 
+      language, 
+      parseInt(count), 
+      false // includeTTS
+    );
+    
+    // Add image information to each story
+    const storiesWithImages = stories.map(story => {
+      const figureName = story.historicalFigure || story.headline.split(':')[0];
+      
+      // Get images for this figure if image service is available
+      let images = null;
+      if (app.locals.imageService) {
+        try {
+          const figureImages = app.locals.imageService.getFigureImages(figureName);
+          if (figureImages && figureImages.portraits && figureImages.portraits.length > 0) {
+            images = {
+              portrait: figureImages.portraits[0],
+              gallery: figureImages.portraits.slice(1)
+            };
+          }
+        } catch (imageError) {
+          console.warn(`⚠️ Could not get images for ${figureName}:`, imageError.message);
+        }
+      }
+      
+      return {
+        ...story,
+        imageStatus: images ? 'available' : 'no-images',
+        figureName: figureName,
+        images: images
+      };
     });
+    
+    console.log(`✅ Returning ${storiesWithImages.length} historical figure stories with images for ${category}`);
+    res.json(storiesWithImages);
+    
   } catch (error) {
-    console.error('❌ Error fetching model reliability:', error);
-    res.status(500).json({ error: 'Failed to fetch model reliability' });
+    console.error('❌ Error in historical figures endpoint:', error.message);
+    res.status(500).json({ error: 'Failed to fetch historical figure stories' });
   }
 });
+
+// Positive News API endpoint (alias for historical figures) - REMOVED
+// app.get('/api/orb/positive-news/:category', async (req, res) => { // REMOVED
+//   try { // REMOVED
+//     const { category } = req.params; // REMOVED
+//     const { count = 3, epoch = 'Modern', language = 'en', storyType = 'historical-figure' } = req.query; // REMOVED
+//     
+//     console.log(`📰 Positive News request: ${category}, ${epoch}, ${language}, count=${count}, storyType=${storyType}`); // REMOVED
+//     
+//     if (!historicalFiguresService) { // REMOVED
+//       console.error('❌ Historical Figures Service not initialized'); // REMOVED
+//       return res.status(500).json({ error: 'Historical Figures Service not available' }); // REMOVED
+//     } // REMOVED
+//     
+//     const stories = await historicalFiguresService.getStories( // REMOVED
+//       category,  // REMOVED
+//       epoch,  // REMOVED
+//       language,  // REMOVED
+//       parseInt(count),  // REMOVED
+//       false // includeTTS // REMOVED
+//     ); // REMOVED
+//     
+//     // Add image information to each story // REMOVED
+//     const storiesWithImages = stories.map(story => { // REMOVED
+//       const figureName = story.historicalFigure || story.headline.split(':')[0]; // REMOVED
+//       
+//       // Get images for this figure if image service is available // REMOVED
+//       let images = null; // REMOVED
+//       if (app.locals.imageService) { // REMOVED
+//         try { // REMOVED
+//           const figureImages = app.locals.imageService.getFigureImages(figureName); // REMOVED
+//           if (figureImages && figureImages.portraits && figureImages.portraits.length > 0) { // REMOVED
+//             images = { // REMOVED
+//               portrait: figureImages.portraits[0], // REMOVED
+//             gallery: figureImages.portraits.slice(1) // REMOVED
+//             }; // REMOVED
+//           } // REMOVED
+//         } catch (imageError) { // REMOVED
+//           console.warn(`⚠️ Could not get images for ${figureName}:`, imageError.message); // REMOVED
+//         } // REMOVED
+//       } // REMOVED
+//       
+//       return { // REMOVED
+//         ...story, // REMOVED
+//         imageStatus: images ? 'available' : 'no-images', // REMOVED
+//         figureName: figureName, // REMOVED
+//         images: images // REMOVED
+//       }; // REMOVED
+//     }); // REMOVED
+//     
+//     console.log(`✅ Returning ${storiesWithImages.length} stories with images for ${category}`); // REMOVED
+//     res.json(storiesWithImages); // REMOVED
+//     
+//   } catch (error) { // REMOVED
+//     console.error('❌ Error in positive news endpoint:', error.message); // REMOVED
+//     res.status(500).json({ error: 'Failed to fetch positive news stories' }); // REMOVED
+//   } // REMOVED
+// }); // REMOVED
 
 // Get historical figures service stats
 app.get('/api/historical-figures/stats', async (req, res) => {

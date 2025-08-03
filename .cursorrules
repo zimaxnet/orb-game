@@ -1,7 +1,7 @@
 # Orb Game - Cursor Rules
 
 ## 🎮 Project Overview
-Orb Game is an advanced AI-powered interactive gaming platform that combines time travel, positive news discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with multiple AI model integrations, and comprehensive Azure cloud deployment.
+Orb Game is an advanced AI-powered interactive gaming platform that combines time travel, historical figure discovery, and multimodal AI technology. The system features a React frontend with 3D Three.js graphics, a Node.js backend with multiple AI model integrations, and comprehensive Azure cloud deployment.
 
 ## 🏗️ Architecture Patterns
 
@@ -14,7 +14,7 @@ Orb Game is an advanced AI-powered interactive gaming platform that combines tim
 
 ### Backend (Node.js + Express)
 - **Main Server**: `backend/backend-server.js` - Production API server
-- **Services**: Modular service architecture (MemoryService, PositiveNewsService, StoryCacheService)
+- **Services**: Modular service architecture (MemoryService, HistoricalFiguresService, StoryCacheService)
 - **AI Integration**: Multiple AI models (Grok 4, Perplexity Sonar, Gemini 1.5 Flash, O4-Mini)
 - **Database**: Azure Cosmos DB for MongoDB with caching system
 - **Security**: Azure Key Vault for API key management
@@ -146,7 +146,7 @@ const prompt = promptManager.getFrontendPrompt(category, epoch, language, model)
 ### MongoDB Integration
 - **Connection**: Azure Cosmos DB for MongoDB (`orb-game-mongodb-eastus2`)
 - **Collections**: Stories, memories, analytics
-- **Throughput**: 2000 RU/s per collection (stories, positive_news_stories, audio, users, connection_test)
+- **Throughput**: 2000 RU/s per collection (stories, historical_figures_stories, audio, users, connection_test)
 - **Performance**: 5x throughput increase from 400 RU/s baseline
 - **Caching**: 88.2% performance improvement for cached requests
 - **TTL**: 30-day expiration for cached content
@@ -211,14 +211,14 @@ az containerapp update --name orb-game-backend-eastus2 --resource-group orb-game
 curl -s "https://orbgame.us" | head -5
 
 # Test backend deployment
-curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | head -5
+curl -s "https://api.orbgame.us/api/orb/historical-figures/Technology?count=1&epoch=Modern&language=en" | head -5
 
 # Check deployment status
 az webapp show --name orb-game --resource-group orb-game-rg-eastus2 --query "state"
 az containerapp show --name orb-game-backend-eastus2 --resource-group orb-game-rg-eastus2 --query "properties.provisioningState"
 
 # Verify historical figure stories are working
-curl -s "https://api.orbgame.us/api/orb/positive-news/Technology?count=1&epoch=Modern&language=en&storyType=historical-figure" | jq '.[0].headline'
+curl -s "https://api.orbgame.us/api/orb/historical-figures/Technology?count=1&epoch=Modern&language=en" | jq '.[0].headline'
 ```
 
 ### Docker Platform Requirements
@@ -305,10 +305,16 @@ PERPLEXITY_API_KEY=your-perplexity-api-key
 
 ### Core Gameplay
 - **3D Environment**: Milky Way background with 5,000 animated stars
-- **Orb Interaction**: Drag orbs to center for story discovery
+- **Orb Interaction**: Drag orbs to center for historical figure story discovery
 - **Epoch Selection**: Time travel through different eras
-- **Category Exploration**: 8 different news categories
+- **Category Exploration**: 8 different historical figure categories
 - **Audio Integration**: Text-to-speech for immersive experience
+
+### API Structure
+- **Historical Figures**: `/api/orb/historical-figures/{category}` - Get historical figure stories
+- **Images**: `/api/orb/images/stats` - Get image service statistics
+- **Health**: `/health` - Backend health check
+- **Historical Figures Stats**: `/api/historical-figures/stats` - Get historical figures statistics
 
 ### User Experience
 - **Responsive Design**: Works on desktop and mobile

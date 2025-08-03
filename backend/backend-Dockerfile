@@ -18,6 +18,7 @@ COPY backend/story-cache-service.js .
 COPY backend/model-reliability-checker.js .
 COPY backend/historical-figures-image-service.js .
 COPY backend/historical-figures-image-service-blob.js .
+COPY backend/historical-figures-image-service-blob-real.js .
 COPY backend/historical-figures-image-api.js .
 COPY backend/audio-storage-service.js .
 COPY utils/ ./utils/

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Fetch Real Images for Placeholder Figures using Google Custom Search API
-Replaces 480 placeholder images with real images from Google Custom Search
+Rate-limited version with better error handling
 """
 
 import json
@@ -18,14 +18,14 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('fetch_real_images_placeholders.log'),
+        logging.FileHandler('fetch_real_images_rate_limited.log'),
         logging.StreamHandler(sys.stdout)
     ]
 )
 logger = logging.getLogger(__name__)
 
-class PlaceholderImageFetcher:
-    """Fetch real images for placeholder figures using Google Custom Search API"""
+class RateLimitedImageFetcher:
+    """Fetch real images for placeholder figures using Google Custom Search API with rate limiting"""
     
     def __init__(self, api_key: Optional[str] = None, cx: Optional[str] = None):
         self.api_key = api_key
@@ -33,9 +33,11 @@ class PlaceholderImageFetcher:
         self.endpoint = 'https://www.googleapis.com/customsearch/v1'
         self.session = requests.Session()
         
-        # Rate limiting
-        self.requests_per_second = 10  # Google CSE limit
+        # Rate limiting - much more conservative
+        self.requests_per_second = 1  # 1 request per second (very conservative)
         self.last_request_time = 0
+        self.daily_queries = 0
+        self.max_daily_queries = 9500  # Leave buffer for other uses
         
         if self.api_key and self.cx:
             logger.info("✅ Google Custom Search API configured")
@@ -43,18 +45,30 @@ class PlaceholderImageFetcher:
             logger.warning("⚠️ Google Custom Search API not configured")
     
     def rate_limit(self):
-        """Implement rate limiting for Google CSE API"""
+        """Implement conservative rate limiting for Google CSE API"""
         current_time = time.time()
         time_since_last = current_time - self.last_request_time
         if time_since_last < (1.0 / self.requests_per_second):
             sleep_time = (1.0 / self.requests_per_second) - time_since_last
+            logger.info(f"Rate limiting: sleeping for {sleep_time:.2f} seconds")
             time.sleep(sleep_time)
         self.last_request_time = time.time()
     
+    def check_daily_limit(self):
+        """Check if we've hit the daily query limit"""
+        if self.daily_queries >= self.max_daily_queries:
+            logger.warning(f"⚠️ Daily query limit reached ({self.daily_queries}/{self.max_daily_queries})")
+            return False
+        return True
+    
     def search_google_images(self, query: str, count: int = 1) -> List[str]:
-        """Search Google Custom Search API for images"""
+        """Search Google Custom Search API for images with rate limiting"""
         if not self.api_key or not self.cx:
             logger.warning(f"No API credentials - skipping query: {query}")
+            return []
+        
+        if not self.check_daily_limit():
+            logger.warning(f"Skipping query due to daily limit: {query}")
             return []
         
         try:
@@ -72,11 +86,21 @@ class PlaceholderImageFetcher:
                 'rights': 'cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived'
             }
             
-            response = self.session.get(self.endpoint, params=params, timeout=10)
+            response = self.session.get(self.endpoint, params=params, timeout=15)
+            
+            if response.status_code == 429:
+                logger.error(f"Rate limit hit for query '{query}': 429 Too Many Requests")
+                return []
+            elif response.status_code == 403:
+                logger.error(f"Daily quota exceeded for query '{query}': 403 Forbidden")
+                return []
+            
             response.raise_for_status()
             
             data = response.json()
             results = data.get('items', [])
+            
+            self.daily_queries += 1
             
             if results:
                 urls = [img['link'] for img in results if img.get('link')]
@@ -86,6 +110,9 @@ class PlaceholderImageFetcher:
                 logger.warning(f"No results for query: {query}")
                 return []
                 
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request error for query '{query}': {e}")
+            return []
         except Exception as e:
             logger.error(f"Google Custom Search API error for query '{query}': {e}")
             return []
@@ -97,31 +124,22 @@ class PlaceholderImageFetcher:
         if image_type == 'portraits':
             queries = [
                 f'"{figure_name}" portrait',
-                f'"{figure_name}" painting',
-                f'"{figure_name}" bust',
-                f'"{figure_name}" statue',
-                f'"{figure_name}" historical figure'
+                f'"{figure_name}" painting'
             ]
         elif image_type == 'achievements':
             queries = [
                 f'"{figure_name}" {category.lower()} achievement',
-                f'"{figure_name}" {category.lower()} work',
-                f'"{figure_name}" {category.lower()} contribution',
-                f'"{figure_name}" {category.lower()} discovery'
+                f'"{figure_name}" {category.lower()} work'
             ]
         elif image_type == 'inventions':
             queries = [
                 f'"{figure_name}" invention',
-                f'"{figure_name}" creation',
-                f'"{figure_name}" {category.lower()} invention',
-                f'"{figure_name}" {category.lower()} creation'
+                f'"{figure_name}" creation'
             ]
         elif image_type == 'artifacts':
             queries = [
                 f'"{figure_name}" artifact',
-                f'"{figure_name}" work',
-                f'"{figure_name}" {category.lower()} artifact',
-                f'"{figure_name}" {category.lower()} work'
+                f'"{figure_name}" work'
             ]
         
         return queries
@@ -186,7 +204,7 @@ class PlaceholderImageFetcher:
             return []
     
     def process_all_figures(self) -> Dict:
-        """Process all figures and fetch real images"""
+        """Process all figures and fetch real images with rate limiting"""
         figures = self.load_figures_data()
         
         if not figures:
@@ -207,14 +225,22 @@ class PlaceholderImageFetcher:
                 'total_images_found': 0,
                 'total_queries': 0,
                 'successful_searches': 0,
-                'failed_searches': 0
+                'failed_searches': 0,
+                'daily_queries_used': 0
             }
         }
         
         logger.info(f"🚀 Starting to fetch real images for {len(figures)} figures...")
+        logger.info(f"⚠️ Using conservative rate limiting: 1 request per second")
+        logger.info(f"⚠️ Daily query limit: {self.max_daily_queries}")
         
         for i, figure in enumerate(figures, 1):
             logger.info(f"Processing figure {i}/{len(figures)}: {figure['name']} ({figure['category']}, {figure['epoch']})")
+            
+            # Check daily limit before processing each figure
+            if not self.check_daily_limit():
+                logger.warning(f"⚠️ Stopping early due to daily query limit. Processed {i-1}/{len(figures)} figures.")
+                break
             
             try:
                 figure_data = self.fetch_images_for_figure(
@@ -232,13 +258,17 @@ class PlaceholderImageFetcher:
                 results['summary_stats']['total_queries'] += figure_data['search_stats']['total_queries']
                 results['summary_stats']['successful_searches'] += figure_data['search_stats']['successful_searches']
                 results['summary_stats']['failed_searches'] += figure_data['search_stats']['failed_searches']
+                results['summary_stats']['daily_queries_used'] = self.daily_queries
                 
                 if total_images > 0:
                     results['metadata']['successful'] += 1
                 else:
                     results['metadata']['failed'] += 1
                 
-                logger.info(f"✅ {figure['name']}: Found {total_images} images")
+                logger.info(f"✅ {figure['name']}: Found {total_images} images (Daily queries: {self.daily_queries})")
+                
+                # Add a small delay between figures
+                time.sleep(2)
                 
             except Exception as e:
                 logger.error(f"Error processing {figure['name']}: {e}")
@@ -283,7 +313,7 @@ def get_google_credentials() -> tuple:
 
 def main():
     """Main execution function"""
-    logger.info("🚀 Starting Real Image Fetch for Placeholder Figures")
+    logger.info("🚀 Starting Rate-Limited Real Image Fetch for Placeholder Figures")
     
     # Get credentials
     api_key, cx = get_google_credentials()
@@ -291,18 +321,18 @@ def main():
     if not api_key or not cx:
         logger.error("❌ Google Custom Search API credentials not found!")
         logger.info("Please set GOOGLE_CUSTOM_SEARCH_API_KEY and GOOGLE_CUSTOM_SEARCH_CX environment variables")
-        logger.info("Or add them to Azure Key Vault as 'google-custom-search-api-key' and 'google-custom-search-cx'")
+        logger.info("Or add them to Azure Key Vault as 'GOOGLE-CSE-API-KEY' and 'GOOGLE-CSE-CX'")
         return
     
     # Initialize fetcher
-    fetcher = PlaceholderImageFetcher(api_key, cx)
+    fetcher = RateLimitedImageFetcher(api_key, cx)
     
     # Process all figures
     results = fetcher.process_all_figures()
     
     if results:
         # Save results
-        filename = f'real_images_for_placeholders_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
+        filename = f'real_images_rate_limited_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
         with open(filename, 'w') as f:
             json.dump(results, f, indent=2)
         
@@ -313,7 +343,7 @@ def main():
         summary = results['summary_stats']
         
         print("\n" + "="*60)
-        print("🎉 REAL IMAGE FETCH COMPLETE")
+        print("🎉 RATE-LIMITED REAL IMAGE FETCH COMPLETE")
         print("="*60)
         print(f"📊 Total Figures: {metadata['total_figures']}")
         print(f"✅ Successful: {metadata['successful']}")
@@ -323,6 +353,7 @@ def main():
         print(f"🔍 Total Queries: {summary['total_queries']}")
         print(f"✅ Successful Searches: {summary['successful_searches']}")
         print(f"❌ Failed Searches: {summary['failed_searches']}")
+        print(f"📊 Daily Queries Used: {summary['daily_queries_used']}")
         print(f"📁 Results saved to: {filename}")
         print("="*60)
         

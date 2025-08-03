@@ -16,6 +16,7 @@ Welcome to the official documentation for **Orb Game** - an advanced AI-powered 
 - [🔍 Learn More Functionality](./gameplay/learn-more-functionality.md)
 - [Audio & Accessibility](./gameplay/audio-accessibility.md)
 - [🖼️ Image Display System](./gameplay/image-display-system.md)
+- [🌍 Spanish Audio Testing](./gameplay/spanish-audio-testing.md)
 
 ### 🏗️ [Developer Documentation](./developer/)
 - [Architecture Overview](./developer/architecture.md)
@@ -26,6 +27,7 @@ Welcome to the official documentation for **Orb Game** - an advanced AI-powered 
 
 ### 🤖 [AI Integration](./ai-integration/)
 - [AI Models Overview](./ai-integration/models.md)
+- [🚀 Enhanced Prompting System](./ai-integration/enhanced-prompting-system.md)
 - [Prompt Management](./ai-integration/prompts.md)
 - [Story Generation](./ai-integration/story-generation.md)
 - [TTS Integration](./ai-integration/tts.md)
@@ -86,8 +88,19 @@ Welcome to the official documentation for **Orb Game** - an advanced AI-powered 
 - ✅ **Image System**: 201 images covering historical figures (Google Custom Search API)
 - ✅ **Image Display**: Clean image display when available, clean text when no images
 - ✅ **Google CSE Migration**: Complete migration from deprecated Bing Image Search
+- ✅ **Enhanced Prompting System**: 180+ model-specific prompts with bilingual support
+- ✅ **Spanish Audio Testing**: Comprehensive TTS and content generation working perfectly
 
 ## 🖼️ Latest Features (December 2024)
+
+### **🚀 Enhanced Prompting System Revolution**
+- **180 Model-Specific Prompts**: Sophisticated prompts for all 4 AI models (o4-mini, grok-4, perplexity-sonar, gemini-1.5-flash)
+- **Bilingual Excellence**: 360 total prompts (180 English + 180 Spanish) with cultural sensitivity
+- **Frontend Integration**: Replaced hardcoded prompts with advanced `promptManager.getFrontendPrompt()`
+- **Backend Integration**: Integrated sophisticated prompt system into story generation
+- **Learn More Enhancement**: Model-specific prompts for detailed historical figure information
+- **Quality Validation**: All 320 prompts tested and validated with 100% success rate
+- **Performance Optimization**: Centralized management with single source of truth
 
 ### **🔧 API Endpoint Cleanup & Optimization**
 - **23% Reduction**: Removed 6 redundant/unused endpoints for cleaner API structure

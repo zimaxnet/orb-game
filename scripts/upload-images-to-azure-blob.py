@@ -27,7 +27,7 @@ class AzureBlobImageUploader:
     def __init__(self):
         self.account_name = "orbgameimages"
         self.container_name = "historical-figures"
-        self.account_key = "N3qXaBL6qZHDdK/m/eCRYWBbNq+ygZUwnUBtOCK0f+Zn406odVxDjdeSUU/WUl9AyYSvvFTDdUcF+ASt5/dDCA=="
+        self.account_key = os.getenv('AZURE_STORAGE_ACCOUNT_KEY', '')
         self.blob_service_client = BlobServiceClient(
             account_url=f"https://{self.account_name}.blob.core.windows.net",
             credential=self.account_key

@@ -1,0 +1,2370 @@
+{
+  "total_figures": 120,
+  "processed": 120,
+  "successful": 0,
+  "failed": 0,
+  "images_by_type": {
+    "portraits": {
+      "found": 102,
+      "missing": 18
+    },
+    "achievements": {
+      "found": 0,
+      "missing": 120
+    },
+    "inventions": {
+      "found": 0,
+      "missing": 120
+    },
+    "artifacts": {
+      "found": 0,
+      "missing": 120
+    }
+  },
+  "sources_used": {
+    "wikidata": 91,
+    "wikipedia": 11
+  },
+  "figures": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Retrato%20de%20un%20erudito%20%28%C2%BFArqu%C3%ADmedes%3F%29%2C%20por%20Domenico%20Fetti.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Archimedes portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Imhotep-E%203639-IMG%204607-gradient.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Imhotep portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hero%20of%20Alexandria.png",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hero of Alexandria portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Al-jazari_elephant_clock.png/330px-Al-jazari_elephant_clock.png",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Al-Jazari portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Johannes Gutenberg portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/James%20Watt%20by%20Henry%20Howard.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "James Watt portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Babbage1.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Charles Babbage portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Samuel_Morse_portrait.jpg/330px-Samuel_Morse_portrait.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Samuel Morse portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/LS3%204919%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Tim Berners-Lee portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Steve%20Jobs%20Headshot%202010-CROP2.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Steve Jobs portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hedy%20Lamarr%20in%20The%20Heavenly%20Body%201944.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hedy Lamarr portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Fei-Fei%20Li%20at%20AI%20for%20Good%202017.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Fei-Fei Li portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/USAFA%20Hosts%20Elon%20Musk%20%28Image%201%20of%2017%29%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Elon Musk portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Demis%20Hassabis%2C%202024%20Nobel%20Prize%20Laureate%20in%20Chemistry%205%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Demis Hassabis portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hippocrates%20rubens.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hippocrates portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Euklid2.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Euclid portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Aristotle%20Altemps%20Inv8575.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Aristotle portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Ibn%20Al-Haytham%20portrait.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Ibn al-Haytham portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Roger-bacon-statue.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Roger Bacon portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hildegard%20von%20Bingen.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hildegard of Bingen portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Charles%20Darwin%20portrait.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Charles Darwin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Pasteur%20%281822%20-%201895%29%2C%20microbiologist%20and%20chemist%20Wellcome%20V0026980.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Louis Pasteur portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/%EB%93%9C%EB%AF%B8%ED%8A%B8%EB%A6%AC%20%EB%A9%98%EB%8D%B8%EB%A0%88%EC%98%88%ED%94%84.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Dmitri Mendeleev portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Rosalind%20Franklin.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Rosalind Franklin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Albert%20Einstein%20Head.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Albert Einstein portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Professor%20Jennifer%20Doudna%20ForMemRS%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Jennifer Doudna portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg/330px-D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Youyou Tu portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Sculptor%20Phidias-Ny%20Carlsberg%20Glyptotek.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Phidias portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Polygnotus%20EW0131770421C%20cropped.png",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Polygnotus portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Imhotep-E%203639-IMG%204607-gradient.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Imhotep portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/2016%20Uffizi%20-%20Great%20Florentines%2019.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Giotto di Bondone portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hildegard%20von%20Bingen.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hildegard of Bingen portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Andrei%20Rublev%20%28miniature%2C%2016%20c%29%20detail.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Andrei Rublev portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Claude%20Monet%201899%20Nadar%20crop.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Claude Monet portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/William%20Blake%20by%20Thomas%20Phillips.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "William Blake portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20Courbet%2C%20photograph%20Atelier%20Nadar%2C%20c.%201860s.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Gustave Courbet portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Frida%20Kahlo%2C%20by%20Guillermo%20Kahlo%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Frida Kahlo portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banksy-art.jpg/330px-Banksy-art.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Banksy portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Yayoi%20Kusama%20wax%20model%20at%20Louis%20Vitton.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Yayoi Kusama portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20Future%20Forum%202024%20-%20Refik%20Anadol.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Refik Anadol portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Sofia%20Crespo%20-%20Art%20Basel%202025.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Sofia Crespo portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Teofrasto%20Orto%20botanico%20head.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Theophrastus portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Empedocles.%20Line%20engraving%2C%201580.%20Wellcome%20V0001766.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Empedocles portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Tommaso%20da%20modena%2C%20ritratti%20di%20domenicani%20%28vescovo%29%201352%20150cm%2C%20treviso%2C%20ex%20convento%20di%20san%20niccol%C3%B2%2C%20sala%20del%20capitolo.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Albertus Magnus portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Pursina.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Avicenna portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/San%20Francisco%20de%20pie%20%28Museo%20de%20Santa%20Cruz%20de%20Toledo%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Saint Francis of Assisi portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Charles%20Darwin%20portrait.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Charles Darwin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/John%20James%20Audubon%201826.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "John James Audubon portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Mary%20Anning%20painting.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Mary Anning portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Johanna%20lohr%20jane-goodall.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Jane Goodall portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Weston%20Library%20Opening%20by%20John%20Cairns%2020.3.15-139%20David%20Attenborough.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "David Attenborough portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Wangari_Maathai_in_2001.jpg/330px-Wangari_Maathai_in_2001.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Wangari Maathai portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Mercedes%20Bustamante%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Mercedes Bustamante portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Paul%20Stamets%20with%20Agarikon.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Paul Stamets portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Joseph-Beno%C3%AEt%20Suv%C3%A9e%20-%20Milo%20van%20Croton%20%281763%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Milo of Croton portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Gaius%20Appuleius%20Diocles.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Gaius Appuleius Diocles portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Effigy_of_William_Marshall_-_52052671403.jpg/330px-Effigy_of_William_Marshall_-_52052671403.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "William Marshal portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Robin%20shoots%20with%20sir%20Guy%20by%20Louis%20Rhead%201912.png",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Robin Hood portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/WG_Grace_c1902.jpg/330px-WG_Grace_c1902.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "W.G. Grace portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Pierre%20de%20Coubertin.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Pierre de Coubertin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Dr.%20James%20Naismith.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "James Naismith portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Serena%20Williams%20at%202013%20US%20Open.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Serena Williams portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Pelé",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Pele%20con%20brasil%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Pelé portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Simone%20Biles%20Rio%202016b.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Simone Biles portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Bust%20Sappho%20Musei%20Capitolini%20MC1164.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Sappho portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Koning%20David.Aert%20de%20Gelder.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "King David portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Possibly%20Narada%2C%20the%20inventor%20of%20the%20Vina..jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Narada portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Machaut.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Guillaume de Machaut portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Karlheinz%20Oswald%20Hildegard%20von%20Bingen%2C%20Eibingen.JPG",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hildegard von Bingen portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Alfonso_X_el_Sabio_en_El_libro_de_los_juegos.jpg/330px-Alfonso_X_el_Sabio_en_El_libro_de_los_juegos.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Alfonso el Sabio portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Beethoven.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Ludwig van Beethoven portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Fannymendelssohn-improved.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Fanny Mendelssohn portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Frédéric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Frederic%20Chopin%20photo.jpeg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Frédéric Chopin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20Armstrong%20restored.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Louis Armstrong portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Beatles%20ad%201965%20just%20the%20beatles%20crop.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "The Beatles portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/BTS%20for%20Samsung%20Galaxy%2C%202022.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "BTS portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Holly%20Herndon%202024%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Holly Herndon portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yannick Nézet-Séguin",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Yannick%20N%C3%A9zet%20S%C3%A9guin.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Yannick Nézet-Séguin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/PSM%20V78%20D326%20Ptolemy.png",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Ptolemy portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/2064%20aryabhata-crp.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Aryabhata portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Hipatia67.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Hypatia portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Albategnius.jpeg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Al-Battani portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Nasir%20al-Din%20Tusi.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Nasir al-Din al-Tusi portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20of%20Geoffrey%20Chaucer%20%284671380%29%20%28cropped%29%2002.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Geoffrey Chaucer portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Galileo.arp.300pix.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Galileo Galilei portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Edmond%20Halley%20072.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Edmond Halley portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/1829%20Melchior%20Gommar%20Tieleman%2C%20%C3%96lgem%C3%A4lde%20Caroline%20Herschel%20Hannover.tif",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Caroline Herschel portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Yuri%20Gagarin%20with%20awards.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Yuri Gagarin portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Katherine%20Johnson%201983.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Katherine Johnson portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Stephen%20Hawking.StarChild.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Stephen Hawking portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Zhang%20Heng.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Zhang Heng portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/CtesibiusCrater.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Ctesibius portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg/330px-Hydraulic_telegraph_of_Aeneas_Tacticus_in_Kotsanas_Museum_of_Ancient_Greek_Technology.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Aeneas Tacticus portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Al-jazari_elephant_clock.png/330px-Al-jazari_elephant_clock.png",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Al-Jazari portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Richard%20of%20Wallingford.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Richard of Wallingford portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Leonardo_da_Pisa.jpg/330px-Leonardo_da_Pisa.jpg",
+            "source": "Wikipedia",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Leonardo Fibonacci portrait",
+            "priority": 90,
+            "source_name": "wikipedia"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Thomas%20Edison2.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Thomas Edison portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Tesla%20circa%201890.jpeg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Nikola Tesla portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20Graham%20Bell.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Alexander Graham Bell portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Commodore%20Grace%20M.%20Hopper%2C%20USN%20%28covered%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Grace Hopper portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/Shigeru%20Miyamoto%2020150610%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Shigeru Miyamoto portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [
+          {
+            "url": "http://commons.wikimedia.org/wiki/Special:FilePath/USAFA%20Hosts%20Elon%20Musk%20%28Image%201%20of%2017%29%20%28cropped%29.jpg",
+            "source": "Wikidata",
+            "licensing": "Public Domain",
+            "reliability": "High",
+            "searchTerm": "Elon Musk portrait",
+            "priority": 100,
+            "source_name": "wikidata"
+          }
+        ],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    }
+  ]
+}

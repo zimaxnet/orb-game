@@ -1,0 +1,1336 @@
+{
+  "total_figures": 120,
+  "processed": 120,
+  "images_added": {
+    "portraits": 0,
+    "achievements": 0,
+    "inventions": 0,
+    "artifacts": 0
+  },
+  "sources_used": {
+    "bing_api": 0,
+    "fallback": 0
+  },
+  "figures": [
+    {
+      "figureName": "Archimedes",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hero of Alexandria",
+      "category": "Technology",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Johannes Gutenberg",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Li Shizhen",
+      "category": "Technology",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "James Watt",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Babbage",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Samuel Morse",
+      "category": "Technology",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Tim Berners-Lee",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Steve Jobs",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hedy Lamarr",
+      "category": "Technology",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fei-Fei Li",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Demis Hassabis",
+      "category": "Technology",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hippocrates",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Euclid",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aristotle",
+      "category": "Science",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ibn al-Haytham",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Roger Bacon",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Science",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Louis Pasteur",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Dmitri Mendeleev",
+      "category": "Science",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Rosalind Franklin",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Albert Einstein",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Jennifer Doudna",
+      "category": "Science",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Youyou Tu",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "David Sinclair",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Quantum Pioneer",
+      "category": "Science",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Phidias",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Polygnotus",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Imhotep",
+      "category": "Art",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Giotto di Bondone",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard of Bingen",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Andrei Rublev",
+      "category": "Art",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Claude Monet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "William Blake",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Gustave Courbet",
+      "category": "Art",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Frida Kahlo",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Banksy",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yayoi Kusama",
+      "category": "Art",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Refik Anadol",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Sofia Crespo",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Holographic Artist",
+      "category": "Art",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Theophrastus",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Empedocles",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Huang Di",
+      "category": "Nature",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Albertus Magnus",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Avicenna",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Saint Francis of Assisi",
+      "category": "Nature",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Charles Darwin",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "John James Audubon",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mary Anning",
+      "category": "Nature",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Jane Goodall",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "David Attenborough",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Wangari Maathai",
+      "category": "Nature",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fictional Climate Engineer",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mercedes Bustamante",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Paul Stamets",
+      "category": "Nature",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Milo of Croton",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Leonidas of Rhodes",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Gaius Appuleius Diocles",
+      "category": "Sports",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "William Marshal",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Robin Hood",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Richard FitzAlan",
+      "category": "Sports",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "W.G. Grace",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Pierre de Coubertin",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "James Naismith",
+      "category": "Sports",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Serena Williams",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Pelé",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Simone Biles",
+      "category": "Sports",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "World E-Sports Champion",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "First Cyborg Athlete",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Zero-gravity Sports Inventor",
+      "category": "Sports",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Sappho",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "King David",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Narada",
+      "category": "Music",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Guillaume de Machaut",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hildegard von Bingen",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Alfonso el Sabio",
+      "category": "Music",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ludwig van Beethoven",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fanny Mendelssohn",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Frédéric Chopin",
+      "category": "Music",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Louis Armstrong",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "The Beatles",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "BTS",
+      "category": "Music",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Holly Herndon",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yannick Nézet-Séguin",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Universal Music AI",
+      "category": "Music",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ptolemy",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aryabhata",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Hypatia",
+      "category": "Space",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Battani",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Nasir al-Din al-Tusi",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Geoffrey Chaucer",
+      "category": "Space",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Galileo Galilei",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Edmond Halley",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Caroline Herschel",
+      "category": "Space",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Yuri Gagarin",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Katherine Johnson",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Stephen Hawking",
+      "category": "Space",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Mars Colony Leader",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Exoplanet Signal Analyst",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "AI Probe Architect",
+      "category": "Space",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Zhang Heng",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Ctesibius",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Aeneas Tacticus",
+      "category": "Innovation",
+      "epoch": "Ancient",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Al-Jazari",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Richard of Wallingford",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Leonardo Fibonacci",
+      "category": "Innovation",
+      "epoch": "Medieval",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Thomas Edison",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Nikola Tesla",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Alexander Graham Bell",
+      "category": "Innovation",
+      "epoch": "Industrial",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Grace Hopper",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Shigeru Miyamoto",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Elon Musk",
+      "category": "Innovation",
+      "epoch": "Modern",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Fusion Energy Scientist",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Translingual AI Architect",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    },
+    {
+      "figureName": "Synthetic Biology Entrepreneur",
+      "category": "Innovation",
+      "epoch": "Future",
+      "images": {
+        "portraits": [],
+        "achievements": [],
+        "inventions": [],
+        "artifacts": []
+      }
+    }
+  ]
+}

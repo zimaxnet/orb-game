@@ -1,0 +1,4442 @@
+[
+  {
+    "name": "Archimedes",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "achievement": "Inventor and mathematician, designed machines, principles of levers and buoyancy",
+    "queries": {
+      "portrait": [
+        "\"Archimedes portrait\"",
+        "\"Archimedes bust\"",
+        "\"Archimedes statue\"",
+        "\"Archimedes painting\"",
+        "\"Archimedes image\""
+      ],
+      "achievement": [
+        "\"Archimedes inventor\"",
+        "\"Archimedes mathematician,\"",
+        "\"Archimedes designed\"",
+        "\"Archimedes Inventor\"",
+        "\"Archimedes work\""
+      ],
+      "invention": [
+        "\"Archimedes invention\"",
+        "\"Archimedes device\"",
+        "\"Archimedes machine\"",
+        "\"Archimedes tool\"",
+        "\"Archimedes creation\""
+      ],
+      "artifact": [
+        "\"Archimedes artifact\"",
+        "\"Archimedes object\"",
+        "\"Archimedes relic\"",
+        "\"Archimedes instrument\"",
+        "\"Archimedes tool\""
+      ]
+    },
+    "priority": "high"
+  },
+  {
+    "name": "Imhotep",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "achievement": "Egyptian architect and engineer, designer of the Pyramid of Djoser",
+    "queries": {
+      "portrait": [
+        "\"Imhotep portrait\"",
+        "\"Imhotep bust\"",
+        "\"Imhotep statue\"",
+        "\"Imhotep painting\"",
+        "\"Imhotep image\""
+      ],
+      "achievement": [
+        "\"Imhotep egyptian\"",
+        "\"Imhotep architect\"",
+        "\"Imhotep engineer,\"",
+        "\"Imhotep Egyptian\"",
+        "\"Imhotep work\""
+      ],
+      "invention": [
+        "\"Imhotep invention\"",
+        "\"Imhotep device\"",
+        "\"Imhotep machine\"",
+        "\"Imhotep tool\"",
+        "\"Imhotep creation\""
+      ],
+      "artifact": [
+        "\"Imhotep artifact\"",
+        "\"Imhotep object\"",
+        "\"Imhotep relic\"",
+        "\"Imhotep instrument\"",
+        "\"Imhotep tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hero of Alexandria",
+    "category": "Technology",
+    "epoch": "Ancient",
+    "achievement": "Devised the first steam engine and early mechanical devices",
+    "queries": {
+      "portrait": [
+        "\"Hero of Alexandria portrait\"",
+        "\"Hero of Alexandria bust\"",
+        "\"Hero of Alexandria statue\"",
+        "\"Hero of Alexandria painting\"",
+        "\"Hero of Alexandria image\""
+      ],
+      "achievement": [
+        "\"Hero of Alexandria devised\"",
+        "\"Hero of Alexandria first\"",
+        "\"Hero of Alexandria steam\"",
+        "\"Hero of Alexandria Devised\"",
+        "\"Hero of Alexandria work\""
+      ],
+      "invention": [
+        "\"Hero of Alexandria invention\"",
+        "\"Hero of Alexandria device\"",
+        "\"Hero of Alexandria machine\"",
+        "\"Hero of Alexandria tool\"",
+        "\"Hero of Alexandria creation\""
+      ],
+      "artifact": [
+        "\"Hero of Alexandria artifact\"",
+        "\"Hero of Alexandria object\"",
+        "\"Hero of Alexandria relic\"",
+        "\"Hero of Alexandria instrument\"",
+        "\"Hero of Alexandria tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Al-Jazari",
+    "category": "Technology",
+    "epoch": "Medieval",
+    "achievement": "Islamic engineer, known for his book of mechanical devices and automata",
+    "queries": {
+      "portrait": [
+        "\"Al-Jazari portrait\"",
+        "\"Al-Jazari bust\"",
+        "\"Al-Jazari statue\"",
+        "\"Al-Jazari painting\"",
+        "\"Al-Jazari image\""
+      ],
+      "achievement": [
+        "\"Al-Jazari islamic\"",
+        "\"Al-Jazari engineer,\"",
+        "\"Al-Jazari known\"",
+        "\"Al-Jazari Islamic\"",
+        "\"Al-Jazari work\""
+      ],
+      "invention": [
+        "\"Al-Jazari invention\"",
+        "\"Al-Jazari device\"",
+        "\"Al-Jazari machine\"",
+        "\"Al-Jazari tool\"",
+        "\"Al-Jazari creation\""
+      ],
+      "artifact": [
+        "\"Al-Jazari artifact\"",
+        "\"Al-Jazari object\"",
+        "\"Al-Jazari relic\"",
+        "\"Al-Jazari instrument\"",
+        "\"Al-Jazari tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Johannes Gutenberg",
+    "category": "Technology",
+    "epoch": "Medieval",
+    "achievement": "Invented the movable-type printing press",
+    "queries": {
+      "portrait": [
+        "\"Johannes Gutenberg portrait\"",
+        "\"Johannes Gutenberg bust\"",
+        "\"Johannes Gutenberg statue\"",
+        "\"Johannes Gutenberg painting\"",
+        "\"Johannes Gutenberg image\""
+      ],
+      "achievement": [
+        "\"Johannes Gutenberg invented\"",
+        "\"Johannes Gutenberg movable-type\"",
+        "\"Johannes Gutenberg printing\"",
+        "\"Johannes Gutenberg Invented\"",
+        "\"Johannes Gutenberg work\""
+      ],
+      "invention": [
+        "\"Johannes Gutenberg invention\"",
+        "\"Johannes Gutenberg device\"",
+        "\"Johannes Gutenberg machine\"",
+        "\"Johannes Gutenberg tool\"",
+        "\"Johannes Gutenberg creation\""
+      ],
+      "artifact": [
+        "\"Johannes Gutenberg artifact\"",
+        "\"Johannes Gutenberg object\"",
+        "\"Johannes Gutenberg relic\"",
+        "\"Johannes Gutenberg instrument\"",
+        "\"Johannes Gutenberg tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Li Shizhen",
+    "category": "Technology",
+    "epoch": "Medieval",
+    "achievement": "Chinese scholar, advanced mechanical clocks and hydro engineering",
+    "queries": {
+      "portrait": [
+        "\"Li Shizhen portrait\"",
+        "\"Li Shizhen bust\"",
+        "\"Li Shizhen statue\"",
+        "\"Li Shizhen painting\"",
+        "\"Li Shizhen image\""
+      ],
+      "achievement": [
+        "\"Li Shizhen chinese\"",
+        "\"Li Shizhen scholar,\"",
+        "\"Li Shizhen advanced\"",
+        "\"Li Shizhen Chinese\"",
+        "\"Li Shizhen work\""
+      ],
+      "invention": [
+        "\"Li Shizhen invention\"",
+        "\"Li Shizhen device\"",
+        "\"Li Shizhen machine\"",
+        "\"Li Shizhen tool\"",
+        "\"Li Shizhen creation\""
+      ],
+      "artifact": [
+        "\"Li Shizhen artifact\"",
+        "\"Li Shizhen object\"",
+        "\"Li Shizhen relic\"",
+        "\"Li Shizhen instrument\"",
+        "\"Li Shizhen tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "James Watt",
+    "category": "Technology",
+    "epoch": "Industrial",
+    "achievement": "Enhanced the steam engine, powering industry",
+    "queries": {
+      "portrait": [
+        "\"James Watt portrait\"",
+        "\"James Watt bust\"",
+        "\"James Watt statue\"",
+        "\"James Watt painting\"",
+        "\"James Watt image\""
+      ],
+      "achievement": [
+        "\"James Watt enhanced\"",
+        "\"James Watt steam\"",
+        "\"James Watt engine,\"",
+        "\"James Watt Enhanced\"",
+        "\"James Watt work\""
+      ],
+      "invention": [
+        "\"James Watt invention\"",
+        "\"James Watt device\"",
+        "\"James Watt machine\"",
+        "\"James Watt tool\"",
+        "\"James Watt creation\""
+      ],
+      "artifact": [
+        "\"James Watt artifact\"",
+        "\"James Watt object\"",
+        "\"James Watt relic\"",
+        "\"James Watt instrument\"",
+        "\"James Watt tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Charles Babbage",
+    "category": "Technology",
+    "epoch": "Industrial",
+    "achievement": "Designed the first mechanical computer",
+    "queries": {
+      "portrait": [
+        "\"Charles Babbage portrait\"",
+        "\"Charles Babbage bust\"",
+        "\"Charles Babbage statue\"",
+        "\"Charles Babbage painting\"",
+        "\"Charles Babbage image\""
+      ],
+      "achievement": [
+        "\"Charles Babbage designed\"",
+        "\"Charles Babbage first\"",
+        "\"Charles Babbage mechanical\"",
+        "\"Charles Babbage Designed\"",
+        "\"Charles Babbage work\""
+      ],
+      "invention": [
+        "\"Charles Babbage invention\"",
+        "\"Charles Babbage device\"",
+        "\"Charles Babbage machine\"",
+        "\"Charles Babbage tool\"",
+        "\"Charles Babbage creation\""
+      ],
+      "artifact": [
+        "\"Charles Babbage artifact\"",
+        "\"Charles Babbage object\"",
+        "\"Charles Babbage relic\"",
+        "\"Charles Babbage instrument\"",
+        "\"Charles Babbage tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Samuel Morse",
+    "category": "Technology",
+    "epoch": "Industrial",
+    "achievement": "Invented the telegraph for instant communication",
+    "queries": {
+      "portrait": [
+        "\"Samuel Morse portrait\"",
+        "\"Samuel Morse bust\"",
+        "\"Samuel Morse statue\"",
+        "\"Samuel Morse painting\"",
+        "\"Samuel Morse image\""
+      ],
+      "achievement": [
+        "\"Samuel Morse invented\"",
+        "\"Samuel Morse telegraph\"",
+        "\"Samuel Morse instant\"",
+        "\"Samuel Morse Invented\"",
+        "\"Samuel Morse work\""
+      ],
+      "invention": [
+        "\"Samuel Morse invention\"",
+        "\"Samuel Morse device\"",
+        "\"Samuel Morse machine\"",
+        "\"Samuel Morse tool\"",
+        "\"Samuel Morse creation\""
+      ],
+      "artifact": [
+        "\"Samuel Morse artifact\"",
+        "\"Samuel Morse object\"",
+        "\"Samuel Morse relic\"",
+        "\"Samuel Morse instrument\"",
+        "\"Samuel Morse tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Tim Berners-Lee",
+    "category": "Technology",
+    "epoch": "Modern",
+    "achievement": "Invented the World Wide Web",
+    "queries": {
+      "portrait": [
+        "\"Tim Berners-Lee portrait\"",
+        "\"Tim Berners-Lee bust\"",
+        "\"Tim Berners-Lee statue\"",
+        "\"Tim Berners-Lee painting\"",
+        "\"Tim Berners-Lee image\""
+      ],
+      "achievement": [
+        "\"Tim Berners-Lee invented\"",
+        "\"Tim Berners-Lee world\"",
+        "\"Tim Berners-Lee wide\"",
+        "\"Tim Berners-Lee Invented\"",
+        "\"Tim Berners-Lee work\""
+      ],
+      "invention": [
+        "\"Tim Berners-Lee invention\"",
+        "\"Tim Berners-Lee device\"",
+        "\"Tim Berners-Lee machine\"",
+        "\"Tim Berners-Lee tool\"",
+        "\"Tim Berners-Lee creation\""
+      ],
+      "artifact": [
+        "\"Tim Berners-Lee artifact\"",
+        "\"Tim Berners-Lee object\"",
+        "\"Tim Berners-Lee relic\"",
+        "\"Tim Berners-Lee instrument\"",
+        "\"Tim Berners-Lee tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Steve Jobs",
+    "category": "Technology",
+    "epoch": "Modern",
+    "achievement": "Revolutionized personal computing and smartphones",
+    "queries": {
+      "portrait": [
+        "\"Steve Jobs portrait\"",
+        "\"Steve Jobs bust\"",
+        "\"Steve Jobs statue\"",
+        "\"Steve Jobs painting\"",
+        "\"Steve Jobs image\""
+      ],
+      "achievement": [
+        "\"Steve Jobs revolutionized\"",
+        "\"Steve Jobs personal\"",
+        "\"Steve Jobs computing\"",
+        "\"Steve Jobs Revolutionized\"",
+        "\"Steve Jobs work\""
+      ],
+      "invention": [
+        "\"Steve Jobs invention\"",
+        "\"Steve Jobs device\"",
+        "\"Steve Jobs machine\"",
+        "\"Steve Jobs tool\"",
+        "\"Steve Jobs creation\""
+      ],
+      "artifact": [
+        "\"Steve Jobs artifact\"",
+        "\"Steve Jobs object\"",
+        "\"Steve Jobs relic\"",
+        "\"Steve Jobs instrument\"",
+        "\"Steve Jobs tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hedy Lamarr",
+    "category": "Technology",
+    "epoch": "Modern",
+    "achievement": "Co-invented key wireless tech enabling Wi-Fi and Bluetooth",
+    "queries": {
+      "portrait": [
+        "\"Hedy Lamarr portrait\"",
+        "\"Hedy Lamarr bust\"",
+        "\"Hedy Lamarr statue\"",
+        "\"Hedy Lamarr painting\"",
+        "\"Hedy Lamarr image\""
+      ],
+      "achievement": [
+        "\"Hedy Lamarr co-invented\"",
+        "\"Hedy Lamarr wireless\"",
+        "\"Hedy Lamarr tech\"",
+        "\"Hedy Lamarr Co-invented\"",
+        "\"Hedy Lamarr work\""
+      ],
+      "invention": [
+        "\"Hedy Lamarr invention\"",
+        "\"Hedy Lamarr device\"",
+        "\"Hedy Lamarr machine\"",
+        "\"Hedy Lamarr tool\"",
+        "\"Hedy Lamarr creation\""
+      ],
+      "artifact": [
+        "\"Hedy Lamarr artifact\"",
+        "\"Hedy Lamarr object\"",
+        "\"Hedy Lamarr relic\"",
+        "\"Hedy Lamarr instrument\"",
+        "\"Hedy Lamarr tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fei-Fei Li",
+    "category": "Technology",
+    "epoch": "Future",
+    "achievement": "AI visionary, advanced computer vision systems",
+    "queries": {
+      "portrait": [
+        "\"Fei-Fei Li portrait\"",
+        "\"Fei-Fei Li bust\"",
+        "\"Fei-Fei Li statue\"",
+        "\"Fei-Fei Li painting\"",
+        "\"Fei-Fei Li image\""
+      ],
+      "achievement": [
+        "\"Fei-Fei Li visionary,\"",
+        "\"Fei-Fei Li advanced\"",
+        "\"Fei-Fei Li computer\"",
+        "\"Fei-Fei Li AI\"",
+        "\"Fei-Fei Li work\""
+      ],
+      "invention": [
+        "\"Fei-Fei Li invention\"",
+        "\"Fei-Fei Li device\"",
+        "\"Fei-Fei Li machine\"",
+        "\"Fei-Fei Li tool\"",
+        "\"Fei-Fei Li creation\""
+      ],
+      "artifact": [
+        "\"Fei-Fei Li artifact\"",
+        "\"Fei-Fei Li object\"",
+        "\"Fei-Fei Li relic\"",
+        "\"Fei-Fei Li instrument\"",
+        "\"Fei-Fei Li tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Elon Musk",
+    "category": "Technology",
+    "epoch": "Future",
+    "achievement": "Took robotics and space tech to new heights",
+    "queries": {
+      "portrait": [
+        "\"Elon Musk portrait\"",
+        "\"Elon Musk bust\"",
+        "\"Elon Musk statue\"",
+        "\"Elon Musk painting\"",
+        "\"Elon Musk image\""
+      ],
+      "achievement": [
+        "\"Elon Musk took\"",
+        "\"Elon Musk robotics\"",
+        "\"Elon Musk space\"",
+        "\"Elon Musk Took\"",
+        "\"Elon Musk work\""
+      ],
+      "invention": [
+        "\"Elon Musk invention\"",
+        "\"Elon Musk device\"",
+        "\"Elon Musk machine\"",
+        "\"Elon Musk tool\"",
+        "\"Elon Musk creation\""
+      ],
+      "artifact": [
+        "\"Elon Musk artifact\"",
+        "\"Elon Musk object\"",
+        "\"Elon Musk relic\"",
+        "\"Elon Musk instrument\"",
+        "\"Elon Musk tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Demis Hassabis",
+    "category": "Technology",
+    "epoch": "Future",
+    "achievement": "Developed leading general AI systems with DeepMind",
+    "queries": {
+      "portrait": [
+        "\"Demis Hassabis portrait\"",
+        "\"Demis Hassabis bust\"",
+        "\"Demis Hassabis statue\"",
+        "\"Demis Hassabis painting\"",
+        "\"Demis Hassabis image\""
+      ],
+      "achievement": [
+        "\"Demis Hassabis developed\"",
+        "\"Demis Hassabis leading\"",
+        "\"Demis Hassabis general\"",
+        "\"Demis Hassabis Developed\"",
+        "\"Demis Hassabis work\""
+      ],
+      "invention": [
+        "\"Demis Hassabis invention\"",
+        "\"Demis Hassabis device\"",
+        "\"Demis Hassabis machine\"",
+        "\"Demis Hassabis tool\"",
+        "\"Demis Hassabis creation\""
+      ],
+      "artifact": [
+        "\"Demis Hassabis artifact\"",
+        "\"Demis Hassabis object\"",
+        "\"Demis Hassabis relic\"",
+        "\"Demis Hassabis instrument\"",
+        "\"Demis Hassabis tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hippocrates",
+    "category": "Science",
+    "epoch": "Ancient",
+    "achievement": "Founder of medicine, championed clinical practice",
+    "queries": {
+      "portrait": [
+        "\"Hippocrates portrait\"",
+        "\"Hippocrates bust\"",
+        "\"Hippocrates statue\"",
+        "\"Hippocrates painting\"",
+        "\"Hippocrates image\""
+      ],
+      "achievement": [
+        "\"Hippocrates founder\"",
+        "\"Hippocrates medicine,\"",
+        "\"Hippocrates championed\"",
+        "\"Hippocrates Founder\"",
+        "\"Hippocrates work\""
+      ],
+      "invention": [
+        "\"Hippocrates invention\"",
+        "\"Hippocrates device\"",
+        "\"Hippocrates machine\"",
+        "\"Hippocrates tool\"",
+        "\"Hippocrates creation\""
+      ],
+      "artifact": [
+        "\"Hippocrates artifact\"",
+        "\"Hippocrates object\"",
+        "\"Hippocrates relic\"",
+        "\"Hippocrates instrument\"",
+        "\"Hippocrates tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Euclid",
+    "category": "Science",
+    "epoch": "Ancient",
+    "achievement": "Father of geometry, author of 'The Elements'",
+    "queries": {
+      "portrait": [
+        "\"Euclid portrait\"",
+        "\"Euclid bust\"",
+        "\"Euclid statue\"",
+        "\"Euclid painting\"",
+        "\"Euclid image\""
+      ],
+      "achievement": [
+        "\"Euclid father\"",
+        "\"Euclid geometry,\"",
+        "\"Euclid author\"",
+        "\"Euclid Father\"",
+        "\"Euclid work\""
+      ],
+      "invention": [
+        "\"Euclid invention\"",
+        "\"Euclid device\"",
+        "\"Euclid machine\"",
+        "\"Euclid tool\"",
+        "\"Euclid creation\""
+      ],
+      "artifact": [
+        "\"Euclid artifact\"",
+        "\"Euclid object\"",
+        "\"Euclid relic\"",
+        "\"Euclid instrument\"",
+        "\"Euclid tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Aristotle",
+    "category": "Science",
+    "epoch": "Ancient",
+    "achievement": "Naturalist and philosopher, studied organisms and physics",
+    "queries": {
+      "portrait": [
+        "\"Aristotle portrait\"",
+        "\"Aristotle bust\"",
+        "\"Aristotle statue\"",
+        "\"Aristotle painting\"",
+        "\"Aristotle image\""
+      ],
+      "achievement": [
+        "\"Aristotle naturalist\"",
+        "\"Aristotle philosopher,\"",
+        "\"Aristotle studied\"",
+        "\"Aristotle Naturalist\"",
+        "\"Aristotle work\""
+      ],
+      "invention": [
+        "\"Aristotle invention\"",
+        "\"Aristotle device\"",
+        "\"Aristotle machine\"",
+        "\"Aristotle tool\"",
+        "\"Aristotle creation\""
+      ],
+      "artifact": [
+        "\"Aristotle artifact\"",
+        "\"Aristotle object\"",
+        "\"Aristotle relic\"",
+        "\"Aristotle instrument\"",
+        "\"Aristotle tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Ibn al-Haytham",
+    "category": "Science",
+    "epoch": "Medieval",
+    "achievement": "Revolutionized optics and scientific experimentation",
+    "queries": {
+      "portrait": [
+        "\"Ibn al-Haytham portrait\"",
+        "\"Ibn al-Haytham bust\"",
+        "\"Ibn al-Haytham statue\"",
+        "\"Ibn al-Haytham painting\"",
+        "\"Ibn al-Haytham image\""
+      ],
+      "achievement": [
+        "\"Ibn al-Haytham revolutionized\"",
+        "\"Ibn al-Haytham optics\"",
+        "\"Ibn al-Haytham scientific\"",
+        "\"Ibn al-Haytham Revolutionized\"",
+        "\"Ibn al-Haytham work\""
+      ],
+      "invention": [
+        "\"Ibn al-Haytham invention\"",
+        "\"Ibn al-Haytham device\"",
+        "\"Ibn al-Haytham machine\"",
+        "\"Ibn al-Haytham tool\"",
+        "\"Ibn al-Haytham creation\""
+      ],
+      "artifact": [
+        "\"Ibn al-Haytham artifact\"",
+        "\"Ibn al-Haytham object\"",
+        "\"Ibn al-Haytham relic\"",
+        "\"Ibn al-Haytham instrument\"",
+        "\"Ibn al-Haytham tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Roger Bacon",
+    "category": "Science",
+    "epoch": "Medieval",
+    "achievement": "Proponent of empiricism and early scientific method",
+    "queries": {
+      "portrait": [
+        "\"Roger Bacon portrait\"",
+        "\"Roger Bacon bust\"",
+        "\"Roger Bacon statue\"",
+        "\"Roger Bacon painting\"",
+        "\"Roger Bacon image\""
+      ],
+      "achievement": [
+        "\"Roger Bacon proponent\"",
+        "\"Roger Bacon empiricism\"",
+        "\"Roger Bacon early\"",
+        "\"Roger Bacon Proponent\"",
+        "\"Roger Bacon work\""
+      ],
+      "invention": [
+        "\"Roger Bacon invention\"",
+        "\"Roger Bacon device\"",
+        "\"Roger Bacon machine\"",
+        "\"Roger Bacon tool\"",
+        "\"Roger Bacon creation\""
+      ],
+      "artifact": [
+        "\"Roger Bacon artifact\"",
+        "\"Roger Bacon object\"",
+        "\"Roger Bacon relic\"",
+        "\"Roger Bacon instrument\"",
+        "\"Roger Bacon tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hildegard of Bingen",
+    "category": "Science",
+    "epoch": "Medieval",
+    "achievement": "Polymath, wrote medical and nature treatises",
+    "queries": {
+      "portrait": [
+        "\"Hildegard of Bingen portrait\"",
+        "\"Hildegard of Bingen bust\"",
+        "\"Hildegard of Bingen statue\"",
+        "\"Hildegard of Bingen painting\"",
+        "\"Hildegard of Bingen image\""
+      ],
+      "achievement": [
+        "\"Hildegard of Bingen polymath,\"",
+        "\"Hildegard of Bingen wrote\"",
+        "\"Hildegard of Bingen medical\"",
+        "\"Hildegard of Bingen Polymath,\"",
+        "\"Hildegard of Bingen work\""
+      ],
+      "invention": [
+        "\"Hildegard of Bingen invention\"",
+        "\"Hildegard of Bingen device\"",
+        "\"Hildegard of Bingen machine\"",
+        "\"Hildegard of Bingen tool\"",
+        "\"Hildegard of Bingen creation\""
+      ],
+      "artifact": [
+        "\"Hildegard of Bingen artifact\"",
+        "\"Hildegard of Bingen object\"",
+        "\"Hildegard of Bingen relic\"",
+        "\"Hildegard of Bingen instrument\"",
+        "\"Hildegard of Bingen tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Charles Darwin",
+    "category": "Science",
+    "epoch": "Industrial",
+    "achievement": "Founded evolutionary theory",
+    "queries": {
+      "portrait": [
+        "\"Charles Darwin portrait\"",
+        "\"Charles Darwin bust\"",
+        "\"Charles Darwin statue\"",
+        "\"Charles Darwin painting\"",
+        "\"Charles Darwin image\""
+      ],
+      "achievement": [
+        "\"Charles Darwin founded\"",
+        "\"Charles Darwin evolutionary\"",
+        "\"Charles Darwin theory\"",
+        "\"Charles Darwin Founded\"",
+        "\"Charles Darwin work\""
+      ],
+      "invention": [
+        "\"Charles Darwin invention\"",
+        "\"Charles Darwin device\"",
+        "\"Charles Darwin machine\"",
+        "\"Charles Darwin tool\"",
+        "\"Charles Darwin creation\""
+      ],
+      "artifact": [
+        "\"Charles Darwin artifact\"",
+        "\"Charles Darwin object\"",
+        "\"Charles Darwin relic\"",
+        "\"Charles Darwin instrument\"",
+        "\"Charles Darwin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Louis Pasteur",
+    "category": "Science",
+    "epoch": "Industrial",
+    "achievement": "Germ theory and vaccination pioneer",
+    "queries": {
+      "portrait": [
+        "\"Louis Pasteur portrait\"",
+        "\"Louis Pasteur bust\"",
+        "\"Louis Pasteur statue\"",
+        "\"Louis Pasteur painting\"",
+        "\"Louis Pasteur image\""
+      ],
+      "achievement": [
+        "\"Louis Pasteur germ\"",
+        "\"Louis Pasteur theory\"",
+        "\"Louis Pasteur vaccination\"",
+        "\"Louis Pasteur Germ\"",
+        "\"Louis Pasteur work\""
+      ],
+      "invention": [
+        "\"Louis Pasteur invention\"",
+        "\"Louis Pasteur device\"",
+        "\"Louis Pasteur machine\"",
+        "\"Louis Pasteur tool\"",
+        "\"Louis Pasteur creation\""
+      ],
+      "artifact": [
+        "\"Louis Pasteur artifact\"",
+        "\"Louis Pasteur object\"",
+        "\"Louis Pasteur relic\"",
+        "\"Louis Pasteur instrument\"",
+        "\"Louis Pasteur tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Dmitri Mendeleev",
+    "category": "Science",
+    "epoch": "Industrial",
+    "achievement": "Created the periodic table",
+    "queries": {
+      "portrait": [
+        "\"Dmitri Mendeleev portrait\"",
+        "\"Dmitri Mendeleev bust\"",
+        "\"Dmitri Mendeleev statue\"",
+        "\"Dmitri Mendeleev painting\"",
+        "\"Dmitri Mendeleev image\""
+      ],
+      "achievement": [
+        "\"Dmitri Mendeleev created\"",
+        "\"Dmitri Mendeleev periodic\"",
+        "\"Dmitri Mendeleev table\"",
+        "\"Dmitri Mendeleev Created\"",
+        "\"Dmitri Mendeleev work\""
+      ],
+      "invention": [
+        "\"Dmitri Mendeleev invention\"",
+        "\"Dmitri Mendeleev device\"",
+        "\"Dmitri Mendeleev machine\"",
+        "\"Dmitri Mendeleev tool\"",
+        "\"Dmitri Mendeleev creation\""
+      ],
+      "artifact": [
+        "\"Dmitri Mendeleev artifact\"",
+        "\"Dmitri Mendeleev object\"",
+        "\"Dmitri Mendeleev relic\"",
+        "\"Dmitri Mendeleev instrument\"",
+        "\"Dmitri Mendeleev tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Rosalind Franklin",
+    "category": "Science",
+    "epoch": "Modern",
+    "achievement": "Key to discovery of DNA's structure",
+    "queries": {
+      "portrait": [
+        "\"Rosalind Franklin portrait\"",
+        "\"Rosalind Franklin bust\"",
+        "\"Rosalind Franklin statue\"",
+        "\"Rosalind Franklin painting\"",
+        "\"Rosalind Franklin image\""
+      ],
+      "achievement": [
+        "\"Rosalind Franklin discovery\"",
+        "\"Rosalind Franklin dna's\"",
+        "\"Rosalind Franklin structure\"",
+        "\"Rosalind Franklin Key\"",
+        "\"Rosalind Franklin work\""
+      ],
+      "invention": [
+        "\"Rosalind Franklin invention\"",
+        "\"Rosalind Franklin device\"",
+        "\"Rosalind Franklin machine\"",
+        "\"Rosalind Franklin tool\"",
+        "\"Rosalind Franklin creation\""
+      ],
+      "artifact": [
+        "\"Rosalind Franklin artifact\"",
+        "\"Rosalind Franklin object\"",
+        "\"Rosalind Franklin relic\"",
+        "\"Rosalind Franklin instrument\"",
+        "\"Rosalind Franklin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Albert Einstein",
+    "category": "Science",
+    "epoch": "Modern",
+    "achievement": "Transformed physics with relativity",
+    "queries": {
+      "portrait": [
+        "\"Albert Einstein portrait\"",
+        "\"Albert Einstein bust\"",
+        "\"Albert Einstein statue\"",
+        "\"Albert Einstein painting\"",
+        "\"Albert Einstein image\""
+      ],
+      "achievement": [
+        "\"Albert Einstein transformed\"",
+        "\"Albert Einstein physics\"",
+        "\"Albert Einstein with\"",
+        "\"Albert Einstein Transformed\"",
+        "\"Albert Einstein work\""
+      ],
+      "invention": [
+        "\"Albert Einstein invention\"",
+        "\"Albert Einstein device\"",
+        "\"Albert Einstein machine\"",
+        "\"Albert Einstein tool\"",
+        "\"Albert Einstein creation\""
+      ],
+      "artifact": [
+        "\"Albert Einstein artifact\"",
+        "\"Albert Einstein object\"",
+        "\"Albert Einstein relic\"",
+        "\"Albert Einstein instrument\"",
+        "\"Albert Einstein tool\""
+      ]
+    },
+    "priority": "high"
+  },
+  {
+    "name": "Jennifer Doudna",
+    "category": "Science",
+    "epoch": "Modern",
+    "achievement": "Pioneer of CRISPR gene editing",
+    "queries": {
+      "portrait": [
+        "\"Jennifer Doudna portrait\"",
+        "\"Jennifer Doudna bust\"",
+        "\"Jennifer Doudna statue\"",
+        "\"Jennifer Doudna painting\"",
+        "\"Jennifer Doudna image\""
+      ],
+      "achievement": [
+        "\"Jennifer Doudna pioneer\"",
+        "\"Jennifer Doudna crispr\"",
+        "\"Jennifer Doudna gene\"",
+        "\"Jennifer Doudna Pioneer\"",
+        "\"Jennifer Doudna work\""
+      ],
+      "invention": [
+        "\"Jennifer Doudna invention\"",
+        "\"Jennifer Doudna device\"",
+        "\"Jennifer Doudna machine\"",
+        "\"Jennifer Doudna tool\"",
+        "\"Jennifer Doudna creation\""
+      ],
+      "artifact": [
+        "\"Jennifer Doudna artifact\"",
+        "\"Jennifer Doudna object\"",
+        "\"Jennifer Doudna relic\"",
+        "\"Jennifer Doudna instrument\"",
+        "\"Jennifer Doudna tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Youyou Tu",
+    "category": "Science",
+    "epoch": "Future",
+    "achievement": "Advanced malaria treatment/genetics",
+    "queries": {
+      "portrait": [
+        "\"Youyou Tu portrait\"",
+        "\"Youyou Tu bust\"",
+        "\"Youyou Tu statue\"",
+        "\"Youyou Tu painting\"",
+        "\"Youyou Tu image\""
+      ],
+      "achievement": [
+        "\"Youyou Tu advanced\"",
+        "\"Youyou Tu malaria\"",
+        "\"Youyou Tu treatment/genetics\"",
+        "\"Youyou Tu Advanced\"",
+        "\"Youyou Tu work\""
+      ],
+      "invention": [
+        "\"Youyou Tu invention\"",
+        "\"Youyou Tu device\"",
+        "\"Youyou Tu machine\"",
+        "\"Youyou Tu tool\"",
+        "\"Youyou Tu creation\""
+      ],
+      "artifact": [
+        "\"Youyou Tu artifact\"",
+        "\"Youyou Tu object\"",
+        "\"Youyou Tu relic\"",
+        "\"Youyou Tu instrument\"",
+        "\"Youyou Tu tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "David Sinclair",
+    "category": "Science",
+    "epoch": "Future",
+    "achievement": "Scientist exploring human longevity",
+    "queries": {
+      "portrait": [
+        "\"David Sinclair portrait\"",
+        "\"David Sinclair bust\"",
+        "\"David Sinclair statue\"",
+        "\"David Sinclair painting\"",
+        "\"David Sinclair image\""
+      ],
+      "achievement": [
+        "\"David Sinclair scientist\"",
+        "\"David Sinclair exploring\"",
+        "\"David Sinclair human\"",
+        "\"David Sinclair Scientist\"",
+        "\"David Sinclair work\""
+      ],
+      "invention": [
+        "\"David Sinclair invention\"",
+        "\"David Sinclair device\"",
+        "\"David Sinclair machine\"",
+        "\"David Sinclair tool\"",
+        "\"David Sinclair creation\""
+      ],
+      "artifact": [
+        "\"David Sinclair artifact\"",
+        "\"David Sinclair object\"",
+        "\"David Sinclair relic\"",
+        "\"David Sinclair instrument\"",
+        "\"David Sinclair tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fictional Quantum Pioneer",
+    "category": "Science",
+    "epoch": "Future",
+    "achievement": "Breaks barrier to quantum computing supremacy",
+    "queries": {
+      "portrait": [
+        "\"Fictional Quantum Pioneer portrait\"",
+        "\"Fictional Quantum Pioneer bust\"",
+        "\"Fictional Quantum Pioneer statue\"",
+        "\"Fictional Quantum Pioneer painting\"",
+        "\"Fictional Quantum Pioneer image\""
+      ],
+      "achievement": [
+        "\"Fictional Quantum Pioneer breaks\"",
+        "\"Fictional Quantum Pioneer barrier\"",
+        "\"Fictional Quantum Pioneer quantum\"",
+        "\"Fictional Quantum Pioneer Breaks\"",
+        "\"Fictional Quantum Pioneer work\""
+      ],
+      "invention": [
+        "\"Fictional Quantum Pioneer invention\"",
+        "\"Fictional Quantum Pioneer device\"",
+        "\"Fictional Quantum Pioneer machine\"",
+        "\"Fictional Quantum Pioneer tool\"",
+        "\"Fictional Quantum Pioneer creation\""
+      ],
+      "artifact": [
+        "\"Fictional Quantum Pioneer artifact\"",
+        "\"Fictional Quantum Pioneer object\"",
+        "\"Fictional Quantum Pioneer relic\"",
+        "\"Fictional Quantum Pioneer instrument\"",
+        "\"Fictional Quantum Pioneer tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Phidias",
+    "category": "Art",
+    "epoch": "Ancient",
+    "achievement": "Sculpted masterpieces of the Parthenon",
+    "queries": {
+      "portrait": [
+        "\"Phidias portrait\"",
+        "\"Phidias bust\"",
+        "\"Phidias statue\"",
+        "\"Phidias painting\"",
+        "\"Phidias image\""
+      ],
+      "achievement": [
+        "\"Phidias sculpted\"",
+        "\"Phidias masterpieces\"",
+        "\"Phidias parthenon\"",
+        "\"Phidias Sculpted\"",
+        "\"Phidias work\""
+      ],
+      "invention": [
+        "\"Phidias invention\"",
+        "\"Phidias device\"",
+        "\"Phidias machine\"",
+        "\"Phidias tool\"",
+        "\"Phidias creation\""
+      ],
+      "artifact": [
+        "\"Phidias artifact\"",
+        "\"Phidias object\"",
+        "\"Phidias relic\"",
+        "\"Phidias instrument\"",
+        "\"Phidias tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Polygnotus",
+    "category": "Art",
+    "epoch": "Ancient",
+    "achievement": "Renowned Greek muralist",
+    "queries": {
+      "portrait": [
+        "\"Polygnotus portrait\"",
+        "\"Polygnotus bust\"",
+        "\"Polygnotus statue\"",
+        "\"Polygnotus painting\"",
+        "\"Polygnotus image\""
+      ],
+      "achievement": [
+        "\"Polygnotus renowned\"",
+        "\"Polygnotus greek\"",
+        "\"Polygnotus muralist\"",
+        "\"Polygnotus Renowned\"",
+        "\"Polygnotus work\""
+      ],
+      "invention": [
+        "\"Polygnotus invention\"",
+        "\"Polygnotus device\"",
+        "\"Polygnotus machine\"",
+        "\"Polygnotus tool\"",
+        "\"Polygnotus creation\""
+      ],
+      "artifact": [
+        "\"Polygnotus artifact\"",
+        "\"Polygnotus object\"",
+        "\"Polygnotus relic\"",
+        "\"Polygnotus instrument\"",
+        "\"Polygnotus tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Imhotep",
+    "category": "Art",
+    "epoch": "Ancient",
+    "achievement": "Fused art and architecture in Egypt",
+    "queries": {
+      "portrait": [
+        "\"Imhotep portrait\"",
+        "\"Imhotep bust\"",
+        "\"Imhotep statue\"",
+        "\"Imhotep painting\"",
+        "\"Imhotep image\""
+      ],
+      "achievement": [
+        "\"Imhotep fused\"",
+        "\"Imhotep architecture\"",
+        "\"Imhotep egypt\"",
+        "\"Imhotep Fused\"",
+        "\"Imhotep work\""
+      ],
+      "invention": [
+        "\"Imhotep invention\"",
+        "\"Imhotep device\"",
+        "\"Imhotep machine\"",
+        "\"Imhotep tool\"",
+        "\"Imhotep creation\""
+      ],
+      "artifact": [
+        "\"Imhotep artifact\"",
+        "\"Imhotep object\"",
+        "\"Imhotep relic\"",
+        "\"Imhotep instrument\"",
+        "\"Imhotep tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Giotto di Bondone",
+    "category": "Art",
+    "epoch": "Medieval",
+    "achievement": "Pre-Renaissance painter",
+    "queries": {
+      "portrait": [
+        "\"Giotto di Bondone portrait\"",
+        "\"Giotto di Bondone bust\"",
+        "\"Giotto di Bondone statue\"",
+        "\"Giotto di Bondone painting\"",
+        "\"Giotto di Bondone image\""
+      ],
+      "achievement": [
+        "\"Giotto di Bondone pre-renaissance\"",
+        "\"Giotto di Bondone painter\"",
+        "\"Giotto di Bondone contribution\"",
+        "\"Giotto di Bondone Pre-Renaissance\"",
+        "\"Giotto di Bondone work\""
+      ],
+      "invention": [
+        "\"Giotto di Bondone invention\"",
+        "\"Giotto di Bondone device\"",
+        "\"Giotto di Bondone machine\"",
+        "\"Giotto di Bondone tool\"",
+        "\"Giotto di Bondone creation\""
+      ],
+      "artifact": [
+        "\"Giotto di Bondone artifact\"",
+        "\"Giotto di Bondone object\"",
+        "\"Giotto di Bondone relic\"",
+        "\"Giotto di Bondone instrument\"",
+        "\"Giotto di Bondone tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hildegard of Bingen",
+    "category": "Art",
+    "epoch": "Medieval",
+    "achievement": "Illuminated manuscripts, music",
+    "queries": {
+      "portrait": [
+        "\"Hildegard of Bingen portrait\"",
+        "\"Hildegard of Bingen bust\"",
+        "\"Hildegard of Bingen statue\"",
+        "\"Hildegard of Bingen painting\"",
+        "\"Hildegard of Bingen image\""
+      ],
+      "achievement": [
+        "\"Hildegard of Bingen illuminated\"",
+        "\"Hildegard of Bingen manuscripts,\"",
+        "\"Hildegard of Bingen music\"",
+        "\"Hildegard of Bingen Illuminated\"",
+        "\"Hildegard of Bingen work\""
+      ],
+      "invention": [
+        "\"Hildegard of Bingen invention\"",
+        "\"Hildegard of Bingen device\"",
+        "\"Hildegard of Bingen machine\"",
+        "\"Hildegard of Bingen tool\"",
+        "\"Hildegard of Bingen creation\""
+      ],
+      "artifact": [
+        "\"Hildegard of Bingen artifact\"",
+        "\"Hildegard of Bingen object\"",
+        "\"Hildegard of Bingen relic\"",
+        "\"Hildegard of Bingen instrument\"",
+        "\"Hildegard of Bingen tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Andrei Rublev",
+    "category": "Art",
+    "epoch": "Medieval",
+    "achievement": "Mastered icon painting in Russia",
+    "queries": {
+      "portrait": [
+        "\"Andrei Rublev portrait\"",
+        "\"Andrei Rublev bust\"",
+        "\"Andrei Rublev statue\"",
+        "\"Andrei Rublev painting\"",
+        "\"Andrei Rublev image\""
+      ],
+      "achievement": [
+        "\"Andrei Rublev mastered\"",
+        "\"Andrei Rublev icon\"",
+        "\"Andrei Rublev painting\"",
+        "\"Andrei Rublev Mastered\"",
+        "\"Andrei Rublev work\""
+      ],
+      "invention": [
+        "\"Andrei Rublev invention\"",
+        "\"Andrei Rublev device\"",
+        "\"Andrei Rublev machine\"",
+        "\"Andrei Rublev tool\"",
+        "\"Andrei Rublev creation\""
+      ],
+      "artifact": [
+        "\"Andrei Rublev artifact\"",
+        "\"Andrei Rublev object\"",
+        "\"Andrei Rublev relic\"",
+        "\"Andrei Rublev instrument\"",
+        "\"Andrei Rublev tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Claude Monet",
+    "category": "Art",
+    "epoch": "Industrial",
+    "achievement": "Leader of Impressionist painting",
+    "queries": {
+      "portrait": [
+        "\"Claude Monet portrait\"",
+        "\"Claude Monet bust\"",
+        "\"Claude Monet statue\"",
+        "\"Claude Monet painting\"",
+        "\"Claude Monet image\""
+      ],
+      "achievement": [
+        "\"Claude Monet leader\"",
+        "\"Claude Monet impressionist\"",
+        "\"Claude Monet painting\"",
+        "\"Claude Monet Leader\"",
+        "\"Claude Monet work\""
+      ],
+      "invention": [
+        "\"Claude Monet invention\"",
+        "\"Claude Monet device\"",
+        "\"Claude Monet machine\"",
+        "\"Claude Monet tool\"",
+        "\"Claude Monet creation\""
+      ],
+      "artifact": [
+        "\"Claude Monet artifact\"",
+        "\"Claude Monet object\"",
+        "\"Claude Monet relic\"",
+        "\"Claude Monet instrument\"",
+        "\"Claude Monet tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "William Blake",
+    "category": "Art",
+    "epoch": "Industrial",
+    "achievement": "Artist and poet of industrial themes",
+    "queries": {
+      "portrait": [
+        "\"William Blake portrait\"",
+        "\"William Blake bust\"",
+        "\"William Blake statue\"",
+        "\"William Blake painting\"",
+        "\"William Blake image\""
+      ],
+      "achievement": [
+        "\"William Blake artist\"",
+        "\"William Blake poet\"",
+        "\"William Blake industrial\"",
+        "\"William Blake Artist\"",
+        "\"William Blake work\""
+      ],
+      "invention": [
+        "\"William Blake invention\"",
+        "\"William Blake device\"",
+        "\"William Blake machine\"",
+        "\"William Blake tool\"",
+        "\"William Blake creation\""
+      ],
+      "artifact": [
+        "\"William Blake artifact\"",
+        "\"William Blake object\"",
+        "\"William Blake relic\"",
+        "\"William Blake instrument\"",
+        "\"William Blake tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Gustave Courbet",
+    "category": "Art",
+    "epoch": "Industrial",
+    "achievement": "Realist painter of modern life",
+    "queries": {
+      "portrait": [
+        "\"Gustave Courbet portrait\"",
+        "\"Gustave Courbet bust\"",
+        "\"Gustave Courbet statue\"",
+        "\"Gustave Courbet painting\"",
+        "\"Gustave Courbet image\""
+      ],
+      "achievement": [
+        "\"Gustave Courbet realist\"",
+        "\"Gustave Courbet painter\"",
+        "\"Gustave Courbet modern\"",
+        "\"Gustave Courbet Realist\"",
+        "\"Gustave Courbet work\""
+      ],
+      "invention": [
+        "\"Gustave Courbet invention\"",
+        "\"Gustave Courbet device\"",
+        "\"Gustave Courbet machine\"",
+        "\"Gustave Courbet tool\"",
+        "\"Gustave Courbet creation\""
+      ],
+      "artifact": [
+        "\"Gustave Courbet artifact\"",
+        "\"Gustave Courbet object\"",
+        "\"Gustave Courbet relic\"",
+        "\"Gustave Courbet instrument\"",
+        "\"Gustave Courbet tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Frida Kahlo",
+    "category": "Art",
+    "epoch": "Modern",
+    "achievement": "Intimate, symbolic self-portraits",
+    "queries": {
+      "portrait": [
+        "\"Frida Kahlo portrait\"",
+        "\"Frida Kahlo bust\"",
+        "\"Frida Kahlo statue\"",
+        "\"Frida Kahlo painting\"",
+        "\"Frida Kahlo image\""
+      ],
+      "achievement": [
+        "\"Frida Kahlo intimate,\"",
+        "\"Frida Kahlo symbolic\"",
+        "\"Frida Kahlo self-portraits\"",
+        "\"Frida Kahlo Intimate,\"",
+        "\"Frida Kahlo work\""
+      ],
+      "invention": [
+        "\"Frida Kahlo invention\"",
+        "\"Frida Kahlo device\"",
+        "\"Frida Kahlo machine\"",
+        "\"Frida Kahlo tool\"",
+        "\"Frida Kahlo creation\""
+      ],
+      "artifact": [
+        "\"Frida Kahlo artifact\"",
+        "\"Frida Kahlo object\"",
+        "\"Frida Kahlo relic\"",
+        "\"Frida Kahlo instrument\"",
+        "\"Frida Kahlo tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Banksy",
+    "category": "Art",
+    "epoch": "Modern",
+    "achievement": "Famous street and political artist",
+    "queries": {
+      "portrait": [
+        "\"Banksy portrait\"",
+        "\"Banksy bust\"",
+        "\"Banksy statue\"",
+        "\"Banksy painting\"",
+        "\"Banksy image\""
+      ],
+      "achievement": [
+        "\"Banksy famous\"",
+        "\"Banksy street\"",
+        "\"Banksy political\"",
+        "\"Banksy Famous\"",
+        "\"Banksy work\""
+      ],
+      "invention": [
+        "\"Banksy invention\"",
+        "\"Banksy device\"",
+        "\"Banksy machine\"",
+        "\"Banksy tool\"",
+        "\"Banksy creation\""
+      ],
+      "artifact": [
+        "\"Banksy artifact\"",
+        "\"Banksy object\"",
+        "\"Banksy relic\"",
+        "\"Banksy instrument\"",
+        "\"Banksy tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Yayoi Kusama",
+    "category": "Art",
+    "epoch": "Modern",
+    "achievement": "Creates immersive, avant-garde art",
+    "queries": {
+      "portrait": [
+        "\"Yayoi Kusama portrait\"",
+        "\"Yayoi Kusama bust\"",
+        "\"Yayoi Kusama statue\"",
+        "\"Yayoi Kusama painting\"",
+        "\"Yayoi Kusama image\""
+      ],
+      "achievement": [
+        "\"Yayoi Kusama creates\"",
+        "\"Yayoi Kusama immersive,\"",
+        "\"Yayoi Kusama avant-garde\"",
+        "\"Yayoi Kusama Creates\"",
+        "\"Yayoi Kusama work\""
+      ],
+      "invention": [
+        "\"Yayoi Kusama invention\"",
+        "\"Yayoi Kusama device\"",
+        "\"Yayoi Kusama machine\"",
+        "\"Yayoi Kusama tool\"",
+        "\"Yayoi Kusama creation\""
+      ],
+      "artifact": [
+        "\"Yayoi Kusama artifact\"",
+        "\"Yayoi Kusama object\"",
+        "\"Yayoi Kusama relic\"",
+        "\"Yayoi Kusama instrument\"",
+        "\"Yayoi Kusama tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Refik Anadol",
+    "category": "Art",
+    "epoch": "Future",
+    "achievement": "AI and data-driven art installations",
+    "queries": {
+      "portrait": [
+        "\"Refik Anadol portrait\"",
+        "\"Refik Anadol bust\"",
+        "\"Refik Anadol statue\"",
+        "\"Refik Anadol painting\"",
+        "\"Refik Anadol image\""
+      ],
+      "achievement": [
+        "\"Refik Anadol data-driven\"",
+        "\"Refik Anadol installations\"",
+        "\"Refik Anadol contribution\"",
+        "\"Refik Anadol AI\"",
+        "\"Refik Anadol work\""
+      ],
+      "invention": [
+        "\"Refik Anadol invention\"",
+        "\"Refik Anadol device\"",
+        "\"Refik Anadol machine\"",
+        "\"Refik Anadol tool\"",
+        "\"Refik Anadol creation\""
+      ],
+      "artifact": [
+        "\"Refik Anadol artifact\"",
+        "\"Refik Anadol object\"",
+        "\"Refik Anadol relic\"",
+        "\"Refik Anadol instrument\"",
+        "\"Refik Anadol tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Sofia Crespo",
+    "category": "Art",
+    "epoch": "Future",
+    "achievement": "Innovative neural network artist",
+    "queries": {
+      "portrait": [
+        "\"Sofia Crespo portrait\"",
+        "\"Sofia Crespo bust\"",
+        "\"Sofia Crespo statue\"",
+        "\"Sofia Crespo painting\"",
+        "\"Sofia Crespo image\""
+      ],
+      "achievement": [
+        "\"Sofia Crespo innovative\"",
+        "\"Sofia Crespo neural\"",
+        "\"Sofia Crespo network\"",
+        "\"Sofia Crespo Innovative\"",
+        "\"Sofia Crespo work\""
+      ],
+      "invention": [
+        "\"Sofia Crespo invention\"",
+        "\"Sofia Crespo device\"",
+        "\"Sofia Crespo machine\"",
+        "\"Sofia Crespo tool\"",
+        "\"Sofia Crespo creation\""
+      ],
+      "artifact": [
+        "\"Sofia Crespo artifact\"",
+        "\"Sofia Crespo object\"",
+        "\"Sofia Crespo relic\"",
+        "\"Sofia Crespo instrument\"",
+        "\"Sofia Crespo tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fictional Holographic Artist",
+    "category": "Art",
+    "epoch": "Future",
+    "achievement": "Transforms gallery art with AR",
+    "queries": {
+      "portrait": [
+        "\"Fictional Holographic Artist portrait\"",
+        "\"Fictional Holographic Artist bust\"",
+        "\"Fictional Holographic Artist statue\"",
+        "\"Fictional Holographic Artist painting\"",
+        "\"Fictional Holographic Artist image\""
+      ],
+      "achievement": [
+        "\"Fictional Holographic Artist transforms\"",
+        "\"Fictional Holographic Artist gallery\"",
+        "\"Fictional Holographic Artist with\"",
+        "\"Fictional Holographic Artist Transforms\"",
+        "\"Fictional Holographic Artist work\""
+      ],
+      "invention": [
+        "\"Fictional Holographic Artist invention\"",
+        "\"Fictional Holographic Artist device\"",
+        "\"Fictional Holographic Artist machine\"",
+        "\"Fictional Holographic Artist tool\"",
+        "\"Fictional Holographic Artist creation\""
+      ],
+      "artifact": [
+        "\"Fictional Holographic Artist artifact\"",
+        "\"Fictional Holographic Artist object\"",
+        "\"Fictional Holographic Artist relic\"",
+        "\"Fictional Holographic Artist instrument\"",
+        "\"Fictional Holographic Artist tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Theophrastus",
+    "category": "Nature",
+    "epoch": "Ancient",
+    "achievement": "Founder of botany, classified plants",
+    "queries": {
+      "portrait": [
+        "\"Theophrastus portrait\"",
+        "\"Theophrastus bust\"",
+        "\"Theophrastus statue\"",
+        "\"Theophrastus painting\"",
+        "\"Theophrastus image\""
+      ],
+      "achievement": [
+        "\"Theophrastus founder\"",
+        "\"Theophrastus botany,\"",
+        "\"Theophrastus classified\"",
+        "\"Theophrastus Founder\"",
+        "\"Theophrastus work\""
+      ],
+      "invention": [
+        "\"Theophrastus invention\"",
+        "\"Theophrastus device\"",
+        "\"Theophrastus machine\"",
+        "\"Theophrastus tool\"",
+        "\"Theophrastus creation\""
+      ],
+      "artifact": [
+        "\"Theophrastus artifact\"",
+        "\"Theophrastus object\"",
+        "\"Theophrastus relic\"",
+        "\"Theophrastus instrument\"",
+        "\"Theophrastus tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Empedocles",
+    "category": "Nature",
+    "epoch": "Ancient",
+    "achievement": "Theorist of natural elements",
+    "queries": {
+      "portrait": [
+        "\"Empedocles portrait\"",
+        "\"Empedocles bust\"",
+        "\"Empedocles statue\"",
+        "\"Empedocles painting\"",
+        "\"Empedocles image\""
+      ],
+      "achievement": [
+        "\"Empedocles theorist\"",
+        "\"Empedocles natural\"",
+        "\"Empedocles elements\"",
+        "\"Empedocles Theorist\"",
+        "\"Empedocles work\""
+      ],
+      "invention": [
+        "\"Empedocles invention\"",
+        "\"Empedocles device\"",
+        "\"Empedocles machine\"",
+        "\"Empedocles tool\"",
+        "\"Empedocles creation\""
+      ],
+      "artifact": [
+        "\"Empedocles artifact\"",
+        "\"Empedocles object\"",
+        "\"Empedocles relic\"",
+        "\"Empedocles instrument\"",
+        "\"Empedocles tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Huang Di",
+    "category": "Nature",
+    "epoch": "Ancient",
+    "achievement": "Authored foundational Chinese medicine texts",
+    "queries": {
+      "portrait": [
+        "\"Huang Di portrait\"",
+        "\"Huang Di bust\"",
+        "\"Huang Di statue\"",
+        "\"Huang Di painting\"",
+        "\"Huang Di image\""
+      ],
+      "achievement": [
+        "\"Huang Di authored\"",
+        "\"Huang Di foundational\"",
+        "\"Huang Di chinese\"",
+        "\"Huang Di Authored\"",
+        "\"Huang Di work\""
+      ],
+      "invention": [
+        "\"Huang Di invention\"",
+        "\"Huang Di device\"",
+        "\"Huang Di machine\"",
+        "\"Huang Di tool\"",
+        "\"Huang Di creation\""
+      ],
+      "artifact": [
+        "\"Huang Di artifact\"",
+        "\"Huang Di object\"",
+        "\"Huang Di relic\"",
+        "\"Huang Di instrument\"",
+        "\"Huang Di tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Albertus Magnus",
+    "category": "Nature",
+    "epoch": "Medieval",
+    "achievement": "Encyclopedia of natural science, early ecologist",
+    "queries": {
+      "portrait": [
+        "\"Albertus Magnus portrait\"",
+        "\"Albertus Magnus bust\"",
+        "\"Albertus Magnus statue\"",
+        "\"Albertus Magnus painting\"",
+        "\"Albertus Magnus image\""
+      ],
+      "achievement": [
+        "\"Albertus Magnus encyclopedia\"",
+        "\"Albertus Magnus natural\"",
+        "\"Albertus Magnus science,\"",
+        "\"Albertus Magnus Encyclopedia\"",
+        "\"Albertus Magnus work\""
+      ],
+      "invention": [
+        "\"Albertus Magnus invention\"",
+        "\"Albertus Magnus device\"",
+        "\"Albertus Magnus machine\"",
+        "\"Albertus Magnus tool\"",
+        "\"Albertus Magnus creation\""
+      ],
+      "artifact": [
+        "\"Albertus Magnus artifact\"",
+        "\"Albertus Magnus object\"",
+        "\"Albertus Magnus relic\"",
+        "\"Albertus Magnus instrument\"",
+        "\"Albertus Magnus tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Avicenna",
+    "category": "Nature",
+    "epoch": "Medieval",
+    "achievement": "Botanical and medical scholar",
+    "queries": {
+      "portrait": [
+        "\"Avicenna portrait\"",
+        "\"Avicenna bust\"",
+        "\"Avicenna statue\"",
+        "\"Avicenna painting\"",
+        "\"Avicenna image\""
+      ],
+      "achievement": [
+        "\"Avicenna botanical\"",
+        "\"Avicenna medical\"",
+        "\"Avicenna scholar\"",
+        "\"Avicenna Botanical\"",
+        "\"Avicenna work\""
+      ],
+      "invention": [
+        "\"Avicenna invention\"",
+        "\"Avicenna device\"",
+        "\"Avicenna machine\"",
+        "\"Avicenna tool\"",
+        "\"Avicenna creation\""
+      ],
+      "artifact": [
+        "\"Avicenna artifact\"",
+        "\"Avicenna object\"",
+        "\"Avicenna relic\"",
+        "\"Avicenna instrument\"",
+        "\"Avicenna tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Saint Francis of Assisi",
+    "category": "Nature",
+    "epoch": "Medieval",
+    "achievement": "Advocate for animal welfare and nature",
+    "queries": {
+      "portrait": [
+        "\"Saint Francis of Assisi portrait\"",
+        "\"Saint Francis of Assisi bust\"",
+        "\"Saint Francis of Assisi statue\"",
+        "\"Saint Francis of Assisi painting\"",
+        "\"Saint Francis of Assisi image\""
+      ],
+      "achievement": [
+        "\"Saint Francis of Assisi advocate\"",
+        "\"Saint Francis of Assisi animal\"",
+        "\"Saint Francis of Assisi welfare\"",
+        "\"Saint Francis of Assisi Advocate\"",
+        "\"Saint Francis of Assisi work\""
+      ],
+      "invention": [
+        "\"Saint Francis of Assisi invention\"",
+        "\"Saint Francis of Assisi device\"",
+        "\"Saint Francis of Assisi machine\"",
+        "\"Saint Francis of Assisi tool\"",
+        "\"Saint Francis of Assisi creation\""
+      ],
+      "artifact": [
+        "\"Saint Francis of Assisi artifact\"",
+        "\"Saint Francis of Assisi object\"",
+        "\"Saint Francis of Assisi relic\"",
+        "\"Saint Francis of Assisi instrument\"",
+        "\"Saint Francis of Assisi tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Charles Darwin",
+    "category": "Nature",
+    "epoch": "Industrial",
+    "achievement": "Gal\u00e1pagos discoveries, natural selection",
+    "queries": {
+      "portrait": [
+        "\"Charles Darwin portrait\"",
+        "\"Charles Darwin bust\"",
+        "\"Charles Darwin statue\"",
+        "\"Charles Darwin painting\"",
+        "\"Charles Darwin image\""
+      ],
+      "achievement": [
+        "\"Charles Darwin gal\u00e1pagos\"",
+        "\"Charles Darwin discoveries,\"",
+        "\"Charles Darwin natural\"",
+        "\"Charles Darwin Gal\u00e1pagos\"",
+        "\"Charles Darwin work\""
+      ],
+      "invention": [
+        "\"Charles Darwin invention\"",
+        "\"Charles Darwin device\"",
+        "\"Charles Darwin machine\"",
+        "\"Charles Darwin tool\"",
+        "\"Charles Darwin creation\""
+      ],
+      "artifact": [
+        "\"Charles Darwin artifact\"",
+        "\"Charles Darwin object\"",
+        "\"Charles Darwin relic\"",
+        "\"Charles Darwin instrument\"",
+        "\"Charles Darwin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "John James Audubon",
+    "category": "Nature",
+    "epoch": "Industrial",
+    "achievement": "Documented N. American wildlife in art",
+    "queries": {
+      "portrait": [
+        "\"John James Audubon portrait\"",
+        "\"John James Audubon bust\"",
+        "\"John James Audubon statue\"",
+        "\"John James Audubon painting\"",
+        "\"John James Audubon image\""
+      ],
+      "achievement": [
+        "\"John James Audubon documented\"",
+        "\"John James Audubon american\"",
+        "\"John James Audubon wildlife\"",
+        "\"John James Audubon Documented\"",
+        "\"John James Audubon work\""
+      ],
+      "invention": [
+        "\"John James Audubon invention\"",
+        "\"John James Audubon device\"",
+        "\"John James Audubon machine\"",
+        "\"John James Audubon tool\"",
+        "\"John James Audubon creation\""
+      ],
+      "artifact": [
+        "\"John James Audubon artifact\"",
+        "\"John James Audubon object\"",
+        "\"John James Audubon relic\"",
+        "\"John James Audubon instrument\"",
+        "\"John James Audubon tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Mary Anning",
+    "category": "Nature",
+    "epoch": "Industrial",
+    "achievement": "Pioneer fossil hunter and paleontologist",
+    "queries": {
+      "portrait": [
+        "\"Mary Anning portrait\"",
+        "\"Mary Anning bust\"",
+        "\"Mary Anning statue\"",
+        "\"Mary Anning painting\"",
+        "\"Mary Anning image\""
+      ],
+      "achievement": [
+        "\"Mary Anning pioneer\"",
+        "\"Mary Anning fossil\"",
+        "\"Mary Anning hunter\"",
+        "\"Mary Anning Pioneer\"",
+        "\"Mary Anning work\""
+      ],
+      "invention": [
+        "\"Mary Anning invention\"",
+        "\"Mary Anning device\"",
+        "\"Mary Anning machine\"",
+        "\"Mary Anning tool\"",
+        "\"Mary Anning creation\""
+      ],
+      "artifact": [
+        "\"Mary Anning artifact\"",
+        "\"Mary Anning object\"",
+        "\"Mary Anning relic\"",
+        "\"Mary Anning instrument\"",
+        "\"Mary Anning tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Jane Goodall",
+    "category": "Nature",
+    "epoch": "Modern",
+    "achievement": "Revolutionized primatology/conservation",
+    "queries": {
+      "portrait": [
+        "\"Jane Goodall portrait\"",
+        "\"Jane Goodall bust\"",
+        "\"Jane Goodall statue\"",
+        "\"Jane Goodall painting\"",
+        "\"Jane Goodall image\""
+      ],
+      "achievement": [
+        "\"Jane Goodall revolutionized\"",
+        "\"Jane Goodall primatology/conservation\"",
+        "\"Jane Goodall contribution\"",
+        "\"Jane Goodall Revolutionized\"",
+        "\"Jane Goodall work\""
+      ],
+      "invention": [
+        "\"Jane Goodall invention\"",
+        "\"Jane Goodall device\"",
+        "\"Jane Goodall machine\"",
+        "\"Jane Goodall tool\"",
+        "\"Jane Goodall creation\""
+      ],
+      "artifact": [
+        "\"Jane Goodall artifact\"",
+        "\"Jane Goodall object\"",
+        "\"Jane Goodall relic\"",
+        "\"Jane Goodall instrument\"",
+        "\"Jane Goodall tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "David Attenborough",
+    "category": "Nature",
+    "epoch": "Modern",
+    "achievement": "Global nature educator/advocate",
+    "queries": {
+      "portrait": [
+        "\"David Attenborough portrait\"",
+        "\"David Attenborough bust\"",
+        "\"David Attenborough statue\"",
+        "\"David Attenborough painting\"",
+        "\"David Attenborough image\""
+      ],
+      "achievement": [
+        "\"David Attenborough global\"",
+        "\"David Attenborough nature\"",
+        "\"David Attenborough educator/advocate\"",
+        "\"David Attenborough Global\"",
+        "\"David Attenborough work\""
+      ],
+      "invention": [
+        "\"David Attenborough invention\"",
+        "\"David Attenborough device\"",
+        "\"David Attenborough machine\"",
+        "\"David Attenborough tool\"",
+        "\"David Attenborough creation\""
+      ],
+      "artifact": [
+        "\"David Attenborough artifact\"",
+        "\"David Attenborough object\"",
+        "\"David Attenborough relic\"",
+        "\"David Attenborough instrument\"",
+        "\"David Attenborough tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Wangari Maathai",
+    "category": "Nature",
+    "epoch": "Modern",
+    "achievement": "Founder of mass tree-planting Green Belt Movement",
+    "queries": {
+      "portrait": [
+        "\"Wangari Maathai portrait\"",
+        "\"Wangari Maathai bust\"",
+        "\"Wangari Maathai statue\"",
+        "\"Wangari Maathai painting\"",
+        "\"Wangari Maathai image\""
+      ],
+      "achievement": [
+        "\"Wangari Maathai founder\"",
+        "\"Wangari Maathai mass\"",
+        "\"Wangari Maathai tree-planting\"",
+        "\"Wangari Maathai Founder\"",
+        "\"Wangari Maathai work\""
+      ],
+      "invention": [
+        "\"Wangari Maathai invention\"",
+        "\"Wangari Maathai device\"",
+        "\"Wangari Maathai machine\"",
+        "\"Wangari Maathai tool\"",
+        "\"Wangari Maathai creation\""
+      ],
+      "artifact": [
+        "\"Wangari Maathai artifact\"",
+        "\"Wangari Maathai object\"",
+        "\"Wangari Maathai relic\"",
+        "\"Wangari Maathai instrument\"",
+        "\"Wangari Maathai tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fictional Climate Engineer",
+    "category": "Nature",
+    "epoch": "Future",
+    "achievement": "Uses biotech to repair ecosystems",
+    "queries": {
+      "portrait": [
+        "\"Fictional Climate Engineer portrait\"",
+        "\"Fictional Climate Engineer bust\"",
+        "\"Fictional Climate Engineer statue\"",
+        "\"Fictional Climate Engineer painting\"",
+        "\"Fictional Climate Engineer image\""
+      ],
+      "achievement": [
+        "\"Fictional Climate Engineer uses\"",
+        "\"Fictional Climate Engineer biotech\"",
+        "\"Fictional Climate Engineer repair\"",
+        "\"Fictional Climate Engineer Uses\"",
+        "\"Fictional Climate Engineer work\""
+      ],
+      "invention": [
+        "\"Fictional Climate Engineer invention\"",
+        "\"Fictional Climate Engineer device\"",
+        "\"Fictional Climate Engineer machine\"",
+        "\"Fictional Climate Engineer tool\"",
+        "\"Fictional Climate Engineer creation\""
+      ],
+      "artifact": [
+        "\"Fictional Climate Engineer artifact\"",
+        "\"Fictional Climate Engineer object\"",
+        "\"Fictional Climate Engineer relic\"",
+        "\"Fictional Climate Engineer instrument\"",
+        "\"Fictional Climate Engineer tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Mercedes Bustamante",
+    "category": "Nature",
+    "epoch": "Future",
+    "achievement": "Global land-restoration innovator",
+    "queries": {
+      "portrait": [
+        "\"Mercedes Bustamante portrait\"",
+        "\"Mercedes Bustamante bust\"",
+        "\"Mercedes Bustamante statue\"",
+        "\"Mercedes Bustamante painting\"",
+        "\"Mercedes Bustamante image\""
+      ],
+      "achievement": [
+        "\"Mercedes Bustamante global\"",
+        "\"Mercedes Bustamante land-restoration\"",
+        "\"Mercedes Bustamante innovator\"",
+        "\"Mercedes Bustamante Global\"",
+        "\"Mercedes Bustamante work\""
+      ],
+      "invention": [
+        "\"Mercedes Bustamante invention\"",
+        "\"Mercedes Bustamante device\"",
+        "\"Mercedes Bustamante machine\"",
+        "\"Mercedes Bustamante tool\"",
+        "\"Mercedes Bustamante creation\""
+      ],
+      "artifact": [
+        "\"Mercedes Bustamante artifact\"",
+        "\"Mercedes Bustamante object\"",
+        "\"Mercedes Bustamante relic\"",
+        "\"Mercedes Bustamante instrument\"",
+        "\"Mercedes Bustamante tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Paul Stamets",
+    "category": "Nature",
+    "epoch": "Future",
+    "achievement": "Radical ecosystem restoration with fungi",
+    "queries": {
+      "portrait": [
+        "\"Paul Stamets portrait\"",
+        "\"Paul Stamets bust\"",
+        "\"Paul Stamets statue\"",
+        "\"Paul Stamets painting\"",
+        "\"Paul Stamets image\""
+      ],
+      "achievement": [
+        "\"Paul Stamets radical\"",
+        "\"Paul Stamets ecosystem\"",
+        "\"Paul Stamets restoration\"",
+        "\"Paul Stamets Radical\"",
+        "\"Paul Stamets work\""
+      ],
+      "invention": [
+        "\"Paul Stamets invention\"",
+        "\"Paul Stamets device\"",
+        "\"Paul Stamets machine\"",
+        "\"Paul Stamets tool\"",
+        "\"Paul Stamets creation\""
+      ],
+      "artifact": [
+        "\"Paul Stamets artifact\"",
+        "\"Paul Stamets object\"",
+        "\"Paul Stamets relic\"",
+        "\"Paul Stamets instrument\"",
+        "\"Paul Stamets tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Milo of Croton",
+    "category": "Sports",
+    "epoch": "Ancient",
+    "achievement": "Legendary Olympic wrestler",
+    "queries": {
+      "portrait": [
+        "\"Milo of Croton portrait\"",
+        "\"Milo of Croton bust\"",
+        "\"Milo of Croton statue\"",
+        "\"Milo of Croton painting\"",
+        "\"Milo of Croton image\""
+      ],
+      "achievement": [
+        "\"Milo of Croton legendary\"",
+        "\"Milo of Croton olympic\"",
+        "\"Milo of Croton wrestler\"",
+        "\"Milo of Croton Legendary\"",
+        "\"Milo of Croton work\""
+      ],
+      "invention": [
+        "\"Milo of Croton invention\"",
+        "\"Milo of Croton device\"",
+        "\"Milo of Croton machine\"",
+        "\"Milo of Croton tool\"",
+        "\"Milo of Croton creation\""
+      ],
+      "artifact": [
+        "\"Milo of Croton artifact\"",
+        "\"Milo of Croton object\"",
+        "\"Milo of Croton relic\"",
+        "\"Milo of Croton instrument\"",
+        "\"Milo of Croton tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Leonidas of Rhodes",
+    "category": "Sports",
+    "epoch": "Ancient",
+    "achievement": "Unbeaten ancient sprint champion",
+    "queries": {
+      "portrait": [
+        "\"Leonidas of Rhodes portrait\"",
+        "\"Leonidas of Rhodes bust\"",
+        "\"Leonidas of Rhodes statue\"",
+        "\"Leonidas of Rhodes painting\"",
+        "\"Leonidas of Rhodes image\""
+      ],
+      "achievement": [
+        "\"Leonidas of Rhodes unbeaten\"",
+        "\"Leonidas of Rhodes ancient\"",
+        "\"Leonidas of Rhodes sprint\"",
+        "\"Leonidas of Rhodes Unbeaten\"",
+        "\"Leonidas of Rhodes work\""
+      ],
+      "invention": [
+        "\"Leonidas of Rhodes invention\"",
+        "\"Leonidas of Rhodes device\"",
+        "\"Leonidas of Rhodes machine\"",
+        "\"Leonidas of Rhodes tool\"",
+        "\"Leonidas of Rhodes creation\""
+      ],
+      "artifact": [
+        "\"Leonidas of Rhodes artifact\"",
+        "\"Leonidas of Rhodes object\"",
+        "\"Leonidas of Rhodes relic\"",
+        "\"Leonidas of Rhodes instrument\"",
+        "\"Leonidas of Rhodes tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Gaius Appuleius Diocles",
+    "category": "Sports",
+    "epoch": "Ancient",
+    "achievement": "Rome's greatest charioteer",
+    "queries": {
+      "portrait": [
+        "\"Gaius Appuleius Diocles portrait\"",
+        "\"Gaius Appuleius Diocles bust\"",
+        "\"Gaius Appuleius Diocles statue\"",
+        "\"Gaius Appuleius Diocles painting\"",
+        "\"Gaius Appuleius Diocles image\""
+      ],
+      "achievement": [
+        "\"Gaius Appuleius Diocles rome's\"",
+        "\"Gaius Appuleius Diocles greatest\"",
+        "\"Gaius Appuleius Diocles charioteer\"",
+        "\"Gaius Appuleius Diocles Rome's\"",
+        "\"Gaius Appuleius Diocles work\""
+      ],
+      "invention": [
+        "\"Gaius Appuleius Diocles invention\"",
+        "\"Gaius Appuleius Diocles device\"",
+        "\"Gaius Appuleius Diocles machine\"",
+        "\"Gaius Appuleius Diocles tool\"",
+        "\"Gaius Appuleius Diocles creation\""
+      ],
+      "artifact": [
+        "\"Gaius Appuleius Diocles artifact\"",
+        "\"Gaius Appuleius Diocles object\"",
+        "\"Gaius Appuleius Diocles relic\"",
+        "\"Gaius Appuleius Diocles instrument\"",
+        "\"Gaius Appuleius Diocles tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "William Marshal",
+    "category": "Sports",
+    "epoch": "Medieval",
+    "achievement": "Legendary knight/jouster",
+    "queries": {
+      "portrait": [
+        "\"William Marshal portrait\"",
+        "\"William Marshal bust\"",
+        "\"William Marshal statue\"",
+        "\"William Marshal painting\"",
+        "\"William Marshal image\""
+      ],
+      "achievement": [
+        "\"William Marshal legendary\"",
+        "\"William Marshal knight/jouster\"",
+        "\"William Marshal contribution\"",
+        "\"William Marshal Legendary\"",
+        "\"William Marshal work\""
+      ],
+      "invention": [
+        "\"William Marshal invention\"",
+        "\"William Marshal device\"",
+        "\"William Marshal machine\"",
+        "\"William Marshal tool\"",
+        "\"William Marshal creation\""
+      ],
+      "artifact": [
+        "\"William Marshal artifact\"",
+        "\"William Marshal object\"",
+        "\"William Marshal relic\"",
+        "\"William Marshal instrument\"",
+        "\"William Marshal tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Robin Hood",
+    "category": "Sports",
+    "epoch": "Medieval",
+    "achievement": "Mythic archer and folk sports hero",
+    "queries": {
+      "portrait": [
+        "\"Robin Hood portrait\"",
+        "\"Robin Hood bust\"",
+        "\"Robin Hood statue\"",
+        "\"Robin Hood painting\"",
+        "\"Robin Hood image\""
+      ],
+      "achievement": [
+        "\"Robin Hood mythic\"",
+        "\"Robin Hood archer\"",
+        "\"Robin Hood folk\"",
+        "\"Robin Hood Mythic\"",
+        "\"Robin Hood work\""
+      ],
+      "invention": [
+        "\"Robin Hood invention\"",
+        "\"Robin Hood device\"",
+        "\"Robin Hood machine\"",
+        "\"Robin Hood tool\"",
+        "\"Robin Hood creation\""
+      ],
+      "artifact": [
+        "\"Robin Hood artifact\"",
+        "\"Robin Hood object\"",
+        "\"Robin Hood relic\"",
+        "\"Robin Hood instrument\"",
+        "\"Robin Hood tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Richard FitzAlan",
+    "category": "Sports",
+    "epoch": "Medieval",
+    "achievement": "Real tennis champion of the courts",
+    "queries": {
+      "portrait": [
+        "\"Richard FitzAlan portrait\"",
+        "\"Richard FitzAlan bust\"",
+        "\"Richard FitzAlan statue\"",
+        "\"Richard FitzAlan painting\"",
+        "\"Richard FitzAlan image\""
+      ],
+      "achievement": [
+        "\"Richard FitzAlan real\"",
+        "\"Richard FitzAlan tennis\"",
+        "\"Richard FitzAlan champion\"",
+        "\"Richard FitzAlan Real\"",
+        "\"Richard FitzAlan work\""
+      ],
+      "invention": [
+        "\"Richard FitzAlan invention\"",
+        "\"Richard FitzAlan device\"",
+        "\"Richard FitzAlan machine\"",
+        "\"Richard FitzAlan tool\"",
+        "\"Richard FitzAlan creation\""
+      ],
+      "artifact": [
+        "\"Richard FitzAlan artifact\"",
+        "\"Richard FitzAlan object\"",
+        "\"Richard FitzAlan relic\"",
+        "\"Richard FitzAlan instrument\"",
+        "\"Richard FitzAlan tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "W.G. Grace",
+    "category": "Sports",
+    "epoch": "Industrial",
+    "achievement": "Founder of modern cricket",
+    "queries": {
+      "portrait": [
+        "\"W.G. Grace portrait\"",
+        "\"W.G. Grace bust\"",
+        "\"W.G. Grace statue\"",
+        "\"W.G. Grace painting\"",
+        "\"W.G. Grace image\""
+      ],
+      "achievement": [
+        "\"W.G. Grace founder\"",
+        "\"W.G. Grace modern\"",
+        "\"W.G. Grace cricket\"",
+        "\"W.G. Grace Founder\"",
+        "\"W.G. Grace work\""
+      ],
+      "invention": [
+        "\"W.G. Grace invention\"",
+        "\"W.G. Grace device\"",
+        "\"W.G. Grace machine\"",
+        "\"W.G. Grace tool\"",
+        "\"W.G. Grace creation\""
+      ],
+      "artifact": [
+        "\"W.G. Grace artifact\"",
+        "\"W.G. Grace object\"",
+        "\"W.G. Grace relic\"",
+        "\"W.G. Grace instrument\"",
+        "\"W.G. Grace tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Pierre de Coubertin",
+    "category": "Sports",
+    "epoch": "Industrial",
+    "achievement": "Revived the modern Olympic games",
+    "queries": {
+      "portrait": [
+        "\"Pierre de Coubertin portrait\"",
+        "\"Pierre de Coubertin bust\"",
+        "\"Pierre de Coubertin statue\"",
+        "\"Pierre de Coubertin painting\"",
+        "\"Pierre de Coubertin image\""
+      ],
+      "achievement": [
+        "\"Pierre de Coubertin revived\"",
+        "\"Pierre de Coubertin modern\"",
+        "\"Pierre de Coubertin olympic\"",
+        "\"Pierre de Coubertin Revived\"",
+        "\"Pierre de Coubertin work\""
+      ],
+      "invention": [
+        "\"Pierre de Coubertin invention\"",
+        "\"Pierre de Coubertin device\"",
+        "\"Pierre de Coubertin machine\"",
+        "\"Pierre de Coubertin tool\"",
+        "\"Pierre de Coubertin creation\""
+      ],
+      "artifact": [
+        "\"Pierre de Coubertin artifact\"",
+        "\"Pierre de Coubertin object\"",
+        "\"Pierre de Coubertin relic\"",
+        "\"Pierre de Coubertin instrument\"",
+        "\"Pierre de Coubertin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "James Naismith",
+    "category": "Sports",
+    "epoch": "Industrial",
+    "achievement": "Inventor of basketball",
+    "queries": {
+      "portrait": [
+        "\"James Naismith portrait\"",
+        "\"James Naismith bust\"",
+        "\"James Naismith statue\"",
+        "\"James Naismith painting\"",
+        "\"James Naismith image\""
+      ],
+      "achievement": [
+        "\"James Naismith inventor\"",
+        "\"James Naismith basketball\"",
+        "\"James Naismith contribution\"",
+        "\"James Naismith Inventor\"",
+        "\"James Naismith work\""
+      ],
+      "invention": [
+        "\"James Naismith invention\"",
+        "\"James Naismith device\"",
+        "\"James Naismith machine\"",
+        "\"James Naismith tool\"",
+        "\"James Naismith creation\""
+      ],
+      "artifact": [
+        "\"James Naismith artifact\"",
+        "\"James Naismith object\"",
+        "\"James Naismith relic\"",
+        "\"James Naismith instrument\"",
+        "\"James Naismith tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Serena Williams",
+    "category": "Sports",
+    "epoch": "Modern",
+    "achievement": "Tennis Grand Slam record-breaker",
+    "queries": {
+      "portrait": [
+        "\"Serena Williams portrait\"",
+        "\"Serena Williams bust\"",
+        "\"Serena Williams statue\"",
+        "\"Serena Williams painting\"",
+        "\"Serena Williams image\""
+      ],
+      "achievement": [
+        "\"Serena Williams tennis\"",
+        "\"Serena Williams grand\"",
+        "\"Serena Williams slam\"",
+        "\"Serena Williams Tennis\"",
+        "\"Serena Williams work\""
+      ],
+      "invention": [
+        "\"Serena Williams invention\"",
+        "\"Serena Williams device\"",
+        "\"Serena Williams machine\"",
+        "\"Serena Williams tool\"",
+        "\"Serena Williams creation\""
+      ],
+      "artifact": [
+        "\"Serena Williams artifact\"",
+        "\"Serena Williams object\"",
+        "\"Serena Williams relic\"",
+        "\"Serena Williams instrument\"",
+        "\"Serena Williams tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Pel\u00e9",
+    "category": "Sports",
+    "epoch": "Modern",
+    "achievement": "Soccer's global superstar",
+    "queries": {
+      "portrait": [
+        "\"Pel\u00e9 portrait\"",
+        "\"Pel\u00e9 bust\"",
+        "\"Pel\u00e9 statue\"",
+        "\"Pel\u00e9 painting\"",
+        "\"Pel\u00e9 image\""
+      ],
+      "achievement": [
+        "\"Pel\u00e9 soccer's\"",
+        "\"Pel\u00e9 global\"",
+        "\"Pel\u00e9 superstar\"",
+        "\"Pel\u00e9 Soccer's\"",
+        "\"Pel\u00e9 work\""
+      ],
+      "invention": [
+        "\"Pel\u00e9 invention\"",
+        "\"Pel\u00e9 device\"",
+        "\"Pel\u00e9 machine\"",
+        "\"Pel\u00e9 tool\"",
+        "\"Pel\u00e9 creation\""
+      ],
+      "artifact": [
+        "\"Pel\u00e9 artifact\"",
+        "\"Pel\u00e9 object\"",
+        "\"Pel\u00e9 relic\"",
+        "\"Pel\u00e9 instrument\"",
+        "\"Pel\u00e9 tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Simone Biles",
+    "category": "Sports",
+    "epoch": "Modern",
+    "achievement": "Trailblazing gymnast, record medalist",
+    "queries": {
+      "portrait": [
+        "\"Simone Biles portrait\"",
+        "\"Simone Biles bust\"",
+        "\"Simone Biles statue\"",
+        "\"Simone Biles painting\"",
+        "\"Simone Biles image\""
+      ],
+      "achievement": [
+        "\"Simone Biles trailblazing\"",
+        "\"Simone Biles gymnast,\"",
+        "\"Simone Biles record\"",
+        "\"Simone Biles Trailblazing\"",
+        "\"Simone Biles work\""
+      ],
+      "invention": [
+        "\"Simone Biles invention\"",
+        "\"Simone Biles device\"",
+        "\"Simone Biles machine\"",
+        "\"Simone Biles tool\"",
+        "\"Simone Biles creation\""
+      ],
+      "artifact": [
+        "\"Simone Biles artifact\"",
+        "\"Simone Biles object\"",
+        "\"Simone Biles relic\"",
+        "\"Simone Biles instrument\"",
+        "\"Simone Biles tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "World E-Sports Champion",
+    "category": "Sports",
+    "epoch": "Future",
+    "achievement": "Digital gaming phenomenon",
+    "queries": {
+      "portrait": [
+        "\"World E-Sports Champion portrait\"",
+        "\"World E-Sports Champion bust\"",
+        "\"World E-Sports Champion statue\"",
+        "\"World E-Sports Champion painting\"",
+        "\"World E-Sports Champion image\""
+      ],
+      "achievement": [
+        "\"World E-Sports Champion digital\"",
+        "\"World E-Sports Champion gaming\"",
+        "\"World E-Sports Champion phenomenon\"",
+        "\"World E-Sports Champion Digital\"",
+        "\"World E-Sports Champion work\""
+      ],
+      "invention": [
+        "\"World E-Sports Champion invention\"",
+        "\"World E-Sports Champion device\"",
+        "\"World E-Sports Champion machine\"",
+        "\"World E-Sports Champion tool\"",
+        "\"World E-Sports Champion creation\""
+      ],
+      "artifact": [
+        "\"World E-Sports Champion artifact\"",
+        "\"World E-Sports Champion object\"",
+        "\"World E-Sports Champion relic\"",
+        "\"World E-Sports Champion instrument\"",
+        "\"World E-Sports Champion tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "First Cyborg Athlete",
+    "category": "Sports",
+    "epoch": "Future",
+    "achievement": "Blends tech and human achievement",
+    "queries": {
+      "portrait": [
+        "\"First Cyborg Athlete portrait\"",
+        "\"First Cyborg Athlete bust\"",
+        "\"First Cyborg Athlete statue\"",
+        "\"First Cyborg Athlete painting\"",
+        "\"First Cyborg Athlete image\""
+      ],
+      "achievement": [
+        "\"First Cyborg Athlete blends\"",
+        "\"First Cyborg Athlete tech\"",
+        "\"First Cyborg Athlete human\"",
+        "\"First Cyborg Athlete Blends\"",
+        "\"First Cyborg Athlete work\""
+      ],
+      "invention": [
+        "\"First Cyborg Athlete invention\"",
+        "\"First Cyborg Athlete device\"",
+        "\"First Cyborg Athlete machine\"",
+        "\"First Cyborg Athlete tool\"",
+        "\"First Cyborg Athlete creation\""
+      ],
+      "artifact": [
+        "\"First Cyborg Athlete artifact\"",
+        "\"First Cyborg Athlete object\"",
+        "\"First Cyborg Athlete relic\"",
+        "\"First Cyborg Athlete instrument\"",
+        "\"First Cyborg Athlete tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Zero-gravity Sports Inventor",
+    "category": "Sports",
+    "epoch": "Future",
+    "achievement": "Creates new games for space",
+    "queries": {
+      "portrait": [
+        "\"Zero-gravity Sports Inventor portrait\"",
+        "\"Zero-gravity Sports Inventor bust\"",
+        "\"Zero-gravity Sports Inventor statue\"",
+        "\"Zero-gravity Sports Inventor painting\"",
+        "\"Zero-gravity Sports Inventor image\""
+      ],
+      "achievement": [
+        "\"Zero-gravity Sports Inventor creates\"",
+        "\"Zero-gravity Sports Inventor games\"",
+        "\"Zero-gravity Sports Inventor space\"",
+        "\"Zero-gravity Sports Inventor Creates\"",
+        "\"Zero-gravity Sports Inventor work\""
+      ],
+      "invention": [
+        "\"Zero-gravity Sports Inventor invention\"",
+        "\"Zero-gravity Sports Inventor device\"",
+        "\"Zero-gravity Sports Inventor machine\"",
+        "\"Zero-gravity Sports Inventor tool\"",
+        "\"Zero-gravity Sports Inventor creation\""
+      ],
+      "artifact": [
+        "\"Zero-gravity Sports Inventor artifact\"",
+        "\"Zero-gravity Sports Inventor object\"",
+        "\"Zero-gravity Sports Inventor relic\"",
+        "\"Zero-gravity Sports Inventor instrument\"",
+        "\"Zero-gravity Sports Inventor tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Sappho",
+    "category": "Music",
+    "epoch": "Ancient",
+    "achievement": "Greek poet-musician",
+    "queries": {
+      "portrait": [
+        "\"Sappho portrait\"",
+        "\"Sappho bust\"",
+        "\"Sappho statue\"",
+        "\"Sappho painting\"",
+        "\"Sappho image\""
+      ],
+      "achievement": [
+        "\"Sappho greek\"",
+        "\"Sappho poet-musician\"",
+        "\"Sappho contribution\"",
+        "\"Sappho Greek\"",
+        "\"Sappho work\""
+      ],
+      "invention": [
+        "\"Sappho invention\"",
+        "\"Sappho device\"",
+        "\"Sappho machine\"",
+        "\"Sappho tool\"",
+        "\"Sappho creation\""
+      ],
+      "artifact": [
+        "\"Sappho artifact\"",
+        "\"Sappho object\"",
+        "\"Sappho relic\"",
+        "\"Sappho instrument\"",
+        "\"Sappho tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "King David",
+    "category": "Music",
+    "epoch": "Ancient",
+    "achievement": "Biblical harpist and songwriter",
+    "queries": {
+      "portrait": [
+        "\"King David portrait\"",
+        "\"King David bust\"",
+        "\"King David statue\"",
+        "\"King David painting\"",
+        "\"King David image\""
+      ],
+      "achievement": [
+        "\"King David biblical\"",
+        "\"King David harpist\"",
+        "\"King David songwriter\"",
+        "\"King David Biblical\"",
+        "\"King David work\""
+      ],
+      "invention": [
+        "\"King David invention\"",
+        "\"King David device\"",
+        "\"King David machine\"",
+        "\"King David tool\"",
+        "\"King David creation\""
+      ],
+      "artifact": [
+        "\"King David artifact\"",
+        "\"King David object\"",
+        "\"King David relic\"",
+        "\"King David instrument\"",
+        "\"King David tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Narada",
+    "category": "Music",
+    "epoch": "Ancient",
+    "achievement": "Legendary Indian sage, musical lore",
+    "queries": {
+      "portrait": [
+        "\"Narada portrait\"",
+        "\"Narada bust\"",
+        "\"Narada statue\"",
+        "\"Narada painting\"",
+        "\"Narada image\""
+      ],
+      "achievement": [
+        "\"Narada legendary\"",
+        "\"Narada indian\"",
+        "\"Narada sage,\"",
+        "\"Narada Legendary\"",
+        "\"Narada work\""
+      ],
+      "invention": [
+        "\"Narada invention\"",
+        "\"Narada device\"",
+        "\"Narada machine\"",
+        "\"Narada tool\"",
+        "\"Narada creation\""
+      ],
+      "artifact": [
+        "\"Narada artifact\"",
+        "\"Narada object\"",
+        "\"Narada relic\"",
+        "\"Narada instrument\"",
+        "\"Narada tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Guillaume de Machaut",
+    "category": "Music",
+    "epoch": "Medieval",
+    "achievement": "Influential medieval composer and poet",
+    "queries": {
+      "portrait": [
+        "\"Guillaume de Machaut portrait\"",
+        "\"Guillaume de Machaut bust\"",
+        "\"Guillaume de Machaut statue\"",
+        "\"Guillaume de Machaut painting\"",
+        "\"Guillaume de Machaut image\""
+      ],
+      "achievement": [
+        "\"Guillaume de Machaut influential\"",
+        "\"Guillaume de Machaut medieval\"",
+        "\"Guillaume de Machaut composer\"",
+        "\"Guillaume de Machaut Influential\"",
+        "\"Guillaume de Machaut work\""
+      ],
+      "invention": [
+        "\"Guillaume de Machaut invention\"",
+        "\"Guillaume de Machaut device\"",
+        "\"Guillaume de Machaut machine\"",
+        "\"Guillaume de Machaut tool\"",
+        "\"Guillaume de Machaut creation\""
+      ],
+      "artifact": [
+        "\"Guillaume de Machaut artifact\"",
+        "\"Guillaume de Machaut object\"",
+        "\"Guillaume de Machaut relic\"",
+        "\"Guillaume de Machaut instrument\"",
+        "\"Guillaume de Machaut tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hildegard von Bingen",
+    "category": "Music",
+    "epoch": "Medieval",
+    "achievement": "Visionary composer and abbess",
+    "queries": {
+      "portrait": [
+        "\"Hildegard von Bingen portrait\"",
+        "\"Hildegard von Bingen bust\"",
+        "\"Hildegard von Bingen statue\"",
+        "\"Hildegard von Bingen painting\"",
+        "\"Hildegard von Bingen image\""
+      ],
+      "achievement": [
+        "\"Hildegard von Bingen visionary\"",
+        "\"Hildegard von Bingen composer\"",
+        "\"Hildegard von Bingen abbess\"",
+        "\"Hildegard von Bingen Visionary\"",
+        "\"Hildegard von Bingen work\""
+      ],
+      "invention": [
+        "\"Hildegard von Bingen invention\"",
+        "\"Hildegard von Bingen device\"",
+        "\"Hildegard von Bingen machine\"",
+        "\"Hildegard von Bingen tool\"",
+        "\"Hildegard von Bingen creation\""
+      ],
+      "artifact": [
+        "\"Hildegard von Bingen artifact\"",
+        "\"Hildegard von Bingen object\"",
+        "\"Hildegard von Bingen relic\"",
+        "\"Hildegard von Bingen instrument\"",
+        "\"Hildegard von Bingen tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Alfonso el Sabio",
+    "category": "Music",
+    "epoch": "Medieval",
+    "achievement": "Patron of sacred and secular medieval music",
+    "queries": {
+      "portrait": [
+        "\"Alfonso el Sabio portrait\"",
+        "\"Alfonso el Sabio bust\"",
+        "\"Alfonso el Sabio statue\"",
+        "\"Alfonso el Sabio painting\"",
+        "\"Alfonso el Sabio image\""
+      ],
+      "achievement": [
+        "\"Alfonso el Sabio patron\"",
+        "\"Alfonso el Sabio sacred\"",
+        "\"Alfonso el Sabio secular\"",
+        "\"Alfonso el Sabio Patron\"",
+        "\"Alfonso el Sabio work\""
+      ],
+      "invention": [
+        "\"Alfonso el Sabio invention\"",
+        "\"Alfonso el Sabio device\"",
+        "\"Alfonso el Sabio machine\"",
+        "\"Alfonso el Sabio tool\"",
+        "\"Alfonso el Sabio creation\""
+      ],
+      "artifact": [
+        "\"Alfonso el Sabio artifact\"",
+        "\"Alfonso el Sabio object\"",
+        "\"Alfonso el Sabio relic\"",
+        "\"Alfonso el Sabio instrument\"",
+        "\"Alfonso el Sabio tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Ludwig van Beethoven",
+    "category": "Music",
+    "epoch": "Industrial",
+    "achievement": "Transitional classical-to-romantic composer",
+    "queries": {
+      "portrait": [
+        "\"Ludwig van Beethoven portrait\"",
+        "\"Ludwig van Beethoven bust\"",
+        "\"Ludwig van Beethoven statue\"",
+        "\"Ludwig van Beethoven painting\"",
+        "\"Ludwig van Beethoven image\""
+      ],
+      "achievement": [
+        "\"Ludwig van Beethoven transitional\"",
+        "\"Ludwig van Beethoven classical-to-romantic\"",
+        "\"Ludwig van Beethoven composer\"",
+        "\"Ludwig van Beethoven Transitional\"",
+        "\"Ludwig van Beethoven work\""
+      ],
+      "invention": [
+        "\"Ludwig van Beethoven invention\"",
+        "\"Ludwig van Beethoven device\"",
+        "\"Ludwig van Beethoven machine\"",
+        "\"Ludwig van Beethoven tool\"",
+        "\"Ludwig van Beethoven creation\""
+      ],
+      "artifact": [
+        "\"Ludwig van Beethoven artifact\"",
+        "\"Ludwig van Beethoven object\"",
+        "\"Ludwig van Beethoven relic\"",
+        "\"Ludwig van Beethoven instrument\"",
+        "\"Ludwig van Beethoven tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fanny Mendelssohn",
+    "category": "Music",
+    "epoch": "Industrial",
+    "achievement": "Pioneering romantic composer/pianist",
+    "queries": {
+      "portrait": [
+        "\"Fanny Mendelssohn portrait\"",
+        "\"Fanny Mendelssohn bust\"",
+        "\"Fanny Mendelssohn statue\"",
+        "\"Fanny Mendelssohn painting\"",
+        "\"Fanny Mendelssohn image\""
+      ],
+      "achievement": [
+        "\"Fanny Mendelssohn pioneering\"",
+        "\"Fanny Mendelssohn romantic\"",
+        "\"Fanny Mendelssohn composer/pianist\"",
+        "\"Fanny Mendelssohn Pioneering\"",
+        "\"Fanny Mendelssohn work\""
+      ],
+      "invention": [
+        "\"Fanny Mendelssohn invention\"",
+        "\"Fanny Mendelssohn device\"",
+        "\"Fanny Mendelssohn machine\"",
+        "\"Fanny Mendelssohn tool\"",
+        "\"Fanny Mendelssohn creation\""
+      ],
+      "artifact": [
+        "\"Fanny Mendelssohn artifact\"",
+        "\"Fanny Mendelssohn object\"",
+        "\"Fanny Mendelssohn relic\"",
+        "\"Fanny Mendelssohn instrument\"",
+        "\"Fanny Mendelssohn tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fr\u00e9d\u00e9ric Chopin",
+    "category": "Music",
+    "epoch": "Industrial",
+    "achievement": "Romantic piano innovator",
+    "queries": {
+      "portrait": [
+        "\"Fr\u00e9d\u00e9ric Chopin portrait\"",
+        "\"Fr\u00e9d\u00e9ric Chopin bust\"",
+        "\"Fr\u00e9d\u00e9ric Chopin statue\"",
+        "\"Fr\u00e9d\u00e9ric Chopin painting\"",
+        "\"Fr\u00e9d\u00e9ric Chopin image\""
+      ],
+      "achievement": [
+        "\"Fr\u00e9d\u00e9ric Chopin romantic\"",
+        "\"Fr\u00e9d\u00e9ric Chopin piano\"",
+        "\"Fr\u00e9d\u00e9ric Chopin innovator\"",
+        "\"Fr\u00e9d\u00e9ric Chopin Romantic\"",
+        "\"Fr\u00e9d\u00e9ric Chopin work\""
+      ],
+      "invention": [
+        "\"Fr\u00e9d\u00e9ric Chopin invention\"",
+        "\"Fr\u00e9d\u00e9ric Chopin device\"",
+        "\"Fr\u00e9d\u00e9ric Chopin machine\"",
+        "\"Fr\u00e9d\u00e9ric Chopin tool\"",
+        "\"Fr\u00e9d\u00e9ric Chopin creation\""
+      ],
+      "artifact": [
+        "\"Fr\u00e9d\u00e9ric Chopin artifact\"",
+        "\"Fr\u00e9d\u00e9ric Chopin object\"",
+        "\"Fr\u00e9d\u00e9ric Chopin relic\"",
+        "\"Fr\u00e9d\u00e9ric Chopin instrument\"",
+        "\"Fr\u00e9d\u00e9ric Chopin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Louis Armstrong",
+    "category": "Music",
+    "epoch": "Modern",
+    "achievement": "Globally influential jazz trumpeter/singer",
+    "queries": {
+      "portrait": [
+        "\"Louis Armstrong portrait\"",
+        "\"Louis Armstrong bust\"",
+        "\"Louis Armstrong statue\"",
+        "\"Louis Armstrong painting\"",
+        "\"Louis Armstrong image\""
+      ],
+      "achievement": [
+        "\"Louis Armstrong globally\"",
+        "\"Louis Armstrong influential\"",
+        "\"Louis Armstrong jazz\"",
+        "\"Louis Armstrong Globally\"",
+        "\"Louis Armstrong work\""
+      ],
+      "invention": [
+        "\"Louis Armstrong invention\"",
+        "\"Louis Armstrong device\"",
+        "\"Louis Armstrong machine\"",
+        "\"Louis Armstrong tool\"",
+        "\"Louis Armstrong creation\""
+      ],
+      "artifact": [
+        "\"Louis Armstrong artifact\"",
+        "\"Louis Armstrong object\"",
+        "\"Louis Armstrong relic\"",
+        "\"Louis Armstrong instrument\"",
+        "\"Louis Armstrong tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "The Beatles",
+    "category": "Music",
+    "epoch": "Modern",
+    "achievement": "Revolutionized modern popular music",
+    "queries": {
+      "portrait": [
+        "\"The Beatles portrait\"",
+        "\"The Beatles bust\"",
+        "\"The Beatles statue\"",
+        "\"The Beatles painting\"",
+        "\"The Beatles image\""
+      ],
+      "achievement": [
+        "\"The Beatles revolutionized\"",
+        "\"The Beatles modern\"",
+        "\"The Beatles popular\"",
+        "\"The Beatles Revolutionized\"",
+        "\"The Beatles work\""
+      ],
+      "invention": [
+        "\"The Beatles invention\"",
+        "\"The Beatles device\"",
+        "\"The Beatles machine\"",
+        "\"The Beatles tool\"",
+        "\"The Beatles creation\""
+      ],
+      "artifact": [
+        "\"The Beatles artifact\"",
+        "\"The Beatles object\"",
+        "\"The Beatles relic\"",
+        "\"The Beatles instrument\"",
+        "\"The Beatles tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "BTS",
+    "category": "Music",
+    "epoch": "Modern",
+    "achievement": "K-pop phenomenon, transcendent global force",
+    "queries": {
+      "portrait": [
+        "\"BTS portrait\"",
+        "\"BTS bust\"",
+        "\"BTS statue\"",
+        "\"BTS painting\"",
+        "\"BTS image\""
+      ],
+      "achievement": [
+        "\"BTS k-pop\"",
+        "\"BTS phenomenon,\"",
+        "\"BTS transcendent\"",
+        "\"BTS K-pop\"",
+        "\"BTS work\""
+      ],
+      "invention": [
+        "\"BTS invention\"",
+        "\"BTS device\"",
+        "\"BTS machine\"",
+        "\"BTS tool\"",
+        "\"BTS creation\""
+      ],
+      "artifact": [
+        "\"BTS artifact\"",
+        "\"BTS object\"",
+        "\"BTS relic\"",
+        "\"BTS instrument\"",
+        "\"BTS tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Holly Herndon",
+    "category": "Music",
+    "epoch": "Future",
+    "achievement": "AI-influenced composer and performer",
+    "queries": {
+      "portrait": [
+        "\"Holly Herndon portrait\"",
+        "\"Holly Herndon bust\"",
+        "\"Holly Herndon statue\"",
+        "\"Holly Herndon painting\"",
+        "\"Holly Herndon image\""
+      ],
+      "achievement": [
+        "\"Holly Herndon ai-influenced\"",
+        "\"Holly Herndon composer\"",
+        "\"Holly Herndon performer\"",
+        "\"Holly Herndon AI-influenced\"",
+        "\"Holly Herndon work\""
+      ],
+      "invention": [
+        "\"Holly Herndon invention\"",
+        "\"Holly Herndon device\"",
+        "\"Holly Herndon machine\"",
+        "\"Holly Herndon tool\"",
+        "\"Holly Herndon creation\""
+      ],
+      "artifact": [
+        "\"Holly Herndon artifact\"",
+        "\"Holly Herndon object\"",
+        "\"Holly Herndon relic\"",
+        "\"Holly Herndon instrument\"",
+        "\"Holly Herndon tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Yannick N\u00e9zet-S\u00e9guin",
+    "category": "Music",
+    "epoch": "Future",
+    "achievement": "Immersive orchestral tech pioneer",
+    "queries": {
+      "portrait": [
+        "\"Yannick N\u00e9zet-S\u00e9guin portrait\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin bust\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin statue\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin painting\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin image\""
+      ],
+      "achievement": [
+        "\"Yannick N\u00e9zet-S\u00e9guin immersive\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin orchestral\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin tech\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin Immersive\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin work\""
+      ],
+      "invention": [
+        "\"Yannick N\u00e9zet-S\u00e9guin invention\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin device\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin machine\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin tool\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin creation\""
+      ],
+      "artifact": [
+        "\"Yannick N\u00e9zet-S\u00e9guin artifact\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin object\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin relic\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin instrument\"",
+        "\"Yannick N\u00e9zet-S\u00e9guin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Universal Music AI",
+    "category": "Music",
+    "epoch": "Future",
+    "achievement": "Fictional AI music collective",
+    "queries": {
+      "portrait": [
+        "\"Universal Music AI portrait\"",
+        "\"Universal Music AI bust\"",
+        "\"Universal Music AI statue\"",
+        "\"Universal Music AI painting\"",
+        "\"Universal Music AI image\""
+      ],
+      "achievement": [
+        "\"Universal Music AI fictional\"",
+        "\"Universal Music AI music\"",
+        "\"Universal Music AI collective\"",
+        "\"Universal Music AI Fictional\"",
+        "\"Universal Music AI work\""
+      ],
+      "invention": [
+        "\"Universal Music AI invention\"",
+        "\"Universal Music AI device\"",
+        "\"Universal Music AI machine\"",
+        "\"Universal Music AI tool\"",
+        "\"Universal Music AI creation\""
+      ],
+      "artifact": [
+        "\"Universal Music AI artifact\"",
+        "\"Universal Music AI object\"",
+        "\"Universal Music AI relic\"",
+        "\"Universal Music AI instrument\"",
+        "\"Universal Music AI tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Ptolemy",
+    "category": "Space",
+    "epoch": "Ancient",
+    "achievement": "Geocentric model of the cosmos",
+    "queries": {
+      "portrait": [
+        "\"Ptolemy portrait\"",
+        "\"Ptolemy bust\"",
+        "\"Ptolemy statue\"",
+        "\"Ptolemy painting\"",
+        "\"Ptolemy image\""
+      ],
+      "achievement": [
+        "\"Ptolemy geocentric\"",
+        "\"Ptolemy model\"",
+        "\"Ptolemy cosmos\"",
+        "\"Ptolemy Geocentric\"",
+        "\"Ptolemy work\""
+      ],
+      "invention": [
+        "\"Ptolemy invention\"",
+        "\"Ptolemy device\"",
+        "\"Ptolemy machine\"",
+        "\"Ptolemy tool\"",
+        "\"Ptolemy creation\""
+      ],
+      "artifact": [
+        "\"Ptolemy artifact\"",
+        "\"Ptolemy object\"",
+        "\"Ptolemy relic\"",
+        "\"Ptolemy instrument\"",
+        "\"Ptolemy tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Aryabhata",
+    "category": "Space",
+    "epoch": "Ancient",
+    "achievement": "Advanced Indian astronomer/mathematician",
+    "queries": {
+      "portrait": [
+        "\"Aryabhata portrait\"",
+        "\"Aryabhata bust\"",
+        "\"Aryabhata statue\"",
+        "\"Aryabhata painting\"",
+        "\"Aryabhata image\""
+      ],
+      "achievement": [
+        "\"Aryabhata advanced\"",
+        "\"Aryabhata indian\"",
+        "\"Aryabhata astronomer/mathematician\"",
+        "\"Aryabhata Advanced\"",
+        "\"Aryabhata work\""
+      ],
+      "invention": [
+        "\"Aryabhata invention\"",
+        "\"Aryabhata device\"",
+        "\"Aryabhata machine\"",
+        "\"Aryabhata tool\"",
+        "\"Aryabhata creation\""
+      ],
+      "artifact": [
+        "\"Aryabhata artifact\"",
+        "\"Aryabhata object\"",
+        "\"Aryabhata relic\"",
+        "\"Aryabhata instrument\"",
+        "\"Aryabhata tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Hypatia",
+    "category": "Space",
+    "epoch": "Ancient",
+    "achievement": "Famed female mathematician/astronomer",
+    "queries": {
+      "portrait": [
+        "\"Hypatia portrait\"",
+        "\"Hypatia bust\"",
+        "\"Hypatia statue\"",
+        "\"Hypatia painting\"",
+        "\"Hypatia image\""
+      ],
+      "achievement": [
+        "\"Hypatia famed\"",
+        "\"Hypatia female\"",
+        "\"Hypatia mathematician/astronomer\"",
+        "\"Hypatia Famed\"",
+        "\"Hypatia work\""
+      ],
+      "invention": [
+        "\"Hypatia invention\"",
+        "\"Hypatia device\"",
+        "\"Hypatia machine\"",
+        "\"Hypatia tool\"",
+        "\"Hypatia creation\""
+      ],
+      "artifact": [
+        "\"Hypatia artifact\"",
+        "\"Hypatia object\"",
+        "\"Hypatia relic\"",
+        "\"Hypatia instrument\"",
+        "\"Hypatia tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Al-Battani",
+    "category": "Space",
+    "epoch": "Medieval",
+    "achievement": "Calculated solar year/planetary orbits",
+    "queries": {
+      "portrait": [
+        "\"Al-Battani portrait\"",
+        "\"Al-Battani bust\"",
+        "\"Al-Battani statue\"",
+        "\"Al-Battani painting\"",
+        "\"Al-Battani image\""
+      ],
+      "achievement": [
+        "\"Al-Battani calculated\"",
+        "\"Al-Battani solar\"",
+        "\"Al-Battani year/planetary\"",
+        "\"Al-Battani Calculated\"",
+        "\"Al-Battani work\""
+      ],
+      "invention": [
+        "\"Al-Battani invention\"",
+        "\"Al-Battani device\"",
+        "\"Al-Battani machine\"",
+        "\"Al-Battani tool\"",
+        "\"Al-Battani creation\""
+      ],
+      "artifact": [
+        "\"Al-Battani artifact\"",
+        "\"Al-Battani object\"",
+        "\"Al-Battani relic\"",
+        "\"Al-Battani instrument\"",
+        "\"Al-Battani tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Nasir al-Din al-Tusi",
+    "category": "Space",
+    "epoch": "Medieval",
+    "achievement": "Built major medieval observatory",
+    "queries": {
+      "portrait": [
+        "\"Nasir al-Din al-Tusi portrait\"",
+        "\"Nasir al-Din al-Tusi bust\"",
+        "\"Nasir al-Din al-Tusi statue\"",
+        "\"Nasir al-Din al-Tusi painting\"",
+        "\"Nasir al-Din al-Tusi image\""
+      ],
+      "achievement": [
+        "\"Nasir al-Din al-Tusi built\"",
+        "\"Nasir al-Din al-Tusi major\"",
+        "\"Nasir al-Din al-Tusi medieval\"",
+        "\"Nasir al-Din al-Tusi Built\"",
+        "\"Nasir al-Din al-Tusi work\""
+      ],
+      "invention": [
+        "\"Nasir al-Din al-Tusi invention\"",
+        "\"Nasir al-Din al-Tusi device\"",
+        "\"Nasir al-Din al-Tusi machine\"",
+        "\"Nasir al-Din al-Tusi tool\"",
+        "\"Nasir al-Din al-Tusi creation\""
+      ],
+      "artifact": [
+        "\"Nasir al-Din al-Tusi artifact\"",
+        "\"Nasir al-Din al-Tusi object\"",
+        "\"Nasir al-Din al-Tusi relic\"",
+        "\"Nasir al-Din al-Tusi instrument\"",
+        "\"Nasir al-Din al-Tusi tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Geoffrey Chaucer",
+    "category": "Space",
+    "epoch": "Medieval",
+    "achievement": "Wrote on astronomy, astrolabe use",
+    "queries": {
+      "portrait": [
+        "\"Geoffrey Chaucer portrait\"",
+        "\"Geoffrey Chaucer bust\"",
+        "\"Geoffrey Chaucer statue\"",
+        "\"Geoffrey Chaucer painting\"",
+        "\"Geoffrey Chaucer image\""
+      ],
+      "achievement": [
+        "\"Geoffrey Chaucer wrote\"",
+        "\"Geoffrey Chaucer astronomy,\"",
+        "\"Geoffrey Chaucer astrolabe\"",
+        "\"Geoffrey Chaucer Wrote\"",
+        "\"Geoffrey Chaucer work\""
+      ],
+      "invention": [
+        "\"Geoffrey Chaucer invention\"",
+        "\"Geoffrey Chaucer device\"",
+        "\"Geoffrey Chaucer machine\"",
+        "\"Geoffrey Chaucer tool\"",
+        "\"Geoffrey Chaucer creation\""
+      ],
+      "artifact": [
+        "\"Geoffrey Chaucer artifact\"",
+        "\"Geoffrey Chaucer object\"",
+        "\"Geoffrey Chaucer relic\"",
+        "\"Geoffrey Chaucer instrument\"",
+        "\"Geoffrey Chaucer tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Galileo Galilei",
+    "category": "Space",
+    "epoch": "Industrial",
+    "achievement": "Pioneered telescopic astronomy",
+    "queries": {
+      "portrait": [
+        "\"Galileo Galilei portrait\"",
+        "\"Galileo Galilei bust\"",
+        "\"Galileo Galilei statue\"",
+        "\"Galileo Galilei painting\"",
+        "\"Galileo Galilei image\""
+      ],
+      "achievement": [
+        "\"Galileo Galilei pioneered\"",
+        "\"Galileo Galilei telescopic\"",
+        "\"Galileo Galilei astronomy\"",
+        "\"Galileo Galilei Pioneered\"",
+        "\"Galileo Galilei work\""
+      ],
+      "invention": [
+        "\"Galileo Galilei invention\"",
+        "\"Galileo Galilei device\"",
+        "\"Galileo Galilei machine\"",
+        "\"Galileo Galilei tool\"",
+        "\"Galileo Galilei creation\""
+      ],
+      "artifact": [
+        "\"Galileo Galilei artifact\"",
+        "\"Galileo Galilei object\"",
+        "\"Galileo Galilei relic\"",
+        "\"Galileo Galilei instrument\"",
+        "\"Galileo Galilei tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Edmond Halley",
+    "category": "Space",
+    "epoch": "Industrial",
+    "achievement": "Calculated Halley's Comet intervals",
+    "queries": {
+      "portrait": [
+        "\"Edmond Halley portrait\"",
+        "\"Edmond Halley bust\"",
+        "\"Edmond Halley statue\"",
+        "\"Edmond Halley painting\"",
+        "\"Edmond Halley image\""
+      ],
+      "achievement": [
+        "\"Edmond Halley calculated\"",
+        "\"Edmond Halley halley's\"",
+        "\"Edmond Halley comet\"",
+        "\"Edmond Halley Calculated\"",
+        "\"Edmond Halley work\""
+      ],
+      "invention": [
+        "\"Edmond Halley invention\"",
+        "\"Edmond Halley device\"",
+        "\"Edmond Halley machine\"",
+        "\"Edmond Halley tool\"",
+        "\"Edmond Halley creation\""
+      ],
+      "artifact": [
+        "\"Edmond Halley artifact\"",
+        "\"Edmond Halley object\"",
+        "\"Edmond Halley relic\"",
+        "\"Edmond Halley instrument\"",
+        "\"Edmond Halley tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Caroline Herschel",
+    "category": "Space",
+    "epoch": "Industrial",
+    "achievement": "Discovered multiple comets",
+    "queries": {
+      "portrait": [
+        "\"Caroline Herschel portrait\"",
+        "\"Caroline Herschel bust\"",
+        "\"Caroline Herschel statue\"",
+        "\"Caroline Herschel painting\"",
+        "\"Caroline Herschel image\""
+      ],
+      "achievement": [
+        "\"Caroline Herschel discovered\"",
+        "\"Caroline Herschel multiple\"",
+        "\"Caroline Herschel comets\"",
+        "\"Caroline Herschel Discovered\"",
+        "\"Caroline Herschel work\""
+      ],
+      "invention": [
+        "\"Caroline Herschel invention\"",
+        "\"Caroline Herschel device\"",
+        "\"Caroline Herschel machine\"",
+        "\"Caroline Herschel tool\"",
+        "\"Caroline Herschel creation\""
+      ],
+      "artifact": [
+        "\"Caroline Herschel artifact\"",
+        "\"Caroline Herschel object\"",
+        "\"Caroline Herschel relic\"",
+        "\"Caroline Herschel instrument\"",
+        "\"Caroline Herschel tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Yuri Gagarin",
+    "category": "Space",
+    "epoch": "Modern",
+    "achievement": "First human to reach space",
+    "queries": {
+      "portrait": [
+        "\"Yuri Gagarin portrait\"",
+        "\"Yuri Gagarin bust\"",
+        "\"Yuri Gagarin statue\"",
+        "\"Yuri Gagarin painting\"",
+        "\"Yuri Gagarin image\""
+      ],
+      "achievement": [
+        "\"Yuri Gagarin first\"",
+        "\"Yuri Gagarin human\"",
+        "\"Yuri Gagarin reach\"",
+        "\"Yuri Gagarin First\"",
+        "\"Yuri Gagarin work\""
+      ],
+      "invention": [
+        "\"Yuri Gagarin invention\"",
+        "\"Yuri Gagarin device\"",
+        "\"Yuri Gagarin machine\"",
+        "\"Yuri Gagarin tool\"",
+        "\"Yuri Gagarin creation\""
+      ],
+      "artifact": [
+        "\"Yuri Gagarin artifact\"",
+        "\"Yuri Gagarin object\"",
+        "\"Yuri Gagarin relic\"",
+        "\"Yuri Gagarin instrument\"",
+        "\"Yuri Gagarin tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Katherine Johnson",
+    "category": "Space",
+    "epoch": "Modern",
+    "achievement": "Critical NASA mission mathematician",
+    "queries": {
+      "portrait": [
+        "\"Katherine Johnson portrait\"",
+        "\"Katherine Johnson bust\"",
+        "\"Katherine Johnson statue\"",
+        "\"Katherine Johnson painting\"",
+        "\"Katherine Johnson image\""
+      ],
+      "achievement": [
+        "\"Katherine Johnson critical\"",
+        "\"Katherine Johnson nasa\"",
+        "\"Katherine Johnson mission\"",
+        "\"Katherine Johnson Critical\"",
+        "\"Katherine Johnson work\""
+      ],
+      "invention": [
+        "\"Katherine Johnson invention\"",
+        "\"Katherine Johnson device\"",
+        "\"Katherine Johnson machine\"",
+        "\"Katherine Johnson tool\"",
+        "\"Katherine Johnson creation\""
+      ],
+      "artifact": [
+        "\"Katherine Johnson artifact\"",
+        "\"Katherine Johnson object\"",
+        "\"Katherine Johnson relic\"",
+        "\"Katherine Johnson instrument\"",
+        "\"Katherine Johnson tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Stephen Hawking",
+    "category": "Space",
+    "epoch": "Modern",
+    "achievement": "Explored black holes and universe origins",
+    "queries": {
+      "portrait": [
+        "\"Stephen Hawking portrait\"",
+        "\"Stephen Hawking bust\"",
+        "\"Stephen Hawking statue\"",
+        "\"Stephen Hawking painting\"",
+        "\"Stephen Hawking image\""
+      ],
+      "achievement": [
+        "\"Stephen Hawking explored\"",
+        "\"Stephen Hawking black\"",
+        "\"Stephen Hawking holes\"",
+        "\"Stephen Hawking Explored\"",
+        "\"Stephen Hawking work\""
+      ],
+      "invention": [
+        "\"Stephen Hawking invention\"",
+        "\"Stephen Hawking device\"",
+        "\"Stephen Hawking machine\"",
+        "\"Stephen Hawking tool\"",
+        "\"Stephen Hawking creation\""
+      ],
+      "artifact": [
+        "\"Stephen Hawking artifact\"",
+        "\"Stephen Hawking object\"",
+        "\"Stephen Hawking relic\"",
+        "\"Stephen Hawking instrument\"",
+        "\"Stephen Hawking tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Mars Colony Leader",
+    "category": "Space",
+    "epoch": "Future",
+    "achievement": "Leads humanity's migration to Mars",
+    "queries": {
+      "portrait": [
+        "\"Mars Colony Leader portrait\"",
+        "\"Mars Colony Leader bust\"",
+        "\"Mars Colony Leader statue\"",
+        "\"Mars Colony Leader painting\"",
+        "\"Mars Colony Leader image\""
+      ],
+      "achievement": [
+        "\"Mars Colony Leader leads\"",
+        "\"Mars Colony Leader humanity's\"",
+        "\"Mars Colony Leader migration\"",
+        "\"Mars Colony Leader Leads\"",
+        "\"Mars Colony Leader work\""
+      ],
+      "invention": [
+        "\"Mars Colony Leader invention\"",
+        "\"Mars Colony Leader device\"",
+        "\"Mars Colony Leader machine\"",
+        "\"Mars Colony Leader tool\"",
+        "\"Mars Colony Leader creation\""
+      ],
+      "artifact": [
+        "\"Mars Colony Leader artifact\"",
+        "\"Mars Colony Leader object\"",
+        "\"Mars Colony Leader relic\"",
+        "\"Mars Colony Leader instrument\"",
+        "\"Mars Colony Leader tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Exoplanet Signal Analyst",
+    "category": "Space",
+    "epoch": "Future",
+    "achievement": "Discovers signs of alien life",
+    "queries": {
+      "portrait": [
+        "\"Exoplanet Signal Analyst portrait\"",
+        "\"Exoplanet Signal Analyst bust\"",
+        "\"Exoplanet Signal Analyst statue\"",
+        "\"Exoplanet Signal Analyst painting\"",
+        "\"Exoplanet Signal Analyst image\""
+      ],
+      "achievement": [
+        "\"Exoplanet Signal Analyst discovers\"",
+        "\"Exoplanet Signal Analyst signs\"",
+        "\"Exoplanet Signal Analyst alien\"",
+        "\"Exoplanet Signal Analyst Discovers\"",
+        "\"Exoplanet Signal Analyst work\""
+      ],
+      "invention": [
+        "\"Exoplanet Signal Analyst invention\"",
+        "\"Exoplanet Signal Analyst device\"",
+        "\"Exoplanet Signal Analyst machine\"",
+        "\"Exoplanet Signal Analyst tool\"",
+        "\"Exoplanet Signal Analyst creation\""
+      ],
+      "artifact": [
+        "\"Exoplanet Signal Analyst artifact\"",
+        "\"Exoplanet Signal Analyst object\"",
+        "\"Exoplanet Signal Analyst relic\"",
+        "\"Exoplanet Signal Analyst instrument\"",
+        "\"Exoplanet Signal Analyst tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "AI Probe Architect",
+    "category": "Space",
+    "epoch": "Future",
+    "achievement": "Designs deep-space robotics",
+    "queries": {
+      "portrait": [
+        "\"AI Probe Architect portrait\"",
+        "\"AI Probe Architect bust\"",
+        "\"AI Probe Architect statue\"",
+        "\"AI Probe Architect painting\"",
+        "\"AI Probe Architect image\""
+      ],
+      "achievement": [
+        "\"AI Probe Architect designs\"",
+        "\"AI Probe Architect deep-space\"",
+        "\"AI Probe Architect robotics\"",
+        "\"AI Probe Architect Designs\"",
+        "\"AI Probe Architect work\""
+      ],
+      "invention": [
+        "\"AI Probe Architect invention\"",
+        "\"AI Probe Architect device\"",
+        "\"AI Probe Architect machine\"",
+        "\"AI Probe Architect tool\"",
+        "\"AI Probe Architect creation\""
+      ],
+      "artifact": [
+        "\"AI Probe Architect artifact\"",
+        "\"AI Probe Architect object\"",
+        "\"AI Probe Architect relic\"",
+        "\"AI Probe Architect instrument\"",
+        "\"AI Probe Architect tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Zhang Heng",
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "achievement": "Invented the seismometer and astronomical clocks",
+    "queries": {
+      "portrait": [
+        "\"Zhang Heng portrait\"",
+        "\"Zhang Heng bust\"",
+        "\"Zhang Heng statue\"",
+        "\"Zhang Heng painting\"",
+        "\"Zhang Heng image\""
+      ],
+      "achievement": [
+        "\"Zhang Heng invented\"",
+        "\"Zhang Heng seismometer\"",
+        "\"Zhang Heng astronomical\"",
+        "\"Zhang Heng Invented\"",
+        "\"Zhang Heng work\""
+      ],
+      "invention": [
+        "\"Zhang Heng invention\"",
+        "\"Zhang Heng device\"",
+        "\"Zhang Heng machine\"",
+        "\"Zhang Heng tool\"",
+        "\"Zhang Heng creation\""
+      ],
+      "artifact": [
+        "\"Zhang Heng artifact\"",
+        "\"Zhang Heng object\"",
+        "\"Zhang Heng relic\"",
+        "\"Zhang Heng instrument\"",
+        "\"Zhang Heng tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Ctesibius",
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "achievement": "Father of pneumatics/hydraulic engineering",
+    "queries": {
+      "portrait": [
+        "\"Ctesibius portrait\"",
+        "\"Ctesibius bust\"",
+        "\"Ctesibius statue\"",
+        "\"Ctesibius painting\"",
+        "\"Ctesibius image\""
+      ],
+      "achievement": [
+        "\"Ctesibius father\"",
+        "\"Ctesibius pneumatics/hydraulic\"",
+        "\"Ctesibius engineering\"",
+        "\"Ctesibius Father\"",
+        "\"Ctesibius work\""
+      ],
+      "invention": [
+        "\"Ctesibius invention\"",
+        "\"Ctesibius device\"",
+        "\"Ctesibius machine\"",
+        "\"Ctesibius tool\"",
+        "\"Ctesibius creation\""
+      ],
+      "artifact": [
+        "\"Ctesibius artifact\"",
+        "\"Ctesibius object\"",
+        "\"Ctesibius relic\"",
+        "\"Ctesibius instrument\"",
+        "\"Ctesibius tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Aeneas Tacticus",
+    "category": "Innovation",
+    "epoch": "Ancient",
+    "achievement": "Designed early communication systems",
+    "queries": {
+      "portrait": [
+        "\"Aeneas Tacticus portrait\"",
+        "\"Aeneas Tacticus bust\"",
+        "\"Aeneas Tacticus statue\"",
+        "\"Aeneas Tacticus painting\"",
+        "\"Aeneas Tacticus image\""
+      ],
+      "achievement": [
+        "\"Aeneas Tacticus designed\"",
+        "\"Aeneas Tacticus early\"",
+        "\"Aeneas Tacticus communication\"",
+        "\"Aeneas Tacticus Designed\"",
+        "\"Aeneas Tacticus work\""
+      ],
+      "invention": [
+        "\"Aeneas Tacticus invention\"",
+        "\"Aeneas Tacticus device\"",
+        "\"Aeneas Tacticus machine\"",
+        "\"Aeneas Tacticus tool\"",
+        "\"Aeneas Tacticus creation\""
+      ],
+      "artifact": [
+        "\"Aeneas Tacticus artifact\"",
+        "\"Aeneas Tacticus object\"",
+        "\"Aeneas Tacticus relic\"",
+        "\"Aeneas Tacticus instrument\"",
+        "\"Aeneas Tacticus tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Al-Jazari",
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "achievement": "Mechanical & hydraulic invention pioneer",
+    "queries": {
+      "portrait": [
+        "\"Al-Jazari portrait\"",
+        "\"Al-Jazari bust\"",
+        "\"Al-Jazari statue\"",
+        "\"Al-Jazari painting\"",
+        "\"Al-Jazari image\""
+      ],
+      "achievement": [
+        "\"Al-Jazari mechanical\"",
+        "\"Al-Jazari hydraulic\"",
+        "\"Al-Jazari invention\"",
+        "\"Al-Jazari Mechanical\"",
+        "\"Al-Jazari work\""
+      ],
+      "invention": [
+        "\"Al-Jazari invention\"",
+        "\"Al-Jazari device\"",
+        "\"Al-Jazari machine\"",
+        "\"Al-Jazari tool\"",
+        "\"Al-Jazari creation\""
+      ],
+      "artifact": [
+        "\"Al-Jazari artifact\"",
+        "\"Al-Jazari object\"",
+        "\"Al-Jazari relic\"",
+        "\"Al-Jazari instrument\"",
+        "\"Al-Jazari tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Richard of Wallingford",
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "achievement": "Built astronomical mechanical clocks",
+    "queries": {
+      "portrait": [
+        "\"Richard of Wallingford portrait\"",
+        "\"Richard of Wallingford bust\"",
+        "\"Richard of Wallingford statue\"",
+        "\"Richard of Wallingford painting\"",
+        "\"Richard of Wallingford image\""
+      ],
+      "achievement": [
+        "\"Richard of Wallingford built\"",
+        "\"Richard of Wallingford astronomical\"",
+        "\"Richard of Wallingford mechanical\"",
+        "\"Richard of Wallingford Built\"",
+        "\"Richard of Wallingford work\""
+      ],
+      "invention": [
+        "\"Richard of Wallingford invention\"",
+        "\"Richard of Wallingford device\"",
+        "\"Richard of Wallingford machine\"",
+        "\"Richard of Wallingford tool\"",
+        "\"Richard of Wallingford creation\""
+      ],
+      "artifact": [
+        "\"Richard of Wallingford artifact\"",
+        "\"Richard of Wallingford object\"",
+        "\"Richard of Wallingford relic\"",
+        "\"Richard of Wallingford instrument\"",
+        "\"Richard of Wallingford tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Leonardo Fibonacci",
+    "category": "Innovation",
+    "epoch": "Medieval",
+    "achievement": "Popularized the modern numeral system",
+    "queries": {
+      "portrait": [
+        "\"Leonardo Fibonacci portrait\"",
+        "\"Leonardo Fibonacci bust\"",
+        "\"Leonardo Fibonacci statue\"",
+        "\"Leonardo Fibonacci painting\"",
+        "\"Leonardo Fibonacci image\""
+      ],
+      "achievement": [
+        "\"Leonardo Fibonacci popularized\"",
+        "\"Leonardo Fibonacci modern\"",
+        "\"Leonardo Fibonacci numeral\"",
+        "\"Leonardo Fibonacci Popularized\"",
+        "\"Leonardo Fibonacci work\""
+      ],
+      "invention": [
+        "\"Leonardo Fibonacci invention\"",
+        "\"Leonardo Fibonacci device\"",
+        "\"Leonardo Fibonacci machine\"",
+        "\"Leonardo Fibonacci tool\"",
+        "\"Leonardo Fibonacci creation\""
+      ],
+      "artifact": [
+        "\"Leonardo Fibonacci artifact\"",
+        "\"Leonardo Fibonacci object\"",
+        "\"Leonardo Fibonacci relic\"",
+        "\"Leonardo Fibonacci instrument\"",
+        "\"Leonardo Fibonacci tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Thomas Edison",
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "achievement": "Inventor of light bulb and innovation systems",
+    "queries": {
+      "portrait": [
+        "\"Thomas Edison portrait\"",
+        "\"Thomas Edison bust\"",
+        "\"Thomas Edison statue\"",
+        "\"Thomas Edison painting\"",
+        "\"Thomas Edison image\""
+      ],
+      "achievement": [
+        "\"Thomas Edison inventor\"",
+        "\"Thomas Edison light\"",
+        "\"Thomas Edison bulb\"",
+        "\"Thomas Edison Inventor\"",
+        "\"Thomas Edison work\""
+      ],
+      "invention": [
+        "\"Thomas Edison invention\"",
+        "\"Thomas Edison device\"",
+        "\"Thomas Edison machine\"",
+        "\"Thomas Edison tool\"",
+        "\"Thomas Edison creation\""
+      ],
+      "artifact": [
+        "\"Thomas Edison artifact\"",
+        "\"Thomas Edison object\"",
+        "\"Thomas Edison relic\"",
+        "\"Thomas Edison instrument\"",
+        "\"Thomas Edison tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Nikola Tesla",
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "achievement": "Pioneered AC power, wireless energy",
+    "queries": {
+      "portrait": [
+        "\"Nikola Tesla portrait\"",
+        "\"Nikola Tesla bust\"",
+        "\"Nikola Tesla statue\"",
+        "\"Nikola Tesla painting\"",
+        "\"Nikola Tesla image\""
+      ],
+      "achievement": [
+        "\"Nikola Tesla pioneered\"",
+        "\"Nikola Tesla power,\"",
+        "\"Nikola Tesla wireless\"",
+        "\"Nikola Tesla Pioneered\"",
+        "\"Nikola Tesla work\""
+      ],
+      "invention": [
+        "\"Nikola Tesla invention\"",
+        "\"Nikola Tesla device\"",
+        "\"Nikola Tesla machine\"",
+        "\"Nikola Tesla tool\"",
+        "\"Nikola Tesla creation\""
+      ],
+      "artifact": [
+        "\"Nikola Tesla artifact\"",
+        "\"Nikola Tesla object\"",
+        "\"Nikola Tesla relic\"",
+        "\"Nikola Tesla instrument\"",
+        "\"Nikola Tesla tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Alexander Graham Bell",
+    "category": "Innovation",
+    "epoch": "Industrial",
+    "achievement": "Invented the telephone",
+    "queries": {
+      "portrait": [
+        "\"Alexander Graham Bell portrait\"",
+        "\"Alexander Graham Bell bust\"",
+        "\"Alexander Graham Bell statue\"",
+        "\"Alexander Graham Bell painting\"",
+        "\"Alexander Graham Bell image\""
+      ],
+      "achievement": [
+        "\"Alexander Graham Bell invented\"",
+        "\"Alexander Graham Bell telephone\"",
+        "\"Alexander Graham Bell contribution\"",
+        "\"Alexander Graham Bell Invented\"",
+        "\"Alexander Graham Bell work\""
+      ],
+      "invention": [
+        "\"Alexander Graham Bell invention\"",
+        "\"Alexander Graham Bell device\"",
+        "\"Alexander Graham Bell machine\"",
+        "\"Alexander Graham Bell tool\"",
+        "\"Alexander Graham Bell creation\""
+      ],
+      "artifact": [
+        "\"Alexander Graham Bell artifact\"",
+        "\"Alexander Graham Bell object\"",
+        "\"Alexander Graham Bell relic\"",
+        "\"Alexander Graham Bell instrument\"",
+        "\"Alexander Graham Bell tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Grace Hopper",
+    "category": "Innovation",
+    "epoch": "Modern",
+    "achievement": "Developed COBOL programming language",
+    "queries": {
+      "portrait": [
+        "\"Grace Hopper portrait\"",
+        "\"Grace Hopper bust\"",
+        "\"Grace Hopper statue\"",
+        "\"Grace Hopper painting\"",
+        "\"Grace Hopper image\""
+      ],
+      "achievement": [
+        "\"Grace Hopper developed\"",
+        "\"Grace Hopper cobol\"",
+        "\"Grace Hopper programming\"",
+        "\"Grace Hopper Developed\"",
+        "\"Grace Hopper work\""
+      ],
+      "invention": [
+        "\"Grace Hopper invention\"",
+        "\"Grace Hopper device\"",
+        "\"Grace Hopper machine\"",
+        "\"Grace Hopper tool\"",
+        "\"Grace Hopper creation\""
+      ],
+      "artifact": [
+        "\"Grace Hopper artifact\"",
+        "\"Grace Hopper object\"",
+        "\"Grace Hopper relic\"",
+        "\"Grace Hopper instrument\"",
+        "\"Grace Hopper tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Shigeru Miyamoto",
+    "category": "Innovation",
+    "epoch": "Modern",
+    "achievement": "Pioneered iconic video game design",
+    "queries": {
+      "portrait": [
+        "\"Shigeru Miyamoto portrait\"",
+        "\"Shigeru Miyamoto bust\"",
+        "\"Shigeru Miyamoto statue\"",
+        "\"Shigeru Miyamoto painting\"",
+        "\"Shigeru Miyamoto image\""
+      ],
+      "achievement": [
+        "\"Shigeru Miyamoto pioneered\"",
+        "\"Shigeru Miyamoto iconic\"",
+        "\"Shigeru Miyamoto video\"",
+        "\"Shigeru Miyamoto Pioneered\"",
+        "\"Shigeru Miyamoto work\""
+      ],
+      "invention": [
+        "\"Shigeru Miyamoto invention\"",
+        "\"Shigeru Miyamoto device\"",
+        "\"Shigeru Miyamoto machine\"",
+        "\"Shigeru Miyamoto tool\"",
+        "\"Shigeru Miyamoto creation\""
+      ],
+      "artifact": [
+        "\"Shigeru Miyamoto artifact\"",
+        "\"Shigeru Miyamoto object\"",
+        "\"Shigeru Miyamoto relic\"",
+        "\"Shigeru Miyamoto instrument\"",
+        "\"Shigeru Miyamoto tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Elon Musk",
+    "category": "Innovation",
+    "epoch": "Modern",
+    "achievement": "Pushed boundaries of clean energy, travel",
+    "queries": {
+      "portrait": [
+        "\"Elon Musk portrait\"",
+        "\"Elon Musk bust\"",
+        "\"Elon Musk statue\"",
+        "\"Elon Musk painting\"",
+        "\"Elon Musk image\""
+      ],
+      "achievement": [
+        "\"Elon Musk pushed\"",
+        "\"Elon Musk boundaries\"",
+        "\"Elon Musk clean\"",
+        "\"Elon Musk Pushed\"",
+        "\"Elon Musk work\""
+      ],
+      "invention": [
+        "\"Elon Musk invention\"",
+        "\"Elon Musk device\"",
+        "\"Elon Musk machine\"",
+        "\"Elon Musk tool\"",
+        "\"Elon Musk creation\""
+      ],
+      "artifact": [
+        "\"Elon Musk artifact\"",
+        "\"Elon Musk object\"",
+        "\"Elon Musk relic\"",
+        "\"Elon Musk instrument\"",
+        "\"Elon Musk tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Fusion Energy Scientist",
+    "category": "Innovation",
+    "epoch": "Future",
+    "achievement": "Delivers first world's working fusion reactor",
+    "queries": {
+      "portrait": [
+        "\"Fusion Energy Scientist portrait\"",
+        "\"Fusion Energy Scientist bust\"",
+        "\"Fusion Energy Scientist statue\"",
+        "\"Fusion Energy Scientist painting\"",
+        "\"Fusion Energy Scientist image\""
+      ],
+      "achievement": [
+        "\"Fusion Energy Scientist delivers\"",
+        "\"Fusion Energy Scientist first\"",
+        "\"Fusion Energy Scientist world's\"",
+        "\"Fusion Energy Scientist Delivers\"",
+        "\"Fusion Energy Scientist work\""
+      ],
+      "invention": [
+        "\"Fusion Energy Scientist invention\"",
+        "\"Fusion Energy Scientist device\"",
+        "\"Fusion Energy Scientist machine\"",
+        "\"Fusion Energy Scientist tool\"",
+        "\"Fusion Energy Scientist creation\""
+      ],
+      "artifact": [
+        "\"Fusion Energy Scientist artifact\"",
+        "\"Fusion Energy Scientist object\"",
+        "\"Fusion Energy Scientist relic\"",
+        "\"Fusion Energy Scientist instrument\"",
+        "\"Fusion Energy Scientist tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Translingual AI Architect",
+    "category": "Innovation",
+    "epoch": "Future",
+    "achievement": "Invents universal instant translation",
+    "queries": {
+      "portrait": [
+        "\"Translingual AI Architect portrait\"",
+        "\"Translingual AI Architect bust\"",
+        "\"Translingual AI Architect statue\"",
+        "\"Translingual AI Architect painting\"",
+        "\"Translingual AI Architect image\""
+      ],
+      "achievement": [
+        "\"Translingual AI Architect invents\"",
+        "\"Translingual AI Architect universal\"",
+        "\"Translingual AI Architect instant\"",
+        "\"Translingual AI Architect Invents\"",
+        "\"Translingual AI Architect work\""
+      ],
+      "invention": [
+        "\"Translingual AI Architect invention\"",
+        "\"Translingual AI Architect device\"",
+        "\"Translingual AI Architect machine\"",
+        "\"Translingual AI Architect tool\"",
+        "\"Translingual AI Architect creation\""
+      ],
+      "artifact": [
+        "\"Translingual AI Architect artifact\"",
+        "\"Translingual AI Architect object\"",
+        "\"Translingual AI Architect relic\"",
+        "\"Translingual AI Architect instrument\"",
+        "\"Translingual AI Architect tool\""
+      ]
+    },
+    "priority": "medium"
+  },
+  {
+    "name": "Synthetic Biology Entrepreneur",
+    "category": "Innovation",
+    "epoch": "Future",
+    "achievement": "Leads planetary-scale bio-innovation",
+    "queries": {
+      "portrait": [
+        "\"Synthetic Biology Entrepreneur portrait\"",
+        "\"Synthetic Biology Entrepreneur bust\"",
+        "\"Synthetic Biology Entrepreneur statue\"",
+        "\"Synthetic Biology Entrepreneur painting\"",
+        "\"Synthetic Biology Entrepreneur image\""
+      ],
+      "achievement": [
+        "\"Synthetic Biology Entrepreneur leads\"",
+        "\"Synthetic Biology Entrepreneur planetary-scale\"",
+        "\"Synthetic Biology Entrepreneur bio-innovation\"",
+        "\"Synthetic Biology Entrepreneur Leads\"",
+        "\"Synthetic Biology Entrepreneur work\""
+      ],
+      "invention": [
+        "\"Synthetic Biology Entrepreneur invention\"",
+        "\"Synthetic Biology Entrepreneur device\"",
+        "\"Synthetic Biology Entrepreneur machine\"",
+        "\"Synthetic Biology Entrepreneur tool\"",
+        "\"Synthetic Biology Entrepreneur creation\""
+      ],
+      "artifact": [
+        "\"Synthetic Biology Entrepreneur artifact\"",
+        "\"Synthetic Biology Entrepreneur object\"",
+        "\"Synthetic Biology Entrepreneur relic\"",
+        "\"Synthetic Biology Entrepreneur instrument\"",
+        "\"Synthetic Biology Entrepreneur tool\""
+      ]
+    },
+    "priority": "medium"
+  }
+]

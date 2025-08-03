@@ -181,4 +181,4 @@ dist.zip
 .dockerignore
 
 # Local development
-.local 
+.local mongo_uri.txt

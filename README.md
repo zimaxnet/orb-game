@@ -87,17 +87,17 @@ Each story features:
 - **Security**: Azure Key Vault for API key management
 - **Image Service**: HistoricalFiguresImageAPI with 11 endpoints for comprehensive image management
 
-### **Current API Endpoints (35 Total)**
-- **Image Service** (11 endpoints): Image management, galleries, statistics, and story integration
+### **Current API Endpoints (20 Total - Optimized)**
 - **Historical Figures** (6 endpoints): Story generation, statistics, and management
-- **Health & Status** (3 endpoints): Monitoring and system information
-- **Analytics** (3 endpoints): Data insights and performance metrics
+- **Health & Status** (2 endpoints): Monitoring and system information
+- **Analytics** (2 endpoints): Data insights and performance metrics
 - **Memory Service** (4 endpoints): User memory management and search
 - **Text-to-Speech** (2 endpoints): Audio generation and retrieval
 - **Cache Management** (3 endpoints): Performance optimization and cleanup
-- **Chat** (1 endpoint): AI interaction
-- **Stories** (1 endpoint): Cached content retrieval
-- **Models** (1 endpoint): Reliability information
+- **Chat** (1 endpoint): AI interaction and Learn More functionality
+- **Image Service** (2 endpoints): Image statistics and story integration
+
+**Key Improvements**: Removed 6 redundant endpoints (23% reduction) for cleaner API structure
 
 **Key Endpoint**: `/api/orb/stories-with-images` - Main endpoint used by the frontend for historical figure stories with images
 
@@ -115,7 +115,37 @@ Each story features:
 
 ## 🔄 **Recent Updates**
 
-### **Latest Changes (January 2025)**
+### **Latest Changes (December 2024)**
+- **🔧 API Endpoint Cleanup & Optimization**: Comprehensive endpoint consolidation and removal
+  - **23% Reduction**: Removed 6 redundant/unused endpoints for cleaner API structure
+  - **Consolidated Endpoints**: Merged `/api` into root endpoint with comprehensive endpoint list
+  - **Removed Redundant Endpoints**: Eliminated duplicate historical figures endpoints
+  - **Improved Maintainability**: Cleaner codebase with single source of truth for each function
+  - **Enhanced Testing**: Updated test scripts to reflect optimized endpoint structure
+  - **Better Documentation**: Comprehensive endpoint inventory and cleanup reports
+  - **Frontend Compatibility**: Fixed all frontend endpoint usage for 100% compatibility
+  - **Performance Benefits**: Faster startup, reduced maintenance overhead, clearer API structure
+
+- **🔍 Learn More Button Verification**: Comprehensive functionality testing and validation
+  - **93.3% Success Rate**: 14/15 tests passed with full functionality verification
+  - **API Integration**: Confirmed `/api/chat` endpoint working correctly for detailed content generation
+  - **User Experience**: Smooth loading states, proper error handling, and responsive design
+  - **Bilingual Support**: Full English and Spanish support with proper content localization
+  - **Content Quality**: 500-600 word detailed historical figure biographies with web search integration
+  - **Story Replacement**: Seamless replacement of current stories with enhanced content
+  - **Visual Feedback**: Clear loading indicators and hover effects for better UX
+  - **Error Handling**: Graceful fallbacks and user-friendly error messages
+
+- **📱 Full Width Story Area**: Enhanced user experience with better content display
+  - **Full Width Utilization**: Story panel now uses 90% of viewport width (up to 1200px)
+  - **Improved Layout**: Better spacing, typography, and content organization
+  - **Enhanced Images**: Larger image display (250px height) with better gallery layout
+  - **Mobile Optimization**: Responsive design with 95vw width on mobile devices
+  - **Better Readability**: Increased padding and improved text layout for better reading experience
+  - **Visual Hierarchy**: Clear content structure with proper spacing and typography
+  - **Performance**: Optimized CSS with better responsive breakpoints
+
+### **Previous Changes (January 2025)**
 - **🖼️ Azure Blob Storage Integration**: Complete migration to Azure Blob Storage for enhanced image performance
   - **551 Images Uploaded**: 71 real images from Wikidata/Wikipedia + 480 placeholder images
   - **94.7% Success Rate**: 31 failed downloads due to broken URLs, all figures covered

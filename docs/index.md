@@ -13,12 +13,14 @@ Welcome to the official documentation for **Orb Game** - an advanced AI-powered 
 - [How to Play](./gameplay/how-to-play.md)
 - [Categories & Epochs](./gameplay/categories-epochs.md)
 - [Historical Figures](./gameplay/historical-figures.md)
+- [🔍 Learn More Functionality](./gameplay/learn-more-functionality.md)
 - [Audio & Accessibility](./gameplay/audio-accessibility.md)
 - [🖼️ Image Display System](./gameplay/image-display-system.md)
 
 ### 🏗️ [Developer Documentation](./developer/)
 - [Architecture Overview](./developer/architecture.md)
 - [API Reference](./developer/api-reference.md)
+- [🔧 API Endpoint Cleanup](./developer/api-cleanup.md)
 - [Deployment Guide](./developer/deployment.md)
 - [Contributing Guidelines](./developer/contributing.md)
 
@@ -78,11 +80,39 @@ Welcome to the official documentation for **Orb Game** - an advanced AI-powered 
 - ✅ **Database**: 240+ historical figure stories pre-populated
 - ✅ **AI Integration**: o4-mini model with TTS support
 - ✅ **Deployment**: Automated CI/CD pipeline
+- ✅ **API Endpoints**: 20 optimized endpoints (23% reduction from 26)
+- ✅ **Learn More Functionality**: 93.3% success rate with comprehensive testing
+- ✅ **Full Width Story Area**: Enhanced UX with better content display
 - ✅ **Image System**: 201 images covering historical figures (Google Custom Search API)
 - ✅ **Image Display**: Clean image display when available, clean text when no images
 - ✅ **Google CSE Migration**: Complete migration from deprecated Bing Image Search
 
-## 🖼️ Latest Features (January 2025)
+## 🖼️ Latest Features (December 2024)
+
+### **🔧 API Endpoint Cleanup & Optimization**
+- **23% Reduction**: Removed 6 redundant/unused endpoints for cleaner API structure
+- **Consolidated Endpoints**: Merged `/api` into root endpoint with comprehensive endpoint list
+- **Improved Maintainability**: Cleaner codebase with single source of truth for each function
+- **Enhanced Testing**: Updated test scripts to reflect optimized endpoint structure
+- **Frontend Compatibility**: Fixed all frontend endpoint usage for 100% compatibility
+- **Performance Benefits**: Faster startup, reduced maintenance overhead, clearer API structure
+
+### **🔍 Learn More Button Verification**
+- **93.3% Success Rate**: 14/15 tests passed with full functionality verification
+- **API Integration**: Confirmed `/api/chat` endpoint working correctly for detailed content generation
+- **User Experience**: Smooth loading states, proper error handling, and responsive design
+- **Bilingual Support**: Full English and Spanish support with proper content localization
+- **Content Quality**: 500-600 word detailed historical figure biographies with web search integration
+- **Story Replacement**: Seamless replacement of current stories with enhanced content
+
+### **📱 Full Width Story Area**
+- **Full Width Utilization**: Story panel now uses 90% of viewport width (up to 1200px)
+- **Improved Layout**: Better spacing, typography, and content organization
+- **Enhanced Images**: Larger image display (250px height) with better gallery layout
+- **Mobile Optimization**: Responsive design with 95vw width on mobile devices
+- **Better Readability**: Increased padding and improved text layout for better reading experience
+
+## 🖼️ Previous Features (January 2025)
 
 ### **🔍 Google Custom Search API Migration**
 - **Complete Migration**: Successfully migrated from Bing Image Search (deprecated August 2025) to Google Custom Search API

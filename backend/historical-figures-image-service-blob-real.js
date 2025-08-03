@@ -2019,6 +2019,117 @@ class BlobStorageImageService {
         }
     }
 
+    async getImagesForStory(story, category, epoch) {
+        try {
+            // Extract figure name from story
+            let figureName = null;
+            
+            // Try to extract from headline
+            if (story.headline) {
+                // Look for patterns like "Charles Darwin:", "Dmitri Mendeleev:", etc.
+                const headlineMatch = story.headline.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*):/);
+                if (headlineMatch) {
+                    figureName = headlineMatch[1];
+                } else {
+                    // Try to find a name at the beginning
+                    const nameMatch = story.headline.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/);
+                    if (nameMatch) {
+                        figureName = nameMatch[1];
+                    }
+                }
+            }
+            
+            // Try to extract from fullText
+            if (!figureName && story.fullText) {
+                // Look for common patterns in the text
+                const textMatch = story.fullText.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/);
+                if (textMatch) {
+                    figureName = textMatch[1];
+                }
+            }
+            
+            // Try to extract from summary
+            if (!figureName && story.summary) {
+                const summaryMatch = story.summary.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/);
+                if (summaryMatch) {
+                    figureName = summaryMatch[1];
+                }
+            }
+            
+            if (!figureName) {
+                console.log('⚠️ Could not extract figure name from story');
+                return null;
+            }
+            
+            console.log(`🔍 Looking for images for figure: ${figureName}`);
+            
+            // Check if figure exists in our database
+            const figure = this.imageDatabase.figures[figureName];
+            if (!figure) {
+                console.log(`⚠️ Figure ${figureName} not found in image database`);
+                return null;
+            }
+            
+            // Create image array with proper format
+            const images = [];
+            
+            // Add portraits first
+            if (figure.images.portraits && figure.images.portraits.length > 0) {
+                figure.images.portraits.forEach(url => {
+                    images.push({
+                        url: url,
+                        type: 'portrait',
+                        source: 'Blob Storage',
+                        reliability: 'High'
+                    });
+                });
+            }
+            
+            // Add achievements
+            if (figure.images.achievements && figure.images.achievements.length > 0) {
+                figure.images.achievements.forEach(url => {
+                    images.push({
+                        url: url,
+                        type: 'achievement',
+                        source: 'Blob Storage',
+                        reliability: 'High'
+                    });
+                });
+            }
+            
+            // Add inventions
+            if (figure.images.inventions && figure.images.inventions.length > 0) {
+                figure.images.inventions.forEach(url => {
+                    images.push({
+                        url: url,
+                        type: 'invention',
+                        source: 'Blob Storage',
+                        reliability: 'High'
+                    });
+                });
+            }
+            
+            // Add artifacts
+            if (figure.images.artifacts && figure.images.artifacts.length > 0) {
+                figure.images.artifacts.forEach(url => {
+                    images.push({
+                        url: url,
+                        type: 'artifact',
+                        source: 'Blob Storage',
+                        reliability: 'High'
+                    });
+                });
+            }
+            
+            console.log(`✅ Found ${images.length} images for ${figureName}`);
+            return images.length > 0 ? images : null;
+            
+        } catch (error) {
+            console.error('❌ Error getting images for story:', error);
+            return null;
+        }
+    }
+
     async getImageStats() {
         try {
             const stats = await this.getFigureStats();

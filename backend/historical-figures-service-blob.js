@@ -44,7 +44,7 @@ class HistoricalFiguresServiceBlob {
         'Ancient': ['Aristotle', 'Theophrastus', 'Pliny the Elder'],
         'Medieval': ['Albertus Magnus', 'Frederick II', 'Marco Polo'],
         'Industrial': ['Alexander von Humboldt', 'Charles Darwin', 'John Muir'],
-        'Modern': ['Rachel Carson', 'Jane Goodall', 'David Attenborough'],
+        'Modern': ['Jane Goodall', 'David Attenborough', 'Wangari Maathai'],
         'Future': ['Greta Thunberg', 'Boyan Slat', 'Isatou Ceesay']
       },
       'Sports': {
@@ -92,30 +92,24 @@ class HistoricalFiguresServiceBlob {
       // Initialize OpenAI client - use secrets from Key Vault if available
       const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
       const apiKey = global.secrets?.AZURE_OPENAI_API_KEY || process.env.AZURE_OPENAI_API_KEY;
+      const deployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5-mini';
       
       if (endpoint && apiKey) {
         this.openaiClient = new AzureOpenAI({
           endpoint: endpoint,
           apiKey: apiKey,
-          deployment: 'gpt-5-mini',
+          deployment: deployment,
           apiVersion: '2024-12-01-preview'
         });
-        console.log('✅ Azure OpenAI client initialized with gpt-5-mini model');
+        this.deployment = deployment;
+        console.log(`✅ Azure OpenAI client initialized with ${deployment} model`);
       } else {
         console.warn('⚠️ OpenAI credentials not available');
       }
 
-      // Initialize speech config for TTS
-      const speechKey = process.env.AZURE_SPEECH_KEY;
-      const speechRegion = process.env.AZURE_SPEECH_REGION;
-      
-      if (speechKey && speechRegion) {
-        this.speechConfig = speechsdk.SpeechConfig.fromSubscription(speechKey, speechRegion);
-        this.speechConfig.speechSynthesisVoiceName = 'en-US-AriaNeural';
-        console.log('✅ Speech synthesis configured');
-      } else {
-        console.warn('⚠️ Speech synthesis credentials not available');
-      }
+      // Speech synthesis is handled by the main TTS endpoint (/api/tts/generate)
+      // No need to initialize Azure Speech Service here
+      console.log('ℹ️ Speech synthesis handled by main TTS endpoint');
 
       this.isInitialized = true;
       console.log('✅ Historical Figures Service (Blob Storage) initialized successfully');
@@ -206,7 +200,7 @@ class HistoricalFiguresServiceBlob {
           }
         ],
         max_completion_tokens: 2000,
-        model: 'gpt-5-mini'
+        model: this.deployment || 'gpt-5-mini'
       });
 
       const content = response.choices[0]?.message?.content;
@@ -222,7 +216,8 @@ class HistoricalFiguresServiceBlob {
         // If JSON parsing fails, create a simple story structure
         storyData = {
           headline: `${figure}: A ${epoch} ${category} Legend`,
-          story: content,
+          summary: `Learn about ${figure}, a ${epoch} ${category} figure`,
+          fullText: content,
           figureName: figure,
           category: category,
           epoch: epoch,
@@ -250,11 +245,6 @@ class HistoricalFiguresServiceBlob {
    * Generate audio for a story
    */
   async generateAudio(story) {
-    if (!this.speechConfig) {
-      console.warn('⚠️ Speech synthesis not available');
-      return null;
-    }
-
     try {
       // Check if audio is already cached
       const cachedAudio = await this.blobStorageService.getAudioBlob(
@@ -270,36 +260,52 @@ class HistoricalFiguresServiceBlob {
         return cachedAudio.toString('base64');
       }
 
-      // Generate new audio
-      console.log(`🎵 Generating audio for ${story.figureName}`);
+      // Generate new audio using the main TTS endpoint
+      console.log(`🎵 Generating audio for ${story.figureName} via TTS endpoint`);
       
-      const text = story.story || story.headline;
-      const audioConfig = speechsdk.AudioConfig.fromDefaultSpeakerOutput();
-      const synthesizer = new speechsdk.SpeechSynthesizer(this.speechConfig, audioConfig);
+      const text = story.fullText || story.story || story.headline;
+      if (!text) {
+        console.warn('⚠️ No text available for audio generation');
+        return null;
+      }
 
-      return new Promise((resolve, reject) => {
-        synthesizer.speakTextAsync(text, async (result) => {
-          if (result.reason === speechsdk.ResultReason.SynthesizingAudioCompleted) {
-            const audioBuffer = Buffer.from(result.audioData);
-            
-            // Save audio to blob storage
-            await this.blobStorageService.saveAudioBlob(
-              story.category,
-              story.epoch,
-              story.language,
-              story.model,
-              story.figureName,
-              audioBuffer
-            );
-            
-            console.log(`💾 Saved audio for ${story.figureName} (${audioBuffer.length} bytes)`);
-            resolve(audioBuffer.toString('base64'));
-          } else {
-            reject(new Error(`Speech synthesis failed: ${result.errorDetails}`));
-          }
-          synthesizer.close();
-        });
+      // Call the main TTS endpoint
+      const ttsResponse = await fetch('http://localhost:3000/api/tts/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: text,
+          language: story.language || 'en',
+          voice: 'alloy'
+        })
       });
+
+      if (!ttsResponse.ok) {
+        throw new Error(`TTS endpoint failed: ${ttsResponse.status}`);
+      }
+
+      const ttsData = await ttsResponse.json();
+      if (!ttsData.audio) {
+        throw new Error('No audio data received from TTS endpoint');
+      }
+
+      // Convert base64 audio to buffer
+      const audioBuffer = Buffer.from(ttsData.audio, 'base64');
+      
+      // Save audio to blob storage
+      await this.blobStorageService.saveAudioBlob(
+        story.category,
+        story.epoch,
+        story.language,
+        story.model,
+        story.figureName,
+        audioBuffer
+      );
+      
+      console.log(`💾 Saved audio for ${story.figureName} (${audioBuffer.length} bytes)`);
+      return ttsData.audio;
     } catch (error) {
       console.error('❌ Error generating audio:', error.message);
       return null;
@@ -317,7 +323,7 @@ class HistoricalFiguresServiceBlob {
     - Make it engaging and educational
     - Include specific achievements and impact
     - Keep it under 2000 tokens
-    - Return as JSON with fields: headline, story, figureName, category, epoch, language, model
+    - Return as JSON with fields: headline, summary, fullText, figureName, category, epoch, language, model
     
     Figure: ${figure}
     Category: ${category}
@@ -360,7 +366,7 @@ class HistoricalFiguresServiceBlob {
           }
         ],
         max_completion_tokens: 2000,
-        model: 'gpt-5-mini'
+        model: this.deployment || 'gpt-5-mini'
       });
 
       const content = response.choices[0]?.message?.content;
@@ -414,7 +420,7 @@ class HistoricalFiguresServiceBlob {
       initialized: this.isInitialized,
       blobStorage: blobStats,
       openai: !!this.openaiClient,
-      speech: !!this.speechConfig
+      speech: true // TTS handled by main endpoint
     };
   }
 }

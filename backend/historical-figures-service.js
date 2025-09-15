@@ -12,7 +12,7 @@ class HistoricalFigureStory {
     this.headline = data.headline || '';
     this.summary = data.summary || '';
     this.fullText = data.fullText || '';
-    this.source = data.source || 'o4-mini';
+    this.source = data.source || 'gpt-5-mini';
     this.historicalFigure = data.historicalFigure || '';
     this.storyType = data.storyType || 'historical-figure';
     this.publishedAt = data.publishedAt || new Date().toISOString();
@@ -241,7 +241,7 @@ ${language === 'es' ? 'IMPORTANTE: Responde EN ESPAÑOL. Todo el contenido debe 
   async generateStoryWithAzureOpenAI(prompt, language = 'en') {
     try {
       const azureOpenAIEndpoint = process.env.AZURE_OPENAI_ENDPOINT || 'https://aimcs-foundry.cognitiveservices.azure.com/';
-      const azureOpenAIDeployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
+      const azureOpenAIDeployment = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5-mini';
       
       // Try to get API key from Key Vault first, then fallback to environment
       let azureOpenAIApiKey = process.env.AZURE_OPENAI_API_KEY;

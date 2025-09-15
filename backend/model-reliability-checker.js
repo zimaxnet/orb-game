@@ -17,7 +17,7 @@ export class ModelReliabilityChecker {
     console.log('🔍 Checking model reliability...');
     
     const models = [
-      { id: 'azure-openai', name: 'Azure OpenAI (o4-mini)', testFunction: this.testAzureOpenAI.bind(this) }
+      { id: 'azure-openai', name: 'Azure OpenAI (gpt-5-mini)', testFunction: this.testAzureOpenAI.bind(this) }
     ];
 
     const reliabilityResults = [];
@@ -70,7 +70,7 @@ export class ModelReliabilityChecker {
       }
 
       const AZURE_OPENAI_ENDPOINT = 'https://aimcs-foundry.cognitiveservices.azure.com/';
-      const AZURE_OPENAI_DEPLOYMENT = 'o4-mini';
+      const AZURE_OPENAI_DEPLOYMENT = 'gpt-5-mini';
       const azureOpenAIApiKey = this.secrets.AZURE_OPENAI_API_KEY;
 
       console.log('🧪 Testing Azure OpenAI connection...');
@@ -155,75 +155,13 @@ export class ModelReliabilityChecker {
   }
 
   /**
-   * Cache a modern epoch story for quick access
+   * Cache a modern epoch story for quick access (disabled for now)
    */
   async cacheModernEpochStory() {
-    try {
-      if (!this.secrets.AZURE_OPENAI_API_KEY) {
-        console.warn('⚠️ Azure OpenAI API key not available for caching');
-        return false;
-      }
-
-      const AZURE_OPENAI_ENDPOINT = 'https://aimcs-foundry.cognitiveservices.azure.com/';
-      const AZURE_OPENAI_DEPLOYMENT = 'o4-mini';
-      const azureOpenAIApiKey = this.secrets.AZURE_OPENAI_API_KEY;
-
-      const cachePrompt = 'Generate a brief positive news story about modern technology innovation. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]';
-
-      const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${azureOpenAIApiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: AZURE_OPENAI_DEPLOYMENT,
-          messages: [
-            {
-              role: 'user',
-              content: cachePrompt
-            }
-          ],
-          max_completion_tokens: 500
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Azure OpenAI API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const content = data.choices[0]?.message?.content;
-      
-      if (!content) {
-        console.log('⚠️ No content in response for modern epoch story caching');
-        console.log('📋 Response data:', JSON.stringify(data, null, 2));
-        return false;
-      }
-
-      // Try to parse JSON response
-      try {
-        const stories = JSON.parse(content);
-        if (Array.isArray(stories) && stories.length > 0) {
-          this.cachedModernStory = stories[0];
-          console.log('✅ Cached modern epoch story successfully');
-          return true;
-        } else {
-          console.log('⚠️ Invalid story format for modern epoch caching');
-          console.log('📄 Content:', content);
-        }
-      } catch (parseError) {
-        console.log('⚠️ Failed to parse JSON for modern epoch story caching');
-        console.log('📄 Content:', content);
-        console.log('❌ Parse error:', parseError.message);
-        return false;
-      }
-
-      return false;
-    } catch (error) {
-      console.error('❌ Failed to cache modern epoch story:', error.message);
-      return false;
-    }
+    // Story caching disabled - not critical for main functionality
+    // This was causing errors with o1 model response format
+    console.log('ℹ️ Modern epoch story caching disabled');
+    return false;
   }
 
   /**
@@ -236,10 +174,10 @@ export class ModelReliabilityChecker {
       }
 
       const AZURE_OPENAI_ENDPOINT = 'https://aimcs-foundry.cognitiveservices.azure.com/';
-      const AZURE_OPENAI_DEPLOYMENT = 'o4-mini';
+      const AZURE_OPENAI_DEPLOYMENT = 'gpt-5-mini';
       const azureOpenAIApiKey = this.secrets.AZURE_OPENAI_API_KEY;
 
-      const prompt = `Generate ${count} brief positive news stories about ${category.toLowerCase()} in ${epoch.toLowerCase()} times. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "O4-Mini" }]`;
+      const prompt = `Generate ${count} brief positive news stories about ${category.toLowerCase()} in ${epoch.toLowerCase()} times. Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline", "summary": "One sentence summary", "fullText": "2-3 sentence story", "source": "GPT-5-Mini" }]`;
 
       const response = await fetch(`${AZURE_OPENAI_ENDPOINT}openai/deployments/${AZURE_OPENAI_DEPLOYMENT}/chat/completions?api-version=2024-12-01-preview`, {
         method: 'POST',

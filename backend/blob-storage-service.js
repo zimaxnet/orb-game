@@ -27,24 +27,24 @@ class BlobStorageService {
     try {
       console.log('🔧 Initializing Blob Storage Service...');
       
-      // Use managed identity for Azure deployment (preferred)
-      try {
-        const credential = new DefaultAzureCredential();
-        this.blobServiceClient = new BlobServiceClient(
-          `https://${this.storageAccountName}.blob.core.windows.net`,
-          credential
-        );
-        console.log('✅ Using managed identity for blob storage authentication');
-      } catch (managedIdentityError) {
-        console.warn('⚠️ Managed identity failed, trying connection string...');
-        
-        // Fallback to connection string (for local development)
-        const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-        if (connectionString) {
-          console.log('🔍 Connection string preview:', connectionString.substring(0, 50) + '...');
-          this.blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
-          console.log('✅ Using connection string for blob storage authentication');
-        } else {
+      // Prioritize connection string for local development (has full permissions)
+      const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+      if (connectionString) {
+        console.log('🔍 Using connection string for blob storage authentication');
+        console.log('🔍 Connection string preview:', connectionString.substring(0, 50) + '...');
+        this.blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
+        console.log('✅ Using connection string for blob storage authentication');
+      } else {
+        // Fallback to managed identity for Azure deployment
+        console.log('⚠️ No connection string available, trying managed identity...');
+        try {
+          const credential = new DefaultAzureCredential();
+          this.blobServiceClient = new BlobServiceClient(
+            `https://${this.storageAccountName}.blob.core.windows.net`,
+            credential
+          );
+          console.log('✅ Using managed identity for blob storage authentication');
+        } catch (managedIdentityError) {
           throw new Error('No authentication method available for blob storage');
         }
       }

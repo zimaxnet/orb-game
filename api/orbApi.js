@@ -1,4 +1,4 @@
-export const BACKEND_URL = 'https://api.orbgame.us';
+export const BACKEND_URL = 'http://localhost:3000';
 
 export async function getHistoricalFigures(category, epoch = 'Modern', language = 'en', count = 1, model = 'gpt-5-mini') {
   try {

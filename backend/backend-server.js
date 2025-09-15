@@ -52,10 +52,9 @@ async function initializeSecrets() {
     
     secretClient = new SecretClient(keyVaultUrl, credential);
     
-    // Fetch all required secrets
+    // Fetch all required secrets (MongoDB removed)
     const secretNames = [
-      'AZURE-OPENAI-API-KEY',
-      'MONGO-URI'
+      'AZURE-OPENAI-API-KEY'
     ];
     
     const secretPromises = secretNames.map(async (secretName) => {
@@ -85,7 +84,6 @@ async function initializeSecrets() {
     });
     
     console.log('📊 Final secrets status:');
-    console.log(`  MONGO_URI: ${secrets['MONGO_URI'] ? '✅ Loaded' : '❌ Not loaded'}`);
     console.log(`  AZURE_OPENAI_API_KEY: ${secrets['AZURE_OPENAI_API_KEY'] ? '✅ Loaded' : '❌ Not loaded'}`);
     
     // Make secrets available globally for other services
@@ -196,8 +194,8 @@ let analyticsCache = {
 
 async function loadAnalyticsCache() {
   if (!memoryService) {
-    console.warn('⚠️ Memory service not available for analytics cache loading.');
-    // Set default analytics cache
+    // Memory service not available (expected when MongoDB is disabled)
+    // Set default analytics cache silently
     analyticsCache = {
       ...analyticsCache,
       totalChats: 0,
@@ -680,23 +678,12 @@ async function initializeServer() {
   // Initialize secrets from Key Vault first
   await initializeSecrets();
   
-  // Get secrets with fallback to environment variables
-  const mongoUri = secrets['MONGO_URI'] || process.env.MONGO_URI;
+  // Get Azure OpenAI API key (MongoDB removed - using blob storage only)
   azureOpenAIApiKey = secrets['AZURE_OPENAI_API_KEY'] || process.env.AZURE_OPENAI_API_KEY;
   
-
   console.log('🔍 Secrets loading status:');
-  console.log(`  MONGO_URI from secrets: ${secrets['MONGO_URI'] ? '✅ Available' : '❌ Not available'}`);
-  console.log(`  MONGO_URI from env: ${process.env.MONGO_URI ? '✅ Available' : '❌ Not available'}`);
-  console.log(`  Final MONGO_URI: ${mongoUri ? '✅ Available' : '❌ Not available'}`);
   console.log(`  AZURE_OPENAI_API_KEY: ${azureOpenAIApiKey ? '✅ Available' : '❌ Not available'}`);
-  
-
-  // Test MongoDB URI format if available
-  if (mongoUri) {
-    console.log(`🔍 MongoDB URI format check: ${mongoUri.startsWith('mongodb://') || mongoUri.startsWith('mongodb+srv://') ? '✅ Valid format' : '❌ Invalid format'}`);
-    console.log(`🔍 MongoDB URI preview: ${mongoUri.substring(0, 20)}...`);
-  }
+  console.log(`  MongoDB: ❌ Disabled (using blob storage only)`);
 
   // Initialize Blob Storage Service (replaces MongoDB for historical figures)
   try {
@@ -711,12 +698,13 @@ async function initializeServer() {
     app.locals.historicalFiguresServiceBlob = null;
   }
 
-  if (!mongoUri) {
-    console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
-    memoryService = null;
-    storyCacheService = null;
-    historicalFiguresService = null;
-  } else {
+  // MongoDB services disabled - using blob storage only
+  console.log('ℹ️ MongoDB services disabled - using blob storage for all data');
+  memoryService = null;
+  storyCacheService = null;
+  historicalFiguresService = null;
+    // MongoDB services disabled - commenting out initialization
+    /*
     try {
       console.log('🔧 Initializing AdvancedMemoryService...');
       console.log('📡 MongoDB URI:', mongoUri.replace(/\/\/.*@/, '//***:***@')); // Hide credentials
@@ -802,7 +790,7 @@ try {
       historicalFiguresService = null;
       storyCacheService = null;
     }
-  }
+    */
   
   if (!AZURE_OPENAI_ENDPOINT || !azureOpenAIApiKey) {
     console.warn('⚠️ AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY not set. Azure OpenAI integration will be disabled.');

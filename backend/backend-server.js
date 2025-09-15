@@ -1452,21 +1452,29 @@ function isMemoryServiceReady() {
 app.get('/api/orb/historical-figures/:category', async (req, res) => {
   try {
     const { category } = req.params;
-    const { count = 3, epoch = 'Modern', language = 'en', model = 'gpt-5-mini' } = req.query;
+    const { count = 3, epoch = 'Modern', language = 'en', model = 'gpt-5-mini', forceFresh = false, storyType = 'medium' } = req.query;
     
-    console.log(`📰 Historical Figures request: ${category}, ${epoch}, ${language}, count=${count}, model=${model}`);
+    console.log(`📰 Historical Figures request: ${category}, ${epoch}, ${language}, count=${count}, model=${model}, forceFresh=${forceFresh}`);
     
     // Use blob storage service if available, fallback to MongoDB service
     let stories = [];
     
     if (historicalFiguresServiceBlob && historicalFiguresServiceBlob.isReady()) {
       console.log('📦 Using Blob Storage Service for historical figures');
+      
+      // If forceFresh is true, delete cached stories first
+      if (forceFresh === 'true' || forceFresh === true) {
+        console.log('🔄 Force fresh requested - clearing cached stories');
+        await historicalFiguresServiceBlob.blobStorageService.deleteStories(category, epoch, language, model, storyType);
+      }
+      
       stories = await historicalFiguresServiceBlob.generateStories(
         category, 
         epoch, 
         language, 
         model, 
-        parseInt(count)
+        parseInt(count),
+        storyType
       );
     } else if (historicalFiguresService) {
       console.log('🗄️ Using MongoDB Service for historical figures');

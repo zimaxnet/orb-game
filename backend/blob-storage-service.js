@@ -65,14 +65,14 @@ class BlobStorageService {
   /**
    * Get stories for a specific category, epoch, language, and model
    */
-  async getStories(category, epoch, language, model) {
+  async getStories(category, epoch, language, model, storyType = 'medium') {
     if (!this.isConnected) {
       console.warn('⚠️ Blob Storage Service not connected');
       return [];
     }
 
     try {
-      const blobName = `stories/${category}/${epoch}/${language}/${model}.json`;
+      const blobName = `stories/${category}/${epoch}/${language}/${model}/${storyType}.json`;
       const containerClient = this.blobServiceClient.getContainerClient(this.containerName);
       const blobClient = containerClient.getBlobClient(blobName);
 
@@ -103,14 +103,14 @@ class BlobStorageService {
   /**
    * Save stories to blob storage
    */
-  async saveStories(category, epoch, language, model, stories) {
+  async saveStories(category, epoch, language, model, stories, storyType = 'medium') {
     if (!this.isConnected) {
       console.warn('⚠️ Blob Storage Service not connected');
       return false;
     }
 
     try {
-      const blobName = `stories/${category}/${epoch}/${language}/${model}.json`;
+      const blobName = `stories/${category}/${epoch}/${language}/${model}/${storyType}.json`;
       const containerClient = this.blobServiceClient.getContainerClient(this.containerName);
       const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
@@ -345,6 +345,27 @@ class BlobStorageService {
     } catch (error) {
       console.error('❌ Error getting storage stats:', error.message);
       return { connected: false, error: error.message };
+    }
+  }
+
+  /**
+   * Delete stories from blob storage
+   */
+  async deleteStories(category, epoch, language, model, storyType = 'medium') {
+    if (!this.isInitialized) {
+      throw new Error('Blob Storage Service not initialized');
+    }
+
+    try {
+      const blobName = `stories/${category}/${epoch}/${language}/${model}/${storyType}.json`;
+      const blockBlobClient = this.containerClient.getBlockBlobClient(blobName);
+      
+      await blockBlobClient.deleteIfExists();
+      console.log(`🗑️ Deleted ${storyType} stories for ${category}/${epoch}/${language}/${model}`);
+      return true;
+    } catch (error) {
+      console.error('❌ Error deleting stories:', error.message);
+      return false;
     }
   }
 }

@@ -133,17 +133,36 @@ class HistoricalFiguresServiceBlob {
   /**
    * Generate stories for historical figures
    */
-  async generateStories(category, epoch, language = 'en', model = 'gpt-5-mini', count = 3) {
+  async generateStories(category, epoch, language = 'en', model = 'gpt-5-mini', count = 3, storyType = 'medium') {
     if (!this.isInitialized) {
       throw new Error('Historical Figures Service not initialized');
     }
 
     try {
-      // Check if stories are already cached in blob storage
-      const cachedStories = await this.blobStorageService.getStories(category, epoch, language, model);
-      if (cachedStories.length > 0) {
-        console.log(`📖 Using ${cachedStories.length} cached stories from blob storage`);
-        return cachedStories.slice(0, count);
+             // Check if stories are already cached in blob storage
+             const cachedStories = await this.blobStorageService.getStories(category, epoch, language, model, storyType);
+             if (cachedStories.length > 0) {
+               console.log(`📖 Using ${cachedStories.length} cached ${storyType} stories from blob storage`);
+        
+        // Generate audio for stories that don't have it
+        const storiesWithAudio = await Promise.all(
+          cachedStories.slice(0, count).map(async (story) => {
+            if (!story.ttsAudio) {
+              console.log(`🎵 Generating audio for ${story.figureName || story.headline}`);
+              try {
+                const audio = await this.generateAudio(story);
+                if (audio) {
+                  return { ...story, ttsAudio: audio };
+                }
+              } catch (error) {
+                console.warn(`⚠️ Failed to generate audio for ${story.figureName || story.headline}:`, error.message);
+              }
+            }
+            return story;
+          })
+        );
+        
+        return storiesWithAudio;
       }
 
       // Generate new stories
@@ -157,10 +176,20 @@ class HistoricalFiguresServiceBlob {
       const stories = [];
       const selectedFigures = figures.slice(0, count);
 
-      for (const figure of selectedFigures) {
-        try {
-          const story = await this.generateSingleStory(figure, category, epoch, language, model);
-          if (story) {
+             for (const figure of selectedFigures) {
+               try {
+                 const story = await this.generateSingleStory(figure, category, epoch, language, model, storyType);
+                 if (story) {
+            // Generate audio for the story
+            console.log(`🎵 Generating audio for ${figure}`);
+            try {
+              const audio = await this.generateAudio(story);
+              if (audio) {
+                story.ttsAudio = audio;
+              }
+            } catch (error) {
+              console.warn(`⚠️ Failed to generate audio for ${figure}:`, error.message);
+            }
             stories.push(story);
           }
         } catch (error) {
@@ -168,11 +197,11 @@ class HistoricalFiguresServiceBlob {
         }
       }
 
-      // Save stories to blob storage for future use
-      if (stories.length > 0) {
-        await this.blobStorageService.saveStories(category, epoch, language, model, stories);
-        console.log(`💾 Saved ${stories.length} stories to blob storage`);
-      }
+             // Save stories to blob storage for future use
+             if (stories.length > 0) {
+               await this.blobStorageService.saveStories(category, epoch, language, model, stories, storyType);
+               console.log(`💾 Saved ${stories.length} ${storyType} stories to blob storage`);
+             }
 
       return stories;
     } catch (error) {
@@ -184,13 +213,13 @@ class HistoricalFiguresServiceBlob {
   /**
    * Generate a single story for a historical figure
    */
-  async generateSingleStory(figure, category, epoch, language, model) {
+  async generateSingleStory(figure, category, epoch, language, model, storyType = 'medium') {
     if (!this.openaiClient) {
       throw new Error('OpenAI client not available');
     }
 
     try {
-      const prompt = this.getPromptForFigure(figure, category, epoch, language, model);
+      const prompt = this.getPromptForFigure(figure, category, epoch, language, model, storyType);
       
       const response = await this.openaiClient.chat.completions.create({
         messages: [
@@ -270,7 +299,8 @@ class HistoricalFiguresServiceBlob {
       }
 
       // Call the main TTS endpoint
-      const ttsResponse = await fetch('http://localhost:3000/api/tts/generate', {
+      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3000';
+      const ttsResponse = await fetch(`${backendUrl}/api/tts/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -315,21 +345,26 @@ class HistoricalFiguresServiceBlob {
   /**
    * Get prompt for a historical figure
    */
-  getPromptForFigure(figure, category, epoch, language, model) {
-    const basePrompt = `Generate a compelling story about ${figure}, a ${epoch} ${category} figure. 
+  getPromptForFigure(figure, category, epoch, language, model, storyType = 'medium') {
+    const lengthGuidance = storyType === 'detailed' 
+      ? 'Write a comprehensive, in-depth story (2-3 paragraphs, 300-500 words)'
+      : 'Write a concise, engaging story (1-2 paragraphs, 100-200 words)';
+    
+    const basePrompt = `Generate a ${storyType} story about ${figure}, a ${epoch} ${category} figure. 
     
     Requirements:
     - Write in ${language}
     - Make it engaging and educational
     - Include specific achievements and impact
-    - Keep it under 2000 tokens
+    - ${lengthGuidance}
     - Return as JSON with fields: headline, summary, fullText, figureName, category, epoch, language, model
     
     Figure: ${figure}
     Category: ${category}
     Epoch: ${epoch}
     Language: ${language}
-    Model: ${model}`;
+    Model: ${model}
+    Story Type: ${storyType}`;
 
     return basePrompt;
   }

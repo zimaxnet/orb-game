@@ -1150,12 +1150,7 @@ function OrbGame() {
                 <h2>{currentNews.headline}</h2>
               </div>
               
-              {/* Story Summary */}
-              {currentNews.summary && (
-                <div className="story-summary">
-                  <p>{currentNews.summary}</p>
-                </div>
-              )}
+              {/* Story Summary - Removed to avoid duplication with complete story */}
               
               {/* Historical Figure Images */}
               {currentNews.images && currentNews.images.length > 0 && (

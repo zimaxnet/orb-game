@@ -200,7 +200,19 @@ const HistoricalFigureDisplay = ({ story, onClose, onLearnMore }) => {
                 {/* Story Content - Always show, but with different styling based on image availability */}
                 <div className="figure-story-content">
                     <div className="story-content">
-                        <p className="story-text">{story.fullText || story.summary || 'No additional information available.'}</p>
+                        {story.fullText ? (
+                            <div className="story-text-paragraphs">
+                                {story.fullText.split('\n').map((paragraph, index) => (
+                                    paragraph.trim() && (
+                                        <p key={index} className="story-paragraph">
+                                            {paragraph.trim()}
+                                        </p>
+                                    )
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="story-text">{story.summary || 'No additional information available.'}</p>
+                        )}
                     </div>
                 </div>
             </div>

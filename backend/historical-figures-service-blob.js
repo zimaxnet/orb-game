@@ -82,11 +82,14 @@ class HistoricalFiguresServiceBlob {
     try {
       console.log('🔧 Initializing Historical Figures Service (Blob Storage)...');
       
-      // Initialize blob storage service
-      const blobConnected = await this.blobStorageService.initialize();
-      if (!blobConnected) {
-        console.warn('⚠️ Blob storage not available, running in limited mode');
-        return false;
+      // Initialize blob storage service (optional)
+      try {
+        const blobConnected = await this.blobStorageService.initialize();
+        if (!blobConnected) {
+          console.warn('⚠️ Blob storage not available, running in limited mode');
+        }
+      } catch (blobError) {
+        console.warn('⚠️ Blob storage initialization failed, running in limited mode:', blobError.message);
       }
 
       // Initialize OpenAI client - use secrets from Key Vault if available
@@ -139,10 +142,18 @@ class HistoricalFiguresServiceBlob {
     }
 
     try {
-             // Check if stories are already cached in blob storage
-             const cachedStories = await this.blobStorageService.getStories(category, epoch, language, model, storyType);
-             if (cachedStories.length > 0) {
-               console.log(`📖 Using ${cachedStories.length} cached ${storyType} stories from blob storage`);
+      // Check if stories are already cached in blob storage (if available)
+      let cachedStories = [];
+      try {
+        if (this.blobStorageService && this.blobStorageService.isConnected) {
+          cachedStories = await this.blobStorageService.getStories(category, epoch, language, model, storyType);
+        }
+      } catch (blobError) {
+        console.warn('⚠️ Blob storage not available, generating stories directly:', blobError.message);
+      }
+      
+      if (cachedStories.length > 0) {
+        console.log(`📖 Using ${cachedStories.length} cached ${storyType} stories from blob storage`);
         
         // Generate audio for stories that don't have it
         const storiesWithAudio = await Promise.all(
@@ -197,11 +208,20 @@ class HistoricalFiguresServiceBlob {
         }
       }
 
-             // Save stories to blob storage for future use
-             if (stories.length > 0) {
-               await this.blobStorageService.saveStories(category, epoch, language, model, stories, storyType);
-               console.log(`💾 Saved ${stories.length} ${storyType} stories to blob storage`);
-             }
+      // Save stories to blob storage for future use (if available)
+      if (stories.length > 0) {
+        try {
+          if (this.blobStorageService && this.blobStorageService.isConnected) {
+            await this.blobStorageService.saveStories(category, epoch, language, model, stories, storyType);
+            console.log(`💾 Saved ${stories.length} ${storyType} stories to blob storage`);
+          } else {
+            console.log(`📝 Generated ${stories.length} ${storyType} stories (blob storage not available)`);
+          }
+        } catch (saveError) {
+          console.warn('⚠️ Failed to save stories to blob storage:', saveError.message);
+          console.log(`📝 Generated ${stories.length} ${storyType} stories (saving failed)`);
+        }
+      }
 
       return stories;
     } catch (error) {
@@ -442,7 +462,7 @@ class HistoricalFiguresServiceBlob {
    * Check if service is ready
    */
   isReady() {
-    return this.isInitialized && this.blobStorageService.isReady();
+    return this.isInitialized && this.openaiClient !== null;
   }
 
   /**

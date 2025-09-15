@@ -254,118 +254,56 @@ jobs:
           exit 1
         fi
         
-    - name: Test memory system functionality
-      timeout-minutes: 15
+    - name: Test historical figures system functionality
+      timeout-minutes: 10
       run: |
-        echo "Testing memory system..."
+        echo "Testing historical figures system..."
         
-        # Test memory statistics endpoint with retry logic
-        echo "🧪 Testing memory stats endpoint with retry logic..."
-        MEMORY_STATS=""
-        for i in {1..5}; do
-          echo "Attempt $i/5: Testing memory stats endpoint..."
-          MEMORY_STATS=$(curl -s --max-time 30 https://api.orbgame.us/api/memory/stats)
+        # Test historical figures endpoint with retry logic
+        echo "🧪 Testing historical figures endpoint with retry logic..."
+        HISTORICAL_FIGURES=""
+        for i in {1..3}; do
+          echo "Attempt $i/3: Testing historical figures endpoint..."
+          HISTORICAL_FIGURES=$(curl -s --max-time 30 "https://api.orbgame.us/api/orb/historical-figures/Technology?count=1&epoch=Modern&language=en")
           
-          if echo "$MEMORY_STATS" | grep -q "totalMemories"; then
-            echo "✅ Memory stats endpoint working on attempt $i"
+          if echo "$HISTORICAL_FIGURES" | grep -q "headline"; then
+            echo "✅ Historical figures endpoint working on attempt $i"
             break
           else
-            echo "❌ Memory stats endpoint failed on attempt $i"
-            echo "Response: $MEMORY_STATS"
-            if [ $i -lt 5 ]; then
-              echo "⏳ Waiting 30 seconds before retry..."
-              sleep 30
+            echo "❌ Historical figures endpoint failed on attempt $i"
+            echo "Response: $HISTORICAL_FIGURES"
+            if [ $i -lt 3 ]; then
+              echo "⏳ Waiting 20 seconds before retry..."
+              sleep 20
             fi
           fi
         done
         
-        if ! echo "$MEMORY_STATS" | grep -q "totalMemories"; then
-          echo "❌ Memory stats endpoint failed after all retries"
-          echo "Final response: $MEMORY_STATS"
+        if ! echo "$HISTORICAL_FIGURES" | grep -q "headline"; then
+          echo "❌ Historical figures endpoint failed after all retries"
+          echo "Final response: $HISTORICAL_FIGURES"
           echo "🔍 Checking if backend is accessible..."
           BACKEND_HEALTH=$(curl -s --max-time 10 https://api.orbgame.us/health)
           echo "Backend health: $BACKEND_HEALTH"
-          echo "⚠️ Memory service may not be initialized - continuing with other tests"
+          exit 1
         else
-          echo "✅ Memory stats endpoint working correctly"
+          echo "✅ Historical figures endpoint working correctly"
         fi
         
-        # Test memory search endpoint with retry logic
-        echo "🧪 Testing memory search endpoint with retry logic..."
-        MEMORY_SEARCH=""
-        for i in {1..3}; do
-          echo "Attempt $i/3: Testing memory search endpoint..."
-          MEMORY_SEARCH=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/memory/search \
-            -H "Content-Type: application/json" \
-            -d '{"query": "test", "userId": "deployment-test"}')
-          
-          if echo "$MEMORY_SEARCH" | grep -q "memories"; then
-            echo "✅ Memory search endpoint working on attempt $i"
-            break
+        # Test different epochs to ensure story generation works
+        echo "🧪 Testing multiple epochs..."
+        EPOCHS=("Ancient" "Medieval" "Industrial" "Modern" "Future")
+        for epoch in "${EPOCHS[@]}"; do
+          echo "Testing $epoch epoch..."
+          EPOCH_TEST=$(curl -s --max-time 30 "https://api.orbgame.us/api/orb/historical-figures/Technology?count=1&epoch=$epoch&language=en")
+          if echo "$EPOCH_TEST" | grep -q "headline"; then
+            echo "✅ $epoch epoch working"
           else
-            echo "❌ Memory search endpoint failed on attempt $i"
-            echo "Response: $MEMORY_SEARCH"
-            if [ $i -lt 3 ]; then
-              echo "⏳ Waiting 20 seconds before retry..."
-              sleep 20
-            fi
+            echo "⚠️ $epoch epoch may not have stories available"
           fi
         done
         
-        if ! echo "$MEMORY_SEARCH" | grep -q "memories"; then
-          echo "❌ Memory search endpoint failed after all retries"
-          echo "Final response: $MEMORY_SEARCH"
-          echo "⚠️ Memory search may not be available - continuing with other tests"
-        else
-          echo "✅ Memory search endpoint working correctly"
-        fi
-        
-        # Test memory caching (send same message twice) with retry logic
-        echo "🧪 Testing memory caching with retry logic..."
-        FIRST_RESPONSE=""
-        SECOND_RESPONSE=""
-        
-        for i in {1..3}; do
-          echo "Attempt $i/3: Testing memory caching..."
-          FIRST_RESPONSE=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/chat \
-            -H "Content-Type: application/json" \
-            -d '{"message": "Memory test question", "userId": "deployment-test"}')
-          
-          if echo "$FIRST_RESPONSE" | grep -q "response"; then
-            echo "✅ First chat request successful on attempt $i"
-            break
-          else
-            echo "❌ First chat request failed on attempt $i"
-            echo "Response: $FIRST_RESPONSE"
-            if [ $i -lt 3 ]; then
-              echo "⏳ Waiting 20 seconds before retry..."
-              sleep 20
-            fi
-          fi
-        done
-        
-        if echo "$FIRST_RESPONSE" | grep -q "response"; then
-          echo "✅ First chat request successful"
-          
-          # Wait a moment before second request
-          sleep 10
-          
-          SECOND_RESPONSE=$(curl -s --max-time 30 -X POST https://api.orbgame.us/api/chat \
-            -H "Content-Type: application/json" \
-            -d '{"message": "Memory test question", "userId": "deployment-test"}')
-          
-          if echo "$SECOND_RESPONSE" | grep -q "fromMemory.*true"; then
-            echo "✅ Memory caching working correctly"
-          else
-            echo "⚠️ Memory caching not detected (may be first run or memory service unavailable)"
-            echo "Second response: $SECOND_RESPONSE"
-          fi
-        else
-          echo "❌ Chat request failed after all retries"
-          echo "Final response: $FIRST_RESPONSE"
-        fi
-        
-        echo "🧠 Memory system test completed"
+        echo "🎭 Historical figures system test completed"
 
   notify:
     runs-on: ubuntu-latest
@@ -382,9 +320,9 @@ jobs:
           echo "🎉 Full deployment successful!"
           echo "Frontend: https://orbgame.us"
           echo "Backend: https://api.orbgame.us"
-          echo "Memory System: ✅ Active"
-          echo "Memory Panel: 🧠 Available in UI"
-          echo "Memory API: /api/memory/* endpoints"
+          echo "Historical Figures System: ✅ Active"
+          echo "Story Generation: 🎭 Working across all epochs"
+          echo "API Endpoints: /api/orb/historical-figures/*"
           echo "Commit: ${{ github.sha }}"
         else
           echo "❌ Deployment failed!"

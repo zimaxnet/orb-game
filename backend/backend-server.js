@@ -17,6 +17,7 @@ import { StoryCacheService } from './story-cache-service.js';
 import { ModelReliabilityChecker } from './model-reliability-checker.js';
 import BlobStorageImageService from './historical-figures-image-service-blob-real.js';
 import AudioStorageService from './audio-storage-service.js';
+import HistoricalFiguresServiceBlob from './historical-figures-service-blob.js';
 
 const app = express();
 
@@ -104,7 +105,7 @@ async function initializeSecrets() {
 
 // Environment variables with fallback to Key Vault secrets
 const AZURE_OPENAI_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT || 'https://eastus2.api.cognitive.microsoft.com/';
-const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'o4-mini';
+const AZURE_OPENAI_DEPLOYMENT = process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-5-mini';
 const AZURE_OPENAI_TTS_DEPLOYMENT = process.env.AZURE_OPENAI_TTS_DEPLOYMENT || 'gpt-4o-mini-tts';
 
 app.use(express.json({ limit: '10mb' }));
@@ -120,6 +121,7 @@ let simpleImageService;
 let audioStorageService;
 let memoryService;
 let storyCacheService;
+let historicalFiguresServiceBlob;
 
 // Basic API endpoints (available immediately)
 app.get('/health', (req, res) => {
@@ -696,6 +698,19 @@ async function initializeServer() {
     console.log(`🔍 MongoDB URI preview: ${mongoUri.substring(0, 20)}...`);
   }
 
+  // Initialize Blob Storage Service (replaces MongoDB for historical figures)
+  try {
+    console.log('🔧 Initializing HistoricalFiguresServiceBlob...');
+    historicalFiguresServiceBlob = new HistoricalFiguresServiceBlob();
+    await historicalFiguresServiceBlob.initialize();
+    app.locals.historicalFiguresServiceBlob = historicalFiguresServiceBlob;
+    console.log('✅ HistoricalFiguresServiceBlob initialized successfully.');
+  } catch (blobError) {
+    console.warn('⚠️ HistoricalFiguresServiceBlob initialization failed:', blobError.message);
+    historicalFiguresServiceBlob = null;
+    app.locals.historicalFiguresServiceBlob = null;
+  }
+
   if (!mongoUri) {
     console.warn('⚠️ MONGO_URI not set. Advanced memory features will be disabled.');
     memoryService = null;
@@ -869,62 +884,7 @@ process.on('SIGINT', async () => {
   process.exit();
 });
 
-// New endpoint: Get historical figure stories by category with images and audio
-app.get('/api/orb/historical-figures/:category', async (req, res) => {
-  const category = req.params.category;
-  const count = parseInt(req.query.count) || 1;
-  const epoch = req.query.epoch || 'Modern';
-  const language = req.query.language || 'en';
-  const includeTTS = req.query.includeTTS !== 'false'; // Default to true unless explicitly set to false
-  const includeImages = req.query.includeImages !== 'false'; // Default to true unless explicitly set to false
-  
-  console.log(`📚 Fetching ${count} historical figure stories for ${category} in ${epoch} epoch (${language}) with TTS: ${includeTTS}, Images: ${includeImages}`);
-  
-  // If historical figures service is not available, fail
-  if (!historicalFiguresService) {
-    console.log(`❌ Historical figures service not available for ${category}`);
-    res.status(503).json({ error: 'Historical figures service not available. Cannot generate stories without historical figures.' });
-    return;
-  }
-  
-  try {
-    // Get stories from historical figures service
-    const stories = await historicalFiguresService.getStories(category, epoch, language, count, includeTTS);
-    if (stories.length === 0) {
-      console.log(`❌ No historical figure stories found for ${category}-${epoch}-${language}`);
-      res.status(404).json({ error: `No historical figure stories available for ${category} in ${epoch} epoch (${language})` });
-      return;
-    }
-    
-    // Add images to stories if requested
-    if (includeImages && app.locals.imageService) {
-      console.log(`🖼️ Adding images to ${stories.length} stories...`);
-      
-      for (let i = 0; i < stories.length; i++) {
-        const story = stories[i];
-        
-        try {
-          // Get images for this story using the new simple image service
-          const images = await app.locals.imageService.getImagesForStory(story, category, epoch);
-          if (images) {
-            story.images = images;
-            console.log(`✅ Added images for story`);
-          } else {
-            console.log(`⚠️ No images found for story`);
-          }
-        } catch (imageError) {
-          console.warn(`⚠️ Failed to get images for story:`, imageError.message);
-        }
-      }
-    }
-    
-    console.log(`✅ Found ${stories.length} historical figure stories for ${category} with images: ${includeImages}, TTS: ${includeTTS}`);
-    res.json({ stories });
-  } catch (error) {
-    console.error('Historical figures endpoint error:', error);
-    res.status(500).json({ error: 'Failed to fetch historical figure stories' });
-  }
-});
+// REMOVED: Duplicate endpoint - using the blob storage version below
 
 
 
@@ -1252,9 +1212,9 @@ async function generateTTSAudio(text, language = 'en') {
   }
 }
 
-// Helper function to generate stories with Azure OpenAI (o4-mini only)
+// Helper function to generate stories with Azure OpenAI (gpt-5-mini only)
 
-// Helper function to generate stories with Azure OpenAI (o4-mini only)
+// Helper function to generate stories with Azure OpenAI (gpt-5-mini only)
 async function generateStoriesWithAzureOpenAI(category, epoch, count, customPrompt, language = 'en', storyType = 'historical-figure') {
   try {
     // Load historical figures from the seed file
@@ -1332,7 +1292,7 @@ ${language === 'es' ? 'IMPORTANT: Respond in Spanish language.' : 'IMPORTANT: Re
           },
           {
             role: 'user',
-            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline mentioning the historical figure", "summary": "One sentence summary", "fullText": "2-3 sentence story about the historical figure", "source": "O4-Mini", "historicalFigure": "Name of the historical figure" }]`
+            content: `${enhancedPrompt} Return ONLY a valid JSON array with this exact format: [{ "headline": "Brief headline mentioning the historical figure", "summary": "One sentence summary", "fullText": "2-3 sentence story about the historical figure", "source": "GPT-5-Mini", "historicalFigure": "Name of the historical figure" }]`
           }
         ],
         max_completion_tokens: 1000
@@ -1504,22 +1464,35 @@ function isMemoryServiceReady() {
 app.get('/api/orb/historical-figures/:category', async (req, res) => {
   try {
     const { category } = req.params;
-    const { count = 3, epoch = 'Modern', language = 'en' } = req.query;
+    const { count = 3, epoch = 'Modern', language = 'en', model = 'gpt-5-mini' } = req.query;
     
-    console.log(`📰 Historical Figures request: ${category}, ${epoch}, ${language}, count=${count}`);
+    console.log(`📰 Historical Figures request: ${category}, ${epoch}, ${language}, count=${count}, model=${model}`);
     
-    if (!historicalFiguresService) {
-      console.error('❌ Historical Figures Service not initialized');
-      return res.status(500).json({ error: 'Historical Figures Service not available' });
+    // Use blob storage service if available, fallback to MongoDB service
+    let stories = [];
+    
+    if (historicalFiguresServiceBlob && historicalFiguresServiceBlob.isReady()) {
+      console.log('📦 Using Blob Storage Service for historical figures');
+      stories = await historicalFiguresServiceBlob.generateStories(
+        category, 
+        epoch, 
+        language, 
+        model, 
+        parseInt(count)
+      );
+    } else if (historicalFiguresService) {
+      console.log('🗄️ Using MongoDB Service for historical figures');
+      stories = await historicalFiguresService.getStories(
+        category, 
+        epoch, 
+        language, 
+        parseInt(count), 
+        false // includeTTS
+      );
+    } else {
+      console.error('❌ No Historical Figures Service available');
+      return res.status(500).json({ error: 'Historical figures service not available. Cannot generate stories without historical figures.' });
     }
-    
-    const stories = await historicalFiguresService.getStories(
-      category, 
-      epoch, 
-      language, 
-      parseInt(count), 
-      false // includeTTS
-    );
     
     // Add image information to each story
     const storiesWithImages = stories.map(story => {
@@ -1619,14 +1592,23 @@ app.get('/api/orb/historical-figures/:category', async (req, res) => {
 // Get historical figures service stats
 app.get('/api/historical-figures/stats', async (req, res) => {
   try {
-    if (!historicalFiguresService) {
+    let stats = null;
+    let categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
+    let epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
+    let languages = ['en', 'es'];
+    
+    if (historicalFiguresServiceBlob && historicalFiguresServiceBlob.isReady()) {
+      console.log('📦 Getting stats from Blob Storage Service');
+      stats = await historicalFiguresServiceBlob.getStats();
+    } else if (historicalFiguresService) {
+      console.log('🗄️ Getting stats from MongoDB Service');
+      stats = await historicalFiguresService.getStoryStats();
+      categories = await historicalFiguresService.getAvailableCategories();
+      epochs = await historicalFiguresService.getAvailableEpochs();
+      languages = await historicalFiguresService.getAvailableLanguages();
+    } else {
       return res.status(503).json({ error: 'Historical figures service not available' });
     }
-
-    const stats = await historicalFiguresService.getStoryStats();
-    const categories = await historicalFiguresService.getAvailableCategories();
-    const epochs = await historicalFiguresService.getAvailableEpochs();
-    const languages = await historicalFiguresService.getAvailableLanguages();
     
     res.json({
       success: true,
@@ -1634,11 +1616,57 @@ app.get('/api/historical-figures/stats', async (req, res) => {
       categories,
       epochs,
       languages,
-      totalStories: stats.reduce((sum, stat) => sum + stat.count, 0)
+      totalStories: stats.blobStorage ? stats.blobStorage.stories : 0,
+      service: stats.service || 'unknown'
     });
   } catch (error) {
     console.error('❌ Error fetching historical figures stats:', error);
     res.status(500).json({ error: 'Failed to fetch historical figures stats' });
+  }
+});
+
+// Learn More endpoint for historical figures
+app.get('/api/orb/historical-figures/:category/learn-more', async (req, res) => {
+  try {
+    const { category } = req.params;
+    const { figure, epoch = 'Modern', language = 'en', model = 'gpt-5-mini' } = req.query;
+    
+    console.log(`📚 Learn More request: ${figure} from ${category}, ${epoch}, ${language}, ${model}`);
+    
+    if (!figure) {
+      return res.status(400).json({ error: 'Figure name is required' });
+    }
+    
+    let learnMoreData = null;
+    
+    if (historicalFiguresServiceBlob && historicalFiguresServiceBlob.isReady()) {
+      console.log('📦 Using Blob Storage Service for Learn More');
+      learnMoreData = await historicalFiguresServiceBlob.getLearnMore(
+        figure, 
+        category, 
+        epoch, 
+        language, 
+        model
+      );
+    } else if (historicalFiguresService) {
+      console.log('🗄️ Using MongoDB Service for Learn More');
+      // Fallback to MongoDB service if available
+      learnMoreData = await historicalFiguresService.getLearnMoreContent(figure, category, epoch, language);
+    } else {
+      console.error('❌ No Historical Figures Service available');
+      return res.status(500).json({ error: 'Historical figures service not available' });
+    }
+    
+    if (!learnMoreData) {
+      return res.status(404).json({ error: 'Learn More content not found' });
+    }
+    
+    console.log(`✅ Returning Learn More content for ${figure}`);
+    res.json(learnMoreData);
+    
+  } catch (error) {
+    console.error('❌ Error in Learn More endpoint:', error.message);
+    res.status(500).json({ error: 'Failed to fetch Learn More content' });
   }
 });
 

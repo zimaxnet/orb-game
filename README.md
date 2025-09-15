@@ -1,6 +1,6 @@
 # 🎮 Orb Game
 
-An advanced AI-powered interactive gaming platform that focuses exclusively on discovering the most influential historical figures across different categories and epochs. The system features a React frontend with 3D Three.js graphics, a Node.js backend with o4-mini AI model integration, and comprehensive Azure cloud deployment.
+An advanced AI-powered interactive gaming platform that focuses exclusively on discovering the most influential historical figures across different categories and epochs. The system features a React frontend with 3D Three.js graphics, a Node.js backend with GPT-5-Mini AI model integration, and comprehensive Azure cloud deployment with blob storage.
 
 ## 🌟 **Key Features**
 
@@ -10,7 +10,7 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **5 Epochs**: Ancient, Medieval, Industrial, Modern, Future
 - **2 Languages**: English and Spanish with cultural sensitivity
 - **Educational Focus**: Learn about real people who shaped history
-- **Pre-populated Content**: All stories are pre-generated and stored in MongoDB
+- **Pre-populated Content**: All stories are pre-generated and stored in Azure Blob Storage
 - **Round-Robin Loading**: Fast initial response with 1 story, then silently load 2 additional historical figures
 - **Smart Navigation**: Users can explore all 3 historical figures per category/epoch combination
 - **Enhanced Story Panel**: Comprehensive redesign for optimal learning experience
@@ -41,7 +41,7 @@ An advanced AI-powered interactive gaming platform that focuses exclusively on d
 - **Asynchronous Loading**: Images populate in background while stories load instantly
 
 ### **🤖 AI Integration**
-- **O4-Mini Model**: Fast and efficient story generation with Azure OpenAI
+- **GPT-5-Mini Model**: Advanced and efficient story generation with Azure OpenAI
 - **Text-to-Speech**: Immersive audio narration with 'alloy' voice
 - **Historical Accuracy**: Stories based on documented achievements
 - **Personal Narratives**: First-person perspective from historical figures
@@ -79,13 +79,13 @@ Each story features:
 - **Styling**: CSS modules with component-specific stylesheets
 
 ### **Backend (Node.js + Express)**
-- **Main Server**: `backend/backend-server.js` - Production API server with 35 endpoints
-- **Historical Figures Service**: `backend/historical-figures-service-new.js` - Dedicated service with separated media storage
-- **Services**: Modular service architecture (HistoricalFiguresService, MemoryService, StoryCacheService, HistoricalFiguresImageService)
-- **AI Integration**: O4-Mini model with Azure OpenAI
-- **Database**: Azure Cosmos DB for MongoDB with optimized collections
+- **Main Server**: `backend/backend-server.js` - Production API server with blob storage integration
+- **Blob Storage Service**: `backend/blob-storage-service.js` - Azure Blob Storage for stories, audio, and metadata
+- **Historical Figures Service**: `backend/historical-figures-service-blob.js` - Dedicated service with blob storage
+- **Services**: Modular service architecture (BlobStorageService, HistoricalFiguresServiceBlob, MemoryService)
+- **AI Integration**: GPT-5-Mini model with Azure OpenAI
+- **Storage**: Azure Blob Storage for cost-effective content storage
 - **Security**: Azure Key Vault for API key management
-- **Image Service**: HistoricalFiguresImageAPI with 11 endpoints for comprehensive image management
 
 ### **Current API Endpoints (20 Total - Optimized)**
 - **Historical Figures** (6 endpoints): Story generation, statistics, and management
@@ -101,11 +101,12 @@ Each story features:
 
 **Key Endpoint**: `/api/orb/stories-with-images` - Main endpoint used by the frontend for historical figure stories with images
 
-### **Database Architecture (Optimized)**
-- **historical_figures**: Core story data (text, metadata) ~2KB per story
-- **historical_figure_audio**: Audio files (base64) ~700KB with 30-day TTL
-- **historical_figure_images**: Image metadata ~1KB each with 30-day TTL
-- **historical_figure_seeds**: Seed data for figure generation
+### **Storage Architecture (Blob Storage)**
+- **Azure Blob Storage**: Cost-effective storage for stories, audio, and metadata
+- **Story Files**: JSON files containing historical figure stories and metadata
+- **Audio Files**: TTS audio stored as base64 in blob storage
+- **Image Metadata**: Historical figure image information and sources
+- **Connection String**: Secure authentication via Azure Key Vault
 
 ### **Deployment (Azure)**
 - **Frontend**: Azure Web App with GitHub Actions CI/CD
@@ -115,7 +116,29 @@ Each story features:
 
 ## 🔄 **Recent Updates**
 
-### **Latest Changes (December 2024)**
+### **Latest Changes (January 2025)**
+- **🚀 GPT-5-Mini Migration**: Complete migration from o4-mini to GPT-5-Mini for enhanced story generation
+  - **Model Update**: All story generation now uses GPT-5-Mini for improved content quality
+  - **API Integration**: Updated Azure OpenAI client with proper API version (2024-12-01-preview)
+  - **Frontend Updates**: Updated all model references and display names to GPT-5-Mini
+  - **Prompt System**: Updated prompt management system for GPT-5-Mini compatibility
+  - **Learn More Feature**: Enhanced to use GPT-5-Mini for detailed historical figure biographies
+  - **Audio Generation**: Integrated TTS audio generation for both stories and Learn More content
+  - **Loading States**: Improved user experience with proper waiting for story and audio generation
+  - **Error Handling**: Enhanced error handling for GPT-5-Mini API calls
+
+- **💾 Azure Blob Storage Integration**: Complete migration from MongoDB to Azure Blob Storage for cost optimization
+  - **Cost Reduction**: Eliminated expensive MongoDB database (~$1,000/month) in favor of blob storage
+  - **Blob Storage Service**: New service architecture with `BlobStorageService` for file management
+  - **Historical Figures Service**: Updated `HistoricalFiguresServiceBlob` for blob storage integration
+  - **Story Storage**: Historical figure stories stored as JSON files in blob storage
+  - **Audio Storage**: TTS audio files stored as base64 in blob storage
+  - **Metadata Storage**: Image metadata and historical figure information in blob storage
+  - **Connection Management**: Secure authentication via Azure Key Vault connection strings
+  - **Performance**: Maintained fast response times with blob storage access
+  - **Scalability**: Blob storage provides better scalability and cost control
+
+### **Previous Changes (December 2024)**
 - **🔧 API Endpoint Cleanup & Optimization**: Comprehensive endpoint consolidation and removal
   - **23% Reduction**: Removed 6 redundant/unused endpoints for cleaner API structure
   - **Consolidated Endpoints**: Merged `/api` into root endpoint with comprehensive endpoint list
@@ -300,7 +323,8 @@ Each story features:
 ### **Prerequisites**
 - Node.js 18+ and npm
 - Azure subscription (for production deployment)
-- Azure OpenAI service with o4-mini model
+- Azure OpenAI service with GPT-5-Mini model
+- Azure Blob Storage account
 - Azure Key Vault for secrets management
 
 ### **Local Development**
@@ -320,7 +344,7 @@ cd backend && npm install
 3. **Set up environment variables**
 ```bash
 cp env.example .env
-# Edit .env with your Azure OpenAI credentials
+# Edit .env with your Azure OpenAI and Blob Storage credentials
 ```
 
 4. **Start development servers**
@@ -356,7 +380,7 @@ node backend-server.js
 
 ### **Story Generation Process**
 ```
-Historical Figure Data → O4-Mini Generation → TTS Audio → MongoDB Storage → Round-Robin Loading → User Experience
+Historical Figure Data → GPT-5-Mini Generation → TTS Audio → Blob Storage → Round-Robin Loading → User Experience
 ```
 
 ### **Round-Robin Loading Strategy**
@@ -451,19 +475,19 @@ orb-game/
 
 ## 🤖 **AI Model Integration**
 
-### **O4-Mini Model**
+### **GPT-5-Mini Model**
 - **Provider**: Azure OpenAI
-- **Model**: o4-mini
-- **Features**: Fast, efficient, reliable processing
+- **Model**: gpt-5-mini
+- **Features**: Advanced, efficient, reliable processing
 - **Cost**: ~$0.01-0.05 per story
 - **Response Time**: ~0.1s average
 
 ### **Historical Figures Service**
-- **Service**: `backend/historical-figures-service.js`
-- **Database Collection**: `historical_figures_stories`
+- **Service**: `backend/historical-figures-service-blob.js`
+- **Storage**: Azure Blob Storage for stories, audio, and metadata
 - **Seed Data**: `OrbGameInfluentialPeopleSeeds`
-- **Features**: Dedicated service for historical figure story generation
-- **API Endpoints**: New dedicated endpoints with backward compatibility
+- **Features**: Dedicated service for historical figure story generation with blob storage
+- **API Endpoints**: New dedicated endpoints with blob storage integration
 - **Key Vault Integration**: Secure secrets management
 
 ### **Systematic Image Gathering System**
@@ -483,7 +507,7 @@ orb-game/
 - **Image Statistics**: 9.0 images per figure on average across all categories and epochs
 
 ### **AI Model Parameters**
-- **O4-Mini**: Use `max_completion_tokens` (not `max_tokens`)
+- **GPT-5-Mini**: Use `max_completion_tokens` (not `max_tokens`)
 - **TTS Models**: Use `Authorization: Bearer` header
 - **Token Limits**: 2000 tokens for complete JSON responses
 - **TTS Voices**: Use `alloy` voice for both English and Spanish
@@ -551,10 +575,10 @@ if (cachedStories.length > 0) {
 ### **Environment Variables**
 ```bash
 # Required for backend
-MONGO_URI=your-azure-cosmos-db-connection-string
+AZURE_STORAGE_CONNECTION_STRING=your-azure-blob-storage-connection-string
 AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key
-AZURE_OPENAI_DEPLOYMENT=o4-mini
+AZURE_OPENAI_DEPLOYMENT=gpt-5-mini
 AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 ```
 
@@ -572,7 +596,7 @@ AZURE_OPENAI_TTS_DEPLOYMENT=gpt-4o-mini-tts
 
 ### **Testing Guidelines**
 - Run comprehensive test suite before deployment
-- Verify o4-mini model is working: `node scripts/test-ai-models.js`
+- Verify GPT-5-Mini model is working: `node scripts/test-ai-models.js`
 - Test historical figures service: `node backend/test-historical-figures-service.js`
 - Test historical figures API: `node scripts/test-historical-figures-api.js`
 - Test story generation: `node scripts/test-fixed-story-generation.js`
@@ -724,12 +748,12 @@ node backend-server.js
 ## 🚨 **Critical Notes**
 
 ### **Important Reminders**
-- **O4-Mini Model**: Use `max_completion_tokens`, not `max_tokens`
-- **Temperature Parameter**: Not supported for O4-Mini (use default 1)
+- **GPT-5-Mini Model**: Use `max_completion_tokens`, not `max_tokens`
+- **Temperature Parameter**: Not supported for GPT-5-Mini (use default 1)
 - **Authorization Header**: Use `Authorization: Bearer` for Azure OpenAI
 - **TTS Voice**: Use `alloy` for both English and Spanish (avoid `jorge`)
 - **Token Limits**: Use 2000 tokens for complete story generation
-- **Database Migration**: All data migrated from `aimcs` to `orbgame`
+- **Storage Migration**: All data migrated from MongoDB to Azure Blob Storage
 - **Registry Name**: Use `orbgame` registry, not `aimcsregistry`
 - **Docker Platform**: Always build with `--platform linux/amd64` for Azure Container Apps
 
@@ -741,7 +765,7 @@ node backend-server.js
 - Azure Container App scaling configuration
 - Docker platform mismatch (must use `linux/amd64` for Azure Container Apps)
 - Container App deployment failures due to wrong platform architecture
-- **API Parameter Issues**: Use `max_completion_tokens` not `max_tokens` for o4-mini
+- **API Parameter Issues**: Use `max_completion_tokens` not `max_tokens` for GPT-5-Mini
 - **TTS Voice Issues**: Use `alloy` voice (avoid `jorge` - not supported)
 - **Empty API Responses**: Check token limits and parameter names
 - **JSON Parse Errors**: Implement JSON fix attempts and empty content checks
@@ -790,7 +814,7 @@ node backend-server.js
 
 - **240 Historical Figure Stories**: Comprehensive coverage of real historical personalities
 - **Systematic Image System**: 120 figures with 1,083 high-quality images (100% success rate)
-- **O4-Mini Integration**: Fast, reliable story generation
+- **GPT-5-Mini Integration**: Advanced, reliable story generation
 - **Multi-language Support**: English and Spanish with cultural sensitivity
 - **3D Interactive Experience**: Engaging Three.js powered interface
 - **Azure Cloud Deployment**: Scalable, secure, and performant

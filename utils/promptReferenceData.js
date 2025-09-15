@@ -11,7 +11,7 @@ export const PROMPT_REFERENCE_DATA = {
   frontendPrompts: {
     Technology: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Tell the story of a specific historical figure from ancient times who made groundbreaking technological discoveries. Focus on their name, specific achievements, and how their innovations changed the world. Include their background, the challenges they faced, and the lasting impact of their contributions. Make it engaging and educational with concrete details about their life and work.',
           es: 'Cuenta la historia de una figura histórica específica de la antigüedad que hizo descubrimientos tecnológicos revolucionarios. Enfócate en su nombre, logros específicos y cómo sus innovaciones cambiaron el mundo. Incluye su trasfondo, los desafíos que enfrentó y el impacto duradero de sus contribuciones. Hazlo atractivo y educativo con detalles concretos sobre su vida y trabajo.'
         },
@@ -29,7 +29,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval technological breakthrough through the lens of engineering principles and social impact. Break down the innovation methodically and explain its cascading effects on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance tecnológico medieval a través del lente de principios de ingeniería e impacto social. Desglosa la innovación metódicamente y explica sus efectos en cascada en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -47,7 +47,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to manufacturing. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la manufactura. Presenta hallazgos estructurados sin consultas.'
         },
@@ -65,7 +65,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge technological advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance tecnológico de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -83,7 +83,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic technology, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para una tecnología futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -103,7 +103,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Science: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient scientific breakthrough using modern analytical methods to understand their empirical observations and theoretical frameworks. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance científico antiguo usando métodos analíticos modernos para entender sus observaciones empíricas y marcos teóricos. Presenta conclusiones lógicas.'
         },
@@ -121,7 +121,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval scientific breakthrough through the lens of scientific method and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance científico medieval a través del lente de método científico e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -139,7 +139,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution scientific breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to scientific understanding. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance científico de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en el entendimiento científico. Presenta hallazgos estructurados sin consultas.'
         },
@@ -157,7 +157,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge scientific advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance científico de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -175,7 +175,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic scientific breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance científico futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -195,7 +195,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Art: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient artistic breakthrough using modern analytical methods to understand its cultural significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance artístico antiguo usando métodos analíticos modernos para entender su significado cultural y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -213,7 +213,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval artistic breakthrough through the lens of cultural significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance artístico medieval a través del lente de significado cultural e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -231,7 +231,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution artistic breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to artistic expression. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance artístico de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la expresión artística. Presenta hallazgos estructurados sin consultas.'
         },
@@ -249,7 +249,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge artistic advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance artístico de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -267,7 +267,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic artistic breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance artístico futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -287,7 +287,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Nature: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient environmental breakthrough using modern analytical methods to understand its ecological significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance ambiental antiguo usando métodos analíticos modernos para entender su significado ecológico y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -305,7 +305,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval environmental breakthrough through the lens of ecological significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance ambiental medieval a través del lente de significado ecológico e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -323,7 +323,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution environmental breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to environmental protection. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance ambiental de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la protección ambiental. Presenta hallazgos estructurados sin consultas.'
         },
@@ -341,7 +341,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge environmental advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance ambiental de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -359,7 +359,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic environmental breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance ambiental futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -379,7 +379,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Sports: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient athletic breakthrough using modern analytical methods to understand its cultural significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance atlético antiguo usando métodos analíticos modernos para entender su significado cultural y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -397,7 +397,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval athletic breakthrough through the lens of cultural significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance atlético medieval a través del lente de significado cultural e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -415,7 +415,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution athletic breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to athletic expression. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance atlético de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la expresión atlética. Presenta hallazgos estructurados sin consultas.'
         },
@@ -433,7 +433,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge athletic advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance atlético de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -451,7 +451,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic athletic breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance atlético futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -471,7 +471,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Music: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient musical breakthrough using modern analytical methods to understand its cultural significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance musical antiguo usando métodos analíticos modernos para entender su significado cultural y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -489,7 +489,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval musical breakthrough through the lens of cultural significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance musical medieval a través del lente de significado cultural e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -507,7 +507,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution musical breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to musical expression. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance musical de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la expresión musical. Presenta hallazgos estructurados sin consultas.'
         },
@@ -525,7 +525,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge musical advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance musical de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -543,7 +543,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic musical breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance musical futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -563,7 +563,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Space: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient astronomical breakthrough using modern analytical methods to understand its cultural significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance astronómico antiguo usando métodos analíticos modernos para entender su significado cultural y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -581,7 +581,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval astronomical breakthrough through the lens of cultural significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance astronómico medieval a través del lente de significado cultural e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -599,7 +599,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution astronomical breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to astronomical understanding. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance astronómico de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en el entendimiento astronómico. Presenta hallazgos estructurados sin consultas.'
         },
@@ -617,7 +617,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge astronomical advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance astronómico de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -635,7 +635,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic astronomical breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance astronómico futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -655,7 +655,7 @@ export const PROMPT_REFERENCE_DATA = {
     },
     Innovation: {
       Ancient: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically deconstruct an ancient innovation breakthrough using modern analytical methods to understand its cultural significance and historical context. Present logical conclusions.',
           es: 'Deconstruye sistemáticamente un avance innovador antiguo usando métodos analíticos modernos para entender su significado cultural y contexto histórico. Presenta conclusiones lógicas.'
         },
@@ -673,7 +673,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Medieval: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Systematically examine a medieval innovation breakthrough through the lens of cultural significance and historical context. Break down the innovation methodically and explain its impact on society. End with definitive conclusions.',
           es: 'Examina sistemáticamente un avance innovador medieval a través del lente de significado cultural e contexto histórico. Desglosa la innovación metódicamente y explica su impacto en la sociedad. Termina con conclusiones definitivas.'
         },
@@ -691,7 +691,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Industrial: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Conduct a thorough analysis of an Industrial Revolution innovation breakthrough, examining cause-and-effect relationships, economic implications, and systematic changes to innovation expression. Present structured findings without queries.',
           es: 'Conduce un análisis exhaustivo de un avance innovador de la Revolución Industrial, examinando relaciones causa-efecto, implicaciones económicas y cambios sistemáticos en la expresión innovadora. Presenta hallazgos estructurados sin consultas.'
         },
@@ -709,7 +709,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Modern: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Perform a comprehensive analysis of a cutting-edge innovation advancement, evaluating its technical specifications, market potential, and societal implications through evidence-based reasoning. State definitive conclusions.',
           es: 'Realiza un análisis comprensivo de un avance innovador de vanguardia, evaluando sus especificaciones técnicas, potencial de mercado e implicaciones sociales a través de razonamiento basado en evidencia. Establece conclusiones definitivas.'
         },
@@ -727,7 +727,7 @@ export const PROMPT_REFERENCE_DATA = {
         }
       },
       Future: {
-        'o4-mini': {
+        'gpt-5-mini': {
           en: 'Construct a logical framework for a futuristic innovation breakthrough, analyzing its theoretical foundations, implementation challenges, and probable societal adoption patterns. Present reasoned projections without questions.',
           es: 'Construye un marco lógico para un avance innovador futurista, analizando sus fundamentos teóricos, desafíos de implementación y patrones probables de adopción social. Presenta proyecciones razonadas sin preguntas.'
         },
@@ -750,7 +750,7 @@ export const PROMPT_REFERENCE_DATA = {
 
   // Enhanced backend model-specific templates for substantive content
   backendPrompts: {
-    'o4-mini': {
+    'gpt-5-mini': {
       en: 'Execute comprehensive systematic analysis of {category} innovations within {epoch} historical context. Apply rigorous logical reasoning, structured analytical methodology, and evidence-based evaluation. Generate detailed narrative of 300-500 words with specific examples, technical specifications, cultural impact assessment, and concrete implications. Include cause-effect relationships, data-driven insights, and empirical evidence. Provide substantive analytical content with definitive conclusions and authoritative technical assessment. Never end with questions, suggestions, or prompts - always conclude with definitive statements and clear analytical insights.',
       es: 'Ejecuta análisis sistemático comprensivo de innovaciones de {category} dentro del contexto histórico {epoch}. Aplica razonamiento lógico riguroso, metodología analítica estructurada y evaluación basada en evidencia. Genera narrativa detallada de 300-500 palabras con ejemplos específicos, especificaciones técnicas, evaluación de impacto cultural e implicaciones concretas. Incluye relaciones causa-efecto, percepciones basadas en datos y evidencia empírica. Proporciona contenido analítico sustantivo con conclusiones definitivas y evaluación técnica autoritativa. Nunca termines con preguntas, sugerencias o incitaciones - siempre concluye con declaraciones definitivas y percepciones analíticas claras.'
     },
@@ -804,7 +804,7 @@ export const PROMPT_REFERENCE_DATA = {
 
   // Model-specific JSON response formats
   jsonResponseFormat: {
-    'o4-mini': 'Return analytical JSON: [{ "headline": "Systematic title", "summary": "Logical overview", "fullText": "Structured analysis with definitive conclusion", "source": "o4-mini Analysis" }]',
+    'gpt-5-mini': 'Return analytical JSON: [{ "headline": "Systematic title", "summary": "Logical overview", "fullText": "Structured analysis with definitive conclusion", "source": "GPT-5-Mini Analysis" }]',
     'grok-4': 'Return engaging JSON: [{ "headline": "Witty title", "summary": "Clever overview", "fullText": "Entertaining narrative with memorable ending", "source": "Grok Perspective" }]',
     'perplexity-sonar': 'Return research JSON: [{ "headline": "Evidence-based title", "summary": "Data-driven overview", "fullText": "Well-researched content with authoritative conclusion", "source": "Perplexity Research" }]',
     'gemini-1.5-flash': 'Return narrative JSON: [{ "headline": "Rich title", "summary": "Multi-layered overview", "fullText": "Immersive story with clear resolution", "source": "Gemini Synthesis" }]'

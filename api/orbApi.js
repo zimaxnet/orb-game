@@ -1,9 +1,9 @@
 export const BACKEND_URL = 'https://api.orbgame.us';
 
-export async function getHistoricalFigures(category, epoch = 'Modern', language = 'en', count = 1) {
+export async function getHistoricalFigures(category, epoch = 'Modern', language = 'en', count = 1, model = 'gpt-5-mini') {
   try {
-    // Use the historical figures endpoint
-    const response = await fetch(`${BACKEND_URL}/api/orb/historical-figures/${category}?epoch=${epoch}&language=${language}&count=${count}`);
+    // Use the historical figures endpoint with gpt-5-mini model
+    const response = await fetch(`${BACKEND_URL}/api/orb/historical-figures/${category}?epoch=${epoch}&language=${language}&count=${count}&model=${model}`);
     if (!response.ok) throw new Error('Failed to fetch historical figures');
     const data = await response.json();
     

@@ -244,9 +244,9 @@ function OrbGame() {
   // Add AI source tracking state
   const [currentAISource, setCurrentAISource] = useState('');
   
-  // AI model is fixed to o4-mini
-  const selectedModel = 'o4-mini';
-  const aiModelName = 'o4-mini';
+  // AI model is fixed to gpt-5-mini
+  const selectedModel = 'gpt-5-mini';
+  const aiModelName = 'gpt-5-mini';
   
   // Add preloaded stories state
   // Preloading state variables removed - preloading disabled
@@ -319,9 +319,9 @@ function OrbGame() {
     };
   }, [currentNews]);
   
-  // O4-Mini is the only model used
+  // GPT-5-Mini is the only model used
   useEffect(() => {
-    console.log('✅ Using O4-Mini for all story generation');
+    console.log('✅ Using GPT-5-Mini for all story generation');
   }, []);
 
   // Auto-hide instructions after 5 seconds
@@ -546,13 +546,16 @@ function OrbGame() {
   
   const loadStoryForOrb = async (category, forceFresh = false) => {
     setIsLoading(true);
-    setCurrentAISource(aiModelName);
+    setCurrentAISource('GPT-5-Mini');
+    
+    // Show loading message to user
+    console.log(`🔄 Generating story and audio for ${category.name} in ${currentEpoch} epoch...`);
     
     try {
       // For historical figures, use the historical figures endpoint - only load ONE story
       console.log(`📚 Fetching single historical figure story for ${category.name} in ${currentEpoch} epoch (${language})...`);
       try {
-        const stories = await getHistoricalFigures(category.name, currentEpoch, language, 1);
+        const stories = await getHistoricalFigures(category.name, currentEpoch, language, 1, 'gpt-5-mini');
 
         console.log(`🔍 Stories received:`, stories);
         console.log(`🔍 Stories length: ${stories ? stories.length : 'undefined'}`);
@@ -565,14 +568,53 @@ function OrbGame() {
           console.log(`🎵 Story TTS Audio: ${stories[0].ttsAudio ? 'Available' : 'Not available'}`);
           console.log(`🖼️ Story Images: ${stories[0].images ? 'Available' : 'Not available'}`);
           
-          // Set only the first story - no multiple figures
-          setNewsStories([stories[0]]);
+          let storyWithAudio = stories[0];
+          
+          // If no TTS audio is available, generate it
+          if (!stories[0].ttsAudio) {
+            console.log(`🎵 No TTS audio available, generating audio for story...`);
+            try {
+              const audioResponse = await fetch(`${BACKEND_URL}/api/tts/generate`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  text: stories[0].fullText || stories[0].story || stories[0].summary,
+                  language: language,
+                  voice: language === 'es' ? 'alloy' : 'alloy' // Use alloy for both languages
+                }),
+              });
+
+              if (audioResponse.ok) {
+                const audioData = await audioResponse.json();
+                if (audioData.audioData) {
+                  storyWithAudio = {
+                    ...stories[0],
+                    ttsAudio: audioData.audioData
+                  };
+                  console.log(`✅ TTS audio generated successfully`);
+                } else {
+                  console.log(`⚠️ TTS audio generation returned no audio data`);
+                }
+              } else {
+                console.log(`❌ TTS audio generation failed: ${audioResponse.status}`);
+              }
+            } catch (audioError) {
+              console.error('TTS audio generation error:', audioError);
+              // Continue without audio
+            }
+          }
+          
+          // Set only the first story with audio - no multiple figures
+          setNewsStories([storyWithAudio]);
           setCurrentNewsIndex(0);
-          setCurrentNews(stories[0]);
-          setCurrentAISource('o4-mini');
+          setCurrentNews(storyWithAudio);
+          setCurrentAISource('GPT-5-Mini');
           setShowHistoricalFigure(true); // Show historical figure display
           setIsLoading(false);
           
+          console.log(`✅ Story and audio ready for ${category.name}`);
           return;
         } else {
           console.log(`❌ No stories received:`, stories);
@@ -798,20 +840,32 @@ function OrbGame() {
     const storyText = `${currentNews.headline} ${currentNews.summary} ${currentNews.fullText}`;
     
     try {
-      const response = await fetch(`${BACKEND_URL}/api/chat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: language === 'es' 
-            ? `Basado en esta historia sobre una figura histórica: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Por favor proporciona información MUY DETALLADA y fascinante sobre esta figura histórica específica, incluyendo: 1) Su vida temprana, educación y formación, 2) Los logros específicos mencionados en la historia y otros logros importantes que no se mencionan, 3) El contexto histórico de su época y cómo influyó en su trabajo, 4) El impacto duradero de sus contribuciones en la ciencia y la sociedad, 5) Anecdotas fascinantes, detalles poco conocidos y momentos clave de su vida, 6) Cómo sus innovaciones y descubrimientos influyeron en el desarrollo posterior de ${orbInCenter.name.toLowerCase()}, 7) Su legado y cómo se le recuerda hoy. Hazlo muy detallado, atractivo, educativo e informativo con al menos 500-600 palabras. Incluye datos específicos, fechas importantes y hechos históricos. Enfócate específicamente en la figura histórica mencionada en la historia. Responde en español.`
-            : `Based on this story about a historical figure: "${currentNews.headline}" - ${currentNews.summary} ${currentNews.fullText}. Please provide VERY DETAILED and fascinating information about this specific historical figure, including: 1) Their early life, education, and formative experiences, 2) The specific achievements mentioned in the story and other important accomplishments not mentioned, 3) The historical context of their era and how it influenced their work, 4) The lasting impact of their contributions on science and society, 5) Fascinating anecdotes, little-known details, and key moments in their life, 6) How their innovations and discoveries influenced the later development of ${orbInCenter.name.toLowerCase()}, 7) Their legacy and how they are remembered today. Make it very detailed, engaging, educational, and informative with at least 500-600 words. Include specific dates, important facts, and historical details. Focus specifically on the historical figure mentioned in the story. Respond in English.`,
-          useWebSearch: 'auto',
-          language: language,
-          count: 1
-        }),
-      });
+      // Extract historical figure name from the current story
+      let figureName = orbInCenter.name; // Default to orb category name
+      
+      // Look for common historical figure patterns in the story
+      const commonFigures = [
+        'Albert Einstein', 'Stephen Hawking', 'Marie Curie', 'Isaac Newton',
+        'Steve Jobs', 'Bill Gates', 'Tim Berners-Lee', 'Elon Musk',
+        'Pablo Picasso', 'Vincent van Gogh', 'Frida Kahlo', 'Leonardo da Vinci',
+        'Rachel Carson', 'Jane Goodall', 'David Attenborough', 'Charles Darwin',
+        'Muhammad Ali', 'Pelé', 'Serena Williams', 'Michael Jordan',
+        'Ludwig van Beethoven', 'Wolfgang Amadeus Mozart', 'Johann Sebastian Bach',
+        'Neil Armstrong', 'Buzz Aldrin', 'Yuri Gagarin', 'Sally Ride',
+        'Thomas Edison', 'Nikola Tesla', 'Alexander Graham Bell'
+      ];
+      
+      // Find the first historical figure mentioned in the story
+      for (const figure of commonFigures) {
+        if (storyText.includes(figure)) {
+          figureName = figure;
+          break;
+        }
+      }
+      
+      console.log(`🔍 Requesting Learn More for: ${figureName}`);
+      
+      const response = await fetch(`${BACKEND_URL}/api/orb/historical-figures/${orbInCenter.name}/learn-more?figure=${encodeURIComponent(figureName)}&epoch=${currentEpoch}&language=${language}&model=gpt-5-mini`);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -819,26 +873,62 @@ function OrbGame() {
 
       const data = await response.json();
       
-      if (data.response && data.response.trim()) {
+      if (data && data.content && data.content.trim()) {
         // Create a new story with the additional information about the historical figure
         const learnMoreStory = {
-          headline: language === 'es' ? `${currentEpoch} ${orbInCenter.name} - Más Sobre Esta Figura Histórica` : `${currentEpoch} ${orbInCenter.name} - More About This Historical Figure`,
+          headline: language === 'es' ? `${figureName} - Más Sobre Esta Figura Histórica` : `${figureName} - More About This Historical Figure`,
           summary: language === 'es' ? 'Información detallada y profunda sobre esta figura histórica específica' : 'Detailed and in-depth information about this specific historical figure',
-          fullText: data.response.trim(),
-          source: `${selectedModel} AI - Learn More`,
+          fullText: data.content.trim(),
+          source: `GPT-5-Mini AI - Learn More`,
           publishedAt: new Date().toISOString(),
-          ttsAudio: data.audioData || null,
+          ttsAudio: null, // Will be generated if needed
           category: orbInCenter.name,
-          aiModel: selectedModel,
+          aiModel: 'gpt-5-mini',
           language: language,
-          epoch: currentEpoch
+          epoch: currentEpoch,
+          figureName: figureName
         };
         
-        // Replace current story with learn more content
-        setNewsStories([learnMoreStory]);
+        // Generate TTS audio for Learn More content
+        let learnMoreStoryWithAudio = learnMoreStory;
+        
+        if (!learnMoreStory.ttsAudio) {
+          console.log(`🎵 Generating TTS audio for Learn More content...`);
+          try {
+            const audioResponse = await fetch(`${BACKEND_URL}/api/tts/generate`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                text: learnMoreStory.fullText,
+                language: language,
+                voice: 'alloy'
+              }),
+            });
+
+            if (audioResponse.ok) {
+              const audioData = await audioResponse.json();
+              if (audioData.audioData) {
+                learnMoreStoryWithAudio = {
+                  ...learnMoreStory,
+                  ttsAudio: audioData.audioData
+                };
+                console.log(`✅ TTS audio generated for Learn More content`);
+              }
+            }
+          } catch (audioError) {
+            console.error('TTS audio generation error for Learn More:', audioError);
+          }
+        }
+        
+        // Replace current story with learn more content (with audio)
+        setNewsStories([learnMoreStoryWithAudio]);
         setCurrentNewsIndex(0);
-        setCurrentNews(learnMoreStory);
-        setCurrentAISource(`${aiModelName} - Learn More`);
+        setCurrentNews(learnMoreStoryWithAudio);
+        setCurrentAISource('GPT-5-Mini - Learn More');
+        
+        console.log(`✅ Learn More content with audio received for ${figureName}`);
       }
     } catch (error) {
       console.error('Failed to learn more:', error);
@@ -993,14 +1083,14 @@ function OrbGame() {
         <div className="ai-loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            <h4>{currentNews?.headline || (language === 'es' ? `Cargando la historia... figura histórica más influyente de ${currentEpoch} ${orbInCenter?.name || selectedCategory}` : `Loading the story... most influential historical figure of ${currentEpoch} ${orbInCenter?.name || selectedCategory}`)}</h4>
-            <p>{language === 'es' ? 'Contexto diseñado por Zimax AI Labs usando' : 'Context engineered by Zimax AI Labs using'} <strong>{currentAISource}</strong> AI</p>
-            <p className="loading-detail">{currentNews?.summary || (language === 'es' ? '¡Prepárate para aprender sobre las figuras históricas más importantes!' : 'Get ready to learn about the most important historical figures!')}</p>
+            <h4>{currentNews?.headline || (language === 'es' ? `Generando historia y audio... figura histórica más influyente de ${currentEpoch} ${orbInCenter?.name || selectedCategory}` : `Generating story and audio... most influential historical figure of ${currentEpoch} ${orbInCenter?.name || selectedCategory}`)}</h4>
+            <p>{language === 'es' ? 'Generando contenido completo con' : 'Generating complete content with'} <strong>{currentAISource}</strong> AI</p>
+            <p className="loading-detail">{currentNews?.summary || (language === 'es' ? 'Esperando a que se genere la historia y el audio... ¡Por favor espera!' : 'Waiting for story and audio generation... Please wait!')}</p>
             <div className="loading-progress">
               <div className="progress-bar">
                 <div className="progress-fill"></div>
               </div>
-              <p className="progress-text">Connecting to {aiModelName}...</p>
+              <p className="progress-text">{language === 'es' ? 'Generando historia y audio con GPT-5-Mini...' : 'Generating story and audio with GPT-5-Mini...'}</p>
             </div>
           </div>
         </div>

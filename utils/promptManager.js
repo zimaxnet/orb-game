@@ -39,7 +39,7 @@ class PromptManager {
   /**
    * Get a model-specific prompt for a category, epoch, model, and language
    */
-  getFrontendPrompt(category, epoch, language = 'en', model = 'o4-mini') {
+  getFrontendPrompt(category, epoch, language = 'en', model = 'gpt-5-mini') {
     const key = `${category}-${epoch}-${model}-${language}`;
     
     if (this.cache.has(key)) {
@@ -55,7 +55,7 @@ class PromptManager {
    */
   getBackendPromptTemplate(model, language = 'en') {
     const templates = PROMPT_REFERENCE_DATA.backendPrompts[model] || {};
-    return templates[language] || templates['en'] || PROMPT_REFERENCE_DATA.backendPrompts['o4-mini'][language];
+    return templates[language] || templates['en'] || PROMPT_REFERENCE_DATA.backendPrompts['gpt-5-mini'][language];
   }
 
   /**
@@ -97,30 +97,30 @@ class PromptManager {
    * Get JSON response format for specific model
    */
   getJSONResponseFormat(model) {
-    return PROMPT_REFERENCE_DATA.jsonResponseFormat[model] || PROMPT_REFERENCE_DATA.jsonResponseFormat['o4-mini'];
+    return PROMPT_REFERENCE_DATA.jsonResponseFormat[model] || PROMPT_REFERENCE_DATA.jsonResponseFormat['gpt-5-mini'];
   }
 
   /**
    * Generate a dynamic prompt if not found in cache
    */
-  generateDynamicPrompt(category, epoch, language = 'en', model = 'o4-mini') {
+  generateDynamicPrompt(category, epoch, language = 'en', model = 'gpt-5-mini') {
     const languageInstruction = language === 'es' ? ' Generate all content in Spanish.' : '';
     const categoryLower = category.toLowerCase();
     const epochLower = epoch.toLowerCase();
     
     // Model-specific fallback approaches
     const modelApproaches = {
-      'o4-mini': `Systematically analyze ${epochLower} ${categoryLower} innovations using logical reasoning. Present structured conclusions.`
+      'gpt-5-mini': `Systematically analyze ${epochLower} ${categoryLower} innovations using logical reasoning. Present structured conclusions.`
     };
     
-    const approach = modelApproaches[model] || modelApproaches['o4-mini'];
+    const approach = modelApproaches[model] || modelApproaches['gpt-5-mini'];
     return `${approach} End statements definitively without questions.${languageInstruction}`;
   }
 
   /**
    * Get all prompts for a specific category and model
    */
-  getCategoryPrompts(category, language = 'en', model = 'o4-mini') {
+  getCategoryPrompts(category, language = 'en', model = 'gpt-5-mini') {
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const prompts = {};
     
@@ -134,7 +134,7 @@ class PromptManager {
   /**
    * Get all prompts for a specific epoch and model
    */
-  getEpochPrompts(epoch, language = 'en', model = 'o4-mini') {
+  getEpochPrompts(epoch, language = 'en', model = 'gpt-5-mini') {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const prompts = {};
     
@@ -148,7 +148,7 @@ class PromptManager {
   /**
    * Get all prompts for a specific language and model
    */
-  getLanguagePrompts(language = 'en', model = 'o4-mini') {
+  getLanguagePrompts(language = 'en', model = 'gpt-5-mini') {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const prompts = {};
@@ -167,7 +167,7 @@ class PromptManager {
    * Get all available models
    */
   getAvailableModels() {
-    return ['o4-mini'];
+    return ['gpt-5-mini'];
   }
 
   /**
@@ -175,8 +175,8 @@ class PromptManager {
    */
   getModelCharacteristics() {
     return {
-      'o4-mini': {
-        name: 'o4-mini Analysis',
+      'gpt-5-mini': {
+        name: 'GPT-5-Mini Analysis',
         description: 'Systematic, logical, structured analysis',
         style: 'Analytical and methodical',
         icon: '🔬'
@@ -205,7 +205,7 @@ class PromptManager {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
-    const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    const models = ['gpt-5-mini'];
     const missing = [];
 
     categories.forEach(category => {
@@ -251,7 +251,7 @@ class PromptManager {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
-    const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    const models = ['gpt-5-mini'];
 
     categories.forEach(category => {
       exportData.prompts[category] = {};
@@ -276,7 +276,7 @@ class PromptManager {
     const categories = ['Technology', 'Science', 'Art', 'Nature', 'Sports', 'Music', 'Space', 'Innovation'];
     const epochs = ['Ancient', 'Medieval', 'Industrial', 'Modern', 'Future'];
     const languages = ['en', 'es'];
-    const models = ['o4-mini', 'grok-4', 'perplexity-sonar', 'gemini-1.5-flash'];
+    const models = ['gpt-5-mini'];
 
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     const randomEpoch = epochs[Math.floor(Math.random() * epochs.length)];
